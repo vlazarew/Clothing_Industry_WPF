@@ -50,8 +50,3 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-Clothing_Industry_WPF/obj/Debug/DesignTimeResolveAssemblyReferences.cache
-.vs/Clothing_Industry_WPF/v16/Server/sqlite3/storage.ide-shm
-.vs/Clothing_Industry_WPF/v16/Server/sqlite3/storage.ide-wal
-.vs/Clothing_Industry_WPF/v16/.suo
-.vs/Clothing_Industry_WPF/v16/.suo
