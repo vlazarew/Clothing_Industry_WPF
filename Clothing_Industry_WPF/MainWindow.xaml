@@ -148,7 +148,7 @@
             </StackPanel>
 
 
-            <Button Content="Выйти" HorizontalAlignment="Left" Margin="10,643,0,0" VerticalAlignment="Top" Width="236" Height="61"/>
+            <Button x:Name="ButtonExit" Content="Выйти" HorizontalAlignment="Left" Margin="10,643,0,0" VerticalAlignment="Top" Width="236" Height="61" IsCancel="True" Click="ButtonExit_Click"/>
             <Button Content="О программе" HorizontalAlignment="Left" Margin="10,749,0,0" Width="236" RenderTransformOrigin="3.476,-2.516" Height="60" VerticalAlignment="Top"/>
 
         </Grid>

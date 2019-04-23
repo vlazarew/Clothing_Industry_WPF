@@ -24,5 +24,10 @@ namespace Clothing_Industry_WPF
         {
             InitializeComponent();
         }
+
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
