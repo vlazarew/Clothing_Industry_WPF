@@ -34,3 +34,5 @@ D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_I
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.pdb
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\bin\Debug\MySql.Data.dll
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.csproj.CopyComplete
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\bin\Debug\MySql.Data.dll
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.csproj.CopyComplete
