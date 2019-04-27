@@ -342,3 +342,5 @@ healthchecksdb
 
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
+*.cache
+Clothing_Industry_WPF/obj/Debug/Clothing_Industry_WPF.csproj.CoreCompileInputs.cache
