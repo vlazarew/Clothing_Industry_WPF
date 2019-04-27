@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF"
         mc:Ignorable="d"
   ResizeMode="NoResize"
- Title="Учёт швейного производства 'Моя пижама'" Height="850.371" Width="1515.334">
+ Title="Учёт швейного производства 'Моя пижама'" Height="850.371" Width="1520.001" Closing="Window_Closing">
     <Window.Resources>
 
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
@@ -142,12 +142,11 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1"  Height="819" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" Width="256">
 
-            <StackPanel Background ="Gray" HorizontalAlignment="Left" Height="734" VerticalAlignment="Top" Width="262" Margin="0,85,-6,0">
-
-            </StackPanel>
-            <StackPanel Background ="Beige" Height="85" VerticalAlignment="Top">
-                <TextBlock Margin="5" FontSize="20"><Run Text="Добро пожаловать,"/></TextBlock>
-                <TextBlock Margin="5" FontSize="20" FontWeight="Bold"><!--надо будет менять--><Run Text="Иванов Иван"/></TextBlock>
+            <StackPanel Background ="Gray" Margin="0,96,0,0"/>
+            <StackPanel Background ="Beige" Height="91" VerticalAlignment="Top" Margin="0,1,0,0">
+                <TextBlock Margin="5" FontSize="20" Height="28"><Run Text="Добро пожаловать,"/></TextBlock>
+                <TextBlock x:Name="textBlockUserName" Margin="5" FontSize="19" FontWeight="Bold" UseLayoutRounding="True" TextWrapping="WrapWithOverflow" Height="48"><!--надо будет менять-->
+                </TextBlock>
             </StackPanel>
 
 
@@ -156,9 +155,9 @@
 
         </Grid>
 
-        <Grid HorizontalAlignment="Left" Height="819" VerticalAlignment="Top" Width="1258" Grid.Column="2">
+        <Grid Height="819" VerticalAlignment="Top" Grid.Column="2" Margin="0,0,-14,0">
             <!-- вместо page2.xaml будут наши гуишки для каждой сущности-->
-            <StackPanel Background ="LightGray" Height="736" VerticalAlignment="Top" HorizontalAlignment="Left" Width="233" Margin="0,83,0,0">
+            <StackPanel Background ="LightGray" Height="721" VerticalAlignment="Top" HorizontalAlignment="Left" Width="233" Margin="5,98,0,0">
                 <TextBlock x:Name="Clients" FontSize="24" Margin="5">
                    <Hyperlink NavigateUri="page2.xaml">Клиенты</Hyperlink>
                 </TextBlock>
@@ -172,7 +171,7 @@
                     <Hyperlink NavigateUri="page2.xaml">Баланс клиентов</Hyperlink>
                 </TextBlock>
             </StackPanel>
-            <StackPanel Background ="LightGray" Height="736" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="238,83,0,0">
+            <StackPanel Background ="LightGray" Height="721" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="241,98,0,0">
                 <TextBlock x:Name="Matherial_Plus" FontSize="21" Margin="5" >
                     <Hyperlink NavigateUri="page2.xaml">Поступление материала</Hyperlink>
                 </TextBlock>
@@ -183,8 +182,8 @@
                     <Hyperlink NavigateUri="page2.xaml">Изделия</Hyperlink>
                 </TextBlock>
             </StackPanel>
-            <StackPanel Background ="LightGray" Height="736" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="494,83,0,0">
-                <TextBlock x:Name="Workers" FontSize="24" Margin="5" >
+            <StackPanel Background ="LightGray" Height="721" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="495,98,0,0">
+                <TextBlock x:Name="Workers" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Workers_PreviewMouseLeftButtonUp" >
                     <Hyperlink NavigateUri="page2.xaml">Сотрудники</Hyperlink>
                 </TextBlock>
                 <TextBlock x:Name="MoneyForWorkers" FontSize="24" Margin="5" >
@@ -194,15 +193,15 @@
                     <Hyperlink NavigateUri="page2.xaml">Отпуска</Hyperlink>
                 </TextBlock>
             </StackPanel>
-            <StackPanel Background ="YellowGreen" Height="78" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1258">
+            <StackPanel Background ="YellowGreen" Height="93" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1250" Margin="5,0,0,0">
                 <TextBlock  Text="Меню" FontWeight="Bold" TextAlignment="Center" FontSize="40" Width="231" Height="77" Margin="417,10,433,732"/>
             </StackPanel>
-            <StackPanel Background ="LightGray" Height="736" VerticalAlignment="Top" HorizontalAlignment="Left" Width="252" Margin="750,83,0,0">
+            <StackPanel Background ="LightGray" Height="721" VerticalAlignment="Top" HorizontalAlignment="Left" Width="252" Margin="749,98,0,0">
                 <TextBlock x:Name="Warehouse" FontSize="24" Margin="5" >
                     <Hyperlink NavigateUri="page2.xaml">Состояние склада</Hyperlink>
                 </TextBlock>
             </StackPanel>
-            <StackPanel Background ="LightGray" Height="736" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="1007,83,0,0">
+            <StackPanel Background ="LightGray" Height="721" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="1004,98,0,0">
                 <TextBlock x:Name="Consumption" FontSize="24" Margin="5" >
                     <Hyperlink NavigateUri="page2.xaml">Расходы</Hyperlink>
                 </TextBlock>

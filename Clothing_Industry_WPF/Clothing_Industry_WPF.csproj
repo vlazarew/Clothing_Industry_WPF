@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Sewing-machine.ico</ApplicationIcon>
+    <ApplicationIcon>Картинки\Sewing-machine.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
@@ -46,6 +46,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -60,7 +61,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="Старт приложения и конфиг\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
@@ -68,11 +69,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EmployeesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
+    <Compile Include="EmployeesWindow.xaml.cs">
+      <DependentUpon>EmployeesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Старт приложения и конфиг\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -85,7 +93,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="main_databaseDataSet.Designer.cs">
+    <Compile Include="БД\main_databaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>main_databaseDataSet.xsd</DependentUpon>
@@ -107,15 +115,15 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="main_databaseDataSet.xsc">
+    <None Include="БД\main_databaseDataSet.xsc">
       <DependentUpon>main_databaseDataSet.xsd</DependentUpon>
     </None>
-    <None Include="main_databaseDataSet.xsd">
+    <None Include="БД\main_databaseDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>main_databaseDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="main_databaseDataSet.xss">
+    <None Include="БД\main_databaseDataSet.xss">
       <DependentUpon>main_databaseDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
@@ -124,10 +132,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Старт приложения и конфиг\App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Sewing-machine.ico" />
+    <Resource Include="Картинки\Sewing-machine.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

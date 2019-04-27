@@ -22,7 +22,6 @@ D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_I
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\AuthentificationForm.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\AuthentificationForm.g.cs
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainWindow.g.cs
-D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\App.g.cs
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF_MarkupCompile.cache
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF_MarkupCompile.lref
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainWindow.baml
@@ -36,3 +35,6 @@ D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\bin\Debug\MySql.Data
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.csproj.CopyComplete
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\bin\Debug\MySql.Data.dll
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.csproj.CopyComplete
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Старт приложения и конфиг\App.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\EmployeesWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\EmployeesWindow.baml

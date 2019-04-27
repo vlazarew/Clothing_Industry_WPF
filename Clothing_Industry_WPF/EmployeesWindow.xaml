@@ -1,0 +1,27 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clothing_Industry_WPF"
+        xmlns:БД="clr-namespace:Clothing_Industry_WPF.БД" xmlns:main_databaseDataSetTableAdapters="clr-namespace:Clothing_Industry_WPF.БД.main_databaseDataSetTableAdapters" x:Class="Clothing_Industry_WPF.EmployeesWindow"
+        mc:Ignorable="d"
+        Title="EmployeesWindow" Height="450" Width="1162.943" Loaded="Window_Loaded">
+    <DataGrid x:Name="employeesGrid" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}">
+        <DataGrid.Columns>
+            <DataGridTextColumn Binding="{Binding Login}" ClipboardContentBinding="{x:Null}" Header="Логин" IsReadOnly="True"/>
+            <DataGridTextColumn Binding="{Binding Password}" ClipboardContentBinding="{x:Null}" Header="Пароль"/>
+            <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Имя"/>
+            <DataGridTextColumn Binding="{Binding Lastname}" ClipboardContentBinding="{x:Null}" Header="Фамилия"/>
+            <DataGridTextColumn Binding="{Binding Patronymic}" ClipboardContentBinding="{x:Null}" Header="Отчество"/>
+            <DataGridTextColumn Binding="{Binding Phone_Number}" ClipboardContentBinding="{x:Null}" Header="Телефонный номер"/>
+            <DataGridTextColumn Binding="{Binding Passport_Data}" ClipboardContentBinding="{x:Null}" Header="Паспорт"/>
+            <DataGridTextColumn Binding="{Binding Email}" ClipboardContentBinding="{x:Null}" Header="E-mail"/>
+            <DataGridTextColumn Binding="{Binding Notes}" ClipboardContentBinding="{x:Null}" Header="Заметки"/>
+            <DataGridTextColumn Binding="{Binding Added}" ClipboardContentBinding="{x:Null}" Header="Дата добавления"/>
+            <DataGridTextColumn Binding="{Binding Last_Salary}" ClipboardContentBinding="{x:Null}" Header="Последняя зарплата"/>
+            <DataGridTextColumn Binding="{Binding Name_Of_Role}" ClipboardContentBinding="{x:Null}" Header="Роль"/>
+            <DataGridTextColumn Binding="{Binding Name_Of_Position}" ClipboardContentBinding="{x:Null}" Header="Должность"/>
+        </DataGrid.Columns>
+    </DataGrid>
+</Window>
