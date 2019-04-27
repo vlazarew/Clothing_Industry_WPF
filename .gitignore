@@ -344,3 +344,7 @@ healthchecksdb
 MigrationBackup/
 *.cache
 Clothing_Industry_WPF/obj/Debug/Clothing_Industry_WPF.csproj.CoreCompileInputs.cache
+.vs/Clothing_Industry_WPF/v16/.suo
+*.ide
+*.cache
+*.lref
