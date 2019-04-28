@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Старт приложения и конфиг\App.xaml
-26-2143134811
+261524957799
 
-35-493584902
+35-1944908325
 20-1736269552
-AuthentificationForm.xaml;Баланс Клиентов\ClientBalanceRecordWindow.xaml;Баланс Клиентов\ClientBalanceWindow.xaml;Клиенты\ClientRecordWindow.xaml;Клиенты\ClientsWindow.xaml;Расходы\CostRecordWindow.xaml;Расходы\CostsWindow.xaml;Работники\EmployeeRecordWindow.xaml;Работники\EmployeesWindow.xaml;Примерки\FittingRecordWindow.xaml;Примерки\FittingsWindow.xaml;Отпуска\HolidayRecordWindow.xaml;Отпуска\HolidaysWindow.xaml;MainWindow.xaml;Поступление материала\MatherialReceiptRecordWindow.xaml;Поступление материала\MatherialReceiptWindow.xaml;Материал\MatherialRecordWindow.xaml;Материал\MatherialsWindow.xaml;Заказы\OrderRecordWindow.xaml;Заказы\OrdersWindow.xaml;Начисление ЗП\PayrollRecordWindow.xaml;Начисление ЗП\PayrollWindow.xaml;Изделия\ProductRecordWindow.xaml;Изделия\ProductsWindow.xaml;Состояние Склада\WarehouseRecordWindow.xaml;Состояние Склада\WarehouseWindow.xaml;
+AuthentificationForm.xaml;Client balance\ClientBalanceRecordWindow.xaml;Client balance\ClientBalanceWindow.xaml;Clients\ClientRecordWindow.xaml;Clients\ClientsWindow.xaml;Costs\CostRecordWindow.xaml;Costs\CostsWindow.xaml;Employees\EmployeeRecordWindow.xaml;Employees\EmployeesWindow.xaml;Fittings\FittingRecordWindow.xaml;Fittings\FittingsWindow.xaml;Holidays\HolidayRecordWindow.xaml;Holidays\HolidaysWindow.xaml;MainWindow.xaml;Matherial receipt\MatherialReceiptRecordWindow.xaml;Matherial receipt\MatherialReceiptWindow.xaml;Matherials\MatherialRecordWindow.xaml;Matherials\MatherialsWindow.xaml;Orders\OrderRecordWindow.xaml;Orders\OrdersWindow.xaml;Payroll\PayrollRecordWindow.xaml;Payroll\PayrollWindow.xaml;Products\ProductRecordWindow.xaml;Products\ProductsWindow.xaml;Warehouse\WarehouseRecordWindow.xaml;Warehouse\WarehouseWindow.xaml;
 
 True
 
