@@ -69,51 +69,51 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Client balance\ClientBalanceRecordWindow.xaml">
+    <Page Include="Баланс Клиентов\ClientBalanceRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Client balance\ClientBalanceWindow.xaml">
+    <Page Include="Баланс Клиентов\ClientBalanceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Clients\ClientRecordWindow.xaml">
+    <Page Include="Клиенты\ClientRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Clients\ClientsWindow.xaml">
+    <Page Include="Клиенты\ClientsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Costs\CostRecordWindow.xaml">
+    <Page Include="Расходы\CostRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Costs\CostsWindow.xaml">
+    <Page Include="Расходы\CostsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Employees\EmployeeRecordWindow.xaml">
+    <Page Include="Работники\EmployeeRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Employees\EmployeesWindow.xaml">
+    <Page Include="Работники\EmployeesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Fittings\FittingRecordWindow.xaml">
+    <Page Include="Примерки\FittingRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Fittings\FittingsWindow.xaml">
+    <Page Include="Примерки\FittingsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Holidays\HolidayRecordWindow.xaml">
+    <Page Include="Отпуска\HolidayRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Holidays\HolidaysWindow.xaml">
+    <Page Include="Отпуска\HolidaysWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -121,76 +121,76 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Client balance\ClientBalanceRecordWindow.xaml.cs">
+    <Compile Include="Баланс Клиентов\ClientBalanceRecordWindow.xaml.cs">
       <DependentUpon>ClientBalanceRecordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Client balance\ClientBalanceWindow.xaml.cs">
+    <Compile Include="Баланс Клиентов\ClientBalanceWindow.xaml.cs">
       <DependentUpon>ClientBalanceWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Clients\ClientRecordWindow.xaml.cs">
+    <Compile Include="Клиенты\ClientRecordWindow.xaml.cs">
       <DependentUpon>ClientRecordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Clients\ClientsWindow.xaml.cs">
+    <Compile Include="Клиенты\ClientsWindow.xaml.cs">
       <DependentUpon>ClientsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Costs\CostRecordWindow.xaml.cs">
+    <Compile Include="Расходы\CostRecordWindow.xaml.cs">
       <DependentUpon>CostRecordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Costs\CostsWindow.xaml.cs">
+    <Compile Include="Расходы\CostsWindow.xaml.cs">
       <DependentUpon>CostsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Employees\EmployeeRecordWindow.xaml.cs">
+    <Compile Include="Работники\EmployeeRecordWindow.xaml.cs">
       <DependentUpon>EmployeeRecordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Employees\EmployeesWindow.xaml.cs">
+    <Compile Include="Работники\EmployeesWindow.xaml.cs">
       <DependentUpon>EmployeesWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Fittings\FittingRecordWindow.xaml.cs">
+    <Compile Include="Примерки\FittingRecordWindow.xaml.cs">
       <DependentUpon>FittingRecordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Fittings\FittingsWindow.xaml.cs">
+    <Compile Include="Примерки\FittingsWindow.xaml.cs">
       <DependentUpon>FittingsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Holidays\HolidayRecordWindow.xaml.cs">
+    <Compile Include="Отпуска\HolidayRecordWindow.xaml.cs">
       <DependentUpon>HolidayRecordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Holidays\HolidaysWindow.xaml.cs">
+    <Compile Include="Отпуска\HolidaysWindow.xaml.cs">
       <DependentUpon>HolidaysWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Matherial receipt\MatherialReceiptRecordWindow.xaml.cs">
+    <Compile Include="Поступление материала\MatherialReceiptRecordWindow.xaml.cs">
       <DependentUpon>MatherialReceiptRecordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Matherial receipt\MatherialReceiptWindow.xaml.cs">
+    <Compile Include="Поступление материала\MatherialReceiptWindow.xaml.cs">
       <DependentUpon>MatherialReceiptWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Matherials\MatherialRecordWindow.xaml.cs">
+    <Compile Include="Материал\MatherialRecordWindow.xaml.cs">
       <DependentUpon>MatherialRecordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Matherials\MatherialsWindow.xaml.cs">
+    <Compile Include="Материал\MatherialsWindow.xaml.cs">
       <DependentUpon>MatherialsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Orders\OrderRecordWindow.xaml.cs">
+    <Compile Include="Заказы\OrderRecordWindow.xaml.cs">
       <DependentUpon>OrderRecordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Orders\OrdersWindow.xaml.cs">
+    <Compile Include="Заказы\OrdersWindow.xaml.cs">
       <DependentUpon>OrdersWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Payroll\PayrollRecordWindow.xaml.cs">
+    <Compile Include="Начисление ЗП\PayrollRecordWindow.xaml.cs">
       <DependentUpon>PayrollRecordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Payroll\PayrollWindow.xaml.cs">
+    <Compile Include="Начисление ЗП\PayrollWindow.xaml.cs">
       <DependentUpon>PayrollWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Products\ProductRecordWindow.xaml.cs">
+    <Compile Include="Изделия\ProductRecordWindow.xaml.cs">
       <DependentUpon>ProductRecordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Products\ProductsWindow.xaml.cs">
+    <Compile Include="Изделия\ProductsWindow.xaml.cs">
       <DependentUpon>ProductsWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Warehouse\WarehouseRecordWindow.xaml.cs">
+    <Compile Include="Состояние Склада\WarehouseRecordWindow.xaml.cs">
       <DependentUpon>WarehouseRecordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Warehouse\WarehouseWindow.xaml.cs">
+    <Compile Include="Состояние Склада\WarehouseWindow.xaml.cs">
       <DependentUpon>WarehouseWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Старт приложения и конфиг\App.xaml.cs">
@@ -204,51 +204,51 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Matherial receipt\MatherialReceiptRecordWindow.xaml">
+    <Page Include="Поступление материала\MatherialReceiptRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Matherial receipt\MatherialReceiptWindow.xaml">
+    <Page Include="Поступление материала\MatherialReceiptWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Matherials\MatherialRecordWindow.xaml">
+    <Page Include="Материал\MatherialRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Matherials\MatherialsWindow.xaml">
+    <Page Include="Материал\MatherialsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Orders\OrderRecordWindow.xaml">
+    <Page Include="Заказы\OrderRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Orders\OrdersWindow.xaml">
+    <Page Include="Заказы\OrdersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Payroll\PayrollRecordWindow.xaml">
+    <Page Include="Начисление ЗП\PayrollRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Payroll\PayrollWindow.xaml">
+    <Page Include="Начисление ЗП\PayrollWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Products\ProductRecordWindow.xaml">
+    <Page Include="Изделия\ProductRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Products\ProductsWindow.xaml">
+    <Page Include="Изделия\ProductsWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Warehouse\WarehouseRecordWindow.xaml">
+    <Page Include="Состояние Склада\WarehouseRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Warehouse\WarehouseWindow.xaml">
+    <Page Include="Состояние Склада\WarehouseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
