@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\
 Clothing_Industry_WPF
 none
 false
 DEBUG;TRACE
-D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\Старт приложения и конфиг\App.xaml
-31208755082
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Старт приложения и конфиг\App.xaml
+261524957799
 
-9703458236
+35-1944908325
 20-1736269552
-AuthentificationForm.xaml;EmployeesWindow.xaml;MainWindow.xaml;
+AuthentificationForm.xaml;Client balance\ClientBalanceRecordWindow.xaml;Client balance\ClientBalanceWindow.xaml;Clients\ClientRecordWindow.xaml;Clients\ClientsWindow.xaml;Costs\CostRecordWindow.xaml;Costs\CostsWindow.xaml;Employees\EmployeeRecordWindow.xaml;Employees\EmployeesWindow.xaml;Fittings\FittingRecordWindow.xaml;Fittings\FittingsWindow.xaml;Holidays\HolidayRecordWindow.xaml;Holidays\HolidaysWindow.xaml;MainWindow.xaml;Matherial receipt\MatherialReceiptRecordWindow.xaml;Matherial receipt\MatherialReceiptWindow.xaml;Matherials\MatherialRecordWindow.xaml;Matherials\MatherialsWindow.xaml;Orders\OrderRecordWindow.xaml;Orders\OrdersWindow.xaml;Payroll\PayrollRecordWindow.xaml;Payroll\PayrollWindow.xaml;Products\ProductRecordWindow.xaml;Products\ProductsWindow.xaml;Warehouse\WarehouseRecordWindow.xaml;Warehouse\WarehouseWindow.xaml;
 
-False
+True
 

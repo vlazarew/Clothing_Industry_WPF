@@ -2,7 +2,6 @@ D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_W
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainWindow.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\AuthentificationForm.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainWindow.g.cs
-D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\App.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF_MarkupCompile.cache
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF_MarkupCompile.lref
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\bin\Debug\Clothing_Industry_WPF.exe.config
@@ -38,3 +37,6 @@ D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_W
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Старт приложения и конфиг\App.g.cs
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\EmployeesWindow.g.cs
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\EmployeesWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\EmployeesWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Старт приложения и конфиг\App.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\EmployeesWindow.baml
