@@ -65,32 +65,40 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="AuthentificationForm.xaml">
+    <Page Include="MainForms\AuthentificationForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EmployeesWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="MainForms\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="EmployeesWindow.xaml.cs">
-      <DependentUpon>EmployeesWindow.xaml</DependentUpon>
+    <Compile Include="Перечисления\WaysToOpenForm.cs" />
+    <Compile Include="Сотрудники\EmployeesListWindow.xaml.cs">
+      <DependentUpon>EmployeesListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Сотрудники\EmployeesRecordWindow.xaml.cs">
+      <DependentUpon>EmployeesRecordWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Старт приложения и конфиг\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="AuthentificationForm.xaml.cs">
+    <Compile Include="MainForms\AuthentificationForm.xaml.cs">
       <DependentUpon>AuthentificationForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="MainForms\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Сотрудники\EmployeesListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Сотрудники\EmployeesRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="БД\main_databaseDataSet.Designer.cs">
@@ -137,5 +145,6 @@
   <ItemGroup>
     <Resource Include="Картинки\Sewing-machine.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

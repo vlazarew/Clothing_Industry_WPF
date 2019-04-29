@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Clothing_Industry_WPF.Сотрудники;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -66,7 +67,7 @@ namespace Clothing_Industry_WPF
         // При нажатии на вкладку "Сотрудники"
         private void Workers_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window_workers = new EmployeesWindow(connectionString);
+            Window window_workers = new EmployeesListWindow(connectionString);
             window_workers.Show();
         }
 

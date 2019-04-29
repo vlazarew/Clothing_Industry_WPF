@@ -19,12 +19,8 @@ D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\bin\Debug\Clothing_I
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\bin\Debug\Clothing_Industry_WPF.exe
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\bin\Debug\Clothing_Industry_WPF.pdb
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.csprojAssemblyReference.cache
-D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\AuthentificationForm.baml
-D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\AuthentificationForm.g.cs
-D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainWindow.g.cs
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF_MarkupCompile.cache
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF_MarkupCompile.lref
-D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainWindow.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.g.resources
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.Properties.Resources.resources
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.csproj.GenerateResource.cache
@@ -36,5 +32,11 @@ D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_I
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\bin\Debug\MySql.Data.dll
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.csproj.CopyComplete
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Старт приложения и конфиг\App.g.cs
-D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\EmployeesWindow.g.cs
-D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\EmployeesWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Сотрудники\EmployeesListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Сотрудники\EmployeesListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\AuthentificationForm.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\AuthentificationForm.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\MainWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\MainWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Сотрудники\EmployeesRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Сотрудники\EmployeesRecordWindow.baml
