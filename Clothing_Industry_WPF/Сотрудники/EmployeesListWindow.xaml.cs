@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -23,12 +24,12 @@ namespace Clothing_Industry_WPF.Сотрудники
     public partial class EmployeesListWindow : Window
     {
 
-        private string connectionString;
+        //private string connectionString;
 
         public EmployeesListWindow(string entry_connectionString)
         {
             InitializeComponent();
-            connectionString = entry_connectionString;
+            //connectionString = entry_connectionString;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -38,7 +39,7 @@ namespace Clothing_Industry_WPF.Сотрудники
 
         private void RefreshList()
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            MySqlConnection connection = new MySqlConnection(Properties.Settings.Default.main_databaseConnectionString);
             string query_text = "select employees.Login, employees.Password, employees.Name, employees.Lastname, employees.Patronymic, employees.Phone_Number, employees.Passport_Data, employees.Email," +
                                 "employees.Notes, employees.Added, employees.Last_Salary, employee_roles.Name_Of_Role, employee_positions.Name_Of_Position" +
                                 " from employees" +
@@ -55,9 +56,30 @@ namespace Clothing_Industry_WPF.Сотрудники
 
         private void ButtonCreateNew_Click(object sender, RoutedEventArgs e)
         {
-            //Window create_window = new EmployeesRecordWindow();
             Window create_window = new EmployeesRecordWindow(WaysToOpenForm.WaysToOpen.create);
-            create_window.Show();
+            create_window.ShowDialog();
+            RefreshList();
+        }
+
+        private void DataGridCell_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            int row_index = employeesGrid.SelectedIndex;
+            string login = "";
+            int current_row = 0;
+            foreach (DataRowView row in employeesGrid.Items)
+            {
+                if (current_row != row_index)
+                {
+                    current_row++;
+                    continue;
+                }
+                login = row.Row.ItemArray[0].ToString();
+                break;
+            }
+
+            Window create_window = new EmployeesRecordWindow(WaysToOpenForm.WaysToOpen.edit, login);
+            create_window.ShowDialog();
+            RefreshList();
         }
     }
 }
