@@ -87,9 +87,7 @@ namespace Clothing_Industry_WPF
             try
             {
                 connection.Open();
-                //??? Нужно ли это
                 Properties.Settings.Default.main_databaseConnectionString = connString;
-                ///
             }
             catch
             {
@@ -98,9 +96,10 @@ namespace Clothing_Industry_WPF
                 return;
             }
 
-            Window mainWindow = new MainWindow(connString, username);
+            Window mainWindow = new MainWindow(username);
             Hide();
             mainWindow.Show();
+            connection.Close();
         }
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)

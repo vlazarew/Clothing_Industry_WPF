@@ -24,12 +24,11 @@ namespace Clothing_Industry_WPF.Сотрудники
     public partial class EmployeesListWindow : Window
     {
 
-        //private string connectionString;
+        private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
 
-        public EmployeesListWindow(string entry_connectionString)
+        public EmployeesListWindow()
         {
             InitializeComponent();
-            //connectionString = entry_connectionString;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -39,8 +38,10 @@ namespace Clothing_Industry_WPF.Сотрудники
 
         private void RefreshList()
         {
-            MySqlConnection connection = new MySqlConnection(Properties.Settings.Default.main_databaseConnectionString);
-            string query_text = "select employees.Login, employees.Password, employees.Name, employees.Lastname, employees.Patronymic, employees.Phone_Number, employees.Passport_Data, employees.Email," +
+            MySqlConnection connection = new MySqlConnection(connectionString);
+
+            //Думаю, что не очень хорошо, когда в списке пользователей виден пароль!!! /* employees.Password, */
+            string query_text = "select employees.Login, employees.Name, employees.Lastname, employees.Patronymic, employees.Phone_Number, employees.Passport_Data, employees.Email," +
                                 "employees.Notes, employees.Added, employees.Last_Salary, employee_roles.Name_Of_Role, employee_positions.Name_Of_Position" +
                                 " from employees" +
                                 " join employee_positions on employees.Employee_Positions_id_Employee_Position = employee_positions.id_Employee_Position" +
@@ -52,6 +53,7 @@ namespace Clothing_Industry_WPF.Сотрудники
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
             adapter.Fill(dataTable);
             employeesGrid.ItemsSource = dataTable.DefaultView;
+            connection.Close();
         }
 
         private void ButtonCreateNew_Click(object sender, RoutedEventArgs e)
@@ -79,6 +81,54 @@ namespace Clothing_Industry_WPF.Сотрудники
 
             Window create_window = new EmployeesRecordWindow(WaysToOpenForm.WaysToOpen.edit, login);
             create_window.ShowDialog();
+            RefreshList();
+        }
+
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            List<string> loginsToDelete = new List<string>();
+            foreach (DataRowView row in employeesGrid.SelectedItems)
+            {
+                loginsToDelete.Add(row.Row.ItemArray[0].ToString());
+            }
+
+            DeleteFromDB(loginsToDelete);
+
+        }
+
+        // !!!!!!!!!!!!!!!!!!!!!! НЕ СДЕЛАЛ УДАЛЕНИЕ ИЗ ПОЛЬЗОВАТЕЛЕЙ БД!!!!!!!!!!!!!!
+        private void DeleteFromDB(List<string> logins)
+        {
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            connection.Open();
+
+            foreach (string login in logins)
+            {
+                string queryTable = "delete from employees where Login = @login";
+
+                MySqlCommand commandTable = new MySqlCommand(queryTable, connection);
+                commandTable.Parameters.AddWithValue("@login", login);
+                MySqlTransaction transaction = connection.BeginTransaction();
+                commandTable.Transaction = transaction;
+
+                try
+                {
+                    commandTable.ExecuteNonQuery();
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    System.Windows.MessageBox.Show("Удаление пользователя " + login + " не удалось");
+                }
+            }
+
+            connection.Close();
+            RefreshList();
+        }
+
+        private void ButtonRefresh_Click(object sender, RoutedEventArgs e)
+        {
             RefreshList();
         }
     }

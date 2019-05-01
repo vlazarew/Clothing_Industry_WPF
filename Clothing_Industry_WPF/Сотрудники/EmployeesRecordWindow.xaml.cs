@@ -27,20 +27,12 @@ namespace Clothing_Industry_WPF.Сотрудники
     {
         private WaysToOpenForm.WaysToOpen way;
         private string image_path;
-        string connectionString = Properties.Settings.Default.main_databaseConnectionString;
-        MySqlConnection connection;
+        private byte[] image_bytes;
+        private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
+        private MySqlConnection connection;
+        private string old_login = "";
 
-        public EmployeesRecordWindow(WaysToOpenForm.WaysToOpen waysToOpen)
-        {
-            InitializeComponent();
-            way = waysToOpen;
-            connection = new MySqlConnection(connectionString);
-            setNewTitle();
-            ShowPassword(false);
-            FillComboBoxes();
-        }
-
-        public EmployeesRecordWindow(WaysToOpenForm.WaysToOpen waysToOpen, string login)
+        public EmployeesRecordWindow(WaysToOpenForm.WaysToOpen waysToOpen, string login = "")
         {
             InitializeComponent();
             way = waysToOpen;
@@ -51,6 +43,7 @@ namespace Clothing_Industry_WPF.Сотрудники
 
             if (login != "")
             {
+                old_login = login;
                 FillFields(login);
             }
         }
@@ -66,20 +59,10 @@ namespace Clothing_Industry_WPF.Сотрудники
             MySqlCommand command = new MySqlCommand(query_text, connection);
             command.Parameters.AddWithValue("@login", login);
             connection.Open();
-            byte[] test = new byte[10000];
             using (DbDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                   /* MemoryStream memoryStream = new MemoryStream();
-                    foreach (DbDataRecord record in reader)
-                    {
-                        using (var memoryS = new MemoryStream((byte[])record["PhotoRunner"]))
-                        {
-                            Image image = Image.FromStram(memoryS);
-                            imagePhoto.Image = image;
-                        }
-                    }*/
                     textBoxLogin.Text = reader.GetString(0);
                     PasswordBoxCurrent.Password = reader.GetString(1);
                     textBoxPassword.Text = reader.GetString(1);
@@ -94,7 +77,26 @@ namespace Clothing_Industry_WPF.Сотрудники
                     textBoxLastSalary.Text = reader.GetString(10);
                     comboBoxRole.SelectedValue = reader.GetString(11);
                     comboBoxPosition.SelectedValue = reader.GetString(12);
-                    //test = reader.GetBytes(13, 0, test, 0, 1);
+
+                    image_bytes = null;
+                    try
+                    {
+                        image_bytes = (byte[])(reader[13]);
+                    }
+                    catch
+                    {
+
+                    }
+
+                    if (image_bytes == null)
+                    {
+                        imagePhoto.Source = null;
+                    }
+                    else
+                    {
+                        MemoryStream stream = new MemoryStream(image_bytes);
+                        imagePhoto.Source = BitmapFrame.Create(stream, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+                    }
                 }
             }
             connection.Close();
@@ -120,27 +122,8 @@ namespace Clothing_Industry_WPF.Сотрудники
             }
         }
 
-        /*private List<string> DoQuery(string query,int column)
-        {
-            List<string> result = new List<string>();
-            connection.Open();
-            
-            MySqlCommand command = new MySqlCommand(query, connection);
-
-            using (DbDataReader reader = command.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    result.Add(reader.GetString(column));
-                }
-            }
-
-            connection.Close();
-        }*/
-
         private void FillComboBoxes()
         {
-
             connection.Open();
 
             string query = "select name_of_position from employee_positions";
@@ -258,91 +241,45 @@ namespace Clothing_Industry_WPF.Сотрудники
             string warning = CheckData();
             if (warning == "")
             {
-                string connectionString = Properties.Settings.Default.main_databaseConnectionString;
-
                 MySqlConnection connection = new MySqlConnection(connectionString);
-                MySqlCommand command = new MySqlCommand();
                 MySqlTransaction transaction;
+
                 connection.Open();
-
-                string query = "INSERT INTO employees " +
-                               "(Login, Password, Name, Lastname, Patronymic, Phone_Number, Email," +
-                               " Passport_Data, Notes, Added, Last_Salary, Employee_Roles_id_Employee_Role, Employee_Positions_id_Employee_Position, Photo)" +
-                               " VALUES (@login, @password, @name, @lastname, @patronymic, @phone, @email, @passport, @notes, @added, @lastSalary, @role, @position, @image);";
-                command.Parameters.AddWithValue("@login", textBoxLogin.Text);
-                command.Parameters.AddWithValue("@password", CheckBoxPassword.IsChecked.Value ? textBoxPassword.Text : PasswordBoxCurrent.Password);
-                command.Parameters.AddWithValue("@name", textBoxName.Text);
-                command.Parameters.AddWithValue("@lastname", textBoxLastname.Text);
-                command.Parameters.AddWithValue("@patronymic", textBoxPatronymic.Text);
-                command.Parameters.AddWithValue("@phone", textBoxPhone_Number.Text);
-                command.Parameters.AddWithValue("@email", textBoxEmail.Text);
-                command.Parameters.AddWithValue("@passport", textBoxPassportData.Text);
-                command.Parameters.AddWithValue("@notes", textBoxNotes.Text);
-                command.Parameters.AddWithValue("@added", datePickerAdded.SelectedDate.Value);
-                command.Parameters.AddWithValue("@lastSalary", float.Parse(textBoxLastSalary.Text == "" ? "0" : textBoxLastSalary.Text));
-
-                MySqlCommand commandRole = new MySqlCommand("select id_Employee_Role from employee_roles where Name_Of_Role = @role", connection);
-                commandRole.Parameters.AddWithValue("role", comboBoxRole.SelectedItem.ToString());
-                int id_role = -1;
-                using (DbDataReader reader = commandRole.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        id_role = reader.GetInt32(0);
-                    }
-                }
-
-                MySqlCommand commandPosition = new MySqlCommand("select id_Employee_Position from employee_positions where Name_Of_position = @position", connection);
-                commandPosition.Parameters.AddWithValue("position", comboBoxRole.SelectedItem.ToString());
-                int id_position = -1;
-                using (DbDataReader reader = commandRole.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        id_position = reader.GetInt32(0);
-                    }
-                }
-
-                command.Parameters.AddWithValue("@role", id_role);
-                command.Parameters.AddWithValue("@position", id_position);
-
-
-                // Обработка фото
-                if (image_path != null)
-                {
-                    FileStream fileStream = new FileStream(image_path, FileMode.Open, FileAccess.Read);
-                    BinaryReader binaryReader = new BinaryReader(fileStream);
-                    byte[] imageData = binaryReader.ReadBytes((int)fileStream.Length);
-                    binaryReader.Close();
-                    fileStream.Close();
-                    command.Parameters.AddWithValue("@image", imageData);
-                }
-                else
-                {
-                    command.Parameters.AddWithValue("@image", null);
-                }
-
-
                 transaction = connection.BeginTransaction();
-                command.Connection = connection;
-                command.Transaction = transaction;
-                command.CommandText = query;
 
-                string queryUser = string.Format("CREATE USER '{0}'@'%' IDENTIFIED BY '{1}';", textBoxLogin.Text,
+                //Создать/изменить запись в таблице Пользователи
+                MySqlCommand command = actionInDBCommand(connection);
+                command.Transaction = transaction;
+
+                //Создание/изменение пользователя в БД
+                string queryUser = "";
+                //Читаемости ради                    
+                if (way == WaysToOpenForm.WaysToOpen.create)
+                {
+                    queryUser = string.Format("CREATE USER '{0}'@'%' IDENTIFIED BY '{1}';", textBoxLogin.Text,
                     CheckBoxPassword.IsChecked.Value ? textBoxPassword.Text : PasswordBoxCurrent.Password);
+                }
+                if (way == WaysToOpenForm.WaysToOpen.edit && old_login != textBoxLogin.Text)
+                {
+                    queryUser = string.Format("Rename user '{0}'@'%' To '{1}'@'%';", old_login, textBoxLogin.Text);
+                }
                 MySqlCommand commandUser = new MySqlCommand(queryUser, connection);
 
                 try
                 {
                     command.ExecuteNonQuery();
-                    commandUser.ExecuteNonQuery();
+                    if (queryUser != "")
+                    {
+                        commandUser.ExecuteNonQuery();
+                    }
                     transaction.Commit();
                 }
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Ошибка добавления!");
+                    System.Windows.MessageBox.Show("Ошибка сохранения!");
                 }
+
                 connection.Close();
                 this.Hide();
             }
@@ -351,5 +288,94 @@ namespace Clothing_Industry_WPF.Сотрудники
                 System.Windows.MessageBox.Show(warning);
             }
         }
+
+        private MySqlCommand actionInDBCommand(MySqlConnection connection)
+        {
+            string query = "";
+            if (way == WaysToOpenForm.WaysToOpen.create)
+            {
+                query = "INSERT INTO employees " +
+                                       "(Login, Password, Name, Lastname, Patronymic, Phone_Number, Email," +
+                                       " Passport_Data, Notes, Added, Last_Salary, Employee_Roles_id_Employee_Role, Employee_Positions_id_Employee_Position, Photo)" +
+                                       " VALUES (@login, @password, @name, @lastname, @patronymic, @phone, @email, @passport, @notes, @added, @lastSalary, @role, @position, @image);";
+            }
+            if (way == WaysToOpenForm.WaysToOpen.edit)
+            {
+                query = "Update employees set Login = @login, Password = @password, Name = @name, Lastname = @lastname, Patronymic = @patronymic, Phone_Number = @phone, " +
+                        "Email = @email, Passport_Data = @passport, Notes = @notes, Added = @added, Last_Salary = @lastSalary, " +
+                        "Employee_Roles_id_Employee_Role = @role, Employee_Positions_id_Employee_Position = @position, Photo = @image" +
+                        " where Login = @oldLogin;";
+
+            }
+
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@login", textBoxLogin.Text);
+            command.Parameters.AddWithValue("@password", CheckBoxPassword.IsChecked.Value ? textBoxPassword.Text : PasswordBoxCurrent.Password);
+            command.Parameters.AddWithValue("@name", textBoxName.Text);
+            command.Parameters.AddWithValue("@lastname", textBoxLastname.Text);
+            command.Parameters.AddWithValue("@patronymic", textBoxPatronymic.Text);
+            command.Parameters.AddWithValue("@phone", textBoxPhone_Number.Text);
+            command.Parameters.AddWithValue("@email", textBoxEmail.Text);
+            command.Parameters.AddWithValue("@passport", textBoxPassportData.Text);
+            command.Parameters.AddWithValue("@notes", textBoxNotes.Text);
+            command.Parameters.AddWithValue("@added", datePickerAdded.SelectedDate.Value);
+            command.Parameters.AddWithValue("@lastSalary", float.Parse(textBoxLastSalary.Text == "" ? "0" : textBoxLastSalary.Text));
+
+            MySqlCommand commandRole = new MySqlCommand("select id_Employee_Role from employee_roles where Name_Of_Role = @role", connection);
+            commandRole.Parameters.AddWithValue("role", comboBoxRole.SelectedItem.ToString());
+            int id_role = -1;
+            using (DbDataReader reader = commandRole.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    id_role = reader.GetInt32(0);
+                }
+            }
+
+            MySqlCommand commandPosition = new MySqlCommand("select id_Employee_Position from employee_positions where Name_Of_position = @position", connection);
+            commandPosition.Parameters.AddWithValue("position", comboBoxRole.SelectedItem.ToString());
+            int id_position = -1;
+            using (DbDataReader reader = commandRole.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    id_position = reader.GetInt32(0);
+                }
+            }
+
+            command.Parameters.AddWithValue("@role", id_role);
+            command.Parameters.AddWithValue("@position", id_position);
+
+
+            // Обработка фото
+            if (image_path != null)
+            {
+                FileStream fileStream = new FileStream(image_path, FileMode.Open, FileAccess.Read);
+                BinaryReader binaryReader = new BinaryReader(fileStream);
+                byte[] imageData = binaryReader.ReadBytes((int)fileStream.Length);
+                binaryReader.Close();
+                fileStream.Close();
+                command.Parameters.AddWithValue("@image", imageData);
+            }
+            else
+            {
+                if (image_bytes != null)
+                {
+                    command.Parameters.AddWithValue("@image", image_bytes);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@image", null);
+                }
+            }
+
+            if (way == WaysToOpenForm.WaysToOpen.edit)
+            {
+                command.Parameters.AddWithValue("@oldLogin", old_login);
+            }
+
+            return command;
+        }
+
     }
 }

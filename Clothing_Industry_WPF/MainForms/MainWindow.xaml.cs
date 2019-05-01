@@ -24,13 +24,12 @@ namespace Clothing_Industry_WPF
     public partial class MainWindow : Window
     {
         private string login;
-        private string connectionString;
+        private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
 
         #region Загрузка формы
-        public MainWindow(string entry_connectionString, string entry_login = "")
+        public MainWindow(string entry_login = "")
         {
             InitializeComponent();
-            connectionString = entry_connectionString;
             login = entry_login;
             FillUsername();
         }
@@ -67,7 +66,7 @@ namespace Clothing_Industry_WPF
         // При нажатии на вкладку "Сотрудники"
         private void Workers_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window_workers = new EmployeesListWindow(connectionString);
+            Window window_workers = new EmployeesListWindow();
             window_workers.Show();
         }
 
