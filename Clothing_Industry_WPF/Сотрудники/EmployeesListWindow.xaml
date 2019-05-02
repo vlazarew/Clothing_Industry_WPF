@@ -5,10 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Сотрудники"
         mc:Ignorable="d"
-        Title="Сотрудники" Loaded="Window_Loaded" Height="529">
+        Title="Сотрудники" Loaded="Window_Loaded" Height="529" Width="1067.1">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="541*"/>
+            <ColumnDefinition Width="37*"/>
+            <ColumnDefinition Width="238*"/>
+            <ColumnDefinition Width="12*"/>
+        </Grid.ColumnDefinitions>
 
-        <DataGrid x:Name="employeesGrid" Margin="10,0,10,10" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Height="440" VerticalAlignment="Bottom">
+        <DataGrid x:Name="employeesGrid" Margin="10,0,10,10" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Height="440" VerticalAlignment="Bottom" Grid.ColumnSpan="4">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridCell}">
                     <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
@@ -33,5 +39,8 @@
         <Button Name ="ButtonCreateNew" Content="Создать" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>
         <Button x:Name ="ButtonDelete" Content="Удалить" HorizontalAlignment="Left" Height="25" Margin="95,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
         <Button x:Name ="ButtonRefresh" Content="Обновить" HorizontalAlignment="Left" Height="25" Margin="180,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonRefresh_Click"/>
+        <Button x:Name ="ButtonEdit" Content="Изменить выделенное" HorizontalAlignment="Left" Height="25" Margin="265,10,0,0" VerticalAlignment="Top" Width="139" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonEdit_Click"/>
+        <Button x:Name="ButtonExit" Content="Выход" Grid.Column="2" HorizontalAlignment="Left" Margin="140,10,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" Height="25"/>
+        <Button x:Name ="ButtonFind" Content="Найти" HorizontalAlignment="Left" Height="25" Margin="409,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFind_Click"/>
     </Grid>
 </Window>

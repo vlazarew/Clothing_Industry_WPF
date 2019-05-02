@@ -97,7 +97,7 @@ namespace Clothing_Industry_WPF
             }
 
             Window mainWindow = new MainWindow(username);
-            Hide();
+            Close();
             mainWindow.Show();
             connection.Close();
         }

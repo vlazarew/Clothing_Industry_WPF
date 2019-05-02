@@ -51,7 +51,7 @@ namespace Clothing_Industry_WPF.Сотрудники
         private void FillFields(string login)
         {
             string query_text = "select employees.Login, employees.Password, employees.Name, employees.Lastname, employees.Patronymic, employees.Phone_Number, employees.Passport_Data, employees.Email," +
-                               "employees.Notes, employees.Added, employees.Last_Salary, employee_roles.Name_Of_Role, employee_positions.Name_Of_Position, employees.Photo" +
+                               "employees.Notes, DATE_FORMAT(employees.Added, \"%d.%m.%Y\") as Added, employees.Last_Salary, employee_roles.Name_Of_Role, employee_positions.Name_Of_Position, employees.Photo" +
                                " from employees" +
                                " join employee_positions on employees.Employee_Positions_id_Employee_Position = employee_positions.id_Employee_Position" +
                                " join employee_roles on employees.Employee_Roles_id_Employee_Role = employee_roles.id_Employee_Role" +
@@ -263,7 +263,7 @@ namespace Clothing_Industry_WPF.Сотрудники
                 {
                     queryUser = string.Format("Rename user '{0}'@'%' To '{1}'@'%';", old_login, textBoxLogin.Text);
                 }
-                MySqlCommand commandUser = new MySqlCommand(queryUser, connection);
+                MySqlCommand commandUser = new MySqlCommand(queryUser, connection,transaction);
 
                 try
                 {
