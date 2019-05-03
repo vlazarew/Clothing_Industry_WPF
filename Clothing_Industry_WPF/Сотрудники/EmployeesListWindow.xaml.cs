@@ -26,11 +26,12 @@ namespace Clothing_Industry_WPF.Сотрудники
     {
 
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
-        public string param { get; set; }
+        private FindHandler.FindDescription currentFindDescription;
 
         public EmployeesListWindow()
         {
             InitializeComponent();
+            currentFindDescription = new FindHandler.FindDescription();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -182,44 +183,38 @@ namespace Clothing_Industry_WPF.Сотрудники
         {
             List<KeyValuePair<string, string>> listOfField = FillFindFields();
 
-            var findWindow = new FindWindow(listOfField);
-            FindHandler.FindDescription result = new FindHandler.FindDescription();
+            var findWindow = new FindWindow(currentFindDescription, listOfField);
             if (findWindow.ShowDialog().Value)
             {
-                result = findWindow.Result;
+                currentFindDescription = findWindow.Result;
             }
             else
             {
                 return;
             }
 
-            var field = listOfField.Where(kvp => kvp.Value == result.field).First().Key;
+            var field = listOfField.Where(kvp => kvp.Value == currentFindDescription.field).First().Key;
             string query = getQueryText();
-            string edited_query; 
+            string edited_query;
 
-            ///!!!!!!!!!!!!!!! ДАТА НЕ ИЩЕТСЯ
-            if (!result.isDate)
+            if (!currentFindDescription.isDate)
             {
-                edited_query = query.Replace(";", " where " + field.ToString() + " ");
-                edited_query += string.Format(result.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence ? "= \"{0}\"" : "like \"{0}%\"", result.value);
+                edited_query = query.Replace(";", " where " + field + " ");
+                edited_query += string.Format(currentFindDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence ? "= \"{0}\"" : "like \"{0}%\"", currentFindDescription.value);
             }
             else
             {
-                edited_query = query.Replace(";", " where DATE_FORMAT(employees.Added, \"%d.%m.%Y\")  ");
-                //string date = result.value.Replace(".", "");
-                edited_query += string.Format("= date(\'{0}\')", result.value);
+                edited_query = query.Replace(";", " where DATE_FORMAT(" + field + ", '%d.%m.%Y')  ");
+                edited_query += string.Format("= \'{0}\'", currentFindDescription.value);
             }
 
             MySqlConnection connection = new MySqlConnection(connectionString);
             DataTable dataTable = new DataTable();
             MySqlCommand command = new MySqlCommand(edited_query, connection);
-            command.Parameters.AddWithValue("@value", result.value);
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
             adapter.Fill(dataTable);
             employeesGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
-
-
         }
 
         // Список полей, по которым мы можем делать поиск
@@ -239,6 +234,26 @@ namespace Clothing_Industry_WPF.Сотрудники
             result.Add(new KeyValuePair<string, string>("Last_Salary", "З/п за прошлый месяц"));
 
             return result;
+        }
+
+        private void ButtonCancelFind_Click(object sender, RoutedEventArgs e)
+        {
+            currentFindDescription = new FindHandler.FindDescription();
+            RefreshList();
+        }
+
+        private void ButtonFilters_Click(object sender, RoutedEventArgs e)
+        {
+            List<KeyValuePair<string, string>> listOfField = FillFindFields();
+            var findWindow = new FindWindow(currentFindDescription, listOfField);
+            if (findWindow.ShowDialog().Value)
+            {
+                currentFindDescription = findWindow.Result;
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

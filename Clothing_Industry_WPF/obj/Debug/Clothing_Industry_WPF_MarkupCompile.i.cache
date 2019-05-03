@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\Старт приложения и конфиг\App.xaml
-51131002242
+6-1659958925
 
-14855046177
+1722024900
 20-1736269552
-MainForms\AuthentificationForm.xaml;MainForms\MainWindow.xaml;Поиск и фильтры\FindWindow.xaml;Сотрудники\EmployeesListWindow.xaml;Сотрудники\EmployeesRecordWindow.xaml;
+MainForms\AuthentificationForm.xaml;MainForms\MainWindow.xaml;Поиск и фильтры\FilterWindow.xaml;Поиск и фильтры\FindWindow.xaml;Сотрудники\EmployeesListWindow.xaml;Сотрудники\EmployeesRecordWindow.xaml;
 
-True
+False
 

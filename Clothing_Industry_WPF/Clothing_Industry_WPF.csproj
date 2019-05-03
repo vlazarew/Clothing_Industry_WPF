@@ -73,8 +73,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Перечисления\TypeOfFilter.cs" />
     <Compile Include="Перечисления\TypeOfFind.cs" />
     <Compile Include="Перечисления\WaysToOpenForm.cs" />
+    <Compile Include="Поиск и фильтры\FilterHandler.cs" />
+    <Compile Include="Поиск и фильтры\FilterWindow.xaml.cs">
+      <DependentUpon>FilterWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Поиск и фильтры\FindHandler.cs" />
     <Compile Include="Поиск и фильтры\FindWindow.xaml.cs">
       <DependentUpon>FindWindow.xaml</DependentUpon>
@@ -96,6 +101,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Поиск и фильтры\FilterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Поиск и фильтры\FindWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -1,0 +1,26 @@
+﻿<Window x:Class="Clothing_Industry_WPF.Поиск_и_фильтры.FilterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clothing_Industry_WPF.Поиск_и_фильтры"
+        mc:Ignorable="d"
+        Title="FilterWindow" Height="498.481" Width="800">
+    <Grid Margin="0,0,0,-1">
+        <DataGrid x:Name="dataGridSources" HorizontalAlignment="Left" Height="349" Margin="10,36,0,0" VerticalAlignment="Top" Width="283">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" FontSize="16" Header="Поле"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DataGrid x:Name="dataGridFilters" HorizontalAlignment="Left" Height="349" Margin="472,36,0,0" VerticalAlignment="Top" Width="310">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" FontSize="16" Header="Поле"/>
+                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" Header="Вид отбора"/>
+                <DataGridTextColumn Binding="{x:Null}" ClipboardContentBinding="{x:Null}" FontSize="16" Header="Значение отбора"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="buttonFind" Content="Поиск" HorizontalAlignment="Left" Margin="179,419,0,0" VerticalAlignment="Top" Width="114" IsDefault="True" Height="39" FontSize="16"/>
+        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="472,419,0,0" VerticalAlignment="Top" Width="114" Height="39" FontSize="16" IsCancel="True"/>
+
+    </Grid>
+</Window>

@@ -23,20 +23,47 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
     {
         private List<KeyValuePair<string, string>> listOfFields;
         private bool isNowTime;
-        private bool isNowNumber;
-        public FindHandler.FindDescription Result { get; set; }
 
-        public FindWindow(List<KeyValuePair<string, string>> listOfFields = null)
+        public FindHandler.FindDescription Result { get; set; }
+        private FindHandler.FindDescription findDescription;
+
+        public FindWindow(FindHandler.FindDescription findDescription, List<KeyValuePair<string, string>> listOfFields = null)
         {
             InitializeComponent();
             this.listOfFields = listOfFields;
-            datePicker.Visibility = Visibility.Hidden;
-            isNowTime = false;
+            datePicker.Visibility = findDescription.isDate ? Visibility.Visible : Visibility.Hidden;
+            textBoxValue.Visibility = findDescription.isDate ? Visibility.Hidden : Visibility.Visible;
+            isNowTime = findDescription.isDate;
+            this.findDescription = findDescription;
+        }
+
+        private void FillPreviousFind(FindHandler.FindDescription findDescription)
+        {
+            comboBoxField.SelectedItem = findDescription.field;
+            if (findDescription.isDate)
+            {
+                datePicker.SelectedDate = Convert.ToDateTime(findDescription.value);
+            }
+            else
+            {
+                textBoxValue.Text = findDescription.value;
+            }
+
+            textBoxValue.Visibility = findDescription.isDate ? Visibility.Hidden : Visibility.Visible;
+            datePicker.Visibility = findDescription.isDate ? Visibility.Visible : Visibility.Hidden;
+
+            radioButtonExact.IsChecked = findDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence;
+            radioButtonPart.IsChecked = !(findDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             FillComboBox();
+            if (findDescription.field != null)
+            {
+                isNowTime = findDescription.isDate;
+                FillPreviousFind(findDescription);
+            }
         }
 
         private void FillComboBox()
@@ -45,6 +72,7 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
             {
                 comboBoxField.Items.Add(pair.Value);
             }
+            comboBoxField.SelectedIndex = 0;
         }
 
         private void ComboBoxField_SelectionChanged(object sender, SelectionChangedEventArgs e)
