@@ -42,3 +42,5 @@ D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Сотру
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Сотрудники\EmployeesRecordWindow.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\FindWindow.g.cs
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\FindWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\FilterWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\FilterWindow.baml

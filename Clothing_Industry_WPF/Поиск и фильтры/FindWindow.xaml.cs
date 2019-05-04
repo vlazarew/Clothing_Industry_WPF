@@ -21,19 +21,21 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
     /// </summary>
     public partial class FindWindow : Window
     {
-        private List<KeyValuePair<string, string>> listOfFields;
+        private List<FindHandler.FieldParameters> listOfFields;
         private bool isNowTime;
+        private bool isNowNumber;
 
         public FindHandler.FindDescription Result { get; set; }
         private FindHandler.FindDescription findDescription;
 
-        public FindWindow(FindHandler.FindDescription findDescription, List<KeyValuePair<string, string>> listOfFields = null)
+        public FindWindow(FindHandler.FindDescription findDescription, List<FindHandler.FieldParameters> listOfFields = null)
         {
             InitializeComponent();
             this.listOfFields = listOfFields;
             datePicker.Visibility = findDescription.isDate ? Visibility.Visible : Visibility.Hidden;
             textBoxValue.Visibility = findDescription.isDate ? Visibility.Hidden : Visibility.Visible;
             isNowTime = findDescription.isDate;
+            isNowNumber = findDescription.isNumber;
             this.findDescription = findDescription;
         }
 
@@ -52,8 +54,19 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
             textBoxValue.Visibility = findDescription.isDate ? Visibility.Hidden : Visibility.Visible;
             datePicker.Visibility = findDescription.isDate ? Visibility.Visible : Visibility.Hidden;
 
-            radioButtonExact.IsChecked = findDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence;
-            radioButtonPart.IsChecked = !(findDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence);
+            // Фишка - минутка
+            radioButtonExact.IsEnabled = !(isNowNumber || isNowTime);
+            radioButtonPart.IsEnabled = !(isNowNumber || isNowTime);
+            //
+            if (!radioButtonExact.IsEnabled)
+            {
+                radioButtonExact.IsChecked = true;
+            }
+            else
+            {
+                radioButtonExact.IsChecked = findDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence;
+                radioButtonPart.IsChecked = !(findDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence);
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -70,7 +83,7 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
         {
             foreach (var pair in listOfFields)
             {
-                comboBoxField.Items.Add(pair.Value);
+                comboBoxField.Items.Add(pair.application_name);
             }
             comboBoxField.SelectedIndex = 0;
         }
@@ -78,8 +91,10 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
         private void ComboBoxField_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string selectedValue = comboBoxField.SelectedItem.ToString();
+            string selectedType = listOfFields.Where(value => value.application_name == selectedValue).First().type;
 
-            if (selectedValue.IndexOf("Дата") != -1 && !isNowTime)
+            // ЭТОТ КУСОК МНЕ НУЖНО ДОВЕСТИ ДО УМА, ТУТ МОЖНО СДЕЛАТЬ НЕСКОЛЬКО КРАСИВЕЕ И ВВЕСТИ ПРОВЕРКУ НА ЧИСЛА!!!
+            if (selectedType.IndexOf("date") != -1 && !isNowTime)
             {
                 datePicker.SelectedDate = DateTime.Now;
                 datePicker.Visibility = Visibility.Visible;
@@ -98,6 +113,7 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
                     isNowTime = false;
                 }
             }
+            //
         }
 
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)
