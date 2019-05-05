@@ -43,7 +43,7 @@
                             <!-- Outer Rectangle with rounded corners. -->
                             <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch"   
       VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}"   
-      RadiusX="20" RadiusY="20" StrokeThickness="5" Fill="Transparent" />
+      RadiusX="20" RadiusY="20" StrokeThickness="15" Fill="Transparent" />
 
                             <!-- Inner Rectangle with rounded corners. -->
                             <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"   
@@ -159,38 +159,38 @@
             <!-- вместо page2.xaml будут наши гуишки для каждой сущности-->
             <StackPanel Background ="LightGray" Height="721" VerticalAlignment="Top" HorizontalAlignment="Left" Width="233" Margin="5,98,0,0">
                 <TextBlock x:Name="Clients" FontSize="24" Margin="5">
-                   <Hyperlink NavigateUri="page2.xaml">Клиенты</Hyperlink>
+                   <Hyperlink>Клиенты</Hyperlink>
                 </TextBlock>
                 <TextBlock x:Name="Orders" FontSize="24" Margin="5">
-                    <Hyperlink NavigateUri="page2.xaml">Заказы</Hyperlink>
+                    <Hyperlink>Заказы</Hyperlink>
                 </TextBlock>
                 <TextBlock x:Name="Fittings" FontSize="24" Margin="5">
-                    <Hyperlink NavigateUri="page2.xaml">Примерки</Hyperlink>
+                    <Hyperlink>Примерки</Hyperlink>
                 </TextBlock>
                 <TextBlock x:Name="BalanceOfClients" FontSize="24" Margin="5">
-                    <Hyperlink NavigateUri="page2.xaml">Баланс клиентов</Hyperlink>
+                    <Hyperlink>Баланс клиентов</Hyperlink>
                 </TextBlock>
             </StackPanel>
             <StackPanel Background ="LightGray" Height="721" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="241,98,0,0">
                 <TextBlock x:Name="Matherial_Plus" FontSize="21" Margin="5" >
-                    <Hyperlink NavigateUri="page2.xaml">Поступление материала</Hyperlink>
+                    <Hyperlink>Поступление материала</Hyperlink>
                 </TextBlock>
                 <TextBlock x:Name="Matherial" FontSize="24" Margin="5" >
-                    <Hyperlink NavigateUri="page2.xaml">Материал/Фурнитура</Hyperlink>
+                    <Hyperlink>Материал/Фурнитура</Hyperlink>
                 </TextBlock>
                 <TextBlock x:Name="Things" FontSize="24" Margin="5" >
-                    <Hyperlink NavigateUri="page2.xaml">Изделия</Hyperlink>
+                    <Hyperlink>Изделия</Hyperlink>
                 </TextBlock>
             </StackPanel>
             <StackPanel Background ="LightGray" Height="721" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="495,98,0,0">
                 <TextBlock x:Name="Workers" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Workers_PreviewMouseLeftButtonUp" >
-                    <Hyperlink NavigateUri="page2.xaml">Сотрудники</Hyperlink>
+                    <Hyperlink>Сотрудники</Hyperlink>
                 </TextBlock>
                 <TextBlock x:Name="MoneyForWorkers" FontSize="24" Margin="5" >
-                    <Hyperlink NavigateUri="page2.xaml">Начисление ЗП</Hyperlink>
+                    <Hyperlink>Начисление ЗП</Hyperlink>
                 </TextBlock>
                 <TextBlock x:Name="Holidays" FontSize="24" Margin="5" >
-                    <Hyperlink NavigateUri="page2.xaml">Отпуска</Hyperlink>
+                    <Hyperlink>Отпуска</Hyperlink>
                 </TextBlock>
             </StackPanel>
             <StackPanel Background ="YellowGreen" Height="93" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1250" Margin="5,0,0,0">
@@ -198,12 +198,12 @@
             </StackPanel>
             <StackPanel Background ="LightGray" Height="721" VerticalAlignment="Top" HorizontalAlignment="Left" Width="252" Margin="749,98,0,0">
                 <TextBlock x:Name="Warehouse" FontSize="24" Margin="5" >
-                    <Hyperlink NavigateUri="page2.xaml">Состояние склада</Hyperlink>
+                    <Hyperlink>Состояние склада</Hyperlink>
                 </TextBlock>
             </StackPanel>
             <StackPanel Background ="LightGray" Height="721" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="1004,98,0,0">
                 <TextBlock x:Name="Consumption" FontSize="24" Margin="5" >
-                    <Hyperlink NavigateUri="page2.xaml">Расходы</Hyperlink>
+                    <Hyperlink>Расходы</Hyperlink>
                 </TextBlock>
             </StackPanel>
 

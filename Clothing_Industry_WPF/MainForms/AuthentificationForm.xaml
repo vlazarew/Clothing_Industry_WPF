@@ -42,7 +42,7 @@ ResizeMode="NoResize"
                             <!-- Outer Rectangle with rounded corners. -->
                             <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch"   
       VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}"   
-      RadiusX="20" RadiusY="20" StrokeThickness="5" Fill="Transparent" />
+      RadiusX="20" RadiusY="20" StrokeThickness="15" Fill="Transparent" />
 
                             <!-- Inner Rectangle with rounded corners. -->
                             <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"   
