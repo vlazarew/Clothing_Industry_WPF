@@ -349,3 +349,8 @@ Clothing_Industry_WPF/obj/Debug/Clothing_Industry_WPF.csproj.CoreCompileInputs.c
 *.cache
 *.lref
 *.cache
+
+Clothing_Industry_WPF/bin/Debug
+Clothing_Industry_WPF/obj/Debug
+.vs/Clothing_Industry_WPF/v16
+.vs/Clothing_Industry_WPF/v16/.suo
