@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -181,7 +182,7 @@ namespace Clothing_Industry_WPF.Сотрудники
 
         private void ButtonFind_Click(object sender, RoutedEventArgs e)
         {
-            List<KeyValuePair<string, string>> listOfField = FillFindFields();
+            List<FindHandler.FieldParameters> listOfField = FillFindFields();
 
             var findWindow = new FindWindow(currentFindDescription, listOfField);
             if (findWindow.ShowDialog().Value)
@@ -193,7 +194,7 @@ namespace Clothing_Industry_WPF.Сотрудники
                 return;
             }
 
-            var field = listOfField.Where(kvp => kvp.Value == currentFindDescription.field).First().Key;
+            var field = listOfField.Where(kvp => kvp.application_name == currentFindDescription.field).First().db_name;
             string query = getQueryText();
             string edited_query;
 
@@ -218,22 +219,53 @@ namespace Clothing_Industry_WPF.Сотрудники
         }
 
         // Список полей, по которым мы можем делать поиск
-        private List<KeyValuePair<string, string>> FillFindFields()
+        private List<FindHandler.FieldParameters> FillFindFields()
         {
-            List<KeyValuePair<string, string>> result = new List<KeyValuePair<string, string>>();
-            result.Add(new KeyValuePair<string, string>("Login", "Логин"));
-            result.Add(new KeyValuePair<string, string>("Name_Of_Role", "Роль"));
-            result.Add(new KeyValuePair<string, string>("Lastname", "Фамилия"));
-            result.Add(new KeyValuePair<string, string>("Name", "Имя"));
-            result.Add(new KeyValuePair<string, string>("Patronymic", "Отчество"));
-            result.Add(new KeyValuePair<string, string>("Name_Of_Position", "Должность"));
-            result.Add(new KeyValuePair<string, string>("Phone_Number", "Телефон"));
-            result.Add(new KeyValuePair<string, string>("Email", "Email"));
-            result.Add(new KeyValuePair<string, string>("Passport_Data", "Паспортные данные"));
-            result.Add(new KeyValuePair<string, string>("Added", "Дата добавления"));
-            result.Add(new KeyValuePair<string, string>("Last_Salary", "З/п за прошлый месяц"));
+            List<KeyValuePair<string, string>> describe = TakeDescribe();
+            List<FindHandler.FieldParameters> result = new List<FindHandler.FieldParameters>();
+            result.Add(new FindHandler.FieldParameters("Login", "Логин", describe.Where(key => key.Key == "Login").First().Value));
+            result.Add(new FindHandler.FieldParameters("Name_Of_Role", "Роль", describe.Where(key => key.Key == "Name_Of_Role").First().Value));
+            result.Add(new FindHandler.FieldParameters("Lastname", "Фамилия", describe.Where(key => key.Key == "Lastname").First().Value));
+            result.Add(new FindHandler.FieldParameters("Name", "Имя", describe.Where(key => key.Key == "Name").First().Value));
+            result.Add(new FindHandler.FieldParameters("Patronymic", "Отчество", describe.Where(key => key.Key == "Patronymic").First().Value));
+            result.Add(new FindHandler.FieldParameters("Name_Of_Position", "Должность", describe.Where(key => key.Key == "Name_Of_Position").First().Value));
+            result.Add(new FindHandler.FieldParameters("Phone_Number", "Телефон", describe.Where(key => key.Key == "Phone_Number").First().Value));
+            result.Add(new FindHandler.FieldParameters("Email", "Email", describe.Where(key => key.Key == "Email").First().Value));
+            result.Add(new FindHandler.FieldParameters("Passport_Data", "Паспортные данные", describe.Where(key => key.Key == "Passport_Data").First().Value));
+            result.Add(new FindHandler.FieldParameters("Added", "Дата добавления", describe.Where(key => key.Key == "Added").First().Value));
+            result.Add(new FindHandler.FieldParameters("Last_Salary", "З/п за прошлый месяц", describe.Where(key => key.Key == "Last_Salary").First().Value));
 
             return result;
+        }
+
+        private List<KeyValuePair<string, string>> TakeDescribe()
+        {
+            List<KeyValuePair<string, string>> describe = new List<KeyValuePair<string, string>>();
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            connection.Open();
+
+            // Вот тут нужно проходить по всем таблицам, что мы используем в итоговом запросе
+            DescribeHelper("describe employees", connection, describe);
+            DescribeHelper("describe employee_roles", connection, describe);
+            DescribeHelper("describe employee_positions", connection, describe);
+            // Вот тут конец
+
+            connection.Close();
+
+            return describe;
+        }
+
+        private void DescribeHelper(string query, MySqlConnection connection, List<KeyValuePair<string, string>> pairs)
+        {
+            MySqlCommand command = new MySqlCommand(query, connection);
+
+            using (DbDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    pairs.Add(new KeyValuePair<string, string>(reader.GetString(0), reader.GetString(1)));
+                }
+            }
         }
 
         private void ButtonCancelFind_Click(object sender, RoutedEventArgs e)
@@ -244,7 +276,7 @@ namespace Clothing_Industry_WPF.Сотрудники
 
         private void ButtonFilters_Click(object sender, RoutedEventArgs e)
         {
-            List<KeyValuePair<string, string>> listOfField = FillFindFields();
+            List<FindHandler.FieldParameters> listOfField = FillFindFields();
             var findWindow = new FindWindow(currentFindDescription, listOfField);
             if (findWindow.ShowDialog().Value)
             {

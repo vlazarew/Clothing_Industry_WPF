@@ -72,9 +72,15 @@ namespace Clothing_Industry_WPF.Сотрудники
                     textBoxPhone_Number.Text = reader.GetString(5);
                     textBoxPassportData.Text = reader.GetString(6);
                     textBoxEmail.Text = reader.GetString(7);
-                    textBoxNotes.Text = reader.GetString(8);
-                    datePickerAdded.SelectedDate = reader.GetDateTime(9);
-                    textBoxLastSalary.Text = reader.GetString(10);
+                    if (reader.GetValue(8).ToString() != "")
+                    {
+                        textBoxNotes.Text = reader.GetString(8);
+                    }
+                    datePickerAdded.SelectedDate = DateTime.Parse(reader.GetString(9));
+                    if (reader.GetValue(10).ToString() != "")
+                    {
+                        textBoxLastSalary.Text = reader.GetString(10);
+                    }
                     comboBoxRole.SelectedValue = reader.GetString(11);
                     comboBoxPosition.SelectedValue = reader.GetString(12);
 
