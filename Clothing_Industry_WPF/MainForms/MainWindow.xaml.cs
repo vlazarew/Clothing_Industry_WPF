@@ -1,4 +1,5 @@
-﻿using Clothing_Industry_WPF.Сотрудники;
+﻿using Clothing_Industry_WPF.Материал;
+using Clothing_Industry_WPF.Сотрудники;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -68,6 +69,12 @@ namespace Clothing_Industry_WPF
         {
             Window window_workers = new EmployeesListWindow();
             window_workers.Show();
+        }
+        // При нажатии на вкладку "Сотрудники"
+        private void Materials_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window_materials = new MaterialsListWindow();
+            window_materials.Show();
         }
 
         // ОТКЛЮЧЕНИЕ СИСТЕМЫ

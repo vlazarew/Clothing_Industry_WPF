@@ -20,6 +20,7 @@
                     <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
                 </Style>
             </DataGrid.Resources>
+            
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Login}" ClipboardContentBinding="{x:Null}" Header="Логин" IsReadOnly="True"/>
                 <!-- Фишка про пароль <DataGridTextColumn Binding="{Binding Password}" ClipboardContentBinding="{x:Null}" Header="Пароль"/>  -->

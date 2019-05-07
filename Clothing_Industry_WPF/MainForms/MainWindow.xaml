@@ -175,7 +175,7 @@
                 <TextBlock x:Name="Matherial_Plus" FontSize="21" Margin="5" >
                     <Hyperlink>Поступление материала</Hyperlink>
                 </TextBlock>
-                <TextBlock x:Name="Matherial" FontSize="24" Margin="5" >
+                <TextBlock x:Name="Matherial" FontSize="24" Margin="5"  PreviewMouseLeftButtonUp="Materials_PreviewMouseLeftButtonUp" >
                     <Hyperlink>Материал/Фурнитура</Hyperlink>
                 </TextBlock>
                 <TextBlock x:Name="Things" FontSize="24" Margin="5" >

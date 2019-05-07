@@ -52,3 +52,8 @@ D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фи�
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\FindWindow.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Сотрудники\EmployeesListWindow.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Сотрудники\EmployeesRecordWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Материалы\MaterialsListWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Материалы\MaterialsRecordWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Материалы\MaterialsListWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Материалы\MaterialsRecordWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\GeneratedInternalTypeHelper.g.cs

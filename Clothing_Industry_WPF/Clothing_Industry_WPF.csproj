@@ -88,6 +88,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="Материалы\MaterialsListWindow.xaml.cs">
+      <DependentUpon>MaterialsListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Материалы\MaterialsRecordWindow.xaml.cs">
+      <DependentUpon>MaterialsRecordWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Перечисления\TypeOfFilter.cs" />
     <Compile Include="Перечисления\TypeOfFind.cs" />
     <Compile Include="Перечисления\WaysToOpenForm.cs" />
@@ -116,6 +122,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Материалы\MaterialsListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Материалы\MaterialsRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Поиск и фильтры\FilterWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -191,5 +205,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
