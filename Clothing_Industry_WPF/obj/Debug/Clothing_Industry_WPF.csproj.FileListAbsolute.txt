@@ -57,3 +57,8 @@ D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Материалы\
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Материалы\MaterialsListWindow.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Материалы\MaterialsRecordWindow.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Материалы\MaterialsListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Материалы\MaterialsRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Материалы\MaterialsListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Материалы\MaterialsRecordWindow.baml

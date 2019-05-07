@@ -7,7 +7,7 @@
 </Value>
     </Setting>
     <Setting Name="server_ip" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.0.105</Value>
+      <Value Profile="(Default)">192.168.1.105</Value>
     </Setting>
   </Settings>
 </SettingsFile>
