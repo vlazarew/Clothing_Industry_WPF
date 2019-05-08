@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\
 Clothing_Industry_WPF
 none
 false
 DEBUG;TRACE
-D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\Старт приложения и конфиг\App.xaml
-8-2045456883
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Старт приложения и конфиг\App.xaml
+9-1097904980
 
-18-2024577084
+19-503768407
 20-1736269552
-MainForms\AuthentificationForm.xaml;MainForms\MainWindow.xaml;Материалы\MaterialsListWindow.xaml;Материалы\MaterialsRecordWindow.xaml;Поиск и фильтры\FilterWindow.xaml;Поиск и фильтры\FindWindow.xaml;Сотрудники\EmployeesListWindow.xaml;Сотрудники\EmployeesRecordWindow.xaml;
+MainForms\AuthentificationForm.xaml;MainForms\MainWindow.xaml;Материалы\MaterialsListWindow.xaml;Материалы\MaterialsRecordWindow.xaml;Поиск и фильтры\FilterWindow.xaml;Поиск и фильтры\FindWindow.xaml;Состояние_склада\StoreListWindow.xaml;Сотрудники\EmployeesListWindow.xaml;Сотрудники\EmployeesRecordWindow.xaml;
 
 False
 

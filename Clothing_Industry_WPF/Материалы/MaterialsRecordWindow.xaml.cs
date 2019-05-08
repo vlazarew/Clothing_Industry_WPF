@@ -49,13 +49,13 @@ namespace Clothing_Industry_WPF.Материал
 
         private void FillFields(string vendor_code)
         {
-            string query_text = "select materials.Vendor_Code, materials.Name_Of_Material, materials.Cost_Of_Material, materials.Notes, units.Name_Of_Unit,group_of_material.Name_Of_Group,types_of_material.Name_Of_Type,countries.Name_Of_Country" +
+            string query_text = "select materials.Vendor_Code, materials.Name_Of_Material, materials.Cost_Of_Material, materials.Notes, units.Name_Of_Unit,groups_of_material.Name_Of_Group,types_of_material.Name_Of_Type,countries.Name_Of_Country, materials.Photo" +
                                 " from materials" +
                                 " join units on materials.Units_id_Unit = units.id_Unit" +
-                                " join group_of_material on materials.Group_Of_Material_id_Group_Of_Material = group_of_material.id_Group_Of_Material" +
+                                " join groups_of_material on materials.Groups_Of_Material_id_Group_Of_Material = groups_of_material.id_Group_Of_Material" +
                                 " join types_of_material on materials.Types_Of_Material_id_Type_Of_Material = types_of_material.id_Type_Of_Material" +
-                                " join countries on materials.Countries_id_Country = countries.id_Country;" +
-                                " where materials.Vendor_Code = @vendor_code";
+                                " join countries on materials.Countries_id_Country = countries.id_Country" +
+                                " where materials.Vendor_Code = @vendor_code;";
             MySqlCommand command = new MySqlCommand(query_text, connection);
             command.Parameters.AddWithValue("@vendor_code", vendor_code);
             connection.Open();
@@ -133,7 +133,7 @@ namespace Clothing_Industry_WPF.Материал
                 }
             }
 
-            query = "select Name_Of_Group from group_of_material";
+            query = "select Name_Of_Group from groups_of_material";
             command = new MySqlCommand(query, connection);
 
             using (DbDataReader reader = command.ExecuteReader())
@@ -189,7 +189,7 @@ namespace Clothing_Industry_WPF.Материал
 
             if (textBoxVendor_Code.Text == "")
             {
-                result += result == "" ? "Код поставщика" : ", Код поставщика";
+                result += result == "" ? "Артикул" : ", Артикул";
             }
             if (textBoxName_Of_Material.Text == "")
             {
@@ -233,27 +233,10 @@ namespace Clothing_Industry_WPF.Материал
                 //Создать/изменить запись в таблице Материалы
                 MySqlCommand command = actionInDBCommand(connection);
                 command.Transaction = transaction;
-                /*
-                //Создание/изменение Материала в БД
-                string queryUser = "";
-                //Читаемости ради     
-                
-                if (way == WaysToOpenForm.WaysToOpen.create)
-                {
-                    queryUser = string.Format("CREATE USER '{0}'@'%' IDENTIFIED BY '{1}';", textBoxvendor_code.Text,
-                    CheckBoxPassword.IsChecked.Value ? textBoxPassword.Text : PasswordBoxCurrent.Password);
-                }
-                
-                if (way == WaysToOpenForm.WaysToOpen.edit && old_vendor_code != textBoxvendor_code.Text)
-                {
-                    queryUser = string.Format("Rename user '{0}'@'%' To '{1}'@'%';", old_vendor_code, textBoxvendor_code.Text);
-                }
-                
-                MySqlCommand commandUser = new MySqlCommand(queryUser, connection, transaction);
-                */
+                             
                 try
                 {
-                   //int a = command.ExecuteNonQuery();
+                    command.ExecuteNonQuery();
                     transaction.Commit();
                 }
                 catch
@@ -262,6 +245,7 @@ namespace Clothing_Industry_WPF.Материал
                     System.Windows.MessageBox.Show("Ошибка сохранения!");
                 }
                 
+
                 connection.Close();
                 this.Hide();
             }
@@ -278,14 +262,14 @@ namespace Clothing_Industry_WPF.Материал
             {
                 query = "INSERT INTO materials " +
                                        "(Vendor_Code,Name_Of_Material,Cost_Of_Material,Notes," +
-                                       " Units_id_Unit, Group_Of_Material_id_Group_Of_Material,Types_Of_Material_id_Types_Of_Material,Countries_id_Country, Photo)" +
+                                       " Units_id_Unit, Groups_Of_Material_id_Group_Of_Material,Types_Of_Material_id_Type_Of_Material,Countries_id_Country, Photo)" +
                                        " VALUES (@vendor_code, @name_of_material, @cost_of_material, @notes, @unit, @group, @type, @country, @image);";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
-                query = "Update materials set Vendor_Code = @vendor_code, Name_Of_Material = @name_of_material, Name = @name, Cost_Of_Material = @cost_of_material" +
-                        "Notes = @notes" +
-                        "Units_id_Unit = @unit, Group_Of_Material_id_Group_Of_Material = @group, Types_Of_Material_id_Types_Of_Material = @type, Countries_id_Country = @country, Photo = @image" +
+                query = "Update materials set Vendor_Code = @vendor_code, Name_Of_Material = @name_of_material, Cost_Of_Material = @cost_of_material," +
+                        "Notes = @notes," +
+                        "Units_id_Unit = @unit, Groups_Of_Material_id_Group_Of_Material = @group, Types_Of_Material_id_Type_Of_Material = @type, Countries_id_Country = @country, Photo = @image" +
                         " where Vendor_Code = @oldvendor_code;";
 
             }
@@ -307,7 +291,7 @@ namespace Clothing_Industry_WPF.Материал
                 }
             }
 
-            MySqlCommand commandGroup = new MySqlCommand("select id_Group_Of_Material from group_of_material where Name_Of_Group = @group", connection);
+            MySqlCommand commandGroup = new MySqlCommand("select id_Group_Of_Material from groups_of_material where Name_Of_Group = @group", connection);
             commandGroup.Parameters.AddWithValue("group", comboBoxGroup.SelectedItem.ToString());
             int id_group = -1;
             using (DbDataReader reader = commandGroup.ExecuteReader())

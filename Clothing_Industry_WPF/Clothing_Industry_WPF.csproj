@@ -105,6 +105,9 @@
     <Compile Include="Поиск и фильтры\FindWindow.xaml.cs">
       <DependentUpon>FindWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Состояние_склада\StoreListWindow.xaml.cs">
+      <DependentUpon>StoreListWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Сотрудники\EmployeesListWindow.xaml.cs">
       <DependentUpon>EmployeesListWindow.xaml</DependentUpon>
     </Compile>
@@ -135,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Поиск и фильтры\FindWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Состояние_склада\StoreListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -170,7 +177,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="БД\main_databaseDataSet.xsc">
       <DependentUpon>main_databaseDataSet.xsd</DependentUpon>
     </None>

@@ -11,7 +11,7 @@
             <ColumnDefinition Width="59*"/>
             <ColumnDefinition Width="29*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Код поставщика: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,50,0,0"/>
+        <Label Content="Артикул: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,50,0,0"/>
         <Label Content="Название материала: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,81,0,0"/>
         <Label x:Name="Header" Content="Материал " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18"/>
         <Label Content="Стоимость: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,112,0,0"/>
@@ -25,16 +25,16 @@
 
 
         <TextBox x:Name="textBoxVendor_Code" HorizontalAlignment="Left" Height="26" Margin="116,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="226" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="textBoxName_Of_Material" HorizontalAlignment="Left" Height="26" Margin="140,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="4" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxCost_Of_Material" HorizontalAlignment="Left" Height="26" Margin="89,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" TabIndex="5" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="76,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267" TabIndex="6" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxName_Of_Material" HorizontalAlignment="Left" Height="26" Margin="140,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="2" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxCost_Of_Material" HorizontalAlignment="Left" Height="26" Margin="89,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" TabIndex="3" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="76,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267" TabIndex="4" VerticalContentAlignment="Center" FontSize="14"/>
 
         <Image x:Name="imagePhoto" Height="336" Margin="399,50,25,0" VerticalAlignment="Top" OpacityMask="Black" Cursor="Hand" Grid.ColumnSpan="2"/>
         <Button x:Name="buttonAddPhoto" Content="Добавить фото" HorizontalAlignment="Left" Margin="399,405,0,0" VerticalAlignment="Top" Width="100" Height="25" Click="ButtonAddPhoto_Click" TabIndex="14"/>
         <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="263,17,0,0" VerticalAlignment="Top" Width="122" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
-        <ComboBox x:Name="comboBoxUnit" HorizontalAlignment="Left" Margin="132,174,0,0" VerticalAlignment="Top" Width="211" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3"/>
-        <ComboBox x:Name="comboBoxGroup" HorizontalAlignment="Left" Margin="89,205,0,0" VerticalAlignment="Top" Width="255" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7"/>
+        <ComboBox x:Name="comboBoxUnit" HorizontalAlignment="Left" Margin="132,174,0,0" VerticalAlignment="Top" Width="211" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5"/>
+        <ComboBox x:Name="comboBoxGroup" HorizontalAlignment="Left" Margin="89,205,0,0" VerticalAlignment="Top" Width="255" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="6"/>
         <ComboBox x:Name="comboBoxType" HorizontalAlignment="Left" Margin="89,236,0,0" VerticalAlignment="Top" Width="255" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7"/>
-        <ComboBox x:Name="comboBoxCountry" HorizontalAlignment="Left" Margin="152,267,0,0" VerticalAlignment="Top" Width="192" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7"/>
+        <ComboBox x:Name="comboBoxCountry" HorizontalAlignment="Left" Margin="152,267,0,0" VerticalAlignment="Top" Width="192" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="8"/>
     </Grid>
 </Window>

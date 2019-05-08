@@ -1,4 +1,5 @@
 ﻿using Clothing_Industry_WPF.Материал;
+using Clothing_Industry_WPF.Состояние_склада;
 using Clothing_Industry_WPF.Сотрудники;
 using MySql.Data.MySqlClient;
 using System;
@@ -75,6 +76,12 @@ namespace Clothing_Industry_WPF
         {
             Window window_materials = new MaterialsListWindow();
             window_materials.Show();
+        }
+
+        private void Store_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window_store = new StoreListWindow();
+            window_store.Show();
         }
 
         // ОТКЛЮЧЕНИЕ СИСТЕМЫ

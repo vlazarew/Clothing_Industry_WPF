@@ -197,7 +197,7 @@
                 <TextBlock  Text="Меню" FontWeight="Bold" TextAlignment="Center" FontSize="40" Width="231" Height="77" Margin="417,10,433,732"/>
             </StackPanel>
             <StackPanel Background ="LightGray" Height="721" VerticalAlignment="Top" HorizontalAlignment="Left" Width="252" Margin="749,98,0,0">
-                <TextBlock x:Name="Warehouse" FontSize="24" Margin="5" >
+                <TextBlock x:Name="Warehouse" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Store_PreviewMouseLeftButtonUp" >
                     <Hyperlink>Состояние склада</Hyperlink>
                 </TextBlock>
             </StackPanel>

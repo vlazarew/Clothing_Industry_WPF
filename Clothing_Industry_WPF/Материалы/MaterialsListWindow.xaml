@@ -35,7 +35,7 @@
                 </Style>
             </DataGrid.Resources>
             <DataGrid.Columns>
-                <DataGridTextColumn  Binding="{Binding Vendor_Code}" Header="Код поставщика" Width="SizeToHeader"/>
+                <DataGridTextColumn  Binding="{Binding Vendor_Code}" Header="Артикул" Width="SizeToHeader"/>
                 <DataGridTextColumn  Binding="{Binding Name_Of_Material}" Header="Название материала" Width="SizeToHeader"/>
                 <DataGridTextColumn  Binding="{Binding Cost_Of_Material}" Header="Стоимость" Width="SizeToHeader"/>
                 <DataGridTextColumn  Binding="{Binding Notes}" Header="Заметки" Width="SizeToHeader"/>

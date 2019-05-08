@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -36,12 +38,7 @@ namespace Clothing_Industry_WPF.Материал
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             RefreshList();
-            Clothing_Industry_WPF.БД.main_databaseDataSet main_databaseDataSet = ((Clothing_Industry_WPF.БД.main_databaseDataSet)(this.FindResource("main_databaseDataSet")));
-            // Загрузить данные в таблицу materials. Можно изменить этот код как требуется.
-            Clothing_Industry_WPF.БД.main_databaseDataSetTableAdapters.materialsTableAdapter main_databaseDataSetmaterialsTableAdapter = new Clothing_Industry_WPF.БД.main_databaseDataSetTableAdapters.materialsTableAdapter();
-            main_databaseDataSetmaterialsTableAdapter.Fill(main_databaseDataSet.materials);
-            System.Windows.Data.CollectionViewSource materialsViewSource = ((System.Windows.Data.CollectionViewSource)(this.FindResource("materialsViewSource")));
-            materialsViewSource.View.MoveCurrentToFirst();
+            
         }
 
         private void RefreshList()
@@ -61,10 +58,10 @@ namespace Clothing_Industry_WPF.Материал
 
         private string getQueryText()
         {
-            string query_text = "select materials.Vendor_Code, materials.Name_Of_Material, materials.Cost_Of_Material, materials.Notes, units.Name_Of_Unit,group_of_material.Name_Of_Group,types_of_material.Name_Of_Type,countries.Name_Of_Country" +
+            string query_text = "select materials.Vendor_Code, materials.Name_Of_Material, materials.Cost_Of_Material, materials.Notes, units.Name_Of_Unit,groups_of_material.Name_Of_Group,types_of_material.Name_Of_Type,countries.Name_Of_Country" +
                                 " from materials" +
                                 " join units on materials.Units_id_Unit = units.id_Unit" +
-                                " join group_of_material on materials.Group_Of_Material_id_Group_Of_Material = group_of_material.id_Group_Of_Material" +
+                                " join groups_of_material on materials.Groups_Of_Material_id_Group_Of_Material = groups_of_material.id_Group_Of_Material" +
                                 " join types_of_material on materials.Types_Of_Material_id_Type_Of_Material = types_of_material.id_Type_Of_Material" +
                                 " join countries on materials.Countries_id_Country = countries.id_Country;";
             return query_text;
@@ -100,12 +97,13 @@ namespace Clothing_Industry_WPF.Материал
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
+            
             List<string> vendor_codesToDelete = new List<string>();
             foreach (DataRowView row in materialsGrid.SelectedItems)
             {
                 vendor_codesToDelete.Add(row.Row.ItemArray[0].ToString());
             }
-
+            
             DeleteFromDB(vendor_codesToDelete);
 
         }
@@ -172,7 +170,7 @@ namespace Clothing_Industry_WPF.Материал
                 }
                 //Заключительная форма
                 create_window = new MaterialsRecordWindow(WaysToOpenForm.WaysToOpen.edit, vendor_codesToDelete[vendor_codesToDelete.Count - 1]);
-                create_window.Show();
+                create_window.ShowDialog();
 
                 //Обновление списка
                 RefreshList();
@@ -201,18 +199,8 @@ namespace Clothing_Industry_WPF.Материал
             var field = listOfField.Where(kvp => kvp.application_name == currentFindDescription.field).First().db_name;
             string query = getQueryText();
             string edited_query;
-
-            if (!currentFindDescription.isDate)
-            {
-                edited_query = query.Replace(";", " where " + field + " ");
-                edited_query += string.Format(currentFindDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence ? "= \"{0}\"" : "like \"{0}%\"", currentFindDescription.value);
-            }
-            else
-            {
-                edited_query = query.Replace(";", " where DATE_FORMAT(" + field + ", '%d.%m.%Y')  ");
-                edited_query += string.Format("= \'{0}\'", currentFindDescription.value);
-            }
-
+            edited_query = query.Replace(";", " where " + field + " ");
+            edited_query += string.Format(currentFindDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence ? "= \"{0}\"" : "like \"{0}%\"", currentFindDescription.value);
             MySqlConnection connection = new MySqlConnection(connectionString);
             DataTable dataTable = new DataTable();
             MySqlCommand command = new MySqlCommand(edited_query, connection);
@@ -226,7 +214,7 @@ namespace Clothing_Industry_WPF.Материал
         {
             List<KeyValuePair<string, string>> describe = TakeDescribe();
             List<FindHandler.FieldParameters> result = new List<FindHandler.FieldParameters>();
-            result.Add(new FindHandler.FieldParameters("Vendor_Code", "Код производителя", describe.Where(key => key.Key == "Vendor_Code").First().Value));
+            result.Add(new FindHandler.FieldParameters("Vendor_Code", "Артикул", describe.Where(key => key.Key == "Vendor_Code").First().Value));
             result.Add(new FindHandler.FieldParameters("Name_Of_Material", "Название", describe.Where(key => key.Key == "Name_Of_Material").First().Value));
             result.Add(new FindHandler.FieldParameters("Cost_Of_Material", "Стоимость", describe.Where(key => key.Key == "Cost_Of_Material").First().Value));
             result.Add(new FindHandler.FieldParameters("Name_Of_Unit", "Система измерения", describe.Where(key => key.Key == "Name_Of_Unit").First().Value));
@@ -245,7 +233,8 @@ namespace Clothing_Industry_WPF.Материал
 
             // Вот тут нужно проходить по всем таблицам, что мы используем в итоговом запросе
             DescribeHelper("describe materials", connection, describe);
-            DescribeHelper("describe group_of_material", connection, describe);
+            DescribeHelper("describe units", connection, describe);
+            DescribeHelper("describe groups_of_material", connection, describe);
             DescribeHelper("describe types_of_material", connection, describe);
             DescribeHelper("describe countries", connection, describe);
             // Вот тут конец
