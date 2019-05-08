@@ -168,7 +168,7 @@ namespace Clothing_Industry_WPF.Сотрудники
                 }
                 //Заключительная форма
                 create_window = new EmployeesRecordWindow(WaysToOpenForm.WaysToOpen.edit, loginsToDelete[loginsToDelete.Count - 1]);
-                create_window.Show();
+                create_window.ShowDialog();
 
                 //Обновление списка
                 RefreshList();
