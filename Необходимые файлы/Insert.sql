@@ -44,8 +44,8 @@ insert into units (Name_Of_Unit) values ('метры погонные');
 
 -- Группа материала
 
-insert into group_of_material (Name_Of_Group) values ('Материал');
-insert into group_of_material (Name_Of_Group) values ('Фурнитура');
+insert into groups_of_material (Name_Of_Group) values ('Материал');
+insert into groups_of_material (Name_Of_Group) values ('Фурнитура');
 
 -- Тип материала
 
@@ -60,8 +60,8 @@ insert into countries (Name_Of_Country) values ('Украина');
 
 -- Материалы
 
-insert into materials values (100001,'Синий бархат',120,'','',3,1,1,2);
-insert into materials values (100002,'Узкое кружево',50,'','',3,1,2,1);
+insert into materials values (100001,'Синий бархат',120,'',null,3,1,1,2);
+insert into materials values (100002,'Узкое кружево',50,'',null,3,1,2,1);
 
 -- Материалы на изделие
 insert into table_materials_to_product values (1,1.5,100001);
