@@ -105,7 +105,9 @@ insert into orders (Date_Of_Order,Discount_Per_Cent,Paid,Debt,Date_Of_Delievery,
 
 -- Документ прихода
 
-insert into documents_of_receipts (Default_Folder,Name_Of_Document) values ('2019','Приход №1');
+insert into documents_of_receipts (Default_Folder,Name_Of_Document, Date_Of_Entry) values ('2019','Приход №1','2019-05-05');
+insert into documents_of_receipts (Default_Folder,Name_Of_Document, Date_Of_Entry) values ('2018','Приход №196','2018-10-18');
+insert into documents_of_receipts (Default_Folder,Name_Of_Document, Date_Of_Entry) values ('2019','Приход №2','2019-05-06');
 
 -- Поступление материалов
 
