@@ -18,8 +18,10 @@
             
 
             <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Vendor_Code}" ClipboardContentBinding="{x:Null}" Header="Артикул" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding Name_Of_Material}" ClipboardContentBinding="{x:Null}" Header="Название материала" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding Count}" ClipboardContentBinding="{x:Null}" Header="Количество"/>
+                <DataGridTextColumn Binding="{Binding Name_Of_Unit}" ClipboardContentBinding="{x:Null}" Header="Единица измерения" IsReadOnly="True"/>
 
             </DataGrid.Columns>
         </DataGrid>
@@ -31,5 +33,6 @@
         <Button x:Name="buttonCancelFind" Content="Отменить поиск" HorizontalAlignment="Left" Margin="243,10,0,0" VerticalAlignment="Top" Width="99" Height="25" Click="ButtonCancelFind_Click"/>
         <Button x:Name ="ButtonFilters" Content="Фильтры" HorizontalAlignment="Left" Height="25" Margin="347,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFilters_Click"/>
         
+
     </Grid>
 </Window>

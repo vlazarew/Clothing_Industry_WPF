@@ -339,7 +339,7 @@ namespace Clothing_Industry_WPF.Сотрудники
             }
 
             MySqlCommand commandPosition = new MySqlCommand("select id_Employee_Position from employee_positions where Name_Of_position = @position", connection);
-            commandPosition.Parameters.AddWithValue("position", comboBoxRole.SelectedItem.ToString());
+            commandPosition.Parameters.AddWithValue("position", comboBoxPosition.SelectedItem.ToString());
             int id_position = -1;
             using (DbDataReader reader = commandRole.ExecuteReader())
             {

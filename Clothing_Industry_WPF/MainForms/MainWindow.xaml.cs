@@ -1,6 +1,7 @@
 ﻿using Clothing_Industry_WPF.Материал;
 using Clothing_Industry_WPF.Состояние_склада;
 using Clothing_Industry_WPF.Сотрудники;
+
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -96,5 +97,6 @@ namespace Clothing_Industry_WPF
             Application.Current.Shutdown();
         }
         #endregion
+
     }
 }

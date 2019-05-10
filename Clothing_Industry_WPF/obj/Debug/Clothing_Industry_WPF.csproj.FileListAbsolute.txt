@@ -59,3 +59,8 @@ D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Материалы\
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Состояние_склада\StoreListWindow.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Состояние_склада\StoreListWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\ProductsListWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\ProductsRecordWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\ProductsListWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\ProductsRecordWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.csproj.ResolveComReference.cache

@@ -17,6 +17,10 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Excel = Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
+using Window = System.Windows.Window;
+using DataTable = System.Data.DataTable;
 
 namespace Clothing_Industry_WPF.Состояние_склада
 {
@@ -43,7 +47,6 @@ namespace Clothing_Industry_WPF.Состояние_склада
         {
             MySqlConnection connection = new MySqlConnection(connectionString);
 
-            //Думаю, что не очень хорошо, когда в списке пользователей виден пароль!!! /* employees.Password, */
             string query_text = getQueryText();
             connection.Open();
 
@@ -57,9 +60,10 @@ namespace Clothing_Industry_WPF.Состояние_склада
 
         private string getQueryText()
         {
-            string query_text = "select materials.Name_Of_Material, store.Count" +                        
+            string query_text = "select materials.Vendor_Code, materials.Name_Of_Material, store.Count, units.Name_Of_Unit" +
                                 " from store" +
-                                " join materials on store.Materials_Vendor_Code = materials.Vendor_Code;";
+                                " join materials on store.Materials_Vendor_Code = materials.Vendor_Code" +
+                                " join units on materials.Units_id_Unit = units.id_Unit;";
             return query_text;
         }
 
@@ -108,9 +112,11 @@ namespace Clothing_Industry_WPF.Состояние_склада
         {
             List<KeyValuePair<string, string>> describe = TakeDescribe();
             List<FindHandler.FieldParameters> result = new List<FindHandler.FieldParameters>();
+            result.Add(new FindHandler.FieldParameters("Materials_Vendor_Code", "Артикул", describe.Where(key => key.Key == "Materials_Vendor_Code").First().Value));
             result.Add(new FindHandler.FieldParameters("Name_Of_Material", "Название материала", describe.Where(key => key.Key == "Name_Of_Material").First().Value));
-            result.Add(new FindHandler.FieldParameters("Count", "Количество", describe.Where(key => key.Key == "Count").First().Value));      
-            
+            result.Add(new FindHandler.FieldParameters("Count", "Количество", describe.Where(key => key.Key == "Count").First().Value));
+            result.Add(new FindHandler.FieldParameters("Name_Of_Unit", "Единица измерения", describe.Where(key => key.Key == "Name_Of_Unit").First().Value));
+
             return result;
         }
 
@@ -123,6 +129,7 @@ namespace Clothing_Industry_WPF.Состояние_склада
             // Вот тут нужно проходить по всем таблицам, что мы используем в итоговом запросе
             DescribeHelper("describe store", connection, describe);
             DescribeHelper("describe materials", connection, describe);
+            DescribeHelper("describe units", connection, describe);
 
             connection.Close();
 
@@ -164,7 +171,36 @@ namespace Clothing_Industry_WPF.Состояние_склада
 
         private void ButtonPrint_Click(object sender, RoutedEventArgs e)
         {
+            ///////////////////////////////////
+            /*
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == true)
+            {
+                printDialog.PrintVisual(canvas, "Распечатываем элемент Canvas");
+            }
+            */
+            //////////////////////////////////
+            Excel.Application excel = new Excel.Application();
+            excel.Visible = true;
+            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
 
+            for (int j = 0; j < storeGrid.Columns.Count; j++)
+            {
+                Range myRange = (Range)sheet1.Cells[1, j + 1];
+                sheet1.Cells[1, j + 1].Font.Bold = true;
+                sheet1.Columns[j + 1].ColumnWidth = 15;
+                myRange.Value2 = storeGrid.Columns[j].Header;
+            }
+            for (int i = 0; i < storeGrid.Columns.Count; i++)
+            {
+                for (int j = 0; j < storeGrid.Items.Count; j++)
+                {
+                    TextBlock b = storeGrid.Columns[i].GetCellContent(storeGrid.Items[j]) as TextBlock;
+                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
+                    myRange.Value2 = b.Text;
+                }
+            }
         }
     }
 }
