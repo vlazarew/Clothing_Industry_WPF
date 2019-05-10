@@ -9,6 +9,8 @@ namespace Clothing_Industry_WPF.Перечисления
     public static class TypeOfFilter
     {
         // Типы сравнение в фильтре ()
-        public enum TypesOfFilter { equally, more, less, contains, isFilled, isNotFilled }
+
+        //public enum TypesOfFilter { equally, more, moreOrEqually, less, lessOrEqually, contains, isFilled, isNotFilled }
+        public enum TypesOfFilter { equally, more, moreOrEqually, less, lessOrEqually,  isFilled, isNotFilled }
     }
 }

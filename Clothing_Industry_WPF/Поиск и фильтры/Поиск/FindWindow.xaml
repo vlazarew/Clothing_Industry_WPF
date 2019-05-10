@@ -13,7 +13,7 @@
         </Grid.ColumnDefinitions>
         <Label Content="Поле" HorizontalAlignment="Left" Margin="62,34,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Label Content="Значение" HorizontalAlignment="Left" Margin="62,74,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="textBoxValue" HorizontalAlignment="Left" Height="31" Margin="170,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="397" FontSize="16" VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="textBoxValue" HorizontalAlignment="Left" Height="31" Margin="170,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="397" FontSize="16" VerticalContentAlignment="Center" Grid.ColumnSpan="2" PreviewTextInput="TextBoxValue_PreviewTextInput"/>
         <ComboBox x:Name="comboBoxField" HorizontalAlignment="Left" Margin="170,34,0,0" VerticalAlignment="Top" Width="397" RenderTransformOrigin="0.494,0.012" Height="31" VerticalContentAlignment="Center" FontSize="16" SelectionChanged="ComboBoxField_SelectionChanged" Grid.ColumnSpan="2"/>
         <RadioButton x:Name="radioButtonPart" Content="По части строки" HorizontalAlignment="Left" Margin="63,123,0,0" VerticalAlignment="Top" FontSize="16" VerticalContentAlignment="Center" Grid.Column="1"/>
         <RadioButton x:Name="radioButtonExact" Content="По точному совпадению" HorizontalAlignment="Left" Margin="170,123,0,0" VerticalAlignment="Top" FontSize="16" IsChecked="True" VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>

@@ -37,7 +37,7 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
             // Наименование поля в БД
             public string db_name;
             // Наименование поля в приложении
-            public string application_name;
+            public string application_name { get; set; }
             // Тип поля
             public string type;
 

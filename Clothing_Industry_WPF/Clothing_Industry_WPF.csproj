@@ -103,13 +103,16 @@
     <Compile Include="Перечисления\TypeOfFilter.cs" />
     <Compile Include="Перечисления\TypeOfFind.cs" />
     <Compile Include="Перечисления\WaysToOpenForm.cs" />
-    <Compile Include="Поиск и фильтры\FilterHandler.cs" />
-    <Compile Include="Поиск и фильтры\FilterWindow.xaml.cs">
-      <DependentUpon>FilterWindow.xaml</DependentUpon>
+    <Compile Include="Поиск и фильтры\Фильтр\FilterHandler.cs" />
+    <Compile Include="Поиск и фильтры\Фильтр\FilterListWindow.xaml.cs">
+      <DependentUpon>FilterListWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Поиск и фильтры\FindHandler.cs" />
-    <Compile Include="Поиск и фильтры\FindWindow.xaml.cs">
+    <Compile Include="Поиск и фильтры\Поиск\FindHandler.cs" />
+    <Compile Include="Поиск и фильтры\Поиск\FindWindow.xaml.cs">
       <DependentUpon>FindWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Поиск и фильтры\Фильтр\FilterRecordWindow.xaml.cs">
+      <DependentUpon>FilterRecordWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Состояние_склада\StoreListWindow.xaml.cs">
       <DependentUpon>StoreListWindow.xaml</DependentUpon>
@@ -147,11 +150,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Поиск и фильтры\FilterWindow.xaml">
+    <Page Include="Поиск и фильтры\Фильтр\FilterListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Поиск и фильтры\FindWindow.xaml">
+    <Page Include="Поиск и фильтры\Поиск\FindWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Поиск и фильтры\Фильтр\FilterRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

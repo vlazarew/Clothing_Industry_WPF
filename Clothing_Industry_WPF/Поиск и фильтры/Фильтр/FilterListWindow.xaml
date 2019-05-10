@@ -1,0 +1,37 @@
+﻿<Window x:Class="Clothing_Industry_WPF.Поиск_и_фильтры.FilterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clothing_Industry_WPF.Поиск_и_фильтры"
+        mc:Ignorable="d"
+        xmlns:staticData ="clr-namespace:Clothing_Industry_WPF"
+        Title="FilterWindow" Height="498.481" Width="863.343" Loaded="Window_Loaded">
+    <Grid Margin="0,0,0,-1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="97*"/>
+            <ColumnDefinition Width="203*"/>
+            <ColumnDefinition Width="519*"/>
+            <ColumnDefinition Width="36*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="buttonFind" Content="Поиск" HorizontalAlignment="Left" Margin="89,419,0,0" VerticalAlignment="Top" Width="114" IsDefault="True" Height="39" FontSize="16" Grid.Column="1" Click="ButtonFind_Click"/>
+        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="179,419,0,0" VerticalAlignment="Top" Width="114" Height="39" FontSize="16" IsCancel="True" Grid.Column="2" Click="ButtonCancel_Click"/>
+        <Label Content="Текущие фильтры" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.236,0.921" Margin="10,10,0,0" FontSize="16" Grid.ColumnSpan="2" Width="152"/>
+        <DataGrid x:Name="dataGridFilters" HorizontalAlignment="Left" Height="357" Margin="10,46,0,0" VerticalAlignment="Top" Width="835" Grid.ColumnSpan="4" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridCheckBoxColumn Binding="{Binding active}" ClipboardContentBinding="{x:Null}" Header="Использовать"/>
+                <DataGridTextColumn Binding="{Binding field}" ClipboardContentBinding="{x:Null}" Header="Поле"/>
+                <DataGridTextColumn Binding="{Binding filterValue}" ClipboardContentBinding="{x:Null}" Header="Условие сравнения"/>
+                <DataGridTextColumn Binding="{Binding value}" ClipboardContentBinding="{x:Null}" Header="Значение"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="buttonAddFilter" Content="Добавить фильтр" Grid.Column="1" HorizontalAlignment="Left" Margin="89,17,0,0" VerticalAlignment="Top" Width="104" Click="ButtonAddFilter_Click"/>
+        <Button x:Name="buttonDeleteFilter" Content="Удалить фильтр" Grid.Column="2" HorizontalAlignment="Left" Margin="60,17,0,0" VerticalAlignment="Top" Width="108" Click="ButtonDeleteFilter_Click"/>
+
+    </Grid>
+</Window>

@@ -28,11 +28,13 @@ namespace Clothing_Industry_WPF.Сотрудники
 
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private FindHandler.FindDescription currentFindDescription;
+        private List<FilterHandler.FilterDescription> currentFilterDescription;
 
         public EmployeesListWindow()
         {
             InitializeComponent();
             currentFindDescription = new FindHandler.FindDescription();
+            currentFilterDescription = new List<FilterHandler.FilterDescription>();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -147,28 +149,28 @@ namespace Clothing_Industry_WPF.Сотрудники
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            List<string> loginsToDelete = new List<string>();
+            List<string> loginsToEdit = new List<string>();
             foreach (DataRowView row in employeesGrid.SelectedItems)
             {
-                loginsToDelete.Add(row.Row.ItemArray[0].ToString());
+                loginsToEdit.Add(row.Row.ItemArray[0].ToString());
             }
 
-            if (loginsToDelete.Count > 0)
+            if (loginsToEdit.Count > 0)
             {
-                Window create_window;
+                Window edit_window;
 
                 //Первые окна мы открываем немодально, последнее модально, чтоб потом сразу обновились данные на форме
-                if (loginsToDelete.Count > 1)
+                if (loginsToEdit.Count > 1)
                 {
-                    for (int i = 0; i < loginsToDelete.Count - 1; i++)
+                    for (int i = 0; i < loginsToEdit.Count - 1; i++)
                     {
-                        create_window = new EmployeesRecordWindow(WaysToOpenForm.WaysToOpen.edit, loginsToDelete[i]);
-                        create_window.Show();
+                        edit_window = new EmployeesRecordWindow(WaysToOpenForm.WaysToOpen.edit, loginsToEdit[i]);
+                        edit_window.Show();
                     }
                 }
                 //Заключительная форма
-                create_window = new EmployeesRecordWindow(WaysToOpenForm.WaysToOpen.edit, loginsToDelete[loginsToDelete.Count - 1]);
-                create_window.ShowDialog();
+                edit_window = new EmployeesRecordWindow(WaysToOpenForm.WaysToOpen.edit, loginsToEdit[loginsToEdit.Count - 1]);
+                edit_window.ShowDialog();
 
                 //Обновление списка
                 RefreshList();
@@ -276,16 +278,81 @@ namespace Clothing_Industry_WPF.Сотрудники
 
         private void ButtonFilters_Click(object sender, RoutedEventArgs e)
         {
+            // Список полей, по которым мы можем делать отбор
             List<FindHandler.FieldParameters> listOfField = FillFindFields();
-            var findWindow = new FindWindow(currentFindDescription, listOfField);
-            if (findWindow.ShowDialog().Value)
+            var filterWindow = new FilterWindow(currentFilterDescription, listOfField);
+            if (filterWindow.ShowDialog().Value)
             {
-                currentFindDescription = findWindow.Result;
+                currentFilterDescription = filterWindow.Result;
             }
             else
             {
                 return;
             }
+
+            string editedQuery = EditFilterQuery(currentFilterDescription, listOfField);
+
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            DataTable dataTable = new DataTable();
+            MySqlCommand command = new MySqlCommand(editedQuery, connection);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            adapter.Fill(dataTable);
+            employeesGrid.ItemsSource = dataTable.DefaultView;
+            connection.Close();
+        }
+
+        private string EditFilterQuery(List<FilterHandler.FilterDescription> filter, List<FindHandler.FieldParameters> listOfField)
+        {
+            string result = getQueryText();
+
+            if (filter.Count > 0)
+            {
+                result = result.Replace(";", " where ");
+            }
+
+            int index = 0;
+            foreach (var filterRecord in filter)
+            {
+                result += AddСondition(filterRecord, listOfField);
+                index++;
+                if (index < filter.Count)
+                {
+                    result += " or ";
+                }
+            }
+
+            return result;
+        }
+
+        private string AddСondition(FilterHandler.FilterDescription filter, List<FindHandler.FieldParameters> listOfField)
+        {
+            string result = "";
+            var field = listOfField.Where(kvp => kvp.application_name == filter.field).First().db_name;
+            var typeFilter = FilterHandler.TakeFilter(filter.typeOfFilter);
+            if (filter.typeOfFilter == TypeOfFilter.TypesOfFilter.isFilled)
+            {
+                result += "NOT ";
+            }
+
+            if (!filter.isDate)
+            {
+                result += string.Format(field + " " + typeFilter + "\"{0}\"", filter.value);
+            }
+            else
+            {
+                string day = filter.value.Substring(0, 2);
+                string month = filter.value.Substring(3, 2);
+                string year = filter.value.Substring(6, 4);
+                result += string.Format(field + " " + typeFilter + " \'{0}-{1}-{2}\'", year, month, day);
+                //result += string.Format(" DATE_FORMAT(" + field + ", '%d.%m.%Y') = \'{0}\'", filter.value);
+            }
+
+            /*if (filter.typeOfFilter == TypeOfFilter.TypesOfFilter.contains)
+            {
+                result += ") ";
+            }*/
+
+            return result;
         }
     }
 }
