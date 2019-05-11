@@ -123,3 +123,5 @@ D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Клиен
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Клиенты\CustomersRecordWindow.g.cs
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Клиенты\CustomersListWindow.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Клиенты\CustomersRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Баланс клиентов\CustomerBalanceListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Баланс клиентов\CustomerBalanceListWindow.baml

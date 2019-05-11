@@ -1,4 +1,6 @@
-﻿using Clothing_Industry_WPF.Клиенты;
+﻿using Clothing_Industry_WPF.Баланс_клиентов;
+using Clothing_Industry_WPF.Заказы;
+using Clothing_Industry_WPF.Клиенты;
 using Clothing_Industry_WPF.Материал;
 using Clothing_Industry_WPF.Состояние_склада;
 using Clothing_Industry_WPF.Сотрудники;
@@ -73,17 +75,40 @@ namespace Clothing_Industry_WPF
             Window window_workers = new EmployeesListWindow();
             window_workers.Show();
         }
-        // При нажатии на вкладку "Сотрудники"
+
+        // При нажатии на вкладку "Материалы"
         private void Materials_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Window window_materials = new MaterialsListWindow();
             window_materials.Show();
         }
 
+        // При нажатии на вкладку "Состояние склада"
         private void Store_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Window window_store = new StoreListWindow();
             window_store.Show();
+        }
+
+        // При нажатии на вкладку "Клиенты"
+        private void Clients_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window_customers = new CustomersListWindow();
+            window_customers.Show();
+        }
+
+        // При нажатии на вкладку "Баланс клиентов"
+        private void BalanceOfClients_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window_balance = new CustomerBalanceListWindow();
+            window_balance.Show();
+        }
+
+        // При нажатии на вкладку "Заказы"
+        private void Orders_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window_orders = new OrdersListWindow();
+            window_orders.Show();
         }
 
         // ОТКЛЮЧЕНИЕ СИСТЕМЫ
@@ -99,10 +124,6 @@ namespace Clothing_Industry_WPF
         }
         #endregion
 
-        private void Clients_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            Window window_customers = new CustomersListWindow();
-            window_customers.Show();
-        }
+        
     }
 }

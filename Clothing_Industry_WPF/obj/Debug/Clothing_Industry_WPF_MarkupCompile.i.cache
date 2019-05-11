@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\Старт приложения и конфиг\App.xaml
-141534891524
+162021336633
 
-25-1385906289
+27-541519638
 23-327627625
-MainForms\AuthentificationForm.xaml;MainForms\MainWindow.xaml;Изделия\ProductsListWindow.xaml;Изделия\ProductsRecordWindow.xaml;Клиенты\CustomersListWindow.xaml;Клиенты\CustomersRecordWindow.xaml;Материалы\MaterialsListWindow.xaml;Материалы\MaterialsRecordWindow.xaml;Поиск и фильтры\Фильтр\FilterListWindow.xaml;Поиск и фильтры\Поиск\FindWindow.xaml;Поиск и фильтры\Фильтр\FilterRecordWindow.xaml;Состояние_склада\StoreListWindow.xaml;Сотрудники\EmployeesListWindow.xaml;Сотрудники\EmployeesRecordWindow.xaml;
+MainForms\AuthentificationForm.xaml;MainForms\MainWindow.xaml;Баланс клиентов\CustomerBalanceListWindow.xaml;Заказы\OrdersListWindow.xaml;Изделия\ProductsListWindow.xaml;Изделия\ProductsRecordWindow.xaml;Клиенты\CustomersListWindow.xaml;Клиенты\CustomersRecordWindow.xaml;Материалы\MaterialsListWindow.xaml;Материалы\MaterialsRecordWindow.xaml;Поиск и фильтры\Фильтр\FilterListWindow.xaml;Поиск и фильтры\Поиск\FindWindow.xaml;Поиск и фильтры\Фильтр\FilterRecordWindow.xaml;Состояние_склада\StoreListWindow.xaml;Сотрудники\EmployeesListWindow.xaml;Сотрудники\EmployeesRecordWindow.xaml;
 
-True
+False
 

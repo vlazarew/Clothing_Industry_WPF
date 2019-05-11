@@ -238,18 +238,46 @@ namespace Clothing_Industry_WPF.Клиенты
             if (warning == "")
             {
                 MySqlConnection connection = new MySqlConnection(connectionString);
-                MySqlTransaction transaction;
 
                 connection.Open();
-                transaction = connection.BeginTransaction();
+                MySqlTransaction transaction = connection.BeginTransaction();
 
-                //Создать/изменить запись в таблице Клиенты
+                // Создать/изменить запись в таблице Клиенты
                 MySqlCommand command = actionInDBCommand(connection);
                 command.Transaction = transaction;
 
                 try
                 {
                     command.ExecuteNonQuery();
+                    transaction.Commit();
+                    this.Hide();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    System.Windows.MessageBox.Show("Ошибка сохранения!");
+                }
+
+                transaction = connection.BeginTransaction();
+                string query_max_id = "SELECT max(customers.id_Customer) FROM main_database.customers";
+                MySqlCommand commandFindId = new MySqlCommand(query_max_id, connection, transaction);
+                int findId = -1;
+
+                using (DbDataReader reader = commandFindId.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        findId = reader.GetInt32(0);
+                    }
+                }
+
+                string query_balance = "Insert into customers_balance (Customers_id_Customer, Accured, Paid, Debt) values (@id, 0, 0, 0)";
+                MySqlCommand commandFillBalance = new MySqlCommand(query_balance, connection, transaction);
+                commandFillBalance.Parameters.AddWithValue("@id", findId);
+
+                try
+                {
+                    commandFillBalance.ExecuteNonQuery();
                     transaction.Commit();
                     this.Hide();
                 }
@@ -300,7 +328,7 @@ namespace Clothing_Industry_WPF.Клиенты
             command.Parameters.AddWithValue("@size", textBoxSize.Text);
             command.Parameters.AddWithValue("@parameters", textBoxParameters.Text);
             command.Parameters.AddWithValue("@notes", textBoxNotes.Text);
-            
+
             MySqlCommand commandStatus = new MySqlCommand("select id_Status from customer_statuses where name_of_status = @status", connection);
             commandStatus.Parameters.AddWithValue("status", comboBoxStatus.SelectedItem.ToString());
             int id_status = -1;
@@ -312,7 +340,7 @@ namespace Clothing_Industry_WPF.Клиенты
                 }
             }
 
-            MySqlCommand commandChannel= new MySqlCommand("select id_Channel from order_channels where name_of_channel = @channel", connection);
+            MySqlCommand commandChannel = new MySqlCommand("select id_Channel from order_channels where name_of_channel = @channel", connection);
             commandChannel.Parameters.AddWithValue("channel", comboBoxChannel.SelectedItem.ToString());
             int id_channel = -1;
             using (DbDataReader reader = commandChannel.ExecuteReader())

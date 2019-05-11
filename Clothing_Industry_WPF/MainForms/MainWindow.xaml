@@ -167,7 +167,7 @@
                 <TextBlock x:Name="Fittings" FontSize="24" Margin="5">
                     <Hyperlink>Примерки</Hyperlink>
                 </TextBlock>
-                <TextBlock x:Name="BalanceOfClients" FontSize="24" Margin="5">
+                <TextBlock x:Name="BalanceOfClients" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="BalanceOfClients_PreviewMouseLeftButtonUp">
                     <Hyperlink>Баланс клиентов</Hyperlink>
                 </TextBlock>
             </StackPanel>
