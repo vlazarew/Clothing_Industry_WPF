@@ -22,28 +22,22 @@
             </DataGrid.Resources>
 
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Login}" ClipboardContentBinding="{x:Null}" Header="Логин" IsReadOnly="True"/>
-                <!-- Фишка про пароль <DataGridTextColumn Binding="{Binding Password}" ClipboardContentBinding="{x:Null}" Header="Пароль"/>  -->
-                <DataGridTextColumn Binding="{Binding Name_Of_Role}" ClipboardContentBinding="{x:Null}" Header="Роль"/>
-                <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Имя"/>
-                <DataGridTextColumn Binding="{Binding Lastname}" ClipboardContentBinding="{x:Null}" Header="Фамилия"/>
-                <DataGridTextColumn Binding="{Binding Patronymic}" ClipboardContentBinding="{x:Null}" Header="Отчество"/>
-                <DataGridTextColumn Binding="{Binding Name_Of_Position}" ClipboardContentBinding="{x:Null}" Header="Должность"/>
-                <DataGridTextColumn Binding="{Binding Phone_Number}" ClipboardContentBinding="{x:Null}" Header="Телефонный номер"/>
-                <DataGridTextColumn Binding="{Binding Email}" ClipboardContentBinding="{x:Null}" Header="E-mail"/>
-                <DataGridTextColumn Binding="{Binding Passport_Data}" ClipboardContentBinding="{x:Null}" Header="Паспорт"/>
-                <DataGridTextColumn Binding="{Binding Notes}" ClipboardContentBinding="{x:Null}" Header="Заметки"/>
-                <DataGridTextColumn Binding="{Binding Added}" ClipboardContentBinding="{x:Null}" Header="Дата добавления"/>
-                <DataGridTextColumn Binding="{Binding Last_Salary}" ClipboardContentBinding="{x:Null}" Header="Последняя зарплата"/>
+                <DataGridTextColumn Binding="{Binding Name_Of_Product}" ClipboardContentBinding="{x:Null}" Header="Название" IsReadOnly="True"/>
+
+                <DataGridTextColumn Binding="{Binding Fixed_Price}" ClipboardContentBinding="{x:Null}" Header="Цена"/>
+                <DataGridTextColumn Binding="{Binding Per_Cents}" ClipboardContentBinding="{x:Null}" Header="Стоимость за изготовление"/>
+                <DataGridTextColumn Binding="{Binding Added_Price_For_Complexity}" ClipboardContentBinding="{x:Null}" Header="Дополнительная оплата"/>
+                <DataGridTextColumn Binding="{Binding Description}" ClipboardContentBinding="{x:Null}" Header="Описание"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button Name ="ButtonCreateNew" Content="Создать" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>
         <Button x:Name ="ButtonDelete" Content="Удалить" HorizontalAlignment="Left" Height="25" Margin="95,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
         <Button x:Name ="ButtonRefresh" Content="Обновить" HorizontalAlignment="Left" Height="25" Margin="180,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonRefresh_Click"/>
         <Button x:Name ="ButtonEdit" Content="Изменить выделенное" HorizontalAlignment="Left" Height="25" Margin="265,10,0,0" VerticalAlignment="Top" Width="139" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonEdit_Click"/>
+        <Button x:Name ="ButtonOpenList" Content="Список материалов/фурнитуры" HorizontalAlignment="Left" Height="25" Margin="265,10,0,0" VerticalAlignment="Top" Width="183" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonOpenList_Click"/>
         <Button x:Name="ButtonExit" Content="Выход" Grid.Column="2" HorizontalAlignment="Left" Margin="140,10,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" Height="25"/>
-        <Button x:Name ="ButtonFind" Content="Найти" HorizontalAlignment="Left" Height="25" Margin="409,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFind_Click"/>
-        <Button x:Name="buttonCancelFind" Content="Отменить поиск" HorizontalAlignment="Left" Margin="483,10,0,0" VerticalAlignment="Top" Width="99" Height="25" Click="ButtonCancelFind_Click"/>
-        <Button x:Name ="ButtonFilters" Content="Фильтры" HorizontalAlignment="Left" Height="25" Margin="587,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFilters_Click"/>
+        <Button x:Name ="ButtonFind" Content="Найти" Height="25" Margin="453,10,170,0" VerticalAlignment="Top" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFind_Click"/>
+        <Button x:Name="buttonCancelFind" Content="Отменить поиск" HorizontalAlignment="Left" Margin="527,10,0,0" VerticalAlignment="Top" Width="99" Height="25" Click="ButtonCancelFind_Click"/>
+        <Button x:Name ="ButtonFilters" Content="Фильтры" HorizontalAlignment="Left" Height="25" Margin="631,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFilters_Click" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

@@ -1,7 +1,7 @@
 ﻿using Clothing_Industry_WPF.Баланс_клиентов;
-using Clothing_Industry_WPF.Заказы;
 using Clothing_Industry_WPF.Клиенты;
 using Clothing_Industry_WPF.Материал;
+using Clothing_Industry_WPF.Приход_материала;
 using Clothing_Industry_WPF.Состояние_склада;
 using Clothing_Industry_WPF.Сотрудники;
 
@@ -107,8 +107,14 @@ namespace Clothing_Industry_WPF
         // При нажатии на вкладку "Заказы"
         private void Orders_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window_orders = new OrdersListWindow();
-            window_orders.Show();
+            //Window window_orders = new OrdersListWindow();
+            //window_orders.Show();
+        }
+
+        private void Receipt_Materials_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window_receipt = new ReceiptsOfMaterialsWindow();
+            window_receipt.Show();
         }
 
         // ОТКЛЮЧЕНИЕ СИСТЕМЫ
@@ -122,6 +128,7 @@ namespace Clothing_Industry_WPF
         {
             Application.Current.Shutdown();
         }
+
         #endregion
 
         

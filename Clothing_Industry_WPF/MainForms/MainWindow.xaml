@@ -172,7 +172,7 @@
                 </TextBlock>
             </StackPanel>
             <StackPanel Background ="LightGray" Height="721" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="241,98,0,0">
-                <TextBlock x:Name="Matherial_Plus" FontSize="21" Margin="5" >
+                <TextBlock x:Name="Matherial_Plus" FontSize="21" Margin="5" PreviewMouseLeftButtonUp="Receipt_Materials_PreviewMouseLeftButtonUp">
                     <Hyperlink>Поступление материала</Hyperlink>
                 </TextBlock>
                 <TextBlock x:Name="Matherial" FontSize="24" Margin="5"  PreviewMouseLeftButtonUp="Materials_PreviewMouseLeftButtonUp" >

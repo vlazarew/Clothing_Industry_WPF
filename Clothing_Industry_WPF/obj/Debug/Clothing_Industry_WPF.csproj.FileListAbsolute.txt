@@ -38,14 +38,10 @@ D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Сотру
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\AuthentificationForm.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\AuthentificationForm.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\MainWindow.g.cs
-D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\FilterWindow.g.cs
-D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\FindWindow.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Сотрудники\EmployeesListWindow.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Сотрудники\EmployeesRecordWindow.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Старт приложения и конфиг\App.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\MainWindow.baml
-D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\FilterWindow.baml
-D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\FindWindow.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Сотрудники\EmployeesListWindow.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Сотрудники\EmployeesRecordWindow.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Материалы\MaterialsListWindow.g.cs
@@ -125,3 +121,23 @@ D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Клиен
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Клиенты\CustomersRecordWindow.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Баланс клиентов\CustomerBalanceListWindow.g.cs
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Баланс клиентов\CustomerBalanceListWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Баланс клиентов\CustomerBalanceListWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Клиенты\CustomersListWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Клиенты\CustomersRecordWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Фильтр\FilterListWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Поиск\FindWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Фильтр\FilterRecordWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\ReceiptsMaterialRecordWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\ReceiptsOfMaterialsWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\ReceiptsRecordDocumentWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\ReceiptsRecordWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Баланс клиентов\CustomerBalanceListWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Клиенты\CustomersListWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Клиенты\CustomersRecordWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Фильтр\FilterListWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Поиск\FindWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Фильтр\FilterRecordWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\ReceiptsMaterialRecordWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\ReceiptsOfMaterialsWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\ReceiptsRecordDocumentWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\ReceiptsRecordWindow.baml

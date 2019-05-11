@@ -1,0 +1,25 @@
+﻿<Window x:Class="Clothing_Industry_WPF.Приход_материала.ReceiptsMaterialRecordWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clothing_Industry_WPF.Приход_материала"
+        mc:Ignorable="d"
+        Title="Материал в документе прихода" Height="220.307" Width="371.674">
+    <Grid Margin="0,0,2,5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Артикул: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,50,0,0" Height="26" Width="61"/>
+        <Label Content="Название материала: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,81,0,0" Height="26" Width="130"/>
+        <Label x:Name="Header" Content="Материал " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Height="34" Width="97"/>
+        <Label Content="Количество: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,112,0,0" Height="26" Width="80"/>
+        <Label Content="Система счисления: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,143,0,0" Height="26" Width="122"/>
+        <ComboBox x:Name="comboBoxVendor_Code" HorizontalAlignment="Left" Margin="132,143,0,0" VerticalAlignment="Top" Width="211" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5"/>
+        <ComboBox x:Name="comboBoxName_Of_Material" HorizontalAlignment="Left" Margin="140,81,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5"/>
+        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" Margin="89,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="254" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
+        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="221,17,0,0" VerticalAlignment="Top" Width="122" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
+        <ComboBox x:Name="comboBoxUnit" HorizontalAlignment="Left" Margin="89,50,0,0" VerticalAlignment="Top" Width="254" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5"/>
+    </Grid>
+</Window>

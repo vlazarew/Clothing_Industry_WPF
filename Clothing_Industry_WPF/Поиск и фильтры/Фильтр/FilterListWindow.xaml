@@ -9,15 +9,15 @@
         Title="FilterWindow" Height="498.481" Width="863.343" Loaded="Window_Loaded">
     <Grid Margin="0,0,0,-1">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="97*"/>
-            <ColumnDefinition Width="203*"/>
-            <ColumnDefinition Width="519*"/>
-            <ColumnDefinition Width="36*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="91*"/>
+            <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="buttonFind" Content="Поиск" HorizontalAlignment="Left" Margin="89,419,0,0" VerticalAlignment="Top" Width="114" IsDefault="True" Height="39" FontSize="16" Grid.Column="1" Click="ButtonFind_Click"/>
-        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="179,419,0,0" VerticalAlignment="Top" Width="114" Height="39" FontSize="16" IsCancel="True" Grid.Column="2" Click="ButtonCancel_Click"/>
-        <Label Content="Текущие фильтры" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.236,0.921" Margin="10,10,0,0" FontSize="16" Grid.ColumnSpan="2" Width="152"/>
-        <DataGrid x:Name="dataGridFilters" HorizontalAlignment="Left" Height="357" Margin="10,46,0,0" VerticalAlignment="Top" Width="835" Grid.ColumnSpan="4" AutoGenerateColumns="False" IsReadOnly="True">
+        <Button x:Name="buttonFind" Content="Поиск" HorizontalAlignment="Left" Margin="157,419,0,0" VerticalAlignment="Top" Width="114" IsDefault="True" Height="39" FontSize="16" Grid.Column="2" Click="ButtonFind_Click"/>
+        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="334,419,0,0" VerticalAlignment="Top" Width="114" Height="39" FontSize="16" IsCancel="True" Grid.Column="2" Click="ButtonCancel_Click"/>
+        <Label Content="Текущие фильтры" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.236,0.921" Margin="0,10,0,0" FontSize="16" Width="152" Height="31" Grid.Column="2"/>
+        <DataGrid x:Name="dataGridFilters" HorizontalAlignment="Left" Height="357" Margin="0,46,0,0" VerticalAlignment="Top" Width="835" Grid.ColumnSpan="2" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="2">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridCell}">
                     <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
@@ -30,8 +30,8 @@
                 <DataGridTextColumn Binding="{Binding value}" ClipboardContentBinding="{x:Null}" Header="Значение"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="buttonAddFilter" Content="Добавить фильтр" Grid.Column="1" HorizontalAlignment="Left" Margin="89,17,0,0" VerticalAlignment="Top" Width="104" Click="ButtonAddFilter_Click"/>
-        <Button x:Name="buttonDeleteFilter" Content="Удалить фильтр" Grid.Column="2" HorizontalAlignment="Left" Margin="60,17,0,0" VerticalAlignment="Top" Width="108" Click="ButtonDeleteFilter_Click"/>
+        <Button x:Name="buttonAddFilter" Content="Добавить фильтр" Grid.Column="2" HorizontalAlignment="Left" Margin="157,17,0,0" VerticalAlignment="Top" Width="104" Click="ButtonAddFilter_Click" Height="20"/>
+        <Button x:Name="buttonDeleteFilter" Content="Удалить фильтр" Grid.Column="2" HorizontalAlignment="Left" Margin="334,17,0,0" VerticalAlignment="Top" Width="108" Click="ButtonDeleteFilter_Click" Height="20"/>
 
     </Grid>
 </Window>

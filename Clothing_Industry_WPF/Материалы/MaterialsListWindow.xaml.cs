@@ -28,11 +28,13 @@ namespace Clothing_Industry_WPF.Материал
     {
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private FindHandler.FindDescription currentFindDescription;
+        private List<FilterHandler.FilterDescription> currentFilterDescription;
 
         public MaterialsListWindow()
         {
             InitializeComponent();
             currentFindDescription = new FindHandler.FindDescription();
+            currentFilterDescription = new List<FilterHandler.FilterDescription>();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -265,21 +267,88 @@ namespace Clothing_Industry_WPF.Материал
 
         private void ButtonFilters_Click(object sender, RoutedEventArgs e)
         {
+            // Список полей, по которым мы можем делать отбор
             List<FindHandler.FieldParameters> listOfField = FillFindFields();
-            var findWindow = new FindWindow(currentFindDescription, listOfField);
-            if (findWindow.ShowDialog().Value)
+            var filterWindow = new FilterWindow(currentFilterDescription, listOfField);
+            if (filterWindow.ShowDialog().Value)
             {
-                currentFindDescription = findWindow.Result;
+                currentFilterDescription = filterWindow.Result;
             }
             else
             {
                 return;
             }
+
+            string editedQuery = EditFilterQuery(currentFilterDescription, listOfField);
+
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            DataTable dataTable = new DataTable();
+            MySqlCommand command = new MySqlCommand(editedQuery, connection);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            adapter.Fill(dataTable);
+            materialsGrid.ItemsSource = dataTable.DefaultView;
+            connection.Close();
         }
 
-        private void ButtonPrint_Click(object sender, RoutedEventArgs e)
+        private string EditFilterQuery(List<FilterHandler.FilterDescription> filter, List<FindHandler.FieldParameters> listOfField)
         {
+            string result = getQueryText();
 
+            foreach (var filterRecord in filter)
+            {
+                if (filterRecord.active)
+                {
+                    result = result.Replace(";", " where ");
+                    break;
+                }
+            }
+
+            int index = 0;
+            foreach (var filterRecord in filter)
+            {
+                if (filterRecord.active)
+                {
+                    result += AddСondition(filterRecord, listOfField);
+                    index++;
+                    if (index < filter.Count)
+                    {
+                        result += " or ";
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        private string AddСondition(FilterHandler.FilterDescription filter, List<FindHandler.FieldParameters> listOfField)
+        {
+            string result = "";
+            var field = listOfField.Where(kvp => kvp.application_name == filter.field).First().db_name;
+            var typeFilter = FilterHandler.TakeFilter(filter.typeOfFilter);
+            if (filter.typeOfFilter == TypeOfFilter.TypesOfFilter.isFilled)
+            {
+                result += "NOT ";
+            }
+
+            if (!filter.isDate)
+            {
+                result += string.Format(field + " " + typeFilter + "\"{0}\"", filter.value);
+            }
+            else
+            {
+                string day = filter.value.Substring(0, 2);
+                string month = filter.value.Substring(3, 2);
+                string year = filter.value.Substring(6, 4);
+                result += string.Format(field + " " + typeFilter + " \'{0}-{1}-{2}\'", year, month, day);
+                //result += string.Format(" DATE_FORMAT(" + field + ", '%d.%m.%Y') = \'{0}\'", filter.value);
+            }
+
+            /*if (filter.typeOfFilter == TypeOfFilter.TypesOfFilter.contains)
+            {
+                result += ") ";
+            }*/
+
+            return result;
         }
     }
 }
