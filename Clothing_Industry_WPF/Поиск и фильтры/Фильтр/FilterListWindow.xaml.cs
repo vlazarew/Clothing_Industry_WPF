@@ -126,8 +126,15 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
         private void ButtonDeleteFilter_Click(object sender, RoutedEventArgs e)
         {
             int rowIndex = dataGridFilters.SelectedIndex;
-            collection.RemoveAt(rowIndex);
-            dataGridFilters.Items.Refresh();
+            if (rowIndex == -1)
+            {
+                MessageBox.Show("Вы не выбрали элемент для удаления. Выделите строку!", "Внимание", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                collection.RemoveAt(rowIndex);
+                dataGridFilters.Items.Refresh();
+            }
         }
     }
 }

@@ -84,8 +84,8 @@ insert into suppliers (Name_Of_Supplier) values ('ООО БелТкань');
 
 -- Изделия
 
-insert into products (Table_Materials_To_Product_idTable_Materials_To_Product,Fixed_Price,Per_Cents,Added_Price_For_Complexity,Description,Photo)
-  values(1,400,60,0,'C рисунком','');
+insert into products (Name_Of_Product, Table_Materials_To_Product_idTable_Materials_To_Product, Fixed_Price,Per_Cents,Added_Price_For_Complexity,Description,Photo)
+  values('Кружевное платье',1,400,60,0,'C рисунком','');
 
 -- Сотрудники
 
@@ -105,11 +105,11 @@ insert into orders (Date_Of_Order,Discount_Per_Cent,Paid,Debt,Date_Of_Delievery,
 
 -- Документ прихода
 
-insert into documents_of_receipts (Default_Folder,Name_Of_Document, Date_Of_Entry) values ('2019','Приход №1','2019-05-05');
-insert into documents_of_receipts (Default_Folder,Name_Of_Document, Date_Of_Entry) values ('2018','Приход №196','2018-10-18');
-insert into documents_of_receipts (Default_Folder,Name_Of_Document, Date_Of_Entry) values ('2019','Приход №2','2019-05-06');
+insert into documents_of_receipts (Default_Folder,Name_Of_Document, Date_Of_Entry, Amount, Price_For_One, Total_Price, Materials_Vendor_Code) values ('2019','Приход №1','2019-05-05', 15, 10, 150, 100001);
+insert into documents_of_receipts (Default_Folder,Name_Of_Document, Date_Of_Entry, Amount, Price_For_One, Total_Price, Materials_Vendor_Code) values ('2018','Приход №196','2018-10-18', 20, 10, 200, 100002);
+insert into documents_of_receipts (Default_Folder,Name_Of_Document, Date_Of_Entry, Amount, Price_For_One, Total_Price, Materials_Vendor_Code) values ('2019','Приход №2','2019-05-06', 15, 20, 300, 100001);
 
 -- Поступление материалов
 
-insert into receipt_of_materials (Documents_Of_Receipts_id_Document_Of_Receipt,Coming_Date,Summ,Notes,Payment_States_id_Payment_States,Type_Of_Transactions_id_Type_Of_Transaction,Suppliers_id_Supplier)
-values (1,'2019-03-02',200000,'Cиний бархат 30 м.п. по 250р. за 1 м.п. узкое кружево с цветочками 300 м.п. по 70 р. за 1 м.п.',1,2,1);
+insert into receipt_of_materials (Documents_Of_Receipts_id_Document_Of_Receipt,Summ,Notes,Payment_States_id_Payment_States,Type_Of_Transactions_id_Type_Of_Transaction,Suppliers_id_Supplier)
+values (1,200000,'Cиний бархат 30 м.п. по 250р. за 1 м.п. узкое кружево с цветочками 300 м.п. по 70 р. за 1 м.п.',1,2,1);
