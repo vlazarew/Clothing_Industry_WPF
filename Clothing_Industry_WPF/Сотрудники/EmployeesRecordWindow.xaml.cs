@@ -279,6 +279,7 @@ namespace Clothing_Industry_WPF.Сотрудники
                         commandUser.ExecuteNonQuery();
                     }
                     transaction.Commit();
+                    this.Hide();
                 }
                 catch
                 {

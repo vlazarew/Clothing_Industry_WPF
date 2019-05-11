@@ -119,3 +119,7 @@ C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_I
 C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.csproj.CopyComplete
 C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.exe
 C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.pdb
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Клиенты\CustomersListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Клиенты\CustomersRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Клиенты\CustomersListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Клиенты\CustomersRecordWindow.baml

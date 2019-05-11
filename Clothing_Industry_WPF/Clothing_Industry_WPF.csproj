@@ -94,6 +94,12 @@
     <Compile Include="Изделия\ProductsRecordWindow.xaml.cs">
       <DependentUpon>ProductsRecordWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Клиенты\CustomersListWindow.xaml.cs">
+      <DependentUpon>CustomersListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Клиенты\CustomersRecordWindow.xaml.cs">
+      <DependentUpon>CustomersRecordWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Материалы\MaterialsListWindow.xaml.cs">
       <DependentUpon>MaterialsListWindow.xaml</DependentUpon>
     </Compile>
@@ -139,6 +145,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Изделия\ProductsRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Клиенты\CustomersListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Клиенты\CustomersRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

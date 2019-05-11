@@ -238,6 +238,7 @@ namespace Clothing_Industry_WPF.Материал
                 {
                     command.ExecuteNonQuery();
                     transaction.Commit();
+                    this.Hide();
                 }
                 catch
                 {

@@ -1,4 +1,5 @@
-﻿using Clothing_Industry_WPF.Материал;
+﻿using Clothing_Industry_WPF.Клиенты;
+using Clothing_Industry_WPF.Материал;
 using Clothing_Industry_WPF.Состояние_склада;
 using Clothing_Industry_WPF.Сотрудники;
 
@@ -98,5 +99,10 @@ namespace Clothing_Industry_WPF
         }
         #endregion
 
+        private void Clients_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window_customers = new CustomersListWindow();
+            window_customers.Show();
+        }
     }
 }

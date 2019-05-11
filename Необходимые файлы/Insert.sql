@@ -95,8 +95,8 @@ insert into employees values('admin','admin','Сергей','Кудрин','Се
 
 -- Заказчик
 
-insert into customers (Name,Lastname,Patronymic,Address,Phone_Number,Nickname,Birthday,Passport_data,Size,Parameters,Notes,Photo,Customer_Statuses_id_Status,Order_Channels_id_Channel,Employees_id_Employee)
-  values ('Людмила','Иванова','Ивановна','Воронеж, проспект Революции 5 кв. 11','8934222222','Ludmurik201','1991-03-07','','44','90.60.90','Отправка СДЭКом','',1,1,2);
+insert into customers (Name,Lastname,Patronymic,Address,Phone_Number,Nickname,Birthday,Passport_data,Size,Parameters,Notes,Photo,Customer_Statuses_id_Status,Order_Channels_id_Channel,Employees_Login)
+  values ('Людмила','Иванова','Ивановна','Воронеж, проспект Революции 5 кв. 11','8934222222','Ludmurik201','1991-03-07','2012 585858','44','90.60.90','Отправка СДЭКом',null,1,1,'admin');
 
 -- Заказы 
 
