@@ -41,7 +41,6 @@ namespace Clothing_Industry_WPF
 
         }
 
-
         private bool CheckServer(string server_ip)
         {
             string connString = connectionString + "Server=" + server_ip + ";user id=test_server;password=123";

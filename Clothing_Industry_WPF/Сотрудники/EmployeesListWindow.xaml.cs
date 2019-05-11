@@ -305,9 +305,13 @@ namespace Clothing_Industry_WPF.Сотрудники
         {
             string result = getQueryText();
 
-            if (filter.Count > 0)
+            foreach (var filterRecord in filter)
             {
-                result = result.Replace(";", " where ");
+                if (filterRecord.active)
+                {
+                    result = result.Replace(";", " where ");
+                    break;
+                }
             }
 
             int index = 0;
