@@ -78,3 +78,44 @@ D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Поиск\FindWindow.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Фильтр\FilterRecordWindow.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Состояние_склада\StoreListWindow.baml
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\bin\Debug\Clothing_Industry_WPF.exe.config
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\bin\Debug\Clothing_Industry_WPF.exe
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\bin\Debug\Clothing_Industry_WPF.pdb
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\bin\Debug\MySql.Data.dll
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.csprojAssemblyReference.cache
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.csproj.ResolveComReference.cache
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\AuthentificationForm.baml
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\AuthentificationForm.g.cs
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\MainWindow.g.cs
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\ProductsListWindow.g.cs
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\ProductsRecordWindow.g.cs
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Материалы\MaterialsListWindow.g.cs
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Материалы\MaterialsRecordWindow.g.cs
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Фильтр\FilterListWindow.g.cs
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Поиск\FindWindow.g.cs
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Фильтр\FilterRecordWindow.g.cs
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Состояние_склада\StoreListWindow.g.cs
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Сотрудники\EmployeesListWindow.g.cs
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Сотрудники\EmployeesRecordWindow.g.cs
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Старт приложения и конфиг\App.g.cs
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF_MarkupCompile.cache
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF_MarkupCompile.lref
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\MainWindow.baml
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\ProductsListWindow.baml
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\ProductsRecordWindow.baml
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Материалы\MaterialsListWindow.baml
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Материалы\MaterialsRecordWindow.baml
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Фильтр\FilterListWindow.baml
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Поиск\FindWindow.baml
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Фильтр\FilterRecordWindow.baml
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Состояние_склада\StoreListWindow.baml
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Сотрудники\EmployeesListWindow.baml
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Сотрудники\EmployeesRecordWindow.baml
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.g.resources
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.Properties.Resources.resources
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.csproj.GenerateResource.cache
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.csproj.CoreCompileInputs.cache
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.csproj.CopyComplete
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.exe
+C:\Users\Lazar\OneDrive\Рабочий стол\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.pdb

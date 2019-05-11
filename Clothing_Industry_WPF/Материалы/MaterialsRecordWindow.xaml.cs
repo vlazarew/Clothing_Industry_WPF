@@ -247,7 +247,7 @@ namespace Clothing_Industry_WPF.Материал
                 
 
                 connection.Close();
-                this.Hide();
+                //this.Hide();
             }
             else
             {

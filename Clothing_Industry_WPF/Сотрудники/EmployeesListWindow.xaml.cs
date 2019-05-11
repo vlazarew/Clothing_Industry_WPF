@@ -313,11 +313,14 @@ namespace Clothing_Industry_WPF.Сотрудники
             int index = 0;
             foreach (var filterRecord in filter)
             {
-                result += AddСondition(filterRecord, listOfField);
-                index++;
-                if (index < filter.Count)
+                if (filterRecord.active)
                 {
-                    result += " or ";
+                    result += AddСondition(filterRecord, listOfField);
+                    index++;
+                    if (index < filter.Count)
+                    {
+                        result += " or ";
+                    }
                 }
             }
 

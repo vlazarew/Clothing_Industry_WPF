@@ -36,7 +36,7 @@ namespace Clothing_Industry_WPF
             {
                 MessageBox.Show(this, "Нет подключения к серверу. Вероятно последний находится в выключенном состоянии",
                     "Ошибка соединения с сервером", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
+                Application.Current.Shutdown();
             }
 
         }

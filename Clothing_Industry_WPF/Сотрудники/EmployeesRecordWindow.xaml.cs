@@ -287,7 +287,7 @@ namespace Clothing_Industry_WPF.Сотрудники
                 }
 
                 connection.Close();
-                this.Hide();
+                //this.Hide();
             }
             else
             {
