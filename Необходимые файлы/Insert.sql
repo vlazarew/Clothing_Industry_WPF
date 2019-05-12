@@ -100,8 +100,8 @@ insert into customers (Name,Lastname,Patronymic,Address,Phone_Number,Nickname,Bi
 
 -- Заказы 
 
-insert into orders (Date_Of_Order,Discount_Per_Cent,Paid,Debt,Date_Of_Delievery,Notes,Types_Of_Order_id_Type_Of_Order,Statuses_Of_Order_id_Status_Of_Order,Products_id_Product,Customers_id_Customer,Responsible,Executor)
-  values ('2019-05-05',0,300,200,'2019-06-05','',1,1,1,1,'admin','Petrov');
+insert into orders (Date_Of_Order,Discount_Per_Cent,Paid,Debt,Date_Of_Delievery,Notes,Types_Of_Order_id_Type_Of_Order,Statuses_Of_Order_id_Status_Of_Order,Customers_id_Customer,Responsible,Executor)
+  values ('2019-05-05',0,300,200,'2019-06-05','',1,1,1,'admin','Petrov');
 
 -- Документ прихода
 

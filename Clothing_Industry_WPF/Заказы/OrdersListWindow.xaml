@@ -14,7 +14,7 @@
             <ColumnDefinition Width="12*"/>
         </Grid.ColumnDefinitions>
 
-        <DataGrid x:Name="customersGrid" Margin="10,0,10,10" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Height="440" VerticalAlignment="Bottom" Grid.ColumnSpan="4">
+        <DataGrid x:Name="ordersGrid" Margin="10,0,10,10" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Height="440" VerticalAlignment="Bottom" Grid.ColumnSpan="4">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridCell}">
                     <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
@@ -23,15 +23,15 @@
 
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Date_Of_Order}" ClipboardContentBinding="{x:Null}" Header="Дата заказа"/>
+                <DataGridTextColumn Binding="{Binding Products}" ClipboardContentBinding="{x:Null}" Header="Изделия"/>
                 <DataGridTextColumn Binding="{Binding Discount_Per_Cent}" ClipboardContentBinding="{x:Null}" Header="% скидки"/>
                 <DataGridTextColumn Binding="{Binding Paid}" ClipboardContentBinding="{x:Null}" Header="Оплачено"/>
                 <DataGridTextColumn Binding="{Binding Debt}" ClipboardContentBinding="{x:Null}" Header="Долг"/>
                 <DataGridTextColumn Binding="{Binding Date_Of_Delievery}" ClipboardContentBinding="{x:Null}" Header="Дата доставки"/>
                 <DataGridTextColumn Binding="{Binding Notes}" ClipboardContentBinding="{x:Null}" Header="Заметки"/>
-                <DataGridTextColumn Binding="{Binding Type_Of_Order}" ClipboardContentBinding="{x:Null}" Header="Тип заказа"/>
-                <DataGridTextColumn Binding="{Binding Status_Of_Order}" ClipboardContentBinding="{x:Null}" Header="Статус заказа"/>
-                <DataGridTextColumn Binding="{Binding Product_id}" ClipboardContentBinding="{x:Null}" Header="Изделие"/>
-                <DataGridTextColumn Binding="{Binding Customer}" ClipboardContentBinding="{x:Null}" Header="Заказчик"/>
+                <DataGridTextColumn Binding="{Binding Name_Of_type}" ClipboardContentBinding="{x:Null}" Header="Тип заказа"/>
+                <DataGridTextColumn Binding="{Binding Name_Of_Status}" ClipboardContentBinding="{x:Null}" Header="Статус заказа"/>
+                <DataGridTextColumn Binding="{Binding Nickname}" ClipboardContentBinding="{x:Null}" Header="Заказчик"/>
                 <DataGridTextColumn Binding="{Binding Responsible}" ClipboardContentBinding="{x:Null}" Header="Ответственный"/>
                 <DataGridTextColumn Binding="{Binding Executor}" ClipboardContentBinding="{x:Null}" Header="Исполнитель"/>
             </DataGrid.Columns>
@@ -44,5 +44,6 @@
         <Button x:Name ="ButtonFind" Content="Найти" HorizontalAlignment="Left" Height="25" Margin="409,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFind_Click"/>
         <Button x:Name="buttonCancelFind" Content="Отменить поиск" HorizontalAlignment="Left" Margin="483,10,0,0" VerticalAlignment="Top" Width="99" Height="25" Click="ButtonCancelFind_Click"/>
         <Button x:Name ="ButtonFilters" Content="Фильтры" HorizontalAlignment="Left" Height="25" Margin="587,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFilters_Click"/>
+        <Button x:Name ="ButtonListProducts" Content="Список изделий" HorizontalAlignment="Left" Height="25" Margin="661,10,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Grid.ColumnSpan="3" Click="ButtonListProducts_Click"/>
     </Grid>
 </Window>

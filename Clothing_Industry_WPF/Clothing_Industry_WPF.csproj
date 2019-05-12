@@ -91,6 +91,18 @@
     <Compile Include="Баланс клиентов\CustomerBalanceListWindow.xaml.cs">
       <DependentUpon>CustomerBalanceListWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Заказы\OrderRecordWindow.xaml.cs">
+      <DependentUpon>OrderRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Заказы\Список изделий для заказа\OrderProductsListWindow.xaml.cs">
+      <DependentUpon>OrderProductsListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Заказы\OrdersListWindow.xaml.cs">
+      <DependentUpon>OrdersListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Заказы\Список изделий для заказа\OrderProductsRecordWindow.xaml.cs">
+      <DependentUpon>OrderProductsRecordWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Изделия\ProductsListWindow.xaml.cs">
       <DependentUpon>ProductsListWindow.xaml</DependentUpon>
     </Compile>
@@ -156,6 +168,22 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Баланс клиентов\CustomerBalanceListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Заказы\OrderRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Заказы\Список изделий для заказа\OrderProductsListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Заказы\OrdersListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Заказы\Список изделий для заказа\OrderProductsRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -314,7 +342,7 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Заказы\" />
+    <Resource Include="Image1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

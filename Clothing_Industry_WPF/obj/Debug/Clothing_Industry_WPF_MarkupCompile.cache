@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\
 Clothing_Industry_WPF
 none
 false
 DEBUG;TRACE
-D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Старт приложения и конфиг\App.xaml
-19945797782
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\Старт приложения и конфиг\App.xaml
+23-688766506
 
-291332560971
+33-1412331356
 23-327627625
-MainForms\AuthentificationForm.xaml;MainForms\MainWindow.xaml;Баланс клиентов\CustomerBalanceListWindow.xaml;Изделия\ProductsListWindow.xaml;Изделия\ProductsRecordWindow.xaml;Клиенты\CustomersListWindow.xaml;Клиенты\CustomersRecordWindow.xaml;Материалы\MaterialsListWindow.xaml;Материалы\MaterialsRecordWindow.xaml;Поиск и фильтры\Фильтр\FilterListWindow.xaml;Поиск и фильтры\Поиск\FindWindow.xaml;Поиск и фильтры\Фильтр\FilterRecordWindow.xaml;Приход_материала\ReceiptsMaterialRecordWindow.xaml;Приход_материала\ReceiptsOfMaterialsWindow.xaml;Приход_материала\ReceiptsRecordDocumentWindow.xaml;Приход_материала\ReceiptsRecordWindow.xaml;Состояние_склада\StoreListWindow.xaml;Сотрудники\EmployeesListWindow.xaml;Сотрудники\EmployeesRecordWindow.xaml;
+MainForms\AuthentificationForm.xaml;MainForms\MainWindow.xaml;Баланс клиентов\CustomerBalanceListWindow.xaml;Заказы\OrderRecordWindow.xaml;Заказы\Список изделий для заказа\OrderProductsListWindow.xaml;Заказы\OrdersListWindow.xaml;Заказы\Список изделий для заказа\OrderProductsRecordWindow.xaml;Изделия\ProductsListWindow.xaml;Изделия\ProductsRecordWindow.xaml;Клиенты\CustomersListWindow.xaml;Клиенты\CustomersRecordWindow.xaml;Материалы\MaterialsListWindow.xaml;Материалы\MaterialsRecordWindow.xaml;Поиск и фильтры\Фильтр\FilterListWindow.xaml;Поиск и фильтры\Поиск\FindWindow.xaml;Поиск и фильтры\Фильтр\FilterRecordWindow.xaml;Приход_материала\ReceiptsMaterialRecordWindow.xaml;Приход_материала\ReceiptsOfMaterialsWindow.xaml;Приход_материала\ReceiptsRecordDocumentWindow.xaml;Приход_материала\ReceiptsRecordWindow.xaml;Состояние_склада\StoreListWindow.xaml;Сотрудники\EmployeesListWindow.xaml;Сотрудники\EmployeesRecordWindow.xaml;
 
 False
 

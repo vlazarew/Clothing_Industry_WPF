@@ -56,6 +56,8 @@ namespace Clothing_Industry_WPF.Сотрудники
             adapter.Fill(dataTable);
             employeesGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
+
+            employeesGrid.SelectedIndex = 0;
         }
 
         private string getQueryText()

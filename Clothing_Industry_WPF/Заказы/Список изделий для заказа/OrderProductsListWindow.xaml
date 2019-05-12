@@ -1,0 +1,33 @@
+﻿<Window x:Class="Clothing_Industry_WPF.Заказы.OrderProductsListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clothing_Industry_WPF.Заказы"
+        mc:Ignorable="d"
+            Title="Список изделий" Height="529" Width="1067.1">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="633*"/>
+            <ColumnDefinition Width="59*"/>
+            <ColumnDefinition Width="48*"/>
+            <ColumnDefinition Width="304*"/>
+            <ColumnDefinition Width="15*"/>
+        </Grid.ColumnDefinitions>
+
+        <DataGrid x:Name="listOfProductsGrid" Margin="10,0,10,10" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Height="440" VerticalAlignment="Bottom" Grid.ColumnSpan="5">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name_Of_Product}" ClipboardContentBinding="{x:Null}" Header="Наименование"/>
+                <DataGridTextColumn Binding="{Binding Count}" ClipboardContentBinding="{x:Null}" Header="Количество"/>
+                <DataGridTextColumn Binding="{Binding Fixed_Price}" ClipboardContentBinding="{x:Null}" Header="Фиксированная цена"/>
+                <DataGridTextColumn Binding="{Binding Per_Cents}" ClipboardContentBinding="{x:Null}" Header="% от продаж"/>
+                <DataGridTextColumn Binding="{Binding Added_Price_For_Complexity}" ClipboardContentBinding="{x:Null}" Header="Стоимость за сложность"/>
+                <DataGridTextColumn Binding="{Binding Description}" ClipboardContentBinding="{x:Null}" Header="Описание"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name ="ButtonAddProduct" Content="Добавить изделие" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="116" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonAddProduct_Click"/>
+        <Button x:Name ="ButtonDelete" Content="Удалить" HorizontalAlignment="Left" Height="25" Margin="131,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
+        <Button x:Name="ButtonExit" Content="Выход" Grid.Column="3" HorizontalAlignment="Left" Margin="140,10,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" Height="25"/>
+    </Grid>
+</Window>
