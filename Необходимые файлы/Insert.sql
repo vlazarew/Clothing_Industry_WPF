@@ -64,8 +64,8 @@ insert into materials values (100001,'Синий бархат',120,'',null,3,1,1
 insert into materials values (100002,'Узкое кружево',50,'',null,3,1,2,1);
 
 -- Материалы на изделие
-insert into table_materials_to_product values (1,1.5,100001);
-insert into table_materials_to_product values (2,0.5,100002);
+-- insert into table_materials_to_product values (1,1.5,100001);
+-- insert into table_materials_to_product values (2,0.5,100002);
 
 -- Статус оплаты
 
@@ -84,8 +84,8 @@ insert into suppliers (Name_Of_Supplier) values ('ООО БелТкань');
 
 -- Изделия
 
-insert into products (Name_Of_Product, Table_Materials_To_Product_idTable_Materials_To_Product, Fixed_Price,Per_Cents,Added_Price_For_Complexity,Description,Photo)
-  values('Кружевное платье',1,400,60,0,'C рисунком','');
+insert into products (Name_Of_Product, Fixed_Price,Per_Cents,Added_Price_For_Complexity,Description,Photo)
+  values('Кружевное платье',400,60,0,'C рисунком','');
 
 -- Сотрудники
 
@@ -100,8 +100,8 @@ insert into customers (Name,Lastname,Patronymic,Address,Phone_Number,Nickname,Bi
 
 -- Заказы 
 
-insert into orders (Date_Of_Order,Discount_Per_Cent,Paid,Debt,Date_Of_Delievery,Notes,Types_Of_Order_id_Type_Of_Order,Statuses_Of_Order_id_Status_Of_Order,Customers_id_Customer,Responsible,Executor)
-  values ('2019-05-05',0,300,200,'2019-06-05','',1,1,1,'admin','Petrov');
+insert into orders (Date_Of_Order,Discount_Per_Cent,Total_Price,Paid,Debt,Date_Of_Delievery,Notes,Types_Of_Order_id_Type_Of_Order,Statuses_Of_Order_id_Status_Of_Order,Customers_id_Customer,Responsible,Executor)
+  values ('2019-05-05',0,1500,300,200,'2019-06-05','',1,1,1,'admin','Petrov');
 
 -- Документ прихода
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -27,6 +28,9 @@ namespace Clothing_Industry_WPF.Заказы
         private MySqlConnection connection;
         private int idOrder;
 
+        // Ввод только букв в численные поля 
+        private static readonly Regex _regex = new Regex("[^0-9]");
+
         public OrderRecordWindow(WaysToOpenForm.WaysToOpen waysToOpen, int idOrder = -1)
         {
             InitializeComponent();
@@ -45,17 +49,15 @@ namespace Clothing_Industry_WPF.Заказы
 
         private void FillFields(int idOrder)
         {
-            string query_text = "select orders.id_Order, orders.Date_Of_Order, orders.Discount_Per_Cent, orders.Paid, orders.Debt, orders.Date_Of_Delievery, orders.Notes, " +
+            string query_text = "select orders.id_Order, orders.Date_Of_Order, orders.Discount_Per_Cent, orders.Total_price, orders.Paid, orders.Debt, orders.Date_Of_Delievery, orders.Notes, " +
                                 "types_of_order.Name_Of_type, statuses_of_order.Name_Of_Status, customers.Nickname, orders.Executor, orders.Responsible " +
                                 "from orders " +
-                                "join types_of_order on types_of_order.id_Type_Of_Order = orders.Types_Of_Order_id_Type_Of_Order " +
-                                "join statuses_of_order on statuses_of_order.id_Status_Of_Order = orders.Statuses_Of_Order_id_Status_Of_Order " +
-                                "join list_products_to_order on list_products_to_order.Orders_id_Order = orders.id_order " +
-                                "join customers on customers.id_Customer = orders.Customers_id_Customer " +
-                                "join employees on(employees.Login = orders.Responsible) " +
+                                "left join types_of_order on orders.Types_Of_Order_id_Type_Of_Order = types_of_order.id_Type_Of_Order " +
+                                "left join statuses_of_order on orders.Statuses_Of_Order_id_Status_Of_Order =statuses_of_order.id_Status_Of_Order " +
+                                "left join list_products_to_order on orders.id_order = list_products_to_order.Orders_id_Order " +
+                                "left join customers on orders.Customers_id_Customer = customers.id_Customer  " +
                                 "where orders.id_Order = @idOrder " +
-                                "group by orders.Date_Of_Order, orders.Discount_Per_Cent, orders.Paid, orders.Debt, orders.Date_Of_Delievery, orders.Notes, " +
-                                "types_of_order.Name_Of_type, statuses_of_order.Name_Of_Status, customers.Nickname, orders.Executor, orders.Responsible, list_products_to_order.Orders_id_Order ;";
+                                "group by orders.id_Order ;";
 
             MySqlCommand command = new MySqlCommand(query_text, connection);
             command.Parameters.AddWithValue("@idOrder", idOrder);
@@ -66,19 +68,19 @@ namespace Clothing_Industry_WPF.Заказы
                 {
                     datePickerDateOfOrder.SelectedDate = DateTime.Parse(reader.GetString(1));
                     textBoxDiscount.Text = reader.GetString(2);
-                    textBoxPaid.Text = reader.GetString(3);
-                    textBoxDebt.Text = reader.GetString(4);
-                    datePickerDateOfDelievery.SelectedDate = DateTime.Parse(reader.GetString(5));
-                    if (reader.GetValue(6).ToString() != "")
+                    textBoxTotal_Price.Text = reader.GetString(3);
+                    textBoxPaid.Text = reader.GetString(4);
+                    textBoxDebt.Text = reader.GetString(5);
+                    datePickerDateOfDelievery.SelectedDate = DateTime.Parse(reader.GetString(6));
+                    if (reader.GetValue(7).ToString() != "")
                     {
-                        textBoxNotes.Text = reader.GetString(6);
+                        textBoxNotes.Text = reader.GetString(7);
                     }
-                    comboBoxTypeOfOrder.SelectedValue = reader.GetString(7);
-                    comboBoxStatusOfOrder.SelectedValue = reader.GetString(8);
-                    comboBoxCustomer.SelectedValue = reader.GetString(9);
-                    comboBoxResponsible.SelectedValue = reader.GetString(10);
-                    comboBoxExecutor.SelectedValue = reader.GetString(11);
-
+                    comboBoxTypeOfOrder.SelectedValue = reader.GetString(8);
+                    comboBoxStatusOfOrder.SelectedValue = reader.GetString(9);
+                    comboBoxCustomer.SelectedValue = reader.GetString(10);
+                    comboBoxResponsible.SelectedValue = reader.GetString(11);
+                    comboBoxExecutor.SelectedValue = reader.GetString(12);
                 }
             }
             connection.Close();
@@ -165,18 +167,6 @@ namespace Clothing_Industry_WPF.Заказы
             {
                 result += result == "" ? "Дата заказа" : ", Дата заказа";
             }
-            if (textBoxDiscount.Text == "")
-            {
-                result += result == "" ? "Скидка" : ", Скидка";
-            }
-            if (textBoxPaid.Text == "")
-            {
-                result += result == "" ? "Оплачено" : ", Оплачено";
-            }
-            if (textBoxDebt.Text == "")
-            {
-                result += result == "" ? "Долг" : ", Долг";
-            }
             if (datePickerDateOfDelievery.SelectedDate.Value.ToString() == "")
             {
                 result += result == "" ? "Дата доставки" : ", Дата доставки";
@@ -205,11 +195,47 @@ namespace Clothing_Industry_WPF.Заказы
             return result == "" ? result : "Не заполнены обязательные поля: " + result;
         }
 
+        private void ButtonListProducts_Click(object sender, RoutedEventArgs e)
+        {
+            Window windowListProducts = new OrderProductsListWindow(idOrder);
+            windowListProducts.ShowDialog();
+
+            UpdateTotalPrice();
+        }
+
+        private void UpdateTotalPrice()
+        {
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            connection.Open();
+
+            string query = "select products.Name_Of_Product, products.Fixed_price, list_products_to_order.Count " +
+                           "from list_products_to_order " +
+                           "join products on products.id_product = list_products_to_order.Products_id_Product " +
+                           "where list_products_to_order.Orders_id_Order = @idOrder; ";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@idOrder", idOrder);
+
+            float total_price = 0;
+            using (DbDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    total_price += (float)reader.GetValue(1) * (int)reader.GetValue(2);
+                }
+            }
+
+            textBoxTotal_Price.Text = total_price.ToString();
+            textBoxDebt.Text = (total_price - float.Parse(textBoxPaid.Text)).ToString();
+            connection.Close();
+        }
+
         private void ButtonSaveAndExit_Click(object sender, RoutedEventArgs e)
         {
             string warning = CheckData();
             if (warning == "")
             {
+                FillEmptyTextBoxes();
+
                 MySqlConnection connection = new MySqlConnection(connectionString);
                 MySqlTransaction transaction;
 
@@ -217,15 +243,16 @@ namespace Clothing_Industry_WPF.Заказы
                 transaction = connection.BeginTransaction();
 
                 //Создать/изменить запись в таблице Заказы
-                //MySqlCommand command = actionInDBCommand(connection);
-                MySqlCommand command = new MySqlCommand("",connection);
+                MySqlCommand command = actionInDBCommand(connection);
+                //MySqlCommand command = new MySqlCommand("", connection);
                 command.Transaction = transaction;
 
+                // !!! ИЗМЕНЕНИЕ БАЛАНСА КЛИЕНТА !!!
                 // Получение данных о балансе клиента
                 string queryCheckBalance = "select Accured, Paid, Debt, customers_id_customer " +
-                                               "from customer_balance " +
-                                               "join customers on customer_balance.customers_id_customer = customers.id_customer" +
-                                               "where customers.nickname = @nickname";
+                                           "from customers_balance " +
+                                           "join customers on customers_balance.customers_id_customer = customers.id_customer " +
+                                           "where customers.nickname = @nickname";
                 MySqlCommand commandCheckBalance = new MySqlCommand(queryCheckBalance, connection);
                 commandCheckBalance.Parameters.AddWithValue("@nickname", comboBoxCustomer.SelectedValue.ToString());
                 // Состояние баланса клиента на текущий момент
@@ -250,50 +277,50 @@ namespace Clothing_Industry_WPF.Заказы
                 // Иначе мы для начала должны вычесть то, что имеем на текущий момент и прибавить новые значения
                 if (way == WaysToOpenForm.WaysToOpen.edit)
                 {
-                    string selectQuery = "select Paid, Debt from orders where id_order = @idOrder";
+                    string selectQuery = "select Paid, Debt, Total_Price from orders where id_order = @idOrder";
                     MySqlCommand commandSelectCurrentOrder = new MySqlCommand(selectQuery, connection);
                     commandSelectCurrentOrder.Parameters.AddWithValue("@idOrder", idOrder);
 
                     // Состояние баланса клиента на текущий момент
+
                     float cur_paid = 0;
                     float cur_debt = 0;
+                    float cur_accured = 0;
                     using (DbDataReader reader = commandSelectCurrentOrder.ExecuteReader())
                     {
                         while (reader.Read())
                         {
                             cur_paid = (float)reader.GetValue(0);
                             cur_debt = (float)reader.GetValue(1);
+                            cur_accured = (float)reader.GetValue(2);
                         }
                     }
 
                     paid -= cur_paid;
                     debt -= cur_debt;
-                    accured -= (paid + debt);
+                    accured -= cur_accured;
                 }
 
                 // Новые значения баланса клиента
                 paid += float.Parse(textBoxPaid.Text);
                 debt += float.Parse(textBoxDebt.Text);
-                accured += float.Parse(textBoxPaid.Text) + float.Parse(textBoxDebt.Text);
+                accured += float.Parse(textBoxTotal_Price.Text);
 
 
-                string querySetBalance = "update customer_balance set Accured = @accured, Paid = @paid, Debt = @debt" +
-                                         "where customer_balance.customers_id_customer = @id";
+                string querySetBalance = "update customers_balance set Accured = @accured, Paid = @paid, Debt = @debt " +
+                                         "where customers_balance.customers_id_customer = @id";
                 commandSetBalance = new MySqlCommand(querySetBalance, connection, transaction);
                 commandSetBalance.Parameters.AddWithValue("@id", id);
+                commandSetBalance.Parameters.AddWithValue("@accured", accured);
+                commandSetBalance.Parameters.AddWithValue("@paid", paid);
+                commandSetBalance.Parameters.AddWithValue("@debt", debt);
 
-                //Читаемости ради                    
-                /*if (way == WaysToOpenForm.WaysToOpen.create)
-                {
-                    queryUser = string.Format("CREATE USER '{0}'@'%' IDENTIFIED BY '{1}';", textBoxLogin.Text,
-                    CheckBoxPassword.IsChecked.Value ? textBoxPassword.Text : PasswordBoxCurrent.Password);
-                }
-                if (way == WaysToOpenForm.WaysToOpen.edit && old_login != textBoxLogin.Text)
-                {
-                    queryUser = string.Format("Rename user '{0}'@'%' To '{1}'@'%';", old_login, textBoxLogin.Text);
-                }*/
+                // !!! КОНЕЦ ИЗМЕНЕНИЯ БАЛАНСА КЛИЕНТА !!!
 
-                //MySqlCommand commandUser = new MySqlCommand(queryUser, connection, transaction);
+
+                // !!! НАЧИСЛЕНИЕ ЗП !!!
+
+                // !!! КОНЕЦ НАЧИСЛЕНИЯ ЗП !!!
 
                 try
                 {
@@ -317,69 +344,133 @@ namespace Clothing_Industry_WPF.Заказы
             }
         }
 
-       /*private MySqlCommand actionInDBCommand(MySqlConnection connection)
+        private void TextBoxPaid_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+            try
+            {
+                textBoxDebt.Text = (float.Parse(textBoxTotal_Price.Text) - float.Parse(textBoxPaid.Text)).ToString();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void FillEmptyTextBoxes()
+        {
+            if (textBoxDebt.Text == "")
+            {
+                textBoxDebt.Text = "0";
+            }
+            if (textBoxPaid.Text == "")
+            {
+                textBoxPaid.Text = "0";
+            }
+            if (textBoxTotal_Price.Text == "")
+            {
+                textBoxTotal_Price.Text = "0";
+            }
+        }
+
+        private static bool IsTextAllowed(string text)
+        {
+            return !_regex.IsMatch(text);
+        }
+
+        private void TextBoxDiscount_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            /*bool number = !IsTextAllowed(e.Text);
+            if (!number)
+            {
+                string previous = textBoxDiscount.Text;
+                e.Handled = false;
+                if ((int.Parse(textBoxDiscount.Text) < 0 || int.Parse(textBoxDiscount.Text) > 9))
+                {
+                    MessageBox.Show("Внимание. % не может принимать значения вне интервала [0-100]!!!", "ВНИМАНИЕ", MessageBoxButton.OK, MessageBoxImage.Error);
+                    textBoxDiscount.Text = previous;
+                    e.Handled = true;
+                }
+            }
+            else
+            {*/
+            e.Handled = !IsTextAllowed(e.Text);
+            //}
+        }
+
+        private MySqlCommand actionInDBCommand(MySqlConnection connection)
         {
             string query = "";
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
-                query = "INSERT INTO employees " +
-                                       "(Login, Password, Name, Lastname, Patronymic, Phone_Number, Email," +
-                                       " Passport_Data, Notes, Added, Last_Salary, Employee_Roles_id_Employee_Role, Employee_Positions_id_Employee_Position, Photo)" +
-                                       " VALUES (@login, @password, @name, @lastname, @patronymic, @phone, @email, @passport, @notes, @added, @lastSalary, @role, @position, @image);";
+                query = "INSERT INTO orders " +
+                                       "(Date_Of_Order, Discount_Per_Cent, Total_Price, Paid, Debt, Date_Of_Delievery, Notes," +
+                                       " Types_Of_Order_id_Type_Of_Order, Statuses_Of_Order_id_Status_Of_Order, Customers_id_Customer, Responsible, Executor)" +
+                                       " VALUES (@dateOrder, @discount, @totalPrice, @paid, @debt, @dateDelievery, @notes, @typeOrder, @statusOrder, @customer, @responsible, @executor);";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
-                query = "Update employees set Login = @login, Password = @password, Name = @name, Lastname = @lastname, Patronymic = @patronymic, Phone_Number = @phone, " +
-                        "Email = @email, Passport_Data = @passport, Notes = @notes, Added = @added, Last_Salary = @lastSalary, " +
-                        "Employee_Roles_id_Employee_Role = @role, Employee_Positions_id_Employee_Position = @position, Photo = @image" +
-                        " where Login = @oldLogin;";
+                query = "Update orders set Date_of_Order = @dateOrder, Discount_Per_Cent = @discount, Total_Price = @totalPrice, Paid = @paid, Debt = @debt," +
+                        " Date_Of_Delievery = @dateDelievery, Notes = @notes, Types_Of_Order_id_Type_Of_Order = @typeOrder, Statuses_Of_Order_id_Status_Of_Order = @statusOrder," +
+                        " Customers_id_Customer = @customer, Responsible = @responsible, Executor = @executor" +
+                        " where id_order = @idOrder;";
 
             }
 
             MySqlCommand command = new MySqlCommand(query, connection);
-            command.Parameters.AddWithValue("@login", textBoxLogin.Text);
-            command.Parameters.AddWithValue("@password", CheckBoxPassword.IsChecked.Value ? textBoxPassword.Text : PasswordBoxCurrent.Password);
-            command.Parameters.AddWithValue("@name", textBoxName.Text);
-            command.Parameters.AddWithValue("@lastname", textBoxLastname.Text);
-            command.Parameters.AddWithValue("@patronymic", textBoxPatronymic.Text);
-            command.Parameters.AddWithValue("@phone", textBoxPhone_Number.Text);
-            command.Parameters.AddWithValue("@email", textBoxEmail.Text);
-            command.Parameters.AddWithValue("@passport", textBoxPassportData.Text);
+            command.Parameters.AddWithValue("@dateOrder", datePickerDateOfOrder.SelectedDate.Value);
+            command.Parameters.AddWithValue("@discount", textBoxDiscount.Text == "" ? 0 : float.Parse(textBoxDiscount.Text));
+            command.Parameters.AddWithValue("@totalPrice", textBoxTotal_Price.Text == "" ? 0 : float.Parse(textBoxTotal_Price.Text));
+            command.Parameters.AddWithValue("@paid", textBoxPaid.Text == "" ? 0 : float.Parse(textBoxPaid.Text));
+            command.Parameters.AddWithValue("@debt", textBoxDebt.Text == "" ? 0 : float.Parse(textBoxDebt.Text));
+            command.Parameters.AddWithValue("@dateDelievery", datePickerDateOfDelievery.SelectedDate.Value);
             command.Parameters.AddWithValue("@notes", textBoxNotes.Text);
-            command.Parameters.AddWithValue("@added", datePickerAdded.SelectedDate.Value);
-            command.Parameters.AddWithValue("@lastSalary", float.Parse(textBoxLastSalary.Text == "" ? "0" : textBoxLastSalary.Text));
 
-            MySqlCommand commandRole = new MySqlCommand("select id_Employee_Role from employee_roles where Name_Of_Role = @role", connection);
-            commandRole.Parameters.AddWithValue("role", comboBoxRole.SelectedItem.ToString());
-            int id_role = -1;
-            using (DbDataReader reader = commandRole.ExecuteReader())
+            MySqlCommand commandType = new MySqlCommand("select id_Type_Of_Order from types_of_order where Name_Of_Type = @type", connection);
+            commandType.Parameters.AddWithValue("@type", comboBoxTypeOfOrder.SelectedItem.ToString());
+            int id_type = -1;
+            using (DbDataReader reader = commandType.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    id_role = reader.GetInt32(0);
+                    id_type = reader.GetInt32(0);
                 }
             }
 
-            MySqlCommand commandPosition = new MySqlCommand("select id_Employee_Position from employee_positions where Name_Of_position = @position", connection);
-            commandPosition.Parameters.AddWithValue("position", comboBoxPosition.SelectedItem.ToString());
-            int id_position = -1;
-            using (DbDataReader reader = commandRole.ExecuteReader())
+            MySqlCommand commandStatus = new MySqlCommand("select id_Status_Of_Order from statuses_of_order where Name_Of_Status = @status", connection);
+            commandStatus.Parameters.AddWithValue("@status", comboBoxStatusOfOrder.SelectedItem.ToString());
+            int id_status = -1;
+            using (DbDataReader reader = commandStatus.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    id_position = reader.GetInt32(0);
+                    id_status = reader.GetInt32(0);
                 }
             }
 
-            command.Parameters.AddWithValue("@role", id_role);
-            command.Parameters.AddWithValue("@position", id_position);
+            MySqlCommand commandCustomer = new MySqlCommand("select id_Customer from customers where nickname = @nickname", connection);
+            commandCustomer.Parameters.AddWithValue("@nickname", comboBoxCustomer.SelectedItem.ToString());
+            int id_customer = -1;
+            using (DbDataReader reader = commandCustomer.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    id_customer = reader.GetInt32(0);
+                }
+            }
+
+            command.Parameters.AddWithValue("@typeOrder", id_type);
+            command.Parameters.AddWithValue("@statusOrder", id_status);
+            command.Parameters.AddWithValue("@customer", id_customer);
+            command.Parameters.AddWithValue("@responsible", comboBoxExecutor.SelectedItem.ToString());
+            command.Parameters.AddWithValue("@executor", comboBoxExecutor.SelectedItem.ToString());
 
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
-                command.Parameters.AddWithValue("@oldLogin", old_login);
+                command.Parameters.AddWithValue("@idOrder", idOrder);
             }
 
             return command;
-        }*/
+        }
     }
 }

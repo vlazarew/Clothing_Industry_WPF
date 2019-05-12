@@ -106,7 +106,7 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
             catch
             {
                 transaction.Rollback();
-                MessageBox.Show("Ошибка добвления");
+                MessageBox.Show("Ошибка добавления");
             }
 
             connection.Close();

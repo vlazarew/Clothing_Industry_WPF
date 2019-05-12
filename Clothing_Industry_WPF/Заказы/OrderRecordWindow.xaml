@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Заказы"
         mc:Ignorable="d"
-       Title="Заказ" Height="435.334" Width="388">
+       Title="Заказ" Height="483.334" Width="684">
     <Grid Margin="0,0,0,5" HorizontalAlignment="Left" Width="694">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="59*"/>
@@ -14,27 +14,30 @@
         <Label x:Name="Header" Content="Заказы " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18"/>
         <Label Content="Дата заказа: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,51,0,0"/>
         <Label Content="Скидка %: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,82,0,0"/>
-        <Label Content="Оплачено: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,113,0,0"/>
-        <Label Content="Дата доставки: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,175,0,0"/>
-        <Label Content="Заметки: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,206,0,0"/>
-        <TextBox x:Name="textBoxDiscount" HorizontalAlignment="Left" Height="26" Margin="78,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264" TabIndex="2" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxPaid" HorizontalAlignment="Left" Height="26" Margin="82,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" TabIndex="3" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="71,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" TabIndex="11" VerticalContentAlignment="Center" FontSize="14"/>
-        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="178,18,0,0" VerticalAlignment="Top" Width="122" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True" TabIndex="16"/>
-        <Label Content="Долг: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,144,0,0"/>
-        <TextBox x:Name="textBoxDebt" HorizontalAlignment="Left" Height="26" Margin="82,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" TabIndex="4" VerticalContentAlignment="Center" FontSize="14"/>
-        <Label Content="Тип заказа: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,237,0,0"/>
-        <Label Content="Статус заказа: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="9,268,0,0"/>
-        <Label Content="Заказчик: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="9,299,0,0"/>
-        <Label Content="Ответственный: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="9,330,0,0"/>
-        <Label Content="Исполнитель: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="9,361,0,0"/>
-        <ComboBox x:Name="comboBoxTypeOfOrder" HorizontalAlignment="Left" Margin="97,237,0,0" VerticalAlignment="Top" Width="245" Height="26" FontSize="16" VerticalContentAlignment="Center"/>
-        <ComboBox x:Name="comboBoxStatusOfOrder" HorizontalAlignment="Left" Margin="97,268,0,0" VerticalAlignment="Top" Width="245" Height="26" FontSize="16" VerticalContentAlignment="Center"/>
-        <ComboBox x:Name="comboBoxCustomer" HorizontalAlignment="Left" Margin="97,299,0,0" VerticalAlignment="Top" Width="245" Height="26" FontSize="16" VerticalContentAlignment="Center"/>
-        <ComboBox x:Name="comboBoxResponsible" HorizontalAlignment="Left" Margin="109,330,0,0" VerticalAlignment="Top" Width="233" Height="26" FontSize="16" VerticalContentAlignment="Center"/>
-        <ComboBox x:Name="comboBoxExecutor" HorizontalAlignment="Left" Margin="109,361,0,0" VerticalAlignment="Top" Width="233" Height="26" FontSize="16" VerticalContentAlignment="Center"/>
-        <DatePicker x:Name="datePickerDateOfOrder" HorizontalAlignment="Left" Margin="97,48,0,0" VerticalAlignment="Top" FontSize="14" VerticalContentAlignment="Center" Width="245"/>
-        <DatePicker x:Name="datePickerDateOfDelievery" HorizontalAlignment="Left" Margin="104,174,0,0" VerticalAlignment="Top" FontSize="14" VerticalContentAlignment="Center" Width="238"/>
+        <Label Content="Оплачено: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,145,0,0"/>
+        <Label Content="Дата доставки: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,207,0,0"/>
+        <Label Content="Заметки: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,238,0,0"/>
+        <TextBox x:Name="textBoxDiscount" HorizontalAlignment="Left" Height="26" Margin="78,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxDiscount_PreviewTextInput"/>
+        <TextBox x:Name="textBoxPaid" HorizontalAlignment="Left" Height="26" Margin="82,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxPaid_PreviewTextInput"/>
+        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="71,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" TabIndex="7" VerticalContentAlignment="Center" FontSize="14"/>
+        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="122" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True" TabIndex="14" Grid.Column="1"/>
+        <Label Content="Долг: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,176,0,0"/>
+        <TextBox x:Name="textBoxDebt" HorizontalAlignment="Left" Height="26" Margin="82,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" TabIndex="5" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True"/>
+        <Label Content="Тип заказа: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,269,0,0"/>
+        <Label Content="Статус заказа: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="9,300,0,0"/>
+        <Label Content="Заказчик: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="9,331,0,0"/>
+        <Label Content="Ответственный: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="9,362,0,0"/>
+        <Label Content="Исполнитель: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="9,393,0,0"/>
+        <ComboBox x:Name="comboBoxTypeOfOrder" HorizontalAlignment="Left" Margin="97,269,0,0" VerticalAlignment="Top" Width="245" Height="26" FontSize="16" VerticalContentAlignment="Center" TabIndex="8"/>
+        <ComboBox x:Name="comboBoxStatusOfOrder" HorizontalAlignment="Left" Margin="97,300,0,0" VerticalAlignment="Top" Width="245" Height="26" FontSize="16" VerticalContentAlignment="Center" TabIndex="9"/>
+        <ComboBox x:Name="comboBoxCustomer" HorizontalAlignment="Left" Margin="97,331,0,0" VerticalAlignment="Top" Width="245" Height="26" FontSize="16" VerticalContentAlignment="Center" TabIndex="10"/>
+        <ComboBox x:Name="comboBoxResponsible" HorizontalAlignment="Left" Margin="109,362,0,0" VerticalAlignment="Top" Width="233" Height="26" FontSize="16" VerticalContentAlignment="Center" TabIndex="11"/>
+        <ComboBox x:Name="comboBoxExecutor" HorizontalAlignment="Left" Margin="109,393,0,0" VerticalAlignment="Top" Width="233" Height="26" FontSize="16" VerticalContentAlignment="Center" TabIndex="12"/>
+        <DatePicker x:Name="datePickerDateOfOrder" HorizontalAlignment="Left" Margin="97,48,0,0" VerticalAlignment="Top" FontSize="14" VerticalContentAlignment="Center" Width="245" TabIndex="1"/>
+        <DatePicker x:Name="datePickerDateOfDelievery" HorizontalAlignment="Left" Margin="104,206,0,0" VerticalAlignment="Top" FontSize="14" VerticalContentAlignment="Center" Width="238" TabIndex="6"/>
+        <Label Content="Итоговая стоимость: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,113,0,0"/>
+        <TextBox x:Name="textBoxTotal_Price" HorizontalAlignment="Left" Height="26" Margin="142,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True"/>
+        <Button x:Name="buttonListProducts" Content="Открыть список изделий" HorizontalAlignment="Left" Margin="311,17,0,0" VerticalAlignment="Top" Width="154" Height="25" IsDefault="True" TabIndex="13" Click="ButtonListProducts_Click"/>
 
     </Grid>
 </Window>

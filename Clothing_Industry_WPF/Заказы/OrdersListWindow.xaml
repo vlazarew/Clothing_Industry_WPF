@@ -25,6 +25,7 @@
                 <DataGridTextColumn Binding="{Binding Date_Of_Order}" ClipboardContentBinding="{x:Null}" Header="Дата заказа"/>
                 <DataGridTextColumn Binding="{Binding Products}" ClipboardContentBinding="{x:Null}" Header="Изделия"/>
                 <DataGridTextColumn Binding="{Binding Discount_Per_Cent}" ClipboardContentBinding="{x:Null}" Header="% скидки"/>
+                <DataGridTextColumn Binding="{Binding Total_Price}" ClipboardContentBinding="{x:Null}" Header="Полная стоимость"/>
                 <DataGridTextColumn Binding="{Binding Paid}" ClipboardContentBinding="{x:Null}" Header="Оплачено"/>
                 <DataGridTextColumn Binding="{Binding Debt}" ClipboardContentBinding="{x:Null}" Header="Долг"/>
                 <DataGridTextColumn Binding="{Binding Date_Of_Delievery}" ClipboardContentBinding="{x:Null}" Header="Дата доставки"/>
