@@ -1,5 +1,6 @@
 ﻿using Clothing_Industry_WPF.Баланс_клиентов;
 using Clothing_Industry_WPF.Заказы;
+using Clothing_Industry_WPF.Изделия;
 using Clothing_Industry_WPF.Клиенты;
 using Clothing_Industry_WPF.Материал;
 using Clothing_Industry_WPF.Приход_материала;
@@ -119,6 +120,11 @@ namespace Clothing_Industry_WPF
             window_receipt.Show();
         }
 
+        private void Products_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window_products = new ProductsListWindow();
+            window_products.Show();
+        }
         // ОТКЛЮЧЕНИЕ СИСТЕМЫ
         #region Отключение системы
         private void ButtonExit_Click(object sender, RoutedEventArgs e)

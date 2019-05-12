@@ -157,3 +157,15 @@ D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказ
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\Список изделий для заказа\OrderProductsRecordWindow.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\OrderRecordWindow.g.cs
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\OrderRecordWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\OrderRecordWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\Список изделий для заказа\OrderProductsListWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\OrdersListWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\Список изделий для заказа\OrderProductsRecordWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\OrderRecordWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\Список изделий для заказа\OrderProductsListWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\OrdersListWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\Список изделий для заказа\OrderProductsRecordWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\Список материалов и фурнитуры для изделия\MaterialsForProductsList.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\Список материалов и фурнитуры для изделия\MaterialsForProductsRecordWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\Список материалов и фурнитуры для изделия\MaterialsForProductsList.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\Список материалов и фурнитуры для изделия\MaterialsForProductsRecordWindow.g.cs

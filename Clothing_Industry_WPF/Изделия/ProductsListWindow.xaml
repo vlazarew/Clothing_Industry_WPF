@@ -25,7 +25,7 @@
                 <DataGridTextColumn Binding="{Binding Name_Of_Product}" ClipboardContentBinding="{x:Null}" Header="Название" IsReadOnly="True"/>
 
                 <DataGridTextColumn Binding="{Binding Fixed_Price}" ClipboardContentBinding="{x:Null}" Header="Цена"/>
-                <DataGridTextColumn Binding="{Binding Per_Cents}" ClipboardContentBinding="{x:Null}" Header="Стоимость за изготовление"/>
+                <DataGridTextColumn Binding="{Binding Per_Cents}" ClipboardContentBinding="{x:Null}" Header="Процент за изготовление"/>
                 <DataGridTextColumn Binding="{Binding Added_Price_For_Complexity}" ClipboardContentBinding="{x:Null}" Header="Дополнительная оплата"/>
                 <DataGridTextColumn Binding="{Binding Description}" ClipboardContentBinding="{x:Null}" Header="Описание"/>
             </DataGrid.Columns>

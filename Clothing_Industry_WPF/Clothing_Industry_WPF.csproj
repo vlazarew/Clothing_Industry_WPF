@@ -109,6 +109,12 @@
     <Compile Include="Изделия\ProductsRecordWindow.xaml.cs">
       <DependentUpon>ProductsRecordWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Изделия\Список материалов и фурнитуры для изделия\MaterialsForProductsList.xaml.cs">
+      <DependentUpon>MaterialsForProductsList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Изделия\Список материалов и фурнитуры для изделия\MaterialsForProductsRecordWindow.xaml.cs">
+      <DependentUpon>MaterialsForProductsRecordWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Клиенты\CustomersListWindow.xaml.cs">
       <DependentUpon>CustomersListWindow.xaml</DependentUpon>
     </Compile>
@@ -194,6 +200,14 @@
     <Page Include="Изделия\ProductsRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Изделия\Список материалов и фурнитуры для изделия\MaterialsForProductsList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Изделия\Список материалов и фурнитуры для изделия\MaterialsForProductsRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Клиенты\CustomersListWindow.xaml">
       <SubType>Designer</SubType>
@@ -344,5 +358,6 @@
   <ItemGroup>
     <Resource Include="Image1.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

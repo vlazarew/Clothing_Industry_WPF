@@ -38,39 +38,37 @@ namespace Clothing_Industry_WPF.Изделия
 
         private string getQueryText()
         {
-            string query_text = "select products.Name_Of_Product, table_materials_to_product.Count, products.Fixed_Price, products.Per_Cents," +
+            string query_text = "select products.id_product, products.Name_Of_Product, products.Fixed_Price, products.Per_Cents," +
                                 "products.Added_Price_For_Complexity, products.Description" +
-                                " from employees" +
-                                " join employee_positions on employees.Employee_Positions_id_Employee_Position = employee_positions.id_Employee_Position" +
-                                " join employee_roles on employees.Employee_Roles_id_Employee_Role = employee_roles.id_Employee_Role;";
+                                " from products;";
             return query_text;
         }
 
 
         private void ButtonCreateNew_Click(object sender, RoutedEventArgs e)
         {
-            //Window create_window = new ProductsRecordWindow(WaysToOpenForm.WaysToOpen.create);
-            //create_window.ShowDialog();
+            Window create_window = new ProductsRecordWindow(WaysToOpenForm.WaysToOpen.create);
+            create_window.ShowDialog();
             RefreshList();
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            List<string> id_ProductsToDelete = new List<string>();
+            List<int> id_ProductsToDelete = new List<int>();
             foreach (DataRowView row in productsGrid.SelectedItems)
             {
-                id_ProductsToDelete.Add(row.Row.ItemArray[0].ToString());
+                id_ProductsToDelete.Add((int)row.Row.ItemArray[0]);
             }
 
             DeleteFromDB(id_ProductsToDelete);
         }
 
-        private void DeleteFromDB(List<string> id_Products)
+        private void DeleteFromDB(List<int> id_Products)
         {
             MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
 
-            foreach (string id_Product in id_Products)
+            foreach (int id_Product in id_Products)
             {
                 MySqlTransaction transaction = connection.BeginTransaction();
 
@@ -97,12 +95,37 @@ namespace Clothing_Industry_WPF.Изделия
 
         private void ButtonRefresh_Click(object sender, RoutedEventArgs e)
         {
-
+            RefreshList();
         }
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
+            List<int> id_ProductsToDelete = new List<int>();
+            foreach (DataRowView row in productsGrid.SelectedItems)
+            {
+                id_ProductsToDelete.Add((int)row.Row.ItemArray[0]);
+            }
 
+            if (id_ProductsToDelete.Count > 0)
+            {
+                Window create_window;
+
+                //Первые окна мы открываем немодально, последнее модально, чтоб потом сразу обновились данные на форме
+                if (id_ProductsToDelete.Count > 1)
+                {
+                    for (int i = 0; i < id_ProductsToDelete.Count - 1; i++)
+                    {
+                        create_window = new ProductsRecordWindow(WaysToOpenForm.WaysToOpen.edit, id_ProductsToDelete[i]);
+                        create_window.Show();
+                    }
+                }
+                //Заключительная форма
+                create_window = new ProductsRecordWindow(WaysToOpenForm.WaysToOpen.edit, id_ProductsToDelete[id_ProductsToDelete.Count - 1]);
+                create_window.ShowDialog();
+
+                //Обновление списка
+                RefreshList();
+            }
         }
 
         private void ButtonFind_Click(object sender, RoutedEventArgs e)
@@ -142,17 +165,11 @@ namespace Clothing_Industry_WPF.Изделия
         {
             List<KeyValuePair<string, string>> describe = TakeDescribe();
             List<FindHandler.FieldParameters> result = new List<FindHandler.FieldParameters>();
-            result.Add(new FindHandler.FieldParameters("Login", "Логин", describe.Where(key => key.Key == "Login").First().Value));
-            result.Add(new FindHandler.FieldParameters("Name_Of_Role", "Роль", describe.Where(key => key.Key == "Name_Of_Role").First().Value));
-            result.Add(new FindHandler.FieldParameters("Lastname", "Фамилия", describe.Where(key => key.Key == "Lastname").First().Value));
-            result.Add(new FindHandler.FieldParameters("Name", "Имя", describe.Where(key => key.Key == "Name").First().Value));
-            result.Add(new FindHandler.FieldParameters("Patronymic", "Отчество", describe.Where(key => key.Key == "Patronymic").First().Value));
-            result.Add(new FindHandler.FieldParameters("Name_Of_Position", "Должность", describe.Where(key => key.Key == "Name_Of_Position").First().Value));
-            result.Add(new FindHandler.FieldParameters("Phone_Number", "Телефон", describe.Where(key => key.Key == "Phone_Number").First().Value));
-            result.Add(new FindHandler.FieldParameters("Email", "Email", describe.Where(key => key.Key == "Email").First().Value));
-            result.Add(new FindHandler.FieldParameters("Passport_Data", "Паспортные данные", describe.Where(key => key.Key == "Passport_Data").First().Value));
-            result.Add(new FindHandler.FieldParameters("Added", "Дата добавления", describe.Where(key => key.Key == "Added").First().Value));
-            result.Add(new FindHandler.FieldParameters("Last_Salary", "З/п за прошлый месяц", describe.Where(key => key.Key == "Last_Salary").First().Value));
+            result.Add(new FindHandler.FieldParameters("Name_Of_Product", "Название", describe.Where(key => key.Key == "Name_Of_Product").First().Value));
+            result.Add(new FindHandler.FieldParameters("Fixed_Price", "Цена", describe.Where(key => key.Key == "Fixed_Price").First().Value));
+            result.Add(new FindHandler.FieldParameters("Per_Cents", "Процент за изготовление", describe.Where(key => key.Key == "Per_Cents").First().Value));
+            result.Add(new FindHandler.FieldParameters("Added_Price_For_Complexity", "Дополнительная оплата", describe.Where(key => key.Key == "Added_Price_For_Complexity").First().Value));
+            result.Add(new FindHandler.FieldParameters("Description", "Описание", describe.Where(key => key.Key == "Description").First().Value));
 
             return result;
         }
@@ -164,9 +181,7 @@ namespace Clothing_Industry_WPF.Изделия
             connection.Open();
 
             // Вот тут нужно проходить по всем таблицам, что мы используем в итоговом запросе
-            DescribeHelper("describe employees", connection, describe);
-            DescribeHelper("describe employee_roles", connection, describe);
-            DescribeHelper("describe employee_positions", connection, describe);
+            DescribeHelper("describe products", connection, describe);
             // Вот тут конец
 
             connection.Close();
@@ -189,12 +204,94 @@ namespace Clothing_Industry_WPF.Изделия
 
         private void ButtonFilters_Click(object sender, RoutedEventArgs e)
         {
+            // Список полей, по которым мы можем делать отбор
+            List<FindHandler.FieldParameters> listOfField = FillFindFields();
+            var filterWindow = new FilterWindow(currentFilterDescription, listOfField);
+            if (filterWindow.ShowDialog().Value)
+            {
+                currentFilterDescription = filterWindow.Result;
+            }
+            else
+            {
+                return;
+            }
 
+            string editedQuery = EditFilterQuery(currentFilterDescription, listOfField);
+
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            DataTable dataTable = new DataTable();
+            MySqlCommand command = new MySqlCommand(editedQuery, connection);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            adapter.Fill(dataTable);
+            productsGrid.ItemsSource = dataTable.DefaultView;
+            connection.Close();
+        }
+
+        private string EditFilterQuery(List<FilterHandler.FilterDescription> filter, List<FindHandler.FieldParameters> listOfField)
+        {
+            string result = getQueryText();
+
+            foreach (var filterRecord in filter)
+            {
+                if (filterRecord.active)
+                {
+                    result = result.Replace(";", " where ");
+                    break;
+                }
+            }
+
+            int index = 0;
+            foreach (var filterRecord in filter)
+            {
+                if (filterRecord.active)
+                {
+                    result += AddСondition(filterRecord, listOfField);
+                    index++;
+                    if (index < filter.Count)
+                    {
+                        result += " or ";
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        private string AddСondition(FilterHandler.FilterDescription filter, List<FindHandler.FieldParameters> listOfField)
+        {
+            string result = "";
+            var field = listOfField.Where(kvp => kvp.application_name == filter.field).First().db_name;
+            var typeFilter = FilterHandler.TakeFilter(filter.typeOfFilter);
+            if (filter.typeOfFilter == TypeOfFilter.TypesOfFilter.isFilled)
+            {
+                result += "NOT ";
+            }
+
+            if (!filter.isDate)
+            {
+                result += string.Format(field + " " + typeFilter + "\"{0}\"", filter.value);
+            }
+            else
+            {
+                string day = filter.value.Substring(0, 2);
+                string month = filter.value.Substring(3, 2);
+                string year = filter.value.Substring(6, 4);
+                result += string.Format(field + " " + typeFilter + " \'{0}-{1}-{2}\'", year, month, day);
+                //result += string.Format(" DATE_FORMAT(" + field + ", '%d.%m.%Y') = \'{0}\'", filter.value);
+            }
+
+            /*if (filter.typeOfFilter == TypeOfFilter.TypesOfFilter.contains)
+            {
+                result += ") ";
+            }*/
+
+            return result;
         }
 
         private void ButtonCancelFind_Click(object sender, RoutedEventArgs e)
         {
-
+            currentFindDescription = new FindHandler.FindDescription();
+            RefreshList();
         }
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
@@ -221,13 +318,15 @@ namespace Clothing_Industry_WPF.Изделия
             adapter.Fill(dataTable);
             productsGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
+
+            productsGrid.SelectedIndex = 0;
         }
 
 
         private void DataGridCell_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             int row_index = productsGrid.SelectedIndex;
-            string id_Product = "";
+            int id_Product = -1;
             int current_row = 0;
             foreach (DataRowView row in productsGrid.Items)
             {
@@ -236,18 +335,33 @@ namespace Clothing_Industry_WPF.Изделия
                     current_row++;
                     continue;
                 }
-                id_Product = row.Row.ItemArray[0].ToString();
+                id_Product = (int)row.Row.ItemArray[0];
                 break;
             }
 
-            //Window create_window = new ProductsRecordWindow(WaysToOpenForm.WaysToOpen.create);
-            //create_window.ShowDialog();
+            Window create_window = new ProductsRecordWindow(WaysToOpenForm.WaysToOpen.edit, id_Product);
+            create_window.ShowDialog();
             RefreshList();
         }
 
         private void ButtonOpenList_Click(object sender, RoutedEventArgs e)
         {
-
+            int row_index = productsGrid.SelectedIndex;
+            int id_Product = -1;
+            int current_row = 0;
+            foreach (DataRowView row in productsGrid.Items)
+            {
+                if (current_row != row_index)
+                {
+                    current_row++;
+                    continue;
+                }
+                id_Product = (int)row.Row.ItemArray[0];
+                break;
+            }
+            Window listProduct = new MaterialsForProductsList(id_Product);
+            listProduct.ShowDialog();
+            RefreshList();
         }
     }
 
