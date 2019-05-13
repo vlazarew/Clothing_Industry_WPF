@@ -141,7 +141,7 @@
     <Compile Include="Поиск и фильтры\Фильтр\FilterRecordWindow.xaml.cs">
       <DependentUpon>FilterRecordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Приход_материала\ReceiptsMaterialRecordWindow.xaml.cs">
+    <Compile Include="Приход_материала\Содержание документа прихода\ReceiptsMaterialRecordWindow.xaml.cs">
       <DependentUpon>ReceiptsMaterialRecordWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Приход_материала\ReceiptsOfMaterialsWindow.xaml.cs">
@@ -150,7 +150,7 @@
     <Compile Include="Приход_материала\ReceiptsRecordDocumentWindow.xaml.cs">
       <DependentUpon>ReceiptsRecordDocumentWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Приход_материала\ReceiptsRecordWindow.xaml.cs">
+    <Compile Include="Приход_материала\Содержание документа прихода\ReceiptsRecordWindow.xaml.cs">
       <DependentUpon>ReceiptsRecordWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Состояние_склада\StoreListWindow.xaml.cs">
@@ -237,7 +237,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Приход_материала\ReceiptsMaterialRecordWindow.xaml">
+    <Page Include="Приход_материала\Содержание документа прихода\ReceiptsMaterialRecordWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -249,7 +249,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Приход_материала\ReceiptsRecordWindow.xaml">
+    <Page Include="Приход_материала\Содержание документа прихода\ReceiptsRecordWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -354,9 +354,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Image1.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

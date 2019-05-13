@@ -23,23 +23,24 @@
 
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name_Of_Document}" ClipboardContentBinding="{x:Null}" Header="Название документа" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Default_Folder}" ClipboardContentBinding="{x:Null}" Header="Путь документа"/>
                 <DataGridTextColumn Binding="{Binding Date_Of_Entry}" ClipboardContentBinding="{x:Null}" Header="Дата прихода"/>
+                <DataGridTextColumn Binding="{Binding Notes}" ClipboardContentBinding="{x:Null}" Header="Доп. сведения"/>
+                <DataGridTextColumn Binding="{Binding Total_Price}" ClipboardContentBinding="{x:Null}" Header="Сумма прихода"/>
                 <DataGridTextColumn Binding="{Binding Name_Of_Supplier}" ClipboardContentBinding="{x:Null}" Header="Поставщик"/>
                 <DataGridTextColumn Binding="{Binding Name_Of_State}" ClipboardContentBinding="{x:Null}" Header="Статус"/>
                 <DataGridTextColumn Binding="{Binding Name_Of_Type}" ClipboardContentBinding="{x:Null}" Header="Тип транзакции"/>
                 <!-- Считается по формуле кол-во материала на стоимость одной штуки из таблички материалов-->
-                
-                <DataGridTextColumn Binding="{Binding Default_Folder}" ClipboardContentBinding="{x:Null}" Header="Путь документа"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button Name ="ButtonCreateNew" Content="Создать" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>
         <Button x:Name ="ButtonDelete" Content="Удалить" HorizontalAlignment="Left" Height="25" Margin="95,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
         <Button x:Name ="ButtonOpen" Content="Открыть документ" HorizontalAlignment="Left" Height="25" Margin="180,10,0,0" VerticalAlignment="Top" Width="112" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonOpen_Click"/>
         <Button x:Name ="ButtonRefresh" Content="Обновить" HorizontalAlignment="Left" Height="25" Margin="297,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonRefresh_Click"/>
-        <Button x:Name ="ButtonEdit" Content="Изменить документ" HorizontalAlignment="Left" Height="25" Margin="382,10,0,0" VerticalAlignment="Top" Width="124" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonEdit_Click"/>
+        <Button x:Name ="ButtonEdit" Content="Изменить " HorizontalAlignment="Left" Height="25" Margin="382,10,0,0" VerticalAlignment="Top" Width="85" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonEdit_Click"/>
         <Button x:Name="ButtonExit" Content="Выход" Grid.Column="2" HorizontalAlignment="Left" Margin="140,10,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" Height="25"/>
-        <Button x:Name ="ButtonFind" Content="Найти" HorizontalAlignment="Left" Height="25" Margin="511,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFind_Click"/>
-        <Button x:Name="buttonCancelFind" Content="Отменить поиск" Margin="585,10,8,0" VerticalAlignment="Top" Height="25" Click="ButtonCancelFind_Click" RenderTransformOrigin="0.665,0.498"/>
-        <Button x:Name ="ButtonFilters" Content="Фильтры" HorizontalAlignment="Left" Height="25" Margin="689,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFilters_Click" Grid.ColumnSpan="3"/>
+        <Button x:Name ="ButtonFind" Content="Найти" HorizontalAlignment="Left" Height="25" Margin="472,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFind_Click"/>
+        <Button x:Name="buttonCancelFind" Content="Отменить поиск" Margin="546,10,47,0" VerticalAlignment="Top" Height="25" Click="ButtonCancelFind_Click" RenderTransformOrigin="0.665,0.498"/>
+        <Button x:Name ="ButtonFilters" Content="Фильтры" HorizontalAlignment="Left" Height="25" Margin="650,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFilters_Click" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

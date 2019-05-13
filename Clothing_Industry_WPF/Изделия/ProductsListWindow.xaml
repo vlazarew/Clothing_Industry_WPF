@@ -32,12 +32,12 @@
         </DataGrid>
         <Button Name ="ButtonCreateNew" Content="Создать" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>
         <Button x:Name ="ButtonDelete" Content="Удалить" HorizontalAlignment="Left" Height="25" Margin="95,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
-        <Button x:Name ="ButtonRefresh" Content="Обновить" HorizontalAlignment="Left" Height="25" Margin="180,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonRefresh_Click"/>
-        <Button x:Name ="ButtonEdit" Content="Изменить выделенное" HorizontalAlignment="Left" Height="25" Margin="265,10,0,0" VerticalAlignment="Top" Width="139" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonEdit_Click"/>
-        <Button x:Name ="ButtonOpenList" Content="Список материалов/фурнитуры" HorizontalAlignment="Left" Height="25" Margin="265,10,0,0" VerticalAlignment="Top" Width="183" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonOpenList_Click"/>
-        <Button x:Name="ButtonExit" Content="Выход" Grid.Column="2" HorizontalAlignment="Left" Margin="140,10,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" Height="25"/>
-        <Button x:Name ="ButtonFind" Content="Найти" Height="25" Margin="453,10,170,0" VerticalAlignment="Top" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFind_Click"/>
-        <Button x:Name="buttonCancelFind" Content="Отменить поиск" HorizontalAlignment="Left" Margin="527,10,0,0" VerticalAlignment="Top" Width="99" Height="25" Click="ButtonCancelFind_Click"/>
-        <Button x:Name ="ButtonFilters" Content="Фильтры" HorizontalAlignment="Left" Height="25" Margin="631,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFilters_Click" Grid.ColumnSpan="2"/>
+        <Button x:Name ="ButtonRefresh" Content="Обновить" HorizontalAlignment="Left" Height="25" Margin="180,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonRefresh_Click"/>
+        <Button x:Name ="ButtonEdit" Content="Изменить выделенное" HorizontalAlignment="Left" Height="25" Margin="265,10,0,0" VerticalAlignment="Top" Width="139" RenderTransformOrigin="1.194,0.333" TabIndex="4" IsTabStop="False" Click="ButtonEdit_Click"/>
+        <Button x:Name ="ButtonOpenList" Content="Список материалов/фурнитуры" HorizontalAlignment="Left" Height="25" Margin="409,10,0,0" VerticalAlignment="Top" Width="183" RenderTransformOrigin="1.194,0.333" TabIndex="5" IsTabStop="False" Click="ButtonOpenList_Click"/>
+        <Button x:Name="ButtonExit" Content="Выход" Grid.Column="2" HorizontalAlignment="Left" Margin="140,10,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" TabIndex="9" Visibility="Visible" Click="ButtonExit_Click" Height="25"/>
+        <Button x:Name ="ButtonFind" Content="Найти" Height="25" Margin="597,10,26,0" VerticalAlignment="Top" RenderTransformOrigin="1.194,0.333" TabIndex="6" IsTabStop="False" Click="ButtonFind_Click"/>
+        <Button x:Name="buttonCancelFind" Content="Отменить поиск" HorizontalAlignment="Left" Margin="671,10,0,0" VerticalAlignment="Top" Width="99" Height="25" TabIndex="7" Click="ButtonCancelFind_Click" Grid.ColumnSpan="3"/>
+        <Button x:Name ="ButtonFilters" Content="Фильтры" HorizontalAlignment="Left" Height="25" Margin="35,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="8" IsTabStop="False" Click="ButtonFilters_Click" Grid.Column="2"/>
     </Grid>
 </Window>

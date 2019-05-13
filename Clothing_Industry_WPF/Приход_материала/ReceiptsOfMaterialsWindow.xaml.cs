@@ -59,13 +59,14 @@ namespace Clothing_Industry_WPF.Приход_материала
 
         private string getQueryText()
         {
-            string query_text = "select documents_of_receipts.id_Document_Of_Receipt, documents_of_receipts.Name_Of_Document," +
-                                "DATE_FORMAT( documents_of_receipts.Date_Of_Entry, \"%d.%m.%Y\") as Date_Of_Entry, suppliers.Name_Of_Supplier, payment_states.Name_Of_State, type_of_transactions.Name_Of_Type,  documents_of_receipts.Default_Folder" +
-                                " from documents_of_receipts" +
-                                " join receipt_of_materials on documents_of_receipts.id_Document_Of_Receipt = receipt_of_materials.Documents_Of_Receipts_id_Document_Of_Receipt" +
-                                " join payment_states on receipt_of_materials.Payment_States_id_Payment_States = payment_states.id_Payment_States" +
-                                " join type_of_transactions on receipt_of_materials.Type_Of_Transactions_id_Type_Of_Transaction = type_of_transactions.id_Type_Of_Transaction" +
-                                " join suppliers on receipt_of_materials.Suppliers_id_Supplier = suppliers.id_Supplier;";
+            string query_text = "select receipt_of_materials.id_Document_Of_Receipt, receipt_of_materials.Default_Folder, receipt_of_materials.Name_Of_Document, " +
+                                 "DATE_FORMAT(receipt_of_materials.Date_Of_Entry, '%d.%m.%Y') as Date_Of_Entry, receipt_of_materials.Notes, " +
+                                 "suppliers.Name_Of_Supplier, payment_states.Name_Of_State, " +
+                                 "type_of_transactions.Name_Of_Type, receipt_of_materials.Notes, receipt_of_materials.Total_Price " +
+                                 "from receipt_of_materials " +
+                                 "join payment_states on receipt_of_materials.Payment_States_id_Payment_States = payment_states.id_Payment_States " +
+                                 "join type_of_transactions on receipt_of_materials.Type_Of_Transactions_id_Type_Of_Transaction = type_of_transactions.id_Type_Of_Transaction " +
+                                 "join suppliers on receipt_of_materials.Suppliers_id_Supplier = suppliers.id_Supplier;";
             return query_text;
         }
 
@@ -118,7 +119,7 @@ namespace Clothing_Industry_WPF.Приход_материала
             {
                 MySqlTransaction transaction = connection.BeginTransaction();
 
-                string queryTable = "delete from documents_of_receipts where id_Document_Of_Receipt = @id_Document_Of_Receipt";
+                string queryTable = "delete from receipt_of_materials where id_Document_Of_Receipt = @id_Document_Of_Receipt";
 
                 MySqlCommand commandTable = new MySqlCommand(queryTable, connection, transaction);
                 commandTable.Parameters.AddWithValue("@id_Document_Of_Receipt", id_Document_Of_Receipt);
@@ -221,13 +222,15 @@ namespace Clothing_Industry_WPF.Приход_материала
         {
             List<KeyValuePair<string, string>> describe = TakeDescribe();
             List<FindHandler.FieldParameters> result = new List<FindHandler.FieldParameters>();
-            result.Add(new FindHandler.FieldParameters("Name_Of_Document", "Название документа", describe.Where(key => key.Key == "Name_Of_Document").First().Value));       
+            result.Add(new FindHandler.FieldParameters("Name_Of_Document", "Название документа", describe.Where(key => key.Key == "Name_Of_Document").First().Value));
+            result.Add(new FindHandler.FieldParameters("Default_Folder", "Путь документа", describe.Where(key => key.Key == "Default_Folder").First().Value));
             result.Add(new FindHandler.FieldParameters("Date_Of_Entry", "Дата прихода", describe.Where(key => key.Key == "Date_Of_Entry").First().Value));
+            result.Add(new FindHandler.FieldParameters("Notes", "Доп. сведения", describe.Where(key => key.Key == "Notes").First().Value));
+            result.Add(new FindHandler.FieldParameters("Total_Price", "Сумма прихода", describe.Where(key => key.Key == "Total_Price").First().Value));
             result.Add(new FindHandler.FieldParameters("Name_Of_Supplier", "Поставщик", describe.Where(key => key.Key == "Name_Of_Supplier").First().Value));
             result.Add(new FindHandler.FieldParameters("Name_Of_State", "Статус", describe.Where(key => key.Key == "Name_Of_State").First().Value));
             result.Add(new FindHandler.FieldParameters("Name_Of_Type", "Тип транзакции", describe.Where(key => key.Key == "Name_Of_Type").First().Value));
-            result.Add(new FindHandler.FieldParameters("Default_Folder", "Путь документа", describe.Where(key => key.Key == "Default_Folder").First().Value));
-
+          
             return result;
         }
 
@@ -238,7 +241,6 @@ namespace Clothing_Industry_WPF.Приход_материала
             connection.Open();
 
             // Вот тут нужно проходить по всем таблицам, что мы используем в итоговом запросе
-            DescribeHelper("describe documents_of_receipts", connection, describe);
             DescribeHelper("describe receipt_of_materials", connection, describe);
             DescribeHelper("describe payment_states", connection, describe);
             DescribeHelper("describe type_of_transactions", connection, describe);
@@ -271,21 +273,108 @@ namespace Clothing_Industry_WPF.Приход_материала
 
         private void ButtonFilters_Click(object sender, RoutedEventArgs e)
         {
+            // Список полей, по которым мы можем делать отбор
             List<FindHandler.FieldParameters> listOfField = FillFindFields();
-            var findWindow = new FindWindow(currentFindDescription, listOfField);
-            if (findWindow.ShowDialog().Value)
+            var filterWindow = new FilterWindow(currentFilterDescription, listOfField);
+            if (filterWindow.ShowDialog().Value)
             {
-                currentFindDescription = findWindow.Result;
+                currentFilterDescription = filterWindow.Result;
             }
             else
             {
                 return;
             }
+
+            string editedQuery = EditFilterQuery(currentFilterDescription, listOfField);
+
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            DataTable dataTable = new DataTable();
+            MySqlCommand command = new MySqlCommand(editedQuery, connection);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            adapter.Fill(dataTable);
+            receiptsGrid.ItemsSource = dataTable.DefaultView;
+            connection.Close();
+        }
+
+        private string EditFilterQuery(List<FilterHandler.FilterDescription> filter, List<FindHandler.FieldParameters> listOfField)
+        {
+            string result = getQueryText();
+
+            foreach (var filterRecord in filter)
+            {
+                if (filterRecord.active)
+                {
+                    result = result.Replace(";", " where ");
+                    break;
+                }
+            }
+
+            int index = 0;
+            foreach (var filterRecord in filter)
+            {
+                if (filterRecord.active)
+                {
+                    result += AddСondition(filterRecord, listOfField);
+                    index++;
+                    if (index < filter.Count)
+                    {
+                        result += " or ";
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        private string AddСondition(FilterHandler.FilterDescription filter, List<FindHandler.FieldParameters> listOfField)
+        {
+            string result = "";
+            var field = listOfField.Where(kvp => kvp.application_name == filter.field).First().db_name;
+            var typeFilter = FilterHandler.TakeFilter(filter.typeOfFilter);
+            if (filter.typeOfFilter == TypeOfFilter.TypesOfFilter.isFilled)
+            {
+                result += "NOT ";
+            }
+
+            if (!filter.isDate)
+            {
+                result += string.Format(field + " " + typeFilter + "\"{0}\"", filter.value);
+            }
+            else
+            {
+                string day = filter.value.Substring(0, 2);
+                string month = filter.value.Substring(3, 2);
+                string year = filter.value.Substring(6, 4);
+                result += string.Format(field + " " + typeFilter + " \'{0}-{1}-{2}\'", year, month, day);
+                //result += string.Format(" DATE_FORMAT(" + field + ", '%d.%m.%Y') = \'{0}\'", filter.value);
+            }
+
+            /*if (filter.typeOfFilter == TypeOfFilter.TypesOfFilter.contains)
+            {
+                result += ") ";
+            }*/
+
+            return result;
         }
 
         private void ButtonOpen_Click(object sender, RoutedEventArgs e)
         {
-
+            int row_index = receiptsGrid.SelectedIndex;
+            int id_Document_Of_Receipts = -1;
+            int current_row = 0;
+            foreach (DataRowView row in receiptsGrid.Items)
+            {
+                if (current_row != row_index)
+                {
+                    current_row++;
+                    continue;
+                }
+                id_Document_Of_Receipts = (int)row.Row.ItemArray[0];
+                break;
+            }
+            Window receiptsmaterial = new ReceiptsRecordWindow(id_Document_Of_Receipts);
+            receiptsmaterial.ShowDialog();
+            RefreshList();
         }
     }
 }

@@ -62,8 +62,12 @@ namespace Clothing_Industry_WPF.Изделия
                     textBoxName_Of_Product.Text = reader.GetString(0);
                     textBoxFixed_Price.Text = reader.GetString(1);
                     textBoxPer_Cents.Text = reader.GetString(2);
-                    textBoxAdded_Price_For_Complexity.Text = reader.GetString(3);
-                    textBoxDescription.Text = reader.GetString(4);
+                    if (reader.GetValue(3).ToString() != "")
+                        textBoxAdded_Price_For_Complexity.Text = reader.GetString(3);
+                    if (reader.GetValue(4).ToString() != "")
+                    {
+                        textBoxDescription.Text = reader.GetString(4);
+                    }
 
                     image_bytes = null;
                     try
