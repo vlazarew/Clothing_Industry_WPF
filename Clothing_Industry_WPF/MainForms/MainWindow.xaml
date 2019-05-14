@@ -164,7 +164,7 @@
                 <TextBlock x:Name="Orders" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Orders_PreviewMouseLeftButtonUp">
                     <Hyperlink>Заказы</Hyperlink>
                 </TextBlock>
-                <TextBlock x:Name="Fittings" FontSize="24" Margin="5">
+                <TextBlock x:Name="Fittings" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Fittings_PreviewMouseLeftButtonUp">
                     <Hyperlink>Примерки</Hyperlink>
                 </TextBlock>
                 <TextBlock x:Name="BalanceOfClients" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="BalanceOfClients_PreviewMouseLeftButtonUp">
