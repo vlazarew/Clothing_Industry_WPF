@@ -3,6 +3,7 @@ using Clothing_Industry_WPF.Заказы;
 using Clothing_Industry_WPF.Изделия;
 using Clothing_Industry_WPF.Клиенты;
 using Clothing_Industry_WPF.Материал;
+using Clothing_Industry_WPF.Примерки;
 using Clothing_Industry_WPF.Приход_материала;
 using Clothing_Industry_WPF.Состояние_склада;
 using Clothing_Industry_WPF.Сотрудники;
@@ -120,11 +121,20 @@ namespace Clothing_Industry_WPF
             window_receipt.Show();
         }
 
+        // При нажатии на вкладку "Изделия"
         private void Products_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Window window_products = new ProductsListWindow();
             window_products.Show();
         }
+
+        // При нажатии на вкладку "Прмиерки"
+        private void Fittings_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window_fittings = new FittingsListWindow();
+            window_fittings.Show();
+        }
+
         // ОТКЛЮЧЕНИЕ СИСТЕМЫ
         #region Отключение системы
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
@@ -136,6 +146,7 @@ namespace Clothing_Industry_WPF
         {
             Application.Current.Shutdown();
         }
+
 
         #endregion
 

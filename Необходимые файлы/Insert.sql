@@ -77,6 +77,13 @@ insert into payment_states (Name_Of_State) values ('Оплачено');
 insert into type_of_transactions (Name_Of_Type) values ('Наличные');
 insert into type_of_transactions (Name_Of_Type) values ('По карте');
 
+-- Тип примерки
+
+insert into types_of_fitting (Name_Of_Type) values ('Первичная');
+insert into types_of_fitting (Name_Of_Type) values ('Вторичная');
+insert into types_of_fitting (Name_Of_Type) values ('На дому');
+insert into types_of_fitting (Name_Of_Type) values ('В офисе');
+
 -- Поставщики
 
 insert into suppliers (Name_Of_Supplier) values ('ИП Хорбачёв');
@@ -98,18 +105,41 @@ insert into employees values('admin','admin','Сергей','Кудрин','Се
 insert into customers (Name,Lastname,Patronymic,Address,Phone_Number,Nickname,Birthday,Passport_data,Size,Parameters,Notes,Photo,Customer_Statuses_id_Status,Order_Channels_id_Channel,Employees_Login)
   values ('Людмила','Иванова','Ивановна','Воронеж, проспект Революции 5 кв. 11','8934222222','Ludmurik201','1991-03-07','2012 585858','44','90.60.90','Отправка СДЭКом',null,1,1,'admin');
 
+insert into customers (Name,Lastname,Patronymic,Address,Phone_Number,Nickname,Birthday,Passport_data,Size,Parameters,Notes,Photo,Customer_Statuses_id_Status,Order_Channels_id_Channel,Employees_Login)
+  values ('Виталий','Лишин','Григорьевич','Воронеж, ул. Карла Маркса д. 57','890777777','Lishai','1999-05-17','2014 999999','44','95.70.90','Дрон',null,3,4,'Sidorova');
+
+insert into customers (Name,Lastname,Patronymic,Address,Phone_Number,Nickname,Birthday,Passport_data,Size,Parameters,Notes,Photo,Customer_Statuses_id_Status,Order_Channels_id_Channel,Employees_Login)
+  values ('Борис','Бритва','Владимирович','Воронеж, проспект Лениский д. 75 кв. 81','8934222345','PeresylkaVeka','1998-11-16','2012 072497','59','190.160.95','Отправка 90-ым автобусом',null,2,3,'Petrov');
+
 -- Заказы 
 
 insert into orders (Date_Of_Order,Discount_Per_Cent,Total_Price,Paid,Debt,Date_Of_Delievery,Notes,Types_Of_Order_id_Type_Of_Order,Statuses_Of_Order_id_Status_Of_Order,Customers_id_Customer,Responsible,Executor)
   values ('2019-05-05',0,1500,300,200,'2019-06-05','',1,1,1,'admin','Petrov');
 
+insert into orders (Date_Of_Order,Discount_Per_Cent,Total_Price,Paid,Debt,Date_Of_Delievery,Notes,Types_Of_Order_id_Type_Of_Order,Statuses_Of_Order_id_Status_Of_Order,Customers_id_Customer,Responsible,Executor)
+  values ('2018-10-15',0,4500,4500,0,'2019-05-20','',1,1,1,'admin','admin');
+
+insert into orders (Date_Of_Order,Discount_Per_Cent,Total_Price,Paid,Debt,Date_Of_Delievery,Notes,Types_Of_Order_id_Type_Of_Order,Statuses_Of_Order_id_Status_Of_Order,Customers_id_Customer,Responsible,Executor)
+  values ('2019-04-27',0,500,300,200,'2019-06-05','',1,1,1,'Sidorova','Sidorova');
+
+-- Примерки
+
+insert into fittings(Customers_id_Customer, Orders_id_Order, Date, Time, Notes, Types_Of_Fitting_id_Type_Of_Fitting)
+	values (1, 1, '2019-06-05', '14:00:00', '', 1);
+    
+insert into fittings(Customers_id_Customer, Orders_id_Order, Date, Time, Notes, Types_Of_Fitting_id_Type_Of_Fitting)
+	values (2, 3, '2019-05-20', '18:00:00', '', 2);
+    
+insert into fittings(Customers_id_Customer, Orders_id_Order, Date, Time, Notes, Types_Of_Fitting_id_Type_Of_Fitting)
+	values (3, 3, '2019-06-05', '12:30:00', '', 3);
+
 -- Документ прихода
 
-insert into documents_of_receipts (Default_Folder,Name_Of_Document, Date_Of_Entry, Amount, Price_For_One, Total_Price, Materials_Vendor_Code) values ('2019','Приход №1','2019-05-05', 15, 10, 150, 100001);
-insert into documents_of_receipts (Default_Folder,Name_Of_Document, Date_Of_Entry, Amount, Price_For_One, Total_Price, Materials_Vendor_Code) values ('2018','Приход №196','2018-10-18', 20, 10, 200, 100002);
-insert into documents_of_receipts (Default_Folder,Name_Of_Document, Date_Of_Entry, Amount, Price_For_One, Total_Price, Materials_Vendor_Code) values ('2019','Приход №2','2019-05-06', 15, 20, 300, 100001);
+-- insert into documents_of_receipts (Default_Folder,Name_Of_Document, Date_Of_Entry, Amount, Price_For_One, Total_Price, Materials_Vendor_Code) values ('2019','Приход №1','2019-05-05', 15, 10, 150, 100001);
+-- insert into documents_of_receipts (Default_Folder,Name_Of_Document, Date_Of_Entry, Amount, Price_For_One, Total_Price, Materials_Vendor_Code) values ('2018','Приход №196','2018-10-18', 20, 10, 200, 100002);
+-- insert into documents_of_receipts (Default_Folder,Name_Of_Document, Date_Of_Entry, Amount, Price_For_One, Total_Price, Materials_Vendor_Code) values ('2019','Приход №2','2019-05-06', 15, 20, 300, 100001);
 
 -- Поступление материалов
 
-insert into receipt_of_materials (Documents_Of_Receipts_id_Document_Of_Receipt,Summ,Notes,Payment_States_id_Payment_States,Type_Of_Transactions_id_Type_Of_Transaction,Suppliers_id_Supplier)
-values (1,200000,'Cиний бархат 30 м.п. по 250р. за 1 м.п. узкое кружево с цветочками 300 м.п. по 70 р. за 1 м.п.',1,2,1);
+-- insert into receipt_of_materials (Documents_Of_Receipts_id_Document_Of_Receipt,Summ,Notes,Payment_States_id_Payment_States,Type_Of_Transactions_id_Type_Of_Transaction,Suppliers_id_Supplier)
+-- values (1,200000,'Cиний бархат 30 м.п. по 250р. за 1 м.п. узкое кружево с цветочками 300 м.п. по 70 р. за 1 м.п.',1,2,1);

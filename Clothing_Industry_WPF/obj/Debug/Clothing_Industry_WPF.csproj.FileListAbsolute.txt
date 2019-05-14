@@ -139,14 +139,10 @@ D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_мат
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\ReceiptsRecordDocumentWindow.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\Список изделий для заказа\OrderProductsListWindow.g.cs
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\OrdersListWindow.g.cs
-D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\ReceiptsMaterialRecordWindow.g.cs
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\ReceiptsOfMaterialsWindow.g.cs
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\ReceiptsRecordDocumentWindow.g.cs
-D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\ReceiptsRecordWindow.g.cs
-D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\ReceiptsMaterialRecordWindow.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\ReceiptsOfMaterialsWindow.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\ReceiptsRecordDocumentWindow.baml
-D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\ReceiptsRecordWindow.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\Список изделий для заказа\OrderProductsListWindow.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\OrdersListWindow.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\Список изделий для заказа\OrderProductsRecordWindow.g.cs
@@ -169,3 +165,11 @@ D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_мат
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\Содержание документа прихода\ReceiptsRecordWindow.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\Содержание документа прихода\ReceiptsMaterialRecordWindow.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\Содержание документа прихода\ReceiptsRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\Список материалов и фурнитуры для изделия\MaterialsForProductsList.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\Список материалов и фурнитуры для изделия\MaterialsForProductsRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\Содержание документа прихода\ReceiptsMaterialRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\Содержание документа прихода\ReceiptsRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\Список материалов и фурнитуры для изделия\MaterialsForProductsList.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\Список материалов и фурнитуры для изделия\MaterialsForProductsRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\Содержание документа прихода\ReceiptsMaterialRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\Содержание документа прихода\ReceiptsRecordWindow.baml
