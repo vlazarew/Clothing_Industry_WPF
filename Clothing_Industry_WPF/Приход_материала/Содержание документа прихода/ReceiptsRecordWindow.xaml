@@ -23,17 +23,15 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name_Of_Material}" ClipboardContentBinding="{x:Null}" Header="Название материала" IsReadOnly="True"/>
                 <!-- Фишка про пароль <DataGridTextColumn Binding="{Binding Password}" ClipboardContentBinding="{x:Null}" Header="Пароль"/>  -->
-
-                <DataGridTextColumn Binding="{Binding Cost_Of_Material}" ClipboardContentBinding="{x:Null}" Header="Стоимость"/>
+                <DataGridTextColumn Binding="{Binding Count}" ClipboardContentBinding="{x:Null}" Header="Количество"/>
                 <DataGridTextColumn Binding="{Binding Name_Of_Unit}" ClipboardContentBinding="{x:Null}" Header="Единица измерения"/>
                 <DataGridTextColumn Binding="{Binding Cost_Of_Material}" ClipboardContentBinding="{x:Null}" Header="Стоимость"/>
-                <DataGridTextColumn Binding="{Binding Count}" ClipboardContentBinding="{x:Null}" Header="Количество"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button Name ="ButtonAddOne" Content="Добавить" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonAddOne_Click"/>
         <Button x:Name ="ButtonDeleteOne" Content="Удалить" HorizontalAlignment="Left" Height="25" Margin="95,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDeleteOne_Click"/>
         <Button x:Name="ButtonExit" Content="Выход" Grid.Column="2" HorizontalAlignment="Left" Margin="140,10,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" Height="25"/>
-        <Button x:Name ="ButtonCreateExcel" Content="Сделать в Excel" HorizontalAlignment="Left" Height="25" Margin="180,10,0,0" VerticalAlignment="Top" Width="124" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDeleteOne_Click"/>
+        <Button x:Name ="ButtonCreateExcel" Content="Сделать в Excel" HorizontalAlignment="Left" Height="25" Margin="180,10,0,0" VerticalAlignment="Top" Width="124" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonCreateExcel_Click"/>
         <!--<Button x:Name ="ButtonPreview" Content="Предварительный просмотр" HorizontalAlignment="Left" Height="25" Margin="661,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonPreview_Click" Grid.ColumnSpan="2"/> -->
     </Grid>
 </Window>

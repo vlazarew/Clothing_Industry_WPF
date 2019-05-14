@@ -16,6 +16,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Excel = Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
+using Window = System.Windows.Window;
+using DataTable = System.Data.DataTable;
+using PrintDialog = System.Windows.Controls.PrintDialog;
 
 namespace Clothing_Industry_WPF.Приход_материала
 {
@@ -107,11 +112,38 @@ namespace Clothing_Industry_WPF.Приход_материала
             connection.Open();
 
             foreach (int Vendor_Code in ids)
-            {
+            {             
+                MySqlTransaction transaction2 = connection.BeginTransaction();
+                string totalquery = "Update receipt_of_materials inner join documents_of_receipts on receipt_of_materials.id_Document_Of_Receipt = documents_of_receipts.Receipt_Of_Materials_id_Document_Of_Receipt" +
+                    " set receipt_of_materials.Total_Price = receipt_of_materials.Total_Price - @Cost_Of_Material * documents_of_receipts.Count" +
+                        " where id_Document_Of_Receipt = @DocumentId;";
+                string query_price = "select materials.Cost_Of_Material from materials where materials.Vendor_Code = @Vendor_Code ";
+                MySqlCommand command_price = new MySqlCommand(query_price, connection);
+                command_price.Parameters.AddWithValue("@Vendor_Code", Vendor_Code);
+                float Cost_Of_Material = -1;
+                using (DbDataReader reader2 = command_price.ExecuteReader())
+                {
+                    while (reader2.Read())
+                    {
+                        Cost_Of_Material = (float)reader2.GetValue(0);
+                    }
+                }
+                MySqlCommand commandTotal = new MySqlCommand(totalquery, connection, transaction2);
+                commandTotal.Parameters.AddWithValue("@Cost_Of_Material", Cost_Of_Material);
+                commandTotal.Parameters.AddWithValue("@DocumentID", DocumentId);
+                try
+                {
+                    commandTotal.ExecuteNonQuery();
+                    transaction2.Commit();
+                }
+                catch
+                {
+                    transaction2.Rollback();
+                    System.Windows.MessageBox.Show("Ошибка удаления");
+                }
+
                 MySqlTransaction transaction = connection.BeginTransaction();
-
                 string queryTable = "delete from documents_of_receipts where Materials_Vendor_Code = @Vendor_Code and Receipt_Of_Materials_id_Document_Of_Receipt = @DocumentID";
-
                 MySqlCommand commandTable = new MySqlCommand(queryTable, connection, transaction);
                 commandTable.Parameters.AddWithValue("@Vendor_Code", Vendor_Code);
                 commandTable.Parameters.AddWithValue("@DocumentID", DocumentId);
@@ -135,6 +167,58 @@ namespace Clothing_Industry_WPF.Приход_материала
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void ButtonCreateExcel_Click(object sender, RoutedEventArgs e)
+        {
+            //папка с exe встроенная
+            
+            string BasePath = "D:\\Git\\Clothing_Industry_WPF\\Документы прихода\\";
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            connection.Open();
+            MySqlTransaction transaction = connection.BeginTransaction();
+            string query_folder = "select receipt_of_materials.Default_Folder, receipt_of_materials.Name_Of_Document from receipt_of_materials where receipt_of_materials.id_Document_Of_Receipt = @DocumentID ";
+            MySqlCommand command_folder = new MySqlCommand(query_folder, connection);
+            command_folder.Parameters.AddWithValue("@DocumentID", DocumentId);
+            string Default_Folder = "";
+            string Name_Of_Document = "";
+            using (DbDataReader reader = command_folder.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Default_Folder = reader.GetString(0);
+                    Name_Of_Document = reader.GetString(1);
+                }
+            }
+            Excel.Application excel = new Excel.Application();
+            excel.Visible = false;
+
+            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
+            excel.DisplayAlerts = false;
+            for (int j = 0; j < receiptrecordGrid.Columns.Count; j++)
+            {
+                Range myRange = (Range)sheet1.Cells[1, j + 1];
+                sheet1.Cells[1, j + 1].Font.Bold = true;
+                sheet1.Columns[j + 1].ColumnWidth = 15;
+                myRange.Value2 = receiptrecordGrid.Columns[j].Header;
+            }
+            for (int i = 0; i < receiptrecordGrid.Columns.Count; i++)
+            {
+                for (int j = 0; j < receiptrecordGrid.Items.Count; j++)
+                {
+                    TextBlock b = receiptrecordGrid.Columns[i].GetCellContent(receiptrecordGrid.Items[j]) as TextBlock;
+                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
+                    myRange.Value2 = b.Text;
+                }
+            }
+            System.IO.Directory.CreateDirectory(BasePath + Default_Folder);
+
+            workbook.SaveAs(BasePath + Default_Folder + "\\" + Name_Of_Document + ".xls",
+                  Excel.XlFileFormat.xlWorkbookNormal);
+            workbook.Close(true);
+            excel.Quit();
+            MessageBox.Show("Документ " + Name_Of_Document + " создан успешно.\n" + "Путь документа: " + BasePath + Default_Folder);
         }
     }
 }

@@ -23,7 +23,7 @@
 
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name_Of_Document}" ClipboardContentBinding="{x:Null}" Header="Название документа" IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding Default_Folder}" ClipboardContentBinding="{x:Null}" Header="Путь документа"/>
+                <DataGridTextColumn Binding="{Binding Default_Folder}" ClipboardContentBinding="{x:Null}" Header="Папка документа"/>
                 <DataGridTextColumn Binding="{Binding Date_Of_Entry}" ClipboardContentBinding="{x:Null}" Header="Дата прихода"/>
                 <DataGridTextColumn Binding="{Binding Notes}" ClipboardContentBinding="{x:Null}" Header="Доп. сведения"/>
                 <DataGridTextColumn Binding="{Binding Total_Price}" ClipboardContentBinding="{x:Null}" Header="Сумма прихода"/>

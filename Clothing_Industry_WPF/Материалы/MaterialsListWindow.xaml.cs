@@ -124,13 +124,9 @@ namespace Clothing_Industry_WPF.Материал
                 MySqlCommand commandTable = new MySqlCommand(queryTable, connection, transaction);
                 commandTable.Parameters.AddWithValue("@Vendor_Code", vendor_code);
 
-                string queryUser = string.Format("drop material'{0}'@'%'", vendor_code);
-                MySqlCommand commandUser = new MySqlCommand(queryUser, connection, transaction);
-
                 try
                 {
                     commandTable.ExecuteNonQuery();
-                    commandUser.ExecuteNonQuery();
                     transaction.Commit();
                 }
                 catch

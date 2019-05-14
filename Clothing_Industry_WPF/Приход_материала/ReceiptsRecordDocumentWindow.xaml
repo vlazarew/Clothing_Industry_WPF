@@ -15,7 +15,7 @@
         <Label Content="Название документа: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,50,0,0" Height="26" Width="130"/>
         <Label Content="Дата прихода: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,81,0,0" Height="26" Width="130"/>
         <Label x:Name="Header" Content="Документ " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Height="34" Width="97"/>
-        <Label Content="Путь документа: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,175,0,0" Height="26" Width="122"/>
+        <Label Content="Папка документа: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,175,0,0" Height="26" Width="122"/>
         <Label Content="Поставщик: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,144,0,0" Height="26" Width="86"/>
         <Label Content="Статус: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,206,0,0" Height="26" Width="122"/>
         <Label Content="Тип транзакции: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,237,0,0" Height="26" Width="122"/>

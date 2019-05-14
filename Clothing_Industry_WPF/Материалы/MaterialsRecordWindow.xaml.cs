@@ -247,8 +247,24 @@ namespace Clothing_Industry_WPF.Материал
                 }
                 
 
-                connection.Close();
+                
                 //this.Hide();
+                command = actionInStoreCommand(connection);
+                command.Transaction = transaction;
+                transaction = connection.BeginTransaction();
+
+                try
+                {
+                    command.ExecuteNonQuery();
+                    transaction.Commit();
+                    this.Hide();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    System.Windows.MessageBox.Show("Ошибка сохранения!");
+                }
+                connection.Close();
             }
             else
             {
@@ -259,6 +275,7 @@ namespace Clothing_Industry_WPF.Материал
         private MySqlCommand actionInDBCommand(MySqlConnection connection)
         {
             string query = "";
+
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
                 query = "INSERT INTO materials " +
@@ -272,7 +289,6 @@ namespace Clothing_Industry_WPF.Материал
                         "Notes = @notes," +
                         "Units_id_Unit = @unit, Groups_Of_Material_id_Group_Of_Material = @group, Types_Of_Material_id_Type_Of_Material = @type, Countries_id_Country = @country, Photo = @image" +
                         " where Vendor_Code = @oldvendor_code;";
-
             }
 
             MySqlCommand command = new MySqlCommand(query, connection);
@@ -360,6 +376,34 @@ namespace Clothing_Industry_WPF.Материал
             return command;
         }
 
+        private MySqlCommand actionInStoreCommand(MySqlConnection connection)
+        {
+            string querystore = "";
+            if (way == WaysToOpenForm.WaysToOpen.create)
+            {
+                querystore = "INSERT INTO store (Materials_Vendor_Code, Count)" +
+                        " VALUES(@vendor_code,0);";
+            }
+            if (way == WaysToOpenForm.WaysToOpen.edit)
+            {
+                querystore = "Update store set Materials_Vendor_Code = @Materials_Vendor_Code" +
+                        " where Materials_Vendor_Code = @oldvendor_code;";
+
+            }
+
+            MySqlCommand command = new MySqlCommand(querystore, connection);
+            command.Parameters.AddWithValue("@vendor_code", textBoxVendor_Code.Text);
+
+
+            
+
+            if (way == WaysToOpenForm.WaysToOpen.edit)
+            {
+                command.Parameters.AddWithValue("@oldvendor_code", old_vendor_code);
+            }
+
+            return command;
+        }
     }
 }
     

@@ -247,15 +247,15 @@ namespace Clothing_Industry_WPF.Состояние_склада
         private void ButtonPrint_Click(object sender, RoutedEventArgs e)
         {
             ///////////////////////////////////
-            
+            /*
             PrintDialog printDialog = new PrintDialog();
             if (printDialog.ShowDialog() == true)
             {
                 printDialog.PrintVisual(storeGrid, "Распечатываем элемент Canvas");
             }
-            
+            */
             //////////////////////////////////
-            /*
+            
             Excel.Application excel = new Excel.Application();
             excel.Visible = true;
             Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
@@ -276,8 +276,7 @@ namespace Clothing_Industry_WPF.Состояние_склада
                     Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
                     myRange.Value2 = b.Text;
                 }
-            }
-            */
+            }           
         }
     }
 }

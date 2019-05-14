@@ -29,7 +29,6 @@ namespace Clothing_Industry_WPF.Приход_материала
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private MySqlConnection connection;
         private int old_id_Document_Of_Receipt = -1;
-        private int idDocument_Of_Receipt;
         public ReceiptsRecordDocumentWindow(WaysToOpenForm.WaysToOpen waysToOpen, int id_Document_Of_Receipt = -1)
         {
             InitializeComponent();
@@ -40,7 +39,7 @@ namespace Clothing_Industry_WPF.Приход_материала
 
             if (id_Document_Of_Receipt != -1)
             {
-                idDocument_Of_Receipt = id_Document_Of_Receipt;
+                old_id_Document_Of_Receipt = id_Document_Of_Receipt;
                 FillFields(id_Document_Of_Receipt);
             }
         }
@@ -160,10 +159,6 @@ namespace Clothing_Industry_WPF.Приход_материала
             {
                 result += result == "" ? "Путь документа" : ", Путь документа";
             }
-            if (textBoxNotes.Text == "")
-            {
-                result += result == "" ? "Доп. сведения" : ", Доп. сведения";
-            }
             if (comboBoxName_Of_State.SelectedValue == null)
             {
                 result += result == "" ? " Статус" : ",  Статус";
@@ -228,25 +223,16 @@ namespace Clothing_Industry_WPF.Приход_материала
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
-                query = "Update documents_of_receipts set Default_Folder = @Default_Folder, Name_of_Document = @Name_of_Document,  Date_Of_Entry = @Date_Of_Entry, Notes = @Notes,  Name_Of_State = @Name_Of_State, Name_Of_Type = @Name_Of_Type, Name_Of_Supplier = @Name_Of_Supplier" +
+                query = "Update receipt_of_materials set Default_Folder = @Default_Folder, Name_of_Document = @Name_of_Document,  Date_Of_Entry = @Date_Of_Entry, Notes = @Notes,  Payment_States_id_Payment_States = @Name_Of_State, Type_Of_Transactions_id_Type_Of_Transaction = @Name_Of_Type, Suppliers_id_Supplier = @Name_Of_Supplier" +
                         " where id_Document_Of_Receipt = @old_id_Document_Of_Receipt;";              
             }
 
             MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@Default_Folder", textBoxDefault_Folder.Text);
             command.Parameters.AddWithValue("@Name_Of_Document", textBoxName_Of_Document.Text);
             command.Parameters.AddWithValue("@Date_Of_Entry", datePickerComing_Date.SelectedDate.Value);           
-            command.Parameters.AddWithValue("@Default_Folder", textBoxDefault_Folder.Text);
             command.Parameters.AddWithValue("@Notes", textBoxNotes.Text);
-            MySqlCommand commandsupplier = new MySqlCommand("select id_Supplier from suppliers where Name_Of_Supplier = @Name_Of_Supplier", connection);
-            commandsupplier.Parameters.AddWithValue("Name_Of_Supplier", comboBoxName_Of_Supplier.SelectedItem.ToString());
-            int id_Supplier = -1;
-            using (DbDataReader reader = commandsupplier.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    id_Supplier = reader.GetInt32(0);
-                }
-            }
+            
 
             MySqlCommand commandpayment = new MySqlCommand("select id_Payment_States from payment_states where Name_Of_State = @Name_Of_State", connection);
             commandpayment.Parameters.AddWithValue("Name_Of_State", comboBoxName_Of_State.SelectedItem.ToString());
@@ -269,11 +255,22 @@ namespace Clothing_Industry_WPF.Приход_материала
                     id_Type_Of_Transaction = reader.GetInt32(0);
                 }
             }
-            
-            command.Parameters.AddWithValue("@Name_Of_Supplier", id_Supplier);
-            command.Parameters.AddWithValue("@Name_Of_State", id_Payment_States);
-            command.Parameters.AddWithValue("@Type_Of_Transaction", id_Type_Of_Transaction);
 
+            MySqlCommand commandsupplier = new MySqlCommand("select id_Supplier from suppliers where Name_Of_Supplier = @Name_Of_Supplier", connection);
+            commandsupplier.Parameters.AddWithValue("Name_Of_Supplier", comboBoxName_Of_Supplier.SelectedItem.ToString());
+            int id_Supplier = -1;
+            using (DbDataReader reader = commandsupplier.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    id_Supplier = reader.GetInt32(0);
+                }
+            }
+
+            
+            command.Parameters.AddWithValue("@Name_Of_State", id_Payment_States);
+            command.Parameters.AddWithValue("@Name_Of_Type", id_Type_Of_Transaction);
+            command.Parameters.AddWithValue("@Name_Of_Supplier", id_Supplier);
 
 
             if (way == WaysToOpenForm.WaysToOpen.edit)
