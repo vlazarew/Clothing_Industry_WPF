@@ -26,11 +26,11 @@
                 <DataGridTextColumn Binding="{Binding OrderId}" ClipboardContentBinding="{x:Null}" Header="Номер заказа"/>
                 <DataGridTextColumn Binding="{Binding Type_Of_Fitting}" ClipboardContentBinding="{x:Null}" Header="Тип примерки"/>
                 <DataGridTextColumn Binding="{Binding Date}" ClipboardContentBinding="{x:Null}" Header="Дата примерки"/>
-                <DataGridTextColumn Binding="{Binding Time}" ClipboardContentBinding="{x:Null}" Header="Время примерки"/>
+                <!--<DataGridTextColumn Binding="{Binding Time}" ClipboardContentBinding="{x:Null}" Header="Время примерки"/>-->
                 <DataGridTextColumn Binding="{Binding Notes}" ClipboardContentBinding="{x:Null}" Header="Заметки"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Name ="ButtonCreateNew" Content="Создать" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>
+        <Button Name ="ButtonCreateNew" Content="Создать" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click" IsEnabled="False"/>
         <Button x:Name ="ButtonDelete" Content="Удалить" HorizontalAlignment="Left" Height="25" Margin="95,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
         <Button x:Name ="ButtonRefresh" Content="Обновить" HorizontalAlignment="Left" Height="25" Margin="180,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonRefresh_Click"/>
         <Button x:Name ="ButtonEdit" Content="Изменить выделенное" HorizontalAlignment="Left" Height="25" Margin="265,10,0,0" VerticalAlignment="Top" Width="139" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonEdit_Click"/>

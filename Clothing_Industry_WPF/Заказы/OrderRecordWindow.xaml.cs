@@ -39,6 +39,11 @@ namespace Clothing_Industry_WPF.Заказы
             setNewTitle();
             this.idOrder = idOrder;
 
+            if (way == WaysToOpenForm.WaysToOpen.create)
+            {
+                buttonListProducts.Visibility = Visibility.Hidden;
+            }
+
             FillComboBoxes();
 
             if (idOrder != -1)

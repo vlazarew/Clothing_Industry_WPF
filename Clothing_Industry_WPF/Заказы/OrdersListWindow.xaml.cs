@@ -1,5 +1,6 @@
 ﻿using Clothing_Industry_WPF.Перечисления;
 using Clothing_Industry_WPF.Поиск_и_фильтры;
+using Clothing_Industry_WPF.Примерки;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -496,6 +497,12 @@ namespace Clothing_Industry_WPF.Заказы
             Window listProduct = new OrderProductsListWindow(idOrder);
             listProduct.ShowDialog();
             RefreshList();
+        }
+
+        private void ButtonAddFitting_Click(object sender, RoutedEventArgs e)
+        {
+            Window create_window = new FittingsRecordWindow(WaysToOpenForm.WaysToOpen.create);
+            create_window.ShowDialog();
         }
     }
 }
