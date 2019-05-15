@@ -173,3 +173,5 @@ D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Издел
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\Список материалов и фурнитуры для изделия\MaterialsForProductsRecordWindow.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\Содержание документа прихода\ReceiptsMaterialRecordWindow.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Приход_материала\Содержание документа прихода\ReceiptsRecordWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Примерки\FittingsListWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Примерки\FittingsRecordWindow.baml

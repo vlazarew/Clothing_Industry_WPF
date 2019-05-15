@@ -3,7 +3,7 @@ using Clothing_Industry_WPF.Заказы;
 using Clothing_Industry_WPF.Изделия;
 using Clothing_Industry_WPF.Клиенты;
 using Clothing_Industry_WPF.Материал;
-using Clothing_Industry_WPF.Примерки;
+//using Clothing_Industry_WPF.Примерки;
 using Clothing_Industry_WPF.Приход_материала;
 using Clothing_Industry_WPF.Состояние_склада;
 using Clothing_Industry_WPF.Сотрудники;
@@ -131,8 +131,8 @@ namespace Clothing_Industry_WPF
         // При нажатии на вкладку "Прмиерки"
         private void Fittings_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window_fittings = new FittingsListWindow();
-            window_fittings.Show();
+        //    Window window_fittings = new FittingsListWindow();
+        //    window_fittings.Show();
         }
 
         // ОТКЛЮЧЕНИЕ СИСТЕМЫ

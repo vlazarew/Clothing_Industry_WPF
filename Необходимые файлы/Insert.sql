@@ -63,10 +63,6 @@ insert into countries (Name_Of_Country) values ('Украина');
 insert into materials values (100001,'Синий бархат',120,'',null,3,1,1,2);
 insert into materials values (100002,'Узкое кружево',50,'',null,3,1,2,1);
 
--- Материалы на изделие
--- insert into table_materials_to_product values (1,1.5,100001);
--- insert into table_materials_to_product values (2,0.5,100002);
-
 -- Статус оплаты
 
 insert into payment_states (Name_Of_State) values ('Не оплачено');
@@ -92,8 +88,11 @@ insert into suppliers (Name_Of_Supplier) values ('ООО БелТкань');
 -- Изделия
 
 insert into products (Name_Of_Product, Fixed_Price,Per_Cents,Added_Price_For_Complexity,Description,Photo)
-  values('Кружевное платье',400,60,0,'C рисунком','');
-
+  values('Кружевное платье',400,60,0,'C рисунком',null);
+  
+-- Материалы на изделие  
+insert into materials_for_product values (100001,1,10);
+insert into materials_for_product values (100002,1,3);
 -- Сотрудники
 
 insert into employees values('Petrov','183461','Иван','Петров','Васильевич','89313332222','petrov_ivan@google.com','2003 200122','',null,'2019-05-05',66000,1,1);
@@ -135,11 +134,12 @@ insert into fittings(Customers_id_Customer, Orders_id_Order, Date, Time, Notes, 
 
 -- Документ прихода
 
--- insert into documents_of_receipts (Default_Folder,Name_Of_Document, Date_Of_Entry, Amount, Price_For_One, Total_Price, Materials_Vendor_Code) values ('2019','Приход №1','2019-05-05', 15, 10, 150, 100001);
--- insert into documents_of_receipts (Default_Folder,Name_Of_Document, Date_Of_Entry, Amount, Price_For_One, Total_Price, Materials_Vendor_Code) values ('2018','Приход №196','2018-10-18', 20, 10, 200, 100002);
--- insert into documents_of_receipts (Default_Folder,Name_Of_Document, Date_Of_Entry, Amount, Price_For_One, Total_Price, Materials_Vendor_Code) values ('2019','Приход №2','2019-05-06', 15, 20, 300, 100001);
+insert into receipt_of_materials (Default_Folder,Name_Of_Document, Date_Of_Entry, Notes,Payment_States_id_Payment_States, Type_Of_Transactions_id_Type_Of_Transaction,Suppliers_id_Supplier,Total_Price)
+ values ('2019','Приход №1','2019-05-05','', 1, 1, 1, 0);
 
--- Поступление материалов
+-- Склад
 
--- insert into receipt_of_materials (Documents_Of_Receipts_id_Document_Of_Receipt,Summ,Notes,Payment_States_id_Payment_States,Type_Of_Transactions_id_Type_Of_Transaction,Suppliers_id_Supplier)
--- values (1,200000,'Cиний бархат 30 м.п. по 250р. за 1 м.п. узкое кружево с цветочками 300 м.п. по 70 р. за 1 м.п.',1,2,1);
+ insert into store (Materials_Vendor_Code,Count)
+ values (100001,0);
+ insert into store (Materials_Vendor_Code,Count)
+ values (100002,0);

@@ -216,8 +216,8 @@ namespace Clothing_Industry_WPF.Приход_материала
             {
                 //document
                 query = "INSERT INTO receipt_of_materials" +
-                                       "(Default_Folder, Name_of_Document, Date_Of_Entry, Summ, Notes, Name_Of_State, Name_Of_Type, Name_Of_Supplier,Total_Price)" +
-                                       " VALUES (@Default_Folder, @Name_of_Document, @Date_Of_Entry,0,@Notes, @Name_Of_State, @Name_Of_Type, @Name_Of_Supplier,0);";
+                                       "(Default_Folder, Name_of_Document, Date_Of_Entry, Notes, Name_Of_State, Name_Of_Type, Name_Of_Supplier,Total_Price)" +
+                                       " VALUES (@Default_Folder, @Name_of_Document, @Date_Of_Entry,@Notes, @Name_Of_State, @Name_Of_Type, @Name_Of_Supplier,0);";
                 
 
             }
