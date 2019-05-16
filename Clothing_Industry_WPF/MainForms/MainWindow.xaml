@@ -186,7 +186,7 @@
                 <TextBlock x:Name="Workers" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Workers_PreviewMouseLeftButtonUp" >
                     <Hyperlink>Сотрудники</Hyperlink>
                 </TextBlock>
-                <TextBlock x:Name="MoneyForWorkers" FontSize="24" Margin="5" >
+                <TextBlock x:Name="MoneyForWorkers" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="MoneyForWorkers_PreviewMouseLeftButtonUp" >
                     <Hyperlink>Начисление ЗП</Hyperlink>
                 </TextBlock>
                 <TextBlock x:Name="Holidays" FontSize="24" Margin="5" >

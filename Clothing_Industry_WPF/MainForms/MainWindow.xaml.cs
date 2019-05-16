@@ -3,6 +3,8 @@ using Clothing_Industry_WPF.Заказы;
 using Clothing_Industry_WPF.Изделия;
 using Clothing_Industry_WPF.Клиенты;
 using Clothing_Industry_WPF.Материал;
+using Clothing_Industry_WPF.Начисление_ЗП;
+using Clothing_Industry_WPF.Примерки;
 //using Clothing_Industry_WPF.Примерки;
 using Clothing_Industry_WPF.Приход_материала;
 using Clothing_Industry_WPF.Состояние_склада;
@@ -128,11 +130,18 @@ namespace Clothing_Industry_WPF
             window_products.Show();
         }
 
-        // При нажатии на вкладку "Прмиерки"
+        // При нажатии на вкладку "Примерки"
         private void Fittings_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-        //    Window window_fittings = new FittingsListWindow();
-        //    window_fittings.Show();
+           Window window_fittings = new FittingsListWindow();
+           window_fittings.Show();
+        }
+
+        // При нажатии на вкладку "Начисление ЗП"
+        private void MoneyForWorkers_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window_payrolls = new PayrollsListWindow();
+            window_payrolls.Show();
         }
 
         // ОТКЛЮЧЕНИЕ СИСТЕМЫ
@@ -146,6 +155,7 @@ namespace Clothing_Industry_WPF
         {
             Application.Current.Shutdown();
         }
+
 
 
         #endregion
