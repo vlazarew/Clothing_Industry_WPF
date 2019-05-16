@@ -127,6 +127,12 @@
     <Compile Include="Материалы\MaterialsRecordWindow.xaml.cs">
       <DependentUpon>MaterialsRecordWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Начисление ЗП\PayrollsListWindow.xaml.cs">
+      <DependentUpon>PayrollsListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Начисление ЗП\PayrollsRecordWindow.xaml.cs">
+      <DependentUpon>PayrollsRecordWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Перечисления\TypeOfFilter.cs" />
     <Compile Include="Перечисления\TypeOfFind.cs" />
     <Compile Include="Перечисления\WaysToOpenForm.cs" />
@@ -228,6 +234,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Материалы\MaterialsRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Начисление ЗП\PayrollsListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Начисление ЗП\PayrollsRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
