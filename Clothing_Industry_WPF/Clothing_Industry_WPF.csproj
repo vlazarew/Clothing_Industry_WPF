@@ -133,6 +133,12 @@
     <Compile Include="Начисление ЗП\PayrollsRecordWindow.xaml.cs">
       <DependentUpon>PayrollsRecordWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Отпуска\HolidaysListWindow.xaml.cs">
+      <DependentUpon>HolidaysListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Отпуска\HolidaysRecordWindow.xaml.cs">
+      <DependentUpon>HolidaysRecordWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Перечисления\TypeOfFilter.cs" />
     <Compile Include="Перечисления\TypeOfFind.cs" />
     <Compile Include="Перечисления\WaysToOpenForm.cs" />
@@ -244,6 +250,14 @@
     <Page Include="Начисление ЗП\PayrollsRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Отпуска\HolidaysListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Отпуска\HolidaysRecordWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Поиск и фильтры\Фильтр\FilterListWindow.xaml">
       <SubType>Designer</SubType>

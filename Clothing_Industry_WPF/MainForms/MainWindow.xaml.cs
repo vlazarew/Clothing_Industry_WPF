@@ -4,6 +4,7 @@ using Clothing_Industry_WPF.Изделия;
 using Clothing_Industry_WPF.Клиенты;
 using Clothing_Industry_WPF.Материал;
 using Clothing_Industry_WPF.Начисление_ЗП;
+using Clothing_Industry_WPF.Отпуска;
 using Clothing_Industry_WPF.Примерки;
 //using Clothing_Industry_WPF.Примерки;
 using Clothing_Industry_WPF.Приход_материала;
@@ -144,6 +145,11 @@ namespace Clothing_Industry_WPF
             window_payrolls.Show();
         }
 
+        private void Holidays_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window_holidays = new HolidaysListWindow();
+            window_holidays.Show();
+        }
         // ОТКЛЮЧЕНИЕ СИСТЕМЫ
         #region Отключение системы
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
@@ -155,6 +161,7 @@ namespace Clothing_Industry_WPF
         {
             Application.Current.Shutdown();
         }
+
 
 
 
