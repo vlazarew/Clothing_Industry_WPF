@@ -60,23 +60,21 @@ namespace Clothing_Industry_WPF.Отпуска
             MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
             //Login
-            MySqlCommand commanddays = new MySqlCommand("select Employees_login,timestampdiff(DAY,In_Fact_Start,curdate()),Days_Of_Holidays from holidays;", connection);
-            string[] log = new string [30];
-            int[] days_used = new int [30];
-            int[] days_sum = new int [30];
-            int i = 0;
+            MySqlCommand commanddays = new MySqlCommand("select Employees_login, timestampdiff(DAY,In_Fact_Start,curdate()), Days_Of_Holidays from holidays;", connection);
+            List<string> log = new List<string>();
+            List<int> days_used = new List<int>();
+            List<int> days_sum = new List<int>();
             using (DbDataReader reader = commanddays.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    log[i] = reader.GetValue(0).ToString();
-                    days_used[i] = reader.GetInt32(1);
-                    days_sum[i] = reader.GetInt32(2);
-                    i++;              
+                    log.Add(reader.GetValue(0).ToString());
+                    days_used.Add(reader.GetInt32(1));
+                    days_sum.Add(reader.GetInt32(2));             
                 }
             }
-            i = 0;
-            while (log[i] != null)
+            int i = 0;
+            while (i != log.Count)
             {
                 
                 MySqlTransaction transaction = connection.BeginTransaction();

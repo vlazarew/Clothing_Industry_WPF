@@ -10,7 +10,22 @@ using Clothing_Industry_WPF.Примерки;
 using Clothing_Industry_WPF.Приход_материала;
 using Clothing_Industry_WPF.Состояние_склада;
 using Clothing_Industry_WPF.Сотрудники;
-
+using Clothing_Industry_WPF.Справочник.Группы_материалов;
+using Clothing_Industry_WPF.Справочник.Должности;
+using Clothing_Industry_WPF.Справочник.Единицы_измерения;
+using Clothing_Industry_WPF.Справочник.Каналы_заказов;
+using Clothing_Industry_WPF.Справочник.Категории_расходов;
+using Clothing_Industry_WPF.Справочник.Периодичности;
+using Clothing_Industry_WPF.Справочник.Роли;
+using Clothing_Industry_WPF.Справочник.Статусы_заказов;
+using Clothing_Industry_WPF.Справочник.Статусы_клиентов;
+using Clothing_Industry_WPF.Справочник.Статусы_оплаты;
+using Clothing_Industry_WPF.Справочник.Страны;
+using Clothing_Industry_WPF.Справочник.Типы_заказов;
+using Clothing_Industry_WPF.Справочник.Типы_материалов;
+using Clothing_Industry_WPF.Справочник.Типы_оплаты;
+using Clothing_Industry_WPF.Справочник.Типы_примерок;
+using Clothing_Industry_WPF.Справочник.Типы_транзакций;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -165,8 +180,104 @@ namespace Clothing_Industry_WPF
 
 
 
+
         #endregion
 
-        
+        // Справочник
+        private void Employee_roles_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window = new EmployeeRolesListWindow();
+            window.Show();
+        }
+
+        private void Employee_positions_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window = new EmployeePositionsListWindow();
+            window.Show();
+        }
+
+        private void Countries_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window = new CountriesListWindow();
+            window.Show();
+        }
+
+        private void Groups_of_material_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window = new GroupsOfMaterialListWindow();
+            window.Show();
+        }
+
+        private void Payment_states_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window = new PaymentStatesListWindow();
+            window.Show();
+        }
+
+        private void Type_of_transactions_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window = new TypeOfTransactionsListWindow();
+            window.Show();
+        }
+
+        private void Types_of_material_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window = new TypesOfMaterialListWindow();
+            window.Show();
+        }
+
+        private void Units_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window = new UnitsListWindow();
+            window.Show();
+        }
+
+        private void Customer_statuses_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window = new CustomerStatusesListWindow();
+            window.Show();
+        }
+
+        private void Order_channels_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window = new OrderChannelsListWindow();
+            window.Show();
+        }
+
+        private void Statuses_of_order_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window = new StatusesOfOrderListWindow();
+            window.Show();
+        }
+
+        private void Types_of_fitting_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window = new TypesOfFittingListWindow();
+            window.Show();
+        }
+
+        private void Types_of_order_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window = new TypesOfOrderListWindow();
+            window.Show();
+        }
+
+        private void Consumption_categories_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window = new ConsumptionCategoriesListWindow();
+            window.Show();
+        }
+
+        private void Periodities_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window = new PeriodicitiesListWindow();
+            window.Show();
+        }
+
+        private void Types_of_payment_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window = new TypesOfPaymentListWindow();
+            window.Show();
+        }
     }
 }

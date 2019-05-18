@@ -112,24 +112,23 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
             string query_material = "select materials_for_product.Materials_Vendor_Code,materials_for_product.Count from materials_for_product where materials_for_product.Products_id_Product = @productId; ";
             MySqlCommand command_material = new MySqlCommand(query_material, connection);
             command_material.Parameters.AddWithValue("@productId", product_id);
-            int[] Materials_Vendor_Code = new int[30];
-            int[] CountProduct = new int[30];
-            int i = 0;
+            List<int> Materials_Vendor_Code = new List <int>();
+            List<int> CountProduct = new List<int>();
+
             using (DbDataReader reader2 = command_material.ExecuteReader())
             {
                 while (reader2.Read())
                 {
-                    Materials_Vendor_Code[i] = (int)reader2.GetValue(0);
-                    CountProduct[i] = (int)reader2.GetValue(1) * int.Parse(textBoxCount.Text);
-                    i++;
+                    Materials_Vendor_Code.Add((int)reader2.GetValue(0));
+                    CountProduct.Add((int)reader2.GetValue(1) * int.Parse(textBoxCount.Text));
                 }
             }
             //// 
-            i = 0;
+            int i = 0;
             string query_store = "select store.Count from store where store.Materials_Vendor_Code = @Materials_Vendor_Code; ";
-            int[] CountStore = new int[30];
+            List<int> CountStore = new List<int>();
             string cnt;
-            while (Materials_Vendor_Code[i] != 0)
+            while (i != Materials_Vendor_Code.Count)
             {
                 MySqlCommand command_store = new MySqlCommand(query_store, connection);
                 command_store.Parameters.AddWithValue("@Materials_Vendor_Code", Materials_Vendor_Code[i]);
@@ -138,21 +137,23 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
                     while (reader3.Read())
                     {
                         cnt = reader3.GetValue(0).ToString();
-                        CountStore[i] = Int32.Parse(cnt);
+                        CountStore.Add(Int32.Parse(cnt));
                         i++;                      
                     }
                 }
             }
             i = 0;
             bool check = true;
-            while ((CountProduct[i] <= CountStore[i])&&(i!=29))
+            while ((i != CountStore.Count) && (check))
+            {
+                if ((CountProduct[i] > CountStore[i]))
+                    check = false;
                 i++;
-            if (i != 29)
-                check = false;
+            }           
             if (check)
             {
                 i = 0;
-                while (Materials_Vendor_Code[i] != 0)
+                while (i != Materials_Vendor_Code.Count)
                 {
                     MySqlTransaction transaction2 = connection.BeginTransaction();
                     string totalquery = "Update store set Count = Count - @CountProduct" +
@@ -178,12 +179,12 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
             }
             else
             {
-                int[] NeedMaterial = new int[30];
-                for (i = 0; i<30;i++)
+                List<int> NeedMaterial = new List<int>();
+                for (i = 0; i != CountStore.Count; i++)
                 {
                     if (CountProduct[i] > CountStore[i])
                     {
-                        NeedMaterial[i] = CountProduct[i] - CountStore[i];
+                        NeedMaterial.Add(CountProduct[i] - CountStore[i]);
                     }
                 }
                 //отменяем заказ 
@@ -202,7 +203,7 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
                     i = 0;
                     string MessageMaterialsNeed = "";
                     string query_materials_name = "select materials.Name_Of_Material,units.Name_Of_Unit  from materials join units on materials.Units_id_Unit = units.id_Unit where  Vendor_Code = @Vendor_Code; ";                   
-                    while (Materials_Vendor_Code[i] != 0)
+                    while (i != Materials_Vendor_Code.Count)
                     {
                         MySqlCommand command_materials_name = new MySqlCommand(query_materials_name, connection);
                         command_materials_name.Parameters.AddWithValue("@Vendor_Code", Materials_Vendor_Code[i]);

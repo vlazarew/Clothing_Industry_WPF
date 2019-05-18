@@ -157,7 +157,7 @@
 
         <Grid Height="819" VerticalAlignment="Top" Grid.Column="2" Margin="0,0,-14,0">
             <!-- вместо page2.xaml будут наши гуишки для каждой сущности-->
-            <StackPanel Background ="LightGray" Height="721" VerticalAlignment="Top" HorizontalAlignment="Left" Width="233" Margin="5,98,0,0">
+            <StackPanel Background ="LightGray" Height="314" VerticalAlignment="Top" HorizontalAlignment="Left" Width="233" Margin="5,98,0,0">
                 <TextBlock x:Name="Clients" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Clients_PreviewMouseLeftButtonUp">
                    <Hyperlink>Клиенты</Hyperlink>
                 </TextBlock>
@@ -171,7 +171,7 @@
                     <Hyperlink>Баланс клиентов</Hyperlink>
                 </TextBlock>
             </StackPanel>
-            <StackPanel Background ="LightGray" Height="721" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="241,98,0,0">
+            <StackPanel Background ="LightGray" Height="314" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="241,98,0,0">
                 <TextBlock x:Name="Matherial_Plus" FontSize="21" Margin="5" PreviewMouseLeftButtonUp="Receipt_Materials_PreviewMouseLeftButtonUp">
                     <Hyperlink>Поступление материала</Hyperlink>
                 </TextBlock>
@@ -182,7 +182,7 @@
                     <Hyperlink>Изделия</Hyperlink>
                 </TextBlock>
             </StackPanel>
-            <StackPanel Background ="LightGray" Height="721" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="495,98,0,0">
+            <StackPanel Background ="LightGray" Height="314" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="495,98,0,0">
                 <TextBlock x:Name="Workers" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Workers_PreviewMouseLeftButtonUp" >
                     <Hyperlink>Сотрудники</Hyperlink>
                 </TextBlock>
@@ -196,15 +196,46 @@
             <StackPanel Background ="YellowGreen" Height="93" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1250" Margin="5,0,0,0">
                 <TextBlock  Text="Меню" FontWeight="Bold" TextAlignment="Center" FontSize="40" Width="231" Height="77" Margin="417,10,433,732"/>
             </StackPanel>
-            <StackPanel Background ="LightGray" Height="721" VerticalAlignment="Top" HorizontalAlignment="Left" Width="252" Margin="749,98,0,0">
+            <StackPanel Background ="LightGray" Height="314" VerticalAlignment="Top" HorizontalAlignment="Left" Width="252" Margin="749,98,0,0">
                 <TextBlock x:Name="Warehouse" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Store_PreviewMouseLeftButtonUp" >
                     <Hyperlink>Состояние склада</Hyperlink>
                 </TextBlock>
             </StackPanel>
-            <StackPanel Background ="LightGray" Height="721" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="1004,98,0,0">
+            <StackPanel Background ="LightGray" Height="314" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="1004,98,0,0">
                 <TextBlock x:Name="Consumption" FontSize="24" Margin="5" >
                     <Hyperlink>Расходы</Hyperlink>
                 </TextBlock>
+            </StackPanel>
+            <StackPanel Background ="LightGray" Height="304" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="495,515,0,0">
+                <TextBlock x:Name="Employee_roles" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Employee_roles_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Роли"/></Hyperlink></TextBlock>
+                <TextBlock x:Name="Employee_positions" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Employee_positions_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Должности"/></Hyperlink></TextBlock>
+            </StackPanel>
+            <StackPanel Background ="LightGray" Height="304" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="241,515,0,0">
+                <TextBlock x:Name="Countries" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Countries_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Страны"/></Hyperlink></TextBlock>
+                <TextBlock x:Name="Groups_of_material" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Groups_of_material_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Группы материалов"/></Hyperlink></TextBlock>
+                <TextBlock x:Name="Payment_states" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Payment_states_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Статусы оплаты"/></Hyperlink></TextBlock>
+                <TextBlock x:Name="Type_of_transactions" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Type_of_transactions_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы транзакций"/></Hyperlink></TextBlock>
+                <TextBlock x:Name="Types_of_material" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Types_of_material_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы материалов"/></Hyperlink></TextBlock>
+                <TextBlock x:Name="Units" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Units_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Единицы измерения"/></Hyperlink></TextBlock>
+            </StackPanel>
+            <StackPanel Background ="LightGray" Height="304" VerticalAlignment="Top" HorizontalAlignment="Left" Width="233" Margin="5,515,0,0">
+                <TextBlock x:Name="Customer_statuses" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Customer_statuses_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Статусы клиентов"/></Hyperlink></TextBlock>
+                <TextBlock x:Name="Order_channels" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Order_channels_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Каналы заказов"/></Hyperlink></TextBlock>
+                <TextBlock x:Name="Statuses_of_order" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Statuses_of_order_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Статусы заказов"/></Hyperlink></TextBlock>
+                <TextBlock x:Name="Types_of_fitting" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Types_of_fitting_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы примерок"/></Hyperlink></TextBlock>
+                <TextBlock x:Name="Types_of_order" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Types_of_order_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы заказов"/></Hyperlink></TextBlock>
+
+            </StackPanel>
+            <StackPanel Background ="LightGray" Height="304" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="1004,515,0,0">
+                <TextBlock x:Name="Consumption_categories" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Consumption_categories_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Категории расходов"/></Hyperlink></TextBlock>
+                <TextBlock x:Name="Periodities" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Periodities_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Периодичности"/></Hyperlink></TextBlock>
+                <TextBlock x:Name="Types_of_payment" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Types_of_payment_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы оплаты"/></Hyperlink></TextBlock>
+            </StackPanel>
+            <StackPanel Background ="#FFC9BC38" Height="93" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1250" Margin="5,417,0,0">
+                <TextBlock  Text="Справочник" FontWeight="Bold" TextAlignment="Center" FontSize="40" Height="77" Margin="490,10,507,732"/>
+            </StackPanel>
+            <StackPanel Background ="LightGray" Height="304" VerticalAlignment="Top" HorizontalAlignment="Left" Width="249" Margin="751,515,0,0">
+
             </StackPanel>
 
         </Grid>
