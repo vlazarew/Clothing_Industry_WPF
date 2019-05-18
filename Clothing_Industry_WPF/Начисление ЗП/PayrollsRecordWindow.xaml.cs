@@ -18,6 +18,13 @@ using System.Windows.Shapes;
 
 namespace Clothing_Industry_WPF.Начисление_ЗП
 {
+    public struct HelpStructLastSalary
+    {
+        public bool isUpdate { get; set; }
+        public float toPay { get; set; }
+    }
+
+
     /// <summary>
     /// Логика взаимодействия для PayrollsRecordWindow.xaml
     /// </summary>
@@ -27,12 +34,13 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private MySqlConnection connection;
         private string old_login = "";
-        private DateTime old_payrollDate;
+        //private DateTime old_payrollDate;
+        private string old_period = "";
 
         // Ввод только букв в численные поля 
         private static readonly Regex _regex = new Regex("[^0-9.-]+");
 
-        public PayrollsRecordWindow(WaysToOpenForm.WaysToOpen waysToOpen, string login = "", DateTime? payrollDate = null)
+        public PayrollsRecordWindow(WaysToOpenForm.WaysToOpen waysToOpen, string login = "", string period = null)
         {
             InitializeComponent();
             way = waysToOpen;
@@ -43,19 +51,19 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
             if (login != "")
             {
                 old_login = login;
-                old_payrollDate = payrollDate.Value;
-                FillFields(login, old_payrollDate);
+                old_period = period;
+                FillFields(login, old_period);
             }
         }
 
-        private void FillFields(string login, DateTime payrollDate)
+        private void FillFields(string login, string period)
         {
-            string query_text = "SELECT Employees_Login as Login, Period, Date_Of_Pay, Salary, PieceWorkPayment, Total_Salary, Penalty, To_Pay, Notes " +
+            string query_text = "SELECT Employees_Login as Login, Period, Date_Of_Pay, Salary, PieceWorkPayment, Total_Salary, Penalty, To_Pay, Notes, PaidOff " +
                                 "FROM payrolls " +
-                                " where payrolls.Employees_Login = @login and payrolls.Date_Of_Pay = @payrollDate";
+                                " where payrolls.Employees_Login = @login and payrolls.period = @period";
             MySqlCommand command = new MySqlCommand(query_text, connection);
             command.Parameters.AddWithValue("@login", login);
-            command.Parameters.AddWithValue("@payrollDate", payrollDate);
+            command.Parameters.AddWithValue("@period", period);
             connection.Open();
             using (DbDataReader reader = command.ExecuteReader())
             {
@@ -78,6 +86,10 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
                     if (reader.GetValue(8).ToString() != "")
                     {
                         textBoxNotes.Text = reader.GetString(8);
+                    }
+                    if (reader.GetValue(9).ToString() != "")
+                    {
+                        checkBoxPaid.IsChecked = reader.GetBoolean(9);
                     }
                 }
             }
@@ -166,21 +178,35 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
                 connection.Open();
                 transaction = connection.BeginTransaction();
 
-                //Создать/изменить запись в таблице Начисления ЗП
+                // Создать/изменить запись в таблице Начисления ЗП
                 MySqlCommand command = actionInDBCommand(connection);
                 command.Transaction = transaction;
 
-                //try
-                //{
+                MySqlCommand commandLastSalary = null;
+                HelpStructLastSalary helpSalaryStruct = NeedUpdateLastSalary(connection);
+                if (helpSalaryStruct.isUpdate)
+                {
+                    string queyLastSalary = "update employees set Last_Salary = @LastSalary where login = @login";
+                    commandLastSalary = new MySqlCommand(queyLastSalary, connection, transaction);
+                    commandLastSalary.Parameters.AddWithValue("@login", comboBoxLogin.SelectedValue.ToString());
+                    commandLastSalary.Parameters.AddWithValue("@LastSalary", checkBoxPaid.IsChecked.Value ? float.Parse(textBoxTo_Pay.Text) : helpSalaryStruct.toPay);
+                }
+
+                try
+                {
                 command.ExecuteNonQuery();
+                if (commandLastSalary != null)
+                {
+                    commandLastSalary.ExecuteNonQuery();
+                }
                 transaction.Commit();
                 this.Hide();
-                /*}
+                }
                 catch
                 {
                     transaction.Rollback();
                     System.Windows.MessageBox.Show("Ошибка сохранения!");
-                }*/
+                }
 
                 connection.Close();
                 //this.Hide();
@@ -197,14 +223,14 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
                 query = "INSERT INTO payrolls " +
-                                       "(Employees_Login, Period, Date_Of_Pay, Salary, PieceWorkPayment, Total_Salary, Penalty, To_Pay, Notes)" +
-                                       " VALUES (@login, @period, @dateOfPay, @salary, @pieceWorkPayment, @totalSalary, @penalty, @toPay, @notes);";
+                                       "(Employees_Login, Period, Date_Of_Pay, Salary, PieceWorkPayment, Total_Salary, Penalty, To_Pay, Notes, PaidOff)" +
+                                       " VALUES (@login, @period, @dateOfPay, @salary, @pieceWorkPayment, @totalSalary, @penalty, @toPay, @notes, @paidOff);";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
                 query = "Update payrolls set Employees_Login = @login, Period = @period, Date_Of_Pay = @dateOfPay, Salary = @salary, PieceWorkPayment = @pieceWorkPayment, " +
-                        "Total_Salary = @totalSalary, Penalty = @penalty, To_Pay = @toPay, Notes = @notes " +
-                        " where Employees_Login = @oldLogin and Date_Of_Pay = @oldDateOfPay ;";
+                        "Total_Salary = @totalSalary, Penalty = @penalty, To_Pay = @toPay, Notes = @notes, PaidOff = @paidOff " +
+                        " where Employees_Login = @oldLogin and period = @oldperiod ;";
 
             }
 
@@ -218,15 +244,49 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
             command.Parameters.AddWithValue("@penalty", textBoxPenalty.Text == "" ? 0.ToString() : textBoxPenalty.Text);
             command.Parameters.AddWithValue("@toPay", textBoxTo_Pay.Text);
             command.Parameters.AddWithValue("@notes", textBoxNotes.Text);
+            command.Parameters.AddWithValue("@paidOff", checkBoxPaid.IsChecked);
 
 
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
                 command.Parameters.AddWithValue("@oldLogin", old_login);
-                command.Parameters.AddWithValue("@oldDateOfPay", old_payrollDate);
+                command.Parameters.AddWithValue("@oldperiod", old_period);
             }
 
             return command;
+        }
+
+        private HelpStructLastSalary NeedUpdateLastSalary(MySqlConnection connection)
+        {
+            string query = "select period, to_pay, date_of_pay, case when period < @period then true else false end as isOlder " +
+                           "from payrolls" +
+                           " where employees_login = @login and PaidOff = 1 and period <> @period" +
+                           " order by period desc limit 1;";
+            MySqlCommand commandSelect = new MySqlCommand(query, connection);
+            commandSelect.Parameters.AddWithValue("@login", comboBoxLogin.Text);
+            commandSelect.Parameters.AddWithValue("@period", textBoxPeriod.Text);
+
+            string period = "";
+            float toPay = 0;
+            DateTime? dateOfPay = null;
+            bool isOlder = false;
+            using (DbDataReader reader = commandSelect.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    period = reader.GetString(0);
+                    toPay = float.Parse(reader.GetString(1));
+                    dateOfPay = DateTime.Parse(reader.GetString(2));
+                    isOlder = reader.GetBoolean(3);
+                }
+            }
+
+            if (period == textBoxPeriod.Text || (period != textBoxPeriod.Text && (dateOfPay <= datePickerPayrollDate.SelectedDate && isOlder)))
+            {
+                return new HelpStructLastSalary { isUpdate = true, toPay = toPay };
+            }
+
+            return new HelpStructLastSalary { isUpdate = false, toPay = 0 }; ;
         }
 
         private static bool IsTextAllowed(string text)

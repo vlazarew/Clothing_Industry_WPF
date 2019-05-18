@@ -82,7 +82,6 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
             command.Parameters.AddWithValue("@orderId", orderId);
             command.Parameters.AddWithValue("@count", int.Parse(textBoxCount.Text));
 
-
             string query_product = "select id_product from products where  Name_Of_Product = @name; ";
             MySqlCommand command_product = new MySqlCommand(query_product, connection);
             command_product.Parameters.AddWithValue("@name", comboBoxProducts.SelectedItem.ToString());
@@ -108,6 +107,8 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
                 transaction.Rollback();
                 MessageBox.Show("Ошибка добавления");
             }
+
+            // Тут вроде все окей, но надо переделать, я ничего не понимаю
             ////////////////////////
             string query_material = "select materials_for_product.Materials_Vendor_Code,materials_for_product.Count from materials_for_product where materials_for_product.Products_id_Product = @productId; ";
             MySqlCommand command_material = new MySqlCommand(query_material, connection);

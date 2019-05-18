@@ -22,7 +22,7 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
     public struct HelpStruct
     {
         public string login { get; set; }
-        public DateTime payrollDate { get; set; }
+        public string period { get; set; }
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
         private string getQueryText()
         {
             string query_text = "SELECT Employees_Login as Login, Period , DATE_FORMAT(Date_Of_Pay, \"%d.%m.%Y\") as Date_Of_Pay, Salary, PieceWorkPayment, " +
-                                "Total_Salary, Penalty, To_Pay, Notes " +
+                                "Total_Salary, Penalty, To_Pay, Notes, PaidOff " +
                                 "FROM payrolls ; ";
             return query_text;
         }
@@ -82,7 +82,7 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
         {
             int row_index = payrollsGrid.SelectedIndex;
             string login = "";
-            DateTime? payrollDate = null;
+            string period = "";
             int current_row = 0;
             foreach (DataRowView row in payrollsGrid.Items)
             {
@@ -92,11 +92,11 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
                     continue;
                 }
                 login = row.Row.ItemArray[0].ToString();
-                payrollDate = DateTime.Parse(row.Row.ItemArray[2].ToString());
+                period = row.Row.ItemArray[1].ToString();
                 break;
             }
 
-            Window edit_window = new PayrollsRecordWindow(WaysToOpenForm.WaysToOpen.edit, login, payrollDate);
+            Window edit_window = new PayrollsRecordWindow(WaysToOpenForm.WaysToOpen.edit, login, period);
             edit_window.ShowDialog();
             RefreshList();
         }
@@ -106,7 +106,7 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
             List<HelpStruct> rowsToDelete = new List<HelpStruct>();
             foreach (DataRowView row in payrollsGrid.SelectedItems)
             {
-                rowsToDelete.Add(new HelpStruct { login = row.Row.ItemArray[0].ToString(), payrollDate = DateTime.Parse(row.Row.ItemArray[1].ToString()) });
+                rowsToDelete.Add(new HelpStruct { login = row.Row.ItemArray[0].ToString(), period = row.Row.ItemArray[1].ToString() });
             }
 
             DeleteFromDB(rowsToDelete);
@@ -122,11 +122,11 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
             {
                 MySqlTransaction transaction = connection.BeginTransaction();
 
-                string queryTable = "delete from payrolls where Employees_Login = @login and Date_Of_Pay = @payrollDate";
+                string queryTable = "delete from payrolls where Employees_Login = @login and period = @period";
 
                 MySqlCommand commandTable = new MySqlCommand(queryTable, connection, transaction);
                 commandTable.Parameters.AddWithValue("@login", record.login);
-                commandTable.Parameters.AddWithValue("@payrollDate", record.payrollDate);
+                commandTable.Parameters.AddWithValue("@period", record.period);
 
                 try
                 {
@@ -154,7 +154,7 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
             List<HelpStruct> rowsToEdit = new List<HelpStruct>();
             foreach (DataRowView row in payrollsGrid.SelectedItems)
             {
-                rowsToEdit.Add(new HelpStruct { login = row.Row.ItemArray[0].ToString(), payrollDate = DateTime.Parse(row.Row.ItemArray[2].ToString()) });
+                rowsToEdit.Add(new HelpStruct { login = row.Row.ItemArray[0].ToString(), period = row.Row.ItemArray[1].ToString() });
             }
 
             if (rowsToEdit.Count > 0)
@@ -166,12 +166,12 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
                 {
                     for (int i = 0; i < rowsToEdit.Count - 1; i++)
                     {
-                        edit_window = new PayrollsRecordWindow(WaysToOpenForm.WaysToOpen.edit, rowsToEdit[i].login, rowsToEdit[i].payrollDate);
+                        edit_window = new PayrollsRecordWindow(WaysToOpenForm.WaysToOpen.edit, rowsToEdit[i].login, rowsToEdit[i].period);
                         edit_window.Show();
                     }
                 }
                 //Заключительная форма
-                edit_window = new PayrollsRecordWindow(WaysToOpenForm.WaysToOpen.edit, rowsToEdit[rowsToEdit.Count - 1].login, rowsToEdit[rowsToEdit.Count - 1].payrollDate);
+                edit_window = new PayrollsRecordWindow(WaysToOpenForm.WaysToOpen.edit, rowsToEdit[rowsToEdit.Count - 1].login, rowsToEdit[rowsToEdit.Count - 1].period);
                 edit_window.ShowDialog();
 
                 //Обновление списка

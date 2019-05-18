@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Начисление_ЗП"
         mc:Ignorable="d"
-        Title="Начисление ЗП" Height="370" Width="371.509">
+        Title="Начисление ЗП" Height="407.617" Width="371.509">
     <Grid Margin="0,0,0,5" HorizontalAlignment="Left" Width="541">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -18,7 +18,7 @@
         <Label Content="Общая зп: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,208,0,0" Height="26" Width="68"/>
         <Label Content="Штраф: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,239,0,0" Height="26" Width="57"/>
         <Label Content="К выплате: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,270,0,0" Height="26" Width="68"/>
-        <Label Content="Заметки: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="6,302,0,0" Height="26" Width="61"/>
+        <Label Content="Заметки: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,302,0,0" Height="26" Width="57"/>
         <Label Content="Дата выплаты: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,113,0,0" Height="26" Width="91"/>
         <TextBox x:Name="textBoxSalary" HorizontalAlignment="Left" Height="26" Margin="82,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxSalary_PreviewTextInput" TextChanged="TextBoxSalary_TextChanged"/>
         <TextBox x:Name="textBoxTotal_Salary" HorizontalAlignment="Left" Height="26" Margin="83,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" TabIndex="8" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True"/>
@@ -26,11 +26,12 @@
         <TextBox x:Name="textBoxTo_Pay" HorizontalAlignment="Left" Height="26" Margin="83,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" TabIndex="10" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True"/>
         <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="67,302,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" TabIndex="11" VerticalContentAlignment="Center" FontSize="14"/>
         <DatePicker x:Name="datePickerPayrollDate" HorizontalAlignment="Left" Margin="106,113,0,0" VerticalAlignment="Top" Width="232" TabIndex="12" VerticalContentAlignment="Center" FontSize="14" Height="27"/>
-        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="232,17,0,0" VerticalAlignment="Top" Width="122" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
+        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="216,17,0,0" VerticalAlignment="Top" Width="122" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
         <ComboBox x:Name="comboBoxLogin" HorizontalAlignment="Left" Margin="71,50,0,0" VerticalAlignment="Top" Width="267" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3"/>
         <TextBox x:Name="textBoxPieceWork" HorizontalAlignment="Left" Height="26" Margin="95,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxSalary_PreviewTextInput" TextChanged="TextBoxPieceWork_TextChanged"/>
         <Label Content="Период: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,81,0,0" Height="26" Width="67"/>
         <TextBox x:Name="textBoxPeriod" HorizontalAlignment="Left" Height="26" Margin="82,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" TabIndex="4" VerticalContentAlignment="Center" FontSize="14"/>
+        <CheckBox x:Name="checkBoxPaid" Content="Выплачено" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="67,341,0,0" Width="271" VerticalContentAlignment="Center" FontSize="16"/>
 
     </Grid>
 </Window>

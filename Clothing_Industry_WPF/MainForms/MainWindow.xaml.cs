@@ -159,11 +159,13 @@ namespace Clothing_Industry_WPF
             window_payrolls.Show();
         }
 
+        //При нажатии на вкладку "Отпуска"
         private void Holidays_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Window window_holidays = new HolidaysListWindow();
             window_holidays.Show();
         }
+
         // ОТКЛЮЧЕНИЕ СИСТЕМЫ
         #region Отключение системы
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
@@ -183,6 +185,7 @@ namespace Clothing_Industry_WPF
         #endregion
 
         // Справочник
+        #region Справочники
         private void Employee_roles_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Window window = new EmployeeRolesListWindow();
@@ -278,5 +281,6 @@ namespace Clothing_Industry_WPF
             Window window = new TypesOfPaymentListWindow();
             window.Show();
         }
+        #endregion
     }
 }

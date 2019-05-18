@@ -126,7 +126,7 @@ namespace Clothing_Industry_WPF.MainForms
         }
 
         // Справочник
-
+        #region Справочники
         private void Countries_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Window window = new CountriesListWindow();
@@ -180,6 +180,7 @@ namespace Clothing_Industry_WPF.MainForms
             Window window = new TypesOfOrderListWindow();
             window.Show();
         }
+        #endregion
 
         // ОТКЛЮЧЕНИЕ СИСТЕМЫ
         #region Отключение системы
