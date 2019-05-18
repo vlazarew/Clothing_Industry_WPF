@@ -142,7 +142,7 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="1"  Height="819" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" Width="256">
 
-            <StackPanel Background ="Gray" Margin="0,96,0,0"/>
+            <StackPanel Background ="Gray" Margin="0,97,0,0" Height="721" VerticalAlignment="Top"/>
             <StackPanel Background ="Beige" Height="91" VerticalAlignment="Top" Margin="0,1,0,0">
                 <TextBlock Margin="5" FontSize="20" Height="28"><Run Text="Добро пожаловать,"/></TextBlock>
                 <TextBlock x:Name="textBlockUserName" Margin="5" FontSize="19" FontWeight="Bold" UseLayoutRounding="True" TextWrapping="WrapWithOverflow" Height="48"><!--надо будет менять-->
@@ -194,7 +194,7 @@
                 </TextBlock>
             </StackPanel>
             <StackPanel Background ="YellowGreen" Height="93" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1250" Margin="5,0,0,0">
-                <TextBlock  Text="Меню" FontWeight="Bold" TextAlignment="Center" FontSize="40" Width="231" Height="77" Margin="417,10,433,732"/>
+                <TextBlock  Text="Меню" FontWeight="Bold" TextAlignment="Center" FontSize="40" Width="231" Height="77" Margin="417,10,433,732" VerticalAlignment="Center"/>
             </StackPanel>
             <StackPanel Background ="LightGray" Height="314" VerticalAlignment="Top" HorizontalAlignment="Left" Width="252" Margin="749,98,0,0">
                 <TextBlock x:Name="Warehouse" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Store_PreviewMouseLeftButtonUp" >
@@ -232,7 +232,7 @@
                 <TextBlock x:Name="Types_of_payment" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Types_of_payment_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы оплаты"/></Hyperlink></TextBlock>
             </StackPanel>
             <StackPanel Background ="#FFC9BC38" Height="93" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1250" Margin="5,417,0,0">
-                <TextBlock  Text="Справочник" FontWeight="Bold" TextAlignment="Center" FontSize="40" Height="77" Margin="490,10,507,732"/>
+                <TextBlock  Text="Справочник" FontWeight="Bold" TextAlignment="Center" FontSize="40" Height="77" Margin="490,10,507,732" VerticalAlignment="Center"/>
             </StackPanel>
             <StackPanel Background ="LightGray" Height="304" VerticalAlignment="Top" HorizontalAlignment="Left" Width="252" Margin="749,515,0,0">
 

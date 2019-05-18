@@ -1,6 +1,8 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Clothing_Industry_WPF.MainForms;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -95,10 +97,41 @@ namespace Clothing_Industry_WPF
                 return;
             }
 
-            Window mainWindow = new MainWindow(username);
+            bool isAdministrator = CheckRole(connection, username);
+            Window mainWindow;
+            // Тернарный оператор тут бессилен, разные типы говорит
+            if (isAdministrator)
+            {
+                mainWindow = new MainWindow(username);
+            }
+            else
+            {
+                mainWindow = new MainWindowForUser(username);
+            }
+
             Close();
             mainWindow.Show();
             connection.Close();
+        }
+
+        private bool CheckRole(MySqlConnection connection, string username)
+        {
+            string query = "select employee_roles.name_of_role from employee_roles " +
+                           "join employees on employee_roles.id_Employee_role = employee_roles_id_Employee_role " +
+                           "where employees.login = @login";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@login", username);
+
+            using (DbDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    // Если в названии роли у нас встречается слово "Администратор", значит у него есть доступ ко всему
+                    return (reader.GetString(0).IndexOf("Администратор") != -1);
+                }
+            }
+
+            return false;
         }
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)

@@ -174,13 +174,13 @@
                     <Hyperlink>Состояние склада</Hyperlink>
                 </TextBlock>
             </StackPanel>
-            <StackPanel Background ="LightGray" Height="218" VerticalAlignment="Top" HorizontalAlignment="Left" Width="262" Margin="248,398,0,0">
+            <StackPanel Background ="LightGray" Height="216" VerticalAlignment="Top" HorizontalAlignment="Left" Width="262" Margin="248,398,0,0">
                 <TextBlock x:Name="Countries" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Countries_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Страны"/></Hyperlink></TextBlock>
                 <TextBlock x:Name="Groups_of_material" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Groups_of_material_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Группы материалов"/></Hyperlink></TextBlock>
                 <TextBlock x:Name="Types_of_material" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Types_of_material_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы материалов"/></Hyperlink></TextBlock>
                 <TextBlock x:Name="Units" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Units_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Единицы измерения"/></Hyperlink></TextBlock>
             </StackPanel>
-            <StackPanel Background ="LightGray" Height="218" VerticalAlignment="Top" HorizontalAlignment="Left" Width="238" Margin="5,398,0,0">
+            <StackPanel Background ="LightGray" HorizontalAlignment="Left" Width="238" Margin="5,398,0,2">
                 <TextBlock x:Name="Customer_statuses" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Customer_statuses_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Статусы клиентов"/></Hyperlink></TextBlock>
                 <TextBlock x:Name="Order_channels" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Order_channels_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Каналы заказов"/></Hyperlink></TextBlock>
                 <TextBlock x:Name="Statuses_of_order" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Statuses_of_order_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Статусы заказов"/></Hyperlink></TextBlock>
@@ -191,14 +191,12 @@
             <StackPanel Background ="#FFC9BC38" Height="93" VerticalAlignment="Top" HorizontalAlignment="Left" Width="749" Margin="5,300,0,0">
                 <TextBlock  Text="Справочник" FontWeight="Bold" TextAlignment="Center" FontSize="40" Height="77" Margin="0,10,0,732"/>
             </StackPanel>
-            <StackPanel Background ="LightGray" Height="218" VerticalAlignment="Top" HorizontalAlignment="Left" Width="239" Margin="515,398,0,0">
-
-            </StackPanel>
+            <StackPanel Background ="LightGray" HorizontalAlignment="Left" Width="239" Margin="515,398,0,2"/>
 
         </Grid>
         <Grid Grid.Column="1" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" Margin="0,0,0,125">
 
-            <StackPanel Background ="Gray" Margin="0,96,0,0"/>
+            <StackPanel Background ="Gray" Margin="0,98,0,2" HorizontalAlignment="Right" Width="253"/>
             <StackPanel Background ="Beige" Height="91" VerticalAlignment="Top" Margin="0,1,0,0">
                 <TextBlock Margin="5" FontSize="20" Height="28"><Run Text="Добро пожаловать,"/></TextBlock>
                 <TextBlock x:Name="textBlockUserName" Margin="5" FontSize="19" FontWeight="Bold" UseLayoutRounding="True" TextWrapping="WrapWithOverflow" Height="48"><!--надо будет менять-->

@@ -259,17 +259,21 @@ namespace Clothing_Industry_WPF.Сотрудники
 
                 //Создание/изменение пользователя в БД
                 string queryUser = "";
+                //Выдача прав пользователю
+                string queryGrants = "";
                 //Читаемости ради                    
                 if (way == WaysToOpenForm.WaysToOpen.create)
                 {
                     queryUser = string.Format("CREATE USER '{0}'@'%' IDENTIFIED BY '{1}';", textBoxLogin.Text,
                     CheckBoxPassword.IsChecked.Value ? textBoxPassword.Text : PasswordBoxCurrent.Password);
+                    queryGrants = string.Format("GRANT ALL PRIVILEGES ON main_database.* TO '{0}'@'%'", textBoxLogin.Text);
                 }
                 if (way == WaysToOpenForm.WaysToOpen.edit && old_login != textBoxLogin.Text)
                 {
                     queryUser = string.Format("Rename user '{0}'@'%' To '{1}'@'%';", old_login, textBoxLogin.Text);
                 }
-                MySqlCommand commandUser = new MySqlCommand(queryUser, connection,transaction);
+                MySqlCommand commandUser = new MySqlCommand(queryUser, connection, transaction);
+                MySqlCommand commandGrants = new MySqlCommand(queryGrants, connection, transaction);
 
                 try
                 {
@@ -277,6 +281,10 @@ namespace Clothing_Industry_WPF.Сотрудники
                     if (queryUser != "")
                     {
                         commandUser.ExecuteNonQuery();
+                    }
+                    if (queryGrants != "")
+                    {
+                        commandGrants.ExecuteNonQuery();
                     }
                     transaction.Commit();
                     this.Hide();
