@@ -97,6 +97,8 @@ namespace Clothing_Industry_WPF
                 return;
             }
 
+            UpdateSalaryTable(connection);
+
             bool isAdministrator = CheckRole(connection, username);
             Window mainWindow;
             // Тернарный оператор тут бессилен, разные типы говорит
@@ -112,6 +114,74 @@ namespace Clothing_Industry_WPF
             Close();
             mainWindow.Show();
             connection.Close();
+        }
+
+        // Обновляем(добавляем) строчки в Начислениях ЗП
+        private void UpdateSalaryTable(MySqlConnection connection)
+        {
+            // Посмотреть последний период зп
+            string querySelect = "select period " +
+                                 "from payrolls " +
+                                 "order by period desc " +
+                                 "limit 1 ;";
+
+            string periodNow = DateTime.Now.Month + "." + DateTime.Now.Year;
+            MySqlCommand commandSelect = new MySqlCommand(querySelect, connection);
+
+            string lastPeriod = "";
+            using (DbDataReader reader = commandSelect.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    lastPeriod = reader.GetString(0);
+                }
+            }
+
+            if (lastPeriod != periodNow)
+            {
+                List<KeyValuePair<string, float>> listSalary = new List<KeyValuePair<string, float>>();
+                string queryLoginSalary = "select * " +
+                                          "from (select Login, Salary " +
+                                          "from employees " +
+                                          "join payrolls on employees.Login = payrolls.Employees_Login " +
+                                          "order by period desc " +
+                                          "limit 18446744073709551615) as testTable " +
+                                          "group by login ;";
+                MySqlCommand commandLoginSalary = new MySqlCommand(queryLoginSalary, connection);
+
+                using (DbDataReader reader = commandLoginSalary.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        listSalary.Add(new KeyValuePair<string, float>(reader.GetString(0), float.Parse(reader.GetString(1))));
+                    }
+                }
+
+                foreach (var record in listSalary)
+                {
+                    MySqlTransaction transaction = connection.BeginTransaction();
+                    string queryInsert = "insert into payrolls " +
+                                         "(Employees_Login, Period, Date_Of_Pay, Salary, PieceWorkPayment, Total_Salary, Penalty, To_Pay, Notes, PaidOff)" +
+                                         " VALUES (@login, @period, @dateOfPay, @salary, 0, @salary, 0, @salary, '', false) ";
+
+                    MySqlCommand commandInsert = new MySqlCommand(queryInsert, connection, transaction);
+                    commandInsert.Parameters.AddWithValue("@login", record.Key);
+                    commandInsert.Parameters.AddWithValue("@period", periodNow);
+                    commandInsert.Parameters.AddWithValue("@dateOfPay", new DateTime(DateTime.Now.Year, DateTime.Now.Month, 15));
+                    commandInsert.Parameters.AddWithValue("@salary", record.Value);
+
+                    try
+                    {
+                        commandInsert.ExecuteNonQuery();
+                        transaction.Commit();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                    }
+                }
+            }
+
         }
 
         private bool CheckRole(MySqlConnection connection, string username)

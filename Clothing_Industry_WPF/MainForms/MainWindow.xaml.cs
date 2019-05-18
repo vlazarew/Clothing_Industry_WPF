@@ -58,23 +58,7 @@ namespace Clothing_Industry_WPF
             InitializeComponent();
             login = entry_login;
             FillUsername();
-            UpdateSalaryTable();
-        }
-
-        // Обновляем(добавляем) строчки в Начислениях ЗП
-        private void UpdateSalaryTable()
-        {
-            // Посмотреть последний период зп
-            string querySelect = "select period " +
-                                 "from payrolls " +
-                                 "order by period desc " +
-                                 "limit 1 ;";
-            MySqlConnection connection = new MySqlConnection(connectionString);
-            connection.Open();
-
-            string periodNow = DateTime.Now.Month + "." + DateTime.Now.Year
-            MySqlCommand commandSelect = new MySqlCommand(querySelect, connection);
-
+           
         }
 
         // Заполнить ФИО в формочек
