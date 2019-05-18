@@ -55,7 +55,7 @@ namespace Clothing_Industry_WPF.Справочник.Группы_материа
             MySqlCommand command = new MySqlCommand(query_text, connection);
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
             adapter.Fill(dataTable);
-            productGrid.ItemsSource = dataTable.DefaultView;
+            productsGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
         }
 
@@ -76,10 +76,10 @@ namespace Clothing_Industry_WPF.Справочник.Группы_материа
 
         private void DataGridCell_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            int row_index = productGrid.SelectedIndex;
+            int row_index = productsGrid.SelectedIndex;
             int id = -1;
             int current_row = 0;
-            foreach (DataRowView row in productGrid.Items)
+            foreach (DataRowView row in productsGrid.Items)
             {
                 if (current_row != row_index)
                 {
@@ -99,7 +99,7 @@ namespace Clothing_Industry_WPF.Справочник.Группы_материа
         {
 
             List<int> idsToDelete = new List<int>();
-            foreach (DataRowView row in productGrid.SelectedItems)
+            foreach (DataRowView row in productsGrid.SelectedItems)
             {
                 idsToDelete.Add((int)row.Row.ItemArray[0]);
             }
@@ -146,7 +146,7 @@ namespace Clothing_Industry_WPF.Справочник.Группы_материа
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             List<int> idsToDelete = new List<int>();
-            foreach (DataRowView row in productGrid.SelectedItems)
+            foreach (DataRowView row in productsGrid.SelectedItems)
             {
                 idsToDelete.Add((int)row.Row.ItemArray[0]);
             }
@@ -202,7 +202,7 @@ namespace Clothing_Industry_WPF.Справочник.Группы_материа
             MySqlCommand command = new MySqlCommand(edited_query, connection);
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
             adapter.Fill(dataTable);
-            productGrid.ItemsSource = dataTable.DefaultView;
+            productsGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
         }
 
@@ -210,8 +210,8 @@ namespace Clothing_Industry_WPF.Справочник.Группы_материа
         {
             List<KeyValuePair<string, string>> describe = TakeDescribe();
             List<FindHandler.FieldParameters> result = new List<FindHandler.FieldParameters>();
-            result.Add(new FindHandler.FieldParameters("ID", "Код", describe.Where(key => key.Key == "ID").First().Value));
-            result.Add(new FindHandler.FieldParameters("Name", "Наименование", describe.Where(key => key.Key == "Name").First().Value));
+            result.Add(new FindHandler.FieldParameters("id_Group_Of_Material", "Код", describe.Where(key => key.Key == "id_Group_Of_Material").First().Value));
+            result.Add(new FindHandler.FieldParameters("Name_Of_Group", "Наименование", describe.Where(key => key.Key == "Name_Of_Group").First().Value));
 
            return result;
         }

@@ -209,8 +209,8 @@ namespace Clothing_Industry_WPF.Справочник.Типы_транзакци
         {
             List<KeyValuePair<string, string>> describe = TakeDescribe();
             List<FindHandler.FieldParameters> result = new List<FindHandler.FieldParameters>();
-            result.Add(new FindHandler.FieldParameters("ID", "Код", describe.Where(key => key.Key == "ID").First().Value));
-            result.Add(new FindHandler.FieldParameters("Name", "Наименование", describe.Where(key => key.Key == "Name").First().Value));
+            result.Add(new FindHandler.FieldParameters("id_Type_Of_Transaction", "Код", describe.Where(key => key.Key == "id_Type_Of_Transaction").First().Value));
+            result.Add(new FindHandler.FieldParameters("Name_Of_Type", "Наименование", describe.Where(key => key.Key == "Name_Of_Type").First().Value));
 
             return result;
         }

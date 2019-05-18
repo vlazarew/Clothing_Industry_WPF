@@ -22,8 +22,8 @@
             </DataGrid.Resources>
 
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding ID}" ClipboardContentBinding="{x:Null}" Header="Код" IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Наименование"/>
+                <DataGridTextColumn Binding="{Binding id_Type_Of_Transaction}" ClipboardContentBinding="{x:Null}" Header="Код" IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Name_Of_Type}" ClipboardContentBinding="{x:Null}" Header="Наименование"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button Name ="ButtonCreateNew" Content="Создать" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>

@@ -209,8 +209,8 @@ namespace Clothing_Industry_WPF.Справочник.Статусы_заказо
         {
             List<KeyValuePair<string, string>> describe = TakeDescribe();
             List<FindHandler.FieldParameters> result = new List<FindHandler.FieldParameters>();
-            result.Add(new FindHandler.FieldParameters("ID", "Код", describe.Where(key => key.Key == "ID").First().Value));
-            result.Add(new FindHandler.FieldParameters("Name", "Наименование", describe.Where(key => key.Key == "Name").First().Value));
+            result.Add(new FindHandler.FieldParameters("id_Status_Of_Order", "Код", describe.Where(key => key.Key == "id_Status_Of_Order").First().Value));
+            result.Add(new FindHandler.FieldParameters("Name_Of_Status", "Наименование", describe.Where(key => key.Key == "Name_Of_Status").First().Value));
 
             return result;
         }

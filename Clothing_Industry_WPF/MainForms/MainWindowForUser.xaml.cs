@@ -3,28 +3,17 @@ using Clothing_Industry_WPF.Заказы;
 using Clothing_Industry_WPF.Изделия;
 using Clothing_Industry_WPF.Клиенты;
 using Clothing_Industry_WPF.Материал;
-using Clothing_Industry_WPF.Начисление_ЗП;
-using Clothing_Industry_WPF.Отпуска;
 using Clothing_Industry_WPF.Примерки;
-using Clothing_Industry_WPF.Приход_материала;
 using Clothing_Industry_WPF.Состояние_склада;
-using Clothing_Industry_WPF.Сотрудники;
 using Clothing_Industry_WPF.Справочник.Группы_материалов;
-using Clothing_Industry_WPF.Справочник.Должности;
 using Clothing_Industry_WPF.Справочник.Единицы_измерения;
 using Clothing_Industry_WPF.Справочник.Каналы_заказов;
-using Clothing_Industry_WPF.Справочник.Категории_расходов;
-using Clothing_Industry_WPF.Справочник.Периодичности;
-using Clothing_Industry_WPF.Справочник.Роли;
 using Clothing_Industry_WPF.Справочник.Статусы_заказов;
 using Clothing_Industry_WPF.Справочник.Статусы_клиентов;
-using Clothing_Industry_WPF.Справочник.Статусы_оплаты;
 using Clothing_Industry_WPF.Справочник.Страны;
 using Clothing_Industry_WPF.Справочник.Типы_заказов;
 using Clothing_Industry_WPF.Справочник.Типы_материалов;
-using Clothing_Industry_WPF.Справочник.Типы_оплаты;
 using Clothing_Industry_WPF.Справочник.Типы_примерок;
-using Clothing_Industry_WPF.Справочник.Типы_транзакций;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -42,18 +31,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Clothing_Industry_WPF
+namespace Clothing_Industry_WPF.MainForms
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для MainWindowForUser.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindowForUser : Window
     {
         private string login;
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
 
-        #region Загрузка формы
-        public MainWindow(string entry_login = "")
+        public MainWindowForUser(string entry_login = "")
         {
             InitializeComponent();
             login = entry_login;
@@ -86,14 +74,6 @@ namespace Clothing_Industry_WPF
                 }
             }
             textBlockUserName.Text = "Гость";
-        }
-        #endregion
-
-        // При нажатии на вкладку "Сотрудники"
-        private void Workers_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            Window window_workers = new EmployeesListWindow();
-            window_workers.Show();
         }
 
         // При нажатии на вкладку "Материалы"
@@ -131,13 +111,6 @@ namespace Clothing_Industry_WPF
             window_orders.Show();
         }
 
-        // При нажатии на вкладку "Приход материалов"
-        private void Receipt_Materials_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            Window window_receipt = new ReceiptsOfMaterialsWindow();
-            window_receipt.Show();
-        }
-
         // При нажатии на вкладку "Изделия"
         private void Products_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -148,52 +121,11 @@ namespace Clothing_Industry_WPF
         // При нажатии на вкладку "Примерки"
         private void Fittings_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-           Window window_fittings = new FittingsListWindow();
-           window_fittings.Show();
+            Window window_fittings = new FittingsListWindow();
+            window_fittings.Show();
         }
-
-        // При нажатии на вкладку "Начисление ЗП"
-        private void MoneyForWorkers_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            Window window_payrolls = new PayrollsListWindow();
-            window_payrolls.Show();
-        }
-
-        private void Holidays_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            Window window_holidays = new HolidaysListWindow();
-            window_holidays.Show();
-        }
-        // ОТКЛЮЧЕНИЕ СИСТЕМЫ
-        #region Отключение системы
-        private void ButtonExit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-
-
-
-
-        #endregion
 
         // Справочник
-        private void Employee_roles_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            Window window = new EmployeeRolesListWindow();
-            window.Show();
-        }
-
-        private void Employee_positions_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            Window window = new EmployeePositionsListWindow();
-            window.Show();
-        }
 
         private void Countries_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
@@ -204,18 +136,6 @@ namespace Clothing_Industry_WPF
         private void Groups_of_material_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Window window = new GroupsOfMaterialListWindow();
-            window.Show();
-        }
-
-        private void Payment_states_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            Window window = new PaymentStatesListWindow();
-            window.Show();
-        }
-
-        private void Type_of_transactions_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            Window window = new TypeOfTransactionsListWindow();
             window.Show();
         }
 
@@ -261,22 +181,17 @@ namespace Clothing_Industry_WPF
             window.Show();
         }
 
-        private void Consumption_categories_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        // ОТКЛЮЧЕНИЕ СИСТЕМЫ
+        #region Отключение системы
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
-            Window window = new ConsumptionCategoriesListWindow();
-            window.Show();
+            Application.Current.Shutdown();
         }
 
-        private void Periodities_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Window window = new PeriodicitiesListWindow();
-            window.Show();
+            Application.Current.Shutdown();
         }
-
-        private void Types_of_payment_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            Window window = new TypesOfPaymentListWindow();
-            window.Show();
-        }
+        #endregion
     }
 }

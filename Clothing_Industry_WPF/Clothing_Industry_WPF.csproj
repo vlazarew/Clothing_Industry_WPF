@@ -88,6 +88,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="MainForms\MainWindowForUser.xaml.cs">
+      <DependentUpon>MainWindowForUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Баланс клиентов\CustomerBalanceListWindow.xaml.cs">
       <DependentUpon>CustomerBalanceListWindow.xaml</DependentUpon>
     </Compile>
@@ -287,6 +290,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MainForms\MainWindowForUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Баланс клиентов\CustomerBalanceListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
