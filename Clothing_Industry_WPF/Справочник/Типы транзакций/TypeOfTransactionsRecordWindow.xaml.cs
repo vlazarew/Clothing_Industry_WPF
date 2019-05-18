@@ -56,7 +56,7 @@ namespace Clothing_Industry_WPF.Справочник.Типы_транзакци
             {
                 while (reader.Read())
                 {
-                    textBoxName.Text = reader.GetString(0);
+                    textBoxName.Text = reader.GetString(1);
                 }
             }
             connection.Close();

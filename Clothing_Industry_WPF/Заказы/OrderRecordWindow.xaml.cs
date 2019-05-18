@@ -1,4 +1,5 @@
 ﻿using Clothing_Industry_WPF.Перечисления;
+using Clothing_Industry_WPF.Поиск_и_фильтры;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -205,9 +206,17 @@ namespace Clothing_Industry_WPF.Заказы
 
         private void ButtonListProducts_Click(object sender, RoutedEventArgs e)
         {
-            Window windowListProducts = new OrderProductsListWindow(idOrder);
+           
+            var windowListProducts = new OrderProductsListWindow(idOrder);
             windowListProducts.ShowDialog();
-
+            {
+                var Result = windowListProducts.Result;
+                if(!Result)
+                {
+                    comboBoxStatusOfOrder.IsEnabled = false;
+                    comboBoxStatusOfOrder.SelectedValue = "Отменён";
+                }
+            }          
             UpdateTotalPrice();
         }
 
