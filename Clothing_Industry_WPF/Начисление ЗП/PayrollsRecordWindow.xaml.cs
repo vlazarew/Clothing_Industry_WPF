@@ -147,7 +147,7 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
             {
                 result += result == "" ? "Период" : ", Период";
             }
-            if (datePickerPayrollDate.SelectedDate.Value.ToString() == "")
+            if (datePickerPayrollDate.SelectedDate == null)
             {
                 result += result == "" ? "Дата выплаты" : ", Дата выплаты";
             }

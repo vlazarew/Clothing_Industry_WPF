@@ -18,7 +18,7 @@
         <Label Content="Дата доставки: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,207,0,0"/>
         <Label Content="Заметки: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,238,0,0"/>
         <TextBox x:Name="textBoxDiscount" HorizontalAlignment="Left" Height="26" Margin="78,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxDiscount_PreviewTextInput"/>
-        <TextBox x:Name="textBoxPaid" HorizontalAlignment="Left" Height="26" Margin="82,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxPaid_PreviewTextInput"/>
+        <TextBox x:Name="textBoxPaid" HorizontalAlignment="Left" Height="26" Margin="82,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxPaid_PreviewTextInput" TextChanged="TextBoxPaid_TextChanged"/>
         <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="71,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" TabIndex="7" VerticalContentAlignment="Center" FontSize="14"/>
         <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="122" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True" TabIndex="14" Grid.Column="1"/>
         <Label Content="Долг: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,176,0,0"/>
@@ -36,7 +36,7 @@
         <DatePicker x:Name="datePickerDateOfOrder" HorizontalAlignment="Left" Margin="97,48,0,0" VerticalAlignment="Top" FontSize="14" VerticalContentAlignment="Center" Width="245" TabIndex="1"/>
         <DatePicker x:Name="datePickerDateOfDelievery" HorizontalAlignment="Left" Margin="104,206,0,0" VerticalAlignment="Top" FontSize="14" VerticalContentAlignment="Center" Width="238" TabIndex="6"/>
         <Label Content="Итоговая стоимость: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,113,0,0"/>
-        <TextBox x:Name="textBoxTotal_Price" HorizontalAlignment="Left" Height="26" Margin="142,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True"/>
+        <TextBox x:Name="textBoxTotal_Price" HorizontalAlignment="Left" Height="26" Margin="142,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True" TextChanged="TextBoxTotal_Price_TextChanged"/>
         <Button x:Name="buttonListProducts" Content="Открыть список изделий" HorizontalAlignment="Left" Margin="311,17,0,0" VerticalAlignment="Top" Width="154" Height="25" IsDefault="True" TabIndex="13" Click="ButtonListProducts_Click"/>
 
     </Grid>

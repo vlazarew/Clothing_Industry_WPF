@@ -122,11 +122,11 @@ namespace Clothing_Industry_WPF.Отпуска
             {
                 result += result == "" ? "Логин" : ", Логин";
             }           
-            if (datePickerIn_Fact_Start.SelectedDate.Value.ToString() == "")
+            if (datePickerIn_Fact_Start.SelectedDate == null)
             {
                 result += result == "" ? "Начало отпуска" : ", Начало отпуска";
             }
-            if (datePickerIn_Fact_End.SelectedDate.Value.ToString() == "")
+            if (datePickerIn_Fact_End.SelectedDate == null)
             {
                 result += result == "" ? "Конец отпуска" : ", Конец отпуска";
             }

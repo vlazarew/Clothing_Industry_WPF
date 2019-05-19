@@ -8,6 +8,7 @@ using Clothing_Industry_WPF.Состояние_склада;
 using Clothing_Industry_WPF.Справочник.Группы_материалов;
 using Clothing_Industry_WPF.Справочник.Единицы_измерения;
 using Clothing_Industry_WPF.Справочник.Каналы_заказов;
+using Clothing_Industry_WPF.Справочник.Поставщики;
 using Clothing_Industry_WPF.Справочник.Статусы_заказов;
 using Clothing_Industry_WPF.Справочник.Статусы_клиентов;
 using Clothing_Industry_WPF.Справочник.Страны;
@@ -180,6 +181,12 @@ namespace Clothing_Industry_WPF.MainForms
             Window window = new TypesOfOrderListWindow();
             window.Show();
         }
+
+        private void Suppliers_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window = new SuppliersListWindow();
+            window.Show();
+        }
         #endregion
 
         // ОТКЛЮЧЕНИЕ СИСТЕМЫ
@@ -194,5 +201,7 @@ namespace Clothing_Industry_WPF.MainForms
             Application.Current.Shutdown();
         }
         #endregion
+
+        
     }
 }

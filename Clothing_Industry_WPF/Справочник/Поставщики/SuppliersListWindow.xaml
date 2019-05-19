@@ -1,11 +1,11 @@
-﻿<Window x:Class="Clothing_Industry_WPF.Справочник.Группы_материалов.GroupsOfMaterialListWindow"
+﻿<Window x:Class="Clothing_Industry_WPF.Справочник.Поставщики.SuppliersListWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Clothing_Industry_WPF.Справочник.Группы_материалов"
+        xmlns:local="clr-namespace:Clothing_Industry_WPF.Справочник.Поставщики"
         mc:Ignorable="d"
-        Title="Группа материалов" Loaded="Window_Loaded" Height="529" Width="1067.1">
+        Title="Поставщики" Loaded="Window_Loaded" Height="529" Width="1067.1">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="541*"/>
@@ -14,8 +14,7 @@
             <ColumnDefinition Width="12*"/>
         </Grid.ColumnDefinitions>
 
-        <DataGrid x:Name="productsGrid" Margin="10,0,10,10" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Height="440" VerticalAlignment="Bottom" Grid.ColumnSpan="4">
-
+        <DataGrid x:Name="suppliersGrid" Margin="10,0,10,10" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Height="440" VerticalAlignment="Bottom" Grid.ColumnSpan="4">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridCell}">
                     <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
@@ -23,8 +22,8 @@
             </DataGrid.Resources>
 
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding id_Group_Of_Material}" ClipboardContentBinding="{x:Null}" Header="Код" />
-                <DataGridTextColumn Binding="{Binding Name_Of_Group}" ClipboardContentBinding="{x:Null}" Header="Наименование"/>
+                <DataGridTextColumn Binding="{Binding id_Supplier}" ClipboardContentBinding="{x:Null}" Header="Код" />
+                <DataGridTextColumn Binding="{Binding Name_of_supplier}" ClipboardContentBinding="{x:Null}" Header="Наименование"/>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -38,4 +37,3 @@
 
     </Grid>
 </Window>
-

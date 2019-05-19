@@ -172,11 +172,11 @@ namespace Clothing_Industry_WPF.Заказы
         {
             string result = "";
 
-            if (datePickerDateOfOrder.SelectedDate.Value.ToString() == "")
+            if (datePickerDateOfOrder.SelectedDate == null)
             {
                 result += result == "" ? "Дата заказа" : ", Дата заказа";
             }
-            if (datePickerDateOfDelievery.SelectedDate.Value.ToString() == "")
+            if (datePickerDateOfDelievery.SelectedDate == null)
             {
                 result += result == "" ? "Дата доставки" : ", Дата доставки";
             }
@@ -206,17 +206,17 @@ namespace Clothing_Industry_WPF.Заказы
 
         private void ButtonListProducts_Click(object sender, RoutedEventArgs e)
         {
-           
+
             var windowListProducts = new OrderProductsListWindow(idOrder);
             windowListProducts.ShowDialog();
             {
                 var Result = windowListProducts.Result;
-                if(!Result)
+                if (!Result)
                 {
                     comboBoxStatusOfOrder.IsEnabled = false;
                     comboBoxStatusOfOrder.SelectedValue = "Отменён";
                 }
-            }          
+            }
             UpdateTotalPrice();
         }
 
@@ -628,6 +628,26 @@ namespace Clothing_Industry_WPF.Заказы
             }
 
             return result;
+        }
+
+        private void TextBoxTotal_Price_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            RefreshDebt();
+        }
+
+        private void TextBoxPaid_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            RefreshDebt();
+        }
+
+        private void RefreshDebt()
+        {
+            float totalPrice = textBoxTotal_Price.Text == "" ? 0 : float.Parse(textBoxTotal_Price.Text);
+            float paid = textBoxPaid.Text == "" ? 0 : float.Parse(textBoxPaid.Text);
+
+            float debt = totalPrice - paid;
+
+            textBoxDebt.Text = debt.ToString();
         }
     }
 }

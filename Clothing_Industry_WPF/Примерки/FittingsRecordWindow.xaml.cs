@@ -123,7 +123,7 @@ namespace Clothing_Industry_WPF.Примерки
             {
                 result += result == "" ? "Время примерки" : ", Время примерки";
             }*/
-            if (datePickerDate.SelectedDate.Value.ToString() == "")
+            if (datePickerDate.SelectedDate == null)
             {
                 result += result == "" ? "Дата примерки" : ", Дата добавленпримеркиия";
             }

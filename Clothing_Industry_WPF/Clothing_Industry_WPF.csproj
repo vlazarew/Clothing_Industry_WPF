@@ -219,6 +219,12 @@
     <Compile Include="Справочник\Периодичности\PeriodicitiesRecordWindow.xaml.cs">
       <DependentUpon>PeriodicitiesRecordWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Справочник\Поставщики\SuppliersListWindow.xaml.cs">
+      <DependentUpon>SuppliersListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Поставщики\SuppliersRecordWindow.xaml.cs">
+      <DependentUpon>SuppliersRecordWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Справочник\Роли\EmployeeRolesListWindow.xaml.cs">
       <DependentUpon>EmployeeRolesListWindow.xaml</DependentUpon>
     </Compile>
@@ -455,6 +461,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Справочник\Периодичности\PeriodicitiesRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Поставщики\SuppliersListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Поставщики\SuppliersRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -42,6 +42,7 @@ namespace Clothing_Industry_WPF.Справочник.Статусы_заказо
                 old_id = id;
                 FillFields(id);
             }
+            textBoxName.Focus();
         }
 
         private void FillFields(int id)

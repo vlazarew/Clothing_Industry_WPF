@@ -2,9 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Common;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,25 +10,24 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Clothing_Industry_WPF.Справочник.Страны
+namespace Clothing_Industry_WPF.Справочник.Поставщики
 {
     /// <summary>
-    /// Логика взаимодействия для CountriesRecordWindow.xaml
+    /// Логика взаимодействия для SuppliersRecordWindow.xaml
     /// </summary>
-    public partial class CountriesRecordWindow : Window
+    public partial class SuppliersRecordWindow : Window
     {
         private WaysToOpenForm.WaysToOpen way;
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private MySqlConnection connection;
         private int old_id = -1;
 
-        public CountriesRecordWindow(WaysToOpenForm.WaysToOpen waysToOpen, int id = -1)
+        public SuppliersRecordWindow(WaysToOpenForm.WaysToOpen waysToOpen, int id = -1)
         {
             InitializeComponent();
             way = waysToOpen;
@@ -47,8 +44,8 @@ namespace Clothing_Industry_WPF.Справочник.Страны
 
         private void FillFields(int id)
         {
-            string query_text = "select id_Country, Name_Of_Country from countries" +
-                                " where countries.id_Country = @id;";
+            string query_text = "select id_Supplier, Name_Of_Supplier from suppliers" +
+                                " where suppliers.id_Supplier = @id;";
             MySqlCommand command = new MySqlCommand(query_text, connection);
             command.Parameters.AddWithValue("@id", id);
             connection.Open();
@@ -104,7 +101,7 @@ namespace Clothing_Industry_WPF.Справочник.Страны
                 connection.Open();
                 transaction = connection.BeginTransaction();
 
-                //Создать/изменить запись в таблице Материалы
+                //Создать/изменить запись в таблице Поставщики
                 MySqlCommand command = actionInDBCommand(connection);
                 command.Transaction = transaction;
 
@@ -133,14 +130,14 @@ namespace Clothing_Industry_WPF.Справочник.Страны
 
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
-                query = "INSERT INTO countries " +
-                                       "(Name_Of_Country)" +
+                query = "INSERT INTO suppliers " +
+                                       "(Name_Of_Supplier)" +
                                        " VALUES (@name);";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
-                query = "Update countries set  Name_Of_Country = @name" +
-                        " where id_Country = @old_id;";
+                query = "Update suppliers set  Name_Of_Supplier = @name" +
+                        " where id_Supplier = @old_id;";
             }
 
             MySqlCommand command = new MySqlCommand(query, connection);

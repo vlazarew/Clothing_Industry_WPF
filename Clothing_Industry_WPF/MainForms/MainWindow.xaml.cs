@@ -15,6 +15,7 @@ using Clothing_Industry_WPF.Справочник.Единицы_измерени
 using Clothing_Industry_WPF.Справочник.Каналы_заказов;
 using Clothing_Industry_WPF.Справочник.Категории_расходов;
 using Clothing_Industry_WPF.Справочник.Периодичности;
+using Clothing_Industry_WPF.Справочник.Поставщики;
 using Clothing_Industry_WPF.Справочник.Роли;
 using Clothing_Industry_WPF.Справочник.Статусы_заказов;
 using Clothing_Industry_WPF.Справочник.Статусы_клиентов;
@@ -282,6 +283,14 @@ namespace Clothing_Industry_WPF
             Window window = new TypesOfPaymentListWindow();
             window.Show();
         }
+
+        private void Suppliers_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window = new SuppliersListWindow();
+            window.Show();
+        }
         #endregion
+
+
     }
 }

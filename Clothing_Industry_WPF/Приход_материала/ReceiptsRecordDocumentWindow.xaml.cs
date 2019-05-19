@@ -147,7 +147,7 @@ namespace Clothing_Industry_WPF.Приход_материала
             {
                 result += result == "" ? "Название документа" : ", Название документа";
             }
-            if (datePickerComing_Date.SelectedDate.Value.ToString() == "")
+            if (datePickerComing_Date.SelectedDate == null)
             {
                 result += result == "" ? "Дата прихода" : ", Дата прихода";
             }

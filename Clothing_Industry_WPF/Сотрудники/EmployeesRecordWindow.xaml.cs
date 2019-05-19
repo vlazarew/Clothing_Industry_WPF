@@ -226,7 +226,7 @@ namespace Clothing_Industry_WPF.Сотрудники
             {
                 result += result == "" ? "Паспортные данные" : ", Паспортные данные";
             }
-            if (datePickerAdded.SelectedDate.Value.ToString() == "")
+            if (datePickerAdded.SelectedDate == null)
             {
                 result += result == "" ? "Дата добавления" : ", Дата добавления";
             }
