@@ -1,0 +1,24 @@
+﻿<Window x:Class="Clothing_Industry_WPF.Поиск_файла.FileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clothing_Industry_WPF.Поиск_файла"
+        mc:Ignorable="d"
+       Title="Выбрать папку" Height="350" Width="525">
+    <Grid>
+        <Button Content="Выбрать папку" Height="25" HorizontalAlignment="Right" Margin="0,12,26,0" Name="buttonChooseDirectory" VerticalAlignment="Top" Width="100" Click="buttonChooseDirectory_Click" />
+        <TextBlock Height="25" HorizontalAlignment="Left" Margin="12,12,0,0" Name="textBlockDefault_Folder" Text="Путь к папке" VerticalAlignment="Top" Width="373" />
+        <ListBox Height="217" HorizontalAlignment="Left" Margin="12,43,0,0" Name="listBoxFiles" VerticalAlignment="Top" Width="479" >
+            <ListBox.Resources>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <EventSetter Event="MouseDoubleClick" Handler="ListBox_MouseDoubleClick"/>
+                </Style>
+            </ListBox.Resources>
+        </ListBox>
+        <Button Content="Закрыть" Height="23" HorizontalAlignment="Left" Margin="353,276,0,0" Name="buttonExit" VerticalAlignment="Top" Width="138" Click="buttonExit_Click" />
+        <Button Content="Показать файлы" Height="23" HorizontalAlignment="Left" Margin="210,276,0,0" Name="buttonShowFiles" VerticalAlignment="Top" Width="138" Click="buttonShowFiles_Click" />
+        <Button Content="Выбрать файл" Height="23" HorizontalAlignment="Left" Margin="67,276,0,0" Name="buttonChooseFile" VerticalAlignment="Top" Width="138" Click="buttonChooseFile_Click" />
+    </Grid>
+</Window>
+
