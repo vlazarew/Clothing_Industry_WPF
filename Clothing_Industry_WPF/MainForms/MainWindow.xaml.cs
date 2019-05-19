@@ -7,6 +7,7 @@ using Clothing_Industry_WPF.Начисление_ЗП;
 using Clothing_Industry_WPF.Отпуска;
 using Clothing_Industry_WPF.Примерки;
 using Clothing_Industry_WPF.Приход_материала;
+using Clothing_Industry_WPF.Расходы;
 using Clothing_Industry_WPF.Состояние_склада;
 using Clothing_Industry_WPF.Сотрудники;
 using Clothing_Industry_WPF.Справочник.Группы_материалов;
@@ -167,7 +168,12 @@ namespace Clothing_Industry_WPF
             Window window_holidays = new HolidaysListWindow();
             window_holidays.Show();
         }
-
+        //При нажатии на вкладку "Расходы"
+        private void Costs_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window_costs = new CostsListWindow();
+            window_costs.Show();
+        }
         // ОТКЛЮЧЕНИЕ СИСТЕМЫ
         #region Отключение системы
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
@@ -289,8 +295,9 @@ namespace Clothing_Industry_WPF
             Window window = new SuppliersListWindow();
             window.Show();
         }
+
         #endregion
 
-
+        
     }
 }

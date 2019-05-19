@@ -145,6 +145,12 @@
     <Compile Include="Перечисления\TypeOfFilter.cs" />
     <Compile Include="Перечисления\TypeOfFind.cs" />
     <Compile Include="Перечисления\WaysToOpenForm.cs" />
+    <Compile Include="Поиск и фильтры\Поиск файла\DialogSelectFolder.xaml.cs">
+      <DependentUpon>DialogSelectFolder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Поиск и фильтры\Поиск файла\FileWindow.xaml.cs">
+      <DependentUpon>FileWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Поиск и фильтры\Фильтр\FilterHandler.cs" />
     <Compile Include="Поиск и фильтры\Фильтр\FilterListWindow.xaml.cs">
       <DependentUpon>FilterListWindow.xaml</DependentUpon>
@@ -173,6 +179,12 @@
     </Compile>
     <Compile Include="Приход_материала\Содержание документа прихода\ReceiptsRecordWindow.xaml.cs">
       <DependentUpon>ReceiptsRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Расходы\CostsListWindow.xaml.cs">
+      <DependentUpon>CostsListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Расходы\CostsRecordWindow.xaml.cs">
+      <DependentUpon>CostsRecordWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Состояние_склада\StoreListWindow.xaml.cs">
       <DependentUpon>StoreListWindow.xaml</DependentUpon>
@@ -368,6 +380,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Поиск и фильтры\Поиск файла\DialogSelectFolder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Поиск и фильтры\Поиск файла\FileWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Поиск и фильтры\Фильтр\FilterListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -401,6 +421,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Приход_материала\Содержание документа прихода\ReceiptsRecordWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Расходы\CostsListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Расходы\CostsRecordWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

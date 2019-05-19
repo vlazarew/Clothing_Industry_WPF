@@ -202,7 +202,7 @@
                 </TextBlock>
             </StackPanel>
             <StackPanel Background ="LightGray" Height="314" VerticalAlignment="Top" HorizontalAlignment="Left" Width="251" Margin="1004,98,0,0">
-                <TextBlock x:Name="Consumption" FontSize="24" Margin="5" >
+                <TextBlock x:Name="Consumption" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Costs_PreviewMouseLeftButtonUp">
                     <Hyperlink>Расходы</Hyperlink>
                 </TextBlock>
             </StackPanel>
