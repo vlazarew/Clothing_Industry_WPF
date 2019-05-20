@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Заказы"
+        ResizeMode="NoResize"
         mc:Ignorable="d"
        Title="Заказ" Height="483.334" Width="684">
     <Grid Margin="0,0,0,5" HorizontalAlignment="Left" Width="694">

@@ -4,34 +4,161 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Начисление_ЗП"
+        ResizeMode="NoResize"
         mc:Ignorable="d"
-        Title="Начисление ЗП" Height="407.617" Width="371.509">
+        Title="Начисление ЗП" Height="446.617" Width="371.509">
+    <Window.Resources>
+        <GradientStopCollection x:Key="MyGlassGradientStopsResource">
+            <GradientStop Color="WhiteSmoke" Offset="0.2" />
+            <GradientStop Color="Transparent" Offset="0.4" />
+            <GradientStop Color="WhiteSmoke" Offset="0.5" />
+            <GradientStop Color="Transparent" Offset="0.75" />
+            <GradientStop Color="WhiteSmoke" Offset="0.9" />
+            <GradientStop Color="Transparent" Offset="1" />
+        </GradientStopCollection>
+        <LinearGradientBrush x:Key="MyGlassBrushResource" StartPoint="0,0" EndPoint="1,1" Opacity="0.75"
+    GradientStops="{StaticResource MyGlassGradientStopsResource}" />
+        <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
+    StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="DarkGray" Offset="0" />
+            <GradientStop Color="#CCCCFF" Offset="0.5" />
+            <GradientStop Color="DarkGray" Offset="1" />
+        </LinearGradientBrush>
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="{StaticResource ResourceKey=GrayBlueGradientBrush}" />
+            <Setter Property="Width" Value="80" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="FontFamily" Value="Arial" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Width="{TemplateBinding Width}"   
+      Height="{TemplateBinding Height}" ClipToBounds="True">
+
+                            <!-- Outer Rectangle with rounded corners. -->
+                            <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch"   
+      VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}"   
+       StrokeThickness="5" Fill="Transparent" />
+
+                            <!-- Inner Rectangle with rounded corners. -->
+                            <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"   
+        VerticalAlignment="Stretch" Stroke="Transparent"   
+        StrokeThickness="5"   
+        Fill="{TemplateBinding Background}" 
+      />
+
+                            <!-- Glass Rectangle -->
+                            <Rectangle x:Name="glassCube" HorizontalAlignment="Stretch"  
+        VerticalAlignment="Stretch"  
+        StrokeThickness="2" RadiusX="10" RadiusY="10" Opacity="0"  
+        Fill="{StaticResource MyGlassBrushResource}"  
+        RenderTransformOrigin="0.5,0.5">
+                                <Rectangle.Stroke>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                        <LinearGradientBrush.GradientStops>
+                                            <GradientStop Offset="0.0" Color="LightBlue" />
+                                            <GradientStop Offset="1.0" Color="Gray" />
+                                        </LinearGradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Rectangle.Stroke>
+
+                                <!-- These transforms have no effect as they   
+             are declared here.   
+             The reason the transforms are included is to be targets   
+             for animation (see later). -->
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <RotateTransform />
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+
+                                <!-- A BevelBitmapEffect is applied to give the button a   
+               "Beveled" look. -->
+                                <Rectangle.BitmapEffect>
+                                    <BevelBitmapEffect />
+                                </Rectangle.BitmapEffect>
+                            </Rectangle>
+
+                            <!-- Present Text of the button. -->
+                            <DockPanel Name="myContentPresenterDockPanel">
+                                <ContentPresenter x:Name="myContentPresenter" VerticalAlignment="Center" Margin="5"   
+          Content="{TemplateBinding  Content}" TextBlock.Foreground="Black" />
+                            </DockPanel>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+
+                            <!-- Set properties when mouse pointer is over the button. -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- Below are three property settings that occur when the   
+         condition is met (user mouses over button).  -->
+                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
+                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
+                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
+                                    <Setter.Value>
+                                        <BlurBitmapEffect Radius="1" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+
+                                <!-- Below are three property settings that occur when the   
+         condition is met (user mouses over button).  -->
+                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
+                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="YellowGreen" />
+                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
+                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
+                                    <Setter.Value>
+                                        <BlurBitmapEffect Radius="1" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+
+                            <!--Наведение мышкой -->
+
+
+
+                            <!--Нажатие кнопки-->
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
     <Grid Margin="0,0,0,5" HorizontalAlignment="Left" Width="541">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Логин: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,50,0,0" Height="26" Width="49"/>
+        <Label Content="Логин: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,90,0,0" Height="26" Width="49"/>
         <Label x:Name="Header" Content="Начисление ЗП " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Height="34" Width="180"/>
-        <Label Content="Зарплата: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,144,0,0" Height="26" Width="67"/>
-        <Label Content="Сдельная зп: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,175,0,0" Height="26" Width="80"/>
-        <Label Content="Общая зп: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,208,0,0" Height="26" Width="68"/>
-        <Label Content="Штраф: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,239,0,0" Height="26" Width="57"/>
-        <Label Content="К выплате: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,270,0,0" Height="26" Width="68"/>
-        <Label Content="Заметки: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,302,0,0" Height="26" Width="57"/>
-        <Label Content="Дата выплаты: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,113,0,0" Height="26" Width="91"/>
-        <TextBox x:Name="textBoxSalary" HorizontalAlignment="Left" Height="26" Margin="82,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxSalary_PreviewTextInput" TextChanged="TextBoxSalary_TextChanged"/>
-        <TextBox x:Name="textBoxTotal_Salary" HorizontalAlignment="Left" Height="26" Margin="83,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" TabIndex="8" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True"/>
-        <TextBox x:Name="textBoxPenalty" HorizontalAlignment="Left" Height="26" Margin="72,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266" TabIndex="9" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxSalary_PreviewTextInput" TextChanged="TextBoxPenalty_TextChanged"/>
-        <TextBox x:Name="textBoxTo_Pay" HorizontalAlignment="Left" Height="26" Margin="83,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="255" TabIndex="10" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True"/>
-        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="67,302,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" TabIndex="11" VerticalContentAlignment="Center" FontSize="14"/>
-        <DatePicker x:Name="datePickerPayrollDate" HorizontalAlignment="Left" Margin="106,113,0,0" VerticalAlignment="Top" Width="232" TabIndex="12" VerticalContentAlignment="Center" FontSize="14" Height="27"/>
-        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="216,17,0,0" VerticalAlignment="Top" Width="122" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
-        <ComboBox x:Name="comboBoxLogin" HorizontalAlignment="Left" Margin="71,50,0,0" VerticalAlignment="Top" Width="267" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3"/>
-        <TextBox x:Name="textBoxPieceWork" HorizontalAlignment="Left" Height="26" Margin="95,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxSalary_PreviewTextInput" TextChanged="TextBoxPieceWork_TextChanged"/>
-        <Label Content="Период: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,81,0,0" Height="26" Width="67"/>
-        <TextBox x:Name="textBoxPeriod" HorizontalAlignment="Left" Height="26" Margin="82,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="256" TabIndex="4" VerticalContentAlignment="Center" FontSize="14"/>
-        <CheckBox x:Name="checkBoxPaid" Content="Выплачено" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="67,341,0,0" Width="271" VerticalContentAlignment="Center" FontSize="16"/>
+        <Label Content="Зарплата: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,184,0,0" Height="26" Width="67"/>
+        <Label Content="Сдельная зп: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,215,0,0" Height="26" Width="80"/>
+        <Label Content="Общая зп: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,248,0,0" Height="26" Width="68"/>
+        <Label Content="Штраф: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,279,0,0" Height="26" Width="57"/>
+        <Label Content="К выплате: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,310,0,0" Height="26" Width="68"/>
+        <Label Content="Заметки: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,342,0,0" Height="26" Width="57"/>
+        <Label Content="Дата выплаты: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,153,0,0" Height="26" Width="91"/>
+        <TextBox x:Name="textBoxSalary" HorizontalAlignment="Left" Height="26" Margin="106,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxSalary_PreviewTextInput" TextChanged="TextBoxSalary_TextChanged"/>
+        <TextBox x:Name="textBoxTotal_Salary" HorizontalAlignment="Left" Height="26" Margin="106,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TabIndex="8" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True"/>
+        <TextBox x:Name="textBoxPenalty" HorizontalAlignment="Left" Height="26" Margin="106,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TabIndex="9" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxSalary_PreviewTextInput" TextChanged="TextBoxPenalty_TextChanged"/>
+        <TextBox x:Name="textBoxTo_Pay" HorizontalAlignment="Left" Height="26" Margin="106,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TabIndex="10" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True"/>
+        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="106,342,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TabIndex="11" VerticalContentAlignment="Center" FontSize="14"/>
+        <DatePicker x:Name="datePickerPayrollDate" HorizontalAlignment="Left" Margin="106,153,0,0" VerticalAlignment="Top" Width="232" TabIndex="12" VerticalContentAlignment="Center" FontSize="14" Height="27"/>
+        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="205,60,0,0" VerticalAlignment="Top" Width="133" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True" RenderTransformOrigin="0.426,0.52"/>
+        <ComboBox x:Name="comboBoxLogin" HorizontalAlignment="Left" Margin="106,90,0,0" VerticalAlignment="Top" Width="232" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3"/>
+        <TextBox x:Name="textBoxPieceWork" HorizontalAlignment="Left" Height="26" Margin="106,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxSalary_PreviewTextInput" TextChanged="TextBoxPieceWork_TextChanged"/>
+        <Label Content="Период: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,121,0,0" Height="26" Width="67"/>
+        <TextBox x:Name="textBoxPeriod" HorizontalAlignment="Left" Height="26" Margin="106,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TabIndex="4" VerticalContentAlignment="Center" FontSize="14"/>
+        <CheckBox x:Name="checkBoxPaid" Content="Выплачено" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="67,381,0,0" Width="271" VerticalContentAlignment="Center" FontSize="16"/>
 
     </Grid>
 </Window>

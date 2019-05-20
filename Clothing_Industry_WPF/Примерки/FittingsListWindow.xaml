@@ -6,6 +6,132 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Примерки"
         mc:Ignorable="d"
          Title="Примерки" Loaded="Window_Loaded" Height="529" Width="1067.1">
+    <Window.Resources>
+        <GradientStopCollection x:Key="MyGlassGradientStopsResource">
+            <GradientStop Color="WhiteSmoke" Offset="0.2" />
+            <GradientStop Color="Transparent" Offset="0.4" />
+            <GradientStop Color="WhiteSmoke" Offset="0.5" />
+            <GradientStop Color="Transparent" Offset="0.75" />
+            <GradientStop Color="WhiteSmoke" Offset="0.9" />
+            <GradientStop Color="Transparent" Offset="1" />
+        </GradientStopCollection>
+        <LinearGradientBrush x:Key="MyGlassBrushResource" StartPoint="0,0" EndPoint="1,1" Opacity="0.75"
+    GradientStops="{StaticResource MyGlassGradientStopsResource}" />
+        <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
+    StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="DarkGray" Offset="0" />
+            <GradientStop Color="#CCCCFF" Offset="0.5" />
+            <GradientStop Color="DarkGray" Offset="1" />
+        </LinearGradientBrush>
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="{StaticResource ResourceKey=GrayBlueGradientBrush}" />
+            <Setter Property="Width" Value="80" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="FontFamily" Value="Arial" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Width="{TemplateBinding Width}"   
+      Height="{TemplateBinding Height}" ClipToBounds="True">
+
+                            <!-- Outer Rectangle with rounded corners. -->
+                            <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch"   
+      VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}"   
+       StrokeThickness="5" Fill="Transparent" />
+
+                            <!-- Inner Rectangle with rounded corners. -->
+                            <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"   
+        VerticalAlignment="Stretch" Stroke="Transparent"   
+        StrokeThickness="5"   
+        Fill="{TemplateBinding Background}" 
+      />
+
+                            <!-- Glass Rectangle -->
+                            <Rectangle x:Name="glassCube" HorizontalAlignment="Stretch"  
+        VerticalAlignment="Stretch"  
+        StrokeThickness="2" RadiusX="10" RadiusY="10" Opacity="0"  
+        Fill="{StaticResource MyGlassBrushResource}"  
+        RenderTransformOrigin="0.5,0.5">
+                                <Rectangle.Stroke>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                        <LinearGradientBrush.GradientStops>
+                                            <GradientStop Offset="0.0" Color="LightBlue" />
+                                            <GradientStop Offset="1.0" Color="Gray" />
+                                        </LinearGradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Rectangle.Stroke>
+
+                                <!-- These transforms have no effect as they   
+             are declared here.   
+             The reason the transforms are included is to be targets   
+             for animation (see later). -->
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <RotateTransform />
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+
+                                <!-- A BevelBitmapEffect is applied to give the button a   
+               "Beveled" look. -->
+                                <Rectangle.BitmapEffect>
+                                    <BevelBitmapEffect />
+                                </Rectangle.BitmapEffect>
+                            </Rectangle>
+
+                            <!-- Present Text of the button. -->
+                            <DockPanel Name="myContentPresenterDockPanel">
+                                <ContentPresenter x:Name="myContentPresenter" VerticalAlignment="Center" Margin="5"   
+          Content="{TemplateBinding  Content}" TextBlock.Foreground="Black" />
+                            </DockPanel>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+
+                            <!-- Set properties when mouse pointer is over the button. -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- Below are three property settings that occur when the   
+         condition is met (user mouses over button).  -->
+                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
+                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
+                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
+                                    <Setter.Value>
+                                        <BlurBitmapEffect Radius="1" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+
+                                <!-- Below are three property settings that occur when the   
+         condition is met (user mouses over button).  -->
+                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
+                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="YellowGreen" />
+                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
+                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
+                                    <Setter.Value>
+                                        <BlurBitmapEffect Radius="1" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+
+                            <!--Наведение мышкой -->
+
+
+
+                            <!--Нажатие кнопки-->
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="541*"/>
@@ -32,11 +158,11 @@
         </DataGrid>
         <Button Name ="ButtonCreateNew" Content="Создать" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click" IsEnabled="False"/>
         <Button x:Name ="ButtonDelete" Content="Удалить" HorizontalAlignment="Left" Height="25" Margin="95,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
-        <Button x:Name ="ButtonRefresh" Content="Обновить" HorizontalAlignment="Left" Height="25" Margin="180,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonRefresh_Click"/>
-        <Button x:Name ="ButtonEdit" Content="Изменить выделенное" HorizontalAlignment="Left" Height="25" Margin="265,10,0,0" VerticalAlignment="Top" Width="139" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonEdit_Click"/>
+        <Button x:Name ="ButtonRefresh" Content="Обновить" HorizontalAlignment="Left" Height="25" Margin="180,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonRefresh_Click"/>
+        <Button x:Name ="ButtonEdit" Content="Изменить выделенное" HorizontalAlignment="Left" Height="25" Margin="260,10,0,0" VerticalAlignment="Top" Width="151" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonEdit_Click"/>
         <Button x:Name="ButtonExit" Content="Выход" Grid.Column="2" HorizontalAlignment="Left" Margin="140,10,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" Height="25"/>
-        <Button x:Name ="ButtonFind" Content="Найти" HorizontalAlignment="Left" Height="25" Margin="409,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFind_Click"/>
-        <Button x:Name="buttonCancelFind" Content="Отменить поиск" HorizontalAlignment="Left" Margin="483,10,0,0" VerticalAlignment="Top" Width="99" Height="25" Click="ButtonCancelFind_Click"/>
-        <Button x:Name ="ButtonFilters" Content="Фильтры" HorizontalAlignment="Left" Height="25" Margin="587,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFilters_Click"/>
+        <Button x:Name ="ButtonFind" Content="Найти" HorizontalAlignment="Left" Height="25" Margin="416,10,0,0" VerticalAlignment="Top" Width="55" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFind_Click"/>
+        <Button x:Name="buttonCancelFind" Content="Отменить поиск" HorizontalAlignment="Left" Margin="476,10,0,0" VerticalAlignment="Top" Width="112" Height="25" Click="ButtonCancelFind_Click"/>
+        <Button x:Name ="ButtonFilters" Content="Фильтры" HorizontalAlignment="Left" Height="25" Margin="593,10,0,0" VerticalAlignment="Top" Width="63" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFilters_Click"/>
     </Grid>
 </Window>
