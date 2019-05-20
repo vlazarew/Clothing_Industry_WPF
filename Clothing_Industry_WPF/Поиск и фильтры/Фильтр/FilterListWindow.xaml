@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Поиск_и_фильтры"
         mc:Ignorable="d"
         xmlns:staticData ="clr-namespace:Clothing_Industry_WPF"
-        Title="FilterWindow" Height="498.481" Width="863.343" Loaded="Window_Loaded">
+        Title="Фильтры" Height="498.481" Width="863.343" Loaded="Window_Loaded">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -143,7 +143,7 @@
         <Button x:Name="buttonFind" Content="Поиск" HorizontalAlignment="Left" Margin="10,419,0,0" VerticalAlignment="Top" Width="129" IsDefault="True" Height="39" FontSize="16" Grid.Column="2" Click="ButtonFind_Click" RenderTransformOrigin="-0.079,3.625"/>
         <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="721,419,0,0" VerticalAlignment="Top" Width="114" Height="39" FontSize="16" IsCancel="True" Grid.Column="2" Click="ButtonCancel_Click" Grid.ColumnSpan="2"/>
         <Label Content="Текущие фильтры" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.236,0.921" Margin="0,10,0,0" FontSize="16" Width="152" Height="31" Grid.Column="2"/>
-        <DataGrid x:Name="dataGridFilters" HorizontalAlignment="Left" Height="357" Margin="0,46,0,0" VerticalAlignment="Top" Width="835" Grid.ColumnSpan="2" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="2">
+        <DataGrid x:Name="dataGridFilters" HorizontalAlignment="Left" Height="357" Margin="0,46,0,0" VerticalAlignment="Top" Width="855" Grid.ColumnSpan="2" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="2">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridCell}">
                     <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
