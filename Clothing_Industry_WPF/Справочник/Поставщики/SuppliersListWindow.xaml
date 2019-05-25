@@ -152,7 +152,7 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
-            <DataGrid x:Name="productsGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}">
+            <DataGrid x:Name="suppliersGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}">
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridCell}">
                         <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>

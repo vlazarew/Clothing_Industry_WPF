@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.MainForms"
         mc:Ignorable="d"
-         Title="Учёт швейного производства 'Моя пижама'" Height="646.871" Width="1019.001" Closing="Window_Closing">
+         Title="Учёт швейного производства 'Моя пижама'" Height="600" Width="800" Closing="Window_Closing" MinWidth="800" MinHeight="600">
     <Window.Resources>
 
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
@@ -133,81 +133,173 @@
         </Style>
 
     </Window.Resources>
-    <Grid Margin="0,0,2,0" Height="741" VerticalAlignment="Top">
+    <Grid>
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="255*"/>
-            <ColumnDefinition Width="754*"/>
+            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="600*"/>
         </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="90"/>
+                <RowDefinition Height="710*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background ="Beige">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontSize="20">
+                    <Run Text="Добро пожаловать,"/></TextBlock>
+                    <TextBlock x:Name="textBlockUserName" FontSize="19" FontWeight="Bold" UseLayoutRounding="True" TextWrapping="WrapWithOverflow">
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+            <Grid  Grid.Row="1"  Background ="Gray">
+                <Button x:Name="ButtonExit"  VerticalAlignment="Top" Height="60" Width="Auto" IsCancel="True" TabIndex="0" Click="ButtonExit_Click">
+                    <Viewbox>
+                        <TextBlock Width="120">Выйти</TextBlock>
+                    </Viewbox>
+                </Button>
+                <Button x:Name="ButtonFAQ" Height="60" Width="Auto" RenderTransformOrigin="3.476,-2.516" TabIndex="1" VerticalAlignment="Bottom">
+                    <Viewbox>
+                        <TextBlock Width="120">О программе</TextBlock>
+                    </Viewbox>
+                </Button>
+            </Grid>
+        </Grid>
 
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="90"/>
+                <RowDefinition  Height="310*"/>
+                <RowDefinition  Height="90"/>
+                <RowDefinition  Height="310*"/>
+            </Grid.RowDefinitions>
+            <Grid  Grid.Row="0" Background="YellowGreen">
+                <Viewbox>
+                    <TextBlock Text="Меню"  FontWeight="Bold" VerticalAlignment="Center"  TextAlignment="Center" Height="20"></TextBlock>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="1" Background="LightGray">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="200*"/>
 
-        <Grid Grid.Column="2" Margin="0,0,0,125">
-            <!-- вместо page2.xaml будут наши гуишки для каждой сущности-->
-            <StackPanel Background ="LightGray" Height="197" VerticalAlignment="Top" HorizontalAlignment="Left" Width="238" Margin="5,98,0,0">
-                <TextBlock x:Name="Clients" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Clients_PreviewMouseLeftButtonUp">
+                </Grid.ColumnDefinitions>
+                <Grid  Grid.Column="0">
+                    <Border   BorderBrush="White" BorderThickness="3">
+                        <StackPanel >
+                            <Viewbox>
+                                <TextBlock x:Name="Clients" Width="135" Margin="5" PreviewMouseLeftButtonUp="Clients_PreviewMouseLeftButtonUp">
                    <Hyperlink>Клиенты</Hyperlink>
-                </TextBlock>
-                <TextBlock x:Name="Orders" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Orders_PreviewMouseLeftButtonUp">
+                                </TextBlock>
+                            </Viewbox>
+                            <Viewbox>
+                                <TextBlock x:Name="Orders" Width="135" Margin="5" PreviewMouseLeftButtonUp="Orders_PreviewMouseLeftButtonUp">
                     <Hyperlink>Заказы</Hyperlink>
-                </TextBlock>
-                <TextBlock x:Name="Fittings" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Fittings_PreviewMouseLeftButtonUp">
+                                </TextBlock>
+                            </Viewbox>
+                            <Viewbox>
+                                <TextBlock x:Name="Fittings" Width="135" Margin="5" PreviewMouseLeftButtonUp="Fittings_PreviewMouseLeftButtonUp">
                     <Hyperlink>Примерки</Hyperlink>
-                </TextBlock>
-                <TextBlock x:Name="BalanceOfClients" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="BalanceOfClients_PreviewMouseLeftButtonUp">
+                                </TextBlock>
+                            </Viewbox>
+                            <Viewbox>
+                                <TextBlock x:Name="BalanceOfClients" Width="135" Margin="5" PreviewMouseLeftButtonUp="BalanceOfClients_PreviewMouseLeftButtonUp">
                     <Hyperlink>Баланс клиентов</Hyperlink>
-                </TextBlock>
-            </StackPanel>
-            <StackPanel Background ="LightGray" Height="197" VerticalAlignment="Top" HorizontalAlignment="Left" Width="262" Margin="248,98,0,0">
+                                </TextBlock>
+                            </Viewbox>
+                        </StackPanel>
+                    </Border>
+                </Grid>
 
-                <TextBlock x:Name="Matherial" FontSize="24" Margin="5"  PreviewMouseLeftButtonUp="Materials_PreviewMouseLeftButtonUp" >
+                <Grid Grid.Column="1">
+                    <Border   BorderBrush="White" BorderThickness="3">
+                        <StackPanel>
+                            <Viewbox>
+                                <TextBlock x:Name="Matherial"  Width="135" Margin="5"  PreviewMouseLeftButtonUp="Materials_PreviewMouseLeftButtonUp" >
                     <Hyperlink>Материал/Фурнитура</Hyperlink>
-                </TextBlock>
-                <TextBlock x:Name="Things" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Products_PreviewMouseLeftButtonUp">
+                                </TextBlock>
+                            </Viewbox>
+                            <Viewbox>
+                                <TextBlock x:Name="Things"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Products_PreviewMouseLeftButtonUp">
                     <Hyperlink>Изделия</Hyperlink>
-                </TextBlock>
-            </StackPanel>
-            <StackPanel Background ="YellowGreen" Height="93" VerticalAlignment="Top" HorizontalAlignment="Left" Width="749" Margin="5,0,0,0">
-                <TextBlock  Text="Меню" FontWeight="Bold" TextAlignment="Center" FontSize="40" Height="77" Margin="0,10,0,732"/>
-            </StackPanel>
-            <StackPanel Background ="LightGray" Height="197" VerticalAlignment="Top" HorizontalAlignment="Left" Width="239" Margin="515,98,0,0">
-                <TextBlock x:Name="Warehouse" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Store_PreviewMouseLeftButtonUp" >
+                                </TextBlock>
+                            </Viewbox>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+                <Grid Grid.Column="2">
+                    <Border   BorderBrush="White" BorderThickness="3">
+                        <StackPanel>
+                            <Viewbox>
+                                <TextBlock x:Name="Warehouse" Width="135" Margin="5" PreviewMouseLeftButtonUp="Store_PreviewMouseLeftButtonUp" >
                     <Hyperlink>Состояние склада</Hyperlink>
-                </TextBlock>
-            </StackPanel>
-            <StackPanel Background ="LightGray" Height="216" VerticalAlignment="Top" HorizontalAlignment="Left" Width="262" Margin="248,398,0,0">
-                <TextBlock x:Name="Countries" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Countries_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Страны"/></Hyperlink></TextBlock>
-                <TextBlock x:Name="Groups_of_material" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Groups_of_material_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Группы материалов"/></Hyperlink></TextBlock>
-                <TextBlock x:Name="Types_of_material" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Types_of_material_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы материалов"/></Hyperlink></TextBlock>
-                <TextBlock x:Name="Units" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Units_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Единицы измерения"/></Hyperlink></TextBlock>
-                <TextBlock x:Name="Suppliers" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Suppliers_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Поставщики"/></Hyperlink></TextBlock>
-            </StackPanel>
-            <StackPanel Background ="LightGray" HorizontalAlignment="Left" Width="238" Margin="5,398,0,2">
-                <TextBlock x:Name="Customer_statuses" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Customer_statuses_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Статусы клиентов"/></Hyperlink></TextBlock>
-                <TextBlock x:Name="Order_channels" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Order_channels_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Каналы заказов"/></Hyperlink></TextBlock>
-                <TextBlock x:Name="Statuses_of_order" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Statuses_of_order_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Статусы заказов"/></Hyperlink></TextBlock>
-                <TextBlock x:Name="Types_of_fitting" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Types_of_fitting_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы примерок"/></Hyperlink></TextBlock>
-                <TextBlock x:Name="Types_of_order" FontSize="24" Margin="5" PreviewMouseLeftButtonUp="Types_of_order_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы заказов"/></Hyperlink></TextBlock>
+                                </TextBlock>
+                            </Viewbox>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2" Background ="#FFC9BC38">
+                <Viewbox>
+                    <TextBlock  Text="Справочник" FontWeight="Bold" TextAlignment="Center" Height="20" VerticalAlignment="Center"></TextBlock>
+                </Viewbox>
+            </Grid>
+            <Grid Grid.Row="3" Background="LightGray">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="200*"/>
+                    <ColumnDefinition Width="200*"/>
+                </Grid.ColumnDefinitions>
+                <Grid  Grid.Column="1">
+                    <Border   BorderBrush="White" BorderThickness="3">
+                        <StackPanel>
+                            <Viewbox>
+                                <TextBlock x:Name="Countries"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Countries_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Страны"/></Hyperlink></TextBlock>
+                            </Viewbox>
+                            <Viewbox>
+                                <TextBlock x:Name="Groups_of_material"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Groups_of_material_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Группы материалов"/></Hyperlink></TextBlock>
+                            </Viewbox>
 
-            </StackPanel>
-            <StackPanel Background ="#FFC9BC38" Height="93" VerticalAlignment="Top" HorizontalAlignment="Left" Width="749" Margin="5,300,0,0">
-                <TextBlock  Text="Справочник" FontWeight="Bold" TextAlignment="Center" FontSize="40" Height="77" Margin="0,10,0,732"/>
-            </StackPanel>
-            <StackPanel Background ="LightGray" HorizontalAlignment="Left" Width="239" Margin="515,398,0,2"/>
 
+                            <Viewbox>
+                                <TextBlock x:Name="Types_of_material"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Types_of_material_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы материалов"/></Hyperlink></TextBlock>
+                            </Viewbox>
+                            <Viewbox>
+                                <TextBlock x:Name="Units"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Units_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Единицы измерения"/></Hyperlink></TextBlock>
+                            </Viewbox>
+
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                <Grid Grid.Column="0">
+                    <Border   BorderBrush="White" BorderThickness="3">
+                        <StackPanel>
+                            <Viewbox>
+                                <TextBlock x:Name="Customer_statuses"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Customer_statuses_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Статусы клиентов"/></Hyperlink></TextBlock>
+                            </Viewbox>
+                            <Viewbox>
+                                <TextBlock x:Name="Order_channels"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Order_channels_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Каналы заказов"/></Hyperlink></TextBlock>
+                            </Viewbox>
+                            <Viewbox>
+                                <TextBlock x:Name="Statuses_of_order"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Statuses_of_order_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Статусы заказов"/></Hyperlink></TextBlock>
+                            </Viewbox>
+                            <Viewbox>
+                                <TextBlock x:Name="Types_of_fitting"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Types_of_fitting_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы примерок"/></Hyperlink></TextBlock>
+                            </Viewbox>
+                            <Viewbox>
+                                <TextBlock x:Name="Types_of_order"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Types_of_order_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы заказов"/></Hyperlink></TextBlock>
+                            </Viewbox>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Border   BorderBrush="White" BorderThickness="3">
+                    </Border>
+                </Grid>
+            </Grid>
         </Grid>
-        <Grid Grid.Column="1" VerticalAlignment="Stretch"  HorizontalAlignment="Stretch" Margin="0,0,0,125">
 
-            <StackPanel Background ="Gray" Margin="0,98,0,2" HorizontalAlignment="Right" Width="253"/>
-            <StackPanel Background ="Beige" Height="91" VerticalAlignment="Top" Margin="0,1,0,0">
-                <TextBlock Margin="5" FontSize="20" Height="28"><Run Text="Добро пожаловать,"/></TextBlock>
-                <TextBlock x:Name="textBlockUserName" Margin="5" FontSize="19" FontWeight="Bold" UseLayoutRounding="True" TextWrapping="WrapWithOverflow" Height="48"><!--надо будет менять-->
-                </TextBlock>
-            </StackPanel>
-
-
-            <Button x:Name="ButtonExit" Content="Выйти" HorizontalAlignment="Left" Margin="10,414,0,0" VerticalAlignment="Top" Width="236" Height="61" IsCancel="True" TabIndex="0" Click="ButtonExit_Click"/>
-            <Button x:Name="ButtonFAQ" Content="О программе" HorizontalAlignment="Left" Margin="10,504,0,0" Width="236" RenderTransformOrigin="3.476,-2.516" Height="60" TabIndex="1" VerticalAlignment="Top"/>
-
-        </Grid>
     </Grid>
 </Window>
