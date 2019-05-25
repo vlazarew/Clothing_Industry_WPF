@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Поиск_и_фильтры.Фильтр"
         mc:Ignorable="d"
-        Title="Фильтр" Height="450" Width="800">
+        ResizeMode="NoResize"
+        Title="Фильтр" Height="450" Width="530.806" MinWidth="530.806" MinHeight="450">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />

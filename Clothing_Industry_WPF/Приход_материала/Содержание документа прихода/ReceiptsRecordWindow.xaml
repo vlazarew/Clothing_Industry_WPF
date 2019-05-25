@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Приход_материала"
         mc:Ignorable="d"
-        Title="Документ прихода"  Height="529" Width="1067.1">
+        Title="Документ прихода"  Height="529" Width="1067.1" MinWidth="1067.1" MinHeight="529">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -133,31 +133,39 @@
 
     </Window.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="541*"/>
-            <ColumnDefinition Width="37*"/>
-            <ColumnDefinition Width="238*"/>
-            <ColumnDefinition Width="12*"/>
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <DataGrid x:Name="receiptrecordGrid" Margin="10,0,10,10" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Height="440" VerticalAlignment="Bottom" Grid.ColumnSpan="4">
-            <DataGrid.Resources>
-                <Style TargetType="{x:Type DataGridCell}">
-                </Style>
-            </DataGrid.Resources>
 
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name_Of_Material}" ClipboardContentBinding="{x:Null}" Header="Название материала" IsReadOnly="True"/>
-                <!-- Фишка про пароль <DataGridTextColumn Binding="{Binding Password}" ClipboardContentBinding="{x:Null}" Header="Пароль"/>  -->
-                <DataGridTextColumn Binding="{Binding Count}" ClipboardContentBinding="{x:Null}" Header="Количество"/>
-                <DataGridTextColumn Binding="{Binding Name_Of_Unit}" ClipboardContentBinding="{x:Null}" Header="Единица измерения"/>
-                <DataGridTextColumn Binding="{Binding Cost_Of_Material}" ClipboardContentBinding="{x:Null}" Header="Стоимость"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button Name ="ButtonAddOne" Content="Добавить" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonAddOne_Click"/>
-        <Button x:Name ="ButtonDeleteOne" Content="Удалить" HorizontalAlignment="Left" Height="25" Margin="95,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDeleteOne_Click"/>
-        <Button x:Name="ButtonExit" Content="Выход" Grid.Column="2" HorizontalAlignment="Left" Margin="229,10,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" Height="25" RenderTransformOrigin="1.473,0.44"/>
-        <Button x:Name ="ButtonCreateExcel" Content="Сделать в Excel" HorizontalAlignment="Left" Height="25" Margin="180,10,0,0" VerticalAlignment="Top" Width="124" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonCreateExcel_Click"/>
-        <!--<Button x:Name ="ButtonPreview" Content="Предварительный просмотр" HorizontalAlignment="Left" Height="25" Margin="661,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonPreview_Click" Grid.ColumnSpan="2"/> -->
+        <Grid Grid.Row="0">
+
+
+            <StackPanel Orientation="Horizontal">
+
+                <Button Name ="ButtonAddOne" Content="Добавить" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonAddOne_Click"/>
+                <Button x:Name ="ButtonDeleteOne" Content="Удалить" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDeleteOne_Click"/>
+                <Button x:Name ="ButtonCreateExcel" Content="Сделать в Excel" Width="124" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonCreateExcel_Click"/>
+                <Button x:Name="ButtonExit" Content="Выход" Width="75" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" TabIndex="4" IsTabStop="False" RenderTransformOrigin="1.473,0.44"/>
+
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+
+            <DataGrid x:Name="receiptrecordGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridCell}">
+                    </Style>
+                </DataGrid.Resources>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Name_Of_Material}" ClipboardContentBinding="{x:Null}" Header="Название материала" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Count}" ClipboardContentBinding="{x:Null}" Header="Количество"/>
+                    <DataGridTextColumn Binding="{Binding Name_Of_Unit}" ClipboardContentBinding="{x:Null}" Header="Единица измерения"/>
+                    <DataGridTextColumn Binding="{Binding Cost_Of_Material}" ClipboardContentBinding="{x:Null}" Header="Стоимость"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Window>

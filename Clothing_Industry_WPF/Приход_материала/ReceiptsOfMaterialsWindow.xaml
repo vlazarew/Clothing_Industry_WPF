@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Приход_материала"
         mc:Ignorable="d"
-         Title="Документы прихода" Loaded="Window_Loaded" Height="529" Width="1067.1">
+         Title="Документы прихода" Loaded="Window_Loaded" Height="529" Width="1067.1" MinWidth="1067.1" MinHeight="529">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -133,40 +133,47 @@
 
     </Window.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="541*"/>
-            <ColumnDefinition Width="37*"/>
-            <ColumnDefinition Width="238*"/>
-            <ColumnDefinition Width="12*"/>
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-        <DataGrid x:Name="receiptsGrid" Margin="10,0,10,10" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Height="440" VerticalAlignment="Bottom" Grid.ColumnSpan="4">
-            <DataGrid.Resources>
-                <Style TargetType="{x:Type DataGridCell}">
-                    <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
-                </Style>
-            </DataGrid.Resources>
 
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name_Of_Document}" ClipboardContentBinding="{x:Null}" Header="Название документа" IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding Default_Folder}" ClipboardContentBinding="{x:Null}" Header="Папка документа"/>
-                <DataGridTextColumn Binding="{Binding Date_Of_Entry}" ClipboardContentBinding="{x:Null}" Header="Дата прихода"/>
-                <DataGridTextColumn Binding="{Binding Notes}" ClipboardContentBinding="{x:Null}" Header="Доп. сведения"/>
-                <DataGridTextColumn Binding="{Binding Total_Price}" ClipboardContentBinding="{x:Null}" Header="Сумма прихода"/>
-                <DataGridTextColumn Binding="{Binding Name_Of_Supplier}" ClipboardContentBinding="{x:Null}" Header="Поставщик"/>
-                <DataGridTextColumn Binding="{Binding Name_Of_State}" ClipboardContentBinding="{x:Null}" Header="Статус"/>
-                <DataGridTextColumn Binding="{Binding Name_Of_Type}" ClipboardContentBinding="{x:Null}" Header="Тип транзакции"/>
-                <!-- Считается по формуле кол-во материала на стоимость одной штуки из таблички материалов-->
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button Name ="ButtonCreateNew" Content="Создать" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>
-        <Button x:Name ="ButtonDelete" Content="Удалить" HorizontalAlignment="Left" Height="25" Margin="95,10,0,0" VerticalAlignment="Top" Width="66" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
-        <Button x:Name ="ButtonOpen" Content="Открыть документ" HorizontalAlignment="Left" Height="25" Margin="166,10,0,0" VerticalAlignment="Top" Width="126" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonOpen_Click"/>
-        <Button x:Name ="ButtonRefresh" Content="Обновить" HorizontalAlignment="Left" Height="25" Margin="297,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonRefresh_Click"/>
-        <Button x:Name ="ButtonEdit" Content="Изменить " HorizontalAlignment="Left" Height="25" Margin="382,10,0,0" VerticalAlignment="Top" Width="85" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonEdit_Click"/>
-        <Button x:Name="ButtonExit" Content="Выход" Grid.Column="2" HorizontalAlignment="Left" Margin="234,10,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" Height="25" Grid.ColumnSpan="2"/>
-        <Button x:Name ="ButtonFind" Content="Найти" HorizontalAlignment="Left" Height="25" Margin="472,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFind_Click"/>
-        <Button x:Name="buttonCancelFind" Content="Отменить поиск" Margin="546,10,36,0" VerticalAlignment="Top" Height="25" Click="ButtonCancelFind_Click" RenderTransformOrigin="0.665,0.498" Width="Auto"/>
-        <Button x:Name ="ButtonFilters" Content="Фильтры" HorizontalAlignment="Left" Height="25" Margin="661,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFilters_Click" Grid.ColumnSpan="2"/>
+        <Grid Grid.Row="0">
+
+
+            <StackPanel Orientation="Horizontal">
+                <Button Name ="ButtonCreateNew" Content="Создать" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>
+                <Button x:Name ="ButtonDelete" Content="Удалить" Width="66" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
+                <Button x:Name ="ButtonOpen" Content="Открыть документ" Width="126" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonOpen_Click"/>
+                <Button x:Name ="ButtonRefresh" Content="Обновить" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="4" IsTabStop="False" Click="ButtonRefresh_Click"/>
+                <Button x:Name ="ButtonEdit" Content="Изменить" Width="85" RenderTransformOrigin="1.194,0.333" TabIndex="5" IsTabStop="False" Click="ButtonEdit_Click"/>
+                <Button x:Name ="ButtonFind" Content="Найти" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="6" IsTabStop="False" Click="ButtonFind_Click"/>
+                <Button x:Name="buttonCancelFind" Content="Отменить поиск" Click="ButtonCancelFind_Click" RenderTransformOrigin="0.665,0.498" Width="107" TabIndex="7" IsTabStop="False"/>
+                <Button x:Name ="ButtonFilters" Content="Фильтры" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="8" IsTabStop="False" Click="ButtonFilters_Click" Grid.ColumnSpan="2"/>
+                <Button x:Name="ButtonExit" Content="Выход" Width="75" IsCancel="True" RenderTransformOrigin="1.194,0.333" TabIndex="9" IsTabStop="False" Visibility="Visible" Click="ButtonExit_Click"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <DataGrid x:Name="receiptsGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridCell}">
+                        <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
+                    </Style>
+                </DataGrid.Resources>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Name_Of_Document}" ClipboardContentBinding="{x:Null}" Header="Название документа" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Default_Folder}" ClipboardContentBinding="{x:Null}" Header="Папка документа"/>
+                    <DataGridTextColumn Binding="{Binding Date_Of_Entry}" ClipboardContentBinding="{x:Null}" Header="Дата прихода"/>
+                    <DataGridTextColumn Binding="{Binding Notes}" ClipboardContentBinding="{x:Null}" Header="Доп. сведения"/>
+                    <DataGridTextColumn Binding="{Binding Total_Price}" ClipboardContentBinding="{x:Null}" Header="Сумма прихода"/>
+                    <DataGridTextColumn Binding="{Binding Name_Of_Supplier}" ClipboardContentBinding="{x:Null}" Header="Поставщик"/>
+                    <DataGridTextColumn Binding="{Binding Name_Of_State}" ClipboardContentBinding="{x:Null}" Header="Статус"/>
+                    <DataGridTextColumn Binding="{Binding Name_Of_Type}" ClipboardContentBinding="{x:Null}" Header="Тип транзакции"/>
+                    <!-- Считается по формуле кол-во материала на стоимость одной штуки из таблички материалов-->
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Window>

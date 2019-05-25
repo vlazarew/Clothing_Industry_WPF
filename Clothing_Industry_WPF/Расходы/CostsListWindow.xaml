@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Расходы"
         mc:Ignorable="d"
-        Title="Расходы" Loaded="Window_Loaded" Height="529" Width="1067.1">
+        Title="Расходы" Loaded="Window_Loaded" Height="529" Width="1067.1" MinWidth="1067.1" MinHeight="529">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -133,39 +133,44 @@
 
     </Window.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="541*"/>
-            <ColumnDefinition Width="37*"/>
-            <ColumnDefinition Width="238*"/>
-            <ColumnDefinition Width="12*"/>
-        </Grid.ColumnDefinitions>
-
-        <DataGrid x:Name="costsGrid" Margin="10,0,10,10" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Height="440" VerticalAlignment="Bottom" Grid.ColumnSpan="4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
 
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Default_Folder}" ClipboardContentBinding="{x:Null}" Header="Путь документа" IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding Name_Of_Document}" ClipboardContentBinding="{x:Null}" Header="Название документа" />
-                <DataGridTextColumn Binding="{Binding Date_Of_Cost}" ClipboardContentBinding="{x:Null}" Header="Дата расхода"/>
-                <DataGridTextColumn Binding="{Binding Amount}" ClipboardContentBinding="{x:Null}" Header="Сумма"/>
-                <DataGridTextColumn Binding="{Binding Notes}" ClipboardContentBinding="{x:Null}" Header="Заметки"/>
-                <DataGridTextColumn Binding="{Binding Name_Of_Category}" ClipboardContentBinding="{x:Null}" Header="Категория расхода"/>
-                <DataGridTextColumn Binding="{Binding Name_Of_Type}" ClipboardContentBinding="{x:Null}" Header="Тип оплаты"/>
-                <DataGridTextColumn Binding="{Binding Name_Of_Periodicity}" ClipboardContentBinding="{x:Null}" Header="Периодичность"/>
-                <DataGridTextColumn Binding="{Binding To}" ClipboardContentBinding="{x:Null}" Header="От"/>
-                <DataGridTextColumn Binding="{Binding From}" ClipboardContentBinding="{x:Null}" Header="Кому"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <Grid Grid.Row="0">
 
-        <Button Name ="ButtonCreateNew" Content="Создать" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>
-        <Button x:Name ="ButtonDelete" Content="Удалить" HorizontalAlignment="Left" Height="25" Margin="95,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
-        <Button x:Name ="ButtonRefresh" Content="Обновить" HorizontalAlignment="Left" Height="25" Margin="180,10,0,0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonRefresh_Click"/>
-        <Button x:Name ="ButtonEdit" Content="Изменить выделенное" HorizontalAlignment="Left" Height="25" Margin="255,10,0,0" VerticalAlignment="Top" Width="148" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonEdit_Click"/>
-        <Button x:Name="ButtonExit" Content="Выход" Grid.Column="2" HorizontalAlignment="Left" Margin="234,10,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" Height="25" Grid.ColumnSpan="2"/>
-        <Button x:Name ="ButtonFind" Content="Найти" HorizontalAlignment="Left" Height="25" Margin="537,10,0,0" VerticalAlignment="Top" Width="54" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFind_Click"/>
-        <Button x:Name ="ButtonOpenDocument" Content="Открыть документ" HorizontalAlignment="Left" Height="25" Margin="408,10,0,0" VerticalAlignment="Top" Width="124" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonOpenDocument_Click"/>
-        <Button x:Name="buttonCancelFind" Content="Отменить поиск" Margin="596,10,36,0" VerticalAlignment="Top" Width="Auto" Height="25" Click="ButtonCancelFind_Click" Grid.ColumnSpan="2"/>
-        <Button x:Name ="ButtonFilters" Content="Фильтры" HorizontalAlignment="Left" Height="25" Margin="17,10,0,0" VerticalAlignment="Top" Width="65" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFilters_Click" Grid.Column="1" Grid.ColumnSpan="2"/>
+            <StackPanel Orientation="Horizontal">
 
+                <Button Name ="ButtonCreateNew" Content="Создать" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>
+                <Button x:Name ="ButtonDelete" Content="Удалить" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
+                <Button x:Name ="ButtonRefresh" Content="Обновить" Width="70" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonRefresh_Click"/>
+                <Button x:Name ="ButtonEdit" Content="Изменить выделенное" Width="148" RenderTransformOrigin="1.194,0.333" TabIndex="4" IsTabStop="False" Click="ButtonEdit_Click"/>
+                <Button x:Name ="ButtonFind" Content="Найти" Width="54" RenderTransformOrigin="1.194,0.333" TabIndex="5" IsTabStop="False" Click="ButtonFind_Click"/>
+                <Button x:Name ="ButtonOpenDocument" Content="Открыть документ" Width="124" RenderTransformOrigin="1.194,0.333" TabIndex="6" IsTabStop="False" Click="ButtonOpenDocument_Click"/>
+                <Button x:Name="buttonCancelFind" Content="Отменить поиск" Width="107" RenderTransformOrigin="1.194,0.333" TabIndex="7" IsTabStop="False" Click="ButtonCancelFind_Click"/>
+                <Button x:Name ="ButtonFilters" Content="Фильтры" Width="65" RenderTransformOrigin="1.194,0.333" TabIndex="8" IsTabStop="False" Click="ButtonFilters_Click"/>
+                <Button x:Name="ButtonExit" Content="Выход" Width="75" IsCancel="True" RenderTransformOrigin="1.194,0.333" TabIndex="9" IsTabStop="False" Visibility="Visible" Click="ButtonExit_Click"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <DataGrid x:Name="costsGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}">
+
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Default_Folder}" ClipboardContentBinding="{x:Null}" Header="Путь документа" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Name_Of_Document}" ClipboardContentBinding="{x:Null}" Header="Название документа" />
+                    <DataGridTextColumn Binding="{Binding Date_Of_Cost}" ClipboardContentBinding="{x:Null}" Header="Дата расхода"/>
+                    <DataGridTextColumn Binding="{Binding Amount}" ClipboardContentBinding="{x:Null}" Header="Сумма"/>
+                    <DataGridTextColumn Binding="{Binding Notes}" ClipboardContentBinding="{x:Null}" Header="Заметки"/>
+                    <DataGridTextColumn Binding="{Binding Name_Of_Category}" ClipboardContentBinding="{x:Null}" Header="Категория расхода"/>
+                    <DataGridTextColumn Binding="{Binding Name_Of_Type}" ClipboardContentBinding="{x:Null}" Header="Тип оплаты"/>
+                    <DataGridTextColumn Binding="{Binding Name_Of_Periodicity}" ClipboardContentBinding="{x:Null}" Header="Периодичность"/>
+                    <DataGridTextColumn Binding="{Binding To}" ClipboardContentBinding="{x:Null}" Header="От"/>
+                    <DataGridTextColumn Binding="{Binding From}" ClipboardContentBinding="{x:Null}" Header="Кому"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Window>

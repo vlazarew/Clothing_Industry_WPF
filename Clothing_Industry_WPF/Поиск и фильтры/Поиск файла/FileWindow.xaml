@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Поиск_файла"
         mc:Ignorable="d"
+        ResizeMode="NoResize"
        Title="Выбрать папку" Height="350" Width="525">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">

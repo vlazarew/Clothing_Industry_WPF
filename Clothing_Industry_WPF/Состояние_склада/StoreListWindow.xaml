@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Состояние_склада"
         mc:Ignorable="d"
-        Title="Состояние склада" Loaded="Window_Loaded" Height="529" Width="1067.1">
+        Title="Состояние склада" Loaded="Window_Loaded" Height="529" Width="1067.1" MinWidth="1067.1" MinHeight="529">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -133,32 +133,38 @@
 
     </Window.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="541*"/>
-            <ColumnDefinition Width="37*"/>
-            <ColumnDefinition Width="238*"/>
-            <ColumnDefinition Width="12*"/>
-        </Grid.ColumnDefinitions>
-
-        <DataGrid x:Name="storeGrid" Margin="10,0,10,10" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Height="440" VerticalAlignment="Bottom" Grid.ColumnSpan="4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
 
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Vendor_Code}" ClipboardContentBinding="{x:Null}" Header="Артикул" IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding Name_Of_Material}" ClipboardContentBinding="{x:Null}" Header="Название материала" IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding Count}" ClipboardContentBinding="{x:Null}" Header="Количество"/>
-                <DataGridTextColumn Binding="{Binding Name_Of_Unit}" ClipboardContentBinding="{x:Null}" Header="Единица измерения" IsReadOnly="True"/>
-
-            </DataGrid.Columns>
-        </DataGrid>
-
-        <Button x:Name ="ButtonRefresh" Content="Обновить" HorizontalAlignment="Left" Height="25" Margin="84,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonRefresh_Click"/>
-        <Button x:Name ="ButtonFind" Content="Найти" HorizontalAlignment="Left" Height="25" Margin="169,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFind_Click"/>
-        <Button x:Name ="ButtonPrint" Content="Печать" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonPrint_Click"/>
-        <Button x:Name="ButtonExit" Content="Выход" Grid.Column="2" HorizontalAlignment="Left" Margin="234,10,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" Height="25" Grid.ColumnSpan="2"/>
-        <Button x:Name="buttonCancelFind" Content="Отменить поиск" HorizontalAlignment="Left" Margin="243,10,0,0" VerticalAlignment="Top" Width="108" Height="25" Click="ButtonCancelFind_Click"/>
-        <Button x:Name ="ButtonFilters" Content="Фильтры" HorizontalAlignment="Left" Height="25" Margin="356,10,0,0" VerticalAlignment="Top" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFilters_Click"/>
+        <Grid Grid.Row="0">
 
 
+            <StackPanel Orientation="Horizontal">
+
+
+                <Button x:Name ="ButtonRefresh" Content="Обновить" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonRefresh_Click"/>
+                <Button x:Name ="ButtonFind" Content="Найти" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFind_Click"/>
+                <Button x:Name ="ButtonPrint" Content="Печать" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonPrint_Click"/>
+                <Button x:Name="buttonCancelFind" Content="Отменить поиск" Width="108" RenderTransformOrigin="1.194,0.333" TabIndex="4" IsTabStop="False" Click="ButtonCancelFind_Click"/>
+                <Button x:Name ="ButtonFilters" Content="Фильтры" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="5" IsTabStop="False" Click="ButtonFilters_Click"/>
+                <Button x:Name="ButtonExit" Content="Выход" Width="75" RenderTransformOrigin="1.194,0.333" TabIndex="6" IsTabStop="False" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <DataGrid x:Name="storeGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}">
+
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Vendor_Code}" ClipboardContentBinding="{x:Null}" Header="Артикул" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Name_Of_Material}" ClipboardContentBinding="{x:Null}" Header="Название материала" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Count}" ClipboardContentBinding="{x:Null}" Header="Количество"/>
+                    <DataGridTextColumn Binding="{Binding Name_Of_Unit}" ClipboardContentBinding="{x:Null}" Header="Единица измерения" IsReadOnly="True"/>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Window>

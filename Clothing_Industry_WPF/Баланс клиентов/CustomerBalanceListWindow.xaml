@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Баланс_клиентов"
+        MinHeight="529"
+        MinWidth="1050"
         mc:Ignorable="d"
-        Title="Баланс клиентов"  Height="529" Width="1067.1" Loaded="Window_Loaded">
+        Title="Баланс клиентов"  Height="529" Width="812.1" Loaded="Window_Loaded">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -133,29 +135,43 @@
 
     </Window.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="541*"/>
-            <ColumnDefinition Width="37*"/>
-            <ColumnDefinition Width="238*"/>
-            <ColumnDefinition Width="12*"/>
-        </Grid.ColumnDefinitions>
-        <DataGrid x:Name="customersGrid" Margin="10,0,0,10" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Height="420" VerticalAlignment="Bottom" Grid.ColumnSpan="3">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Имя"/>
-                <DataGridTextColumn Binding="{Binding Lastname}" ClipboardContentBinding="{x:Null}" Header="Фамилия"/>
-                <DataGridTextColumn Binding="{Binding Address}" ClipboardContentBinding="{x:Null}" Header="Адрес"/>
-                <DataGridTextColumn Binding="{Binding Phone_Number}" ClipboardContentBinding="{x:Null}" Header="Телефонный номер"/>
-                <DataGridTextColumn Binding="{Binding Passport_data}" ClipboardContentBinding="{x:Null}" Header="Паспорт"/>
-                <DataGridTextColumn Binding="{Binding Nickname}" ClipboardContentBinding="{x:Null}" Header="Никнейм"/>
-                <DataGridTextColumn Binding="{Binding Accured}" ClipboardContentBinding="{x:Null}" Header="Начислено на сумму"/>
-                <DataGridTextColumn Binding="{Binding Paid}" ClipboardContentBinding="{x:Null}" Header="Оплачено заказчиком"/>
-                <DataGridTextColumn Binding="{Binding Debt}" ClipboardContentBinding="{x:Null}" Header="Долг заказчика"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        <Button x:Name ="ButtonRefresh" Content="Обновить" HorizontalAlignment="Left" Height="31" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonRefresh_Click"/>
-        <Button x:Name="ButtonExit" Content="Выход" Grid.Column="2" HorizontalAlignment="Left" Margin="213,10,0,0" VerticalAlignment="Top" Width="91" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" Height="31"/>
-        <Button x:Name ="ButtonFind" Content="Найти" HorizontalAlignment="Left" Height="31" Margin="115,10,0,0" VerticalAlignment="Top" Width="81" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFind_Click"/>
-        <Button x:Name="buttonCancelFind" Content="Отменить поиск" HorizontalAlignment="Left" Margin="201,10,0,0" VerticalAlignment="Top" Width="138" Height="31" Click="ButtonCancelFind_Click" RenderTransformOrigin="0.469,0.548"/>
-        <Button x:Name ="ButtonFilters" Content="Фильтры" HorizontalAlignment="Left" Height="31" Margin="344,10,0,0" VerticalAlignment="Top" Width="96" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFilters_Click"/>
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="0">
+
+
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name ="ButtonRefresh" Content="Обновить" Width="100" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonRefresh_Click"/>
+           
+            <Button x:Name ="ButtonFind" Content="Найти"   RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFind_Click"/>
+            <Button x:Name="buttonCancelFind" Content="Отменить поиск"  Width="138"  Click="ButtonCancelFind_Click" RenderTransformOrigin="0.469,0.548"/>
+            <Button x:Name ="ButtonFilters" Content="Фильтры"  Width="96" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFilters_Click"/>
+                <Button x:Name="ButtonExit" Content="Выход" Width="107" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" RenderTransformOrigin="1.549,0.613"/>
+                
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+
+
+            <DataGrid x:Name="customersGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Имя"/>
+                    <DataGridTextColumn Binding="{Binding Lastname}" ClipboardContentBinding="{x:Null}" Header="Фамилия"/>
+                    <DataGridTextColumn Binding="{Binding Address}" ClipboardContentBinding="{x:Null}" Header="Адрес"/>
+                    <DataGridTextColumn Binding="{Binding Phone_Number}" ClipboardContentBinding="{x:Null}" Header="Телефонный номер"/>
+                    <DataGridTextColumn Binding="{Binding Passport_data}" ClipboardContentBinding="{x:Null}" Header="Паспорт"/>
+                    <DataGridTextColumn Binding="{Binding Nickname}" ClipboardContentBinding="{x:Null}" Header="Никнейм"/>
+                    <DataGridTextColumn Binding="{Binding Accured}" ClipboardContentBinding="{x:Null}" Header="Начислено на сумму"/>
+                    <DataGridTextColumn Binding="{Binding Paid}" ClipboardContentBinding="{x:Null}" Header="Оплачено заказчиком"/>
+                    <DataGridTextColumn Binding="{Binding Debt}" ClipboardContentBinding="{x:Null}" Header="Долг заказчика"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
     </Grid>
 </Window>

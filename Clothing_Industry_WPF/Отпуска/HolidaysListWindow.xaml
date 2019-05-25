@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Отпуска"
         mc:Ignorable="d"
-         Title="Отпуска" Loaded="Window_Loaded" Height="529" Width="1067.1">
+         Title="Отпуска" Loaded="Window_Loaded" Height="529" Width="1067.1" MinWidth="1067.1" MinHeight="529">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -133,37 +133,43 @@
 
     </Window.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="541*"/>
-            <ColumnDefinition Width="37*"/>
-            <ColumnDefinition Width="238*"/>
-            <ColumnDefinition Width="12*"/>
-        </Grid.ColumnDefinitions>
-
-        <DataGrid x:Name="holidaysGrid" Margin="10,0,10,10" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Height="440" VerticalAlignment="Bottom" Grid.ColumnSpan="4">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
 
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Login}" ClipboardContentBinding="{x:Null}" Header="Логин" IsReadOnly="True"/>
-                <DataGridTextColumn Binding="{Binding Year}" ClipboardContentBinding="{x:Null}" Header="Год"/>
-                <DataGridTextColumn Binding="{Binding Days_Of_Holidays}" ClipboardContentBinding="{x:Null}" Header="Всего дней"/>
-                <DataGridTextColumn Binding="{Binding Days_Used}" ClipboardContentBinding="{x:Null}" Header="Прошло"/>
-                <DataGridTextColumn Binding="{Binding Rest_Of_Days}" ClipboardContentBinding="{x:Null}" Header="Осталось"/>
-                <DataGridTextColumn Binding="{Binding Planned_Start}" ClipboardContentBinding="{x:Null}" Header="Запланировано"/>
-                <DataGridTextColumn Binding="{Binding In_Fact_Start}" ClipboardContentBinding="{x:Null}" Header="Начинается с"/>
-                <DataGridTextColumn Binding="{Binding In_Fact_End}" ClipboardContentBinding="{x:Null}" Header="Заканчивается"/>
-                <DataGridTextColumn Binding="{Binding Notes}" ClipboardContentBinding="{x:Null}" Header="Примечание"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <Grid Grid.Row="0">
 
-        <Button Name ="ButtonCreateNew" Content="Создать" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>
-        <Button x:Name ="ButtonDelete" Content="Удалить" HorizontalAlignment="Left" Height="25" Margin="95,10,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
-        <Button x:Name ="ButtonRefresh" Content="Обновить" HorizontalAlignment="Left" Height="25" Margin="180,10,0,0" VerticalAlignment="Top" Width="79" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonRefresh_Click"/>
-        <Button x:Name ="ButtonEdit" Content="Изменить выделенное" HorizontalAlignment="Left" Height="25" Margin="264,10,0,0" VerticalAlignment="Top" Width="145" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonEdit_Click"/>
-        <Button x:Name="ButtonExit" Content="Выход" Grid.Column="2" HorizontalAlignment="Left" Margin="234,10,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" Height="25" RenderTransformOrigin="1.209,0.52" Grid.ColumnSpan="2"/>
-        <Button x:Name ="ButtonFind" Content="Найти" HorizontalAlignment="Left" Height="25" Margin="414,10,0,0" VerticalAlignment="Top" Width="57" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFind_Click"/>
-        <Button x:Name="buttonCancelFind" Content="Отменить поиск" HorizontalAlignment="Left" Margin="476,10,0,0" VerticalAlignment="Top" Width="111" Height="25" Click="ButtonCancelFind_Click"/>
-        <Button x:Name ="ButtonFilters" Content="Фильтры" HorizontalAlignment="Left" Height="25" Margin="592,10,0,0" VerticalAlignment="Top" Width="63" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFilters_Click"/>
 
+            <StackPanel Orientation="Horizontal">
+                <Button Name ="ButtonCreateNew" Content="Создать" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>
+                <Button x:Name ="ButtonDelete" Content="Удалить" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
+                <Button x:Name ="ButtonRefresh" Content="Обновить" Width="79" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonRefresh_Click"/>
+                <Button x:Name ="ButtonEdit" Content="Изменить выделенное" Width="151" RenderTransformOrigin="1.194,0.333" TabIndex="4" IsTabStop="False" Click="ButtonEdit_Click"/>
+                <Button x:Name ="ButtonFind" Content="Найти" Width="57" RenderTransformOrigin="1.194,0.333" TabIndex="5" IsTabStop="False" Click="ButtonFind_Click"/>
+                <Button x:Name="buttonCancelFind" Content="Отменить поиск" Width="111" RenderTransformOrigin="1.194,0.333" TabIndex="6" IsTabStop="False" Click="ButtonCancelFind_Click"/>
+                <Button x:Name ="ButtonFilters" Content="Фильтры" Width="63" RenderTransformOrigin="1.194,0.333" TabIndex="7" IsTabStop="False" Click="ButtonFilters_Click"/>
+                <Button x:Name="ButtonExit" Content="Выход" Width="75" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" TabIndex="8" IsTabStop="False" RenderTransformOrigin="1.209,0.52"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <DataGrid x:Name="holidaysGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}">
+
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Login}" ClipboardContentBinding="{x:Null}" Header="Логин" IsReadOnly="True"/>
+                    <DataGridTextColumn Binding="{Binding Year}" ClipboardContentBinding="{x:Null}" Header="Год"/>
+                    <DataGridTextColumn Binding="{Binding Days_Of_Holidays}" ClipboardContentBinding="{x:Null}" Header="Всего дней"/>
+                    <DataGridTextColumn Binding="{Binding Days_Used}" ClipboardContentBinding="{x:Null}" Header="Прошло"/>
+                    <DataGridTextColumn Binding="{Binding Rest_Of_Days}" ClipboardContentBinding="{x:Null}" Header="Осталось"/>
+                    <DataGridTextColumn Binding="{Binding Planned_Start}" ClipboardContentBinding="{x:Null}" Header="Запланировано"/>
+                    <DataGridTextColumn Binding="{Binding In_Fact_Start}" ClipboardContentBinding="{x:Null}" Header="Начинается с"/>
+                    <DataGridTextColumn Binding="{Binding In_Fact_End}" ClipboardContentBinding="{x:Null}" Header="Заканчивается"/>
+                    <DataGridTextColumn Binding="{Binding Notes}" ClipboardContentBinding="{x:Null}" Header="Примечание"/>
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </Grid>
     </Grid>
 </Window>
