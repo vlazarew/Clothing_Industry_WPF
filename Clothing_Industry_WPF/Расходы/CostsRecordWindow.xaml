@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Расходы"
         ResizeMode="NoResize"
         mc:Ignorable="d"
-        Title="Расход" Height="429.667" Width="374.847">
+        Title="Расход" Height="440" Width="375" MinWidth="375" MinHeight="440">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -133,7 +133,7 @@
         </Style>
 
     </Window.Resources>
-    <Grid Margin="0,0,0,-31">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>

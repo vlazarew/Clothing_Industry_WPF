@@ -145,7 +145,10 @@ namespace Clothing_Industry_WPF.Поиск_файла
             listBoxDirectories.Items.Clear();
             foreach (string myDrive in myDrives)
             {
-                listBoxDirectories.Items.Add(myDrive);
+                if (myDrive != "F:\\")
+                {
+                    listBoxDirectories.Items.Add(myDrive);
+                }
             }
         }
         #endregion

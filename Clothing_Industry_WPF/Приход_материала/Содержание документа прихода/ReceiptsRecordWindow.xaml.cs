@@ -173,7 +173,7 @@ namespace Clothing_Industry_WPF.Приход_материала
         {
             //папка с exe встроенная
             
-            string BasePath = "D:\\Git\\Clothing_Industry_WPF\\Документы прихода\\";
+            string BasePath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
             MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
             MySqlTransaction transaction = connection.BeginTransaction();
@@ -212,13 +212,13 @@ namespace Clothing_Industry_WPF.Приход_материала
                     myRange.Value2 = b.Text;
                 }
             }
-            System.IO.Directory.CreateDirectory(BasePath + Default_Folder);
+            System.IO.Directory.CreateDirectory(BasePath + "\\" + Default_Folder);
 
-            workbook.SaveAs(BasePath + Default_Folder + "\\" + Name_Of_Document + ".xls",
+            workbook.SaveAs(BasePath + "\\" + Default_Folder + "\\" + Name_Of_Document + ".xls",
                   Excel.XlFileFormat.xlWorkbookNormal);
             workbook.Close(true);
             excel.Quit();
-            MessageBox.Show("Документ " + Name_Of_Document + " создан успешно.\n" + "Путь документа: " + BasePath + Default_Folder);
+            MessageBox.Show("Документ " + Name_Of_Document + " создан успешно.\n" + "Путь документа: " + BasePath + "\\" + Default_Folder);
         }
     }
 }
