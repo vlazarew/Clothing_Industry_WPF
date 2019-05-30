@@ -148,9 +148,9 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Background ="Beige">
                 <StackPanel Orientation="Vertical">
-                    <TextBlock FontSize="20">
+                    <TextBlock FontSize="20" Margin="3,0">
                     <Run Text="Добро пожаловать,"/></TextBlock>
-                    <TextBlock x:Name="textBlockUserName" FontSize="19" FontWeight="Bold" UseLayoutRounding="True" TextWrapping="WrapWithOverflow">
+                    <TextBlock x:Name="textBlockUserName" FontSize="19" FontWeight="Bold" UseLayoutRounding="True" TextWrapping="WrapWithOverflow" Margin="3,0">
                     </TextBlock>
                 </StackPanel>
             </Grid>
@@ -160,7 +160,7 @@
                             <TextBlock Width="120">Выйти</TextBlock>
                         </Viewbox>
                     </Button>
-                <Button x:Name="ButtonFAQ" Height="65" Width="Auto" RenderTransformOrigin="3.476,-2.516" TabIndex="1" VerticalAlignment="Bottom">
+                <Button x:Name="ButtonFAQ" Height="65" Width="Auto" RenderTransformOrigin="3.476,-2.516" TabIndex="1" VerticalAlignment="Bottom" Visibility="Hidden">
                     <Viewbox>
                         <TextBlock Width="120">О программе</TextBlock>
                     </Viewbox>
