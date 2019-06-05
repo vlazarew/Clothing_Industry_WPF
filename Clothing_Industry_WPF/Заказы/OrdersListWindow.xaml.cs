@@ -99,7 +99,7 @@ namespace Clothing_Industry_WPF.Заказы
             string query_text = "select orders.id_Order, DATE_FORMAT(orders.Date_Of_Order, \"%d.%m.%Y\") as Date_Of_Order, orders.Discount_Per_Cent, " +
                 "orders.Total_Price, orders.Paid, orders.Debt, DATE_FORMAT(orders.Date_Of_Delievery, \"%d.%m.%Y\") as Date_Of_Delievery, orders.Notes, " +
                                     "types_of_order.Name_Of_type, statuses_of_order.Name_Of_Status, customers.Nickname, orders.Executor,orders.Responsible, " +
-                                    "group_concat(products.Name_Of_Product separator ', ') as Products " +
+                                    "group_concat(products.Name_Of_Product separator ', ') as Products, orders.SalaryToExecutor " +
                                     "from orders " +
                                     "left join types_of_order on orders.Types_Of_Order_id_Type_Of_Order = types_of_order.id_Type_Of_Order " +
                                     "left join statuses_of_order on orders.Statuses_Of_Order_id_Status_Of_Order = statuses_of_order.id_Status_Of_Order " +
@@ -116,7 +116,7 @@ namespace Clothing_Industry_WPF.Заказы
             string query_text = "select orders.id_Order, DATE_FORMAT(orders.Date_Of_Order, \"%d.%m.%Y\") as Date_Of_Order, orders.Discount_Per_Cent, orders.Total_Price, " +
                                 "orders.Paid, orders.Debt, DATE_FORMAT(orders.Date_Of_Delievery, \"%d.%m.%Y\") as Date_Of_Delievery, orders.Notes, " +
                                     "types_of_order.Name_Of_type, statuses_of_order.Name_Of_Status, customers.Nickname, orders.Executor,orders.Responsible, " +
-                                    "'Не указано' as Products " +
+                                    "'Не указано' as Products, orders.SalaryToExecutor " +
                                     "from orders " +
                                     "left join types_of_order on orders.Types_Of_Order_id_Type_Of_Order = types_of_order.id_Type_Of_Order " +
                                     "left join statuses_of_order on orders.Statuses_Of_Order_id_Status_Of_Order = statuses_of_order.id_Status_Of_Order " +
@@ -503,6 +503,31 @@ namespace Clothing_Industry_WPF.Заказы
         {
             Window create_window = new FittingsRecordWindow(WaysToOpenForm.WaysToOpen.create);
             create_window.ShowDialog();
+        }
+
+        private void OrdersGrid_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            string status = ((DataRowView)e.Row.DataContext).Row.ItemArray[9].ToString();
+            switch (status)
+            {
+                case "Принят":
+                    e.Row.Background = Brushes.White;
+                    break;
+                case "Сдан":
+                    e.Row.Background = Brushes.Green;
+                    break;
+                case "Отправлен":
+                    e.Row.Background = Brushes.Orange;
+                    break;
+                case "Готов":
+                    e.Row.Background = Brushes.Aqua;
+                    break;
+                case "Отменён":
+                    e.Row.Background = Brushes.Red;
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

@@ -47,8 +47,8 @@ namespace Clothing_Industry_WPF.Изделия
 
         private void FillFields(int id_Product)
         {
-            string query_text = "select products.Name_Of_Product, products.Fixed_Price, products.Per_Cents," +
-                                "products.Added_Price_For_Complexity, products.Description, products.Photo" +
+            string query_text = "select products.Name_Of_Product, products.Fixed_Price, products.MoneyToEmployee," +
+                                " products.Description, products.Photo" +
                                 " from products" +
                                 " where products.id_Product = @id_Product;";
 
@@ -61,9 +61,8 @@ namespace Clothing_Industry_WPF.Изделия
                 {
                     textBoxName_Of_Product.Text = reader.GetString(0);
                     textBoxFixed_Price.Text = reader.GetString(1);
-                    textBoxPer_Cents.Text = reader.GetString(2);
-                    if (reader.GetValue(3).ToString() != "")
-                        textBoxAdded_Price_For_Complexity.Text = reader.GetString(3);
+                    textBoxMoneyToEmployee.Text = reader.GetString(2);
+                   
                     if (reader.GetValue(4).ToString() != "")
                     {
                         textBoxDescription.Text = reader.GetString(4);
@@ -137,13 +136,9 @@ namespace Clothing_Industry_WPF.Изделия
             {
                 result += result == "" ? "Цена" : ", Цена";
             }
-            if (textBoxPer_Cents.Text == "")
+            if (textBoxMoneyToEmployee.Text == "")
             {
-                result += result == "" ? "Стоимость за изготовление" : ", Стоимость за изготовление";
-            }
-            if (textBoxAdded_Price_For_Complexity.Text == "")
-            {
-                result += result == "" ? "Дополнительная оплата" : ", Дополнительная оплата";
+                result += result == "" ? "Выплата сотруднику" : ", Выплата сотруднику";
             }
             if (textBoxDescription.Text == "")
             {
@@ -196,24 +191,22 @@ namespace Clothing_Industry_WPF.Изделия
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
                 query = "INSERT INTO products " +
-                                       "(Name_Of_Product,Fixed_Price,Per_Cents,Added_Price_For_Complexity," +
+                                       "(Name_Of_Product, Fixed_Price, MoneyToEmployee," +
                                        " Description, Photo)" +
-                                       " VALUES (@Name_Of_Product, @Fixed_Price, @Per_Cents, @Added_Price_For_Complexity, @Description, @image);";
+                                       " VALUES (@Name_Of_Product, @Fixed_Price, @MoneyToEmployee, @Description, @image);";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
-                query = "Update materials set Vendor_Code = @vendor_code, Name_Of_Material = @name_of_material, Cost_Of_Material = @cost_of_material," +
-                        "Notes = @notes," +
-                        "Units_id_Unit = @unit, Groups_Of_Material_id_Group_Of_Material = @group, Types_Of_Material_id_Type_Of_Material = @type, Countries_id_Country = @country, Photo = @image" +
-                        " where Vendor_Code = @oldvendor_code;";
+                query = "Update products set Name_Of_Product = @Name_Of_Product, Fixed_Price = @Fixed_Price, MoneyToEmployee = @MoneyToEmployee," +
+                        "Description = @Description, Photo = @image" +
+                        " where id_Product = @old_id_Product;";
 
             }
 
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@Name_Of_Product", textBoxName_Of_Product.Text);
             command.Parameters.AddWithValue("@Fixed_Price", textBoxFixed_Price.Text);
-            command.Parameters.AddWithValue("@Per_Cents", textBoxPer_Cents.Text);
-            command.Parameters.AddWithValue("@Added_Price_For_Complexity", textBoxAdded_Price_For_Complexity.Text);
+            command.Parameters.AddWithValue("@MoneyToEmployee", textBoxMoneyToEmployee.Text);
             command.Parameters.AddWithValue("@Description", textBoxDescription.Text); 
             // Обработка фото
             if (image_path != null)

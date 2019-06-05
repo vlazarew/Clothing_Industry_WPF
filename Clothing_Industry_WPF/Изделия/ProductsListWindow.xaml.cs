@@ -38,8 +38,8 @@ namespace Clothing_Industry_WPF.Изделия
 
         private string getQueryText()
         {
-            string query_text = "select products.id_product, products.Name_Of_Product, products.Fixed_Price, products.Per_Cents," +
-                                "products.Added_Price_For_Complexity, products.Description" +
+            string query_text = "select products.id_product, products.Name_Of_Product, products.Fixed_Price, products.MoneyToEmployee," +
+                                " products.Description" +
                                 " from products;";
             return query_text;
         }

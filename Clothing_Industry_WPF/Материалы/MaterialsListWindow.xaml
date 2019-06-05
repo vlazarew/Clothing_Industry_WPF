@@ -4,12 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Материал"
-        xmlns:БД="clr-namespace:Clothing_Industry_WPF.БД" x:Class="Clothing_Industry_WPF.Материал.MaterialsListWindow"
+        x:Class="Clothing_Industry_WPF.Материал.MaterialsListWindow"
         mc:Ignorable="d"
         Title="Материалы/Фурнитура" Loaded="Window_Loaded" Height="529" Width="1067.1" MinWidth="1067.1" MinHeight="529">
     <Window.Resources>
-        <БД:main_databaseDataSet x:Key="main_databaseDataSet"/>
-        <CollectionViewSource x:Key="materialsViewSource" Source="{Binding materials, Source={StaticResource main_databaseDataSet}}"/>
+        
+        <CollectionViewSource x:Key="materialsViewSource"/>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
             <GradientStop Color="Transparent" Offset="0.4" />

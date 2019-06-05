@@ -582,11 +582,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="БД\main_databaseDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>main_databaseDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -606,17 +601,6 @@
     </EmbeddedResource>
     <None Include="app.config">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="БД\main_databaseDataSet.xsc">
-      <DependentUpon>main_databaseDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="БД\main_databaseDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>main_databaseDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="БД\main_databaseDataSet.xss">
-      <DependentUpon>main_databaseDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -58,7 +58,7 @@ namespace Clothing_Industry_WPF.Заказы
         private void FillFields(int idOrder)
         {
             string query_text = "select orders.id_Order, orders.Date_Of_Order, orders.Discount_Per_Cent, orders.Total_price, orders.Paid, orders.Debt, orders.Date_Of_Delievery, orders.Notes, " +
-                                "types_of_order.Name_Of_type, statuses_of_order.Name_Of_Status, customers.Nickname, orders.Executor, orders.Responsible " +
+                                "types_of_order.Name_Of_type, statuses_of_order.Name_Of_Status, customers.Nickname, orders.Executor, orders.Responsible, orders.SalaryToExecutor " +
                                 "from orders " +
                                 "left join types_of_order on orders.Types_Of_Order_id_Type_Of_Order = types_of_order.id_Type_Of_Order " +
                                 "left join statuses_of_order on orders.Statuses_Of_Order_id_Status_Of_Order =statuses_of_order.id_Status_Of_Order " +
@@ -90,6 +90,10 @@ namespace Clothing_Industry_WPF.Заказы
                     comboBoxCustomer.SelectedValue = reader.GetString(10);
                     comboBoxResponsible.SelectedValue = reader.GetString(11);
                     comboBoxExecutor.SelectedValue = reader.GetString(12);
+                    if (reader.GetValue(13).ToString() != "")
+                    {
+                        textBoxSalaryToExecutor.Text = reader.GetString(13);
+                    }
                 }
             }
             connection.Close();
@@ -343,22 +347,7 @@ namespace Clothing_Industry_WPF.Заказы
 
         private void TextBoxDiscount_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            /*bool number = !IsTextAllowed(e.Text);
-            if (!number)
-            {
-                string previous = textBoxDiscount.Text;
-                e.Handled = false;
-                if ((int.Parse(textBoxDiscount.Text) < 0 || int.Parse(textBoxDiscount.Text) > 9))
-                {
-                    MessageBox.Show("Внимание. % не может принимать значения вне интервала [0-100]!!!", "ВНИМАНИЕ", MessageBoxButton.OK, MessageBoxImage.Error);
-                    textBoxDiscount.Text = previous;
-                    e.Handled = true;
-                }
-            }
-            else
-            {*/
             e.Handled = !IsTextAllowed(e.Text);
-            //}
         }
 
         private MySqlCommand EditCustomerBalance(MySqlConnection connection, MySqlTransaction transaction)
@@ -587,10 +576,11 @@ namespace Clothing_Industry_WPF.Заказы
             return null;
         }
 
+        //!!! ПЕРЕДЕЛАТЬ
         private float CalculateSalary(MySqlConnection connection)
         {
             // Необходимо получить все изделия и их кол-во
-            string query = "select products.Fixed_Price, products.Per_Cents,list_products_to_order.Count, products.Added_Price_For_Complexity as Added_Price " +
+            string query = "select products.Fixed_Price, products.MoneyToEmployee,list_products_to_order.Count as Added_Price " +
                            "from orders " +
                            "join list_products_to_order on orders.id_Order = list_products_to_order.Orders_id_Order " +
                            "join products on list_products_to_order.Products_id_Product = products.id_Product " +
@@ -648,6 +638,11 @@ namespace Clothing_Industry_WPF.Заказы
             float debt = totalPrice - paid;
 
             textBoxDebt.Text = debt.ToString();
+        }
+
+        private void TextBoxSalaryToExecutor_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
         }
     }
 }
