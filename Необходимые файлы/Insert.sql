@@ -87,12 +87,12 @@ insert into suppliers (Name_Of_Supplier) values ('ООО БелТкань');
 
 -- Изделия
 
-insert into products (Name_Of_Product, Fixed_Price,Per_Cents,Added_Price_For_Complexity,Description,Photo)
-  values('Кружевное платье',400,60,0,'C рисунком',null);
+insert into products (Name_Of_Product, Fixed_Price, MoneyToEmployee, Description, Photo)
+  values('Кружевное платье', 400, 60, 'C рисунком', null);
   
 -- Материалы на изделие  
-insert into materials_for_product values (100001,1,10);
-insert into materials_for_product values (100002,1,3);
+insert into materials_for_product values (100001, 1, 10);
+insert into materials_for_product values (100002, 1, 3);
 -- Сотрудники
 
 insert into employees values('Petrov','183461','Иван','Петров','Васильевич','89313332222','petrov_ivan@google.com','2003 200122','',null,'2019-05-05',66000,1,1);
@@ -112,14 +112,14 @@ insert into customers (Name,Lastname,Patronymic,Address,Phone_Number,Nickname,Bi
 
 -- Заказы 
 
-insert into orders (Date_Of_Order,Discount_Per_Cent,Total_Price,Paid,Debt,Date_Of_Delievery,Notes,Types_Of_Order_id_Type_Of_Order,Statuses_Of_Order_id_Status_Of_Order,Customers_id_Customer,Responsible,Executor)
-  values ('2019-05-05',0,1500,300,200,'2019-06-05','',1,1,1,'admin','Petrov');
+insert into orders (Date_Of_Order,Discount_Per_Cent,Total_Price,Paid,Debt,Date_Of_Delievery,Notes,Types_Of_Order_id_Type_Of_Order,Statuses_Of_Order_id_Status_Of_Order,Customers_id_Customer,Responsible,Executor, Added_Price_For_Complexity)
+  values ('2019-05-05',0,1500,300,200,'2019-06-05','',1,1,1,'admin','Petrov', 0);
 
-insert into orders (Date_Of_Order,Discount_Per_Cent,Total_Price,Paid,Debt,Date_Of_Delievery,Notes,Types_Of_Order_id_Type_Of_Order,Statuses_Of_Order_id_Status_Of_Order,Customers_id_Customer,Responsible,Executor)
-  values ('2018-10-15',0,4500,4500,0,'2019-05-20','',1,1,1,'admin','admin');
+insert into orders (Date_Of_Order,Discount_Per_Cent,Total_Price,Paid,Debt,Date_Of_Delievery,Notes,Types_Of_Order_id_Type_Of_Order,Statuses_Of_Order_id_Status_Of_Order,Customers_id_Customer,Responsible,Executor, Added_Price_For_Complexity)
+  values ('2018-10-15',0,4500,4500,0,'2019-05-20','',1,1,1,'admin','admin', 150);
 
-insert into orders (Date_Of_Order,Discount_Per_Cent,Total_Price,Paid,Debt,Date_Of_Delievery,Notes,Types_Of_Order_id_Type_Of_Order,Statuses_Of_Order_id_Status_Of_Order,Customers_id_Customer,Responsible,Executor)
-  values ('2019-04-27',0,500,300,200,'2019-06-05','',1,1,1,'Sidorova','Sidorova');
+insert into orders (Date_Of_Order,Discount_Per_Cent,Total_Price,Paid,Debt,Date_Of_Delievery,Notes,Types_Of_Order_id_Type_Of_Order,Statuses_Of_Order_id_Status_Of_Order,Customers_id_Customer,Responsible,Executor, Added_Price_For_Complexity)
+  values ('2019-04-27',0,500,300,200,'2019-06-05','',1,1,1,'Sidorova','Sidorova', 75);
 
 -- Примерки
 
