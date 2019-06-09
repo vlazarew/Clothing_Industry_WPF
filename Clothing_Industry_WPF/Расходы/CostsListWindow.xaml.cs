@@ -63,8 +63,8 @@ namespace Clothing_Industry_WPF.Расходы
 
         private string getQueryText()
         {
-            string query_text = "select costs.Default_Folder, " +
-                                "costs.Name_Of_Document, DATE_FORMAT(costs.Date_Of_Cost, \"%d.%m.%Y\") as Date_Of_Cost, costs.Amount, costs.Notes, consumption_categories.Name_Of_Category, types_of_payment.Name_Of_Type, periodicities.Name_Of_Periodicity, costs.To, costs.From" +
+            string query_text = "select costs.id, " +
+                                "costs.Name_Of_Document, costs.Default_Folder, DATE_FORMAT(costs.Date_Of_Cost, \"%d.%m.%Y\") as Date_Of_Cost, costs.Amount, costs.Notes, consumption_categories.Name_Of_Category, types_of_payment.Name_Of_Type, periodicities.Name_Of_Periodicity, costs.To, costs.From" +
                                 " from costs" +
                                 " join consumption_categories on costs.Consumption_Categories_id_Consumption_Category = consumption_categories.id_Consumption_Category" +
                                 " join types_of_payment on costs.Types_Of_Payment_id_Of_Type = types_of_payment.id_Of_Type" +
@@ -82,7 +82,7 @@ namespace Clothing_Industry_WPF.Расходы
         private void DataGridCell_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             int row_index = costsGrid.SelectedIndex;
-            string login = "";
+            int login = -1;
             int current_row = 0;
             foreach (DataRowView row in costsGrid.Items)
             {
@@ -91,7 +91,7 @@ namespace Clothing_Industry_WPF.Расходы
                     current_row++;
                     continue;
                 }
-                login = row.Row.ItemArray[0].ToString();
+                login = (int)row.Row.ItemArray[0];
                 break;
             }
 
@@ -121,7 +121,7 @@ namespace Clothing_Industry_WPF.Расходы
             {
                 MySqlTransaction transaction = connection.BeginTransaction();
 
-                string queryTable = "delete from costs where Default_Folder = @login";
+                string queryTable = "delete from costs where id = @login";
 
                 MySqlCommand commandTable = new MySqlCommand(queryTable, connection, transaction);
                 commandTable.Parameters.AddWithValue("@login", login);
@@ -151,10 +151,10 @@ namespace Clothing_Industry_WPF.Расходы
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            List<string> loginsToDelete = new List<string>();
+            List<int> loginsToDelete = new List<int>();
             foreach (DataRowView row in costsGrid.SelectedItems)
             {
-                loginsToDelete.Add(row.Row.ItemArray[0].ToString());
+                loginsToDelete.Add((int)row.Row.ItemArray[0]);
             }
 
             if (loginsToDelete.Count > 0)
@@ -227,8 +227,8 @@ namespace Clothing_Industry_WPF.Расходы
         {
             List<KeyValuePair<string, string>> describe = TakeDescribe();
             List<FindHandler.FieldParameters> result = new List<FindHandler.FieldParameters>();
-            result.Add(new FindHandler.FieldParameters("Default_Folder", "Путь документа", describe.Where(key => key.Key == "Default_Folder").First().Value));
             result.Add(new FindHandler.FieldParameters("Name_Of_Document", "Название документа", describe.Where(key => key.Key == "Name_Of_Document").First().Value));
+            result.Add(new FindHandler.FieldParameters("Default_Folder", "Путь документа", describe.Where(key => key.Key == "Default_Folder").First().Value));
             result.Add(new FindHandler.FieldParameters("Date_Of_Cost", "Дата расхода", describe.Where(key => key.Key == "Date_Of_Cost").First().Value));
             result.Add(new FindHandler.FieldParameters("Amount", "Сумма", describe.Where(key => key.Key == "Amount").First().Value));
             result.Add(new FindHandler.FieldParameters("Notes", "Заметки", describe.Where(key => key.Key == "Notes").First().Value));
@@ -367,7 +367,8 @@ namespace Clothing_Industry_WPF.Расходы
         private void ButtonOpenDocument_Click(object sender, RoutedEventArgs e)
         {
             int row_index = costsGrid.SelectedIndex;
-            string login = "";
+            int login = -1;
+            string path="";
             int current_row = 0;
             foreach (DataRowView row in costsGrid.Items)
             {
@@ -376,10 +377,10 @@ namespace Clothing_Industry_WPF.Расходы
                     current_row++;
                     continue;
                 }
-                login = row.Row.ItemArray[0].ToString();
+                login = (int)row.Row.ItemArray[0];
+                path = row.Row.ItemArray[2].ToString();
                 break;
-            }
-            string path = login;
+            }           
             if (File.Exists(path))
                 Process.Start(path);
             else

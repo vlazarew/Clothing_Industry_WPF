@@ -214,9 +214,10 @@ namespace Clothing_Industry_WPF.Приход_материала
 
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
+                
                 //document
                 query = "INSERT INTO receipt_of_materials" +
-                                       "(Default_Folder, Name_of_Document, Date_Of_Entry, Notes, Name_Of_State, Name_Of_Type, Name_Of_Supplier,Total_Price)" +
+                                       "(Default_Folder, Name_of_Document, Date_Of_Entry, Notes, Payment_States_id_Payment_States, Type_Of_Transactions_id_Type_Of_Transaction, Suppliers_id_Supplier,Total_Price)" +
                                        " VALUES (@Default_Folder, @Name_of_Document, @Date_Of_Entry,@Notes, @Name_Of_State, @Name_Of_Type, @Name_Of_Supplier,0);";
                 
 

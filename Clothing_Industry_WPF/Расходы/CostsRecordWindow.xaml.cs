@@ -29,9 +29,9 @@ namespace Clothing_Industry_WPF.Расходы
         private WaysToOpenForm.WaysToOpen way;
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private MySqlConnection connection;
-        private string old_login = "";
+        private int old_login = -1;
 
-        public CostsRecordWindow(WaysToOpenForm.WaysToOpen waysToOpen, string login = "")
+        public CostsRecordWindow(WaysToOpenForm.WaysToOpen waysToOpen, int login = -1)
         {
             InitializeComponent();
             way = waysToOpen;
@@ -39,22 +39,22 @@ namespace Clothing_Industry_WPF.Расходы
             setNewTitle();
             FillComboBoxes();
 
-            if (login != "")
+            if (login != -1)
             {
                 old_login = login;
                 FillFields(login);
             }
         }
 
-        private void FillFields(string login)
+        private void FillFields(int login)
         {
             string query_text = "select costs.Default_Folder, " +
-                                " DATE_FORMAT(costs.Date_Of_Cost, \"%d.%m.%Y\") as Date_Of_Cost, costs.Amount, costs.Notes, consumption_categories.Name_Of_Category, types_of_payment.Name_Of_Type, periodicities.Name_Of_Periodicity, costs.To, costs.From" +
+                                " DATE_FORMAT(costs.Date_Of_Cost, \"%d.%m.%Y\") as Date_Of_Cost, costs.Name_Of_Document, costs.Amount, costs.Notes, consumption_categories.Name_Of_Category, types_of_payment.Name_Of_Type, periodicities.Name_Of_Periodicity, costs.To, costs.From" +
                                 " from costs" +
                                 " join consumption_categories on costs.Consumption_Categories_id_Consumption_Category = consumption_categories.id_Consumption_Category" +
                                 " join types_of_payment on costs.Types_Of_Payment_id_Of_Type = types_of_payment.id_Of_Type" +
                                 " join periodicities on costs.Periodicities_id_Periodicity = periodicities.id_Periodicity" +
-                                " where costs.Default_Folder = @login";
+                                " where costs.id = @login";
             MySqlCommand command = new MySqlCommand(query_text, connection);
             command.Parameters.AddWithValue("@login", login);
             connection.Open();
@@ -62,18 +62,22 @@ namespace Clothing_Industry_WPF.Расходы
             {
                 while (reader.Read())
                 {
-                    textBoxFileFolder.Text = reader.GetString(0);
+                    textBoxFileFolder.Text = reader.GetString(0);                    
                     datePickerDate_Of_Cost.SelectedDate = DateTime.Parse(reader.GetString(1));
-                    textBoxAmount.Text = reader.GetString(2);
-                    if (reader.GetValue(3).ToString() != "")
+                    if (reader.GetValue(2).ToString() != "")
                     {
-                        textBoxNotes.Text = reader.GetString(3);
+                        textBoxFileName.Text = reader.GetString(2);
+                        textBoxAmount.Text = reader.GetString(3);
                     }
-                    comboBoxName_Of_Category.SelectedValue = reader.GetString(4);
-                    comboBoxName_Of_Type.SelectedValue = reader.GetString(5);
-                    comboBoxName_Of_Periodicity.SelectedValue = reader.GetString(6);
-                    textBoxTo.Text = reader.GetString(7);
-                    textBoxFrom.Text = reader.GetString(8);
+                    if (reader.GetValue(4).ToString() != "")
+                    {
+                        textBoxNotes.Text = reader.GetString(4);
+                    }
+                    comboBoxName_Of_Category.SelectedValue = reader.GetString(5);
+                    comboBoxName_Of_Type.SelectedValue = reader.GetString(6);
+                    comboBoxName_Of_Periodicity.SelectedValue = reader.GetString(7);
+                    textBoxTo.Text = reader.GetString(8);
+                    textBoxFrom.Text = reader.GetString(9);
 
 
                 }
@@ -89,6 +93,7 @@ namespace Clothing_Industry_WPF.Расходы
                 case WaysToOpenForm.WaysToOpen.create:
                     this.Title += " (Создание)";
                     Header.Content += " (Создание)";
+                    datePickerDate_Of_Cost.Text = DateTime.Now.ToLongDateString();
                     break;
                 case WaysToOpenForm.WaysToOpen.edit:
                     this.Title += " (Изменение)";
@@ -143,14 +148,6 @@ namespace Clothing_Industry_WPF.Расходы
         {
             string result = "";
 
-            if (textBoxFileFolder.Text == "")
-            {
-                result += result == "" ? "Путь документа" : ", Путь документа";
-            }
-            if (textBoxFileName.Text == "")
-            {
-                 result += result == "" ? "Имя документа" : ", Имя документа";
-            }
             if (datePickerDate_Of_Cost.SelectedDate == null)
             {
                 result += result == "" ? "Дата расхода" : ", Дата расхода";
@@ -191,7 +188,6 @@ namespace Clothing_Industry_WPF.Расходы
                 command.Transaction = transaction;
 
 
-
                 try
                 { 
                     command.ExecuteNonQuery();
@@ -215,15 +211,16 @@ namespace Clothing_Industry_WPF.Расходы
 
         private MySqlCommand actionInDBCommand(MySqlConnection connection)
         {
+            ////////////////косяк
             string query = "";
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
-                query = "INSERT INTO costs " +
-                                       "VALUES (@login, @Date_Of_Cost, @Name_Of_Document, @Amount, @Notes, @Consumption_Category, @Name_Of_Type, @Name_Of_Periodicity, @To, @From);";
+                query = "INSERT INTO costs (Default_Folder, Date_Of_Cost, Name_Of_Document, Amount, Notes, Consumption_Categories_id_Consumption_Category, Types_Of_Payment_id_Of_Type, Periodicities_id_Periodicity, costs.To, costs.From) " +
+                                       "VALUES (@Default_Folder, @Date_Of_Cost, @Name_Of_Document, @Amount, @Notes, @Consumption_Category, @Name_Of_Type, @Name_Of_Periodicity, @To, @From);";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
-                query = "Update costs set Default_Folder = @login, Name_Of_Document = @Name_Of_Document,  Date_Of_Cost = @Date_Of_Cost, Amount = @Amount, Notes = @Notes," +
+                query = "Update costs set Default_Folder = @Default_Folder, Name_Of_Document = @Name_Of_Document,  Date_Of_Cost = @Date_Of_Cost, Amount = @Amount, Notes = @Notes," +
                         " Consumption_Categories_id_Consumption_Category = @Consumption_Category, " +
                         "Types_Of_Payment_id_Of_Type = @Name_Of_Type, Periodicities_id_Periodicity = @Name_Of_Periodicity, costs.To = @To, costs.From = @From " +
                         " where Default_Folder = @oldLogin ; ";
@@ -231,7 +228,7 @@ namespace Clothing_Industry_WPF.Расходы
             }
 
             MySqlCommand command = new MySqlCommand(query, connection);
-            command.Parameters.AddWithValue("@login", textBoxFileFolder.Text);
+            command.Parameters.AddWithValue("@Default_Folder", textBoxFileFolder.Text);
             command.Parameters.AddWithValue("@Date_Of_Cost", datePickerDate_Of_Cost.SelectedDate.Value);
             command.Parameters.AddWithValue("@Name_Of_Document", textBoxFileName.Text);
             command.Parameters.AddWithValue("@Amount", textBoxAmount.Text);

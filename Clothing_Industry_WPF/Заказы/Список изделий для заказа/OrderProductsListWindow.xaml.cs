@@ -25,8 +25,7 @@ namespace Clothing_Industry_WPF.Заказы
         public int id { get; set; }
         public string Name_Of_Product { get; set; }
         public float Fixed_Price { get; set; }
-        public float Per_Cents { get; set; }
-        public float Added_Price_For_Complexity { get; set; }
+        public float MoneyToEmployee { get; set; }
         public string Description { get; set; }
         public int Count { get; set; }
     }
@@ -61,11 +60,11 @@ namespace Clothing_Industry_WPF.Заказы
         private void RefreshList()
         {
             collection = new ObservableCollection<HelpStruct>();
-            string query = "select id_Product, Name_Of_Product, Fixed_Price, Per_Cents, Added_Price_For_Complexity, Description, Count " +
+            string query = "select id_Product, Name_Of_Product, Fixed_Price, MoneyToEmployee, Description, Count " +
                             "from products " +
                             "join list_products_to_order  on list_products_to_order.Products_id_Product = products.id_Product " +
                             "where list_products_to_order.orders_id_order = @orderID " +
-                            "group by Name_Of_Product, Fixed_Price, Per_Cents, Added_Price_For_Complexity, Description ;";
+                            "group by Name_Of_Product, Fixed_Price, MoneyToEmployee, Description;";
 
             MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
@@ -82,10 +81,9 @@ namespace Clothing_Industry_WPF.Заказы
                         id = (int)reader.GetValue(0),
                         Name_Of_Product = reader.GetString(1),
                         Fixed_Price = (float)reader.GetValue(2),
-                        Per_Cents = (float)reader.GetValue(3),
-                        Added_Price_For_Complexity = (float)reader.GetValue(4),
-                        Description = reader.GetString(5),
-                        Count = (int)reader.GetValue(6),
+                        MoneyToEmployee = (float)reader.GetValue(3),
+                        Description = reader.GetString(4),
+                        Count = (int)reader.GetValue(5),
                     });
                 }
             }

@@ -71,9 +71,28 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
             return !_regex.IsMatch(text);
         }
 
+        private string CheckData()
+        {
+            string result = "";
+
+            if (comboBoxProducts.SelectedValue == null)
+            {
+                result += result == "" ? " Изделие" : ",  Изделие";
+            }
+            if (textBoxCount.Text == "")
+            {
+                result += result == "" ? " Количество" : ", Количество";
+            }
+
+            return result == "" ? result : "Не заполнены обязательные поля: " + result;
+        }
+
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
+            string warning = CheckData();
+            if (warning == "")
+            {
+                MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
             MySqlTransaction transaction = connection.BeginTransaction();
 
@@ -110,6 +129,11 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
           
             /////////////////////
             connection.Close();
+            }
+            else
+            {
+                System.Windows.MessageBox.Show(warning);
+            }
         }
     }
 }

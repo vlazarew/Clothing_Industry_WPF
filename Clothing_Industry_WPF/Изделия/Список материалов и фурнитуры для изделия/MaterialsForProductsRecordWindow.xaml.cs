@@ -69,45 +69,69 @@ namespace Clothing_Industry_WPF.Изделия
             return !_regex.IsMatch(text);
         }
 
+        private string CheckData()
+        {
+            string result = "";
+
+            if (comboBoxName_Of_Material.SelectedValue == null)
+            {
+                result += result == "" ? " Название материала" : ",  Название материала";
+            }
+            if (textBoxCount.Text == "")
+            {
+                result += result == "" ? " Количество" : ", Количество";
+            }
+
+            return result == "" ? result : "Не заполнены обязательные поля: " + result;
+        }
+
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
-            connection.Open();
-            MySqlTransaction transaction = connection.BeginTransaction();
-
-            string query = "insert into materials_for_product (Products_id_Product, Materials_Vendor_Code, Count) values (@productId, @Vendor_Code, @count) ";
-            MySqlCommand command = new MySqlCommand(query, connection, transaction);
-            command.Parameters.AddWithValue("@productId", productId);
-            command.Parameters.AddWithValue("@count", int.Parse(textBoxCount.Text));
-
-
-            string query_product = "select Vendor_Code from materials where Name_Of_Material = @name ";
-            MySqlCommand command_product = new MySqlCommand(query_product, connection);
-            command_product.Parameters.AddWithValue("@name", comboBoxName_Of_Material.SelectedItem.ToString());
-            int Vendor_Code = -1;
-            using (DbDataReader reader = command_product.ExecuteReader())
+            string warning = CheckData();
+            if (warning == "")
             {
-                while (reader.Read())
+                MySqlConnection connection = new MySqlConnection(connectionString);
+                connection.Open();
+                MySqlTransaction transaction = connection.BeginTransaction();
+
+                string query = "insert into materials_for_product (Products_id_Product, Materials_Vendor_Code, Count) values (@productId, @Vendor_Code, @count) ";
+                MySqlCommand command = new MySqlCommand(query, connection, transaction);
+                command.Parameters.AddWithValue("@productId", productId);
+                command.Parameters.AddWithValue("@count", int.Parse(textBoxCount.Text));
+
+
+                string query_product = "select Vendor_Code from materials where Name_Of_Material = @name ";
+                MySqlCommand command_product = new MySqlCommand(query_product, connection);
+                command_product.Parameters.AddWithValue("@name", comboBoxName_Of_Material.SelectedItem.ToString());
+                int Vendor_Code = -1;
+                using (DbDataReader reader = command_product.ExecuteReader())
                 {
-                    Vendor_Code = (int)reader.GetValue(0);
+                    while (reader.Read())
+                    {
+                        Vendor_Code = (int)reader.GetValue(0);
+                    }
                 }
+
+                command.Parameters.AddWithValue("@Vendor_Code", Vendor_Code);
+
+                try
+                {
+                    command.ExecuteNonQuery();
+                    transaction.Commit();
+                    this.Close();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Ошибка добвления");
+                }
+
+                connection.Close();
             }
-
-            command.Parameters.AddWithValue("@Vendor_Code", Vendor_Code);
-
-            try
+            else
             {
-                command.ExecuteNonQuery();
-                transaction.Commit();
-                this.Close();
+                System.Windows.MessageBox.Show(warning);
             }
-            catch
-            {
-                transaction.Rollback();
-                MessageBox.Show("Ошибка добвления");
-            }
-
-            connection.Close();
         }
     }
 }

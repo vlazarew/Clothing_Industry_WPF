@@ -119,10 +119,6 @@ namespace Clothing_Industry_WPF.Примерки
         {
             string result = "";
 
-            /*if (textBoxTime.Text == "")
-            {
-                result += result == "" ? "Время примерки" : ", Время примерки";
-            }*/
             if (datePickerDate.SelectedDate == null)
             {
                 result += result == "" ? "Дата примерки" : ", Дата добавленпримеркиия";

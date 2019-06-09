@@ -242,6 +242,8 @@ namespace Clothing_Industry_WPF.Сотрудники
             return result == "" ? result : "Не заполнены обязательные поля: " + result;
         }
 
+
+
         private void ButtonSaveAndExit_Click(object sender, RoutedEventArgs e)
         {
             string warning = CheckData();
