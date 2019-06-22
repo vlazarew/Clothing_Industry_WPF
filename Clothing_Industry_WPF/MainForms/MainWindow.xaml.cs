@@ -1,4 +1,5 @@
 ﻿using Clothing_Industry_WPF.Баланс_клиентов;
+using Clothing_Industry_WPF.Доходы;
 using Clothing_Industry_WPF.Заказы;
 using Clothing_Industry_WPF.Изделия;
 using Clothing_Industry_WPF.Клиенты;
@@ -60,7 +61,7 @@ namespace Clothing_Industry_WPF
             InitializeComponent();
             login = entry_login;
             FillUsername();
-           
+
         }
 
         // Заполнить ФИО в формочек
@@ -174,6 +175,12 @@ namespace Clothing_Industry_WPF
             Window window_costs = new CostsListWindow();
             window_costs.Show();
         }
+        //При нажатии на вкладку "Доходы"
+        private void Income_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            Window window_income = new IncomeListWindow();
+            window_income.Show();
+        }
         // ОТКЛЮЧЕНИЕ СИСТЕМЫ
         #region Отключение системы
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
@@ -185,6 +192,11 @@ namespace Clothing_Industry_WPF
         {
             Application.Current.Shutdown();
         }
+
+
+
+
+
         #endregion
 
         // Справочник
@@ -291,8 +303,9 @@ namespace Clothing_Industry_WPF
             window.Show();
         }
 
+
         #endregion
 
-        
+
     }
 }

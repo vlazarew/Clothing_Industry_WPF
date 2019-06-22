@@ -94,6 +94,12 @@
     <Compile Include="Баланс клиентов\CustomerBalanceListWindow.xaml.cs">
       <DependentUpon>CustomerBalanceListWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Доходы\IncomeListWindow.xaml.cs">
+      <DependentUpon>IncomeListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Доходы\IncomeRecordWindow.xaml.cs">
+      <DependentUpon>IncomeRecordWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Заказы\OrderRecordWindow.xaml.cs">
       <DependentUpon>OrderRecordWindow.xaml</DependentUpon>
     </Compile>
@@ -313,6 +319,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Баланс клиентов\CustomerBalanceListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Доходы\IncomeListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Доходы\IncomeRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

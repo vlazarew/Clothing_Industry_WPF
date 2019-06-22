@@ -276,6 +276,11 @@
                     <Hyperlink>Расходы</Hyperlink>
                                 </TextBlock>
                             </Viewbox>
+                            <Viewbox>
+                                <TextBlock x:Name="Income"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Income_PreviewMouseLeftButtonUp" >
+                    <Hyperlink>Доходы</Hyperlink>
+                                </TextBlock>
+                            </Viewbox>
                         </StackPanel>
                     </Border>
                 </Grid>
