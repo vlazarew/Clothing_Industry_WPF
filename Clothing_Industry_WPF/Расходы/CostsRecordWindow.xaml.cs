@@ -49,12 +49,14 @@ namespace Clothing_Industry_WPF.Расходы
         private void FillFields(int login)
         {
             string query_text = "select costs.Default_Folder, " +
-                                " DATE_FORMAT(costs.Date_Of_Cost, \"%d.%m.%Y\") as Date_Of_Cost, costs.Name_Of_Document, costs.Amount, costs.Notes, consumption_categories.Name_Of_Category, types_of_payment.Name_Of_Type, periodicities.Name_Of_Periodicity, costs.To, costs.From" +
+                                " DATE_FORMAT(costs.Date_Of_Cost, \"%d.%m.%Y\") as Date_Of_Cost, costs.Name_Of_Document, costs.Amount, costs.Notes, " +
+                                " consumption_categories.Name_Of_Category, types_of_payment.Name_Of_Type, periodicities.Name_Of_Periodicity, costs.To, costs.From" +
                                 " from costs" +
                                 " join consumption_categories on costs.Consumption_Categories_id_Consumption_Category = consumption_categories.id_Consumption_Category" +
                                 " join types_of_payment on costs.Types_Of_Payment_id_Of_Type = types_of_payment.id_Of_Type" +
                                 " join periodicities on costs.Periodicities_id_Periodicity = periodicities.id_Periodicity" +
                                 " where costs.id = @login";
+
             MySqlCommand command = new MySqlCommand(query_text, connection);
             command.Parameters.AddWithValue("@login", login);
             connection.Open();
@@ -62,7 +64,7 @@ namespace Clothing_Industry_WPF.Расходы
             {
                 while (reader.Read())
                 {
-                    textBoxFileFolder.Text = reader.GetString(0);                    
+                    textBoxFileFolder.Text = reader.IsDBNull(0) ? "" : reader.GetString(0);
                     datePickerDate_Of_Cost.SelectedDate = DateTime.Parse(reader.GetString(1));
                     if (reader.GetValue(2).ToString() != "")
                     {
@@ -78,8 +80,6 @@ namespace Clothing_Industry_WPF.Расходы
                     comboBoxName_Of_Periodicity.SelectedValue = reader.GetString(7);
                     textBoxTo.Text = reader.GetString(8);
                     textBoxFrom.Text = reader.GetString(9);
-
-
                 }
             }
             connection.Close();
@@ -101,7 +101,6 @@ namespace Clothing_Industry_WPF.Расходы
                     break;
                 default:
                     break;
-
             }
         }
 
@@ -168,6 +167,14 @@ namespace Clothing_Industry_WPF.Расходы
             {
                 result += result == "" ? "Периодичность" : ", Периодичность";
             }
+            if (textBoxFrom.Text == "")
+            {
+                result += result == "" ? "От" : ", От";
+            }
+            if (textBoxTo.Text == "")
+            {
+                result += result == "" ? "Кому" : ", Кому";
+            }
 
             return result == "" ? result : "Не заполнены обязательные поля: " + result;
         }
@@ -183,25 +190,22 @@ namespace Clothing_Industry_WPF.Расходы
                 connection.Open();
                 transaction = connection.BeginTransaction();
 
-
                 MySqlCommand command = actionInDBCommand(connection);
                 command.Transaction = transaction;
 
-
                 try
-                { 
+                {
                     command.ExecuteNonQuery();
                     transaction.Commit();
                     this.Hide();
                 }
                 catch
-               {
+                {
                     transaction.Rollback();
                     System.Windows.MessageBox.Show("Ошибка сохранения!");
-               }
+                }
 
                 connection.Close();
-                //this.Hide();
             }
             else
             {
@@ -211,12 +215,12 @@ namespace Clothing_Industry_WPF.Расходы
 
         private MySqlCommand actionInDBCommand(MySqlConnection connection)
         {
-            ////////////////косяк
             string query = "";
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
-                query = "INSERT INTO costs (Default_Folder, Date_Of_Cost, Name_Of_Document, Amount, Notes, Consumption_Categories_id_Consumption_Category, Types_Of_Payment_id_Of_Type, Periodicities_id_Periodicity, costs.To, costs.From) " +
-                                       "VALUES (@Default_Folder, @Date_Of_Cost, @Name_Of_Document, @Amount, @Notes, @Consumption_Category, @Name_Of_Type, @Name_Of_Periodicity, @To, @From);";
+                query = "INSERT INTO costs (Default_Folder, Date_Of_Cost, Name_Of_Document, Amount, Notes, Consumption_Categories_id_Consumption_Category," +
+                        " Types_Of_Payment_id_Of_Type, Periodicities_id_Periodicity, costs.To, costs.From) " +
+                        "VALUES (@Default_Folder, @Date_Of_Cost, @Name_Of_Document, @Amount, @Notes, @Consumption_Category, @Name_Of_Type, @Name_Of_Periodicity, @To, @From);";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
@@ -235,7 +239,7 @@ namespace Clothing_Industry_WPF.Расходы
             command.Parameters.AddWithValue("@Notes", textBoxNotes.Text);
             command.Parameters.AddWithValue("@To", textBoxTo.Text);
             command.Parameters.AddWithValue("@From", textBoxFrom.Text);
-            
+
             MySqlCommand commandConsumptionCategory = new MySqlCommand("select id_Consumption_Category from consumption_categories where Name_Of_Category = @Consumption_Category", connection);
             commandConsumptionCategory.Parameters.AddWithValue("Consumption_Category", comboBoxName_Of_Category.SelectedItem.ToString());
             int id_consumption_category = -1;
@@ -283,12 +287,10 @@ namespace Clothing_Industry_WPF.Расходы
 
         private void ButtonFileSearch_Click(object sender, RoutedEventArgs e)
         {
- 
             Window create_filesearch = new FileWindow();
             create_filesearch.ShowDialog();
             textBoxFileFolder.Text = csPathToFolder.PathOfSelectedFolder;
             textBoxFileName.Text = System.IO.Path.GetFileNameWithoutExtension(csPathToFolder.PathOfSelectedFolder);
-
         }
     }
 }

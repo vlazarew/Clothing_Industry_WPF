@@ -38,7 +38,6 @@ namespace Clothing_Industry_WPF.Расходы
             InitializeComponent();
             currentFindDescription = new FindHandler.FindDescription();
             currentFilterDescription = new List<FilterHandler.FilterDescription>();
-
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -64,7 +63,8 @@ namespace Clothing_Industry_WPF.Расходы
         private string getQueryText()
         {
             string query_text = "select costs.id, " +
-                                "costs.Name_Of_Document, costs.Default_Folder, DATE_FORMAT(costs.Date_Of_Cost, \"%d.%m.%Y\") as Date_Of_Cost, costs.Amount, costs.Notes, consumption_categories.Name_Of_Category, types_of_payment.Name_Of_Type, periodicities.Name_Of_Periodicity, costs.To, costs.From" +
+                                "costs.Name_Of_Document, costs.Default_Folder, DATE_FORMAT(costs.Date_Of_Cost, \"%d.%m.%Y\") as Date_Of_Cost, costs.Amount," +
+                                " costs.Notes, consumption_categories.Name_Of_Category, types_of_payment.Name_Of_Type, periodicities.Name_Of_Periodicity, costs.To, costs.From" +
                                 " from costs" +
                                 " join consumption_categories on costs.Consumption_Categories_id_Consumption_Category = consumption_categories.id_Consumption_Category" +
                                 " join types_of_payment on costs.Types_Of_Payment_id_Of_Type = types_of_payment.id_Of_Type" +
@@ -82,7 +82,7 @@ namespace Clothing_Industry_WPF.Расходы
         private void DataGridCell_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             int row_index = costsGrid.SelectedIndex;
-            int login = -1;
+            int id = -1;
             int current_row = 0;
             foreach (DataRowView row in costsGrid.Items)
             {
@@ -91,42 +91,40 @@ namespace Clothing_Industry_WPF.Расходы
                     current_row++;
                     continue;
                 }
-                login = (int)row.Row.ItemArray[0];
+                id = (int)row.Row.ItemArray[0];
                 break;
             }
 
-            Window create_window = new CostsRecordWindow(WaysToOpenForm.WaysToOpen.edit, login);
-            create_window.ShowDialog();
+            Window edit_window = new CostsRecordWindow(WaysToOpenForm.WaysToOpen.edit, id);
+            edit_window.ShowDialog();
             RefreshList();
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            List<string> loginsToDelete = new List<string>();
+            List<int> idsToDelete = new List<int>();
             foreach (DataRowView row in costsGrid.SelectedItems)
             {
-                loginsToDelete.Add(row.Row.ItemArray[0].ToString());
+                idsToDelete.Add((int)row.Row.ItemArray[0]);
             }
 
-            DeleteFromDB(loginsToDelete);
+            DeleteFromDB(idsToDelete);
 
         }
 
-        private void DeleteFromDB(List<string> logins)
+        private void DeleteFromDB(List<int> ids)
         {
             MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
 
-            foreach (string login in logins)
+            foreach (var id in ids)
             {
                 MySqlTransaction transaction = connection.BeginTransaction();
 
-                string queryTable = "delete from costs where id = @login";
+                string queryTable = "delete from costs where id = @id";
 
                 MySqlCommand commandTable = new MySqlCommand(queryTable, connection, transaction);
-                commandTable.Parameters.AddWithValue("@login", login);
-
-              
+                commandTable.Parameters.AddWithValue("@id", id);
 
                 try
                 {
@@ -136,7 +134,7 @@ namespace Clothing_Industry_WPF.Расходы
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Удаление " + login + " не удалось");
+                    System.Windows.MessageBox.Show("Удаление " + id + " не удалось");
                 }
             }
 
@@ -151,28 +149,28 @@ namespace Clothing_Industry_WPF.Расходы
 
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            List<int> loginsToDelete = new List<int>();
+            List<int> idsToDelete = new List<int>();
             foreach (DataRowView row in costsGrid.SelectedItems)
             {
-                loginsToDelete.Add((int)row.Row.ItemArray[0]);
+                idsToDelete.Add((int)row.Row.ItemArray[0]);
             }
 
-            if (loginsToDelete.Count > 0)
+            if (idsToDelete.Count > 0)
             {
-                Window create_window;
+                Window edit_window;
 
                 //Первые окна мы открываем немодально, последнее модально, чтоб потом сразу обновились данные на форме
-                if (loginsToDelete.Count > 1)
+                if (idsToDelete.Count > 1)
                 {
-                    for (int i = 0; i < loginsToDelete.Count - 1; i++)
+                    for (int i = 0; i < idsToDelete.Count - 1; i++)
                     {
-                        create_window = new CostsRecordWindow(WaysToOpenForm.WaysToOpen.edit, loginsToDelete[i]);
-                        create_window.Show();
+                        edit_window = new CostsRecordWindow(WaysToOpenForm.WaysToOpen.edit, idsToDelete[i]);
+                        edit_window.Show();
                     }
                 }
                 //Заключительная форма
-                create_window = new CostsRecordWindow(WaysToOpenForm.WaysToOpen.edit, loginsToDelete[loginsToDelete.Count - 1]);
-                create_window.Show();
+                edit_window = new CostsRecordWindow(WaysToOpenForm.WaysToOpen.edit, idsToDelete[idsToDelete.Count - 1]);
+                edit_window.Show();
 
                 //Обновление списка
                 RefreshList();
@@ -227,6 +225,7 @@ namespace Clothing_Industry_WPF.Расходы
         {
             List<KeyValuePair<string, string>> describe = TakeDescribe();
             List<FindHandler.FieldParameters> result = new List<FindHandler.FieldParameters>();
+            result.Add(new FindHandler.FieldParameters("id", "Номер документа", describe.Where(key => key.Key == "id").First().Value));
             result.Add(new FindHandler.FieldParameters("Name_Of_Document", "Название документа", describe.Where(key => key.Key == "Name_Of_Document").First().Value));
             result.Add(new FindHandler.FieldParameters("Default_Folder", "Путь документа", describe.Where(key => key.Key == "Default_Folder").First().Value));
             result.Add(new FindHandler.FieldParameters("Date_Of_Cost", "Дата расхода", describe.Where(key => key.Key == "Date_Of_Cost").First().Value));
@@ -325,7 +324,7 @@ namespace Clothing_Industry_WPF.Расходы
                     index++;
                     if (index < filter.Count)
                     {
-                        result += " or ";
+                        result += " and ";
                     }
                 }
             }
@@ -367,8 +366,8 @@ namespace Clothing_Industry_WPF.Расходы
         private void ButtonOpenDocument_Click(object sender, RoutedEventArgs e)
         {
             int row_index = costsGrid.SelectedIndex;
-            int login = -1;
-            string path="";
+            int id = -1;
+            string path = "";
             int current_row = 0;
             foreach (DataRowView row in costsGrid.Items)
             {
@@ -377,14 +376,18 @@ namespace Clothing_Industry_WPF.Расходы
                     current_row++;
                     continue;
                 }
-                login = (int)row.Row.ItemArray[0];
+                id = (int)row.Row.ItemArray[0];
                 path = row.Row.ItemArray[2].ToString();
                 break;
-            }           
+            }
             if (File.Exists(path))
+            {
                 Process.Start(path);
+            }
             else
+            {
                 MessageBox.Show("Файл не найден");
+            }
         }
     }
 }

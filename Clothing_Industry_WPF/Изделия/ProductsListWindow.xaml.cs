@@ -249,7 +249,7 @@ namespace Clothing_Industry_WPF.Изделия
                     index++;
                     if (index < filter.Count)
                     {
-                        result += " or ";
+                        result += " and ";
                     }
                 }
             }

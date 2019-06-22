@@ -37,7 +37,6 @@ namespace Clothing_Industry_WPF.Материал
             way = waysToOpen;
             connection = new MySqlConnection(connectionString);
             setNewTitle();
-            //ShowPassword(false);
             FillComboBoxes();
 
             if (vendor_code != "")
@@ -49,13 +48,15 @@ namespace Clothing_Industry_WPF.Материал
 
         private void FillFields(string vendor_code)
         {
-            string query_text = "select materials.Vendor_Code, materials.Name_Of_Material, materials.Cost_Of_Material, materials.Notes, units.Name_Of_Unit,groups_of_material.Name_Of_Group,types_of_material.Name_Of_Type,countries.Name_Of_Country, materials.Photo" +
+            string query_text = "select materials.Vendor_Code, materials.Name_Of_Material, materials.Cost_Of_Material, materials.Notes, units.Name_Of_Unit," +
+                                " groups_of_material.Name_Of_Group, types_of_material.Name_Of_Type, countries.Name_Of_Country, materials.Photo" +
                                 " from materials" +
                                 " join units on materials.Units_id_Unit = units.id_Unit" +
                                 " join groups_of_material on materials.Groups_Of_Material_id_Group_Of_Material = groups_of_material.id_Group_Of_Material" +
                                 " join types_of_material on materials.Types_Of_Material_id_Type_Of_Material = types_of_material.id_Type_Of_Material" +
                                 " join countries on materials.Countries_id_Country = countries.id_Country" +
                                 " where materials.Vendor_Code = @vendor_code;";
+
             MySqlCommand command = new MySqlCommand(query_text, connection);
             command.Parameters.AddWithValue("@vendor_code", vendor_code);
             connection.Open();
@@ -233,29 +234,13 @@ namespace Clothing_Industry_WPF.Материал
                 //Создать/изменить запись в таблице Материалы
                 MySqlCommand command = actionInDBCommand(connection);
                 command.Transaction = transaction;
-                             
-                try
-                {
-                    command.ExecuteNonQuery();
-                    transaction.Commit();
-                    this.Hide();
-                }
-                catch
-                {
-                    transaction.Rollback();
-                    System.Windows.MessageBox.Show("Ошибка сохранения!");
-                }
-                
-
-                
-                //this.Hide();
-                command = actionInStoreCommand(connection);
-                command.Transaction = transaction;
-                transaction = connection.BeginTransaction();
+                MySqlCommand commandStrore = actionInStoreCommand(connection);
+                commandStrore.Transaction = transaction;
 
                 try
                 {
                     command.ExecuteNonQuery();
+                    commandStrore.ExecuteNonQuery();
                     transaction.Commit();
                     this.Hide();
                 }
@@ -279,9 +264,9 @@ namespace Clothing_Industry_WPF.Материал
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
                 query = "INSERT INTO materials " +
-                                       "(Vendor_Code,Name_Of_Material,Cost_Of_Material,Notes," +
-                                       " Units_id_Unit, Groups_Of_Material_id_Group_Of_Material,Types_Of_Material_id_Type_Of_Material,Countries_id_Country, Photo)" +
-                                       " VALUES (@vendor_code, @name_of_material, @cost_of_material, @notes, @unit, @group, @type, @country, @image);";
+                         "(Vendor_Code,Name_Of_Material,Cost_Of_Material,Notes," +
+                         " Units_id_Unit, Groups_Of_Material_id_Group_Of_Material,Types_Of_Material_id_Type_Of_Material,Countries_id_Country, Photo)" +
+                         " VALUES (@vendor_code, @name_of_material, @cost_of_material, @notes, @unit, @group, @type, @country, @image);";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
@@ -320,9 +305,9 @@ namespace Clothing_Industry_WPF.Материал
             }
 
             MySqlCommand commandType = new MySqlCommand("select id_Type_Of_Material from types_of_material where Name_Of_Type = @type", connection);
-            commandGroup.Parameters.AddWithValue("type", comboBoxGroup.SelectedItem.ToString());
+            commandType.Parameters.AddWithValue("@type", comboBoxType.SelectedItem.ToString());
             int id_type = -1;
-            using (DbDataReader reader = commandGroup.ExecuteReader())
+            using (DbDataReader reader = commandType.ExecuteReader())
             {
                 while (reader.Read())
                 {
@@ -331,9 +316,9 @@ namespace Clothing_Industry_WPF.Материал
             }
 
             MySqlCommand commandCountry = new MySqlCommand("select id_Country from countries where Name_Of_Country = @country", connection);
-            commandGroup.Parameters.AddWithValue("country", comboBoxGroup.SelectedItem.ToString());
+            commandCountry.Parameters.AddWithValue("@country", comboBoxCountry.SelectedItem.ToString());
             int id_country = -1;
-            using (DbDataReader reader = commandGroup.ExecuteReader())
+            using (DbDataReader reader = commandCountry.ExecuteReader())
             {
                 while (reader.Read())
                 {
@@ -382,20 +367,17 @@ namespace Clothing_Industry_WPF.Материал
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
                 querystore = "INSERT INTO store (Materials_Vendor_Code, Count)" +
-                        " VALUES(@vendor_code,0);";
+                             " VALUES(@vendor_code,0);";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
                 querystore = "Update store set Materials_Vendor_Code = @Materials_Vendor_Code" +
-                        " where Materials_Vendor_Code = @oldvendor_code;";
+                             " where Materials_Vendor_Code = @oldvendor_code;";
 
             }
 
             MySqlCommand command = new MySqlCommand(querystore, connection);
             command.Parameters.AddWithValue("@vendor_code", textBoxVendor_Code.Text);
-
-
-            
 
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {

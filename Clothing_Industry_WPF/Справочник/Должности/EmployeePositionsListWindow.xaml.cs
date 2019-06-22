@@ -40,7 +40,6 @@ namespace Clothing_Industry_WPF.Справочник.Должности
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             RefreshList();
-
         }
 
         private void RefreshList()
@@ -61,8 +60,6 @@ namespace Clothing_Industry_WPF.Справочник.Должности
         private string getQueryText()
         {
             string query_text = "select id_Employee_Position, Name_Of_Position from employee_positions;";
-
-
             return query_text;
         }
 

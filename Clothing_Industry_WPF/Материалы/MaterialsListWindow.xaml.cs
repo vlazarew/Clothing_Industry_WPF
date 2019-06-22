@@ -40,7 +40,6 @@ namespace Clothing_Industry_WPF.Материал
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             RefreshList();
-            
         }
 
         private void RefreshList()
@@ -60,7 +59,8 @@ namespace Clothing_Industry_WPF.Материал
 
         private string getQueryText()
         {
-            string query_text = "select materials.Vendor_Code, materials.Name_Of_Material, materials.Cost_Of_Material, materials.Notes, units.Name_Of_Unit,groups_of_material.Name_Of_Group,types_of_material.Name_Of_Type,countries.Name_Of_Country" +
+            string query_text = "select materials.Vendor_Code, materials.Name_Of_Material, materials.Cost_Of_Material, materials.Notes, units.Name_Of_Unit, groups_of_material.Name_Of_Group, " +
+                                "types_of_material.Name_Of_Type, countries.Name_Of_Country" +
                                 " from materials" +
                                 " join units on materials.Units_id_Unit = units.id_Unit" +
                                 " join groups_of_material on materials.Groups_Of_Material_id_Group_Of_Material = groups_of_material.id_Group_Of_Material" +
@@ -92,22 +92,20 @@ namespace Clothing_Industry_WPF.Материал
                 break;
             }
 
-            Window create_window = new MaterialsRecordWindow(WaysToOpenForm.WaysToOpen.edit, vendor_code);
-            create_window.ShowDialog();
+            Window edit_window = new MaterialsRecordWindow(WaysToOpenForm.WaysToOpen.edit, vendor_code);
+            edit_window.ShowDialog();
             RefreshList();
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            
             List<string> vendor_codesToDelete = new List<string>();
             foreach (DataRowView row in materialsGrid.SelectedItems)
             {
                 vendor_codesToDelete.Add(row.Row.ItemArray[0].ToString());
             }
-            
-            DeleteFromDB(vendor_codesToDelete);
 
+            DeleteFromDB(vendor_codesToDelete);
         }
 
         private void DeleteFromDB(List<string> vendor_codes)
@@ -119,20 +117,26 @@ namespace Clothing_Industry_WPF.Материал
             {
                 MySqlTransaction transaction = connection.BeginTransaction();
 
-                string queryTable = "delete from materials where vendor_code = @Vendor_Code";
+                // Удаление из таблицы Склад
+                string queryDeleteInStore = "delete from store where Materials_Vendor_Code = @Vendor_code";
+                MySqlCommand commandDeleteInStore = new MySqlCommand(queryDeleteInStore, connection, transaction);
+                commandDeleteInStore.Parameters.AddWithValue("@Vendor_Code", vendor_code);
 
+                // Удаление из таблицы Материалы
+                string queryTable = "delete from materials where vendor_code = @Vendor_Code";
                 MySqlCommand commandTable = new MySqlCommand(queryTable, connection, transaction);
                 commandTable.Parameters.AddWithValue("@Vendor_Code", vendor_code);
 
                 try
                 {
-                    commandTable.ExecuteNonQuery();
-                    transaction.Commit();
+                commandDeleteInStore.ExecuteNonQuery();
+                commandTable.ExecuteNonQuery();
+                transaction.Commit();
                 }
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Удаление материала " + vendor_code + " не удалось");
+                    MessageBox.Show("Удаление материала " + vendor_code + " не удалось");
                 }
             }
 
@@ -155,20 +159,20 @@ namespace Clothing_Industry_WPF.Материал
 
             if (vendor_codesToDelete.Count > 0)
             {
-                Window create_window;
+                Window edit_window;
 
                 //Первые окна мы открываем немодально, последнее модально, чтоб потом сразу обновились данные на форме
                 if (vendor_codesToDelete.Count > 1)
                 {
                     for (int i = 0; i < vendor_codesToDelete.Count - 1; i++)
                     {
-                        create_window = new MaterialsRecordWindow(WaysToOpenForm.WaysToOpen.edit, vendor_codesToDelete[i]);
-                        create_window.Show();
+                        edit_window = new MaterialsRecordWindow(WaysToOpenForm.WaysToOpen.edit, vendor_codesToDelete[i]);
+                        edit_window.Show();
                     }
                 }
                 //Заключительная форма
-                create_window = new MaterialsRecordWindow(WaysToOpenForm.WaysToOpen.edit, vendor_codesToDelete[vendor_codesToDelete.Count - 1]);
-                create_window.ShowDialog();
+                edit_window = new MaterialsRecordWindow(WaysToOpenForm.WaysToOpen.edit, vendor_codesToDelete[vendor_codesToDelete.Count - 1]);
+                edit_window.ShowDialog();
 
                 //Обновление списка
                 RefreshList();
@@ -308,7 +312,7 @@ namespace Clothing_Industry_WPF.Материал
                     index++;
                     if (index < filter.Count)
                     {
-                        result += " or ";
+                        result += " and ";
                     }
                 }
             }

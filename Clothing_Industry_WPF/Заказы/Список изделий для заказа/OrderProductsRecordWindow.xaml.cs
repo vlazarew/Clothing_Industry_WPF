@@ -27,7 +27,6 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private int orderId;
 
-
         public OrderProductsRecordWindow(int orderId)
         {
             InitializeComponent();
@@ -45,7 +44,7 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
 
             using (DbDataReader reader = command.ExecuteReader())
             {
-                while(reader.Read())
+                while (reader.Read())
                 {
                     comboBoxProducts.Items.Add(reader.GetString(0));
                 }
@@ -61,9 +60,7 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
 
         private void TextBoxCount_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-
             e.Handled = !IsTextAllowed(e.Text);
-
         }
 
         private static bool IsTextAllowed(string text)
@@ -93,46 +90,47 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
             if (warning == "")
             {
                 MySqlConnection connection = new MySqlConnection(connectionString);
-            connection.Open();
-            MySqlTransaction transaction = connection.BeginTransaction();
+                connection.Open();
+                MySqlTransaction transaction = connection.BeginTransaction();
 
-            string query = "insert into list_products_to_order (Orders_id_Order, Products_id_Product, Count) values (@orderId, @productId, @count); ";
-            MySqlCommand command = new MySqlCommand(query, connection, transaction);
-            command.Parameters.AddWithValue("@orderId", orderId);
-            command.Parameters.AddWithValue("@count", int.Parse(textBoxCount.Text));
+                string query = "insert into list_products_to_order (Orders_id_Order, Products_id_Product, Count) values (@orderId, @productId, @count); ";
+                MySqlCommand command = new MySqlCommand(query, connection, transaction);
+                command.Parameters.AddWithValue("@orderId", orderId);
+                command.Parameters.AddWithValue("@count", int.Parse(textBoxCount.Text));
 
-            string query_product = "select id_product from products where  Name_Of_Product = @name; ";
-            MySqlCommand command_product = new MySqlCommand(query_product, connection);
-            command_product.Parameters.AddWithValue("@name", comboBoxProducts.SelectedItem.ToString());
-            int product_id = -1;
-            using (DbDataReader reader = command_product.ExecuteReader())
-            {
-                while (reader.Read())
+                string query_product = "select id_product from products where  Name_Of_Product = @name; ";
+                MySqlCommand command_product = new MySqlCommand(query_product, connection);
+                command_product.Parameters.AddWithValue("@name", comboBoxProducts.SelectedItem.ToString());
+
+                int product_id = -1;
+                using (DbDataReader reader = command_product.ExecuteReader())
                 {
-                    product_id = (int)reader.GetValue(0);
+                    while (reader.Read())
+                    {
+                        product_id = (int)reader.GetValue(0);
+                    }
                 }
-            }
 
-            command.Parameters.AddWithValue("@productId", product_id);
+                command.Parameters.AddWithValue("@productId", product_id);
 
-            try
-            {
-                command.ExecuteNonQuery();
-                transaction.Commit();
-                this.Close();
-            }
-            catch
-            {
-                transaction.Rollback();
-                MessageBox.Show("Ошибка добавления");
-            }
-          
-            /////////////////////
-            connection.Close();
+                try
+                {
+                    command.ExecuteNonQuery();
+                    transaction.Commit();
+                    this.Close();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    MessageBox.Show("Ошибка добавления");
+                }
+
+                /////////////////////
+                connection.Close();
             }
             else
             {
-                System.Windows.MessageBox.Show(warning);
+                MessageBox.Show(warning);
             }
         }
     }

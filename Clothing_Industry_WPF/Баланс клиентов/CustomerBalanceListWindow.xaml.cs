@@ -60,7 +60,7 @@ namespace Clothing_Industry_WPF.Баланс_клиентов
             string query_text = "select customers_balance.Customers_id_Customer, customers_balance.Accured, customers_balance.Paid, customers_balance.Debt, customers.Name, " +
                                 "customers.Lastname, customers.Address, customers.Phone_Number, customers.Nickname, customers.Passport_Data " +
                                 "from customers " +
-                               "left join customers_balance on customers.id_Customer = customers_balance.Customers_id_Customer ; ";
+                                "left join customers_balance on customers.id_Customer = customers_balance.Customers_id_Customer ; ";
 
             return query_text;
         }
@@ -214,7 +214,7 @@ namespace Clothing_Industry_WPF.Баланс_клиентов
                     index++;
                     if (index < filter.Count)
                     {
-                        result += " or ";
+                        result += " and ";
                     }
                 }
             }

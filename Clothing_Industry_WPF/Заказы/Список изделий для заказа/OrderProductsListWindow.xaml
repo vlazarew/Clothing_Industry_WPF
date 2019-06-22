@@ -153,8 +153,7 @@
                     <DataGridTextColumn Binding="{Binding Name_Of_Product}" ClipboardContentBinding="{x:Null}" Header="Наименование"/>
                     <DataGridTextColumn Binding="{Binding Count}" ClipboardContentBinding="{x:Null}" Header="Количество"/>
                     <DataGridTextColumn Binding="{Binding Fixed_Price}" ClipboardContentBinding="{x:Null}" Header="Фиксированная цена"/>
-                    <DataGridTextColumn Binding="{Binding Per_Cents}" ClipboardContentBinding="{x:Null}" Header="% от продаж"/>
-                    <DataGridTextColumn Binding="{Binding Added_Price_For_Complexity}" ClipboardContentBinding="{x:Null}" Header="Стоимость за сложность"/>
+                    <DataGridTextColumn Binding="{Binding MoneyToEmployee}" ClipboardContentBinding="{x:Null}" Header="З/п сотруднику"/>
                     <DataGridTextColumn Binding="{Binding Description}" ClipboardContentBinding="{x:Null}" Header="Описание"/>
                 </DataGrid.Columns>
             </DataGrid>

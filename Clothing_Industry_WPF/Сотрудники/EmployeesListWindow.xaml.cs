@@ -93,8 +93,8 @@ namespace Clothing_Industry_WPF.Сотрудники
                 break;
             }
 
-            Window create_window = new EmployeesRecordWindow(WaysToOpenForm.WaysToOpen.edit, login);
-            create_window.ShowDialog();
+            Window edit_window = new EmployeesRecordWindow(WaysToOpenForm.WaysToOpen.edit, login);
+            edit_window.ShowDialog();
             RefreshList();
         }
 
@@ -107,7 +107,6 @@ namespace Clothing_Industry_WPF.Сотрудники
             }
 
             DeleteFromDB(loginsToDelete);
-
         }
 
         private void DeleteFromDB(List<string> logins)
@@ -325,7 +324,7 @@ namespace Clothing_Industry_WPF.Сотрудники
                     index++;
                     if (index < filter.Count)
                     {
-                        result += " or ";
+                        result += " and ";
                     }
                 }
             }

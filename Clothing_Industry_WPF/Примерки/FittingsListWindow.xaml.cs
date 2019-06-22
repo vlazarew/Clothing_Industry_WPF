@@ -66,7 +66,7 @@ namespace Clothing_Industry_WPF.Примерки
         private string getQueryText()
         {
             string query_text = "select customers.nickname as Customer, orders.id_order OrderId, types_of_fitting.Name_Of_type as Type_Of_Fitting, " +
-                                    "DATE_FORMAT(fittings.date, \"%d.%m.%Y\") as Date, fittings.time as Time, fittings.notes as Notes " +
+                                "DATE_FORMAT(fittings.date, \"%d.%m.%Y\") as Date, fittings.time as Time, fittings.notes as Notes " +
                                 "from fittings " +
                                 "join orders on fittings.orders_id_order = orders.id_order " +
                                 "join customers on fittings.customers_id_customer = customers.id_customer " +
@@ -99,8 +99,8 @@ namespace Clothing_Industry_WPF.Примерки
                 break;
             }
 
-            Window create_window = new FittingsRecordWindow(WaysToOpenForm.WaysToOpen.edit, idOrder, nickname);
-            create_window.ShowDialog();
+            Window edit_window = new FittingsRecordWindow(WaysToOpenForm.WaysToOpen.edit, idOrder, nickname);
+            edit_window.ShowDialog();
             RefreshList();
         }
 
@@ -150,7 +150,7 @@ namespace Clothing_Industry_WPF.Примерки
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Удаление не удалось");
+                    MessageBox.Show("Удаление не удалось");
                 }
             }
 
@@ -332,7 +332,7 @@ namespace Clothing_Industry_WPF.Примерки
                     index++;
                     if (index < filter.Count)
                     {
-                        result += " or ";
+                        result += " and ";
                     }
                 }
             }

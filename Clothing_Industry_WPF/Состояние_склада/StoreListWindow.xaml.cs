@@ -205,7 +205,7 @@ namespace Clothing_Industry_WPF.Состояние_склада
                     index++;
                     if (index < filter.Count)
                     {
-                        result += " or ";
+                        result += " and ";
                     }
                 }
             }

@@ -141,7 +141,7 @@
         <Label Content="Название материала: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,103,0,0" Height="26" Width="130"/>
         <Label x:Name="Header" Content="Материал " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Height="34" Width="97"/>
         <Label Content="Количество: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,134,0,0" Height="26" Width="97"/>
-        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" Margin="140,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="2" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" Margin="140,134,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" TextInput="TextBoxCount_PreviewTextInput"/>
         <Button x:Name="buttonSave" Content="Добавить" HorizontalAlignment="Left" Margin="140,62,0,0" VerticalAlignment="Top" Width="94" Height="25" TabIndex="3" VerticalContentAlignment="Center" Click="ButtonSave_Click" IsDefault="True"/>
         <Button Content="Отмена" HorizontalAlignment="Left" Margin="249,62,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="-0.694,-0.02" TabIndex="4" VerticalContentAlignment="Center" IsCancel="True" Click="Button_Click" Height="25"/>
         <ComboBox x:Name="comboBoxName_Of_Material" HorizontalAlignment="Left" Margin="140,103,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="1"/>

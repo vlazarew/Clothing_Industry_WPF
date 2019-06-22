@@ -140,10 +140,6 @@ namespace Clothing_Industry_WPF.Изделия
             {
                 result += result == "" ? "Выплата сотруднику" : ", Выплата сотруднику";
             }
-            if (textBoxDescription.Text == "")
-            {
-                result += result == "" ? "Описание" : ", Описание";
-            }
 
             return result == "" ? result : "Не заполнены обязательные поля: " + result;
         }
@@ -191,9 +187,9 @@ namespace Clothing_Industry_WPF.Изделия
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
                 query = "INSERT INTO products " +
-                                       "(Name_Of_Product, Fixed_Price, MoneyToEmployee," +
-                                       " Description, Photo)" +
-                                       " VALUES (@Name_Of_Product, @Fixed_Price, @MoneyToEmployee, @Description, @image);";
+                        "(Name_Of_Product, Fixed_Price, MoneyToEmployee," +
+                        " Description, Photo)" +
+                        " VALUES (@Name_Of_Product, @Fixed_Price, @MoneyToEmployee, @Description, @image);";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {

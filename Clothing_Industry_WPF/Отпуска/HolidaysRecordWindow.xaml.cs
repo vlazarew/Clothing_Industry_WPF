@@ -114,6 +114,7 @@ namespace Clothing_Industry_WPF.Отпуска
             connection.Close();
         }
 
+        // Не знаю, полей как-то маловато, может ты сделал, что все считается, но мне прям страшно вот тут!
         private string CheckData()
         {
             string result = "";
@@ -174,14 +175,15 @@ namespace Clothing_Industry_WPF.Отпуска
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
                 query = "INSERT INTO  holidays " +
-                                       " (Employees_Login, Year, Days_Of_Holidays, Days_Used, Rest_Of_Days, Planned_Start, In_Fact_Start, " +
-                                       " In_Fact_End, Notes) " +
-                                       " VALUES (@login, @Year, @Days_Of_Holidays, @Days_Used, " +
-                                       " @Rest_Of_Days, @In_Fact_Start, @In_Fact_Start, @In_Fact_End, @Notes); ";
+                        " (Employees_Login, Year, Days_Of_Holidays, Days_Used, Rest_Of_Days, Planned_Start, In_Fact_Start, " +
+                        " In_Fact_End, Notes) " +
+                        " VALUES (@login, @Year, @Days_Of_Holidays, @Days_Used, " +
+                        " @Rest_Of_Days, @In_Fact_Start, @In_Fact_Start, @In_Fact_End, @Notes); ";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
-                query = "Update holidays set  Year = @Year, Days_Of_Holidays = @Days_Of_Holidays, Days_Used = @Days_Used, Rest_Of_Days = @Rest_Of_Days, In_Fact_Start = @In_Fact_Start, In_Fact_End = @In_Fact_End, Notes = @Notes" +
+                query = "Update holidays set  Year = @Year, Days_Of_Holidays = @Days_Of_Holidays, Days_Used = @Days_Used, Rest_Of_Days = @Rest_Of_Days," +
+                        " In_Fact_Start = @In_Fact_Start, In_Fact_End = @In_Fact_End, Notes = @Notes" +
                         " where Employees_Login = @oldLogin;";
 
             }

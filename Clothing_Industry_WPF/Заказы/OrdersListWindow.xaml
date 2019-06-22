@@ -179,7 +179,7 @@
                     <DataGridTextColumn Binding="{Binding Nickname}" ClipboardContentBinding="{x:Null}" Header="Заказчик"/>
                     <DataGridTextColumn Binding="{Binding Responsible}" ClipboardContentBinding="{x:Null}" Header="Ответственный"/>
                     <DataGridTextColumn Binding="{Binding Executor}" ClipboardContentBinding="{x:Null}" Header="Исполнитель"/>
-                    <DataGridTextColumn Binding="{Binding SalaryToExecutor}" ClipboardContentBinding="{x:Null}" Header="Выплата за доп сложность"/>
+                    <DataGridTextColumn Binding="{Binding Added_Price_For_Complexity}" ClipboardContentBinding="{x:Null}" Header="Выплата за доп сложность"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

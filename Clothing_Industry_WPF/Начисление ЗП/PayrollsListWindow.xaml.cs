@@ -136,7 +136,7 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Удаление не удалось");
+                    MessageBox.Show("Удаление не удалось");
                 }
             }
 
@@ -247,7 +247,6 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
 
             // Вот тут нужно проходить по всем таблицам, что мы используем в итоговом запросе
             DescribeHelper("describe payrolls", connection, describe);
-            //DescribeHelper("describe employees", connection, describe);
             // Вот тут конец
 
             connection.Close();
@@ -321,7 +320,7 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
                     index++;
                     if (index < filter.Count)
                     {
-                        result += " or ";
+                        result += " and ";
                     }
                 }
             }

@@ -45,7 +45,6 @@ namespace Clothing_Industry_WPF.Приход_материала
         {
             MySqlConnection connection = new MySqlConnection(connectionString);
 
-            //Думаю, что не очень хорошо, когда в списке пользователей виден пароль!!! /* employees.Password, */
             string query_text = getQueryText();
             connection.Open();
 
@@ -93,8 +92,8 @@ namespace Clothing_Industry_WPF.Приход_материала
                 break;
             }
 
-            Window create_window = new ReceiptsRecordDocumentWindow(WaysToOpenForm.WaysToOpen.edit, id_Document_Of_Receipt);
-            create_window.ShowDialog();
+            Window edit_window = new ReceiptsRecordDocumentWindow(WaysToOpenForm.WaysToOpen.edit, id_Document_Of_Receipt);
+            edit_window.ShowDialog();
             RefreshList();
         }
 
@@ -155,20 +154,20 @@ namespace Clothing_Industry_WPF.Приход_материала
 
             if (id_Document_Of_Receipts.Count > 0)
             {
-                Window create_window;
+                Window edit_window;
 
                 //Первые окна мы открываем немодально, последнее модально, чтоб потом сразу обновились данные на форме
                 if (id_Document_Of_Receipts.Count > 1)
                 {
                     for (int i = 0; i < id_Document_Of_Receipts.Count - 1; i++)
                     {
-                        create_window = new ReceiptsRecordDocumentWindow(WaysToOpenForm.WaysToOpen.edit, id_Document_Of_Receipts[i]);
-                        create_window.Show();
+                        edit_window = new ReceiptsRecordDocumentWindow(WaysToOpenForm.WaysToOpen.edit, id_Document_Of_Receipts[i]);
+                        edit_window.Show();
                     }
                 }
                 //Заключительная форма
-                create_window = new ReceiptsRecordDocumentWindow(WaysToOpenForm.WaysToOpen.edit, id_Document_Of_Receipts[id_Document_Of_Receipts.Count - 1]);
-                create_window.ShowDialog();
+                edit_window = new ReceiptsRecordDocumentWindow(WaysToOpenForm.WaysToOpen.edit, id_Document_Of_Receipts[id_Document_Of_Receipts.Count - 1]);
+                edit_window.ShowDialog();
 
                 //Обновление списка
                 RefreshList();
@@ -318,7 +317,7 @@ namespace Clothing_Industry_WPF.Приход_материала
                     index++;
                     if (index < filter.Count)
                     {
-                        result += " or ";
+                        result += " and ";
                     }
                 }
             }

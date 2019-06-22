@@ -48,7 +48,7 @@ namespace Clothing_Industry_WPF.Примерки
         private void FillFields(int idOrder, string nickname)
         {
             string query_text = "select customers.nickname as Customer, orders.id_order OrderId, types_of_fitting.Name_Of_type as Type_Of_Fitting, " +
-                                    "fittings.date as Date, fittings.time as Time, fittings.notes as Notes " +
+                                "fittings.date as Date, fittings.time as Time, fittings.notes as Notes " +
                                 "from fittings " +
                                 "join orders on fittings.orders_id_order = orders.id_order " +
                                 "join customers on fittings.customers_id_customer = customers.id_customer " +
@@ -128,7 +128,6 @@ namespace Clothing_Industry_WPF.Примерки
                 result += result == "" ? "Тип примерки" : ",  Тип примерки";
             }
 
-
             return result == "" ? result : "Не заполнены обязательные поля: " + result;
         }
 
@@ -156,7 +155,7 @@ namespace Clothing_Industry_WPF.Примерки
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Ошибка сохранения!");
+                    MessageBox.Show("Ошибка сохранения!");
                 }
 
                 connection.Close();
@@ -164,7 +163,7 @@ namespace Clothing_Industry_WPF.Примерки
             }
             else
             {
-                System.Windows.MessageBox.Show(warning);
+                MessageBox.Show(warning);
             }
         }
 
@@ -174,17 +173,14 @@ namespace Clothing_Industry_WPF.Примерки
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
                 query = "INSERT INTO fittings " +
-                                       "(Customers_id_Customer, Orders_id_Order, Date," +
-                                       " Time, " +
-                                       " Notes, Types_Of_Fitting_id_Type_Of_Fitting) " +
-                                        "VALUES (@customer, @order, @date, @time, @notes, @type_of_Fitting) ; ";
+                        "(Customers_id_Customer, Orders_id_Order, Date," +
+                        " Time, Notes, Types_Of_Fitting_id_Type_Of_Fitting) " +
+                        " VALUES (@customer, @order, @date, @time, @notes, @type_of_Fitting) ; ";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
                 query = "Update fittings set Customers_id_Customer = @customer, Orders_id_Order = @order, Date = @date, " +
-                        "Time = @time, " +
-                        "Notes = @notes, " +
-                        "Types_Of_Fitting_id_Type_Of_Fitting = @type_of_Fitting " +
+                        "Time = @time, Notes = @notes, Types_Of_Fitting_id_Type_Of_Fitting = @type_of_Fitting " +
                         " where Orders_id_Order = @orderId and Customers_id_Customer = @customer ;";
             }
 
@@ -206,7 +202,6 @@ namespace Clothing_Industry_WPF.Примерки
             }
 
             command.Parameters.AddWithValue("@type_of_Fitting", id_type);
-
             command.Parameters.AddWithValue("@order", int.Parse(textBoxOrder.Text));
 
             MySqlCommand commandCustomer = new MySqlCommand("select id_Customer from customers where nickname = @nickname", connection);

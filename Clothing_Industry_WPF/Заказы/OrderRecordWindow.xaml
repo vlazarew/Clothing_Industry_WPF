@@ -40,7 +40,7 @@
         <TextBox x:Name="textBoxTotal_Price" HorizontalAlignment="Left" Height="26" Margin="142,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True" TextChanged="TextBoxTotal_Price_TextChanged"/>
         <Button x:Name="buttonListProducts" Content="Открыть список изделий" HorizontalAlignment="Left" Margin="311,17,0,0" VerticalAlignment="Top" Width="154" Height="25" IsDefault="True" TabIndex="13" Click="ButtonListProducts_Click"/>
         <Label Content="Выплата за доп сложность: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,269,0,0"/>
-        <TextBox x:Name="textBoxSalaryToExecutor" HorizontalAlignment="Left" Height="26" Margin="172,269,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TabIndex="7" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxSalaryToExecutor_PreviewTextInput"/>
+        <TextBox x:Name="textBoxAddedPrice" HorizontalAlignment="Left" Height="26" Margin="172,269,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TabIndex="7" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxSalaryToExecutor_PreviewTextInput"/>
 
     </Grid>
 </Window>

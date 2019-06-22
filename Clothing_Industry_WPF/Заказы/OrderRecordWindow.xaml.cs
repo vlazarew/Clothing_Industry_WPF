@@ -53,12 +53,13 @@ namespace Clothing_Industry_WPF.Заказы
             {
                 FillFields(idOrder);
             }
+            UpdateTotalPrice();
         }
 
         private void FillFields(int idOrder)
         {
             string query_text = "select orders.id_Order, orders.Date_Of_Order, orders.Discount_Per_Cent, orders.Total_price, orders.Paid, orders.Debt, orders.Date_Of_Delievery, orders.Notes, " +
-                                "types_of_order.Name_Of_type, statuses_of_order.Name_Of_Status, customers.Nickname, orders.Executor, orders.Responsible, orders.SalaryToExecutor " +
+                                "types_of_order.Name_Of_type, statuses_of_order.Name_Of_Status, customers.Nickname, orders.Executor, orders.Responsible, orders.Added_Price_For_Complexity " +
                                 "from orders " +
                                 "left join types_of_order on orders.Types_Of_Order_id_Type_Of_Order = types_of_order.id_Type_Of_Order " +
                                 "left join statuses_of_order on orders.Statuses_Of_Order_id_Status_Of_Order =statuses_of_order.id_Status_Of_Order " +
@@ -75,10 +76,10 @@ namespace Clothing_Industry_WPF.Заказы
                 while (reader.Read())
                 {
                     datePickerDateOfOrder.SelectedDate = DateTime.Parse(reader.GetString(1));
-                    textBoxDiscount.Text = reader.GetString(2);
-                    textBoxTotal_Price.Text = reader.GetString(3);
-                    textBoxPaid.Text = reader.GetString(4);
-                    textBoxDebt.Text = reader.GetString(5);
+                    textBoxDiscount.Text = reader.IsDBNull(2) ? "0" : reader.GetString(2);
+                    textBoxTotal_Price.Text = reader.IsDBNull(3) ? "0" : reader.GetString(3);
+                    textBoxPaid.Text = reader.IsDBNull(4) ? "0" : reader.GetString(4);
+                    textBoxDebt.Text = reader.IsDBNull(5) ? "0" : reader.GetString(5);
                     datePickerDateOfDelievery.SelectedDate = DateTime.Parse(reader.GetString(6));
                     if (reader.GetValue(7).ToString() != "")
                     {
@@ -92,7 +93,7 @@ namespace Clothing_Industry_WPF.Заказы
                     comboBoxExecutor.SelectedValue = reader.GetString(12);
                     if (reader.GetValue(13).ToString() != "")
                     {
-                        textBoxSalaryToExecutor.Text = reader.GetString(13);
+                        textBoxAddedPrice.Text = reader.GetString(13);
                     }
                 }
             }
@@ -233,6 +234,7 @@ namespace Clothing_Industry_WPF.Заказы
                            "from list_products_to_order " +
                            "join products on products.id_product = list_products_to_order.Products_id_Product " +
                            "where list_products_to_order.Orders_id_Order = @idOrder; ";
+
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@idOrder", idOrder);
 
@@ -299,7 +301,7 @@ namespace Clothing_Industry_WPF.Заказы
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Ошибка сохранения!");
+                    MessageBox.Show("Ошибка сохранения!");
                 }
 
                 connection.Close();
@@ -307,7 +309,7 @@ namespace Clothing_Industry_WPF.Заказы
             }
             else
             {
-                System.Windows.MessageBox.Show(warning);
+                MessageBox.Show(warning);
             }
         }
 
@@ -428,14 +430,15 @@ namespace Clothing_Industry_WPF.Заказы
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
                 query = "INSERT INTO orders " +
-                                       "(Date_Of_Order, Discount_Per_Cent, Total_Price, Paid, Debt, Date_Of_Delievery, Notes," +
-                                       " Types_Of_Order_id_Type_Of_Order, Statuses_Of_Order_id_Status_Of_Order, Customers_id_Customer, Responsible, Executor, SalaryToExecutor)" +
-                                       " VALUES (@dateOrder, @discount, @totalPrice, @paid, @debt, @dateDelievery, @notes, @typeOrder, @statusOrder, @customer, @responsible, @executor, @salary);";
+                        "(Date_Of_Order, Discount_Per_Cent, Total_Price, Paid, Debt, Date_Of_Delievery, Added_Price_For_Complexity, Notes, " +
+                        " Types_Of_Order_id_Type_Of_Order, Statuses_Of_Order_id_Status_Of_Order, Customers_id_Customer, Responsible, Executor, SalaryToExecutor)" +
+                        " VALUES (@dateOrder, @discount, @totalPrice, @paid, @debt, @dateDelievery, @addedPrice, @notes, @typeOrder, @statusOrder, @customer, @responsible, @executor, @salary);";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
                 query = "Update orders set Date_of_Order = @dateOrder, Discount_Per_Cent = @discount, Total_Price = @totalPrice, Paid = @paid, Debt = @debt," +
-                        " Date_Of_Delievery = @dateDelievery, Notes = @notes, Types_Of_Order_id_Type_Of_Order = @typeOrder, Statuses_Of_Order_id_Status_Of_Order = @statusOrder," +
+                        " Date_Of_Delievery = @dateDelievery, Added_Price_For_Complexity = @addedPrice, Notes = @notes, Types_Of_Order_id_Type_Of_Order = @typeOrder, " +
+                        " Statuses_Of_Order_id_Status_Of_Order = @statusOrder," +
                         " Customers_id_Customer = @customer, Responsible = @responsible, Executor = @executor, SalaryToExecutor = @salary " +
                         " where id_order = @idOrder;";
 
@@ -450,6 +453,7 @@ namespace Clothing_Industry_WPF.Заказы
             command.Parameters.AddWithValue("@dateDelievery", datePickerDateOfDelievery.SelectedDate.Value);
             command.Parameters.AddWithValue("@notes", textBoxNotes.Text);
             command.Parameters.AddWithValue("@salary", salaryToExecutor);
+            command.Parameters.AddWithValue("@addedPrice", textBoxAddedPrice.Text == "" ? 0 : float.Parse(textBoxAddedPrice.Text));
 
             MySqlCommand commandType = new MySqlCommand("select id_Type_Of_Order from types_of_order where Name_Of_Type = @type", connection);
             commandType.Parameters.AddWithValue("@type", comboBoxTypeOfOrder.SelectedItem.ToString());
@@ -576,11 +580,10 @@ namespace Clothing_Industry_WPF.Заказы
             return null;
         }
 
-        //!!! ПЕРЕДЕЛАТЬ
         private float CalculateSalary(MySqlConnection connection)
         {
             // Необходимо получить все изделия и их кол-во
-            string query = "select products.Fixed_Price, products.MoneyToEmployee,list_products_to_order.Count as Added_Price " +
+            string query = "select products.MoneyToEmployee, list_products_to_order.Count, orders.Added_Price_For_Complexity as Added_Price, orders.SalaryToExecutor " +
                            "from orders " +
                            "join list_products_to_order on orders.id_Order = list_products_to_order.Orders_id_Order " +
                            "join products on list_products_to_order.Products_id_Product = products.id_Product " +
@@ -589,9 +592,8 @@ namespace Clothing_Industry_WPF.Заказы
             MySqlCommand commandSelect = new MySqlCommand(query, connection);
             commandSelect.Parameters.AddWithValue("@idOrder", idOrder);
 
-            // Будем так вот данные хранить походу. Списки фикс цены, процентов и прочего для расчета доп зп для сотрудника
-            List<float> listFixedPrice = new List<float>();
-            List<int> listPerCent = new List<int>();
+            // Будем так вот данные хранить походу. Списки сдельной зп и прочего для расчета доп зп для сотрудника
+            List<float> listMoneyToEmployee = new List<float>();
             List<int> listCount = new List<int>();
             List<float> listAddedPrice = new List<float>();
 
@@ -599,23 +601,19 @@ namespace Clothing_Industry_WPF.Заказы
             {
                 while (reader.Read())
                 {
-                    listFixedPrice.Add(float.Parse(reader.GetString(0)));
-                    listPerCent.Add(int.Parse(reader.GetString(1)));
-                    listCount.Add(int.Parse(reader.GetString(2)));
-                    listAddedPrice.Add(float.Parse(reader.GetString(3)));
+                    listMoneyToEmployee.Add(float.Parse(reader.GetString(0)));
+                    listCount.Add(int.Parse(reader.GetString(1)));
+                    listAddedPrice.Add(float.Parse(reader.GetString(2)));
                 }
             }
             float result = 0;
 
-            for (int i = 0; i < listAddedPrice.Count; i++)
+            for (int i = 0; i < listMoneyToEmployee.Count; i++)
             {
-                // Проценты с выполненого
-                float perCents = listFixedPrice[i] * listCount[i] * listPerCent[i] / 100;
-                // Доп стоимость за сложность
-                float addedPrice = listAddedPrice[i] * listCount[i];
-
-                result += perCents + addedPrice;
+                result += listMoneyToEmployee[i] * listCount[i];
             }
+
+            result += listAddedPrice[0];
 
             return result;
         }

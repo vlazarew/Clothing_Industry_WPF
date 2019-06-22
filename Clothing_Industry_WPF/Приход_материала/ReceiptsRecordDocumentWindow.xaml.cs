@@ -29,6 +29,7 @@ namespace Clothing_Industry_WPF.Приход_материала
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private MySqlConnection connection;
         private int old_id_Document_Of_Receipt = -1;
+
         public ReceiptsRecordDocumentWindow(WaysToOpenForm.WaysToOpen waysToOpen, int id_Document_Of_Receipt = -1)
         {
             InitializeComponent();
@@ -48,14 +49,14 @@ namespace Clothing_Industry_WPF.Приход_материала
         {
             {
                 string query_text = "select receipt_of_materials.Default_Folder, receipt_of_materials.Name_Of_Document," +
-                                " DATE_FORMAT(receipt_of_materials.Date_Of_Entry, '%d.%m.%Y') as Date_Of_Entry, receipt_of_materials.Notes," +
-                                " suppliers.Name_Of_Supplier, payment_states.Name_Of_State, " +
-                                " type_of_transactions.Name_Of_Type" +
-                                " from receipt_of_materials" +                              
-                                " join payment_states on receipt_of_materials.Payment_States_id_Payment_States = payment_states.id_Payment_States" +
-                                " join type_of_transactions on receipt_of_materials.Type_Of_Transactions_id_Type_Of_Transaction = type_of_transactions.id_Type_Of_Transaction" +
-                                " join suppliers on receipt_of_materials.Suppliers_id_Supplier = suppliers.id_Supplier" +
-                                " where receipt_of_materials.id_Document_Of_Receipt = @id_Document_Of_Receipt;";
+                                    " DATE_FORMAT(receipt_of_materials.Date_Of_Entry, '%d.%m.%Y') as Date_Of_Entry, receipt_of_materials.Notes," +
+                                    " suppliers.Name_Of_Supplier, payment_states.Name_Of_State, " +
+                                    " type_of_transactions.Name_Of_Type" +
+                                    " from receipt_of_materials" +                              
+                                    " join payment_states on receipt_of_materials.Payment_States_id_Payment_States = payment_states.id_Payment_States" +
+                                    " join type_of_transactions on receipt_of_materials.Type_Of_Transactions_id_Type_Of_Transaction = type_of_transactions.id_Type_Of_Transaction" +
+                                    " join suppliers on receipt_of_materials.Suppliers_id_Supplier = suppliers.id_Supplier" +
+                                    " where receipt_of_materials.id_Document_Of_Receipt = @id_Document_Of_Receipt;";
 
                 MySqlCommand command = new MySqlCommand(query_text, connection);
                 command.Parameters.AddWithValue("@id_Document_Of_Receipt", id_Document_Of_Receipt);
@@ -185,6 +186,7 @@ namespace Clothing_Industry_WPF.Приход_материала
                 //Создать/изменить запись в таблице Материалы
                 MySqlCommand command = actionInDBCommand(connection);
                 command.Transaction = transaction;
+
                 try
                 {
                     command.ExecuteNonQuery();
@@ -197,15 +199,14 @@ namespace Clothing_Industry_WPF.Приход_материала
                     System.Windows.MessageBox.Show("Ошибка сохранения!");
                 }
 
-
                 connection.Close();
-                //this.Hide();
             }
             else
             {
                 System.Windows.MessageBox.Show(warning);
             }
         }
+
         //doc
         private MySqlCommand actionInDBCommand(MySqlConnection connection)
         {
@@ -217,14 +218,15 @@ namespace Clothing_Industry_WPF.Приход_материала
                 
                 //document
                 query = "INSERT INTO receipt_of_materials" +
-                                       "(Default_Folder, Name_of_Document, Date_Of_Entry, Notes, Payment_States_id_Payment_States, Type_Of_Transactions_id_Type_Of_Transaction, Suppliers_id_Supplier,Total_Price)" +
-                                       " VALUES (@Default_Folder, @Name_of_Document, @Date_Of_Entry,@Notes, @Name_Of_State, @Name_Of_Type, @Name_Of_Supplier,0);";
+                        "(Default_Folder, Name_of_Document, Date_Of_Entry, Notes, Payment_States_id_Payment_States, Type_Of_Transactions_id_Type_Of_Transaction, Suppliers_id_Supplier, Total_Price)" +
+                        " VALUES (@Default_Folder, @Name_of_Document, @Date_Of_Entry,@Notes, @Name_Of_State, @Name_Of_Type, @Name_Of_Supplier,0);";
                 
 
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
-                query = "Update receipt_of_materials set Default_Folder = @Default_Folder, Name_of_Document = @Name_of_Document,  Date_Of_Entry = @Date_Of_Entry, Notes = @Notes,  Payment_States_id_Payment_States = @Name_Of_State, Type_Of_Transactions_id_Type_Of_Transaction = @Name_Of_Type, Suppliers_id_Supplier = @Name_Of_Supplier" +
+                query = "Update receipt_of_materials set Default_Folder = @Default_Folder, Name_of_Document = @Name_of_Document, Date_Of_Entry = @Date_Of_Entry, " +
+                        "Notes = @Notes, Payment_States_id_Payment_States = @Name_Of_State, Type_Of_Transactions_id_Type_Of_Transaction = @Name_Of_Type, Suppliers_id_Supplier = @Name_Of_Supplier" +
                         " where id_Document_Of_Receipt = @old_id_Document_Of_Receipt;";              
             }
 
@@ -267,12 +269,10 @@ namespace Clothing_Industry_WPF.Приход_материала
                     id_Supplier = reader.GetInt32(0);
                 }
             }
-
             
             command.Parameters.AddWithValue("@Name_Of_State", id_Payment_States);
             command.Parameters.AddWithValue("@Name_Of_Type", id_Type_Of_Transaction);
             command.Parameters.AddWithValue("@Name_Of_Supplier", id_Supplier);
-
 
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {

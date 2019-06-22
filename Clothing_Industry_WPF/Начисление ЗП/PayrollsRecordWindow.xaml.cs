@@ -24,7 +24,6 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
         public float toPay { get; set; }
     }
 
-
     /// <summary>
     /// Логика взаимодействия для PayrollsRecordWindow.xaml
     /// </summary>
@@ -34,7 +33,6 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private MySqlConnection connection;
         private string old_login = "";
-        //private DateTime old_payrollDate;
         private string old_period = "";
 
         // Ввод только букв в численные поля 
@@ -194,18 +192,18 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
 
                 try
                 {
-                command.ExecuteNonQuery();
-                if (commandLastSalary != null)
-                {
-                    commandLastSalary.ExecuteNonQuery();
-                }
-                transaction.Commit();
-                this.Hide();
+                    command.ExecuteNonQuery();
+                    if (commandLastSalary != null)
+                    {
+                        commandLastSalary.ExecuteNonQuery();
+                    }
+                    transaction.Commit();
+                    this.Hide();
                 }
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Ошибка сохранения!");
+                    MessageBox.Show("Ошибка сохранения!");
                 }
 
                 connection.Close();
@@ -213,7 +211,7 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
             }
             else
             {
-                System.Windows.MessageBox.Show(warning);
+                MessageBox.Show(warning);
             }
         }
 
@@ -223,8 +221,8 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
                 query = "INSERT INTO payrolls " +
-                                       "(Employees_Login, Period, Date_Of_Pay, Salary, PieceWorkPayment, Total_Salary, Penalty, To_Pay, Notes, PaidOff)" +
-                                       " VALUES (@login, @period, @dateOfPay, @salary, @pieceWorkPayment, @totalSalary, @penalty, @toPay, @notes, @paidOff);";
+                        "(Employees_Login, Period, Date_Of_Pay, Salary, PieceWorkPayment, Total_Salary, Penalty, To_Pay, Notes, PaidOff)" +
+                        " VALUES (@login, @period, @dateOfPay, @salary, @pieceWorkPayment, @totalSalary, @penalty, @toPay, @notes, @paidOff);";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
@@ -316,8 +314,8 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
 
         private void RefreshTotal()
         {
-            float salary = textBoxSalary.Text != "" ? float.Parse(textBoxSalary.Text) : 0;
-            float piecework = textBoxPieceWork.Text != "" ? float.Parse(textBoxPieceWork.Text) : 0;
+            float salary = textBoxSalary.Text != "" && float.TryParse(textBoxSalary.Text, out salary) ? float.Parse(textBoxSalary.Text) : 0;
+            float piecework = textBoxPieceWork.Text != "" && float.TryParse(textBoxPieceWork.Text, out piecework) ? float.Parse(textBoxPieceWork.Text) : 0;
 
             float totalSalary = salary + piecework;
             textBoxTotal_Salary.Text = totalSalary.ToString();
@@ -328,7 +326,5 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
 
             textBoxTo_Pay.Text = toPay.ToString();
         }
-
-
     }
 }

@@ -88,7 +88,6 @@ namespace Clothing_Industry_WPF.Справочник.Группы_материа
                 result += result == "" ? "Наименование" : ", Наименование";
             }
            
-
             return result == "" ? result : "Не заполнены обязательные поля: " + result;
         }
 

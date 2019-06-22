@@ -48,13 +48,13 @@ namespace Clothing_Industry_WPF.Клиенты
         private void FillFields(int id)
         {
             string query_text = "SELECT customers.id_Customer, customers.Name, customers.Lastname, customers.Patronymic, customers.Address, customers.Phone_Number, customers.Nickname, " +
-                "DATE_FORMAT(customers.Birthday, \"%d.%m.%Y\") as Birthday, customers.Passport_data, customers.Size, customers.Parameters, customers.Notes, customer_statuses.Name_Of_Status, " +
-                "order_channels.Name_of_channel, employees.Login, customers.Photo " +
-                "FROM customers " +
-                "join main_database.employees on main_database.employees.login = customers.Employees_Login " +
-                "join main_database.customer_statuses on main_database.customer_statuses.id_Status = customers.Customer_Statuses_id_Status " +
-                "join main_database.order_channels on main_database.order_channels.id_Channel = customers.Order_Channels_id_Channel " +
-                "where customers.id_Customer = @id";
+                                "DATE_FORMAT(customers.Birthday, \"%d.%m.%Y\") as Birthday, customers.Passport_data, customers.Size, customers.Parameters, customers.Notes, customer_statuses.Name_Of_Status, " +
+                                "order_channels.Name_of_channel, employees.Login, customers.Photo " +
+                                "FROM customers " +
+                                "join main_database.employees on main_database.employees.login = customers.Employees_Login " +
+                                "join main_database.customer_statuses on main_database.customer_statuses.id_Status = customers.Customer_Statuses_id_Status " +
+                                "join main_database.order_channels on main_database.order_channels.id_Channel = customers.Order_Channels_id_Channel " +
+                                "where customers.id_Customer = @id";
             MySqlCommand command = new MySqlCommand(query_text, connection);
             command.Parameters.AddWithValue("@id", id);
             connection.Open();
@@ -64,12 +64,12 @@ namespace Clothing_Industry_WPF.Клиенты
                 {
                     textBoxName.Text = reader.GetString(1);
                     textBoxLastname.Text = reader.GetString(2);
-                    textBoxPatronymic.Text = reader.GetString(3);
+                    textBoxPatronymic.Text = reader.IsDBNull(3) ? "" : reader.GetString(3);
                     textBoxAdress.Text = reader.GetString(4);
                     textBoxPhone_Number.Text = reader.GetString(5);
                     textBoxNickname.Text = reader.GetString(6);
-                    datePickerBirthday.SelectedDate = DateTime.Parse(reader.GetString(7));
-                    textBoxPassportData.Text = reader.GetString(8);
+                    datePickerBirthday.SelectedDate = reader.IsDBNull(7) ? DateTime.Now : DateTime.Parse(reader.GetString(7));
+                    textBoxPassportData.Text = reader.IsDBNull(8) ? "" : reader.GetString(8);
                     if (reader.GetValue(9).ToString() != "")
                     {
                         textBoxSize.Text = reader.GetString(9);
@@ -255,7 +255,7 @@ namespace Clothing_Industry_WPF.Клиенты
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Ошибка сохранения!");
+                    MessageBox.Show("Ошибка сохранения!");
                 }
 
                 transaction = connection.BeginTransaction();
@@ -284,15 +284,14 @@ namespace Clothing_Industry_WPF.Клиенты
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Ошибка сохранения!");
+                    MessageBox.Show("Ошибка сохранения!");
                 }
 
                 connection.Close();
-                //this.Hide();
             }
             else
             {
-                System.Windows.MessageBox.Show(warning);
+                MessageBox.Show(warning);
             }
         }
 
@@ -302,10 +301,10 @@ namespace Clothing_Industry_WPF.Клиенты
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
                 query = "INSERT INTO customers " +
-                                       "(Name, Lastname, Patronymic, Address, Phone_Number, Nickname," +
-                                       " Birthday, Passport_Data, Size, Parameters, Notes, Customer_Statuses_id_Status, Order_Channels_id_Channel, Employees_Login, Photo)" +
-                                       " VALUES (@name, @lastname, @patronymic, @address, @phone, @nickname, @birthday, @passport, @size, @parameters, @notes," +
-                                       "         @status, @channel, @login, @image);";
+                        "(Name, Lastname, Patronymic, Address, Phone_Number, Nickname," +
+                        " Birthday, Passport_Data, Size, Parameters, Notes, Customer_Statuses_id_Status, Order_Channels_id_Channel, Employees_Login, Photo)" +
+                        " VALUES (@name, @lastname, @patronymic, @address, @phone, @nickname, @birthday, @passport, @size, @parameters, @notes," +
+                        "         @status, @channel, @login, @image);";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {

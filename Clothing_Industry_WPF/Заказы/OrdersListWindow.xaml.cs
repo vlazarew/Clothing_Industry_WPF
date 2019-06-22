@@ -36,7 +36,6 @@ namespace Clothing_Industry_WPF.Заказы
             currentFilterDescription = new List<FilterHandler.FilterDescription>();
         }
 
-
         private void RefreshList()
         {
             MySqlConnection connection = new MySqlConnection(connectionString);
@@ -99,7 +98,7 @@ namespace Clothing_Industry_WPF.Заказы
             string query_text = "select orders.id_Order, DATE_FORMAT(orders.Date_Of_Order, \"%d.%m.%Y\") as Date_Of_Order, orders.Discount_Per_Cent, " +
                 "orders.Total_Price, orders.Paid, orders.Debt, DATE_FORMAT(orders.Date_Of_Delievery, \"%d.%m.%Y\") as Date_Of_Delievery, orders.Notes, " +
                                     "types_of_order.Name_Of_type, statuses_of_order.Name_Of_Status, customers.Nickname, orders.Executor,orders.Responsible, " +
-                                    "group_concat(products.Name_Of_Product separator ', ') as Products, orders.SalaryToExecutor " +
+                                    "group_concat(products.Name_Of_Product separator ', ') as Products, orders.Added_Price_For_Complexity " +
                                     "from orders " +
                                     "left join types_of_order on orders.Types_Of_Order_id_Type_Of_Order = types_of_order.id_Type_Of_Order " +
                                     "left join statuses_of_order on orders.Statuses_Of_Order_id_Status_Of_Order = statuses_of_order.id_Status_Of_Order " +
@@ -116,7 +115,7 @@ namespace Clothing_Industry_WPF.Заказы
             string query_text = "select orders.id_Order, DATE_FORMAT(orders.Date_Of_Order, \"%d.%m.%Y\") as Date_Of_Order, orders.Discount_Per_Cent, orders.Total_Price, " +
                                 "orders.Paid, orders.Debt, DATE_FORMAT(orders.Date_Of_Delievery, \"%d.%m.%Y\") as Date_Of_Delievery, orders.Notes, " +
                                     "types_of_order.Name_Of_type, statuses_of_order.Name_Of_Status, customers.Nickname, orders.Executor,orders.Responsible, " +
-                                    "'Не указано' as Products, orders.SalaryToExecutor " +
+                                    "'Не указано' as Products, orders.Added_Price_For_Complexity " +
                                     "from orders " +
                                     "left join types_of_order on orders.Types_Of_Order_id_Type_Of_Order = types_of_order.id_Type_Of_Order " +
                                     "left join statuses_of_order on orders.Statuses_Of_Order_id_Status_Of_Order = statuses_of_order.id_Status_Of_Order " +
@@ -203,7 +202,7 @@ namespace Clothing_Industry_WPF.Заказы
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Удаление не удалось");
+                    MessageBox.Show("Удаление не удалось");
                 }
             }
 
@@ -313,6 +312,7 @@ namespace Clothing_Industry_WPF.Заказы
         {
             List<KeyValuePair<string, string>> describe = TakeDescribe();
             List<FindHandler.FieldParameters> result = new List<FindHandler.FieldParameters>();
+            result.Add(new FindHandler.FieldParameters("id_Order", "Номер заказа", describe.Where(key => key.Key == "id_Order").First().Value));
             result.Add(new FindHandler.FieldParameters("Date_Of_Order", "Дата заказа", describe.Where(key => key.Key == "Date_Of_Order").First().Value));
             result.Add(new FindHandler.FieldParameters("Discount_Per_Cent", "Скидка", describe.Where(key => key.Key == "Discount_Per_Cent").First().Value));
             result.Add(new FindHandler.FieldParameters("Total_Price", "Итоговая стоимость", describe.Where(key => key.Key == "Total_Price").First().Value));
@@ -412,7 +412,7 @@ namespace Clothing_Industry_WPF.Заказы
                     index++;
                     if (index < filter.Count)
                     {
-                        result += " or ";
+                        result += " and ";
                     }
                 }
             }
@@ -439,7 +439,7 @@ namespace Clothing_Industry_WPF.Заказы
                     index++;
                     if (index < filter.Count)
                     {
-                        result += " or ";
+                        result += " and ";
                     }
                 }
             }

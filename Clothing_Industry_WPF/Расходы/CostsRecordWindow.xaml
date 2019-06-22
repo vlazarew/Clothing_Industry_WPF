@@ -158,8 +158,8 @@
         <TextBox x:Name="textBoxFileName" HorizontalAlignment="Left" Height="26" IsReadOnly="True" Margin="152,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" TabIndex="13" VerticalContentAlignment="Center" FontSize="14"/>
         <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="152,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" TabIndex="13" VerticalContentAlignment="Center" FontSize="14"/>
         <ComboBox x:Name="comboBoxName_Of_Periodicity" HorizontalAlignment="Left" Margin="152,303,0,0" VerticalAlignment="Top" Width="198" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7"/>
-        <TextBox x:Name="textBoxTo" HorizontalAlignment="Left" Height="26" Margin="152,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" TabIndex="13" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxFrom" HorizontalAlignment="Left" Height="26" Margin="152,365,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" TabIndex="13" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxFrom" HorizontalAlignment="Left" Height="26" Margin="152,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" TabIndex="13" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxTo" HorizontalAlignment="Left" Height="26" Margin="152,365,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" TabIndex="13" VerticalContentAlignment="Center" FontSize="14"/>
         <TextBox x:Name="textBoxFileFolder" HorizontalAlignment="Left" Height="26" Margin="152,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" TabIndex="13" VerticalContentAlignment="Center" IsReadOnly="True" FontSize="14"/>
         <Button x:Name="buttonFileSearch" Content="Найти файл" HorizontalAlignment="Left" Margin="73,55,0,0" VerticalAlignment="Top" Width="122" Height="25" Click="ButtonFileSearch_Click" IsDefault="True"/>
         <Label Content="Имя документа: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,116,0,0" Height="26" Width="109"/>

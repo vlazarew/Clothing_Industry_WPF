@@ -319,7 +319,7 @@ namespace Clothing_Industry_WPF.Клиенты
                     index++;
                     if (index < filter.Count)
                     {
-                        result += " or ";
+                        result += " and ";
                     }
                 }
             }

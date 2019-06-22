@@ -51,7 +51,8 @@ namespace Clothing_Industry_WPF.Сотрудники
         private void FillFields(string login)
         {
             string query_text = "select employees.Login, employees.Password, employees.Name, employees.Lastname, employees.Patronymic, employees.Phone_Number, employees.Passport_Data, employees.Email," +
-                               "employees.Notes, DATE_FORMAT(employees.Added, \"%d.%m.%Y\") as Added, employees.Last_Salary, employee_roles.Name_Of_Role, employee_positions.Name_Of_Position, employees.Photo" +
+                               "employees.Notes, DATE_FORMAT(employees.Added, \"%d.%m.%Y\") as Added, employees.Last_Salary, employee_roles.Name_Of_Role, " +
+                               "employee_positions.Name_Of_Position, employees.Photo" +
                                " from employees" +
                                " join employee_positions on employees.Employee_Positions_id_Employee_Position = employee_positions.id_Employee_Position" +
                                " join employee_roles on employees.Employee_Roles_id_Employee_Role = employee_roles.id_Employee_Role" +
@@ -68,7 +69,7 @@ namespace Clothing_Industry_WPF.Сотрудники
                     textBoxPassword.Text = reader.GetString(1);
                     textBoxName.Text = reader.GetString(2);
                     textBoxLastname.Text = reader.GetString(3);
-                    textBoxPatronymic.Text = reader.GetString(4);
+                    textBoxPatronymic.Text = reader.IsDBNull(4) ? "" : reader.GetString(4);
                     textBoxPhone_Number.Text = reader.GetString(5);
                     textBoxPassportData.Text = reader.GetString(6);
                     textBoxEmail.Text = reader.GetString(7);
@@ -124,7 +125,6 @@ namespace Clothing_Industry_WPF.Сотрудники
                     break;
                 default:
                     break;
-
             }
         }
 
@@ -242,8 +242,6 @@ namespace Clothing_Industry_WPF.Сотрудники
             return result == "" ? result : "Не заполнены обязательные поля: " + result;
         }
 
-
-
         private void ButtonSaveAndExit_Click(object sender, RoutedEventArgs e)
         {
             string warning = CheckData();
@@ -298,7 +296,6 @@ namespace Clothing_Industry_WPF.Сотрудники
                 }
 
                 connection.Close();
-                //this.Hide();
             }
             else
             {
@@ -312,9 +309,9 @@ namespace Clothing_Industry_WPF.Сотрудники
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
                 query = "INSERT INTO employees " +
-                                       "(Login, Password, Name, Lastname, Patronymic, Phone_Number, Email," +
-                                       " Passport_Data, Notes, Added, Last_Salary, Employee_Roles_id_Employee_Role, Employee_Positions_id_Employee_Position, Photo)" +
-                                       " VALUES (@login, @password, @name, @lastname, @patronymic, @phone, @email, @passport, @notes, @added, @lastSalary, @role, @position, @image);";
+                        "(Login, Password, Name, Lastname, Patronymic, Phone_Number, Email," +
+                        " Passport_Data, Notes, Added, Last_Salary, Employee_Roles_id_Employee_Role, Employee_Positions_id_Employee_Position, Photo)" +
+                        " VALUES (@login, @password, @name, @lastname, @patronymic, @phone, @email, @passport, @notes, @added, @lastSalary, @role, @position, @image);";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
@@ -322,7 +319,6 @@ namespace Clothing_Industry_WPF.Сотрудники
                         "Email = @email, Passport_Data = @passport, Notes = @notes, Added = @added, Last_Salary = @lastSalary, " +
                         "Employee_Roles_id_Employee_Role = @role, Employee_Positions_id_Employee_Position = @position, Photo = @image" +
                         " where Login = @oldLogin;";
-
             }
 
             MySqlCommand command = new MySqlCommand(query, connection);
@@ -362,7 +358,6 @@ namespace Clothing_Industry_WPF.Сотрудники
 
             command.Parameters.AddWithValue("@role", id_role);
             command.Parameters.AddWithValue("@position", id_position);
-
 
             // Обработка фото
             if (image_path != null)

@@ -73,6 +73,7 @@ namespace Clothing_Industry_WPF.Отпуска
                     days_sum.Add(reader.GetInt32(2));             
                 }
             }
+            // Что такое i я так и не понял, Леха, если сломается, будешь фиксить ты!!!
             int i = 0;
             while (i != log.Count)
             {
@@ -139,8 +140,8 @@ namespace Clothing_Industry_WPF.Отпуска
                 break;
             }
 
-            Window create_window = new HolidaysRecordWindow(WaysToOpenForm.WaysToOpen.edit, login);
-            create_window.ShowDialog();
+            Window edit_window = new HolidaysRecordWindow(WaysToOpenForm.WaysToOpen.edit, login);
+            edit_window.ShowDialog();
             RefreshList();
         }
 
@@ -169,7 +170,6 @@ namespace Clothing_Industry_WPF.Отпуска
 
                 MySqlCommand commandTable = new MySqlCommand(queryTable, connection, transaction);
                 commandTable.Parameters.AddWithValue("@login", login);
-              
 
                 try
                 {
@@ -281,7 +281,6 @@ namespace Clothing_Industry_WPF.Отпуска
             result.Add(new FindHandler.FieldParameters("In_Fact_End", "Заканчивается", describe.Where(key => key.Key == "In_Fact_End").First().Value));
             result.Add(new FindHandler.FieldParameters("Notes", "Примечания", describe.Where(key => key.Key == "Notes").First().Value));
 
-
             return result;
         }
 
@@ -367,7 +366,7 @@ namespace Clothing_Industry_WPF.Отпуска
                     index++;
                     if (index < filter.Count)
                     {
-                        result += " or ";
+                        result += " and ";
                     }
                 }
             }

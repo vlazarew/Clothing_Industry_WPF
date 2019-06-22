@@ -54,9 +54,7 @@ namespace Clothing_Industry_WPF.Приход_материала
 
         private void TextBoxCount_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-
             e.Handled = !IsTextAllowed(e.Text);
-
         }
 
         private static bool IsTextAllowed(string text)
@@ -101,23 +99,42 @@ namespace Clothing_Industry_WPF.Приход_материала
                 command.Parameters.AddWithValue("@DocumentID", DocumentId);
                 command.Parameters.AddWithValue("@count", int.Parse(textBoxCount.Text));
 
-                ////
-                string query_document = "select Vendor_Code from materials where Name_Of_Material = @name ";
+                // Выборка Артикула и стоимости материала для главной команды
+                string query_document = "select Vendor_Code, Cost_Of_Material from materials where Name_Of_Material = @name ";
                 MySqlCommand command_document = new MySqlCommand(query_document, connection);
                 command_document.Parameters.AddWithValue("@name", comboBoxName_Of_Material.SelectedItem.ToString());
                 int Vendor_Code = -1;
+                float Cost_Of_Material = -1;
                 using (DbDataReader reader = command_document.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         Vendor_Code = (int)reader.GetValue(0);
+                        Cost_Of_Material = (float)reader.GetValue(0);
                     }
                 }
+
                 command.Parameters.AddWithValue("@Vendor_Code", Vendor_Code);
+
+                // Во вступлениях материалов обновляем данные
+                string totalquery = "Update receipt_of_materials set Total_Price = Total_Price + @Total_Price" +
+                                    " where id_Document_Of_Receipt = @DocumentId;";
+                MySqlCommand command_total = new MySqlCommand(totalquery, connection, transaction);
+                command_total.Parameters.AddWithValue("@DocumentID", DocumentId);
+                command_total.Parameters.AddWithValue("@Total_Price", int.Parse(textBoxCount.Text) * Cost_Of_Material);
+
+                // Добавление в склад
+                string storequery = "Update store set Count = Count + @Count" +
+                                    " where Materials_Vendor_Code = @Vendor_Code;";
+                MySqlCommand command_store = new MySqlCommand(storequery, connection, transaction);
+                command_store.Parameters.AddWithValue("@Count", int.Parse(textBoxCount.Text));
+                command_store.Parameters.AddWithValue("@Vendor_Code", Vendor_Code);
 
                 try
                 {
                     command.ExecuteNonQuery();
+                    command_total.ExecuteNonQuery();
+                    command_store.ExecuteNonQuery();
                     transaction.Commit();
                     this.Close();
                 }
@@ -127,65 +144,11 @@ namespace Clothing_Industry_WPF.Приход_материала
                     MessageBox.Show("Ошибка добавления");
                 }
 
-                //Увеличение суммы
-                string query_price = "select materials.Cost_Of_Material from materials where materials.Name_Of_Material = @name ";
-                MySqlCommand command_price = new MySqlCommand(query_price, connection);
-                command_price.Parameters.AddWithValue("@name", comboBoxName_Of_Material.SelectedItem.ToString());
-                float Cost_Of_Material = -1;
-                using (DbDataReader reader2 = command_price.ExecuteReader())
-                {
-                    while (reader2.Read())
-                    {
-                        Cost_Of_Material = (float)reader2.GetValue(0);
-                    }
-                }
-                ////      
-                MySqlTransaction transaction2 = connection.BeginTransaction();
-                string totalquery = "Update receipt_of_materials set Total_Price = Total_Price + @Total_Price" +
-                            " where id_Document_Of_Receipt = @DocumentId;";
-                MySqlCommand command_total = new MySqlCommand(totalquery, connection, transaction2);
-                command_total.Parameters.AddWithValue("@DocumentID", DocumentId);
-                command_total.Parameters.AddWithValue("@Total_Price", int.Parse(textBoxCount.Text) * Cost_Of_Material);
-
-                try
-                {
-
-                    command_total.ExecuteNonQuery();
-                    transaction2.Commit();
-                    this.Close();
-                }
-                catch
-                {
-                    transaction2.Rollback();
-                    MessageBox.Show("Ошибка добавления");
-                }
-
-                //добавление в склад
-
-                ////      
-                MySqlTransaction transaction3 = connection.BeginTransaction();
-                string storequery = "Update store set Count = Count + @Count" +
-                            " where Materials_Vendor_Code = @Vendor_Code;";
-                MySqlCommand command_store = new MySqlCommand(storequery, connection, transaction3);
-                command_store.Parameters.AddWithValue("@Count", int.Parse(textBoxCount.Text));
-                command_store.Parameters.AddWithValue("@Vendor_Code", Vendor_Code);
-                try
-                {
-                    command_store.ExecuteNonQuery();
-                    transaction3.Commit();
-                    this.Close();
-                }
-                catch
-                {
-                    transaction3.Rollback();
-                    MessageBox.Show("Ошибка добавления");
-                }
-
                 connection.Close();
             }
             else
             {
-                System.Windows.MessageBox.Show(warning);
+                MessageBox.Show(warning);
             }
         }
     }

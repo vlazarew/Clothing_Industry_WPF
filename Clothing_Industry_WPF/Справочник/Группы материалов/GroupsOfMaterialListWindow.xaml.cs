@@ -41,7 +41,6 @@ namespace Clothing_Industry_WPF.Справочник.Группы_материа
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             RefreshList();
-
         }
 
         private void RefreshList()
@@ -62,8 +61,6 @@ namespace Clothing_Industry_WPF.Справочник.Группы_материа
         private string getQueryText()
         {
             string query_text = "select groups_of_material.id_Group_Of_Material, groups_of_material.Name_Of_Group from groups_of_material;";
-
-
             return query_text;
         }
 

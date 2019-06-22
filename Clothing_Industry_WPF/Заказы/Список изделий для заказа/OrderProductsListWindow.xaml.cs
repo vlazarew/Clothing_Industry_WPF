@@ -36,21 +36,14 @@ namespace Clothing_Industry_WPF.Заказы
     public partial class OrderProductsListWindow : Window
     {
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
-
-        /*private FindHandler.FindDescription currentFindDescription;
-        private List<FilterHandler.FilterDescription> currentFilterDescription;
-
-        List<int> resultProductId;
-        */
         private ObservableCollection<HelpStruct> collection;
         private int orderId;
+
         public bool Result { get; set; }
+
         public OrderProductsListWindow(int orderId)
         {
             InitializeComponent();
-            /*currentFindDescription = new FindHandler.FindDescription();
-            currentFilterDescription = new List<FilterHandler.FilterDescription>();
-            resultProductId = new List<int>();*/
             collection = new ObservableCollection<HelpStruct>();
             this.orderId = orderId;
             listOfProductsGrid.ItemsSource = collection;
@@ -61,10 +54,10 @@ namespace Clothing_Industry_WPF.Заказы
         {
             collection = new ObservableCollection<HelpStruct>();
             string query = "select id_Product, Name_Of_Product, Fixed_Price, MoneyToEmployee, Description, Count " +
-                            "from products " +
-                            "join list_products_to_order  on list_products_to_order.Products_id_Product = products.id_Product " +
-                            "where list_products_to_order.orders_id_order = @orderID " +
-                            "group by Name_Of_Product, Fixed_Price, MoneyToEmployee, Description;";
+                           "from products " +
+                           "join list_products_to_order on list_products_to_order.Products_id_Product = products.id_Product " +
+                           "where list_products_to_order.orders_id_order = @orderID " +
+                           "group by Name_Of_Product, Fixed_Price, MoneyToEmployee, Description ;";
 
             MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
@@ -82,7 +75,7 @@ namespace Clothing_Industry_WPF.Заказы
                         Name_Of_Product = reader.GetString(1),
                         Fixed_Price = (float)reader.GetValue(2),
                         MoneyToEmployee = (float)reader.GetValue(3),
-                        Description = reader.GetString(4),
+                        Description = reader.IsDBNull(4) ? "" : reader.GetString(4),
                         Count = (int)reader.GetValue(5),
                     });
                 }
@@ -126,7 +119,7 @@ namespace Clothing_Industry_WPF.Заказы
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Ошибка удаления");
+                    MessageBox.Show("Ошибка удаления");
                 }
             }
 
@@ -224,7 +217,7 @@ namespace Clothing_Industry_WPF.Заказы
                         MessageBox.Show("Ошибка добавления");
                     }
                     i++;
-                }                
+                }
             }
             else
             {
@@ -276,7 +269,7 @@ namespace Clothing_Industry_WPF.Заказы
                     MessageBox.Show("Ошибка добавления");
                 }
             }
-            this.Close();         
+            this.Close();
         }
 
         private void ButtonAddProduct_Click(object sender, RoutedEventArgs e)

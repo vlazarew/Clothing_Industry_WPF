@@ -185,11 +185,6 @@ namespace Clothing_Industry_WPF
         {
             Application.Current.Shutdown();
         }
-
-
-
-
-
         #endregion
 
         // Справочник

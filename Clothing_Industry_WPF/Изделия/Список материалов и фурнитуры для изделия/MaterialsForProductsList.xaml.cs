@@ -39,9 +39,6 @@ namespace Clothing_Industry_WPF.Изделия
         public MaterialsForProductsList(int productId)
         {
             InitializeComponent();
-            /*currentFindDescription = new FindHandler.FindDescription();
-            currentFilterDescription = new List<FilterHandler.FilterDescription>();
-            resultProductId = new List<int>();*/
             collection = new ObservableCollection<HelpStruct>();
             this.productId = productId;
             productslistGrid.ItemsSource = collection;
@@ -55,7 +52,7 @@ namespace Clothing_Industry_WPF.Изделия
                             "from materials " +
                             "join materials_for_product  on materials_for_product.Materials_Vendor_Code = materials.Vendor_Code " +
                             "join units on units.id_Unit = materials.Units_id_Unit " +
-                            "where materials_for_product.Products_id_Product = @productID; "; 
+                            "where materials_for_product.Products_id_Product = @productID ; "; 
       
 
             MySqlConnection connection = new MySqlConnection(connectionString);
@@ -117,7 +114,7 @@ namespace Clothing_Industry_WPF.Изделия
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Ошибка удаления");
+                MessageBox.Show("Ошибка удаления");
                 }
             }
 
