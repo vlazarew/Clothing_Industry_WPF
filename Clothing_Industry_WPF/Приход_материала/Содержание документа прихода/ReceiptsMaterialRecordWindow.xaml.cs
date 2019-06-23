@@ -110,7 +110,7 @@ namespace Clothing_Industry_WPF.Приход_материала
                     while (reader.Read())
                     {
                         Vendor_Code = (int)reader.GetValue(0);
-                        Cost_Of_Material = (float)reader.GetValue(0);
+                        Cost_Of_Material = (float)reader.GetValue(1);
                     }
                 }
 

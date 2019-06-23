@@ -184,10 +184,10 @@
             <Grid Grid.Column="2">
                 <Label x:Name="LabelPlus" Content="Прибыль:" HorizontalAlignment="Left"  VerticalAlignment="Top" RenderTransformOrigin="-0.193,-0.389"/>
                 <Label x:Name="LabelMinus" Content="Расходы:" HorizontalAlignment="Left"  VerticalAlignment="Top" RenderTransformOrigin="-0.193,-0.389" Margin="0,31,0,0"/>
-                <TextBox x:Name="textBoxPlus" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="122" Margin="75,0,0,0"/>
-                <TextBox x:Name="textBoxMinus" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="122" RenderTransformOrigin="0.488,1.096" Margin="75,31,0,0"/>
-                <Label x:Name="LabelCount" Content="Итого:" HorizontalAlignment="Left" FontWeight="Bold"  VerticalAlignment="Top" RenderTransformOrigin="-0.193,-0.389" Margin="0,62,0,0"/>
-                <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="122" RenderTransformOrigin="0.488,1.096" Margin="75,62,0,0"/>
+                <TextBox x:Name="textBoxPlus" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap"  VerticalAlignment="Top" VerticalContentAlignment="Center" Width="122" Margin="75,0,0,0"/>
+                <TextBox x:Name="textBoxMinus" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="122" VerticalContentAlignment="Center" RenderTransformOrigin="0.488,1.096" Margin="75,31,0,0"/>
+                <Label x:Name="LabelCount" Content="Итого:" HorizontalAlignment="Left" FontWeight="Bold"  VerticalAlignment="Top" VerticalContentAlignment="Center" RenderTransformOrigin="-0.193,-0.389" Margin="0,62,0,0"/>
+                <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap"  VerticalAlignment="Top" VerticalContentAlignment="Center" Width="122" RenderTransformOrigin="0.488,1.096" Margin="75,62,0,0"/>
             </Grid>
         </Grid>
     </Grid>

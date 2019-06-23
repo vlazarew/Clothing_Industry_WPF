@@ -17,6 +17,11 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Excel = Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Excel;
+using Window = System.Windows.Window;
+using DataTable = System.Data.DataTable;
+using PrintDialog = System.Windows.Controls.PrintDialog;
 
 namespace Clothing_Industry_WPF.Заказы
 {
@@ -278,8 +283,7 @@ namespace Clothing_Industry_WPF.Заказы
                 edited_query = queryNotNull.Replace(";", " and DATE_FORMAT(" + field + ", '%d.%m.%Y')  ");
                 edited_query += string.Format("= \'{0}\'", currentFindDescription.value);
             }
-
-            edited_query += " " + getGroupBy();
+            edited_query = edited_query.Replace(";", getGroupBy());
             edited_query = edited_query.Replace(";", " union ");
             edited_query += getNullQueryText();
 
@@ -294,7 +298,7 @@ namespace Clothing_Industry_WPF.Заказы
                 edited_query += string.Format("= \'{0}\'", currentFindDescription.value);
             }
 
-            edited_query += " " + getGroupBy();
+            edited_query = edited_query.Replace(";", getGroupBy());
 
             //edited_query += " " + getGroupBy();
 
@@ -417,7 +421,8 @@ namespace Clothing_Industry_WPF.Заказы
                 }
             }
 
-            result += " " + getGroupBy();
+            result += " ; ";
+            result = result.Replace(";", getGroupBy());
             result = result.Replace(";", " union ");
             result += getNullQueryText();
 
@@ -444,7 +449,7 @@ namespace Clothing_Industry_WPF.Заказы
                 }
             }
 
-            result += " " + getGroupBy();
+            result = result.Replace(";", getGroupBy());
             return result;
         }
 
@@ -460,14 +465,14 @@ namespace Clothing_Industry_WPF.Заказы
 
             if (!filter.isDate)
             {
-                result += string.Format(field + " " + typeFilter + "\"{0}\"", filter.value);
+                result += string.Format(field + " " + typeFilter + "\"{0}\" ", filter.value);
             }
             else
             {
                 string day = filter.value.Substring(0, 2);
                 string month = filter.value.Substring(3, 2);
                 string year = filter.value.Substring(6, 4);
-                result += string.Format(field + " " + typeFilter + " \'{0}-{1}-{2}\'", year, month, day);
+                result += string.Format(field + " " + typeFilter + " \'{0}-{1}-{2}\' ", year, month, day);
                 //result += string.Format(" DATE_FORMAT(" + field + ", '%d.%m.%Y') = \'{0}\'", filter.value);
             }
 
@@ -527,6 +532,80 @@ namespace Clothing_Industry_WPF.Заказы
                     break;
                 default:
                     break;
+            }
+        }
+        private string getQueryForPrint()
+        {
+            string idlist = "";
+            foreach (DataRowView row in ordersGrid.Items)
+            {
+                idlist += row.Row.ItemArray[0].ToString() + ", ";
+            }
+            idlist = idlist.Substring(0, idlist.Length - 2);
+            string query_text = "select orders.id_Order, DATE_FORMAT(orders.Date_Of_Order, \"%d.%m.%Y\") as Date_Of_Order, " +
+                " DATE_FORMAT(orders.Date_Of_Delievery, \"%d.%m.%Y\") as Date_Of_Delievery, customers.Parameters, customers.Size, orders.Notes, " +
+                                    "types_of_order.Name_Of_type, statuses_of_order.Name_Of_Status, customers.Nickname, orders.Executor,orders.Responsible, " +
+                                    "products.Name_Of_Product, list_products_to_order.Count as Product_Count,materials.Name_Of_Material,materials_for_product.Count,units.Name_Of_Unit, orders.Added_Price_For_Complexity " +
+                                    "from orders " +
+                                    "left join types_of_order on orders.Types_Of_Order_id_Type_Of_Order = types_of_order.id_Type_Of_Order " +
+                                    "left join statuses_of_order on orders.Statuses_Of_Order_id_Status_Of_Order = statuses_of_order.id_Status_Of_Order " +
+                                    "left join list_products_to_order on orders.id_order = list_products_to_order.Orders_id_Order " +
+                                    "left join customers on customers.id_Customer = orders.Customers_id_Customer " +
+                                    "left join products on list_products_to_order.Products_id_Product = products.id_product " +
+                                    "left join materials_for_product on materials_for_product.Products_id_Product = products.id_Product " +
+                                    "left join materials on materials.Vendor_Code = materials_for_product.Materials_Vendor_Code " +
+                                    "left join units on  materials.Units_id_unit = units.id_Unit " +
+                                    "where not products.Name_Of_Product is null and orders.id_Order in (" + idlist + ") " +
+                                    "order by orders.id_Order,products.Name_Of_Product; ";
+
+            return query_text;
+        }
+        private void ButtonPrint_Click(object sender, RoutedEventArgs e)
+        {
+
+            ///////////////////////////////////
+            MySqlConnection connection = new MySqlConnection(connectionString);
+            string query_text = getQueryForPrint();
+            connection.Open();
+
+            DataTable dataTable = new DataTable();
+            MySqlCommand command = new MySqlCommand(query_text, connection);
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            adapter.Fill(dataTable);
+
+            
+            connection.Close();
+            //////////////////////////////////
+
+
+            Excel.Application excel = new Excel.Application();
+            excel.Visible = true;
+            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
+
+            for (int j = 0; j < tempGrid.Columns.Count; j++)
+            {
+                Range myRange = (Range)sheet1.Cells[1, j + 1];
+                sheet1.Cells[1, j + 1].Font.Bold = true;
+                sheet1.Columns[j + 1].ColumnWidth = 15;
+                myRange.Value2 = tempGrid.Columns[j].Header;
+            }
+            int rows = 0;
+            foreach(DataRow row in dataTable.Rows)
+            {
+                rows++;
+            }   
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < dataTable.Columns.Count; j++)
+                {
+                    string field = dataTable.Rows[i].ItemArray[j].ToString();
+                    TextBlock TextBlockWithField = new TextBlock();
+                    TextBlockWithField.Text = field;
+                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[i + 2, j + 1];
+                    myRange.Value2 = TextBlockWithField.Text;
+                }
             }
         }
     }

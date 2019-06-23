@@ -53,7 +53,7 @@ namespace Clothing_Industry_WPF.Заказы
             {
                 FillFields(idOrder);
             }
-            UpdateTotalPrice();
+           // UpdateTotalPrice();
         }
 
         private void FillFields(int idOrder)
@@ -612,9 +612,10 @@ namespace Clothing_Industry_WPF.Заказы
             {
                 result += listMoneyToEmployee[i] * listCount[i];
             }
-
-            result += listAddedPrice[0];
-
+            if (listAddedPrice.Count > 0)
+            {
+                result += listAddedPrice[0];
+            }
             return result;
         }
 

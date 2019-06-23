@@ -143,20 +143,48 @@
 
         <Grid Grid.Row="0">
             <StackPanel Orientation="Horizontal">
-                <Button Name ="ButtonCreateNew" Content="Создать" HorizontalAlignment="Left" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>
-                <Button x:Name ="ButtonDelete" Content="Удалить" HorizontalAlignment="Left" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
-                <Button x:Name ="ButtonRefresh" Content="Обновить" HorizontalAlignment="Left" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonRefresh_Click"/>
-                <Button x:Name ="ButtonEdit" Content="Изменить выделенное" HorizontalAlignment="Left" Width="149" RenderTransformOrigin="1.194,0.333" TabIndex="4" IsTabStop="False" Click="ButtonEdit_Click"/>
+                <Button Name ="ButtonCreateNew" Content="Создать" HorizontalAlignment="Left" Width="73" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>
+                <Button x:Name ="ButtonDelete" Content="Удалить" HorizontalAlignment="Left" Width="67" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
+                <Button x:Name ="ButtonRefresh" Content="Обновить" HorizontalAlignment="Left" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonRefresh_Click"/>
+                <Button x:Name ="ButtonEdit" Content="Изменить выделенное" HorizontalAlignment="Left" Width="150" RenderTransformOrigin="1.194,0.333" TabIndex="4" IsTabStop="False" Click="ButtonEdit_Click"/>
                 <Button x:Name ="ButtonFind" Content="Найти" HorizontalAlignment="Left" Width="59" RenderTransformOrigin="1.194,0.333" TabIndex="5" IsTabStop="False" Click="ButtonFind_Click"/>
                 <Button x:Name="buttonCancelFind" Content="Отменить поиск" Width="108" TabIndex="6" Click="ButtonCancelFind_Click"/>
-                <Button x:Name ="ButtonFilters" Content="Фильтры" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="7" IsTabStop="False" Click="ButtonFilters_Click"/>
+                <Button x:Name ="ButtonFilters" Content="Фильтры" Width="63" RenderTransformOrigin="1.194,0.333" TabIndex="7" IsTabStop="False" Click="ButtonFilters_Click"/>
                 <Button x:Name ="ButtonListProducts" Content="Список изделий" Width="106" RenderTransformOrigin="1.194,0.333" TabIndex="8" IsTabStop="False" Click="ButtonListProducts_Click"/>
-                <Button x:Name ="buttonAddFitting" Content="Добавить примерку" Width="133" RenderTransformOrigin="1.194,0.333" TabIndex="9" IsTabStop="False"  Click="ButtonAddFitting_Click"/>
+                <Button x:Name ="buttonAddFitting" Content="Добавить примерку" Width="130" RenderTransformOrigin="1.194,0.333" TabIndex="9" IsTabStop="False"  Click="ButtonAddFitting_Click"/>
+                <Button x:Name ="buttonPrint" Content="Печать" Width="58" RenderTransformOrigin="1.194,0.333" TabIndex="9" IsTabStop="False"  Click="ButtonPrint_Click"/>
                 <Button x:Name="ButtonExit" Content="Выход"  Width="75" RenderTransformOrigin="1.194,0.333" IsCancel="True"  TabIndex="9" Visibility="Visible" Click="ButtonExit_Click" />
             </StackPanel>
         </Grid>
 
         <Grid Grid.Row="1">
+            <DataGrid x:Name="tempGrid"  AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable2}" LoadingRow="OrdersGrid_LoadingRow">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridCell}">
+                        <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
+                    </Style>
+                </DataGrid.Resources>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding id_Order}" ClipboardContentBinding="{x:Null}" Header="Номер заказа"/>
+                    <DataGridTextColumn Binding="{Binding Date_Of_Order}" ClipboardContentBinding="{x:Null}" Header="Дата заказа"/>
+                    <DataGridTextColumn Binding="{Binding Date_Of_Delievery}" ClipboardContentBinding="{x:Null}" Header="Дата доставки"/>
+                    <DataGridTextColumn Binding="{Binding Parameters}" ClipboardContentBinding="{x:Null}" Header="Параметры"/>
+                    <DataGridTextColumn Binding="{Binding Size}" ClipboardContentBinding="{x:Null}" Header="Размер"/>
+                    <DataGridTextColumn Binding="{Binding Notes}" ClipboardContentBinding="{x:Null}" Header="Заметки"/>
+                    <DataGridTextColumn Binding="{Binding Name_Of_type}" ClipboardContentBinding="{x:Null}" Header="Тип заказа"/>
+                    <DataGridTextColumn Binding="{Binding Name_Of_Status}" ClipboardContentBinding="{x:Null}" Header="Статус заказа"/>
+                    <DataGridTextColumn Binding="{Binding Nickname}" ClipboardContentBinding="{x:Null}" Header="Заказчик"/>
+                    <DataGridTextColumn Binding="{Binding Executor}" ClipboardContentBinding="{x:Null}" Header="Исполнитель"/>
+                    <DataGridTextColumn Binding="{Binding Responsible}" ClipboardContentBinding="{x:Null}" Header="Ответственный"/>
+                    <DataGridTextColumn Binding="{Binding Name_Of_Product}" ClipboardContentBinding="{x:Null}" Header="Название изделия"/>
+                    <DataGridTextColumn Binding="{Binding Count}" ClipboardContentBinding="{x:Null}" Header="Количество"/>
+                    <DataGridTextColumn Binding="{Binding Name_Of_Material}" ClipboardContentBinding="{x:Null}" Header="Название материала"/>
+                    <DataGridTextColumn Binding="{Binding Product_Count}" ClipboardContentBinding="{x:Null}" Header="Количество материала"/>
+                    <DataGridTextColumn Binding="{Binding Name_Of_Unit}" ClipboardContentBinding="{x:Null}" Header="Единица измерения"/>
+                    <DataGridTextColumn Binding="{Binding Added_Price_For_Complexity}" ClipboardContentBinding="{x:Null}" Header="Выплата за доп сложность"/>
+                </DataGrid.Columns>
+            </DataGrid>
             <DataGrid x:Name="ordersGrid"  AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" LoadingRow="OrdersGrid_LoadingRow">
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridCell}">
@@ -182,6 +210,8 @@
                     <DataGridTextColumn Binding="{Binding Added_Price_For_Complexity}" ClipboardContentBinding="{x:Null}" Header="Выплата за доп сложность"/>
                 </DataGrid.Columns>
             </DataGrid>
+            
+            
         </Grid>
     </Grid>
 </Window>
