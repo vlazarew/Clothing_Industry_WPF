@@ -22,6 +22,7 @@ using Microsoft.Office.Interop.Excel;
 using Window = System.Windows.Window;
 using DataTable = System.Data.DataTable;
 using PrintDialog = System.Windows.Controls.PrintDialog;
+using System.Windows.Forms;
 
 namespace Clothing_Industry_WPF.Заказы
 {
@@ -207,7 +208,7 @@ namespace Clothing_Industry_WPF.Заказы
                 catch
                 {
                     transaction.Rollback();
-                    MessageBox.Show("Удаление не удалось");
+                    System.Windows.MessageBox.Show("Удаление не удалось", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 
@@ -577,42 +578,46 @@ namespace Clothing_Industry_WPF.Заказы
 
             connection.Close();
 
+            Excel.Application excel;
+            // Вот если сделать именно так, то будет проверка на запуск Экселя, и если все ок, то идем дальше, иначе сразу вылетаем из метода
             try
             {
-                Excel.Application excel = new Excel.Application();
-                excel.Visible = true;
-                Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
-                Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
-
-                for (int j = 0; j < tempGrid.Columns.Count; j++)
-                {
-                    Range myRange = (Range)sheet1.Cells[1, j + 1];
-                    sheet1.Cells[1, j + 1].Font.Bold = true;
-                    sheet1.Columns[j + 1].ColumnWidth = 15;
-                    myRange.Value2 = tempGrid.Columns[j].Header;
-                }
-
-                int rows = 0;
-                foreach (DataRow row in dataTable.Rows)
-                {
-                    rows++;
-                }
-
-                for (int i = 0; i < rows; i++)
-                {
-                    for (int j = 0; j < dataTable.Columns.Count; j++)
-                    {
-                        string field = dataTable.Rows[i].ItemArray[j].ToString();
-                        TextBlock TextBlockWithField = new TextBlock();
-                        TextBlockWithField.Text = field;
-                        Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[i + 2, j + 1];
-                        myRange.Value2 = TextBlockWithField.Text;
-                    }
-                }
+                excel = new Excel.Application();
             }
             catch
             {
-                MessageBox.Show("Excel на вашем компьютере не установлен!");
+                System.Windows.MessageBox.Show("На вашем компьютере не установлен Excel. Печать невозможна.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            excel.Visible = true;
+            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
+
+            for (int j = 0; j < tempGrid.Columns.Count; j++)
+            {
+                Range myRange = (Range)sheet1.Cells[1, j + 1];
+                sheet1.Cells[1, j + 1].Font.Bold = true;
+                sheet1.Columns[j + 1].ColumnWidth = 15;
+                myRange.Value2 = tempGrid.Columns[j].Header;
+            }
+
+            int rows = 0;
+            foreach (DataRow row in dataTable.Rows)
+            {
+                rows++;
+            }
+
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < dataTable.Columns.Count; j++)
+                {
+                    string field = dataTable.Rows[i].ItemArray[j].ToString();
+                    TextBlock TextBlockWithField = new TextBlock();
+                    TextBlockWithField.Text = field;
+                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[i + 2, j + 1];
+                    myRange.Value2 = TextBlockWithField.Text;
+                }
             }
         }
     }
