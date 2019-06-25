@@ -225,7 +225,7 @@ namespace Clothing_Industry_WPF.Приход_материала
             }
             catch
             {
-                MessageBox.Show("На вашем компьюьтере не установлен Excel!")
+                MessageBox.Show("На вашем компьюьтере не установлен Excel!");
             }
         }
     }

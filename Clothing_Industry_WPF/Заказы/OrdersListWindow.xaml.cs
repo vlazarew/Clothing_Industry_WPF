@@ -541,29 +541,30 @@ namespace Clothing_Industry_WPF.Заказы
             {
                 idlist += row.Row.ItemArray[0].ToString() + ", ";
             }
+
             idlist = idlist.Substring(0, idlist.Length - 2);
             string query_text = "select orders.id_Order, DATE_FORMAT(orders.Date_Of_Order, \"%d.%m.%Y\") as Date_Of_Order, " +
-                " DATE_FORMAT(orders.Date_Of_Delievery, \"%d.%m.%Y\") as Date_Of_Delievery, customers.Parameters, customers.Size, orders.Notes, " +
-                                    "types_of_order.Name_Of_type, statuses_of_order.Name_Of_Status, customers.Nickname, orders.Executor,orders.Responsible, " +
-                                    "products.Name_Of_Product, list_products_to_order.Count as Product_Count,materials.Name_Of_Material,materials_for_product.Count,units.Name_Of_Unit, orders.Added_Price_For_Complexity " +
-                                    "from orders " +
-                                    "left join types_of_order on orders.Types_Of_Order_id_Type_Of_Order = types_of_order.id_Type_Of_Order " +
-                                    "left join statuses_of_order on orders.Statuses_Of_Order_id_Status_Of_Order = statuses_of_order.id_Status_Of_Order " +
-                                    "left join list_products_to_order on orders.id_order = list_products_to_order.Orders_id_Order " +
-                                    "left join customers on customers.id_Customer = orders.Customers_id_Customer " +
-                                    "left join products on list_products_to_order.Products_id_Product = products.id_product " +
-                                    "left join materials_for_product on materials_for_product.Products_id_Product = products.id_Product " +
-                                    "left join materials on materials.Vendor_Code = materials_for_product.Materials_Vendor_Code " +
-                                    "left join units on  materials.Units_id_unit = units.id_Unit " +
-                                    "where not products.Name_Of_Product is null and orders.id_Order in (" + idlist + ") " +
-                                    "order by orders.id_Order,products.Name_Of_Product; ";
+                                " DATE_FORMAT(orders.Date_Of_Delievery, \"%d.%m.%Y\") as Date_Of_Delievery, customers.Parameters, customers.Size, orders.Notes, " +
+                                "types_of_order.Name_Of_type, statuses_of_order.Name_Of_Status, customers.Nickname, orders.Executor,orders.Responsible, " +
+                                "products.Name_Of_Product, list_products_to_order.Count as Product_Count, " +
+                                "materials.Name_Of_Material,materials_for_product.Count,units.Name_Of_Unit, orders.Added_Price_For_Complexity " +
+                                "from orders " +
+                                "left join types_of_order on orders.Types_Of_Order_id_Type_Of_Order = types_of_order.id_Type_Of_Order " +
+                                "left join statuses_of_order on orders.Statuses_Of_Order_id_Status_Of_Order = statuses_of_order.id_Status_Of_Order " +
+                                "left join list_products_to_order on orders.id_order = list_products_to_order.Orders_id_Order " +
+                                "left join customers on customers.id_Customer = orders.Customers_id_Customer " +
+                                "left join products on list_products_to_order.Products_id_Product = products.id_product " +
+                                "left join materials_for_product on materials_for_product.Products_id_Product = products.id_Product " +
+                                "left join materials on materials.Vendor_Code = materials_for_product.Materials_Vendor_Code " +
+                                "left join units on  materials.Units_id_unit = units.id_Unit " +
+                                "where not products.Name_Of_Product is null and orders.id_Order in (" + idlist + ") " +
+                                "order by orders.id_Order,products.Name_Of_Product; ";
 
             return query_text;
         }
+
         private void ButtonPrint_Click(object sender, RoutedEventArgs e)
         {
-
-            ///////////////////////////////////
             MySqlConnection connection = new MySqlConnection(connectionString);
             string query_text = getQueryForPrint();
             connection.Open();
@@ -574,9 +575,7 @@ namespace Clothing_Industry_WPF.Заказы
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
             adapter.Fill(dataTable);
 
-
             connection.Close();
-            //////////////////////////////////
 
             try
             {
@@ -592,11 +591,13 @@ namespace Clothing_Industry_WPF.Заказы
                     sheet1.Columns[j + 1].ColumnWidth = 15;
                     myRange.Value2 = tempGrid.Columns[j].Header;
                 }
+
                 int rows = 0;
                 foreach (DataRow row in dataTable.Rows)
                 {
                     rows++;
                 }
+
                 for (int i = 0; i < rows; i++)
                 {
                     for (int j = 0; j < dataTable.Columns.Count; j++)
