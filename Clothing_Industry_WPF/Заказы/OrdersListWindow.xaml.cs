@@ -574,38 +574,44 @@ namespace Clothing_Industry_WPF.Заказы
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
             adapter.Fill(dataTable);
 
-            
+
             connection.Close();
             //////////////////////////////////
 
+            try
+            {
+                Excel.Application excel = new Excel.Application();
+                excel.Visible = true;
+                Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+                Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
 
-            Excel.Application excel = new Excel.Application();
-            excel.Visible = true;
-            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
-            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
-
-            for (int j = 0; j < tempGrid.Columns.Count; j++)
-            {
-                Range myRange = (Range)sheet1.Cells[1, j + 1];
-                sheet1.Cells[1, j + 1].Font.Bold = true;
-                sheet1.Columns[j + 1].ColumnWidth = 15;
-                myRange.Value2 = tempGrid.Columns[j].Header;
-            }
-            int rows = 0;
-            foreach(DataRow row in dataTable.Rows)
-            {
-                rows++;
-            }   
-            for (int i = 0; i < rows; i++)
-            {
-                for (int j = 0; j < dataTable.Columns.Count; j++)
+                for (int j = 0; j < tempGrid.Columns.Count; j++)
                 {
-                    string field = dataTable.Rows[i].ItemArray[j].ToString();
-                    TextBlock TextBlockWithField = new TextBlock();
-                    TextBlockWithField.Text = field;
-                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[i + 2, j + 1];
-                    myRange.Value2 = TextBlockWithField.Text;
+                    Range myRange = (Range)sheet1.Cells[1, j + 1];
+                    sheet1.Cells[1, j + 1].Font.Bold = true;
+                    sheet1.Columns[j + 1].ColumnWidth = 15;
+                    myRange.Value2 = tempGrid.Columns[j].Header;
                 }
+                int rows = 0;
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    rows++;
+                }
+                for (int i = 0; i < rows; i++)
+                {
+                    for (int j = 0; j < dataTable.Columns.Count; j++)
+                    {
+                        string field = dataTable.Rows[i].ItemArray[j].ToString();
+                        TextBlock TextBlockWithField = new TextBlock();
+                        TextBlockWithField.Text = field;
+                        Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[i + 2, j + 1];
+                        myRange.Value2 = TextBlockWithField.Text;
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Excel на вашем компьютере не установлен!");
             }
         }
     }

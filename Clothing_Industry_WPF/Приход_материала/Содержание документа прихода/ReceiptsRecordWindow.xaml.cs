@@ -187,40 +187,46 @@ namespace Clothing_Industry_WPF.Приход_материала
                     Name_Of_Document = reader.GetString(1);
                 }
             }
-            // Мне кажется, если не будет Excel у клиента на компе, то все будет хреново, но надеюсь все будет иначе
-            Excel.Application excel = new Excel.Application();
-            excel.Visible = false;
+            try
+            {
+                Excel.Application excel = new Excel.Application();
+                excel.Visible = false;
 
-            // Здесь наверно генерация данных в таблицы Экселя
-            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
-            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
-            excel.DisplayAlerts = false;
-            for (int j = 0; j < receiptrecordGrid.Columns.Count; j++)
-            {
-                Range myRange = (Range)sheet1.Cells[1, j + 1];
-                sheet1.Cells[1, j + 1].Font.Bold = true;
-                sheet1.Columns[j + 1].ColumnWidth = 15;
-                myRange.Value2 = receiptrecordGrid.Columns[j].Header;
-            }
-            for (int i = 0; i < receiptrecordGrid.Columns.Count; i++)
-            {
-                for (int j = 0; j < receiptrecordGrid.Items.Count; j++)
+                // Здесь наверно генерация данных в таблицы Экселя
+                Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+                Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
+                excel.DisplayAlerts = false;
+                for (int j = 0; j < receiptrecordGrid.Columns.Count; j++)
                 {
-                    TextBlock b = receiptrecordGrid.Columns[i].GetCellContent(receiptrecordGrid.Items[j]) as TextBlock;
-                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
-                    myRange.Value2 = b.Text;
+                    Range myRange = (Range)sheet1.Cells[1, j + 1];
+                    sheet1.Cells[1, j + 1].Font.Bold = true;
+                    sheet1.Columns[j + 1].ColumnWidth = 15;
+                    myRange.Value2 = receiptrecordGrid.Columns[j].Header;
                 }
+                for (int i = 0; i < receiptrecordGrid.Columns.Count; i++)
+                {
+                    for (int j = 0; j < receiptrecordGrid.Items.Count; j++)
+                    {
+                        TextBlock b = receiptrecordGrid.Columns[i].GetCellContent(receiptrecordGrid.Items[j]) as TextBlock;
+                        Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
+                        myRange.Value2 = b.Text;
+                    }
+                }
+                //
+
+                // Сохранение файла
+                System.IO.Directory.CreateDirectory(BasePath + "\\" + Default_Folder);
+
+                workbook.SaveAs(BasePath + "\\" + Default_Folder + "\\" + Name_Of_Document + ".xls",
+                      Excel.XlFileFormat.xlWorkbookNormal);
+                workbook.Close(true);
+                excel.Quit();
+                MessageBox.Show("Документ " + Name_Of_Document + " создан успешно.\n" + "Путь документа: " + BasePath + "\\" + Default_Folder);
             }
-            //
-
-            // Сохранение файла
-            System.IO.Directory.CreateDirectory(BasePath + "\\" + Default_Folder);
-
-            workbook.SaveAs(BasePath + "\\" + Default_Folder + "\\" + Name_Of_Document + ".xls",
-                  Excel.XlFileFormat.xlWorkbookNormal);
-            workbook.Close(true);
-            excel.Quit();
-            MessageBox.Show("Документ " + Name_Of_Document + " создан успешно.\n" + "Путь документа: " + BasePath + "\\" + Default_Folder);
+            catch
+            {
+                MessageBox.Show("На вашем компьюьтере не установлен Excel!")
+            }
         }
     }
 }
