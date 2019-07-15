@@ -64,7 +64,7 @@ namespace Clothing_Industry_WPF.Расходы
         {
             string query_text = "select costs.id, " +
                                 "costs.Name_Of_Document, costs.Default_Folder, DATE_FORMAT(costs.Date_Of_Cost, \"%d.%m.%Y\") as Date_Of_Cost, costs.Amount," +
-                                " costs.Notes, consumption_categories.Name_Of_Category, types_of_payment.Name_Of_Type, periodicities.Name_Of_Periodicity, costs.To, costs.From" +
+                                " costs.Notes, consumption_categories.Name_Of_Category, types_of_payment.Name_Of_Type, periodicities.Name_Of_Periodicity, costs.From, costs.To" +
                                 " from costs" +
                                 " join consumption_categories on costs.Consumption_Categories_id_Consumption_Category = consumption_categories.id_Consumption_Category" +
                                 " join types_of_payment on costs.Types_Of_Payment_id_Of_Type = types_of_payment.id_Of_Type" +
@@ -234,8 +234,8 @@ namespace Clothing_Industry_WPF.Расходы
             result.Add(new FindHandler.FieldParameters("Name_Of_Category", "Категория расхода", describe.Where(key => key.Key == "Name_Of_Category").First().Value));
             result.Add(new FindHandler.FieldParameters("Name_Of_Type", "Тип оплаты", describe.Where(key => key.Key == "Name_Of_Type").First().Value));
             result.Add(new FindHandler.FieldParameters("Name_Of_Periodicity", "Периодичность", describe.Where(key => key.Key == "Name_Of_Periodicity").First().Value));
-            result.Add(new FindHandler.FieldParameters("To", "От", describe.Where(key => key.Key == "To").First().Value));
-            result.Add(new FindHandler.FieldParameters("From", "Кому", describe.Where(key => key.Key == "From").First().Value));
+            result.Add(new FindHandler.FieldParameters("From", "От", describe.Where(key => key.Key == "To").First().Value));
+            result.Add(new FindHandler.FieldParameters("To", "Кому", describe.Where(key => key.Key == "From").First().Value));
 
             return result;
         }

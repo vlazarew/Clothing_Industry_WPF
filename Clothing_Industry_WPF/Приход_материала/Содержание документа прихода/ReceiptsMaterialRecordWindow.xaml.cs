@@ -87,6 +87,14 @@ namespace Clothing_Industry_WPF.Приход_материала
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             string warning = CheckData();
+            try
+            {
+                float count = float.Parse(textBoxCount.Text);
+            }
+            catch
+            {
+                warning = "mistake";
+            }
             if (warning == "")
             {
                 MySqlConnection connection = new MySqlConnection(connectionString);
@@ -97,7 +105,7 @@ namespace Clothing_Industry_WPF.Приход_материала
                 string query = "insert into documents_of_receipts (Receipt_Of_Materials_id_Document_Of_Receipt, Materials_Vendor_Code, Count) values (@DocumentID, @Vendor_Code, @count) ";
                 MySqlCommand command = new MySqlCommand(query, connection, transaction);
                 command.Parameters.AddWithValue("@DocumentID", DocumentId);
-                command.Parameters.AddWithValue("@count", int.Parse(textBoxCount.Text));
+                command.Parameters.AddWithValue("@count", float.Parse(textBoxCount.Text));
 
                 // Выборка Артикула и стоимости материала для главной команды
                 string query_document = "select Vendor_Code, Cost_Of_Material from materials where Name_Of_Material = @name ";
@@ -121,13 +129,13 @@ namespace Clothing_Industry_WPF.Приход_материала
                                     " where id_Document_Of_Receipt = @DocumentId;";
                 MySqlCommand command_total = new MySqlCommand(totalquery, connection, transaction);
                 command_total.Parameters.AddWithValue("@DocumentID", DocumentId);
-                command_total.Parameters.AddWithValue("@Total_Price", int.Parse(textBoxCount.Text) * Cost_Of_Material);
+                command_total.Parameters.AddWithValue("@Total_Price", float.Parse(textBoxCount.Text) * Cost_Of_Material);
 
                 // Добавление в склад
                 string storequery = "Update store set Count = Count + @Count" +
                                     " where Materials_Vendor_Code = @Vendor_Code;";
                 MySqlCommand command_store = new MySqlCommand(storequery, connection, transaction);
-                command_store.Parameters.AddWithValue("@Count", int.Parse(textBoxCount.Text));
+                command_store.Parameters.AddWithValue("@Count", float.Parse(textBoxCount.Text));
                 command_store.Parameters.AddWithValue("@Vendor_Code", Vendor_Code);
 
                 try
@@ -146,9 +154,16 @@ namespace Clothing_Industry_WPF.Приход_материала
 
                 connection.Close();
             }
-            else
+            else 
             {
-                MessageBox.Show(warning);
+                if (warning != "mistake")
+                {
+                    MessageBox.Show(warning);
+                }
+                else
+                {
+                    MessageBox.Show("Ошибка формата! Введите число через запятую, если оно не целое.");
+                }
             }
         }
     }

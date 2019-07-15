@@ -30,7 +30,7 @@ namespace Clothing_Industry_WPF.Состояние_склада
     /// Логика взаимодействия для StoreListWindow.xaml
     /// </summary>
     public partial class StoreListWindow : Window
-    { 
+    {
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private FindHandler.FindDescription currentFindDescription;
         private List<FilterHandler.FilterDescription> currentFilterDescription;
@@ -101,7 +101,7 @@ namespace Clothing_Industry_WPF.Состояние_склада
 
             edited_query = query.Replace(";", " where " + field + " ");
             edited_query += string.Format(currentFindDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence ? "= \"{0}\"" : "like \"{0}%\"", currentFindDescription.value);
-            
+
 
             MySqlConnection connection = new MySqlConnection(connectionString);
             DataTable dataTable = new DataTable();
@@ -256,33 +256,41 @@ namespace Clothing_Industry_WPF.Состояние_склада
             }
             */
             //////////////////////////////////
+
+            Excel.Application excel;
+
+            // Вот если сделать именно так, то будет проверка на запуск Экселя, и если все ок, то идем дальше, иначе сразу вылетаем из метода
             try
             {
-                Excel.Application excel = new Excel.Application();
-                excel.Visible = true;
-                Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
-                Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
-
-                for (int j = 0; j < storeGrid.Columns.Count; j++)
-                {
-                    Range myRange = (Range)sheet1.Cells[1, j + 1];
-                    sheet1.Cells[1, j + 1].Font.Bold = true;
-                    sheet1.Columns[j + 1].ColumnWidth = 15;
-                    myRange.Value2 = storeGrid.Columns[j].Header;
-                }
-                for (int i = 0; i < storeGrid.Columns.Count; i++)
-                {
-                    for (int j = 0; j < storeGrid.Items.Count; j++)
-                    {
-                        TextBlock b = storeGrid.Columns[i].GetCellContent(storeGrid.Items[j]) as TextBlock;
-                        Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
-                        myRange.Value2 = b.Text;
-                    }
-                }
+                excel = new Excel.Application();
             }
             catch
             {
-                MessageBox.Show("На вашем компьютере не установлен Excel!");
+                MessageBox.Show("На вашем компьютере не установлен Excel. Печать невозможна.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            excel.Visible = true;
+
+            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
+
+            for (int j = 0; j < storeGrid.Columns.Count; j++)
+            {
+                Range myRange = (Range)sheet1.Cells[1, j + 1];
+                sheet1.Cells[1, j + 1].Font.Bold = true;
+                sheet1.Columns[j + 1].ColumnWidth = 15;
+                myRange.Value2 = storeGrid.Columns[j].Header;
+            }
+
+            for (int i = 0; i < storeGrid.Columns.Count; i++)
+            {
+                for (int j = 0; j < storeGrid.Items.Count; j++)
+                {
+                    TextBlock b = storeGrid.Columns[i].GetCellContent(storeGrid.Items[j]) as TextBlock;
+                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
+                    myRange.Value2 = b.Text;
+                }
             }
         }
     }

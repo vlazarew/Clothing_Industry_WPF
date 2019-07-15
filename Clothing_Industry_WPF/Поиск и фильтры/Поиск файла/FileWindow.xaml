@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Поиск_файла"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-       Title="Выбрать папку" Height="350" Width="525">
+       Title="Выбрать файл" Height="350" Width="525">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />

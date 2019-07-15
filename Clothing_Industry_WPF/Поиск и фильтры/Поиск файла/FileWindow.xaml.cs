@@ -93,9 +93,14 @@ namespace Clothing_Industry_WPF.Поиск_файла
         {
             int row_index = listBoxFiles.SelectedIndex;
             string file_folder = "";
-
-            file_folder = listBoxFiles.Items[row_index].ToString();
-
+            try
+            {
+                file_folder = listBoxFiles.Items[row_index].ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Файл не выбран!");
+            }
             csPathToFolder.PathOfSelectedFolder = file_folder;
             this.Close();
         }

@@ -84,14 +84,14 @@ namespace Clothing_Industry_WPF.Доходы
         {
             Window create_window = new IncomeRecordWindow(WaysToOpenForm.WaysToOpen.create);
             create_window.ShowDialog();
-            string mounth = (csMounth.MounthOfIncome+1).ToString();
+            string mounth = (csMounth.MounthOfIncome + 1).ToString();
             string query_text = "select orders.id_Order as id,orders.Total_Price as Count  from orders " +
-                                "where month(orders.Date_Of_Delievery) = " + mounth + " and(orders.Statuses_Of_Order_id_Status_Of_Order = 2 or " +
+                                "where month(orders.Date_Of_Delievery) = " + mounth + " and (orders.Statuses_Of_Order_id_Status_Of_Order = 2 or " +
                                 "orders.Statuses_Of_Order_id_Status_Of_Order = 3 or " +
-                                "orders.Statuses_Of_Order_id_Status_Of_Order = 4); ";
+                                "orders.Statuses_Of_Order_id_Status_Of_Order = 4) and year(orders.Date_Of_Delievery) = year(curdate()); ";
             RefreshListDirty(query_text);
             float count = 0;
-            foreach(DataRowView row in incomeGrid.Items)
+            foreach (DataRowView row in incomeGrid.Items)
             {
                 count = count + (float)row.Row.ItemArray[1];
             }
@@ -121,8 +121,20 @@ namespace Clothing_Industry_WPF.Доходы
             }
             */
             //////////////////////////////////
+            
+            Excel.Application excel;
 
-            Excel.Application excel = new Excel.Application();
+            // Вот если сделать именно так, то будет проверка на запуск Экселя, и если все ок, то идем дальше, иначе сразу вылетаем из метода
+            try
+            {
+                excel = new Excel.Application();
+            }
+            catch
+            {
+                MessageBox.Show("На вашем компьютере не установлен Excel. Печать невозможна.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             excel.Visible = true;
             Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
             Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
@@ -130,6 +142,7 @@ namespace Clothing_Industry_WPF.Доходы
             Range myRange = (Range)sheet1.Cells[1, 1];
             sheet1.Cells[1, 1].Font.Bold = true;
             myRange.Value2 = "Прибыль";
+
             for (int j = 0; j < incomeGrid.Columns.Count; j++)
             {
                 Range myRange1 = (Range)sheet1.Cells[2, j + 1];
@@ -137,6 +150,7 @@ namespace Clothing_Industry_WPF.Доходы
                 sheet1.Columns[j + 1].ColumnWidth = 15;
                 myRange1.Value2 = incomeGrid.Columns[j].Header;
             }
+
             for (int i = 0; i < incomeGrid.Columns.Count; i++)
             {
                 for (int j = 0; j < incomeGrid.Items.Count; j++)
@@ -146,8 +160,10 @@ namespace Clothing_Industry_WPF.Доходы
                     myRange2.Value2 = b.Text;
                 }
             }
+
             int countitems = incomeGrid.Items.Count;
             int countclearitems = clearincomeGrid.Items.Count;
+
             myRange = (Range)sheet1.Cells[4 + countitems, 1];
             sheet1.Cells[4 + countitems, 1].Font.Bold = true;
             myRange.Value2 = "Прибыль:";
@@ -160,6 +176,7 @@ namespace Clothing_Industry_WPF.Доходы
                 myRange = (Range)sheet1.Cells[6 + countitems, 1];
                 sheet1.Cells[6 + incomeGrid.Items.Count, 1].Font.Bold = true;
                 myRange.Value2 = "Расходы";
+
                 for (int j = 0; j < clearincomeGrid.Columns.Count; j++)
                 {
                     Range myRange1 = (Range)sheet1.Cells[7 + countitems, j + 1];
@@ -167,6 +184,7 @@ namespace Clothing_Industry_WPF.Доходы
                     sheet1.Columns[j + 1].ColumnWidth = 15;
                     myRange1.Value2 = clearincomeGrid.Columns[j].Header;
                 }
+
                 for (int i = 0; i < clearincomeGrid.Columns.Count; i++)
                 {
                     for (int j = 0; j < countclearitems; j++)
@@ -176,19 +194,22 @@ namespace Clothing_Industry_WPF.Доходы
                         myRange2.Value2 = b.Text;
                     }
                 }
+
                 myRange = (Range)sheet1.Cells[9 + countclearitems + countitems, 1];
                 sheet1.Cells[9 + countclearitems + countitems, 1].Font.Bold = true;
                 myRange.Value2 = "Расходы:";
+
                 myRange = (Range)sheet1.Cells[9 + countclearitems + countitems, 2];
                 sheet1.Cells[9 + countclearitems + countitems, 2].Font.Bold = true;
                 myRange.Value2 = textBoxMinus.Text;
+                
                 myRange = (Range)sheet1.Cells[11 + countclearitems + countitems, 1];
                 sheet1.Cells[11 + countclearitems + countitems, 1].Font.Bold = true;
                 myRange.Value2 = "Итого:";
+
                 myRange = (Range)sheet1.Cells[11 + countclearitems + countitems, 2];
                 sheet1.Cells[11 + countclearitems + countitems, 2].Font.Bold = true;
                 myRange.Value2 = textBoxCount.Text;
-
             }
         }
 
@@ -207,7 +228,7 @@ namespace Clothing_Industry_WPF.Доходы
             RefreshListClear(query_text2);
             float countplus = 0;
             float countminus = 0;
-            
+
             foreach (DataRowView row in incomeGrid.Items)
             {
                 countplus = countplus + (float)row.Row.ItemArray[1];

@@ -36,7 +36,7 @@ namespace Clothing_Industry_WPF.Изделия
         private void FillComboBoxes()
         {
             MySqlConnection connection = new MySqlConnection(connectionString);
-            string query = "select Name_Of_Material from materials ;";
+            string query = "select Name_Of_Type from Types_Of_Material;";
             MySqlCommand command = new MySqlCommand(query, connection);
 
             connection.Open();
@@ -75,7 +75,7 @@ namespace Clothing_Industry_WPF.Изделия
 
             if (comboBoxName_Of_Material.SelectedValue == null)
             {
-                result += result == "" ? " Название материала" : ",  Название материала";
+                result += result == "" ? " Тип" : ", Тип";
             }
             if (textBoxCount.Text == "")
             {
@@ -94,13 +94,12 @@ namespace Clothing_Industry_WPF.Изделия
                 connection.Open();
                 MySqlTransaction transaction = connection.BeginTransaction();
 
-                string query = "insert into materials_for_product (Products_id_Product, Materials_Vendor_Code, Count) values (@productId, @Vendor_Code, @count) ";
+                string query = "insert into materials_for_product (Products_id_Product, Types_Of_Material_id_Type_Of_Material, Count) values (@productId, @Vendor_Code, @count) ";
                 MySqlCommand command = new MySqlCommand(query, connection, transaction);
                 command.Parameters.AddWithValue("@productId", productId);
-                command.Parameters.AddWithValue("@count", int.Parse(textBoxCount.Text));
+                command.Parameters.AddWithValue("@count", float.Parse(textBoxCount.Text));
 
-
-                string query_product = "select Vendor_Code from materials where Name_Of_Material = @name ";
+                string query_product = "select Name_Of_Type from Types_Of_Material where Types_Of_Material_id_Type_Of_Material = @name ";
                 MySqlCommand command_product = new MySqlCommand(query_product, connection);
                 command_product.Parameters.AddWithValue("@name", comboBoxName_Of_Material.SelectedItem.ToString());
                 int Vendor_Code = -1;

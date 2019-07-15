@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF"
         mc:Ignorable="d"
   
- Title="Учёт швейного производства 'Моя пижама'" Height="800" Width="1200" Closing="Window_Closing" MinWidth="1200" MinHeight="800">
+ Title="Учёт швейного производства 'Моя пижама'" Height="768" Width="1366" Closing="Window_Closing" MinWidth="1200" MinHeight="800">
     <Window.Resources>
 
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
@@ -322,18 +322,6 @@
                             <Viewbox>
                                 <TextBlock x:Name="Payment_states"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Payment_states_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Статусы оплаты"/></Hyperlink></TextBlock>
                             </Viewbox>
-                            <Viewbox>
-                                <TextBlock x:Name="Type_of_transactions"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Type_of_transactions_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы транзакций"/></Hyperlink></TextBlock>
-                            </Viewbox>
-                            <Viewbox>
-                                <TextBlock x:Name="Types_of_material"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Types_of_material_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы материалов"/></Hyperlink></TextBlock>
-                            </Viewbox>
-                            <Viewbox>
-                                <TextBlock x:Name="Units"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Units_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Единицы измерения"/></Hyperlink></TextBlock>
-                            </Viewbox>
-                            <Viewbox>
-                                <TextBlock x:Name="Suppliers"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Suppliers_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Поставщики"/></Hyperlink></TextBlock>
-                            </Viewbox>
                         </StackPanel>
                     </Border>
                 </Grid>
@@ -347,9 +335,6 @@
                                 <TextBlock x:Name="Order_channels"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Order_channels_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Каналы заказов"/></Hyperlink></TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="Statuses_of_order"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Statuses_of_order_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Статусы заказов"/></Hyperlink></TextBlock>
-                            </Viewbox>
-                            <Viewbox>
                                 <TextBlock x:Name="Types_of_fitting"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Types_of_fitting_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы примерок"/></Hyperlink></TextBlock>
                             </Viewbox>
                             <Viewbox>
@@ -360,6 +345,17 @@
                 </Grid>
                 <Grid Grid.Column="3">
                     <Border   BorderBrush="White" BorderThickness="3">
+                        <StackPanel>
+                            <Viewbox>
+                                <TextBlock x:Name="Type_of_transactions"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Type_of_transactions_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы транзакций"/></Hyperlink></TextBlock>
+                            </Viewbox>
+                            <Viewbox>
+                            <TextBlock x:Name="Units"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Units_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Единицы измерения"/></Hyperlink></TextBlock>
+                        </Viewbox>
+                        <Viewbox>
+                            <TextBlock x:Name="Suppliers"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Suppliers_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Поставщики"/></Hyperlink></TextBlock>
+                        </Viewbox>
+                        </StackPanel>
                     </Border>
                 </Grid>
                 <Grid Grid.Column="4">

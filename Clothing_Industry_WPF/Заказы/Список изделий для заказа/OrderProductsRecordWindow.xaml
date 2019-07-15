@@ -135,9 +135,7 @@
     </Window.Resources>
     <Grid>
         <Label Content="Изделие: " HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="14"/>
-        <Label Content="Количество: " HorizontalAlignment="Left" Margin="10,61,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="14"/>
         <ComboBox x:Name="comboBoxProducts" HorizontalAlignment="Left" Margin="158,27,0,0" VerticalAlignment="Top" Width="199" FontSize="14" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="23" Margin="158,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" FontSize="14" VerticalContentAlignment="Center" PreviewTextInput="TextBoxCount_PreviewTextInput"/>
         <Button x:Name="buttonSave" Content="Добавить" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" FontSize="14" RenderTransformOrigin="0.993,-0.413" Click="ButtonSave_Click"/>
         <Button Content="Отмена" HorizontalAlignment="Left" Margin="282,112,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.694,-0.02" FontSize="14" IsCancel="True" Click="Button_Click"/>
 

@@ -14,6 +14,7 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,10 +25,10 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationVersion>1.0.9.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -51,6 +52,18 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Картинки\Швейная машинка.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>3F6901F72E240FF28D1CD3F32E04A8637ABEA1FA</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Clothing_Industry_WPF_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
@@ -249,12 +262,6 @@
     <Compile Include="Справочник\Роли\EmployeeRolesRecordWindow.xaml.cs">
       <DependentUpon>EmployeeRolesRecordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Справочник\Статусы заказов\StatusesOfOrderListWindow.xaml.cs">
-      <DependentUpon>StatusesOfOrderListWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Справочник\Статусы заказов\StatusesOfOrderRecordWindow.xaml.cs">
-      <DependentUpon>StatusesOfOrderRecordWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Справочник\Статусы клиентов\CustomerStatusesListWindow.xaml.cs">
       <DependentUpon>CustomerStatusesListWindow.xaml</DependentUpon>
     </Compile>
@@ -278,12 +285,6 @@
     </Compile>
     <Compile Include="Справочник\Типы заказов\TypesOfOrderRecordWindow.xaml.cs">
       <DependentUpon>TypesOfOrderRecordWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Справочник\Типы материалов\TypesOfMaterialListWindow.xaml.cs">
-      <DependentUpon>TypesOfMaterialListWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Справочник\Типы материалов\TypesOfMaterialRecordWindow.xaml.cs">
-      <DependentUpon>TypesOfMaterialRecordWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Справочник\Типы оплаты\TypesOfPaymentListWindow.xaml.cs">
       <DependentUpon>TypesOfPaymentListWindow.xaml</DependentUpon>
@@ -522,14 +523,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Справочник\Статусы заказов\StatusesOfOrderListWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Справочник\Статусы заказов\StatusesOfOrderRecordWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Справочник\Статусы клиентов\CustomerStatusesListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -559,14 +552,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Справочник\Типы заказов\TypesOfOrderRecordWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Справочник\Типы материалов\TypesOfMaterialListWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Справочник\Типы материалов\TypesOfMaterialRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -616,6 +601,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Clothing_Industry_WPF_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

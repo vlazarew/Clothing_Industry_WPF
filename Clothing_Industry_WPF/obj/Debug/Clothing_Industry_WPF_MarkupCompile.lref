@@ -1,7 +1,10 @@
 ﻿
 
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\MainForms\MainWindow.xaml;;
+FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\MainForms\MainWindowForUser.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Баланс клиентов\CustomerBalanceListWindow.xaml;;
+FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Доходы\IncomeListWindow.xaml;;
+FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Доходы\IncomeRecordWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Заказы\OrderRecordWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Заказы\Список изделий для заказа\OrderProductsListWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Заказы\OrdersListWindow.xaml;;
@@ -14,6 +17,12 @@ FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Клиенты\CustomersList
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Клиенты\CustomersRecordWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Материалы\MaterialsListWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Материалы\MaterialsRecordWindow.xaml;;
+FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Начисление ЗП\PayrollsListWindow.xaml;;
+FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Начисление ЗП\PayrollsRecordWindow.xaml;;
+FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Отпуска\HolidaysListWindow.xaml;;
+FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Отпуска\HolidaysRecordWindow.xaml;;
+FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Поиск и фильтры\Поиск файла\DialogSelectFolder.xaml;;
+FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Поиск и фильтры\Поиск файла\FileWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Поиск и фильтры\Фильтр\FilterListWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Поиск и фильтры\Поиск\FindWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Поиск и фильтры\Фильтр\FilterRecordWindow.xaml;;
@@ -23,13 +32,11 @@ FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Приход_материа�
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Приход_материала\ReceiptsOfMaterialsWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Приход_материала\ReceiptsRecordDocumentWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Приход_материала\Содержание документа прихода\ReceiptsRecordWindow.xaml;;
+FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Расходы\CostsListWindow.xaml;;
+FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Расходы\CostsRecordWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Состояние_склада\StoreListWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Сотрудники\EmployeesListWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Сотрудники\EmployeesRecordWindow.xaml;;
-FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Отпуска\HolidaysListWindow.xaml;;
-FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Отпуска\HolidaysRecordWindow.xaml;;
-FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Начисление ЗП\PayrollsListWindow.xaml;;
-FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Начисление ЗП\PayrollsRecordWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Справочник\Группы материалов\GroupsOfMaterialListWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Справочник\Группы материалов\GroupsOfMaterialRecordWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Справочник\Должности\EmployeePositionsListWindow.xaml;;
@@ -42,6 +49,8 @@ FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Справочник\Кат�
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Справочник\Категории расходов\ConsumptionCategoriesRecordWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Справочник\Периодичности\PeriodicitiesListWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Справочник\Периодичности\PeriodicitiesRecordWindow.xaml;;
+FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Справочник\Поставщики\SuppliersListWindow.xaml;;
+FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Справочник\Поставщики\SuppliersRecordWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Справочник\Роли\EmployeeRolesListWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Справочник\Роли\EmployeeRolesRecordWindow.xaml;;
 FD:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Справочник\Статусы заказов\StatusesOfOrderListWindow.xaml;;

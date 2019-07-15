@@ -9,11 +9,9 @@ using Clothing_Industry_WPF.Справочник.Группы_материало
 using Clothing_Industry_WPF.Справочник.Единицы_измерения;
 using Clothing_Industry_WPF.Справочник.Каналы_заказов;
 using Clothing_Industry_WPF.Справочник.Поставщики;
-using Clothing_Industry_WPF.Справочник.Статусы_заказов;
 using Clothing_Industry_WPF.Справочник.Статусы_клиентов;
 using Clothing_Industry_WPF.Справочник.Страны;
 using Clothing_Industry_WPF.Справочник.Типы_заказов;
-using Clothing_Industry_WPF.Справочник.Типы_материалов;
 using Clothing_Industry_WPF.Справочник.Типы_примерок;
 using MySql.Data.MySqlClient;
 using System;
@@ -139,13 +137,13 @@ namespace Clothing_Industry_WPF.MainForms
             Window window = new GroupsOfMaterialListWindow();
             window.Show();
         }
-
+/*
         private void Types_of_material_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Window window = new TypesOfMaterialListWindow();
             window.Show();
         }
-
+*/
         private void Units_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Window window = new UnitsListWindow();
@@ -163,13 +161,13 @@ namespace Clothing_Industry_WPF.MainForms
             Window window = new OrderChannelsListWindow();
             window.Show();
         }
-
+/*
         private void Statuses_of_order_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Window window = new StatusesOfOrderListWindow();
             window.Show();
         }
-
+*/
         private void Types_of_fitting_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Window window = new TypesOfFittingListWindow();

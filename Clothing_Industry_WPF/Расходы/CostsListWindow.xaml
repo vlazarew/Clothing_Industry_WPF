@@ -156,7 +156,11 @@
         </Grid>
         <Grid Grid.Row="1">
             <DataGrid x:Name="costsGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}">
-
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridCell}">
+                        <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
+                    </Style>
+                </DataGrid.Resources>
 
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding id}" ClipboardContentBinding="{x:Null}" Header="Номер документа" IsReadOnly="True" />
@@ -168,8 +172,8 @@
                     <DataGridTextColumn Binding="{Binding Name_Of_Category}" ClipboardContentBinding="{x:Null}" Header="Категория расхода"/>
                     <DataGridTextColumn Binding="{Binding Name_Of_Type}" ClipboardContentBinding="{x:Null}" Header="Тип оплаты"/>
                     <DataGridTextColumn Binding="{Binding Name_Of_Periodicity}" ClipboardContentBinding="{x:Null}" Header="Периодичность"/>
-                    <DataGridTextColumn Binding="{Binding To}" ClipboardContentBinding="{x:Null}" Header="От"/>
-                    <DataGridTextColumn Binding="{Binding From}" ClipboardContentBinding="{x:Null}" Header="Кому"/>
+                    <DataGridTextColumn Binding="{Binding From}" ClipboardContentBinding="{x:Null}" Header="От"/>
+                    <DataGridTextColumn Binding="{Binding To}" ClipboardContentBinding="{x:Null}" Header="Кому"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
