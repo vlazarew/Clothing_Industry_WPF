@@ -30,7 +30,7 @@ namespace Clothing_Industry_WPF.Приход_материала
         public string Name_Of_Material { get; set; }
         public float Cost_Of_Material { get; set; }
         public string Name_Of_Unit { get; set; }
-        public int Count { get; set; }
+        public float Count { get; set; }
     }
     public partial class ReceiptsRecordWindow : Window
     {
@@ -74,7 +74,7 @@ namespace Clothing_Industry_WPF.Приход_материала
                         Name_Of_Material = reader.GetString(1),
                         Cost_Of_Material = (float)reader.GetValue(2),
                         Name_Of_Unit = reader.GetString(3),
-                        Count = (int)reader.GetValue(4),
+                        Count = (float)reader.GetValue(4),
                     });
                 }
             }
@@ -218,12 +218,16 @@ namespace Clothing_Industry_WPF.Приход_материала
 
             for (int i = 0; i < receiptrecordGrid.Columns.Count; i++)
             {
+
+                MessageBox.Show("На вашем компьюьтере не установлен Excel!");
+
                 for (int j = 0; j < receiptrecordGrid.Items.Count; j++)
                 {
                     TextBlock b = receiptrecordGrid.Columns[i].GetCellContent(receiptrecordGrid.Items[j]) as TextBlock;
                     Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
                     myRange.Value2 = b.Text;
                 }
+
             }
             // Сохранение файла
             System.IO.Directory.CreateDirectory(BasePath + "\\" + Default_Folder);
