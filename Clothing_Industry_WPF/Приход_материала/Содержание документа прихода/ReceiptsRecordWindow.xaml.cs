@@ -179,6 +179,7 @@ namespace Clothing_Industry_WPF.Приход_материала
 
             string Default_Folder = "";
             string Name_Of_Document = "";
+
             using (DbDataReader reader = command_folder.ExecuteReader())
             {
                 while (reader.Read())
@@ -187,46 +188,50 @@ namespace Clothing_Industry_WPF.Приход_материала
                     Name_Of_Document = reader.GetString(1);
                 }
             }
+
+            Excel.Application excel;
+            // Вот если сделать именно так, то будет проверка на запуск Экселя, и если все ок, то идем дальше, иначе сразу вылетаем из метода
             try
             {
-                Excel.Application excel = new Excel.Application();
-                excel.Visible = false;
-
-                // Здесь наверно генерация данных в таблицы Экселя
-                Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
-                Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
-                excel.DisplayAlerts = false;
-                for (int j = 0; j < receiptrecordGrid.Columns.Count; j++)
-                {
-                    Range myRange = (Range)sheet1.Cells[1, j + 1];
-                    sheet1.Cells[1, j + 1].Font.Bold = true;
-                    sheet1.Columns[j + 1].ColumnWidth = 15;
-                    myRange.Value2 = receiptrecordGrid.Columns[j].Header;
-                }
-                for (int i = 0; i < receiptrecordGrid.Columns.Count; i++)
-                {
-                    for (int j = 0; j < receiptrecordGrid.Items.Count; j++)
-                    {
-                        TextBlock b = receiptrecordGrid.Columns[i].GetCellContent(receiptrecordGrid.Items[j]) as TextBlock;
-                        Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
-                        myRange.Value2 = b.Text;
-                    }
-                }
-                //
-
-                // Сохранение файла
-                System.IO.Directory.CreateDirectory(BasePath + "\\" + Default_Folder);
-
-                workbook.SaveAs(BasePath + "\\" + Default_Folder + "\\" + Name_Of_Document + ".xls",
-                      Excel.XlFileFormat.xlWorkbookNormal);
-                workbook.Close(true);
-                excel.Quit();
-                MessageBox.Show("Документ " + Name_Of_Document + " создан успешно.\n" + "Путь документа: " + BasePath + "\\" + Default_Folder);
+                excel = new Excel.Application();
             }
             catch
             {
-                MessageBox.Show("На вашем компьюьтере не установлен Excel!")
+                MessageBox.Show("На вашем компьютере не установлен Excel. Печать невозможна.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
+            // Стоял здесь false, нужно оттестить!!!
+            excel.Visible = true;
+
+            // Здесь наверно генерация данных в таблицы Экселя
+            Workbook workbook = excel.Workbooks.Add(System.Reflection.Missing.Value);
+            Worksheet sheet1 = (Worksheet)workbook.Sheets[1];
+            excel.DisplayAlerts = false;
+
+            for (int j = 0; j < receiptrecordGrid.Columns.Count; j++)
+            {
+                Range myRange = (Range)sheet1.Cells[1, j + 1];
+                sheet1.Cells[1, j + 1].Font.Bold = true;
+                sheet1.Columns[j + 1].ColumnWidth = 15;
+                myRange.Value2 = receiptrecordGrid.Columns[j].Header;
+            }
+
+            for (int i = 0; i < receiptrecordGrid.Columns.Count; i++)
+            {
+                for (int j = 0; j < receiptrecordGrid.Items.Count; j++)
+                {
+                    TextBlock b = receiptrecordGrid.Columns[i].GetCellContent(receiptrecordGrid.Items[j]) as TextBlock;
+                    Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[j + 2, i + 1];
+                    myRange.Value2 = b.Text;
+                }
+            }
+            // Сохранение файла
+            System.IO.Directory.CreateDirectory(BasePath + "\\" + Default_Folder);
+
+            workbook.SaveAs(BasePath + "\\" + Default_Folder + "\\" + Name_Of_Document + ".xls", Excel.XlFileFormat.xlWorkbookNormal);
+            workbook.Close(true);
+            excel.Quit();
+            MessageBox.Show("Документ " + Name_Of_Document + " создан успешно.\n" + "Путь документа: " + BasePath + "\\" + Default_Folder);
         }
     }
 }
