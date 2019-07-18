@@ -154,11 +154,8 @@
                 </DataGrid.Resources>
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Name_Of_Type}" ClipboardContentBinding="{x:Null}" Header="Тип" IsReadOnly="True"/>
-                    <DataGridTextColumn Binding="{Binding Name_Of_Material}" ClipboardContentBinding="{x:Null}" Header="Название материала" />
+                    <DataGridTextColumn Binding="{Binding Name_Of_Group}" ClipboardContentBinding="{x:Null}" Header="Группа" IsReadOnly="True"/>
                     <DataGridTextColumn Binding="{Binding Count}" ClipboardContentBinding="{x:Null}" Header="Количество"/>
-                    <DataGridTextColumn Binding="{Binding Cost_Of_Material}" ClipboardContentBinding="{x:Null}" Header="Стоимость"/>
-                    <DataGridTextColumn Binding="{Binding Name_Of_Unit}" ClipboardContentBinding="{x:Null}" Header="Единица измерения"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

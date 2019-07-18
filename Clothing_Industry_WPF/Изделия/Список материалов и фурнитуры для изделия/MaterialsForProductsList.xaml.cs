@@ -21,12 +21,10 @@ namespace Clothing_Industry_WPF.Изделия
 {
     public struct HelpStruct
     {
-        public int Vendor_Code { get; set; }
-        public string Name_Of_Type { get; set; }
-        public string Name_Of_Material { get; set; }
-        public float Cost_Of_Material { get; set; }
-        public string Name_Of_Unit { get; set; }
+        public string Name_Of_Group { get; set; }
+
         public float Count { get; set; }
+        public int Groups_Of_Material_id_Group_Of_Material { get;  set; }
     }
 
     public partial class MaterialsForProductsList : Window
@@ -49,11 +47,9 @@ namespace Clothing_Industry_WPF.Изделия
         private void RefreshList()
         {
             collection = new ObservableCollection<HelpStruct>();
-            string query = "select Materials_Vendor_Code, Name_Of_Type, Name_Of_Material, Cost_Of_Material, Name_Of_Unit, Count " +
-                            "from materials_For_Product " +
-                            "join types_Of_material on materials_for_product.Types_Of_Material_id_Type_Of_Material = types_of_material.id_Type_Of_Material " +
-                            "join materials  on materials_for_product.Materials_Vendor_Code = materials.Vendor_Code " +
-                            "join units on units.id_Unit = materials.Units_id_Unit " +
+            string query = "select  Groups_Of_Material_id_Group_Of_Material, Name_Of_Group, Count " +
+                            "from materials_for_product " +
+                            "join groups_of_material on materials_for_product.Groups_Of_Material_id_Group_Of_Material = groups_of_material.id_Group_Of_Material " +
                             "where materials_for_product.Products_id_Product = @productID ; "; 
       
 
@@ -69,12 +65,9 @@ namespace Clothing_Industry_WPF.Изделия
                 {
                     collection.Add(new HelpStruct()
                     {
-                        Vendor_Code = (int)reader.GetValue(0),
-                        Name_Of_Type = reader.GetString(1),
-                        Name_Of_Material = reader.GetString(2),
-                        Cost_Of_Material = (float)reader.GetValue(3),
-                        Name_Of_Unit = reader.GetString(4),
-                        Count = (float)reader.GetValue(5),
+                        Groups_Of_Material_id_Group_Of_Material = (int)reader.GetValue(0),
+                        Name_Of_Group = reader.GetString(1),
+                        Count = (float)reader.GetValue(2),
                     });
                 }
             }
@@ -88,7 +81,7 @@ namespace Clothing_Industry_WPF.Изделия
             List<int> indexesToDelete = new List<int>();
             foreach (HelpStruct row in productslistGrid.SelectedItems)
             {
-                indexesToDelete.Add(row.Vendor_Code);
+                indexesToDelete.Add(row.Groups_Of_Material_id_Group_Of_Material);
             }
 
             DeleteFromDB(indexesToDelete);
@@ -99,14 +92,14 @@ namespace Clothing_Industry_WPF.Изделия
             MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
 
-            foreach (int Vendor_Code in ids)
+            foreach (int Groups_Of_Material_id_Group_Of_Material in ids)
             {
                 MySqlTransaction transaction = connection.BeginTransaction();
 
-                string queryTable = "delete from materials_for_product where Types_Of_Material_id_Type_Of_Material = @Types_Of_Material_id_Type_Of_Material and Products_id_Product = @id_product";
+                string queryTable = "delete from materials_for_product where Groups_Of_Material_id_Group_Of_Material = @Groups_Of_Material_id_Group_Of_Material and Products_id_Product = @id_product";
 
                 MySqlCommand commandTable = new MySqlCommand(queryTable, connection, transaction);
-                commandTable.Parameters.AddWithValue("@Types_Of_Material_id_Type_Of_Material", Vendor_Code);
+                commandTable.Parameters.AddWithValue("@Groups_Of_Material_id_Group_Of_Material", Groups_Of_Material_id_Group_Of_Material);
                 commandTable.Parameters.AddWithValue("@id_product", productId);
 
                 try

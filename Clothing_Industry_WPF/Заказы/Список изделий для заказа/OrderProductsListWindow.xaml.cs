@@ -129,25 +129,38 @@ namespace Clothing_Industry_WPF.Заказы
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
+
+        private void ButtonAddProduct_Click(object sender, RoutedEventArgs e)
+        {
+            Window window_add = new OrderProductsRecordWindow(orderId);
+            window_add.ShowDialog();
+            RefreshList();
             Result = true;
             // Тут вроде все окей, но надо переделать, я ничего не понимаю
-            ////////////////////////
+            //ОК вот блоки
+            //Здесь блок с запросом продукта и его количества
             MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
-            string query_product = "select Products_id_Product from list_products_to_order where  Orders_id_Order = @orderId; ";
+            string query_product = "select Products_id_Product, Count from list_products_to_order where  Orders_id_Order = @orderId; ";
             MySqlCommand command_product = new MySqlCommand(query_product, connection);
             command_product.Parameters.AddWithValue("@orderId", orderId);
             List<int> product_id = new List<int>();
+            List<int> countproduct = new List<int>();
             using (DbDataReader reader = command_product.ExecuteReader())
             {
                 while (reader.Read())
                 {
                     product_id.Add((int)reader.GetValue(0));
+                    countproduct.Add((int)reader.GetValue(1));
                 }
             }
+
+            //Ищем материал и его количество для заказа
             int i = 0;
             List<int> Materials_Vendor_Code = new List<int>();
-            List<int> CountProduct = new List<int>();
+            List<float> CountProduct = new List<float>();
             while (i != product_id.Count)
             {
                 string query_material = "select materials_for_product.Materials_Vendor_Code,materials_for_product.Count from materials_for_product where materials_for_product.Products_id_Product = @productId; ";
@@ -160,15 +173,15 @@ namespace Clothing_Industry_WPF.Заказы
                     while (reader2.Read())
                     {
                         Materials_Vendor_Code.Add((int)reader2.GetValue(0));
-                        CountProduct.Add((int)reader2.GetValue(1));
+                        CountProduct.Add((float)reader2.GetValue(1) * countproduct[i]);
                     }
                 }
                 i++;
             }
-            //// 
+            //Сколько на складе
             i = 0;
             string query_store = "select store.Count from store where store.Materials_Vendor_Code = @Materials_Vendor_Code; ";
-            List<int> CountStore = new List<int>();
+            List<float> CountStore = new List<float>();
             string cnt;
             while (i != Materials_Vendor_Code.Count)
             {
@@ -179,7 +192,7 @@ namespace Clothing_Industry_WPF.Заказы
                     while (reader3.Read())
                     {
                         cnt = reader3.GetValue(0).ToString();
-                        CountStore.Add(Int32.Parse(cnt));
+                        CountStore.Add(float.Parse(cnt));
                         i++;
                     }
                 }
@@ -192,6 +205,7 @@ namespace Clothing_Industry_WPF.Заказы
                     check = false;
                 i++;
             }
+            //вычет со склада
             if (check)
             {
                 i = 0;
@@ -219,9 +233,10 @@ namespace Clothing_Industry_WPF.Заказы
                     i++;
                 }
             }
+            //либо чего нет
             else
             {
-                List<int> NeedMaterial = new List<int>();
+                List<float> NeedMaterial = new List<float>();
                 for (i = 0; i != CountStore.Count; i++)
                 {
                     if (CountProduct[i] > CountStore[i])
@@ -269,14 +284,10 @@ namespace Clothing_Industry_WPF.Заказы
                     MessageBox.Show("Ошибка добавления");
                 }
             }
-            this.Close();
         }
 
-        private void ButtonAddProduct_Click(object sender, RoutedEventArgs e)
-        {
-            Window window_add = new OrderProductsRecordWindow(orderId);
-            window_add.ShowDialog();
-            RefreshList();
-        }
+  
+
+
     }
 }

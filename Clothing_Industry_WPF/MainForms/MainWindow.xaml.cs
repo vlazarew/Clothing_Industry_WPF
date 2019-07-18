@@ -11,7 +11,6 @@ using Clothing_Industry_WPF.Приход_материала;
 using Clothing_Industry_WPF.Расходы;
 using Clothing_Industry_WPF.Состояние_склада;
 using Clothing_Industry_WPF.Сотрудники;
-using Clothing_Industry_WPF.Справочник.Группы_материалов;
 using Clothing_Industry_WPF.Справочник.Должности;
 using Clothing_Industry_WPF.Справочник.Единицы_измерения;
 using Clothing_Industry_WPF.Справочник.Каналы_заказов;
@@ -23,25 +22,14 @@ using Clothing_Industry_WPF.Справочник.Статусы_клиентов
 using Clothing_Industry_WPF.Справочник.Статусы_оплаты;
 using Clothing_Industry_WPF.Справочник.Страны;
 using Clothing_Industry_WPF.Справочник.Типы_заказов;
+using Clothing_Industry_WPF.Справочник.Типы_материалов;
 using Clothing_Industry_WPF.Справочник.Типы_оплаты;
 using Clothing_Industry_WPF.Справочник.Типы_примерок;
 using Clothing_Industry_WPF.Справочник.Типы_транзакций;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Clothing_Industry_WPF
 {
@@ -216,13 +204,13 @@ namespace Clothing_Industry_WPF
             Window window = new CountriesListWindow();
             window.Show();
         }
-
+        /*
         private void Groups_of_material_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Window window = new GroupsOfMaterialListWindow();
             window.Show();
         }
-
+        */
         private void Payment_states_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Window window = new PaymentStatesListWindow();
@@ -234,13 +222,13 @@ namespace Clothing_Industry_WPF
             Window window = new TypeOfTransactionsListWindow();
             window.Show();
         }
-/*
+
         private void Types_of_material_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Window window = new TypesOfMaterialListWindow();
             window.Show();
         }
-*/
+
         private void Units_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Window window = new UnitsListWindow();

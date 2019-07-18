@@ -278,7 +278,7 @@ namespace Clothing_Industry_WPF.Заказы
 
                 //Создать/изменить запись в таблице Заказы
                 MySqlCommand command = actionInDBCommand(connection, transaction);
-
+                //КАПСОМ КРУТО ПИСАТЬ ДА????
                 // !!! ИЗМЕНЕНИЕ БАЛАНСА КЛИЕНТА !!!
                 MySqlCommand commandSetBalance = EditCustomerBalance(connection, transaction);
                 // !!! КОНЕЦ ИЗМЕНЕНИЯ БАЛАНСА КЛИЕНТА !!!

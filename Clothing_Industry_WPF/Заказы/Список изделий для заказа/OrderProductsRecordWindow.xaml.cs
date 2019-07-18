@@ -76,7 +76,10 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
             {
                 result += result == "" ? " Изделие" : ",  Изделие";
             }
-
+            if (textBoxCount.Text == "")
+            {
+                result += result == "" ? " Количество" : ", Количество";
+            }
 
             return result == "" ? result : "Не заполнены обязательные поля: " + result;
         }
@@ -93,7 +96,7 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
                 string query = "insert into list_products_to_order (Orders_id_Order, Products_id_Product, Count) values (@orderId, @productId, @count); ";
                 MySqlCommand command = new MySqlCommand(query, connection, transaction);
                 command.Parameters.AddWithValue("@orderId", orderId);
-
+                command.Parameters.AddWithValue("@count", textBoxCount.Text);
 
                 string query_product = "select id_product from products where  Name_Of_Product = @name; ";
                 MySqlCommand command_product = new MySqlCommand(query_product, connection);
@@ -124,6 +127,8 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
 
                 /////////////////////
                 connection.Close();
+                Window listMaterials = new OrderListOfMaterialsForProduct(product_id);
+                listMaterials.ShowDialog();
             }
             else
             {

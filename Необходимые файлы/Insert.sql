@@ -91,8 +91,7 @@ insert into products (Name_Of_Product, Fixed_Price, MoneyToEmployee, Description
   values('Кружевное платье', 400, 60, 'C рисунком', null);
   
 -- Материалы на изделие  
-insert into materials_for_product values (100001, 1, 10);
-insert into materials_for_product values (100002, 1, 3);
+
 -- Сотрудники
 
 insert into employees values('Petrov','183461','Иван','Петров','Васильевич','89313332222','petrov_ivan@google.com','2003 200122','',null,'2019-05-05',66000,1,1);

@@ -15,30 +15,35 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Clothing_Industry_WPF.Изделия
+namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_заказа
 {
     /// <summary>
-    /// Логика взаимодействия для MaterialsForProductsRecordWindow.xaml
+    /// Логика взаимодействия для OrderRecordMaterialForProduct.xaml
     /// </summary>
-    public partial class MaterialsForProductsRecordWindow : Window
+   
+    public partial class OrderRecordMaterialForProduct : Window
     {
         private static readonly Regex _regex = new Regex("[^0-9]");
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private int productId;
+        private int groupofmaterial;
+        private float count;
 
-        public MaterialsForProductsRecordWindow(int productId)
+        public OrderRecordMaterialForProduct(int productId, int groupofmaterial, float count)
         {
             InitializeComponent();
             this.productId = productId;
+            this.groupofmaterial = groupofmaterial;
+            this.count = count;
             FillComboBoxes();
         }
 
         private void FillComboBoxes()
         {
             MySqlConnection connection = new MySqlConnection(connectionString);
-            string query = "select Name_Of_Group from Groups_Of_Material;";
+            string query = "select Name_Of_Material, Vendor_Code from Materials where Groups_Of_Material_id_Group_Of_Material = @groupofmaterial;";
             MySqlCommand command = new MySqlCommand(query, connection);
-
+            command.Parameters.AddWithValue("@groupofmaterial", groupofmaterial);
             connection.Open();
 
             using (DbDataReader reader = command.ExecuteReader())
@@ -46,6 +51,7 @@ namespace Clothing_Industry_WPF.Изделия
                 while (reader.Read())
                 {
                     comboBoxName_Of_Material.Items.Add(reader.GetString(0));
+                   
                 }
             }
 
@@ -75,12 +81,9 @@ namespace Clothing_Industry_WPF.Изделия
 
             if (comboBoxName_Of_Material.SelectedValue == null)
             {
-                result += result == "" ? " Группа" : ", Группа";
+                result += result == "" ? " Название" : ", Название";
             }
-            if (textBoxCount.Text == "")
-            {
-                result += result == "" ? " Количество" : ", Количество";
-            }
+
 
             return result == "" ? result : "Не заполнены обязательные поля: " + result;
         }
@@ -94,12 +97,24 @@ namespace Clothing_Industry_WPF.Изделия
                 connection.Open();
                 MySqlTransaction transaction = connection.BeginTransaction();
 
-                string query = "insert into materials_for_product (Products_id_Product, Groups_Of_Material_id_Group_Of_Material, Count) values (@productId, @name, @count) ";
+                string query = "Update materials_for_product set Materials_Vendor_Code = @Vendor_Code " +
+                        " where Products_id_Product = @productId and Groups_Of_Material_id_Group_Of_Material = @groupofmaterial and Count = @count; ";
                 MySqlCommand command = new MySqlCommand(query, connection, transaction);
                 command.Parameters.AddWithValue("@productId", productId);
-                command.Parameters.AddWithValue("@count", float.Parse(textBoxCount.Text));
-                command.Parameters.AddWithValue("@name", comboBoxName_Of_Material.SelectedIndex+1);
+                command.Parameters.AddWithValue("@groupofmaterial", groupofmaterial);
+                command.Parameters.AddWithValue("@count", count);
 
+                MySqlCommand commandvendor = new MySqlCommand("select vendor_code from materials where Name_Of_Material = @Name_Of_Material", connection);
+                commandvendor.Parameters.AddWithValue("@Name_Of_Material", comboBoxName_Of_Material.SelectedItem.ToString());
+                int vendor_code = -1;
+                using (DbDataReader reader = commandvendor.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        vendor_code = reader.GetInt32(0);
+                    }
+                }
+                command.Parameters.AddWithValue("@Vendor_Code", vendor_code);
                 try
                 {
                     command.ExecuteNonQuery();

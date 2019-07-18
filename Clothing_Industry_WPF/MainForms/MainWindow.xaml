@@ -317,7 +317,7 @@
                                 <TextBlock x:Name="Countries"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Countries_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Страны"/></Hyperlink></TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="Groups_of_material"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Groups_of_material_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Группы материалов"/></Hyperlink></TextBlock>
+                                <TextBlock x:Name="Types_of_material"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Types_of_material_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы материалов"/></Hyperlink></TextBlock>
                             </Viewbox>
                             <Viewbox>
                                 <TextBlock x:Name="Payment_states"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Payment_states_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Статусы оплаты"/></Hyperlink></TextBlock>

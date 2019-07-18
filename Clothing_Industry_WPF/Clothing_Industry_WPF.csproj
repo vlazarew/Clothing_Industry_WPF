@@ -63,7 +63,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
@@ -116,6 +116,9 @@
     <Compile Include="Заказы\OrderRecordWindow.xaml.cs">
       <DependentUpon>OrderRecordWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Заказы\Список изделий для заказа\Список материалов для изделия\OrderListOfMaterialsForProduct.xaml.cs">
+      <DependentUpon>OrderListOfMaterialsForProduct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Заказы\Список изделий для заказа\OrderProductsListWindow.xaml.cs">
       <DependentUpon>OrderProductsListWindow.xaml</DependentUpon>
     </Compile>
@@ -124,6 +127,9 @@
     </Compile>
     <Compile Include="Заказы\Список изделий для заказа\OrderProductsRecordWindow.xaml.cs">
       <DependentUpon>OrderProductsRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Заказы\Список изделий для заказа\Список материалов для изделия\OrderRecordMaterialForProduct.xaml.cs">
+      <DependentUpon>OrderRecordMaterialForProduct.xaml</DependentUpon>
     </Compile>
     <Compile Include="Изделия\ProductsListWindow.xaml.cs">
       <DependentUpon>ProductsListWindow.xaml</DependentUpon>
@@ -214,12 +220,6 @@
     <Compile Include="Сотрудники\EmployeesRecordWindow.xaml.cs">
       <DependentUpon>EmployeesRecordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Справочник\Группы материалов\GroupsOfMaterialListWindow.xaml.cs">
-      <DependentUpon>GroupsOfMaterialListWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Справочник\Группы материалов\GroupsOfMaterialRecordWindow.xaml.cs">
-      <DependentUpon>GroupsOfMaterialRecordWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Справочник\Должности\EmployeePositionsListWindow.xaml.cs">
       <DependentUpon>EmployeePositionsListWindow.xaml</DependentUpon>
     </Compile>
@@ -286,6 +286,12 @@
     <Compile Include="Справочник\Типы заказов\TypesOfOrderRecordWindow.xaml.cs">
       <DependentUpon>TypesOfOrderRecordWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Справочник\Типы материалов\TypesOfMaterialListWindow.xaml.cs">
+      <DependentUpon>TypesOfMaterialListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Типы материалов\TypesOfMaterialRecordWindow.xaml.cs">
+      <DependentUpon>TypesOfMaterialRecordWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Справочник\Типы оплаты\TypesOfPaymentListWindow.xaml.cs">
       <DependentUpon>TypesOfPaymentListWindow.xaml</DependentUpon>
     </Compile>
@@ -335,6 +341,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Заказы\Список изделий для заказа\Список материалов для изделия\OrderListOfMaterialsForProduct.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Заказы\Список изделий для заказа\OrderProductsListWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -346,6 +356,10 @@
     <Page Include="Заказы\Список изделий для заказа\OrderProductsRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Заказы\Список изделий для заказа\Список материалов для изделия\OrderRecordMaterialForProduct.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Изделия\ProductsListWindow.xaml">
       <SubType>Designer</SubType>
@@ -459,14 +473,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Справочник\Группы материалов\GroupsOfMaterialListWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Справочник\Группы материалов\GroupsOfMaterialRecordWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Справочник\Должности\EmployeePositionsListWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -554,6 +560,14 @@
     <Page Include="Справочник\Типы заказов\TypesOfOrderRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Типы материалов\TypesOfMaterialListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Справочник\Типы материалов\TypesOfMaterialRecordWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Справочник\Типы оплаты\TypesOfPaymentListWindow.xaml">
       <SubType>Designer</SubType>
