@@ -163,6 +163,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding id_Employee_Position}" ClipboardContentBinding="{x:Null}" Header="Код" IsReadOnly="True"/>
                 <DataGridTextColumn Binding="{Binding Name_Of_Position}" ClipboardContentBinding="{x:Null}" Header="Наименование"/>
+                <DataGridCheckBoxColumn Binding="{Binding IsAdministrator}" ClipboardContentBinding="{x:Null}" Header="Администратор"/>
             </DataGrid.Columns>
         </DataGrid>
 

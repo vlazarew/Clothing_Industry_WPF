@@ -99,7 +99,7 @@ namespace Clothing_Industry_WPF
 
             UpdateSalaryTable(connection);
 
-            bool isAdministrator = CheckRole(connection, username);
+            bool isAdministrator = CheckAdministrator(connection, username);
             Window mainWindow;
             // Тернарный оператор тут бессилен, разные типы говорит
             if (isAdministrator)
@@ -184,10 +184,11 @@ namespace Clothing_Industry_WPF
 
         }
 
-        private bool CheckRole(MySqlConnection connection, string username)
+        private bool CheckAdministrator(MySqlConnection connection, string username)
         {
-            string query = "select employee_roles.name_of_role from employee_roles " +
-                           "join employees on employee_roles.id_Employee_role = employee_roles_id_Employee_role " +
+            string query = "select employee_positions.IsAdministrator " +
+                           "from employee_positions " +
+                           "join employees on employee_positions.id_Employee_Position = employees.Employee_Positions_id_Employee_Position " +
                            "where employees.login = @login";
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@login", username);
@@ -196,8 +197,8 @@ namespace Clothing_Industry_WPF
             {
                 while (reader.Read())
                 {
-                    // Если в названии роли у нас встречается слово "Администратор", значит у него есть доступ ко всему
-                    return (reader.GetString(0).IndexOf("Администратор") != -1);
+                    // Взамен ушедшим ролям сделал булево поле в должностях. Оно и решает, кто наш пользователь
+                    return (reader.GetBoolean(0));
                 }
             }
 

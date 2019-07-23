@@ -144,7 +144,7 @@
 
             <StackPanel Orientation="Horizontal">
 
-                <Button Name ="ButtonCreateNew" Content="Создать" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click" IsEnabled="False"/>
+                <Button x:Name ="ButtonCreateNew" Content="Создать" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>
                 <Button x:Name ="ButtonDelete" Content="Удалить" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
                 <Button x:Name ="ButtonRefresh" Content="Обновить" Width="75" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonRefresh_Click"/>
                 <Button x:Name ="ButtonEdit" Content="Изменить выделенное" Width="151" RenderTransformOrigin="1.194,0.333" TabIndex="4" IsTabStop="False" Click="ButtonEdit_Click"/>

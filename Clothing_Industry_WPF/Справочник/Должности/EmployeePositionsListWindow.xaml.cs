@@ -59,7 +59,7 @@ namespace Clothing_Industry_WPF.Справочник.Должности
 
         private string getQueryText()
         {
-            string query_text = "select id_Employee_Position, Name_Of_Position from employee_positions;";
+            string query_text = "select id_Employee_Position, Name_Of_Position, IsAdministrator from employee_positions;";
             return query_text;
         }
 
@@ -101,7 +101,6 @@ namespace Clothing_Industry_WPF.Справочник.Должности
             }
 
             DeleteFromDB(idsToDelete);
-
         }
 
         private void DeleteFromDB(List<int> ids)
@@ -126,7 +125,7 @@ namespace Clothing_Industry_WPF.Справочник.Должности
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Удаление  " + id + " не удалось");
+                    System.Windows.MessageBox.Show("Удаление " + id + " не удалось");
                 }
             }
 
@@ -208,6 +207,7 @@ namespace Clothing_Industry_WPF.Справочник.Должности
             List<FindHandler.FieldParameters> result = new List<FindHandler.FieldParameters>();
             result.Add(new FindHandler.FieldParameters("id_Employee_Position", "Код", describe.Where(key => key.Key == "id_Employee_Position").First().Value));
             result.Add(new FindHandler.FieldParameters("Name_Of_Position", "Наименование", describe.Where(key => key.Key == "Name_Of_Position").First().Value));
+            result.Add(new FindHandler.FieldParameters("IsAdministrator", "Это администратор", describe.Where(key => key.Key == "IsAdministrator").First().Value));
 
             return result;
         }

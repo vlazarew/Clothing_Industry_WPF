@@ -491,7 +491,7 @@ namespace Clothing_Industry_WPF.Заказы
             command.Parameters.AddWithValue("@typeOrder", id_type);
             command.Parameters.AddWithValue("@statusOrder", id_status);
             command.Parameters.AddWithValue("@customer", id_customer);
-            command.Parameters.AddWithValue("@responsible", comboBoxExecutor.SelectedItem.ToString());
+            command.Parameters.AddWithValue("@responsible", comboBoxResponsible.SelectedItem.ToString());
             command.Parameters.AddWithValue("@executor", comboBoxExecutor.SelectedItem.ToString());
 
             if (way == WaysToOpenForm.WaysToOpen.edit)

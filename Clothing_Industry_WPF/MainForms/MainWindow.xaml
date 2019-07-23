@@ -302,9 +302,6 @@
                     <Border   BorderBrush="White" BorderThickness="3">
                         <StackPanel>
                             <Viewbox>
-                                <TextBlock x:Name="Employee_roles" Width="135" Margin="5" PreviewMouseLeftButtonUp="Employee_roles_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Роли"/></Hyperlink></TextBlock>
-                            </Viewbox>
-                            <Viewbox>
                                 <TextBlock x:Name="Employee_positions" Width="135" Margin="5" PreviewMouseLeftButtonUp="Employee_positions_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Должности"/></Hyperlink></TextBlock>
                             </Viewbox>
                         </StackPanel>

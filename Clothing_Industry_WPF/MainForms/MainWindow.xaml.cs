@@ -17,7 +17,6 @@ using Clothing_Industry_WPF.Справочник.Каналы_заказов;
 using Clothing_Industry_WPF.Справочник.Категории_расходов;
 using Clothing_Industry_WPF.Справочник.Периодичности;
 using Clothing_Industry_WPF.Справочник.Поставщики;
-using Clothing_Industry_WPF.Справочник.Роли;
 using Clothing_Industry_WPF.Справочник.Статусы_клиентов;
 using Clothing_Industry_WPF.Справочник.Статусы_оплаты;
 using Clothing_Industry_WPF.Справочник.Страны;
@@ -187,12 +186,6 @@ namespace Clothing_Industry_WPF
 
         // Справочник
         #region Справочники
-        private void Employee_roles_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
-        {
-            Window window = new EmployeeRolesListWindow();
-            window.Show();
-        }
-
         private void Employee_positions_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             Window window = new EmployeePositionsListWindow();

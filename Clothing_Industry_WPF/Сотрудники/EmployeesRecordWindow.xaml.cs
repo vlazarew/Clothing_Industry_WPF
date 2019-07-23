@@ -51,11 +51,10 @@ namespace Clothing_Industry_WPF.Сотрудники
         private void FillFields(string login)
         {
             string query_text = "select employees.Login, employees.Password, employees.Name, employees.Lastname, employees.Patronymic, employees.Phone_Number, employees.Passport_Data, employees.Email," +
-                               "employees.Notes, DATE_FORMAT(employees.Added, \"%d.%m.%Y\") as Added, employees.Last_Salary, employee_roles.Name_Of_Role, " +
+                               "employees.Notes, DATE_FORMAT(employees.Added, \"%d.%m.%Y\") as Added, employees.Last_Salary, " +
                                "employee_positions.Name_Of_Position, employees.Photo" +
                                " from employees" +
                                " join employee_positions on employees.Employee_Positions_id_Employee_Position = employee_positions.id_Employee_Position" +
-                               " join employee_roles on employees.Employee_Roles_id_Employee_Role = employee_roles.id_Employee_Role" +
                                " where employees.Login = @login";
             MySqlCommand command = new MySqlCommand(query_text, connection);
             command.Parameters.AddWithValue("@login", login);
@@ -82,13 +81,12 @@ namespace Clothing_Industry_WPF.Сотрудники
                     {
                         textBoxLastSalary.Text = reader.GetString(10);
                     }
-                    comboBoxRole.SelectedValue = reader.GetString(11);
-                    comboBoxPosition.SelectedValue = reader.GetString(12);
+                    comboBoxPosition.SelectedValue = reader.GetString(11);
 
                     image_bytes = null;
                     try
                     {
-                        image_bytes = (byte[])(reader[13]);
+                        image_bytes = (byte[])(reader[12]);
                     }
                     catch
                     {
@@ -143,16 +141,6 @@ namespace Clothing_Industry_WPF.Сотрудники
                 }
             }
 
-            query = "select name_of_role from employee_roles";
-            command = new MySqlCommand(query, connection);
-
-            using (DbDataReader reader = command.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    comboBoxRole.Items.Add(reader.GetString(0));
-                }
-            }
             connection.Close();
         }
 
@@ -234,10 +222,6 @@ namespace Clothing_Industry_WPF.Сотрудники
             {
                 result += result == "" ? " Должность" : ",  Должность";
             }
-            if (comboBoxRole.SelectedValue == null)
-            {
-                result += result == "" ? "Роль" : ", Роль";
-            }
 
             return result == "" ? result : "Не заполнены обязательные поля: " + result;
         }
@@ -310,14 +294,14 @@ namespace Clothing_Industry_WPF.Сотрудники
             {
                 query = "INSERT INTO employees " +
                         "(Login, Password, Name, Lastname, Patronymic, Phone_Number, Email," +
-                        " Passport_Data, Notes, Added, Last_Salary, Employee_Roles_id_Employee_Role, Employee_Positions_id_Employee_Position, Photo)" +
-                        " VALUES (@login, @password, @name, @lastname, @patronymic, @phone, @email, @passport, @notes, @added, @lastSalary, @role, @position, @image);";
+                        " Passport_Data, Notes, Added, Last_Salary, Employee_Positions_id_Employee_Position, Photo)" +
+                        " VALUES (@login, @password, @name, @lastname, @patronymic, @phone, @email, @passport, @notes, @added, @lastSalary, @position, @image);";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
                 query = "Update employees set Login = @login, Password = @password, Name = @name, Lastname = @lastname, Patronymic = @patronymic, Phone_Number = @phone, " +
                         "Email = @email, Passport_Data = @passport, Notes = @notes, Added = @added, Last_Salary = @lastSalary, " +
-                        "Employee_Roles_id_Employee_Role = @role, Employee_Positions_id_Employee_Position = @position, Photo = @image" +
+                        "Employee_Positions_id_Employee_Position = @position, Photo = @image" +
                         " where Login = @oldLogin;";
             }
 
@@ -334,21 +318,10 @@ namespace Clothing_Industry_WPF.Сотрудники
             command.Parameters.AddWithValue("@added", datePickerAdded.SelectedDate.Value);
             command.Parameters.AddWithValue("@lastSalary", float.Parse(textBoxLastSalary.Text == "" ? "0" : textBoxLastSalary.Text));
 
-            MySqlCommand commandRole = new MySqlCommand("select id_Employee_Role from employee_roles where Name_Of_Role = @role", connection);
-            commandRole.Parameters.AddWithValue("role", comboBoxRole.SelectedItem.ToString());
-            int id_role = -1;
-            using (DbDataReader reader = commandRole.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    id_role = reader.GetInt32(0);
-                }
-            }
-
             MySqlCommand commandPosition = new MySqlCommand("select id_Employee_Position from employee_positions where Name_Of_position = @position", connection);
             commandPosition.Parameters.AddWithValue("position", comboBoxPosition.SelectedItem.ToString());
             int id_position = -1;
-            using (DbDataReader reader = commandRole.ExecuteReader())
+            using (DbDataReader reader = commandPosition.ExecuteReader())
             {
                 while (reader.Read())
                 {
@@ -356,7 +329,6 @@ namespace Clothing_Industry_WPF.Сотрудники
                 }
             }
 
-            command.Parameters.AddWithValue("@role", id_role);
             command.Parameters.AddWithValue("@position", id_position);
 
             // Обработка фото

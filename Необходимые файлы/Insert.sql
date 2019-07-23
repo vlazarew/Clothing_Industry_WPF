@@ -1,14 +1,8 @@
--- Роли сотрудников
-
-insert into employee_roles (Name_Of_Role) values('Администратор БД');
-insert into employee_roles (Name_Of_Role) values('Менеджер');
-insert into employee_roles (Name_Of_Role) values('Швея');
-
 -- Должности сотрудников
 
-insert into employee_positions (Name_Of_Position) values('Администратор');
-insert into employee_positions (Name_Of_Position) values('Бухгалетер');
-insert into employee_positions (Name_Of_Position) values('Помощница');
+insert into employee_positions (Name_Of_Position, IsAdministrator) values('Администратор', true);
+insert into employee_positions (Name_Of_Position, IsAdministrator) values('Бухгалетер', true);
+insert into employee_positions (Name_Of_Position, IsAdministrator) values('Помощница', false);
 
 -- Статусы клиентов
 
@@ -94,9 +88,9 @@ insert into products (Name_Of_Product, Fixed_Price, MoneyToEmployee, Description
 
 -- Сотрудники
 
-insert into employees values('Petrov','183461','Иван','Петров','Васильевич','89313332222','petrov_ivan@google.com','2003 200122','',null,'2019-05-05',66000,1,1);
-insert into employees values('Sidorova','729461','Валентина','Сидорова','Петровна','89373232222','sidorova_valentine@google.com','2005 202322','',null,'2019-07-05',25000,1,1);
-insert into employees values('admin','admin','Сергей','Кудрин','Сергеевич','89101478787','sskur@mail.ru','2005 741447','',null,'2019-01-05',35000,1,1);
+insert into employees values('Petrov','183461','Иван','Петров','Васильевич','89313332222','petrov_ivan@google.com','2003 200122','',null,'2019-05-05',66000,1);
+insert into employees values('Sidorova','729461','Валентина','Сидорова','Петровна','89373232222','sidorova_valentine@google.com','2005 202322','',null,'2019-07-05',25000,3);
+insert into employees values('admin','admin','Сергей','Кудрин','Сергеевич','89101478787','sskur@mail.ru','2005 741447','',null,'2019-01-05',35000,1);
 
 -- Заказчик
 

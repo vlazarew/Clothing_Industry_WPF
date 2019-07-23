@@ -46,7 +46,7 @@ namespace Clothing_Industry_WPF.Справочник.Должности
 
         private void FillFields(int id)
         {
-            string query_text = "select id_Employee_Position, Name_Of_Position from employee_positions" +
+            string query_text = "select id_Employee_Position, Name_Of_Position, IsAdministrator from employee_positions" +
                                 " where employee_positions.id_Employee_Position = @id;";
             MySqlCommand command = new MySqlCommand(query_text, connection);
             command.Parameters.AddWithValue("@id", id);
@@ -56,6 +56,7 @@ namespace Clothing_Industry_WPF.Справочник.Должности
                 while (reader.Read())
                 {
                     textBoxName.Text = reader.GetString(1);
+                    checkBoxAdministrator.IsChecked = reader.GetBoolean(2);
                 }
             }
             connection.Close();
@@ -87,7 +88,6 @@ namespace Clothing_Industry_WPF.Справочник.Должности
             {
                 result += result == "" ? "Наименование" : ", Наименование";
             }
-
 
             return result == "" ? result : "Не заполнены обязательные поля: " + result;
         }
@@ -133,18 +133,18 @@ namespace Clothing_Industry_WPF.Справочник.Должности
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
                 query = "INSERT INTO employee_positions " +
-                                       "(Name_Of_Position)" +
-                                       " VALUES (@name);";
+                                       "(Name_Of_Position, IsAdministrator)" +
+                                       " VALUES (@name, @isAdministrator);";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
-                query = "Update employee_positions set  Name_Of_Position = @name" +
+                query = "Update employee_positions set Name_Of_Position = @name, IsAdministrator = @isAdministrator " +
                         " where id_Employee_Position = @old_id;";
             }
 
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@name", textBoxName.Text);
-
+            command.Parameters.AddWithValue("@isAdministrator", checkBoxAdministrator.IsChecked.Value);
 
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
