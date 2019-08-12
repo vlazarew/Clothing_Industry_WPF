@@ -256,12 +256,6 @@
     <Compile Include="Справочник\Поставщики\SuppliersRecordWindow.xaml.cs">
       <DependentUpon>SuppliersRecordWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Справочник\Роли\EmployeeRolesListWindow.xaml.cs">
-      <DependentUpon>EmployeeRolesListWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Справочник\Роли\EmployeeRolesRecordWindow.xaml.cs">
-      <DependentUpon>EmployeeRolesRecordWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Справочник\Статусы клиентов\CustomerStatusesListWindow.xaml.cs">
       <DependentUpon>CustomerStatusesListWindow.xaml</DependentUpon>
     </Compile>
@@ -518,14 +512,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Справочник\Поставщики\SuppliersRecordWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Справочник\Роли\EmployeeRolesListWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Справочник\Роли\EmployeeRolesRecordWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

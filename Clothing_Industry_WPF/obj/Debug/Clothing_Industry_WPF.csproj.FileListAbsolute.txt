@@ -64,7 +64,6 @@ D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Поиск\FindWindow.g.cs
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Фильтр\FilterRecordWindow.g.cs
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Состояние_склада\StoreListWindow.g.cs
-D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\ProductsListWindow.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Изделия\ProductsRecordWindow.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Материалы\MaterialsListWindow.baml
@@ -262,3 +261,93 @@ D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Доходы\Income
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Доходы\IncomeListWindow.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Доходы\IncomeRecordWindow.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Доходы\IncomeRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\bin\Debug\Clothing_Industry_WPF.exe.manifest
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\bin\Debug\Clothing_Industry_WPF.application
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\MainWindowForUser.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Доходы\IncomeListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Доходы\IncomeRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\Список изделий для заказа\Список материалов для изделия\OrderListOfMaterialsForProduct.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\Список изделий для заказа\Список материалов для изделия\OrderRecordMaterialForProduct.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Начисление ЗП\PayrollsListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Начисление ЗП\PayrollsRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Отпуска\HolidaysListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Отпуска\HolidaysRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Поиск файла\DialogSelectFolder.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Поиск файла\FileWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Примерки\FittingsListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Примерки\FittingsRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Расходы\CostsListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Расходы\CostsRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Должности\EmployeePositionsListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Должности\EmployeePositionsRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Единицы измерения\UnitsListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Единицы измерения\UnitsRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Каналы заказов\OrderChannelsListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Каналы заказов\OrderChannelsRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Категории расходов\ConsumptionCategoriesListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Категории расходов\ConsumptionCategoriesRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Периодичности\PeriodicitiesListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Периодичности\PeriodicitiesRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Поставщики\SuppliersListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Поставщики\SuppliersRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Статусы клиентов\CustomerStatusesListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Статусы клиентов\CustomerStatusesRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Статусы оплаты\PaymentStatesListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Статусы оплаты\PaymentStatesRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Страны\CountriesListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Страны\CountriesRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы заказов\TypesOfOrderListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы заказов\TypesOfOrderRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы материалов\TypesOfMaterialListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы материалов\TypesOfMaterialRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы оплаты\TypesOfPaymentListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы оплаты\TypesOfPaymentRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы примерок\TypesOfFittingListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы примерок\TypesOfFittingRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы транзакций\TypeOfTransactionsListWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы транзакций\TypeOfTransactionsRecordWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\MainWindowForUser.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Доходы\IncomeListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Доходы\IncomeRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Начисление ЗП\PayrollsListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Начисление ЗП\PayrollsRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Отпуска\HolidaysListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Отпуска\HolidaysRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Поиск файла\DialogSelectFolder.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Поиск и фильтры\Поиск файла\FileWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Примерки\FittingsListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Примерки\FittingsRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Расходы\CostsListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Расходы\CostsRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Должности\EmployeePositionsListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Должности\EmployeePositionsRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Единицы измерения\UnitsListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Единицы измерения\UnitsRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Каналы заказов\OrderChannelsListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Каналы заказов\OrderChannelsRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Категории расходов\ConsumptionCategoriesListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Категории расходов\ConsumptionCategoriesRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Периодичности\PeriodicitiesListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Периодичности\PeriodicitiesRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Поставщики\SuppliersListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Поставщики\SuppliersRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Статусы клиентов\CustomerStatusesListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Статусы клиентов\CustomerStatusesRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Статусы оплаты\PaymentStatesListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Статусы оплаты\PaymentStatesRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Страны\CountriesListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Страны\CountriesRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы заказов\TypesOfOrderListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы заказов\TypesOfOrderRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы оплаты\TypesOfPaymentListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы оплаты\TypesOfPaymentRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы примерок\TypesOfFittingListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы примерок\TypesOfFittingRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы транзакций\TypeOfTransactionsListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы транзакций\TypeOfTransactionsRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\Список изделий для заказа\Список материалов для изделия\OrderListOfMaterialsForProduct.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\Список изделий для заказа\Список материалов для изделия\OrderRecordMaterialForProduct.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы материалов\TypesOfMaterialListWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы материалов\TypesOfMaterialRecordWindow.baml
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.exe.manifest
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.application
