@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-ResizeMode="NoResize"
+        xmlns:my="clr-namespace:System.ComponentModel;assembly=System"
+        ResizeMode="NoResize"
         mc:Ignorable="d"
-        Title="Авторизация" Height="306.01" Width="598" WindowStyle="ThreeDBorderWindow">
+        Title="Авторизация" Height="306.01" Width="598" WindowStyle="ThreeDBorderWindow" Visibility="Hidden">
 
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">

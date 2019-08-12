@@ -4,7 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,22 +28,57 @@ namespace Clothing_Industry_WPF
         private string username;
         private string password;
         private string connectionString = "database=main_database;characterset=utf8;Database=main_database;port=" + 3306 + ";";
-        private bool localhost;
+        private static bool isLocalHost = false;
+        private static bool isServer = false;
 
         public AuthentificationForm()
         {
             InitializeComponent();
+
             textboxLogin.Focus();
+            // Вызываем асинхронный методы, в которых будут одновременно проверятся доступность БД на сервере и на локальной машине
+            CheckServerDB();
+            CheckLocalHostDB();
 
-            localhost = IsLocalhost();
+            // Если у нас все недоступно, то выключаем прогу с сообщением
+            CrashApplication();
+        }
 
-            if (!CheckServer(localhost ? "localhost" : Properties.Settings.Default.server_ip))
+        // Ну в этих двух методах думаю все понятно
+        private async void CheckServerDB()
+        {
+            isServer = await Task.Run(() => CheckServer(Properties.Settings.Default.server_ip)).ConfigureAwait(false);
+        }
+
+        private async void CheckLocalHostDB()
+        {
+            isLocalHost = await Task.Run(() => CheckServer("localhost")).ConfigureAwait(false);
+        }
+
+        private async void CrashApplication()
+        {
+            int count = 0;
+            int maxCount = 10;
+            bool edited = false;
+            // Допустим максимальный таймаут - 10. можно будет прибавить если что
+            while (count < maxCount)
+            {
+                await Task.Delay(1000).ConfigureAwait(true);
+                if ((isServer || isLocalHost))
+                {
+                    this.Visibility = Visibility.Visible;
+                    maxCount = count;
+                    edited = true;
+                }
+                count++;
+            }
+            // Если уже поставленное время прошло и мы не меняли время вылета, значит все плохо, отрубаем приложение
+            if (!edited)
             {
                 MessageBox.Show(this, "Нет подключения к серверу. Вероятно последний находится в выключенном состоянии",
-                    "Ошибка соединения с сервером", MessageBoxButton.OK, MessageBoxImage.Error);
+                          "Ошибка соединения с сервером", MessageBoxButton.OK, MessageBoxImage.Error);
                 Application.Current.Shutdown();
             }
-
         }
 
         private bool CheckServer(string server_ip)
@@ -64,8 +102,18 @@ namespace Clothing_Industry_WPF
         [Obsolete]
         private bool IsLocalhost()
         {
-            string host = System.Net.Dns.GetHostName();
-            foreach (var ip in System.Net.Dns.GetHostByName(host).AddressList)
+            /*var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    int s = 1;
+                    //return ip.ToString();
+                }
+            }*/
+
+            string host = Dns.GetHostName();
+            foreach (var ip in Dns.GetHostByName(host).AddressList)
             {
                 if (ip.ToString() == Properties.Settings.Default.server_ip)
                 {
@@ -81,7 +129,7 @@ namespace Clothing_Industry_WPF
             username = textboxLogin.Text;
             password = PasswordBoxPassword.Password;
 
-            string connString = connectionString + "Server=" + (localhost ? "localhost" : Properties.Settings.Default.server_ip)
+            string connString = connectionString + "Server=" + (isLocalHost ? "localhost" : Properties.Settings.Default.server_ip)
                     + ";user id=" + username + ";password=" + password; ;
 
             MySqlConnection connection = new MySqlConnection(connString);
