@@ -74,6 +74,17 @@ namespace Clothing_Industry_WPF
                     textBlockStatus.Foreground = Brushes.LimeGreen;
                     textBlockStatus.Text = "Сервер доступен";
                     Button_LogIn.IsEnabled = true;
+                    if (isLocalHost)
+                    {
+                        textBlockCurrentIP.Text = "Текущий IP сервера: localhost";
+                    }
+                    else
+                    {
+                        if (isServer)
+                        {
+                            textBlockCurrentIP.Text = "Текущий IP сервера: " + (IP == "localhost" ? Properties.Settings.Default.server_ip.ToString() : IP);
+                        }
+                    }
                 }
             }
             // Если уже поставленное время прошло и мы не меняли время вылета, значит все плохо, отрубаем приложение
