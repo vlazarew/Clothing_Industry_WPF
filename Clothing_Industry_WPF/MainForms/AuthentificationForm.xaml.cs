@@ -28,7 +28,7 @@ namespace Clothing_Industry_WPF
     {
         private string username;
         private string password;
-        private string connectionString = "database=main_database;characterset=utf8;Database=main_database;port=" + 3306 + ";";
+        private string connectionString = "database=main_database;characterset=utf8;port=" + 3306 + ";";
         private static bool isLocalHost = false;
         private static bool isServer = false;
         // АйПишник из xml
@@ -40,14 +40,15 @@ namespace Clothing_Industry_WPF
         public AuthentificationForm()
         {
             InitializeComponent();
-            CheckApplication();
             LoadXMLSettings();
+            CheckApplication();
         }
 
         // Ну в этих двух методах думаю все понятно
         private async void CheckServerDB()
         {
-            isServer = await Task.Run(() => CheckServer(IP == "localhost" ? Properties.Settings.Default.server_ip : IP)).ConfigureAwait(false);
+            //isServer = await Task.Run(() => CheckServer(IP == "localhost" ? Properties.Settings.Default.server_ip : IP)).ConfigureAwait(false);
+            isServer = await Task.Run(() => CheckServer(IP)).ConfigureAwait(false);
         }
 
         private async void CheckLocalHostDB()
@@ -82,7 +83,8 @@ namespace Clothing_Industry_WPF
                     {
                         if (isServer)
                         {
-                            textBlockCurrentIP.Text = "Текущий IP сервера: " + (IP == "localhost" ? Properties.Settings.Default.server_ip.ToString() : IP);
+                            //textBlockCurrentIP.Text = "Текущий IP сервера: " + (IP == "localhost" ? Properties.Settings.Default.server_ip.ToString() : IP);
+                            textBlockCurrentIP.Text = "Текущий IP сервера: " + IP;
                         }
                     }
                 }
@@ -118,8 +120,9 @@ namespace Clothing_Industry_WPF
             }
         }
 
+        // !!! Теперь не используем это !!!
         // Проверяем, с какой машины мы заходим в сеть (localhost не сможет к себе обращаться, как остальные машины в локальной системе)
-        [Obsolete]
+        /*[Obsolete]
         private bool IsLocalhost()
         {
             string host = Dns.GetHostName();
@@ -131,7 +134,7 @@ namespace Clothing_Industry_WPF
                 }
             }
             return false;
-        }
+        }*/
 
         private void CheckApplication()
         {
@@ -155,11 +158,14 @@ namespace Clothing_Industry_WPF
             string ip = "localhost";
             if (!isLocalHost)
             {
-                ip = IP == "localhost" ? Properties.Settings.Default.server_ip : IP;
+                //ip = IP == "localhost" ? Properties.Settings.Default.server_ip : IP;
+                ip = IP;
             }
 
             string connString = connectionString + "Server=" + ip
-                    + ";user id=" + username + ";password=" + password; ;
+                    + ";user id=" + username + ";password=" + password;
+
+            IP = ip;
 
             MySqlConnection connection = new MySqlConnection(connString);
             try
@@ -320,7 +326,8 @@ namespace Clothing_Industry_WPF
                 if (listIPs.Count == 1)
                 {
                     IP = listIPs[0].LastAttribute.Value.ToString();
-                    textBlockCurrentIP.Text = "Текущий IP сервера: " + (IP == "localhost" ? Properties.Settings.Default.server_ip.ToString() : IP);
+                    //textBlockCurrentIP.Text = "Текущий IP сервера: " + (IP == "localhost" ? Properties.Settings.Default.server_ip.ToString() : IP);
+                    textBlockCurrentIP.Text = "Текущий IP сервера: " + IP;
                 }
 
                 var listUsers = xmlDocument.Descendants("lastUser").ToList();
