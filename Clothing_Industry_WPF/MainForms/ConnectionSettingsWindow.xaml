@@ -1,0 +1,15 @@
+﻿<Window x:Class="Clothing_Industry_WPF.MainForms.ConnectionSettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Clothing_Industry_WPF.MainForms"
+        mc:Ignorable="d"
+        Title="Параметры подключения" Height="148" Width="494.708">
+    <Grid>
+        <Label Content="IP-адрес сервера:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.219,2.079" Margin="10,59,0,0" FontSize="16"/>
+        <TextBox x:Name="textBoxIP" HorizontalAlignment="Left" Height="31" Margin="154,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="308" FontSize="16" VerticalContentAlignment="Center" TabIndex="1"/>
+        <Button x:Name="buttonSaveSettings" Content="Сохранить и выйти" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" Margin="332,10,0,0" Height="30" TabIndex="2" Click="ButtonSaveSettings_Click"/>
+
+    </Grid>
+</Window>

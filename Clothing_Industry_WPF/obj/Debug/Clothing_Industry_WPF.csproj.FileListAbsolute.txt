@@ -351,3 +351,5 @@ D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справ
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы материалов\TypesOfMaterialRecordWindow.baml
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.exe.manifest
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.application
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\ConnectionSettingsWindow.g.cs
+D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\ConnectionSettingsWindow.baml
