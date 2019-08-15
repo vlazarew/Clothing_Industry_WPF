@@ -28,6 +28,13 @@ namespace Clothing_Industry_WPF.Клиенты
         private FindHandler.FindDescription currentFindDescription;
         private List<FilterHandler.FilterDescription> currentFilterDescription;
 
+        public struct HelpStructToDelete
+        {
+            public int id { get; set; }
+            public string Firstname { get; set; }
+            public string Lastname { get; set; }
+        }
+
         public CustomersListWindow()
         {
             InitializeComponent();
@@ -108,29 +115,35 @@ namespace Clothing_Industry_WPF.Клиенты
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            List<int> idToDelete = new List<int>();
+            List<HelpStructToDelete> dataToDelete = new List<HelpStructToDelete>();
             foreach (DataRowView row in customersGrid.SelectedItems)
             {
-                idToDelete.Add((int)row.Row.ItemArray[0]);
+                dataToDelete.Add(new HelpStructToDelete { id = (int)row.Row.ItemArray[0], Firstname = row.Row.ItemArray[1].ToString(), Lastname = row.Row.ItemArray[2].ToString() });
             }
 
-            DeleteFromDB(idToDelete);
+            DeleteFromDB(dataToDelete);
 
         }
 
-        private void DeleteFromDB(List<int> ids)
+        private void DeleteFromDB(List<HelpStructToDelete> dataToDelete)
         {
             MySqlConnection connection = new MySqlConnection(connectionString);
             connection.Open();
 
-            foreach (int id in ids)
+            foreach (HelpStructToDelete data in dataToDelete)
             {
+
+                if (!IsReadyToDelete(data, connection))
+                {
+                    return;
+                }
+
                 MySqlTransaction transaction = connection.BeginTransaction();
 
                 string queryTable = "delete from customers where id_Customer = @id";
 
                 MySqlCommand commandTable = new MySqlCommand(queryTable, connection, transaction);
-                commandTable.Parameters.AddWithValue("@id", id);
+                commandTable.Parameters.AddWithValue("@id", data.id);
 
                 try
                 {
@@ -148,6 +161,37 @@ namespace Clothing_Industry_WPF.Клиенты
             RefreshList();
         }
 
+        // Костыль. Надо либо нам расковырять по-нормальному БД, чтоб PK могли быть NULL, либо мириться с такими сообщениями
+        private bool IsReadyToDelete(HelpStructToDelete data, MySqlConnection connection)
+        {
+            string queryBalance = "select Customers_id_Customer from Customers_Balance where Customers_id_Customer = @id;";
+            MySqlCommand commandBalance = new MySqlCommand(queryBalance, connection);
+            commandBalance.Parameters.AddWithValue("id", data.id);
+
+            using (DbDataReader reader = commandBalance.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    MessageBox.Show("Клиент " + data.Firstname + " " + data.Lastname + " находится в таблице Баланс Клиентов. Первоначально удалите записи о нем в указанной таблице.");
+                    return false;
+                }
+            }
+
+            string queryFittings = "select Customers_id_Customer from Fittings where Customers_id_Customer = @id;";
+            MySqlCommand commandFittings = new MySqlCommand(queryFittings, connection);
+            commandFittings.Parameters.AddWithValue("id", data.id);
+
+            using (DbDataReader reader = commandFittings.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    MessageBox.Show("Клиент " + data.Firstname + " " + data.Lastname + " находится в таблице Примерки. Первоначально удалите записи о нем в указанной таблице.");
+                    return false;
+                }
+            }
+
+            return true;
+        }
 
         private void ButtonRefresh_Click(object sender, RoutedEventArgs e)
         {
@@ -186,7 +230,7 @@ namespace Clothing_Industry_WPF.Клиенты
 
         private void ButtonFind_Click(object sender, RoutedEventArgs e)
         {
-            
+
             List<FindHandler.FieldParameters> listOfField = FillFindFields();
 
             var findWindow = new FindWindow(currentFindDescription, listOfField);
@@ -230,14 +274,14 @@ namespace Clothing_Industry_WPF.Клиенты
             List<KeyValuePair<string, string>> describe = TakeDescribe();
             List<FindHandler.FieldParameters> result = new List<FindHandler.FieldParameters>();
 
-            result.Add(new FindHandler.FieldParameters("Lastname", "Фамилия", describe.Where(key => key.Key == "Lastname").First().Value));
+            result.Add(new FindHandler.FieldParameters("customers.Lastname", "Фамилия", describe.Where(key => key.Key == "Lastname").First().Value));
             result.Add(new FindHandler.FieldParameters("Name", "Имя", describe.Where(key => key.Key == "Name").First().Value));
             result.Add(new FindHandler.FieldParameters("Patronymic", "Отчество", describe.Where(key => key.Key == "Patronymic").First().Value));
             result.Add(new FindHandler.FieldParameters("Address", "Адрес", describe.Where(key => key.Key == "Address").First().Value));
             result.Add(new FindHandler.FieldParameters("Phone_Number", "Телефон", describe.Where(key => key.Key == "Phone_Number").First().Value));
             result.Add(new FindHandler.FieldParameters("Nickname", "Никнейм", describe.Where(key => key.Key == "Nickname").First().Value));
             result.Add(new FindHandler.FieldParameters("Birthday", "Дата рождения", describe.Where(key => key.Key == "Birthday").First().Value));
-            result.Add(new FindHandler.FieldParameters("Passport_Data", "Паспортные данные", describe.Where(key => key.Key == "Passport_Data").First().Value));
+            result.Add(new FindHandler.FieldParameters("Passport_data", "Паспортные данные", describe.Where(key => key.Key == "Passport_data").First().Value));
             result.Add(new FindHandler.FieldParameters("Size", "Размер", describe.Where(key => key.Key == "Size").First().Value));
             result.Add(new FindHandler.FieldParameters("Parameters", "Параметры", describe.Where(key => key.Key == "Parameters").First().Value));
             result.Add(new FindHandler.FieldParameters("Name_of_status", "Статус", describe.Where(key => key.Key == "Name_of_status").First().Value));

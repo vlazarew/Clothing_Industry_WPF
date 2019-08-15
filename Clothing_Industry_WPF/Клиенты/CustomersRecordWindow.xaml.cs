@@ -258,33 +258,36 @@ namespace Clothing_Industry_WPF.Клиенты
                     MessageBox.Show("Ошибка сохранения!");
                 }
 
-                transaction = connection.BeginTransaction();
-                string query_max_id = "SELECT max(customers.id_Customer) FROM main_database.customers";
-                MySqlCommand commandFindId = new MySqlCommand(query_max_id, connection, transaction);
-                int findId = -1;
-
-                using (DbDataReader reader = commandFindId.ExecuteReader())
+                if (way == WaysToOpenForm.WaysToOpen.create)
                 {
-                    while (reader.Read())
+                    transaction = connection.BeginTransaction();
+                    string query_max_id = "SELECT max(customers.id_Customer) FROM main_database.customers";
+                    MySqlCommand commandFindId = new MySqlCommand(query_max_id, connection, transaction);
+                    int findId = -1;
+
+                    using (DbDataReader reader = commandFindId.ExecuteReader())
                     {
-                        findId = reader.GetInt32(0);
+                        while (reader.Read())
+                        {
+                            findId = reader.GetInt32(0);
+                        }
                     }
-                }
 
-                string query_balance = "Insert into customers_balance (Customers_id_Customer, Accured, Paid, Debt) values (@id, 0, 0, 0)";
-                MySqlCommand commandFillBalance = new MySqlCommand(query_balance, connection, transaction);
-                commandFillBalance.Parameters.AddWithValue("@id", findId);
+                    string query_balance = "Insert into customers_balance (Customers_id_Customer, Accured, Paid, Debt) values (@id, 0, 0, 0)";
+                    MySqlCommand commandFillBalance = new MySqlCommand(query_balance, connection, transaction);
+                    commandFillBalance.Parameters.AddWithValue("@id", findId);
 
-                try
-                {
-                    commandFillBalance.ExecuteNonQuery();
-                    transaction.Commit();
-                    this.Hide();
-                }
-                catch
-                {
-                    transaction.Rollback();
-                    MessageBox.Show("Ошибка сохранения!");
+                    try
+                    {
+                        commandFillBalance.ExecuteNonQuery();
+                        transaction.Commit();
+                        this.Hide();
+                    }
+                    catch
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show("Ошибка сохранения!");
+                    }
                 }
 
                 connection.Close();
