@@ -59,10 +59,10 @@ namespace Clothing_Industry_WPF.Сотрудники
 
             employeesGrid.SelectedIndex = 0;
 
-            List<int> ids = new List<int>();
+            List<string> ids = new List<string>();
             foreach (DataRowView row in employeesGrid.SelectedItems)
             {
-                ids.Add((int)row.Row.ItemArray[0]);
+                ids.Add((string)row.Row.ItemArray[0]);
             }
             if (ids.Count == 0)
             {
@@ -383,16 +383,18 @@ namespace Clothing_Industry_WPF.Сотрудники
 
         private void DataGridCell_LostFocus(object sender, RoutedEventArgs e)
         {
-            List<int> ids = new List<int>();
+            List<string> ids = new List<string>();
             foreach (DataRowView row in employeesGrid.SelectedItems)
             {
-                ids.Add((int)row.Row.ItemArray[0]);
+                ids.Add((string)row.Row.ItemArray[0]);
             }
             if (ids.Count == 0)
             {
                 ButtonEdit.Style = (Style)ButtonEdit.FindResource("NoActive");
                 ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
             }
+
+
         }
     }
 }
