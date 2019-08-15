@@ -7,11 +7,138 @@
         ResizeMode="NoResize"
         mc:Ignorable="d"
        Title="Заказ" Height="511.334" Width="684">
+    <Window.Resources>
+        <GradientStopCollection x:Key="MyGlassGradientStopsResource">
+            <GradientStop Color="WhiteSmoke" Offset="0.2" />
+            <GradientStop Color="Transparent" Offset="0.4" />
+            <GradientStop Color="WhiteSmoke" Offset="0.5" />
+            <GradientStop Color="Transparent" Offset="0.75" />
+            <GradientStop Color="WhiteSmoke" Offset="0.9" />
+            <GradientStop Color="Transparent" Offset="1" />
+        </GradientStopCollection>
+        <LinearGradientBrush x:Key="MyGlassBrushResource" StartPoint="0,0" EndPoint="1,1" Opacity="0.75"
+    GradientStops="{StaticResource MyGlassGradientStopsResource}" />
+        <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
+    StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="DarkGray" Offset="0" />
+            <GradientStop Color="#CCCCFF" Offset="0.5" />
+            <GradientStop Color="DarkGray" Offset="1" />
+        </LinearGradientBrush>
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="{StaticResource ResourceKey=GrayBlueGradientBrush}" />
+            <Setter Property="Width" Value="80" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="FontFamily" Value="Arial" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid Width="{TemplateBinding Width}"   
+      Height="{TemplateBinding Height}" ClipToBounds="True">
+
+                            <!-- Outer Rectangle with rounded corners. -->
+                            <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch"   
+      VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}"   
+       StrokeThickness="5" Fill="Transparent" />
+
+                            <!-- Inner Rectangle with rounded corners. -->
+                            <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"   
+        VerticalAlignment="Stretch" Stroke="Transparent"   
+        StrokeThickness="5"   
+        Fill="{TemplateBinding Background}" 
+      />
+
+                            <!-- Glass Rectangle -->
+                            <Rectangle x:Name="glassCube" HorizontalAlignment="Stretch"  
+        VerticalAlignment="Stretch"  
+        StrokeThickness="2" RadiusX="10" RadiusY="10" Opacity="0"  
+        Fill="{StaticResource MyGlassBrushResource}"  
+        RenderTransformOrigin="0.5,0.5">
+                                <Rectangle.Stroke>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                        <LinearGradientBrush.GradientStops>
+                                            <GradientStop Offset="0.0" Color="LightBlue" />
+                                            <GradientStop Offset="1.0" Color="Gray" />
+                                        </LinearGradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Rectangle.Stroke>
+
+                                <!-- These transforms have no effect as they   
+             are declared here.   
+             The reason the transforms are included is to be targets   
+             for animation (see later). -->
+                                <Rectangle.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform />
+                                        <RotateTransform />
+                                    </TransformGroup>
+                                </Rectangle.RenderTransform>
+
+                                <!-- A BevelBitmapEffect is applied to give the button a   
+               "Beveled" look. -->
+                                <Rectangle.BitmapEffect>
+                                    <BevelBitmapEffect />
+                                </Rectangle.BitmapEffect>
+                            </Rectangle>
+
+                            <!-- Present Text of the button. -->
+                            <DockPanel Name="myContentPresenterDockPanel">
+                                <ContentPresenter x:Name="myContentPresenter" VerticalAlignment="Center" Margin="5"   
+          Content="{TemplateBinding  Content}" TextBlock.Foreground="Black" />
+                            </DockPanel>
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+
+                            <!-- Set properties when mouse pointer is over the button. -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!-- Below are three property settings that occur when the   
+         condition is met (user mouses over button).  -->
+                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
+                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
+                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
+                                    <Setter.Value>
+                                        <BlurBitmapEffect Radius="1" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+
+                                <!-- Below are three property settings that occur when the   
+         condition is met (user mouses over button).  -->
+                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
+                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="YellowGreen" />
+                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
+                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
+                                    <Setter.Value>
+                                        <BlurBitmapEffect Radius="1" />
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+
+                            <!--Наведение мышкой -->
+
+
+
+                            <!--Нажатие кнопки-->
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
     <Grid Margin="0,0,0,5" HorizontalAlignment="Left" Width="694">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="59*"/>
             <ColumnDefinition Width="29*"/>
         </Grid.ColumnDefinitions>
+
         <Label x:Name="Header" Content="Заказы " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18"/>
         <Label Content="Дата заказа: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,51,0,0"/>
         <Label Content="Скидка %: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,82,0,0"/>
@@ -21,7 +148,7 @@
         <TextBox x:Name="textBoxDiscount" HorizontalAlignment="Left" Height="26" Margin="78,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="264" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxDiscount_PreviewTextInput"/>
         <TextBox x:Name="textBoxPaid" HorizontalAlignment="Left" Height="26" Margin="82,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxPaid_PreviewTextInput" TextChanged="TextBoxPaid_TextChanged"/>
         <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="71,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" TabIndex="7" VerticalContentAlignment="Center" FontSize="14"/>
-        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="122" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True" TabIndex="14" Grid.Column="1"/>
+        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="10,17,0,0" VerticalAlignment="Top" Width="134" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True" TabIndex="14" Grid.Column="1"/>
         <Label Content="Долг: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,176,0,0"/>
         <TextBox x:Name="textBoxDebt" HorizontalAlignment="Left" Height="26" Margin="82,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" TabIndex="5" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True"/>
         <Label Content="Тип заказа: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,301,0,0"/>
@@ -38,7 +165,7 @@
         <DatePicker x:Name="datePickerDateOfDelievery" HorizontalAlignment="Left" Margin="104,206,0,0" VerticalAlignment="Top" FontSize="14" VerticalContentAlignment="Center" Width="238" TabIndex="6"/>
         <Label Content="Итоговая стоимость: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,113,0,0"/>
         <TextBox x:Name="textBoxTotal_Price" HorizontalAlignment="Left" Height="26" Margin="142,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True" TextChanged="TextBoxTotal_Price_TextChanged"/>
-        <Button x:Name="buttonListProducts" Content="Открыть список изделий" HorizontalAlignment="Left" Margin="311,17,0,0" VerticalAlignment="Top" Width="154" Height="25" IsDefault="True" TabIndex="13" Click="ButtonListProducts_Click"/>
+        <Button x:Name="buttonListProducts" Content="Открыть список изделий" HorizontalAlignment="Left" Margin="296,17,0,0" VerticalAlignment="Top" Width="169" Height="25" IsDefault="True" TabIndex="13" Click="ButtonListProducts_Click"/>
         <Label Content="Выплата за доп сложность: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,269,0,0"/>
         <TextBox x:Name="textBoxAddedPrice" HorizontalAlignment="Left" Height="26" Margin="172,269,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" TabIndex="7" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxSalaryToExecutor_PreviewTextInput"/>
 

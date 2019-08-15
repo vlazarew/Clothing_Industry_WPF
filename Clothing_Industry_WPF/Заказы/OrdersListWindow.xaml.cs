@@ -144,6 +144,13 @@ namespace Clothing_Industry_WPF.Заказы
             return query_text;
         }
 
+        private string getNull()
+        {
+            string query_text = " select orders.id_Order, DATE_FORMAT(orders.Date_Of_Order, \"%d.%m.%Y\") as Date_Of_Order, orders.Discount_Per_Cent, orders.Total_Price, orders.Paid, orders.Debt, DATE_FORMAT(orders.Date_Of_Delievery, \"%d.%m.%Y\") as Date_Of_Delievery, orders.Notes, types_of_order.Name_Of_type, statuses_of_order.Name_Of_Status, customers.Nickname, orders.Executor,orders.Responsible, 'Не указано' as Products, orders.Added_Price_For_Complexity from orders left join types_of_order on orders.Types_Of_Order_id_Type_Of_Order = types_of_order.id_Type_Of_Order left join statuses_of_order on orders.Statuses_Of_Order_id_Status_Of_Order = statuses_of_order.id_Status_Of_Order left join list_products_to_order on orders.id_order = list_products_to_order.Orders_id_Order left join customers on customers.id_Customer = orders.Customers_id_Customer left join products on list_products_to_order.Products_id_Product = products.id_product where products.Name_Of_Product is not null  and id_Order is null ;";
+
+            return query_text;
+        }
+
         private string getGroupBy()
         {
             string groupBy = "  group by orders.id_Order ; ";
@@ -270,7 +277,7 @@ namespace Clothing_Industry_WPF.Заказы
         private void ButtonFind_Click(object sender, RoutedEventArgs e)
         {
             List<FindHandler.FieldParameters> listOfField = FillFindFields();
-            buttonCancelFind.Style = (System.Windows.Style)buttonCancelFind.FindResource("Active");
+            
             var findWindow = new FindWindow(currentFindDescription, listOfField);
             if (findWindow.ShowDialog().Value)
             {
@@ -282,36 +289,42 @@ namespace Clothing_Industry_WPF.Заказы
             }
 
             var field = listOfField.Where(kvp => kvp.application_name == currentFindDescription.field).First().db_name;
-            string queryNotNull = getNotNullQueryText();
-            string edited_query;
-
-            if (!currentFindDescription.isDate)
+            
+                string queryNotNull = getNotNullQueryText();
+                string edited_query = "";
+            if (currentFindDescription.value != "")
             {
-                edited_query = queryNotNull.Replace(";", " and " + field + " ");
-                edited_query += string.Format(currentFindDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence ? "= \"{0}\"" : "like \"{0}%\"", currentFindDescription.value);
+                if (!currentFindDescription.isDate)
+                {
+                    edited_query = queryNotNull.Replace(";", " and " + field + " ");
+                    edited_query += string.Format(currentFindDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence ? "= \"{0}\"" : "like \"{0}%\"", currentFindDescription.value);
+                }
+                else
+                {
+                    edited_query = queryNotNull.Replace(";", " and DATE_FORMAT(" + field + ", '%d.%m.%Y')  ");
+                    edited_query += string.Format("= \'{0}\'", currentFindDescription.value);
+                }
+                edited_query = edited_query.Replace(";", getGroupBy());
+                edited_query = edited_query.Replace(";", " union ");
+                edited_query += getNullQueryText();
+
+                if (!currentFindDescription.isDate)
+                {
+                    edited_query = queryNotNull.Replace(";", " and " + field + " ");
+                    edited_query += string.Format(currentFindDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence ? "= \"{0}\"" : "like \"{0}%\"", currentFindDescription.value);
+                }
+                else
+                {
+                    edited_query = queryNotNull.Replace(";", " and DATE_FORMAT(" + field + ", '%d.%m.%Y')  ");
+                    edited_query += string.Format("= \'{0}\'", currentFindDescription.value);
+                }
+
+                edited_query = edited_query.Replace(";", getGroupBy());
             }
             else
             {
-                edited_query = queryNotNull.Replace(";", " and DATE_FORMAT(" + field + ", '%d.%m.%Y')  ");
-                edited_query += string.Format("= \'{0}\'", currentFindDescription.value);
+                edited_query = getNull();
             }
-            edited_query = edited_query.Replace(";", getGroupBy());
-            edited_query = edited_query.Replace(";", " union ");
-            edited_query += getNullQueryText();
-
-            if (!currentFindDescription.isDate)
-            {
-                edited_query = queryNotNull.Replace(";", " and " + field + " ");
-                edited_query += string.Format(currentFindDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence ? "= \"{0}\"" : "like \"{0}%\"", currentFindDescription.value);
-            }
-            else
-            {
-                edited_query = queryNotNull.Replace(";", " and DATE_FORMAT(" + field + ", '%d.%m.%Y')  ");
-                edited_query += string.Format("= \'{0}\'", currentFindDescription.value);
-            }
-
-            edited_query = edited_query.Replace(";", getGroupBy());
-
             //edited_query += " " + getGroupBy();
 
             MySqlConnection connection = new MySqlConnection(connectionString);
@@ -321,6 +334,8 @@ namespace Clothing_Industry_WPF.Заказы
             adapter.Fill(dataTable);
             ordersGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
+
+            buttonCancelFind.Style = (System.Windows.Style)buttonCancelFind.FindResource("Active");
         }
 
         // Список полей, по которым мы можем делать поиск
@@ -642,6 +657,7 @@ namespace Clothing_Industry_WPF.Заказы
 
         private void DataGridCell_LostFocus(object sender, RoutedEventArgs e)
         {
+
             List<int> ids = new List<int>();
             foreach (DataRowView row in ordersGrid.SelectedItems)
             {
