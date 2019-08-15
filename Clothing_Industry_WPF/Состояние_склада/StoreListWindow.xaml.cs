@@ -110,6 +110,7 @@ namespace Clothing_Industry_WPF.Состояние_склада
             adapter.Fill(dataTable);
             storeGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
+            buttonCancelFind.Style = (System.Windows.Style)buttonCancelFind.FindResource("Active");
         }
 
         private List<FindHandler.FieldParameters> FillFindFields()
@@ -157,6 +158,7 @@ namespace Clothing_Industry_WPF.Состояние_склада
         {
             currentFindDescription = new FindHandler.FindDescription();
             RefreshList();
+            buttonCancelFind.Style = (System.Windows.Style)buttonCancelFind.FindResource("NoActive");
         }
 
         private void ButtonFilters_Click(object sender, RoutedEventArgs e)

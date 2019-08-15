@@ -74,7 +74,7 @@ namespace Clothing_Industry_WPF
                     edited = true;
                     textBlockStatus.Foreground = Brushes.LimeGreen;
                     textBlockStatus.Text = "Сервер доступен";
-                    Button_LogIn.IsEnabled = true;
+                    Button_LogIn.Style = (Style)Button_LogIn.FindResource("Active");
                     if (isLocalHost)
                     {
                         textBlockCurrentIP.Text = "Текущий IP сервера: localhost";

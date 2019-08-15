@@ -79,12 +79,7 @@ insert into types_of_fitting (Name_Of_Type) values ('В офисе');
 insert into suppliers (Name_Of_Supplier) values ('ИП Хорбачёв');
 insert into suppliers (Name_Of_Supplier) values ('ООО БелТкань');
 
--- Изделия
 
-insert into products (Name_Of_Product, Fixed_Price, MoneyToEmployee, Description, Photo)
-  values('Кружевное платье', 400, 60, 'C рисунком', null);
-  
--- Материалы на изделие  
 
 -- Сотрудники
 

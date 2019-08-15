@@ -61,6 +61,17 @@ namespace Clothing_Industry_WPF.Примерки
             connection.Close();
 
             fittingsGrid.SelectedIndex = 0;
+
+            List<HelpStruct> ids = new List<HelpStruct>();
+            foreach (DataRowView row in fittingsGrid.SelectedItems)
+            {
+                ids.Add(new HelpStruct { customerNickname = row.Row.ItemArray[0].ToString(), idOrder = int.Parse(row.Row.ItemArray[1].ToString()) });
+            }
+            if (ids.Count == 0)
+            {
+                ButtonEdit.Style = (Style)ButtonEdit.FindResource("NoActive");
+                ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+            }
         }
 
         private string getQueryText()
@@ -234,6 +245,7 @@ namespace Clothing_Industry_WPF.Примерки
             adapter.Fill(dataTable);
             fittingsGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
+            buttonCancelFind.Style = (Style)buttonCancelFind.FindResource("Active");
         }
 
         // Список полей, по которым мы можем делать поиск
@@ -283,6 +295,7 @@ namespace Clothing_Industry_WPF.Примерки
         {
             currentFindDescription = new FindHandler.FindDescription();
             RefreshList();
+            buttonCancelFind.Style = (Style)buttonCancelFind.FindResource("NoActive");
         }
 
         private void ButtonFilters_Click(object sender, RoutedEventArgs e)
@@ -369,6 +382,26 @@ namespace Clothing_Industry_WPF.Примерки
             }*/
 
             return result;
+        }
+
+        private void DataGridCell_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ButtonEdit.Style = (Style)ButtonEdit.FindResource("Active");
+            ButtonDelete.Style = (Style)ButtonDelete.FindResource("Active");
+        }
+
+        private void DataGridCell_LostFocus(object sender, RoutedEventArgs e)
+        {
+            List<HelpStruct> ids = new List<HelpStruct>();
+            foreach (DataRowView row in fittingsGrid.SelectedItems)
+            {
+                ids.Add(new HelpStruct { customerNickname = row.Row.ItemArray[0].ToString(), idOrder = int.Parse(row.Row.ItemArray[1].ToString()) });
+            }
+            if (ids.Count == 0)
+            {
+                ButtonEdit.Style = (Style)ButtonEdit.FindResource("NoActive");
+                ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+            }
         }
     }
 }

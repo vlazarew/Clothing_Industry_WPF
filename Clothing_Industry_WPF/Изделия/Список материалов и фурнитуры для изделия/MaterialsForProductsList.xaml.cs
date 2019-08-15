@@ -106,6 +106,7 @@ namespace Clothing_Industry_WPF.Изделия
                 {
                     commandTable.ExecuteNonQuery();
                     transaction.Commit();
+                    ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
                 }
                 catch
                 {
@@ -128,6 +129,11 @@ namespace Clothing_Industry_WPF.Изделия
             Window window_add = new MaterialsForProductsRecordWindow(productId);
             window_add.ShowDialog();
             RefreshList();
+        }
+
+        private void DataGridCell_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ButtonDelete.Style = (Style)ButtonDelete.FindResource("Active");
         }
     }
 }

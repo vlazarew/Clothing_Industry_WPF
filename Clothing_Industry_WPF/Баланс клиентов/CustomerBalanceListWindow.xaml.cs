@@ -111,6 +111,7 @@ namespace Clothing_Industry_WPF.Баланс_клиентов
             adapter.Fill(dataTable);
             customersGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
+            buttonCancelFind.Style = (Style)buttonCancelFind.FindResource("Active");
         }
 
         // Список полей, по которым мы можем делать поиск
@@ -163,8 +164,9 @@ namespace Clothing_Industry_WPF.Баланс_клиентов
 
         private void ButtonCancelFind_Click(object sender, RoutedEventArgs e)
         {
+            buttonCancelFind.Style = (Style)buttonCancelFind.FindResource("NoActive");
             currentFindDescription = new FindHandler.FindDescription();
-            RefreshList();
+            RefreshList();           
         }
 
         private void ButtonFilters_Click(object sender, RoutedEventArgs e)

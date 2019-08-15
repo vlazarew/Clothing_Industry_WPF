@@ -58,6 +58,18 @@ namespace Clothing_Industry_WPF.Расходы
             costsGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
             costsGrid.SelectedIndex = 0;
+
+            List<int> ids = new List<int>();
+            foreach (DataRowView row in costsGrid.SelectedItems)
+            {
+                ids.Add((int)row.Row.ItemArray[0]);
+            }
+            if (ids.Count == 0)
+            {
+                ButtonEdit.Style = (Style)ButtonEdit.FindResource("NoActive");
+                ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+                ButtonOpenDocument.Style = (Style)ButtonOpenDocument.FindResource("NoActive");
+            }
         }
 
         private string getQueryText()
@@ -218,6 +230,7 @@ namespace Clothing_Industry_WPF.Расходы
             adapter.Fill(dataTable);
             costsGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
+            buttonCancelFind.Style = (Style)buttonCancelFind.FindResource("Active");
         }
 
         // Список полей, по которым мы можем делать поиск
@@ -275,6 +288,7 @@ namespace Clothing_Industry_WPF.Расходы
         {
             currentFindDescription = new FindHandler.FindDescription();
             RefreshList();
+            buttonCancelFind.Style = (Style)buttonCancelFind.FindResource("NoActive");
         }
 
         private void ButtonFilters_Click(object sender, RoutedEventArgs e)
@@ -387,6 +401,28 @@ namespace Clothing_Industry_WPF.Расходы
             else
             {
                 MessageBox.Show("Файл не найден");
+            }
+        }
+
+        private void DataGridCell_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ButtonEdit.Style = (Style)ButtonEdit.FindResource("Active");
+            ButtonDelete.Style = (Style)ButtonDelete.FindResource("Active");
+            ButtonOpenDocument.Style = (Style)ButtonOpenDocument.FindResource("Active");
+        }
+
+        private void DataGridCell_LostFocus(object sender, RoutedEventArgs e)
+        {
+            List<int> ids = new List<int>();
+            foreach (DataRowView row in costsGrid.SelectedItems)
+            {
+                ids.Add((int)row.Row.ItemArray[0]);
+            }
+            if (ids.Count == 0)
+            {
+                ButtonEdit.Style = (Style)ButtonEdit.FindResource("NoActive");
+                ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+                ButtonOpenDocument.Style = (Style)ButtonOpenDocument.FindResource("NoActive");
             }
         }
     }

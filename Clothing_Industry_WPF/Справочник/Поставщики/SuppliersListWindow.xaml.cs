@@ -51,8 +51,19 @@ namespace Clothing_Industry_WPF.Справочник.Поставщики
             MySqlCommand command = new MySqlCommand(query_text, connection);
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
             adapter.Fill(dataTable);
-            suppliersGrid.ItemsSource = dataTable.DefaultView;
+            productsGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
+
+            List<int> ids = new List<int>();
+            foreach (DataRowView row in productsGrid.SelectedItems)
+            {
+                ids.Add((int)row.Row.ItemArray[0]);
+            }
+            if (ids.Count == 0)
+            {
+                ButtonEdit.Style = (Style)ButtonEdit.FindResource("NoActive");
+                ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+            }
         }
 
         private string getQueryText()
@@ -71,10 +82,10 @@ namespace Clothing_Industry_WPF.Справочник.Поставщики
 
         private void DataGridCell_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            int row_index = suppliersGrid.SelectedIndex;
+            int row_index = productsGrid.SelectedIndex;
             int id = -1;
             int current_row = 0;
-            foreach (DataRowView row in suppliersGrid.Items)
+            foreach (DataRowView row in productsGrid.Items)
             {
                 if (current_row != row_index)
                 {
@@ -93,7 +104,7 @@ namespace Clothing_Industry_WPF.Справочник.Поставщики
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             List<int> idsToDelete = new List<int>();
-            foreach (DataRowView row in suppliersGrid.SelectedItems)
+            foreach (DataRowView row in productsGrid.SelectedItems)
             {
                 idsToDelete.Add((int)row.Row.ItemArray[0]);
             }
@@ -139,7 +150,7 @@ namespace Clothing_Industry_WPF.Справочник.Поставщики
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             List<int> idsToDelete = new List<int>();
-            foreach (DataRowView row in suppliersGrid.SelectedItems)
+            foreach (DataRowView row in productsGrid.SelectedItems)
             {
                 idsToDelete.Add((int)row.Row.ItemArray[0]);
             }
@@ -195,8 +206,9 @@ namespace Clothing_Industry_WPF.Справочник.Поставщики
             MySqlCommand command = new MySqlCommand(edited_query, connection);
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
             adapter.Fill(dataTable);
-            suppliersGrid.ItemsSource = dataTable.DefaultView;
+            productsGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
+            buttonCancelFind.Style = (Style)buttonCancelFind.FindResource("Active");
         }
 
         private List<FindHandler.FieldParameters> FillFindFields()
@@ -241,6 +253,27 @@ namespace Clothing_Industry_WPF.Справочник.Поставщики
         {
             currentFindDescription = new FindHandler.FindDescription();
             RefreshList();
+            buttonCancelFind.Style = (Style)buttonCancelFind.FindResource("NoActive");
+        }
+
+        private void DataGridCell_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ButtonEdit.Style = (Style)ButtonEdit.FindResource("Active");
+            ButtonDelete.Style = (Style)ButtonDelete.FindResource("Active");
+        }
+
+        private void DataGridCell_LostFocus(object sender, RoutedEventArgs e)
+        {
+            List<int> ids = new List<int>();
+            foreach (DataRowView row in productsGrid.SelectedItems)
+            {
+                ids.Add((int)row.Row.ItemArray[0]);
+            }
+            if (ids.Count == 0)
+            {
+                ButtonEdit.Style = (Style)ButtonEdit.FindResource("NoActive");
+                ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+            }
         }
     }
 }

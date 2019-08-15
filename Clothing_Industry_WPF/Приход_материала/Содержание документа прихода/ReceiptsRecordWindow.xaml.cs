@@ -237,5 +237,17 @@ namespace Clothing_Industry_WPF.Приход_материала
             excel.Quit();
             MessageBox.Show("Документ " + Name_Of_Document + " создан успешно.\n" + "Путь документа: " + BasePath + "\\" + Default_Folder);
         }
+
+
+
+        private void DataGridCell_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ButtonDeleteOne.Style = (System.Windows.Style)ButtonDeleteOne.FindResource("Active");
+        }
+
+        private void DataGridCell_LostFocus(object sender, RoutedEventArgs e)
+        {
+            ButtonDeleteOne.Style = (System.Windows.Style)ButtonDeleteOne.FindResource("NoActive");
+        }
     }
 }

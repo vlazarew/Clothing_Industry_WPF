@@ -54,6 +54,18 @@ namespace Clothing_Industry_WPF.Приход_материала
             adapter.Fill(dataTable);
             receiptsGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
+
+            List<int> ids = new List<int>();
+            foreach (DataRowView row in receiptsGrid.SelectedItems)
+            {
+                ids.Add((int)row.Row.ItemArray[0]);
+            }
+            if (ids.Count == 0)
+            {
+                ButtonEdit.Style = (Style)ButtonEdit.FindResource("NoActive");
+                ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+                ButtonOpen.Style = (Style)ButtonDelete.FindResource("NoActive");
+            }
         }
 
         private string getQueryText()
@@ -215,6 +227,7 @@ namespace Clothing_Industry_WPF.Приход_материала
             adapter.Fill(dataTable);
             receiptsGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
+            buttonCancelFind.Style = (Style)buttonCancelFind.FindResource("Active");
         }
 
         private List<FindHandler.FieldParameters> FillFindFields()
@@ -268,6 +281,7 @@ namespace Clothing_Industry_WPF.Приход_материала
         {
             currentFindDescription = new FindHandler.FindDescription();
             RefreshList();
+            buttonCancelFind.Style = (Style)buttonCancelFind.FindResource("NoActive");
         }
 
         private void ButtonFilters_Click(object sender, RoutedEventArgs e)
@@ -374,6 +388,28 @@ namespace Clothing_Industry_WPF.Приход_материала
             Window receiptsmaterial = new ReceiptsRecordWindow(id_Document_Of_Receipts);
             receiptsmaterial.ShowDialog();
             RefreshList();
+        }
+
+        private void DataGridCell_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ButtonEdit.Style = (Style)ButtonEdit.FindResource("Active");
+            ButtonDelete.Style = (Style)ButtonDelete.FindResource("Active");
+            ButtonOpen.Style = (Style)ButtonDelete.FindResource("Active");
+        }
+
+        private void DataGridCell_LostFocus(object sender, RoutedEventArgs e)
+        {
+            List<int> ids = new List<int>();
+            foreach (DataRowView row in receiptsGrid.SelectedItems)
+            {
+                ids.Add((int)row.Row.ItemArray[0]);
+            }
+            if (ids.Count == 0)
+            {
+                ButtonEdit.Style = (Style)ButtonEdit.FindResource("NoActive");
+                ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+                ButtonOpen.Style = (Style)ButtonDelete.FindResource("NoActive");
+            }
         }
     }
 }

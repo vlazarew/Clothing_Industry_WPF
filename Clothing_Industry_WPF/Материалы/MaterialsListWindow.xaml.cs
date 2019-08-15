@@ -55,6 +55,17 @@ namespace Clothing_Industry_WPF.Материал
             adapter.Fill(dataTable);
             materialsGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
+
+            List<int> ids = new List<int>();
+            foreach (DataRowView row in materialsGrid.SelectedItems)
+            {
+                ids.Add((int)row.Row.ItemArray[0]);
+            }
+            if (ids.Count == 0)
+            {
+                ButtonEdit.Style = (Style)ButtonEdit.FindResource("NoActive");
+                ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+            }
         }
 
         private string getQueryText()
@@ -210,6 +221,7 @@ namespace Clothing_Industry_WPF.Материал
             adapter.Fill(dataTable);
             materialsGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
+            buttonCancelFind.Style = (Style)buttonCancelFind.FindResource("Active");
         }
 
         private List<FindHandler.FieldParameters> FillFindFields()
@@ -263,6 +275,7 @@ namespace Clothing_Industry_WPF.Материал
         {
             currentFindDescription = new FindHandler.FindDescription();
             RefreshList();
+            buttonCancelFind.Style = (Style)buttonCancelFind.FindResource("NoActive");
         }
 
         private void ButtonFilters_Click(object sender, RoutedEventArgs e)
@@ -349,6 +362,26 @@ namespace Clothing_Industry_WPF.Материал
             }*/
 
             return result;
+        }
+
+        private void DataGridCell_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ButtonEdit.Style = (Style)ButtonEdit.FindResource("Active");
+            ButtonDelete.Style = (Style)ButtonDelete.FindResource("Active");
+        }
+
+        private void DataGridCell_LostFocus(object sender, RoutedEventArgs e)
+        {
+            List<int> ids = new List<int>();
+            foreach (DataRowView row in materialsGrid.SelectedItems)
+            {
+                ids.Add((int)row.Row.ItemArray[0]);
+            }
+            if (ids.Count == 0)
+            {
+                ButtonEdit.Style = (Style)ButtonEdit.FindResource("NoActive");
+                ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+            }
         }
     }
 }

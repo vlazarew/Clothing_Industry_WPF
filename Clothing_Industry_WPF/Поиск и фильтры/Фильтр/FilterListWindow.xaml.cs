@@ -53,8 +53,11 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
 
             if (filterDescription.Count > 0)
             {
+                
                 FillPreviousFilter();
             }
+
+
         }
 
         private void FillPreviousFilter()
@@ -65,6 +68,12 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            if (dataGridFilters.Items.Count > 0)
+            {
+                buttonFind.Style = (Style)buttonFind.FindResource("Active");
+            }
+            else
+                buttonFind.Style = (Style)buttonFind.FindResource("NoActive");
         }
 
         private void ButtonAddFilter_Click(object sender, RoutedEventArgs e)
@@ -84,6 +93,12 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
                     isNumber = result.isNumber
                 });
                 dataGridFilters.Items.Refresh();
+                if (dataGridFilters.Items.Count > 0)
+                {
+                    buttonFind.Style = (Style)buttonFind.FindResource("Active");
+                }
+                else
+                    buttonFind.Style = (Style)buttonFind.FindResource("NoActive");
             }
         }
 
@@ -117,6 +132,7 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
 
         private void ButtonFind_Click(object sender, RoutedEventArgs e)
         {
+
             this.DialogResult = true;
             List<FilterHandler.FilterDescription> result = new List<FilterHandler.FilterDescription>(collection);
             Result = result;
@@ -135,6 +151,19 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
                 collection.RemoveAt(rowIndex);
                 dataGridFilters.Items.Refresh();
             }
+            buttonDeleteFilter.Style = (Style)buttonDeleteFilter.FindResource("NoActive");
+            if (dataGridFilters.Items.Count > 0)
+            {
+                buttonFind.Style = (Style)buttonFind.FindResource("Active");
+            }
+            else
+                buttonFind.Style = (Style)buttonFind.FindResource("NoActive");
+        }
+
+        private void DataGridCell_GotFocus(object sender, RoutedEventArgs e)
+        {
+            buttonDeleteFilter.Style = (Style)buttonDeleteFilter.FindResource("Active");
+
         }
     }
 }

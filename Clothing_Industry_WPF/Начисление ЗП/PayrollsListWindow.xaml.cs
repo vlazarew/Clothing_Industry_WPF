@@ -61,6 +61,17 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
             connection.Close();
 
             payrollsGrid.SelectedIndex = 0;
+
+            List<HelpStruct> ids = new List<HelpStruct>();
+            foreach (DataRowView row in payrollsGrid.SelectedItems)
+            {
+                ids.Add(new HelpStruct { login = row.Row.ItemArray[0].ToString(), period = row.Row.ItemArray[1].ToString() });
+            }
+            if (ids.Count == 0)
+            {
+                ButtonEdit.Style = (Style)ButtonEdit.FindResource("NoActive");
+                ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+            }
         }
 
         private string getQueryText()
@@ -220,6 +231,7 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
             adapter.Fill(dataTable);
             payrollsGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
+            buttonCancelFind.Style = (Style)buttonCancelFind.FindResource("Active");
         }
 
         // Список полей, по которым мы можем делать поиск
@@ -271,6 +283,7 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
         {
             currentFindDescription = new FindHandler.FindDescription();
             RefreshList();
+            buttonCancelFind.Style = (Style)buttonCancelFind.FindResource("NoActive");
         }
 
         private void ButtonFilters_Click(object sender, RoutedEventArgs e)
@@ -357,6 +370,26 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
             }*/
 
             return result;
+        }
+
+        private void DataGridCell_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ButtonEdit.Style = (Style)ButtonEdit.FindResource("Active");
+            ButtonDelete.Style = (Style)ButtonDelete.FindResource("Active");
+        }
+
+        private void DataGridCell_LostFocus(object sender, RoutedEventArgs e)
+        {
+            List<HelpStruct> ids = new List<HelpStruct>();
+            foreach (DataRowView row in payrollsGrid.SelectedItems)
+            {
+                ids.Add(new HelpStruct { login = row.Row.ItemArray[0].ToString(), period = row.Row.ItemArray[1].ToString() });
+            }
+            if (ids.Count == 0)
+            {
+                ButtonEdit.Style = (Style)ButtonEdit.FindResource("NoActive");
+                ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+            }
         }
     }
 }

@@ -236,7 +236,6 @@ namespace Clothing_Industry_WPF.Материал
                 command.Transaction = transaction;
                 MySqlCommand commandStrore = actionInStoreCommand(connection);
                 commandStrore.Transaction = transaction;
-
                 try
                 {
                     command.ExecuteNonQuery();
@@ -371,13 +370,15 @@ namespace Clothing_Industry_WPF.Материал
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
-                querystore = "Update store set Materials_Vendor_Code = @Materials_Vendor_Code" +
+                querystore = "Update store set Materials_Vendor_Code = @vendor_code" +
                              " where Materials_Vendor_Code = @oldvendor_code;";
 
             }
 
             MySqlCommand command = new MySqlCommand(querystore, connection);
-            command.Parameters.AddWithValue("@vendor_code", textBoxVendor_Code.Text);
+
+                command.Parameters.AddWithValue("@vendor_code", textBoxVendor_Code.Text);
+
 
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {

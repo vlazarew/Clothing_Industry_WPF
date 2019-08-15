@@ -83,6 +83,7 @@ namespace Clothing_Industry_WPF.Заказы
 
             listOfProductsGrid.ItemsSource = collection;
             connection.Close();
+
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
@@ -115,6 +116,7 @@ namespace Clothing_Industry_WPF.Заказы
                 {
                     commandTable.ExecuteNonQuery();
                     transaction.Commit();
+                    ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
                 }
                 catch
                 {
@@ -286,8 +288,10 @@ namespace Clothing_Industry_WPF.Заказы
             }
         }
 
-  
-
+        private void DataGridCell_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ButtonDelete.Style = (Style)ButtonDelete.FindResource("Active");
+        }
 
     }
 }

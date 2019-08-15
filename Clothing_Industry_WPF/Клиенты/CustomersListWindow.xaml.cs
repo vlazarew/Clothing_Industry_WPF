@@ -53,6 +53,16 @@ namespace Clothing_Industry_WPF.Клиенты
             adapter.Fill(dataTable);
             customersGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
+            List<int> ids = new List<int>();
+            foreach (DataRowView row in customersGrid.SelectedItems)
+            {
+                ids.Add((int)row.Row.ItemArray[0]);
+            }
+            if (ids.Count == 0)
+            {
+                ButtonEdit.Style = (Style)ButtonEdit.FindResource("NoActive");
+                ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+            }
         }
 
         private string getQueryText()
@@ -105,6 +115,7 @@ namespace Clothing_Industry_WPF.Клиенты
             }
 
             DeleteFromDB(idToDelete);
+
         }
 
         private void DeleteFromDB(List<int> ids)
@@ -175,6 +186,7 @@ namespace Clothing_Industry_WPF.Клиенты
 
         private void ButtonFind_Click(object sender, RoutedEventArgs e)
         {
+            
             List<FindHandler.FieldParameters> listOfField = FillFindFields();
 
             var findWindow = new FindWindow(currentFindDescription, listOfField);
@@ -209,6 +221,7 @@ namespace Clothing_Industry_WPF.Клиенты
             adapter.Fill(dataTable);
             customersGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
+            buttonCancelFind.Style = (Style)buttonCancelFind.FindResource("Active");
         }
 
         // Список полей, по которым мы можем делать поиск
@@ -268,6 +281,7 @@ namespace Clothing_Industry_WPF.Клиенты
 
         private void ButtonCancelFind_Click(object sender, RoutedEventArgs e)
         {
+            buttonCancelFind.Style = (Style)buttonCancelFind.FindResource("NoActive");
             currentFindDescription = new FindHandler.FindDescription();
             RefreshList();
         }
@@ -361,6 +375,26 @@ namespace Clothing_Industry_WPF.Клиенты
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void DataGridCell_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ButtonEdit.Style = (Style)ButtonEdit.FindResource("Active");
+            ButtonDelete.Style = (Style)ButtonDelete.FindResource("Active");
+        }
+
+        private void DataGridCell_LostFocus(object sender, RoutedEventArgs e)
+        {
+            List<int> ids = new List<int>();
+            foreach (DataRowView row in customersGrid.SelectedItems)
+            {
+                ids.Add((int)row.Row.ItemArray[0]);
+            }
+            if (ids.Count == 0)
+            {
+                ButtonEdit.Style = (Style)ButtonEdit.FindResource("NoActive");
+                ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+            }
         }
     }
 }

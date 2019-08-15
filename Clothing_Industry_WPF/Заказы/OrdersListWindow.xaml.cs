@@ -58,6 +58,17 @@ namespace Clothing_Industry_WPF.Заказы
             connection.Close();
 
             ordersGrid.SelectedIndex = 0;
+            List<int> ids = new List<int>();
+            foreach (DataRowView row in ordersGrid.SelectedItems)
+            {
+                ids.Add((int)row.Row.ItemArray[0]);
+            }
+            if (ids.Count == 0)
+            {
+                ButtonEdit.Style = (System.Windows.Style)ButtonEdit.FindResource("NoActive");
+                ButtonDelete.Style = (System.Windows.Style)ButtonDelete.FindResource("NoActive");
+                ButtonListProducts.Style = (System.Windows.Style)ButtonListProducts.FindResource("NoActive");
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -259,7 +270,7 @@ namespace Clothing_Industry_WPF.Заказы
         private void ButtonFind_Click(object sender, RoutedEventArgs e)
         {
             List<FindHandler.FieldParameters> listOfField = FillFindFields();
-
+            buttonCancelFind.Style = (System.Windows.Style)buttonCancelFind.FindResource("Active");
             var findWindow = new FindWindow(currentFindDescription, listOfField);
             if (findWindow.ShowDialog().Value)
             {
@@ -366,6 +377,7 @@ namespace Clothing_Industry_WPF.Заказы
 
         private void ButtonCancelFind_Click(object sender, RoutedEventArgs e)
         {
+            buttonCancelFind.Style = (System.Windows.Style)buttonCancelFind.FindResource("NoActive");
             currentFindDescription = new FindHandler.FindDescription();
             RefreshList();
         }
@@ -618,6 +630,28 @@ namespace Clothing_Industry_WPF.Заказы
                     Microsoft.Office.Interop.Excel.Range myRange = (Microsoft.Office.Interop.Excel.Range)sheet1.Cells[i + 2, j + 1];
                     myRange.Value2 = TextBlockWithField.Text;
                 }
+            }
+        }
+
+        private void DataGridCell_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ButtonDelete.Style = (System.Windows.Style)ButtonDelete.FindResource("Active");
+            ButtonEdit.Style = (System.Windows.Style)ButtonEdit.FindResource("Active");
+            ButtonListProducts.Style = (System.Windows.Style)ButtonListProducts.FindResource("Active");
+        }
+
+        private void DataGridCell_LostFocus(object sender, RoutedEventArgs e)
+        {
+            List<int> ids = new List<int>();
+            foreach (DataRowView row in ordersGrid.SelectedItems)
+            {
+                ids.Add((int)row.Row.ItemArray[0]);
+            }
+            if (ids.Count == 0)
+            {
+                ButtonEdit.Style = (System.Windows.Style)ButtonEdit.FindResource("NoActive");
+                ButtonDelete.Style = (System.Windows.Style)ButtonDelete.FindResource("NoActive");
+                ButtonListProducts.Style = (System.Windows.Style)ButtonListProducts.FindResource("NoActive");
             }
         }
     }

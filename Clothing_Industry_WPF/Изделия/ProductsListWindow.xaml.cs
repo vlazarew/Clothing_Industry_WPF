@@ -158,6 +158,7 @@ namespace Clothing_Industry_WPF.Изделия
             adapter.Fill(dataTable);
             productsGrid.ItemsSource = dataTable.DefaultView;
             connection.Close();
+            buttonCancelFind.Style = (Style)buttonCancelFind.FindResource("Active");
         }
 
         // Список полей, по которым мы можем делать поиск
@@ -167,8 +168,7 @@ namespace Clothing_Industry_WPF.Изделия
             List<FindHandler.FieldParameters> result = new List<FindHandler.FieldParameters>();
             result.Add(new FindHandler.FieldParameters("Name_Of_Product", "Название", describe.Where(key => key.Key == "Name_Of_Product").First().Value));
             result.Add(new FindHandler.FieldParameters("Fixed_Price", "Цена", describe.Where(key => key.Key == "Fixed_Price").First().Value));
-            result.Add(new FindHandler.FieldParameters("Per_Cents", "Процент за изготовление", describe.Where(key => key.Key == "Per_Cents").First().Value));
-            result.Add(new FindHandler.FieldParameters("Added_Price_For_Complexity", "Дополнительная оплата", describe.Where(key => key.Key == "Added_Price_For_Complexity").First().Value));
+            result.Add(new FindHandler.FieldParameters("Per_Cents", "Выплата сотруднику", describe.Where(key => key.Key == "MoneyToEmployee").First().Value));
             result.Add(new FindHandler.FieldParameters("Description", "Описание", describe.Where(key => key.Key == "Description").First().Value));
 
             return result;
@@ -292,6 +292,7 @@ namespace Clothing_Industry_WPF.Изделия
         {
             currentFindDescription = new FindHandler.FindDescription();
             RefreshList();
+            buttonCancelFind.Style = (Style)buttonCancelFind.FindResource("NoActive");
         }
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
@@ -320,6 +321,17 @@ namespace Clothing_Industry_WPF.Изделия
             connection.Close();
 
             productsGrid.SelectedIndex = 0;
+            List<int> ids = new List<int>();
+            foreach (DataRowView row in productsGrid.SelectedItems)
+            {
+                ids.Add((int)row.Row.ItemArray[0]);
+            }
+            if (ids.Count == 0)
+            {
+                ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+                ButtonEdit.Style = (Style)ButtonEdit.FindResource("NoActive");
+                ButtonOpenList.Style = (Style)ButtonOpenList.FindResource("NoActive");
+            }
         }
 
 
@@ -362,6 +374,28 @@ namespace Clothing_Industry_WPF.Изделия
             Window listProduct = new MaterialsForProductsList(id_Product);
             listProduct.ShowDialog();
             RefreshList();
+        }
+
+        private void DataGridCell_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ButtonDelete.Style = (Style)ButtonDelete.FindResource("Active");
+            ButtonEdit.Style = (Style)ButtonEdit.FindResource("Active");
+            ButtonOpenList.Style = (Style)ButtonOpenList.FindResource("Active");
+        }
+
+        private void DataGridCell_LostFocus(object sender, RoutedEventArgs e)
+        {
+            List<int> ids = new List<int>();
+            foreach (DataRowView row in productsGrid.SelectedItems)
+            {
+                ids.Add((int)row.Row.ItemArray[0]);
+            }
+            if (ids.Count == 0)
+            {
+                ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+                ButtonEdit.Style = (Style)ButtonEdit.FindResource("NoActive");
+                ButtonOpenList.Style = (Style)ButtonOpenList.FindResource("NoActive");
+            }
         }
     }
 
