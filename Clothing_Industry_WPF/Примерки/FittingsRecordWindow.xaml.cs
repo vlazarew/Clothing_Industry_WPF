@@ -146,17 +146,17 @@ namespace Clothing_Industry_WPF.Примерки
                 MySqlCommand command = actionInDBCommand(connection);
                 command.Transaction = transaction;
 
-                try
+                //try
                 {
                     command.ExecuteNonQuery();
                     transaction.Commit();
                     this.Hide();
                 }
-                catch
+                /*catch
                 {
                     transaction.Rollback();
                     MessageBox.Show("Ошибка сохранения!");
-                }
+                }*/
 
                 connection.Close();
                 //this.Hide();
@@ -175,11 +175,11 @@ namespace Clothing_Industry_WPF.Примерки
                 query = "INSERT INTO fittings " +
                         "(Customers_id_Customer, Orders_id_Order, Date," +
                         " Time, Notes, Types_Of_Fitting_id_Type_Of_Fitting) " +
-                        " VALUES (@customer, @order, @date, @time, @notes, @type_of_Fitting) ; ";
+                        " VALUES (@customer, @orderId, @date, @time, @notes, @type_of_Fitting) ; ";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
-                query = "Update fittings set Customers_id_Customer = @customer, Orders_id_Order = @order, Date = @date, " +
+                query = "Update fittings set Customers_id_Customer = @customer, Orders_id_Order = @orderId, Date = @date, " +
                         "Time = @time, Notes = @notes, Types_Of_Fitting_id_Type_Of_Fitting = @type_of_Fitting " +
                         " where Orders_id_Order = @orderId and Customers_id_Customer = @customer ;";
             }
@@ -202,7 +202,7 @@ namespace Clothing_Industry_WPF.Примерки
             }
 
             command.Parameters.AddWithValue("@type_of_Fitting", id_type);
-            command.Parameters.AddWithValue("@order", int.Parse(textBoxOrder.Text));
+            command.Parameters.AddWithValue("@orderId", int.Parse(textBoxOrder.Text));
 
             MySqlCommand commandCustomer = new MySqlCommand("select id_Customer from customers where nickname = @nickname", connection);
             commandCustomer.Parameters.AddWithValue("@nickname", textBoxCustomer.Text);
