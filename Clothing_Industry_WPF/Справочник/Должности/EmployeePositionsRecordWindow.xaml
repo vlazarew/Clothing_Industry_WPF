@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Справочник.Должности"
         ResizeMode="NoResize"
-        mc:Ignorable="d"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="Должности" Height="213.337" Width="368.414">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">

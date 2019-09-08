@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Клиенты"
-        mc:Ignorable="d"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
               Title="Клиенты" Loaded="Window_Loaded" Height="529" Width="1067.1" MinWidth="1067.1" MinHeight="529">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
@@ -268,10 +268,10 @@
                 </DataGrid.Resources>
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Имя"/>
                     <DataGridTextColumn Binding="{Binding Lastname}" ClipboardContentBinding="{x:Null}" Header="Фамилия"/>
-                    <DataGridTextColumn Binding="{Binding Address}" ClipboardContentBinding="{x:Null}" Header="Адрес"/>
+                    <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Имя"/>
                     <DataGridTextColumn Binding="{Binding Phone_Number}" ClipboardContentBinding="{x:Null}" Header="Телефонный номер"/>
+                    <DataGridTextColumn Binding="{Binding Address}" ClipboardContentBinding="{x:Null}" Header="Адрес"/>
                     <DataGridTextColumn Binding="{Binding Nickname}" ClipboardContentBinding="{x:Null}" Header="Никнейм"/>
                     <DataGridTextColumn Binding="{Binding Birthday}" ClipboardContentBinding="{x:Null}" Header="Дата рождения"/>
                     <DataGridTextColumn Binding="{Binding Passport_data}" ClipboardContentBinding="{x:Null}" Header="Паспорт"/>

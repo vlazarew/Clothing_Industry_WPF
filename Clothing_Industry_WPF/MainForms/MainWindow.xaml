@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF"
-        mc:Ignorable="d"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
   
  Title="Учёт швейного производства 'Моя пижама'" Height="768" Width="1366" Closing="Window_Closing" MinWidth="1200" MinHeight="800">
     <Window.Resources>
@@ -137,50 +137,41 @@
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200*"/>
-            <ColumnDefinition Width="1000*"/>
+            <ColumnDefinition Width="1200*"/>
         </Grid.ColumnDefinitions>
+
+
+     
 
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="90"/>
-                <RowDefinition Height="710*"/>
+                <RowDefinition  Height="64"/>
+                <RowDefinition  Height="70"/>
+                <RowDefinition  Height="298*"/>
+                <RowDefinition  Height="70"/>
+                <RowDefinition  Height="298*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Background ="Beige">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock FontSize="20" Margin="3,0">
+            <Grid  Grid.Row="0" Background="Beige">
+                <Viewbox HorizontalAlignment="Left">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Height="30" Margin="3,0" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <Run Text="Добро пожаловать,"/></TextBlock>
-                    <TextBlock x:Name="textBlockUserName" FontSize="19" FontWeight="Bold" UseLayoutRounding="True" TextWrapping="WrapWithOverflow" Margin="3,0">
-                    </TextBlock>
-                </StackPanel>
-            </Grid>
-            <Grid  Grid.Row="1"  Background ="Gray">
-                <Button x:Name="ButtonExit"  VerticalAlignment="Top" Height="65" Width="Auto" IsCancel="True" TabIndex="0" Click="ButtonExit_Click">
-                        <Viewbox>
-                            <TextBlock Width="120">Выйти</TextBlock>
-                        </Viewbox>
-                    </Button>
-                <Button x:Name="ButtonFAQ" Height="65" Width="Auto" RenderTransformOrigin="3.476,-2.516" TabIndex="1" VerticalAlignment="Bottom" Visibility="Hidden">
+                        <TextBlock Height="30" x:Name="textBlockUserName"  UseLayoutRounding="True" TextWrapping="WrapWithOverflow" Margin="3,0" VerticalAlignment="Center">
+                        </TextBlock>
+                    </StackPanel>
+                </Viewbox>
+                <Button x:Name="ButtonExit"   Height="59" Width="135" IsCancel="True" TabIndex="0" Click="ButtonExit_Click" HorizontalAlignment="Right" Margin="0,1,10,0">
                     <Viewbox>
-                        <TextBlock Width="120">О программе</TextBlock>
+                        <TextBlock Width="120">Выйти</TextBlock>
                     </Viewbox>
                 </Button>
             </Grid>
-        </Grid>
-
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition  Height="90"/>
-                <RowDefinition  Height="310*"/>
-                <RowDefinition  Height="90"/>
-                <RowDefinition  Height="310*"/>
-            </Grid.RowDefinitions>
-            <Grid  Grid.Row="0" Background="YellowGreen">
+            <Grid  Grid.Row="1" Background="YellowGreen">
                 <Viewbox>
                     <TextBlock Text="Меню"  FontWeight="Bold" VerticalAlignment="Center"  TextAlignment="Center" Height="20"></TextBlock>
                 </Viewbox>
             </Grid>
-            <Grid Grid.Row="1" Background="LightGray">
+            <Grid Grid.Row="2" Background="LightGray">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200*"/>
                     <ColumnDefinition Width="200*"/>
@@ -285,12 +276,12 @@
                     </Border>
                 </Grid>
             </Grid>
-            <Grid Grid.Row="2" Background ="#FFC9BC38">
+            <Grid Grid.Row="3" Background ="#FFC9BC38">
                 <Viewbox>
                     <TextBlock  Text="Справочник" FontWeight="Bold" TextAlignment="Center" Height="20" VerticalAlignment="Center"></TextBlock>
                 </Viewbox>
             </Grid>
-            <Grid Grid.Row="3" Background="LightGray">
+            <Grid Grid.Row="4" Background="LightGray">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200*"/>
                     <ColumnDefinition Width="200*"/>

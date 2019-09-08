@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Справочник.Статусы_клиентов"
         ResizeMode="NoResize"
-        mc:Ignorable="d"
+        mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="Статусы клиентов" Height="163.949" Width="368.414">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">

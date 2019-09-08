@@ -183,8 +183,6 @@ D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Начислени�
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Начисление ЗП\PayrollsRecordWindow.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Начисление ЗП\PayrollsListWindow.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Начисление ЗП\PayrollsRecordWindow.baml
-D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Группы материалов\GroupsOfMaterialListWindow.g.cs
-D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Группы материалов\GroupsOfMaterialRecordWindow.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Должности\EmployeePositionsListWindow.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Должности\EmployeePositionsRecordWindow.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Единицы измерения\UnitsListWindow.g.cs
@@ -195,8 +193,6 @@ D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочни�
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Категории расходов\ConsumptionCategoriesRecordWindow.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Периодичности\PeriodicitiesListWindow.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Периодичности\PeriodicitiesRecordWindow.g.cs
-D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Роли\EmployeeRolesListWindow.g.cs
-D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Роли\EmployeeRolesRecordWindow.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Статусы клиентов\CustomerStatusesListWindow.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Статусы клиентов\CustomerStatusesRecordWindow.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Статусы оплаты\PaymentStatesListWindow.g.cs
@@ -211,8 +207,6 @@ D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочни�
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы примерок\TypesOfFittingRecordWindow.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы транзакций\TypeOfTransactionsListWindow.g.cs
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы транзакций\TypeOfTransactionsRecordWindow.g.cs
-D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Группы материалов\GroupsOfMaterialListWindow.baml
-D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Группы материалов\GroupsOfMaterialRecordWindow.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Должности\EmployeePositionsListWindow.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Должности\EmployeePositionsRecordWindow.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Единицы измерения\UnitsListWindow.baml
@@ -223,10 +217,6 @@ D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочни�
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Категории расходов\ConsumptionCategoriesRecordWindow.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Периодичности\PeriodicitiesListWindow.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Периодичности\PeriodicitiesRecordWindow.baml
-D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Роли\EmployeeRolesListWindow.baml
-D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Роли\EmployeeRolesRecordWindow.baml
-D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Статусы заказов\StatusesOfOrderListWindow.baml
-D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Статусы заказов\StatusesOfOrderRecordWindow.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Статусы клиентов\CustomerStatusesListWindow.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Статусы клиентов\CustomerStatusesRecordWindow.baml
 D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Статусы оплаты\PaymentStatesListWindow.baml
@@ -353,3 +343,15 @@ D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_I
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.application
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\ConnectionSettingsWindow.g.cs
 D:\Универ\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\ConnectionSettingsWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\bin\Debug\Clothing_Industry_WPF.exe.manifest
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\bin\Debug\Clothing_Industry_WPF.application
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\ConnectionSettingsWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\Список изделий для заказа\Список материалов для изделия\OrderListOfMaterialsForProduct.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\Список изделий для заказа\Список материалов для изделия\OrderRecordMaterialForProduct.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы материалов\TypesOfMaterialListWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Справочник\Типы материалов\TypesOfMaterialRecordWindow.g.cs
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\MainForms\ConnectionSettingsWindow.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\Список изделий для заказа\Список материалов для изделия\OrderListOfMaterialsForProduct.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Заказы\Список изделий для заказа\Список материалов для изделия\OrderRecordMaterialForProduct.baml
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.exe.manifest
+D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\obj\Debug\Clothing_Industry_WPF.application

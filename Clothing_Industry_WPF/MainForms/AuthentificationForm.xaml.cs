@@ -61,6 +61,9 @@ namespace Clothing_Industry_WPF
             int count = 0;
             int maxCount = 10;
             bool edited = false;
+            //textboxLogin.IsEnabled = false;
+            //PasswordBoxPassword.IsEnabled = false;
+            //Button_Parameters.TabIndex = 1;
             // Допустим максимальный таймаут - 10. можно будет прибавить если что
             while (count < maxCount)
             {
@@ -69,6 +72,9 @@ namespace Clothing_Industry_WPF
                 textBlockStatus.Text = "Идет проверка доступности сервера (" + count.ToString() + " сек.)";
                 if ((isServer || isLocalHost))
                 {
+                    //textboxLogin.IsEnabled = true;
+                    //PasswordBoxPassword.IsEnabled = true;
+                    //PasswordBoxPassword.TabIndex = 1;
                     //this.Visibility = Visibility.Visible;
                     maxCount = count;
                     edited = true;
@@ -93,7 +99,7 @@ namespace Clothing_Industry_WPF
             if (!edited)
             {
                 textBlockStatus.Foreground = Brushes.Crimson;
-                textBlockStatus.Text = "Соединение с сервером не установлено. Укажите верный ip в параметрах и перезапустите приложение.";
+                textBlockStatus.Text = "Соединение с сервером не установлено. Укажите верный ip в параметрах и перезапустите приложение.";               
             }
             /*if (!edited)
             {
@@ -115,8 +121,9 @@ namespace Clothing_Industry_WPF
                 return true;
             }
             catch
-            {
+            {              
                 return false;
+                
             }
         }
 

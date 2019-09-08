@@ -51,5 +51,10 @@ namespace Clothing_Industry_WPF.MainForms
             Result = ip.Value;
             Close();
         }
+
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            textBoxIP.Clear();
+        }
     }
 }
