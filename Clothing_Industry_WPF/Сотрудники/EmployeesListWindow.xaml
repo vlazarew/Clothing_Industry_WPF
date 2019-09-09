@@ -278,8 +278,8 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Login}" ClipboardContentBinding="{x:Null}" Header="Логин" IsReadOnly="True"/>
                     <!-- Фишка про пароль <DataGridTextColumn Binding="{Binding Password}" ClipboardContentBinding="{x:Null}" Header="Пароль"/>  -->
-                    <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Имя"/>
                     <DataGridTextColumn Binding="{Binding Lastname}" ClipboardContentBinding="{x:Null}" Header="Фамилия"/>
+                    <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Имя"/>
                     <DataGridTextColumn Binding="{Binding Patronymic}" ClipboardContentBinding="{x:Null}" Header="Отчество"/>
                     <DataGridTextColumn Binding="{Binding Name_Of_Position}" ClipboardContentBinding="{x:Null}" Header="Должность"/>
                     <DataGridTextColumn Binding="{Binding Phone_Number}" ClipboardContentBinding="{x:Null}" Header="Телефонный номер"/>
