@@ -40,6 +40,7 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
         private ObservableCollection<HelpStruct> collection;
         private int productId;
         private int groupofmaterial;
+        private int idmaterialproduct;
         private float count;
         public OrderListOfMaterialsForProduct(int productId)
         {
@@ -53,12 +54,12 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
         private void RefreshList()
         {
             collection = new ObservableCollection<HelpStruct>();
-            string query = "select  materials_for_product.Groups_Of_Material_id_Group_Of_Material, Name_Of_Group, Name_Of_Material,Count,Name_Of_Unit " +
+            string query = "select  materials_for_product.id_Materials_For_Product, materials_for_product.Groups_Of_Material_id_Group_Of_Material, Name_Of_Group, Name_Of_Material,Count,Name_Of_Unit " +
                             "from materials_for_product " +
                             "join groups_of_material on materials_for_product.Groups_Of_Material_id_Group_Of_Material = groups_of_material.id_Group_Of_Material " +
                             "left join materials on materials_for_product.materials_vendor_code = materials.Vendor_Code " +
                             "left join units on materials.units_id_unit = units.id_unit " +
-                            "where materials_for_product.Products_id_Product = @productID ; ";
+                            "where materials_for_product.id_Materials_For_Product = @productID  ";
 
 
 
@@ -73,26 +74,27 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
             {
                 while (reader.Read())
                 {
-                    groupofmaterial = (int)reader.GetValue(0);
-                    count = (float)reader.GetValue(3);
+                    idmaterialproduct = (int)reader.GetValue(0);
+                    groupofmaterial = (int)reader.GetValue(1);
+                    count = (float)reader.GetValue(4);
                     try
                     {
                         collection.Add(new HelpStruct()
                         {
-                            Groups_Of_Material_id_Group_Of_Material = (int)reader.GetValue(0),
-                            Name_Of_Group = reader.GetString(1),
-                            Name_Of_Material = reader.GetString(2),
-                            Count = (float)reader.GetValue(3),
-                            Name_Of_Unit = reader.GetString(4),
+                            Groups_Of_Material_id_Group_Of_Material = (int)reader.GetValue(1),
+                            Name_Of_Group = reader.GetString(2),
+                            Name_Of_Material = reader.GetString(3),
+                            Count = (float)reader.GetValue(4),
+                            Name_Of_Unit = reader.GetString(5),
                         });
                     }
                     catch
                     {
                         collection.Add(new HelpStruct()
                         {
-                            Groups_Of_Material_id_Group_Of_Material = (int)reader.GetValue(0),
-                            Name_Of_Group = reader.GetString(1),
-                            Count = (float)reader.GetValue(3),
+                            Groups_Of_Material_id_Group_Of_Material = (int)reader.GetValue(1),
+                            Name_Of_Group = reader.GetString(2),
+                            Count = (float)reader.GetValue(4),
                         });
                     }
                 }
@@ -153,7 +155,7 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
 
 
 
-            Window listMaterials = new OrderRecordMaterialForProduct(productId,groupofmaterial,count);
+            Window listMaterials = new OrderRecordMaterialForProduct(productId,groupofmaterial, idmaterialproduct,count);
             listMaterials.ShowDialog();
             RefreshList();
         }

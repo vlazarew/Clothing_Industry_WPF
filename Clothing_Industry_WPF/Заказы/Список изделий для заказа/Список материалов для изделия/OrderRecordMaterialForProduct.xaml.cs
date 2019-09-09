@@ -25,13 +25,15 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
     {
         private static readonly Regex _regex = new Regex("[^0-9]");
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
+        private int idmaterialproduct;
         private int productId;
         private int groupofmaterial;
         private float count;
 
-        public OrderRecordMaterialForProduct(int productId, int groupofmaterial, float count)
+        public OrderRecordMaterialForProduct(int productId, int groupofmaterial, int idmaterialproduct, float count)
         {
             InitializeComponent();
+            this.idmaterialproduct = idmaterialproduct;
             this.productId = productId;
             this.groupofmaterial = groupofmaterial;
             this.count = count;

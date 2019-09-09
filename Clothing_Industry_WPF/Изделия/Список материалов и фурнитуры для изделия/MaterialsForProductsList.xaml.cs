@@ -34,7 +34,7 @@ namespace Clothing_Industry_WPF.Изделия
 
         private ObservableCollection<HelpStruct> collection;
         private int productId;
-
+        private int idmaterialsforproduct;
         public MaterialsForProductsList(int productId)
         {
             InitializeComponent();
@@ -47,7 +47,7 @@ namespace Clothing_Industry_WPF.Изделия
         private void RefreshList()
         {
             collection = new ObservableCollection<HelpStruct>();
-            string query = "select  Groups_Of_Material_id_Group_Of_Material, Name_Of_Group, Count " +
+            string query = "select  id_Materials_For_Product, Groups_Of_Material_id_Group_Of_Material, Name_Of_Group, Count " +
                             "from materials_for_product " +
                             "join groups_of_material on materials_for_product.Groups_Of_Material_id_Group_Of_Material = groups_of_material.id_Group_Of_Material " +
                             "where materials_for_product.Products_id_Product = @productID ; "; 
@@ -63,11 +63,13 @@ namespace Clothing_Industry_WPF.Изделия
             {
                 while (reader.Read())
                 {
+                    idmaterialsforproduct = (int)reader.GetValue(0);
                     collection.Add(new HelpStruct()
                     {
-                        Groups_Of_Material_id_Group_Of_Material = (int)reader.GetValue(0),
-                        Name_Of_Group = reader.GetString(1),
-                        Count = (float)reader.GetValue(2),
+                        
+                        Groups_Of_Material_id_Group_Of_Material = (int)reader.GetValue(1),
+                        Name_Of_Group = reader.GetString(2),
+                        Count = (float)reader.GetValue(3),
                     });
                 }
             }

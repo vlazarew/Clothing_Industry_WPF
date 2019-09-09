@@ -20,7 +20,7 @@
         <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
     StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="DarkGray" Offset="0" />
-            <GradientStop Color="#CCCCFF" Offset="0.5" />
+            
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
 
@@ -139,8 +139,8 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <StackPanel Orientation="Horizontal">
-                <Button x:Name="ButtonExit" Content="Выход" Width="75" IsCancel="True" TabIndex="3" Visibility="Visible" Click="ButtonExit_Click"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="ButtonExit" Content="Выход" Width="75" IsCancel="True" TabIndex="3" Visibility="Visible" Click="ButtonExit_Click" RenderTransformOrigin="2.087,0.556"/>
             </StackPanel>
         </Grid>
 

@@ -26,6 +26,7 @@ namespace Clothing_Industry_WPF.Изделия
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private int productId;
 
+
         public MaterialsForProductsRecordWindow(int productId)
         {
             InitializeComponent();
