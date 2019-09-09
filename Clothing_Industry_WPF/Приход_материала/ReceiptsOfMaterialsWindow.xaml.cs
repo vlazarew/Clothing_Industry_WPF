@@ -143,7 +143,7 @@ namespace Clothing_Industry_WPF.Приход_материала
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Удаление документа " + id_Document_Of_Receipt + " не удалось");
+                    System.Windows.MessageBox.Show("Удаление документа " + id_Document_Of_Receipt + " не удалось", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 

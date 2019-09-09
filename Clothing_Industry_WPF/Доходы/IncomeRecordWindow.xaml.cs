@@ -103,7 +103,7 @@ namespace Clothing_Industry_WPF.Доходы
             }
             else
             {
-                System.Windows.MessageBox.Show(warning);
+                System.Windows.MessageBox.Show(warning, "Не заполнены обязательные поля", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

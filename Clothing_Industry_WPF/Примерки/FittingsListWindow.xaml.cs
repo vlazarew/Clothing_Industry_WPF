@@ -161,7 +161,7 @@ namespace Clothing_Industry_WPF.Примерки
                 catch
                 {
                     transaction.Rollback();
-                    MessageBox.Show("Удаление не удалось");
+                    MessageBox.Show("Удаление не удалось", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 

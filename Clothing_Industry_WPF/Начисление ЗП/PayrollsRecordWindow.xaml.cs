@@ -203,7 +203,7 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
                 catch
                 {
                     transaction.Rollback();
-                    MessageBox.Show("Ошибка сохранения!");
+                    MessageBox.Show("Ошибка сохранения!", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
                 connection.Close();
@@ -211,7 +211,7 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
             }
             else
             {
-                MessageBox.Show(warning);
+                MessageBox.Show(warning, "Не заполнены обязательные поля", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

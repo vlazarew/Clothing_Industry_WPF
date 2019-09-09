@@ -47,7 +47,8 @@ namespace Clothing_Industry_WPF.MainForms
             ip.Value = textBoxIP.Text;
 
             // Думаю, все-таки мы не должны тут ничего писать, пусть сначала в систему зайдут
-            // xmlDocument.Save(xmlFileName);
+            // Думаю, все-таки надо писать
+            xmlDocument.Save(xmlFileName);
             Result = ip.Value;
             Close();
         }

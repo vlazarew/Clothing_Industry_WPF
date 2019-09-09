@@ -7,6 +7,10 @@
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="Доходы" Loaded="Window_Loaded" Height="529" Width="1067.1" MinWidth="1067.1" MinHeight="529">
     <Window.Resources>
+        <Style x:Key="DataGridCentralBoldHeader" TargetType="DataGridColumnHeader">
+            <Setter Property="Thumb.HorizontalContentAlignment" Value="Center" />
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
             <GradientStop Color="Transparent" Offset="0.4" />
@@ -159,7 +163,7 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Label Content="Прибыль:" HorizontalAlignment="Left"  VerticalAlignment="Top" RenderTransformOrigin="-0.193,-0.389"/>
-                <DataGrid x:Name="incomeGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Margin="0,32,0,0">
+                <DataGrid x:Name="incomeGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Margin="0,32,0,0" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
 
 
                     <DataGrid.Columns>
@@ -169,7 +173,7 @@
                 </DataGrid>
             </Grid>
             <Grid Grid.Column="1">
-                <DataGrid x:Name="clearincomeGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Margin="0,32,0,0">
+                <DataGrid x:Name="clearincomeGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Margin="0,32,0,0" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
 
 
                     <DataGrid.Columns>

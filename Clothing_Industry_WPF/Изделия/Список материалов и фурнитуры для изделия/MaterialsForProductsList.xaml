@@ -7,6 +7,10 @@
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
        Title="Список материалов/фурнитуры необходимый на пошив изделия" Height="529" Width="773" MinWidth="773" MinHeight="529">
     <Window.Resources>
+        <Style x:Key="DataGridCentralBoldHeader" TargetType="DataGridColumnHeader">
+            <Setter Property="Thumb.HorizontalContentAlignment" Value="Center" />
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
             <GradientStop Color="Transparent" Offset="0.4" />
@@ -255,7 +259,7 @@
         </Grid>
         
         <Grid Grid.Row="1">
-            <DataGrid x:Name="productslistGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}">
+            <DataGrid x:Name="productslistGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridCell}">
                         <EventSetter Event="GotFocus" Handler="DataGridCell_GotFocus" />

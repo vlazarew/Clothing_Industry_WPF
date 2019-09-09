@@ -20,7 +20,7 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
     /// <summary>
     /// Логика взаимодействия для OrderRecordMaterialForProduct.xaml
     /// </summary>
-   
+
     public partial class OrderRecordMaterialForProduct : Window
     {
         private static readonly Regex _regex = new Regex("[^0-9]");
@@ -53,7 +53,7 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
                 while (reader.Read())
                 {
                     comboBoxName_Of_Material.Items.Add(reader.GetString(0));
-                   
+
                 }
             }
 
@@ -126,14 +126,14 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
                 catch
                 {
                     transaction.Rollback();
-                    MessageBox.Show("Ошибка добавления");
+                    MessageBox.Show("Ошибка добавления", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
                 connection.Close();
             }
             else
             {
-                System.Windows.MessageBox.Show(warning);
+                MessageBox.Show(warning, "Не заполнены обязательные поля", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

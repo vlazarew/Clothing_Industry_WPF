@@ -190,7 +190,7 @@ namespace Clothing_Industry_WPF.Отпуска
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Удаление отпуска " + login + " не удалось");
+                    System.Windows.MessageBox.Show("Удаление отпуска " + login + " не удалось", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 

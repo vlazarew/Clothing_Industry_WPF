@@ -148,7 +148,7 @@
         <Label Content="Фото: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="350,50,0,0"/>
 
 
-        <TextBox x:Name="textBoxName_Of_Product" HorizontalAlignment="Left" Height="26" Margin="182,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="textBoxName_Of_Product" HorizontalAlignment="Left" Height="26" Margin="182,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center"/>
         <TextBox x:Name="textBoxFixed_Price" HorizontalAlignment="Left" Height="26" Margin="182,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="2" VerticalContentAlignment="Center" FontSize="14"/>
         <TextBox x:Name="textBoxMoneyToEmployee" HorizontalAlignment="Left" Height="26" Margin="182,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="3" VerticalContentAlignment="Center" FontSize="14"/>
         <TextBox x:Name="textBoxDescription" HorizontalAlignment="Left" Height="26" Margin="182,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="5" VerticalContentAlignment="Center" FontSize="14"/>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Клиенты"
         ResizeMode="NoResize"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Клиент" Height="537.334" Width="800">
+        Title="Клиент" Height="537.334" Width="897.5">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -21,7 +21,7 @@
         <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
     StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="DarkGray" Offset="0" />
-            
+
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
 
@@ -148,29 +148,29 @@
         <Label Content="Размер: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,300,0,0"/>
         <Label Content="Паспортные данные: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,269,0,0"/>
         <Label Content="Заметки: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,362,0,0"/>
-        <Label Content="Фото: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="350,50,0,0"/>
+        <Label Content="Фото: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="398,50,0,0"/>
         <Label Content="Дата рождения: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,237,0,0"/>
         <Label Content="Статус клиента: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,393,0,0"/>
-        <TextBox x:Name="textBoxLastname" HorizontalAlignment="Left" Height="26" Margin="75,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267" TabIndex="1" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" Margin="72,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="2" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxPatronymic" HorizontalAlignment="Left" Height="26" Margin="82,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" TabIndex="3" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxPhone_Number" HorizontalAlignment="Left" Height="26" Margin="72,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="5" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxSize" HorizontalAlignment="Left" Height="26" Margin="72,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="9" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxPassportData" HorizontalAlignment="Left" Height="26" Margin="138,269,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="71,362,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" TabIndex="11" VerticalContentAlignment="Center" FontSize="14"/>
-        <DatePicker x:Name="datePickerBirthday" HorizontalAlignment="Left" Margin="116,237,0,0" VerticalAlignment="Top" Width="227" TabIndex="7" VerticalContentAlignment="Center" FontSize="14"/>
-        <Image x:Name="imagePhoto" Height="336" Margin="399,50,25,0" VerticalAlignment="Top" OpacityMask="Black" Cursor="Hand" Grid.ColumnSpan="2"/>
-        <Button x:Name="buttonAddPhoto" Content="Добавить фото" HorizontalAlignment="Left" Margin="399,405,0,0" VerticalAlignment="Top" Width="106" Height="25" Click="ButtonAddPhoto_Click" TabIndex="15"/>
+        <TextBox x:Name="textBoxLastname" HorizontalAlignment="Left" Height="26" Margin="188,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="1" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" Margin="188,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="2" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxPatronymic" HorizontalAlignment="Left" Height="26" Margin="188,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="3" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxPhone_Number" HorizontalAlignment="Left" Height="26" Margin="188,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="5" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxSize" HorizontalAlignment="Left" Height="26" Margin="188,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="9" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxPassportData" HorizontalAlignment="Left" Height="26" Margin="188,269,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="188,362,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="11" VerticalContentAlignment="Center" FontSize="14"/>
+        <DatePicker x:Name="datePickerBirthday" HorizontalAlignment="Left" Margin="188,237,0,0" VerticalAlignment="Top" Width="206" TabIndex="7" VerticalContentAlignment="Center" FontSize="14"/>
+        <Image x:Name="imagePhoto" Height="336" Margin="447,50,30,0" VerticalAlignment="Top" OpacityMask="Black" Cursor="Hand" Grid.ColumnSpan="2"/>
+        <Button x:Name="buttonAddPhoto" Content="Добавить фото" HorizontalAlignment="Left" Margin="447,402,0,0" VerticalAlignment="Top" Width="106" Height="25" Click="ButtonAddPhoto_Click" TabIndex="15"/>
         <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="263,17,0,0" VerticalAlignment="Top" Width="131" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True" TabIndex="16"/>
-        <ComboBox x:Name="comboBoxChannel" HorizontalAlignment="Left" Margin="102,424,0,0" VerticalAlignment="Top" Width="240" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="13" RenderTransformOrigin="0.434,-1.231"/>
-        <ComboBox x:Name="comboBoxEmployee" HorizontalAlignment="Left" Margin="188,455,0,0" VerticalAlignment="Top" Width="155" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="14"/>
+        <ComboBox x:Name="comboBoxChannel" HorizontalAlignment="Left" Margin="188,424,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="13" RenderTransformOrigin="0.434,-1.231"/>
+        <ComboBox x:Name="comboBoxEmployee" HorizontalAlignment="Left" Margin="188,455,0,0" VerticalAlignment="Top" Width="206" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="14"/>
         <Label Content="Адрес: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,144,0,0"/>
-        <TextBox x:Name="textBoxAdress" HorizontalAlignment="Left" Height="26" Margin="82,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" TabIndex="4" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxAdress" HorizontalAlignment="Left" Height="26" Margin="188,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="4" VerticalContentAlignment="Center" FontSize="14"/>
         <Label Content="Никнейм: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,206,0,0"/>
-        <TextBox x:Name="textBoxNickname" HorizontalAlignment="Left" Height="26" Margin="73,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="6" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxNickname" HorizontalAlignment="Left" Height="26" Margin="188,206,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="206" TabIndex="6" VerticalContentAlignment="Center" FontSize="14"/>
         <Label Content="Параметры: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,331,0,0"/>
-        <TextBox x:Name="textBoxParameters" HorizontalAlignment="Left" Height="26" Margin="94,331,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" TabIndex="10" VerticalContentAlignment="Center" FontSize="14"/>
-        <ComboBox x:Name="comboBoxStatus" HorizontalAlignment="Left" Margin="112,393,0,0" VerticalAlignment="Top" Width="230" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="12"/>
+        <TextBox x:Name="textBoxParameters" HorizontalAlignment="Left" Height="26" Margin="188,331,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="10" VerticalContentAlignment="Center" FontSize="14"/>
+        <ComboBox x:Name="comboBoxStatus" HorizontalAlignment="Left" Margin="188,393,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="12"/>
 
     </Grid>
 </Window>

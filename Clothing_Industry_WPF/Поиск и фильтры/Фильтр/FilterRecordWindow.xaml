@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Поиск_и_фильтры.Фильтр"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="Фильтр" Height="450" Width="530.806" MinWidth="530.806" MinHeight="450">
+        Title="Фильтр" Height="362" Width="405" MinWidth="400" MinHeight="300">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -21,7 +21,7 @@
         <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
     StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="DarkGray" Offset="0" />
-            
+
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
 
@@ -138,8 +138,8 @@
         <Label Content="Поле" HorizontalAlignment="Left" Margin="40,76,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Label Content="Вид сравнения" HorizontalAlignment="Left" Margin="40,124,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Label Content="Значение" HorizontalAlignment="Left" Margin="40,179,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.496,1.613"/>
-        <Button x:Name="buttonOK" Content="Принять" HorizontalAlignment="Left" Margin="182,331,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" FontSize="16" Click="ButtonOK_Click"/>
-        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="375,331,0,0" VerticalAlignment="Top" Width="75" FontSize="16" IsCancel="True" Click="ButtonCancel_Click"/>
+        <Button x:Name="buttonOK" Content="Принять" HorizontalAlignment="Left" Margin="40,278,0,0" VerticalAlignment="Top" Width="130" IsDefault="True" FontSize="16" Click="ButtonOK_Click"/>
+        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="233,278,0,0" VerticalAlignment="Top" Width="131" FontSize="16" IsCancel="True" Click="ButtonCancel_Click"/>
         <ComboBox x:Name="comboBoxField" HorizontalAlignment="Left" Margin="182,76,0,0" VerticalAlignment="Top" Width="182" FontSize="16" SelectionChanged="ComboBoxField_SelectionChanged"/>
         <ComboBox x:Name="comboBoxTypeOfFilter" HorizontalAlignment="Left" Margin="182,124,0,0" VerticalAlignment="Top" Width="182" FontSize="16"/>
         <TextBox x:Name="textBoxValue" HorizontalAlignment="Left" Height="23" Margin="182,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="16" PreviewTextInput="TextBoxValue_PreviewTextInput"/>

@@ -153,7 +153,7 @@ namespace Clothing_Industry_WPF.Клиенты
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Ошибка удаления клиента");
+                    System.Windows.MessageBox.Show("Ошибка удаления клиента", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 
@@ -172,7 +172,8 @@ namespace Clothing_Industry_WPF.Клиенты
             {
                 if (reader.HasRows)
                 {
-                    MessageBox.Show("Клиент " + data.Firstname + " " + data.Lastname + " находится в таблице Баланс Клиентов. Первоначально удалите записи о нем в указанной таблице.");
+                    MessageBox.Show("Клиент " + data.Firstname + " " + data.Lastname + " находится в таблице Баланс Клиентов. Первоначально удалите записи о нем в указанной таблице.",
+                                    "Невозможно удалить клиента", MessageBoxButton.OK, MessageBoxImage.Information);
                     return false;
                 }
             }
@@ -185,7 +186,8 @@ namespace Clothing_Industry_WPF.Клиенты
             {
                 if (reader.HasRows)
                 {
-                    MessageBox.Show("Клиент " + data.Firstname + " " + data.Lastname + " находится в таблице Примерки. Первоначально удалите записи о нем в указанной таблице.");
+                    MessageBox.Show("Клиент " + data.Firstname + " " + data.Lastname + " находится в таблице Примерки. Первоначально удалите записи о нем в указанной таблице.",
+                                    "Невозможно удалить клиента", MessageBoxButton.OK, MessageBoxImage.Information);
                     return false;
                 }
             }

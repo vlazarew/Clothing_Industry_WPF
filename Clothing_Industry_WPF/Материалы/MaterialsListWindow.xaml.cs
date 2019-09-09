@@ -147,7 +147,7 @@ namespace Clothing_Industry_WPF.Материал
                 catch
                 {
                     transaction.Rollback();
-                    MessageBox.Show("Удаление материала " + vendor_code + " не удалось");
+                    MessageBox.Show("Удаление материала " + vendor_code + " не удалось", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 

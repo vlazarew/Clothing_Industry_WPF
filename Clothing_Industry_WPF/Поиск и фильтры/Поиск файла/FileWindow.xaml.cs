@@ -75,7 +75,7 @@ namespace Clothing_Industry_WPF.Поиск_файла
                 }
             }
             else
-                MessageBox.Show("Выберите папку из списка!");
+                MessageBox.Show("Выберите папку из списка!", "Поиск файлов", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void ListBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -84,7 +84,7 @@ namespace Clothing_Industry_WPF.Поиск_файла
             string file_folder = "";
 
             file_folder = listBoxFiles.Items[row_index].ToString();
-            
+
             csPathToFolder.PathOfSelectedFolder = file_folder;
             this.Close();
         }
@@ -99,7 +99,7 @@ namespace Clothing_Industry_WPF.Поиск_файла
             }
             catch
             {
-                MessageBox.Show("Файл не выбран!");
+                MessageBox.Show("Файл не выбран!", "Поиск файлов", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             csPathToFolder.PathOfSelectedFolder = file_folder;
             this.Close();

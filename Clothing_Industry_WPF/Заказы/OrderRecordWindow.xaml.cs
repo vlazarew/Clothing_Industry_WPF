@@ -301,7 +301,7 @@ namespace Clothing_Industry_WPF.Заказы
                 catch
                 {
                     transaction.Rollback();
-                    MessageBox.Show("Ошибка сохранения!");
+                    MessageBox.Show("Ошибка сохранения!", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
                 connection.Close();
@@ -309,7 +309,7 @@ namespace Clothing_Industry_WPF.Заказы
             }
             else
             {
-                MessageBox.Show(warning);
+                MessageBox.Show(warning, "Не заполнены обязательные поля", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

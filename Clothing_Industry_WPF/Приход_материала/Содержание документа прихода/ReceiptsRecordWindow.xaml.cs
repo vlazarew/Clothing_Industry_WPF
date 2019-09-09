@@ -150,7 +150,7 @@ namespace Clothing_Industry_WPF.Приход_материала
                 catch
                 {
                     transaction.Rollback();
-                    MessageBox.Show("Ошибка удаления");
+                    MessageBox.Show("Ошибка удаления", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 
@@ -219,7 +219,7 @@ namespace Clothing_Industry_WPF.Приход_материала
             for (int i = 0; i < receiptrecordGrid.Columns.Count; i++)
             {
 
-                MessageBox.Show("На вашем компьюьтере не установлен Excel!");
+                MessageBox.Show("На вашем компьютере не установлен Excel. Печать невозможна.", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
 
                 for (int j = 0; j < receiptrecordGrid.Items.Count; j++)
                 {

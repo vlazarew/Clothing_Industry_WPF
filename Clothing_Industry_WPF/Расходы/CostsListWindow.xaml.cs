@@ -146,7 +146,7 @@ namespace Clothing_Industry_WPF.Расходы
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Удаление " + id + " не удалось");
+                    System.Windows.MessageBox.Show("Удаление " + id + " не удалось", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 
@@ -400,7 +400,7 @@ namespace Clothing_Industry_WPF.Расходы
             }
             else
             {
-                MessageBox.Show("Файл не найден");
+                MessageBox.Show("Файл не найден", "Выплаты", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

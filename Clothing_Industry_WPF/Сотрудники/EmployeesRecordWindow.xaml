@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Сотрудники"
         ResizeMode="NoResize"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Сотрудник" Height="468.334" Width="800">
+        Title="Сотрудник" Height="468.334" Width="857">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -21,7 +21,7 @@
         <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
     StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="DarkGray" Offset="0" />
-            
+
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
 
@@ -149,26 +149,26 @@
         <Label Content="E-mail: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,268,0,0"/>
         <Label Content="Паспортные данные: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,299,0,0"/>
         <Label Content="Заметки: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,330,0,0"/>
-        <Label Content="Фото: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="350,50,0,0"/>
+        <Label Content="Фото: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="382,50,0,0"/>
         <Label Content="Добавлен(а): " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,361,0,0"/>
         <Label Content="З/п за прошлый месяц: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,395,0,0"/>
-        <PasswordBox x:Name="PasswordBoxCurrent" HorizontalAlignment="Left" Margin="72,81,0,0" VerticalAlignment="Top" Width="152" Height="26" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="textBoxLogin" HorizontalAlignment="Left" Height="26" Margin="72,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center"/>
-        <CheckBox x:Name="CheckBoxPassword" Content="Показать пароль" HorizontalAlignment="Left" Margin="229,87,0,0" VerticalAlignment="Top" Click="CheckBoxPassword_Click"/>
-        <TextBox x:Name="textBoxLastname" HorizontalAlignment="Left" Height="26" Margin="75,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267" TabIndex="4" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" Margin="72,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="5" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxPatronymic" HorizontalAlignment="Left" Height="26" Margin="82,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="260" TabIndex="6" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxPhone_Number" HorizontalAlignment="Left" Height="26" Margin="72,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="7" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxEmail" HorizontalAlignment="Left" Height="26" Margin="72,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxPassportData" HorizontalAlignment="Left" Height="26" Margin="138,299,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="204" TabIndex="9" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="71,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" TabIndex="10" VerticalContentAlignment="Center" FontSize="14"/>
-        <DatePicker x:Name="datePickerAdded" HorizontalAlignment="Left" Margin="99,363,0,0" VerticalAlignment="Top" Width="243" TabIndex="11" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxLastSalary" HorizontalAlignment="Left" Height="26" Margin="151,395,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="191" TabIndex="12" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxPassword" HorizontalAlignment="Left" Height="26" Margin="72,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" VerticalContentAlignment="Center" FontSize="14"/>
-        <Image x:Name="imagePhoto" Height="336" Margin="399,50,25,0" VerticalAlignment="Top" OpacityMask="Black" Cursor="Hand" Grid.ColumnSpan="2"/>
-        <Button x:Name="buttonAddPhoto" Content="Добавить фото" HorizontalAlignment="Left" Margin="399,396,0,0" VerticalAlignment="Top" Width="108" Height="25" Click="ButtonAddPhoto_Click" TabIndex="20"/>
+        <PasswordBox x:Name="PasswordBoxCurrent" HorizontalAlignment="Left" Margin="162,81,0,0" VerticalAlignment="Top" Width="187" Height="26" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="textBoxLogin" HorizontalAlignment="Left" Height="26" Margin="162,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center"/>
+        <CheckBox x:Name="CheckBoxPassword" Content="Показать" HorizontalAlignment="Left" Margin="354,87,0,0" VerticalAlignment="Top" Click="CheckBoxPassword_Click" RenderTransformOrigin="0.729,0.467" Width="72"/>
+        <TextBox x:Name="textBoxLastname" HorizontalAlignment="Left" Height="26" Margin="162,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="4" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" Margin="162,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="5" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxPatronymic" HorizontalAlignment="Left" Height="26" Margin="162,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="6" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxPhone_Number" HorizontalAlignment="Left" Height="26" Margin="162,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="7" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxEmail" HorizontalAlignment="Left" Height="26" Margin="162,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxPassportData" HorizontalAlignment="Left" Height="26" Margin="162,299,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="9" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="162,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="10" VerticalContentAlignment="Center" FontSize="14"/>
+        <DatePicker x:Name="datePickerAdded" HorizontalAlignment="Left" Margin="162,363,0,0" VerticalAlignment="Top" Width="215" TabIndex="11" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxLastSalary" HorizontalAlignment="Left" Height="26" Margin="162,395,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="12" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxPassword" HorizontalAlignment="Left" Height="26" Margin="162,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187" VerticalContentAlignment="Center" FontSize="14"/>
+        <Image x:Name="imagePhoto" Height="336" Margin="431,50,25,0" VerticalAlignment="Top" OpacityMask="Black" Cursor="Hand" Grid.ColumnSpan="2"/>
+        <Button x:Name="buttonAddPhoto" Content="Добавить фото" HorizontalAlignment="Left" Margin="431,396,0,0" VerticalAlignment="Top" Width="108" Height="25" Click="ButtonAddPhoto_Click" TabIndex="20"/>
         <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="254,17,0,0" VerticalAlignment="Top" Width="131" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True" TabIndex="14"/>
-        <ComboBox x:Name="comboBoxPosition" HorizontalAlignment="Left" Margin="87,112,0,0" VerticalAlignment="Top" Width="255" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3"/>
+        <ComboBox x:Name="comboBoxPosition" HorizontalAlignment="Left" Margin="162,112,0,0" VerticalAlignment="Top" Width="215" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3"/>
 
     </Grid>
 </Window>

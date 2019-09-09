@@ -79,7 +79,7 @@ namespace Clothing_Industry_WPF.Приход_материала
             {
                 result += result == "" ? " Количество" : ", Количество";
             }
-            
+
             return result == "" ? result : "Не заполнены обязательные поля: " + result;
         }
 
@@ -149,20 +149,20 @@ namespace Clothing_Industry_WPF.Приход_материала
                 catch
                 {
                     transaction.Rollback();
-                    MessageBox.Show("Ошибка добавления");
+                    MessageBox.Show("Ошибка добавления", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
                 connection.Close();
             }
-            else 
+            else
             {
                 if (warning != "mistake")
                 {
-                    MessageBox.Show(warning);
+                    MessageBox.Show(warning, "Не заполнены обязательные поля", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
                 {
-                    MessageBox.Show("Ошибка формата! Введите число через запятую, если оно не целое.");
+                    MessageBox.Show("Введите число через запятую, если оно не целое.", "Ошибка формата", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }

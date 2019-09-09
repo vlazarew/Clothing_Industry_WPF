@@ -9,6 +9,10 @@
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="Баланс клиентов"  Height="529" Width="812.1" Loaded="Window_Loaded">
     <Window.Resources>
+        <Style x:Key="DataGridCentralBoldHeader" TargetType="DataGridColumnHeader">
+            <Setter Property="Thumb.HorizontalContentAlignment" Value="Center" />
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
             <GradientStop Color="Transparent" Offset="0.4" />
@@ -22,7 +26,7 @@
         <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
     StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="DarkGray" Offset="0" />
-            
+
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
 
@@ -240,6 +244,9 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
+
+
     </Window.Resources>
     <Grid>
 
@@ -260,24 +267,24 @@
                 <Button Style="{StaticResource NoActive}" x:Name="buttonCancelFind" Content="Отменить поиск"  Width="138"  Click="ButtonCancelFind_Click" RenderTransformOrigin="0.469,0.548"/>
                 <Button Style="{StaticResource Active}" x:Name ="ButtonFilters" Content="Фильтры"  Width="96" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFilters_Click"/>
                 <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Выход" Width="107" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" RenderTransformOrigin="1.549,0.613"/>
-                
+
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
 
 
-            <DataGrid x:Name="customersGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Имя"/>
-                    <DataGridTextColumn Binding="{Binding Lastname}" ClipboardContentBinding="{x:Null}" Header="Фамилия"/>
-                    <DataGridTextColumn Binding="{Binding Address}" ClipboardContentBinding="{x:Null}" Header="Адрес"/>
-                    <DataGridTextColumn Binding="{Binding Phone_Number}" ClipboardContentBinding="{x:Null}" Header="Телефонный номер"/>
-                    <DataGridTextColumn Binding="{Binding Passport_data}" ClipboardContentBinding="{x:Null}" Header="Паспорт"/>
-                    <DataGridTextColumn Binding="{Binding Nickname}" ClipboardContentBinding="{x:Null}" Header="Никнейм"/>
-                    <DataGridTextColumn Binding="{Binding Accured}" ClipboardContentBinding="{x:Null}" Header="Начислено на сумму"/>
-                    <DataGridTextColumn Binding="{Binding Paid}" ClipboardContentBinding="{x:Null}" Header="Оплачено заказчиком"/>
-                    <DataGridTextColumn Binding="{Binding Debt}" ClipboardContentBinding="{x:Null}" Header="Долг заказчика"/>
-                </DataGrid.Columns>
+            <DataGrid x:Name="customersGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Имя"/>
+                        <DataGridTextColumn Binding="{Binding Lastname}" ClipboardContentBinding="{x:Null}" Header="Фамилия"/>
+                        <DataGridTextColumn Binding="{Binding Address}" ClipboardContentBinding="{x:Null}" Header="Адрес"/>
+                        <DataGridTextColumn Binding="{Binding Phone_Number}" ClipboardContentBinding="{x:Null}" Header="Телефонный номер"/>
+                        <DataGridTextColumn Binding="{Binding Passport_data}" ClipboardContentBinding="{x:Null}" Header="Паспорт"/>
+                        <DataGridTextColumn Binding="{Binding Nickname}" ClipboardContentBinding="{x:Null}" Header="Никнейм"/>
+                        <DataGridTextColumn Binding="{Binding Accured}" ClipboardContentBinding="{x:Null}" Header="Начислено на сумму"/>
+                        <DataGridTextColumn Binding="{Binding Paid}" ClipboardContentBinding="{x:Null}" Header="Оплачено заказчиком"/>
+                        <DataGridTextColumn Binding="{Binding Debt}" ClipboardContentBinding="{x:Null}" Header="Долг заказчика"/>
+                    </DataGrid.Columns>
             </DataGrid>
         </Grid>
     </Grid>

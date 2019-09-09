@@ -72,7 +72,7 @@ namespace Clothing_Industry_WPF.Отпуска
                     if (reader.GetValue(8).ToString() != "")
                     {
                         textBoxNotes.Text = reader.GetString(8);
-                    }                 
+                    }
                 }
             }
             connection.Close();
@@ -110,7 +110,7 @@ namespace Clothing_Industry_WPF.Отпуска
                 {
                     comboBoxLogin.Items.Add(reader.GetString(0));
                 }
-            }           
+            }
             connection.Close();
         }
 
@@ -122,7 +122,7 @@ namespace Clothing_Industry_WPF.Отпуска
             if (comboBoxLogin.Text == "")
             {
                 result += result == "" ? "Логин" : ", Логин";
-            }           
+            }
             if (datePickerIn_Fact_Start.SelectedDate == null)
             {
                 result += result == "" ? "Начало отпуска" : ", Начало отпуска";
@@ -159,13 +159,13 @@ namespace Clothing_Industry_WPF.Отпуска
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Ошибка сохранения!");
-                }     
+                    System.Windows.MessageBox.Show("Ошибка сохранения!", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
                 connection.Close();
             }
             else
             {
-                System.Windows.MessageBox.Show(warning);
+                System.Windows.MessageBox.Show(warning, "Не заполнены обязательные поля", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -207,7 +207,7 @@ namespace Clothing_Industry_WPF.Отпуска
             }
             if (days_sum < 0)
             {
-                System.Windows.MessageBox.Show("Дата начала отпуска меньше чем конец отпуска!");
+                System.Windows.MessageBox.Show("Дата начала отпуска меньше чем конец отпуска!", "Ошибка в данных", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {

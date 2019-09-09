@@ -276,14 +276,14 @@ namespace Clothing_Industry_WPF.Сотрудники
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Ошибка сохранения!");
+                    System.Windows.MessageBox.Show("Ошибка сохранения!", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
                 connection.Close();
             }
             else
             {
-                System.Windows.MessageBox.Show(warning);
+                System.Windows.MessageBox.Show(warning, "Не заполнены обязательные поля", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -360,6 +360,7 @@ namespace Clothing_Industry_WPF.Сотрудники
 
             return command;
         }
+
 
     }
 }

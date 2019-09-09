@@ -76,7 +76,7 @@ namespace Clothing_Industry_WPF.Изделия
 
                 MySqlCommand commandTable = new MySqlCommand(queryTable, connection, transaction);
                 commandTable.Parameters.AddWithValue("@id_Product", id_Product);
-               
+
                 try
                 {
                     commandTable.ExecuteNonQuery();
@@ -85,7 +85,7 @@ namespace Clothing_Industry_WPF.Изделия
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Удаление продукта " + id_Product + " не удалось");
+                    System.Windows.MessageBox.Show("Удаление продукта " + id_Product + " не удалось", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 
@@ -399,5 +399,5 @@ namespace Clothing_Industry_WPF.Изделия
         }
     }
 
-        
+
 }

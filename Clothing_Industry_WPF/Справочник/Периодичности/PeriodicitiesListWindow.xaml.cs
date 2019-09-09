@@ -141,7 +141,7 @@ namespace Clothing_Industry_WPF.Справочник.Периодичности
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Удаление  " + id + " не удалось");
+                    System.Windows.MessageBox.Show("Удаление  " + id + " не удалось", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 

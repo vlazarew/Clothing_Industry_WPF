@@ -22,7 +22,7 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
     /// <summary>
     /// Логика взаимодействия для OrderListOfMaterialsForProduct.xaml
     /// </summary>
-    
+
     public struct HelpStruct
     {
         public int Groups_Of_Material_id_Group_Of_Material { get; set; }
@@ -104,7 +104,7 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
             connection.Close();
         }
 
-   
+
 
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
@@ -114,11 +114,11 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
                 check = row.Name_Of_Material;
                 if (check == null)
                 {
-                    System.Windows.MessageBox.Show("Все поля не заполнены!");
+                    System.Windows.MessageBox.Show("Все поля не заполнены!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                     break;
                 }
-                    
-       
+
+
             }
             if (check != null)
             {
@@ -155,7 +155,7 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
 
 
 
-            Window listMaterials = new OrderRecordMaterialForProduct(productId,groupofmaterial, idmaterialproduct,count);
+            Window listMaterials = new OrderRecordMaterialForProduct(productId, groupofmaterial, idmaterialproduct, count);
             listMaterials.ShowDialog();
             RefreshList();
         }

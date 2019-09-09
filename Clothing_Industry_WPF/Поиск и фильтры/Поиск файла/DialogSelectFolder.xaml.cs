@@ -47,7 +47,7 @@ namespace Clothing_Industry_WPF.Поиск_файла
             }
             else
             {
-                MessageBox.Show("Выберите каталог");
+                MessageBox.Show("Выберите каталог", "Выберите каталог", MessageBoxButton.OK, MessageBoxImage.Information);
             }
 
         }

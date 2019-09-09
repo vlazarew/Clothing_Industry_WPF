@@ -110,14 +110,14 @@ namespace Clothing_Industry_WPF.Изделия
                 catch
                 {
                     transaction.Rollback();
-                    MessageBox.Show("Ошибка добавления");
+                    MessageBox.Show("Ошибка добавления", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
                 connection.Close();
             }
             else
             {
-                System.Windows.MessageBox.Show(warning);
+                System.Windows.MessageBox.Show(warning, "Не заполнены обязательные поля", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

@@ -121,7 +121,7 @@ namespace Clothing_Industry_WPF.Заказы
                 catch
                 {
                     transaction.Rollback();
-                    MessageBox.Show("Ошибка удаления");
+                    MessageBox.Show("Ошибка удаления", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 
@@ -230,7 +230,7 @@ namespace Clothing_Industry_WPF.Заказы
                     catch
                     {
                         transaction2.Rollback();
-                        MessageBox.Show("Ошибка добавления");
+                        MessageBox.Show("Ошибка добавления", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     i++;
                 }
@@ -278,12 +278,12 @@ namespace Clothing_Industry_WPF.Заказы
                     }
                     Result = false;
                     //this.DialogResult = false;
-                    MessageBox.Show("Материалов не хватает на изделие, заказ временно отменён!" + "\n" + "Не хватает:" + "\n" + MessageMaterialsNeed);
+                    MessageBox.Show("Материалов не хватает на изделие, заказ временно отменён!" + "\n" + "Не хватает:" + "\n" + MessageMaterialsNeed, "Недостаточно материалов на скаде", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch
                 {
                     transaction3.Rollback();
-                    MessageBox.Show("Ошибка добавления");
+                    MessageBox.Show("Ошибка добавления", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }

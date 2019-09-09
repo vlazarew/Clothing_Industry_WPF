@@ -255,7 +255,7 @@ namespace Clothing_Industry_WPF.Клиенты
                 catch
                 {
                     transaction.Rollback();
-                    MessageBox.Show("Ошибка сохранения!");
+                    MessageBox.Show("Ошибка сохранения!", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error); 
                 }
 
                 if (way == WaysToOpenForm.WaysToOpen.create)
@@ -286,7 +286,7 @@ namespace Clothing_Industry_WPF.Клиенты
                     catch
                     {
                         transaction.Rollback();
-                        MessageBox.Show("Ошибка сохранения!");
+                        MessageBox.Show("Ошибка сохранения!", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
 
@@ -294,7 +294,7 @@ namespace Clothing_Industry_WPF.Клиенты
             }
             else
             {
-                MessageBox.Show(warning);
+                MessageBox.Show(warning, "Не заполнены обязательные поля", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -36,7 +37,6 @@ namespace Clothing_Industry_WPF
         // Имя xml файла
         private string xmlFileName = "connectionSettings.xml";
 
-
         public AuthentificationForm()
         {
             InitializeComponent();
@@ -60,10 +60,7 @@ namespace Clothing_Industry_WPF
         {
             int count = 0;
             int maxCount = 10;
-            bool edited = false;
-            //textboxLogin.IsEnabled = false;
-            //PasswordBoxPassword.IsEnabled = false;
-            //Button_Parameters.TabIndex = 1;
+            bool canConnect = false;
             // Допустим максимальный таймаут - 10. можно будет прибавить если что
             while (count < maxCount)
             {
@@ -72,12 +69,8 @@ namespace Clothing_Industry_WPF
                 textBlockStatus.Text = "Идет проверка доступности сервера (" + count.ToString() + " сек.)";
                 if ((isServer || isLocalHost))
                 {
-                    //textboxLogin.IsEnabled = true;
-                    //PasswordBoxPassword.IsEnabled = true;
-                    //PasswordBoxPassword.TabIndex = 1;
-                    //this.Visibility = Visibility.Visible;
                     maxCount = count;
-                    edited = true;
+                    canConnect = true;
                     textBlockStatus.Foreground = Brushes.LimeGreen;
                     textBlockStatus.Text = "Сервер доступен";
                     Button_LogIn.Style = (Style)Button_LogIn.FindResource("Active");
@@ -89,24 +82,21 @@ namespace Clothing_Industry_WPF
                     {
                         if (isServer)
                         {
-                            //textBlockCurrentIP.Text = "Текущий IP сервера: " + (IP == "localhost" ? Properties.Settings.Default.server_ip.ToString() : IP);
                             textBlockCurrentIP.Text = "Текущий IP сервера: " + IP;
                         }
                     }
                 }
             }
             // Если уже поставленное время прошло и мы не меняли время вылета, значит все плохо, отрубаем приложение
-            if (!edited)
+            if (!canConnect)
             {
                 textBlockStatus.Foreground = Brushes.Crimson;
-                textBlockStatus.Text = "Соединение с сервером не установлено. Укажите верный ip в параметрах и перезапустите приложение.";               
+                textBlockStatus.Text = "Соединение с сервером не установлено. Укажите верный ip в параметрах и перезапустите приложение.";
+                Button_Parameters.Focus();
+                Button_Parameters_Click(this, null);
             }
-            /*if (!edited)
-            {
-                MessageBox.Show(this, "Нет подключения к серверу. Вероятно последний находится в выключенном состоянии",
-                          "Ошибка соединения с сервером", MessageBoxButton.OK, MessageBoxImage.Error);
-                Application.Current.Shutdown();
-            }*/
+            textboxLogin.IsEnabled = canConnect;
+            PasswordBoxPassword.IsEnabled = canConnect;
         }
 
         private bool CheckServer(string server_ip)
@@ -121,27 +111,11 @@ namespace Clothing_Industry_WPF
                 return true;
             }
             catch
-            {              
+            {
                 return false;
-                
+
             }
         }
-
-        // !!! Теперь не используем это !!!
-        // Проверяем, с какой машины мы заходим в сеть (localhost не сможет к себе обращаться, как остальные машины в локальной системе)
-        /*[Obsolete]
-        private bool IsLocalhost()
-        {
-            string host = Dns.GetHostName();
-            foreach (var ip in Dns.GetHostByName(host).AddressList)
-            {
-                if (ip.ToString() == Properties.Settings.Default.server_ip)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }*/
 
         private void CheckApplication()
         {
@@ -158,21 +132,21 @@ namespace Clothing_Industry_WPF
         [Obsolete]
         private void Button_LogIn_Click(object sender, RoutedEventArgs e)
         {
+            textboxLogin.Text = textboxLogin.Text.Trim();
+            PasswordBoxPassword.Password = PasswordBoxPassword.Password.Trim();
+
             username = textboxLogin.Text;
             password = PasswordBoxPassword.Password;
 
             // Думаю, так проще разобраться, как выбирается ip
             string ip = "localhost";
-            if (!isLocalHost)
+            if (isServer && !isLocalHost)
             {
-                //ip = IP == "localhost" ? Properties.Settings.Default.server_ip : IP;
                 ip = IP;
             }
 
             string connString = connectionString + "Server=" + ip
                     + ";user id=" + username + ";password=" + password;
-
-            IP = ip;
 
             MySqlConnection connection = new MySqlConnection(connString);
             try
@@ -182,7 +156,7 @@ namespace Clothing_Industry_WPF
             }
             catch
             {
-                MessageBox.Show("Неверные логин или пароль!");
+                MessageBox.Show("Неверные логин или пароль!", "Ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Error);
                 PasswordBoxPassword.Clear();
                 return;
             }
@@ -333,7 +307,6 @@ namespace Clothing_Industry_WPF
                 if (listIPs.Count == 1)
                 {
                     IP = listIPs[0].LastAttribute.Value.ToString();
-                    //textBlockCurrentIP.Text = "Текущий IP сервера: " + (IP == "localhost" ? Properties.Settings.Default.server_ip.ToString() : IP);
                     textBlockCurrentIP.Text = "Текущий IP сервера: " + IP;
                 }
 
@@ -384,6 +357,16 @@ namespace Clothing_Industry_WPF
             lastUser.Value = textboxLogin.Text;
 
             xmlDocument.Save(xmlFileName);
+        }
+
+        private void TextboxLogin_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = e.Key == Key.Space;
+        }
+
+        private void Grid_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            e.Handled = e.Key == Key.Space;
         }
     }
 }

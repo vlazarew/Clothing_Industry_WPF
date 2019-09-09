@@ -241,7 +241,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid>
+    <Grid PreviewKeyDown="Grid_PreviewKeyDown">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="159*"/>
 
@@ -249,10 +249,10 @@
         </Grid.ColumnDefinitions>
         <Button Style="{StaticResource Active}"  x:Name="Button_Parameters"  Content="Параметры" HorizontalAlignment="Left" Margin="43,195,0,0" VerticalAlignment="Top" Width="100" Height="45" TabIndex="5" BorderBrush="#FF707070" Click="Button_Parameters_Click"/>
         <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Выйти" HorizontalAlignment="Left" Margin="164,195,0,0" VerticalAlignment="Top" Width="100" Grid.Column="1" Height="45" Click="ButtonExit_Click" TabIndex="4" IsCancel="True"/>
-        <TextBox x:Name="textboxLogin" HorizontalAlignment="Left" Height="19" Margin="43,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" TabIndex="1" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="textboxLogin" HorizontalAlignment="Left" Height="22" Margin="43,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" TabIndex="1" VerticalContentAlignment="Center" FontSize="14" PreviewKeyDown="TextboxLogin_PreviewKeyDown"/>
         <Label Content="Логин" FontFamily="Arial" FontSize="16" HorizontalAlignment="Left" Margin="43,31,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.741,-0.293" Height="28" Width="53"/>
         <Label Content="Пароль" FontFamily="Arial" FontSize="16" HorizontalAlignment="Left" Margin="43,108,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.405,0.475" Height="28" Width="66"/>
-        <PasswordBox x:Name="PasswordBoxPassword" HorizontalAlignment="Left" Margin="43,141,0,0" VerticalAlignment="Top" Width="240" Height="19" TabIndex="2" VerticalContentAlignment="Center"/>
+        <PasswordBox x:Name="PasswordBoxPassword" HorizontalAlignment="Left" Margin="43,141,0,0" VerticalAlignment="Top" Width="240" Height="22" TabIndex="2" VerticalContentAlignment="Center" FontSize="14"/>
         <Button Style="{StaticResource NoActive}" x:Name="Button_LogIn"  Content="Вход" HorizontalAlignment="Left" Margin="10,195,0,0" VerticalAlignment="Top" Width="100" Height="45" Click="Button_LogIn_Click" TabIndex="3" IsDefault="True" BorderBrush="#FF707070" Grid.Column="1"  />
         <TextBox x:Name="textBlockStatus" Grid.Column="1" HorizontalAlignment="Center" Margin="36,31,16,0" Width="228" Height="90" VerticalAlignment="Top"  TextOptions.TextFormattingMode="Display" TextOptions.TextHintingMode="Fixed" Cursor="None" Foreground="#FF0223B6" FontSize="14" TextWrapping="Wrap" TextAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled"  Text="Статус сервера" IsReadOnly="True" BorderThickness="0" FontFamily="Arial"/>
         <TextBox x:Name="textBlockCurrentIP" Grid.Column="1" HorizontalAlignment="Center" Margin="36,126,14,0" Width="230" Height="54" VerticalAlignment="Top"  TextOptions.TextFormattingMode="Display" TextOptions.TextHintingMode="Fixed" Cursor="None" Foreground="#FF0223B6" FontSize="14" TextWrapping="Wrap" TextAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled"  Text="Текущий IP сервера:" IsReadOnly="True" BorderThickness="0" FontFamily="Arial"/>

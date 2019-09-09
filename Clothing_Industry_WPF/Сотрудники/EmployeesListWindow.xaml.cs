@@ -146,7 +146,7 @@ namespace Clothing_Industry_WPF.Сотрудники
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Удаление пользователя " + login + " не удалось");
+                    System.Windows.MessageBox.Show("Удаление пользователя " + login + " не удалось", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 

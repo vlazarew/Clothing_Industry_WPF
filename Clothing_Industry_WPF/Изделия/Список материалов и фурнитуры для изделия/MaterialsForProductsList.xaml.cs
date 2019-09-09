@@ -113,7 +113,7 @@ namespace Clothing_Industry_WPF.Изделия
                 catch
                 {
                     transaction.Rollback();
-                MessageBox.Show("Ошибка удаления");
+                MessageBox.Show("Ошибка удаления", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
 

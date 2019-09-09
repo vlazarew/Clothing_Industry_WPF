@@ -122,7 +122,7 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
                 catch
                 {
                     transaction.Rollback();
-                    MessageBox.Show("Ошибка добавления");
+                    MessageBox.Show("Ошибка добавления", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
                 /////////////////////
@@ -132,7 +132,7 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
             }
             else
             {
-                MessageBox.Show(warning);
+                MessageBox.Show(warning, "Не заполнены обязательные поля", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
