@@ -256,12 +256,12 @@
             <StackPanel Orientation="Horizontal">
 
                 <Button Style="{StaticResource Active}" Name ="ButtonCreateNew" Content="Создать" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>
-                <Button x:Name ="ButtonDelete" Content="Удалить" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
+                <Button  Style="{StaticResource NoActive}" x:Name ="ButtonDelete" Content="Удалить" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
                 <Button Style="{StaticResource Active}" x:Name ="ButtonRefresh" Content="Обновить" Width="70" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonRefresh_Click"/>
-                <Button x:Name ="ButtonEdit" Content="Изменить выделенное" Width="148" RenderTransformOrigin="1.194,0.333" TabIndex="4" IsTabStop="False" Click="ButtonEdit_Click"/>
+                <Button Style="{StaticResource NoActive}" x:Name ="ButtonEdit" Content="Изменить выделенное" Width="148" RenderTransformOrigin="1.194,0.333" TabIndex="4" IsTabStop="False" Click="ButtonEdit_Click"/>
                 <Button Style="{StaticResource Active}" x:Name ="ButtonFind" Content="Найти" Width="54" RenderTransformOrigin="1.194,0.333" TabIndex="5" IsTabStop="False" Click="ButtonFind_Click"/>
-                <Button x:Name ="ButtonOpenDocument" Content="Открыть документ" Width="124" RenderTransformOrigin="1.194,0.333" TabIndex="6" IsTabStop="False" Click="ButtonOpenDocument_Click"/>
-                <Button x:Name="buttonCancelFind" Content="Отменить поиск" Width="107" RenderTransformOrigin="1.194,0.333" TabIndex="7" IsTabStop="False" Click="ButtonCancelFind_Click"/>
+                <Button Style="{StaticResource NoActive}" x:Name ="ButtonOpenDocument" Content="Открыть документ" Width="124" RenderTransformOrigin="1.194,0.333" TabIndex="6" IsTabStop="False" Click="ButtonOpenDocument_Click"/>
+                <Button Style="{StaticResource NoActive}" x:Name="buttonCancelFind" Content="Отменить поиск" Width="107" RenderTransformOrigin="1.194,0.333" TabIndex="7" IsTabStop="False" Click="ButtonCancelFind_Click"/>
                 <Button Style="{StaticResource Active}" x:Name ="ButtonFilters" Content="Фильтры" Width="65" RenderTransformOrigin="1.194,0.333" TabIndex="8" IsTabStop="False" Click="ButtonFilters_Click"/>
                 <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Выход" Width="75" IsCancel="True" RenderTransformOrigin="1.194,0.333" TabIndex="9" IsTabStop="False" Visibility="Visible" Click="ButtonExit_Click"/>
             </StackPanel>

@@ -59,7 +59,7 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
                             "join groups_of_material on materials_for_product.Groups_Of_Material_id_Group_Of_Material = groups_of_material.id_Group_Of_Material " +
                             "left join materials on materials_for_product.materials_vendor_code = materials.Vendor_Code " +
                             "left join units on materials.units_id_unit = units.id_unit " +
-                            "where materials_for_product.id_Materials_For_Product = @productID  ";
+                            "where materials_for_product.Products_id_Product = @productID;  ";
 
 
 

@@ -275,12 +275,13 @@
                     <DataGridTextColumn Binding="{Binding Lastname}" ClipboardContentBinding="{x:Null}" Header="Фамилия"/>
                     <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Имя"/>
                     <DataGridTextColumn Binding="{Binding Phone_Number}" ClipboardContentBinding="{x:Null}" Header="Телефонный номер"/>
-                    <DataGridTextColumn Binding="{Binding Address}" ClipboardContentBinding="{x:Null}" Header="Адрес"/>
+                    
                     <DataGridTextColumn Binding="{Binding Nickname}" ClipboardContentBinding="{x:Null}" Header="Никнейм"/>
                     <DataGridTextColumn Binding="{Binding Birthday}" ClipboardContentBinding="{x:Null}" Header="Дата рождения"/>
                     <DataGridTextColumn Binding="{Binding Passport_data}" ClipboardContentBinding="{x:Null}" Header="Паспорт"/>
                     <DataGridTextColumn Binding="{Binding Size}" ClipboardContentBinding="{x:Null}" Header="Размер"/>
                     <DataGridTextColumn Binding="{Binding Parameters}" ClipboardContentBinding="{x:Null}" Header="Параметры"/>
+                    <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Имя"/>
                     <DataGridTextColumn Binding="{Binding Notes}" ClipboardContentBinding="{x:Null}" Header="Заметки"/>
                     <DataGridTextColumn Binding="{Binding Name_Of_Status}" ClipboardContentBinding="{x:Null}" Header="Статус клиента"/>
                     <DataGridTextColumn Binding="{Binding Name_of_channel}" ClipboardContentBinding="{x:Null}" Header="Способ заказа"/>

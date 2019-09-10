@@ -76,8 +76,8 @@ insert into types_of_fitting (Name_Of_Type) values ('В офисе');
 
 -- Поставщики
 
-insert into suppliers (Name_Of_Supplier) values ('ИП Хорбачёв');
-insert into suppliers (Name_Of_Supplier) values ('ООО БелТкань');
+insert into suppliers (Name_Of_Supplier) values ('ИП Поставщик 1');
+insert into suppliers (Name_Of_Supplier) values ('ООО Поставщик 2');
 
 
 

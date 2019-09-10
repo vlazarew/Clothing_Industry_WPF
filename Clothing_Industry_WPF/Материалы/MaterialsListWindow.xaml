@@ -276,11 +276,12 @@
                     <DataGridTextColumn  Binding="{Binding Vendor_Code}" Header="Артикул" Width="SizeToHeader"/>
                     <DataGridTextColumn  Binding="{Binding Name_Of_Material}" Header="Название материала" Width="SizeToHeader"/>
                     <DataGridTextColumn  Binding="{Binding Cost_Of_Material}" Header="Стоимость" Width="SizeToHeader"/>
-                    <DataGridTextColumn  Binding="{Binding Notes}" Header="Заметки" Width="SizeToHeader"/>
+                    
                     <DataGridTextColumn  Binding="{Binding Name_Of_Unit}" Header="Единица измерениия" Width="SizeToHeader"/>
                     <DataGridTextColumn  Binding="{Binding Name_Of_Group}" Header="Вид" Width="SizeToHeader"/>
                     <DataGridTextColumn  Binding="{Binding Name_Of_Type}" Header="Тип" Width="SizeToHeader"/>
                     <DataGridTextColumn  Binding="{Binding Name_Of_Country}" Header="Страна" Width="SizeToHeader"/>
+                    <DataGridTextColumn  Binding="{Binding Notes}" Header="Заметки" Width="SizeToHeader"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
