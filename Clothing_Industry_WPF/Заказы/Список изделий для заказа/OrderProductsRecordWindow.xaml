@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Заказы.Список_изделий_для_заказа"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="Добавление изделия в заказ" Height="193.475" Width="374.862">
+        Title="Добавление изделия в заказ" Height="170.748" Width="338.731">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -21,7 +21,7 @@
         <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
     StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="DarkGray" Offset="0" />
-            
+
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
 
@@ -134,12 +134,12 @@
 
     </Window.Resources>
     <Grid>
-        <Label Content="Изделие: " HorizontalAlignment="Left" Margin="10,27,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="14"/>
-        <ComboBox x:Name="comboBoxProducts" HorizontalAlignment="Left" Margin="158,27,0,0" VerticalAlignment="Top" Width="199" FontSize="14" VerticalContentAlignment="Center"/>
-        <Label Content="Количество: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,61,0,0" Height="26" Width="97"/>
-        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" Margin="158,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="199" TabIndex="2" VerticalContentAlignment="Center" FontSize="14"/>
-        <Button x:Name="buttonSave" Content="Добавить" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" FontSize="14" RenderTransformOrigin="0.993,-0.413" Click="ButtonSave_Click"/>
-        <Button Content="Отмена" HorizontalAlignment="Left" Margin="282,112,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.694,-0.02" FontSize="14" IsCancel="True" Click="Button_Click"/>
+        <Label Content="Изделие " HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="14"/>
+        <ComboBox x:Name="comboBoxProducts" HorizontalAlignment="Left" Margin="100,18,0,0" VerticalAlignment="Top" Width="211" FontSize="14" VerticalContentAlignment="Center"/>
+        <Label Content="Количество " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,52,0,0" Height="26" Width="90"/>
+        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" Margin="100,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" TabIndex="2" VerticalContentAlignment="Center" FontSize="14"/>
+        <Button x:Name="buttonSave" Content="Добавить" HorizontalAlignment="Left" Margin="100,95,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" FontSize="14" RenderTransformOrigin="0.993,-0.413" Click="ButtonSave_Click"/>
+        <Button Content="Отмена" HorizontalAlignment="Left" Margin="236,95,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.694,-0.02" FontSize="14" IsCancel="True" Click="Button_Click"/>
 
     </Grid>
 </Window>

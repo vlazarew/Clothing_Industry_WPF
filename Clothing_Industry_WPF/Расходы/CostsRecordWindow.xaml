@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Расходы"
         ResizeMode="NoResize"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Расход" Height="440" Width="375" MinWidth="375" MinHeight="440">
+        Title="Расход" Height="473" Width="481" MinWidth="375" MinHeight="440">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -21,7 +21,7 @@
         <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
     StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="DarkGray" Offset="0" />
-            
+
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
 
@@ -138,31 +138,39 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Дата расхода: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,147,0,0" Height="26" Width="92"/>
-        <Label Content="Путь документа: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,85,0,0" Height="26" Width="109"/>
-        <Label x:Name="Header" Content="Расход " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Height="34" Width="71"/>
+        <Label Content="Дата расхода " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,169,0,0" Height="26" Width="92"/>
+        <Label Content="Путь документа" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,107,0,0" Height="26" Width="109"/>
+        <Label x:Name="Header" Content="Расход " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,46,0,0" FontSize="18" Height="34" Width="203"/>
 
-        <Label Content="Сумма: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,179,0,0" Height="26" Width="65"/>
-        <Label Content="Заметки: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,210,0,0" Height="26" Width="85"/>
-        <Label Content="Категория расхода: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,241,0,0" Height="26" Width="128"/>
-        <Label Content="Тип оплаты: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,272,0,0" Height="26" Width="77"/>
-        <Label Content="Периодичности: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="12,303,0,0" Height="26" Width="107"/>
-        <Label Content="От: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,334,0,0" Height="26" Width="49"/>
-        <Label Content="Кому: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,365,0,0" Height="26" Width="128"/>
+        <Label Content="Сумма" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,201,0,0" Height="26" Width="45"/>
+        <Label Content="Заметки" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,232,0,0" Height="26" Width="85"/>
+        <Label Content="Категория расхода" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,263,0,0" Height="26" Width="128"/>
+        <Label Content="Тип оплаты" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,294,0,0" Height="26" Width="77"/>
+        <Label Content="Периодичности" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="12,325,0,0" Height="26" Width="97"/>
+        <Label Content="От" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,356,0,0" Height="26" Width="27"/>
+        <Label Content="Кому" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,387,0,0" Height="26" Width="40"/>
 
-        <DatePicker x:Name="datePickerDate_Of_Cost" HorizontalAlignment="Left" Margin="152,147,0,0" VerticalAlignment="Top" Width="198" TabIndex="12" VerticalContentAlignment="Center" FontSize="14" RenderTransformOrigin="0.451,-0.985" Height="26"/>
-        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="223,55,0,0" VerticalAlignment="Top" Width="126" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True" RenderTransformOrigin="0.5,1.92"/>
-        <ComboBox x:Name="comboBoxName_Of_Category" HorizontalAlignment="Left" Margin="152,272,0,0" VerticalAlignment="Top" Width="198" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7"/>
-        <ComboBox x:Name="comboBoxName_Of_Type" HorizontalAlignment="Left" Margin="152,241,0,0" VerticalAlignment="Top" Width="198" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7"/>
-        <TextBox x:Name="textBoxAmount" HorizontalAlignment="Left" Height="26" Margin="152,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" TabIndex="13" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxFileName" HorizontalAlignment="Left" Height="26" IsReadOnly="True" Margin="152,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" TabIndex="13" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="152,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" TabIndex="13" VerticalContentAlignment="Center" FontSize="14"/>
-        <ComboBox x:Name="comboBoxName_Of_Periodicity" HorizontalAlignment="Left" Margin="152,303,0,0" VerticalAlignment="Top" Width="198" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7"/>
-        <TextBox x:Name="textBoxFrom" HorizontalAlignment="Left" Height="26" Margin="152,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" TabIndex="13" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxTo" HorizontalAlignment="Left" Height="26" Margin="152,365,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198" TabIndex="13" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxFileFolder" HorizontalAlignment="Left" Height="26" Margin="152,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" TabIndex="13" VerticalContentAlignment="Center" IsReadOnly="True" FontSize="14"/>
-        <Button x:Name="buttonFileSearch" Content="Найти файл" HorizontalAlignment="Left" Margin="73,55,0,0" VerticalAlignment="Top" Width="122" Height="25" Click="ButtonFileSearch_Click" IsDefault="True"/>
-        <Label Content="Имя документа: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,116,0,0" Height="26" Width="109"/>
+        <DatePicker x:Name="datePickerDate_Of_Cost" HorizontalAlignment="Left" Margin="152,169,0,0" VerticalAlignment="Top" Width="274" TabIndex="12" VerticalContentAlignment="Center" FontSize="14" RenderTransformOrigin="0.451,-0.985" Height="26"/>
+        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="300,10,0,0" VerticalAlignment="Top" Width="126" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True" RenderTransformOrigin="0.5,1.92"/>
+        <ComboBox x:Name="comboBoxName_Of_Category" HorizontalAlignment="Left" Margin="152,294,0,0" VerticalAlignment="Top" Width="274" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7"/>
+        <ComboBox x:Name="comboBoxName_Of_Type" HorizontalAlignment="Left" Margin="152,263,0,0" VerticalAlignment="Top" Width="274" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7"/>
+        <TextBox x:Name="textBoxAmount" HorizontalAlignment="Left" Height="26" Margin="152,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="274" TabIndex="13" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxFileName" HorizontalAlignment="Left" Height="26" IsReadOnly="True" Margin="152,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="274" TabIndex="13" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="152,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="274" TabIndex="13" VerticalContentAlignment="Center" FontSize="14"/>
+        <ComboBox x:Name="comboBoxName_Of_Periodicity" HorizontalAlignment="Left" Margin="152,325,0,0" VerticalAlignment="Top" Width="274" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7"/>
+        <TextBox x:Name="textBoxFrom" HorizontalAlignment="Left" Height="26" Margin="152,356,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="274" TabIndex="13" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxTo" HorizontalAlignment="Left" Height="26" Margin="152,387,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="274" TabIndex="13" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxFileFolder" HorizontalAlignment="Left" Height="26" Margin="152,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="274" TabIndex="13" VerticalContentAlignment="Center" IsReadOnly="True" FontSize="14"/>
+        <Button x:Name="buttonFileSearch" Content="Найти файл" HorizontalAlignment="Left" Margin="152,10,0,0" VerticalAlignment="Top" Width="122" Height="34" Click="ButtonFileSearch_Click" IsDefault="True"/>
+        <Label Content="Имя документа" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,138,0,0" Height="26" Width="109"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="119,107,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="104,138,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="55,201,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="123,263,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="80,294,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="109,325,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="37,356,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="50,387,0,0" FontSize="12" Height="26"/>
 
     </Grid>
 </Window>

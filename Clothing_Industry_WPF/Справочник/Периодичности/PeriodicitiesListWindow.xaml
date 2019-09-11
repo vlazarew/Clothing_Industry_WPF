@@ -274,7 +274,6 @@
                 </DataGrid.Resources>
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding id_Periodicity}" ClipboardContentBinding="{x:Null}" Header="Код" IsReadOnly="True"/>
                     <DataGridTextColumn Binding="{Binding Name_Of_Periodicity}" ClipboardContentBinding="{x:Null}" Header="Наименование"/>
                 </DataGrid.Columns>
             </DataGrid>

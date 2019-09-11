@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Приход_материала"
         ResizeMode="NoResize"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Документ прихода" Height="304.448" Width="371.674">
+        Title="Документ прихода" Height="330.65" Width="391.082">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -21,7 +21,7 @@
         <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
     StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="DarkGray" Offset="0" />
-            
+
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
 
@@ -138,21 +138,21 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="214,17,0,0" VerticalAlignment="Top" Width="129" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
-        <Label Content="Название документа: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,50,0,0" Height="26" Width="130"/>
-        <Label Content="Дата прихода: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,81,0,0" Height="26" Width="130"/>
-        <Label x:Name="Header" Content="Документ " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Height="34" Width="97"/>
-        <Label Content="Папка документа: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,175,0,0" Height="26" Width="122"/>
-        <Label Content="Поставщик: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,144,0,0" Height="26" Width="86"/>
-        <Label Content="Статус: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,206,0,0" Height="26" Width="122"/>
-        <Label Content="Тип транзакции: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,237,0,0" Height="26" Width="122"/>
+        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="214,10,0,0" VerticalAlignment="Top" Width="129" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
+        <Label Content="Название документа " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,50,0,0" Height="26" Width="130"/>
+        <Label Content="Дата прихода " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,81,0,0" Height="26" Width="130"/>
+        <Label x:Name="Header" Content="Документ " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Height="34" Width="199"/>
+        <Label Content="Папка документа " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,175,0,0" Height="26" Width="122"/>
+        <Label Content="Поставщик " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,144,0,0" Height="26" Width="86"/>
+        <Label Content="Статус " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,206,0,0" Height="26" Width="122"/>
+        <Label Content="Тип транзакции " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,237,0,0" Height="26" Width="122"/>
         <TextBox x:Name="textBoxName_Of_Document" HorizontalAlignment="Left" Height="26" Margin="140,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
         <DatePicker x:Name="datePickerComing_Date" HorizontalAlignment="Left" Margin="140,81,0,0" VerticalAlignment="Top" Width="203" TabIndex="12" VerticalContentAlignment="Center" FontSize="14"/>
         <ComboBox x:Name="comboBoxName_Of_Supplier" HorizontalAlignment="Left"  Margin="140,144,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5"/>
         <TextBox x:Name="textBoxDefault_Folder" HorizontalAlignment="Left" Height="26" Margin="140,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
         <ComboBox x:Name="comboBoxName_Of_State" HorizontalAlignment="Left" Margin="140,206,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5"/>
         <ComboBox x:Name="comboBoxName_Of_Type" HorizontalAlignment="Left" Margin="140,237,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5"/>
-        <Label Content="Доп. сведения: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,113,0,0" Height="26" Width="130"/>
+        <Label Content="Доп. сведения " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,113,0,0" Height="26" Width="130"/>
         <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="140,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
     </Grid>
 </Window>

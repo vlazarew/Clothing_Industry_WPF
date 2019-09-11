@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Сотрудники"
         ResizeMode="NoResize"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Сотрудник" Height="468.334" Width="857">
+        Title="Сотрудник" Height="528.334" Width="857">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -133,42 +133,51 @@
         </Style>
 
     </Window.Resources>
-    <Grid Margin="0,0,0,5">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="59*"/>
-            <ColumnDefinition Width="29*"/>
-        </Grid.ColumnDefinitions>
-        <Label Content="Логин: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,50,0,0"/>
-        <Label Content="Пароль: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,81,0,0"/>
-        <Label x:Name="Header" Content="Сотрудник " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18"/>
-        <Label Content="Фамилия: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,143,0,0"/>
-        <Label Content="Имя: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,174,0,0"/>
-        <Label Content="Отчество: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,205,0,0"/>
-        <Label Content="Должность: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,112,0,0"/>
-        <Label Content="Телефон: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,237,0,0"/>
-        <Label Content="E-mail: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,268,0,0"/>
-        <Label Content="Паспортные данные: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,299,0,0"/>
-        <Label Content="Заметки: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,330,0,0"/>
-        <Label Content="Фото: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="382,50,0,0"/>
-        <Label Content="Добавлен(а): " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,361,0,0"/>
-        <Label Content="З/п за прошлый месяц: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,395,0,0"/>
-        <PasswordBox x:Name="PasswordBoxCurrent" HorizontalAlignment="Left" Margin="162,81,0,0" VerticalAlignment="Top" Width="187" Height="26" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="textBoxLogin" HorizontalAlignment="Left" Height="26" Margin="162,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center"/>
-        <CheckBox x:Name="CheckBoxPassword" Content="Показать" HorizontalAlignment="Left" Margin="354,87,0,0" VerticalAlignment="Top" Click="CheckBoxPassword_Click" RenderTransformOrigin="0.729,0.467" Width="72"/>
-        <TextBox x:Name="textBoxLastname" HorizontalAlignment="Left" Height="26" Margin="162,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="4" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" Margin="162,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="5" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxPatronymic" HorizontalAlignment="Left" Height="26" Margin="162,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="6" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxPhone_Number" HorizontalAlignment="Left" Height="26" Margin="162,237,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="7" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxEmail" HorizontalAlignment="Left" Height="26" Margin="162,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxPassportData" HorizontalAlignment="Left" Height="26" Margin="162,299,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="9" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="162,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="10" VerticalContentAlignment="Center" FontSize="14"/>
-        <DatePicker x:Name="datePickerAdded" HorizontalAlignment="Left" Margin="162,363,0,0" VerticalAlignment="Top" Width="215" TabIndex="11" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxLastSalary" HorizontalAlignment="Left" Height="26" Margin="162,395,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="12" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxPassword" HorizontalAlignment="Left" Height="26" Margin="162,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="187" VerticalContentAlignment="Center" FontSize="14"/>
-        <Image x:Name="imagePhoto" Height="336" Margin="431,50,25,0" VerticalAlignment="Top" OpacityMask="Black" Cursor="Hand" Grid.ColumnSpan="2"/>
-        <Button x:Name="buttonAddPhoto" Content="Добавить фото" HorizontalAlignment="Left" Margin="431,396,0,0" VerticalAlignment="Top" Width="108" Height="25" Click="ButtonAddPhoto_Click" TabIndex="20"/>
-        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="254,17,0,0" VerticalAlignment="Top" Width="131" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True" TabIndex="14"/>
-        <ComboBox x:Name="comboBoxPosition" HorizontalAlignment="Left" Margin="162,112,0,0" VerticalAlignment="Top" Width="215" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3"/>
+    <Grid >
+
+        <Label Content="Логин" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,85,0,0"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,116,0,0"/>
+        <Label x:Name="Header" Content="Сотрудник " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Width="367"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,178,0,0"/>
+        <Label Content="Имя" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,209,0,0"/>
+        <Label Content="Отчество " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,240,0,0"/>
+        <Label Content="Должность " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,147,0,0"/>
+        <Label Content="Телефон" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,272,0,0"/>
+        <Label Content="E-mail" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,303,0,0"/>
+        <Label Content="Паспортные данные" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,334,0,0"/>
+        <Label Content="Заметки " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,365,0,0"/>
+        <Label Content="Фото " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="402,50,0,0"/>
+        <Label Content="Добавлен(а) " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,396,0,0"/>
+        <Label Content="З/п за прошлый месяц " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,430,0,0"/>
+        <PasswordBox x:Name="PasswordBoxCurrent" HorizontalAlignment="Left" Margin="162,116,0,0" VerticalAlignment="Top" Width="215" Height="26" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="textBoxLogin" HorizontalAlignment="Left" Height="26" Margin="162,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center"/>
+        <CheckBox x:Name="CheckBoxPassword" Content="Показать" HorizontalAlignment="Left" Margin="77,122,0,0" VerticalAlignment="Top" Click="CheckBoxPassword_Click" RenderTransformOrigin="0.729,0.467" Width="80"/>
+        <TextBox x:Name="textBoxLastname" HorizontalAlignment="Left" Height="26" Margin="162,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="4" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" Margin="162,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="5" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxPatronymic" HorizontalAlignment="Left" Height="26" Margin="162,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="6" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxPhone_Number" HorizontalAlignment="Left" Height="26" Margin="162,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="7" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxEmail" HorizontalAlignment="Left" Height="26" Margin="162,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxPassportData" HorizontalAlignment="Left" Height="26" Margin="162,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="9" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="162,365,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="10" VerticalContentAlignment="Center" FontSize="14"/>
+        <DatePicker x:Name="datePickerAdded" HorizontalAlignment="Left" Margin="162,398,0,0" VerticalAlignment="Top" Width="215" TabIndex="11" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxLastSalary" HorizontalAlignment="Left" Height="26" Margin="162,430,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" TabIndex="12" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxPassword" HorizontalAlignment="Left" Height="26" Margin="162,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" VerticalContentAlignment="Center" FontSize="14"/>
+        <Rectangle  x:Name="Border" Stroke="Black" StrokeThickness="5" StrokeDashArray="1 1" SnapsToDevicePixels="True" Margin="448,50,44,108"/>
+        <Image x:Name="imagePhoto" Height="340" Margin="448,50,44,0" VerticalAlignment="Top" OpacityMask="Black" Cursor="Hand"/>
+
+
+        <Button x:Name="buttonAddPhoto" Content="Добавить фото" HorizontalAlignment="Left" Margin="668,398,0,0" VerticalAlignment="Top" Width="131" Height="34" Click="ButtonAddPhoto_Click" TabIndex="20" RenderTransformOrigin="0.519,1"/>
+        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="668,10,0,0" VerticalAlignment="Top" Width="131" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True" TabIndex="14"/>
+        <ComboBox x:Name="comboBoxPosition" HorizontalAlignment="Left" Margin="162,147,0,0" VerticalAlignment="Top" Width="215" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3"/>
+        <Label  Content="Обязательные поля помечены (*)" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="0.974,1" Margin="10,50,0,0" FontSize="12" Height="24"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="54,85,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="61,116,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="70,178,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="43,209,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="67,272,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="53,303,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="132,334,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="84,147,0,0" FontSize="12" Height="26"/>
 
     </Grid>
 </Window>

@@ -274,7 +274,7 @@
                 </DataGrid.Resources>
 
                 <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding id_Status}" ClipboardContentBinding="{x:Null}" Header="Код" IsReadOnly="True"/>
+
                 <DataGridTextColumn Binding="{Binding Name_of_status}" ClipboardContentBinding="{x:Null}" Header="Наименование"/>
             </DataGrid.Columns>
         </DataGrid>

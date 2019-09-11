@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Доходы"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-         Title="Доходы" Height="178.949" Width="368.414">
+         Title="Доходы" Height="148.765" Width="368.414">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -20,7 +20,7 @@
         <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
     StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="DarkGray" Offset="0" />
-            
+
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
 
@@ -132,15 +132,12 @@
         </Style>
 
     </Window.Resources>
-    <Grid Margin="0,0,0,5" HorizontalAlignment="Left" Width="680">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="131*"/>
-            <ColumnDefinition Width="209*"/>
-        </Grid.ColumnDefinitions>
-        <Label Content="Месяц: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,109,0,0" Height="26" Width="52"/>
-        <Label x:Name="Header" Content="Доходы" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Height="34" Width="74"/>
-        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="209,57,0,0" VerticalAlignment="Top" Width="133" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True" Grid.ColumnSpan="2"/>
-        <ComboBox x:Name="comboBoxMounth" HorizontalAlignment="Left" VerticalAlignment="Top" Width="137" Margin="67,109,0,0" Height="26" RenderTransformOrigin="0.604,0.481"/>
+    <Grid  HorizontalAlignment="Left" Width="680">
+
+        <Label Content="Месяц " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,62,0,0" Height="26" Width="52"/>
+        <Label x:Name="Header" Content="Доходы" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Height="34" Width="182"/>
+        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="209,10,0,0" VerticalAlignment="Top" Width="133" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
+        <ComboBox x:Name="comboBoxMounth" HorizontalAlignment="Left" VerticalAlignment="Top" Width="228" Margin="114,62,0,0" Height="26" RenderTransformOrigin="0.604,0.481"/>
 
     </Grid>
 </Window>

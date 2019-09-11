@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Отпуска"
         ResizeMode="NoResize"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Отпуск" Height="219.334" Width="352">
+        Title="Отпуск" Height="229.244" Width="373.801">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -21,7 +21,7 @@
         <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
     StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="DarkGray" Offset="0" />
-            
+
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
 
@@ -145,7 +145,7 @@
         <Label Content="Начало отпуска:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,81,0,0" Height="26" Width="103"/>
         <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="118,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" TabIndex="11" VerticalContentAlignment="Center" FontSize="14"/>
         <DatePicker x:Name="datePickerIn_Fact_Start" HorizontalAlignment="Left" Margin="118,79,0,0" VerticalAlignment="Top" Width="213" TabIndex="12" VerticalContentAlignment="Center" FontSize="14" Height="28"/>
-        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="204,17,0,0" VerticalAlignment="Top" Width="127" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
+        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="204,10,0,0" VerticalAlignment="Top" Width="127" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
         <ComboBox x:Name="comboBoxLogin" HorizontalAlignment="Left" Margin="118,50,0,0" VerticalAlignment="Top" Width="213" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3"/>
         <DatePicker x:Name="datePickerIn_Fact_End" HorizontalAlignment="Left" Margin="118,112,0,0" VerticalAlignment="Top" Width="213" TabIndex="12" VerticalContentAlignment="Center" FontSize="14" Height="28"/>
 

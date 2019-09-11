@@ -21,7 +21,7 @@
         <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
     StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="DarkGray" Offset="0" />
-            
+
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
 
@@ -134,18 +134,18 @@
 
     </Window.Resources>
     <Grid>
-        <Button Content="Выбрать папку" Height="25" HorizontalAlignment="Right" Margin="0,12,26,0" Name="buttonChooseDirectory" VerticalAlignment="Top" Width="100" Click="buttonChooseDirectory_Click" />
-        <TextBlock Height="25" HorizontalAlignment="Left" Margin="12,12,0,0" Name="textBlockDefault_Folder" Text="Путь к папке" VerticalAlignment="Top" Width="373" />
-        <ListBox Height="217" HorizontalAlignment="Left" Margin="12,43,0,0" Name="listBoxFiles" VerticalAlignment="Top" Width="479" >
+        <Button Content="Выбрать папку" Height="34" HorizontalAlignment="Right" Margin="0,10,26,0" Name="buttonChooseDirectory" VerticalAlignment="Top" Width="100" Click="buttonChooseDirectory_Click" />
+        <TextBlock Height="32" HorizontalAlignment="Left" Margin="12,12,0,0" Name="textBlockDefault_Folder" Text="Путь к папке" VerticalAlignment="Top" Width="373" />
+        <ListBox Height="211" HorizontalAlignment="Left" Margin="12,49,0,0" Name="listBoxFiles" VerticalAlignment="Top" Width="479" >
             <ListBox.Resources>
                 <Style TargetType="{x:Type ListBoxItem}">
                     <EventSetter Event="MouseDoubleClick" Handler="ListBox_MouseDoubleClick"/>
                 </Style>
             </ListBox.Resources>
         </ListBox>
-        <Button Content="Закрыть" Height="23" HorizontalAlignment="Left" Margin="353,276,0,0" Name="buttonExit" VerticalAlignment="Top" Width="138" Click="buttonExit_Click" />
-        <Button Content="Показать файлы" Height="23" HorizontalAlignment="Left" Margin="210,276,0,0" Name="buttonShowFiles" VerticalAlignment="Top" Width="138" Click="buttonShowFiles_Click" />
-        <Button Content="Выбрать файл" Height="23" HorizontalAlignment="Left" Margin="67,276,0,0" Name="buttonChooseFile" VerticalAlignment="Top" Width="138" Click="buttonChooseFile_Click" />
+        <Button Content="Закрыть" Height="34" HorizontalAlignment="Left" Margin="378,276,0,0" Name="buttonExit" VerticalAlignment="Top" Width="113" Click="buttonExit_Click" />
+        <Button Content="Показать файлы" Height="34" HorizontalAlignment="Center" Margin="186,276,195,0" Name="buttonShowFiles" VerticalAlignment="Top" Width="138" Click="buttonShowFiles_Click" />
+        <Button Content="Выбрать файл" Height="34" HorizontalAlignment="Left" Margin="12,276,0,0" Name="buttonChooseFile" VerticalAlignment="Top" Width="127" Click="buttonChooseFile_Click" />
     </Grid>
 </Window>
 

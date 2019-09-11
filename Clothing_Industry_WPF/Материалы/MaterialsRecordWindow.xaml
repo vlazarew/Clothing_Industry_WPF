@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Материал"
         ResizeMode="NoResize"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Материал" Height="416.834" Width="800">
+        Title="Материал" Height="440.834" Width="844">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -133,35 +133,42 @@
         </Style>
 
     </Window.Resources>
-    <Grid Margin="0,0,0,5">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="59*"/>
-            <ColumnDefinition Width="29*"/>
-        </Grid.ColumnDefinitions>
-        <Label Content="Артикул: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,50,0,0"/>
-        <Label Content="Название материала: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,81,0,0"/>
-        <Label x:Name="Header" Content="Материал " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18"/>
-        <Label Content="Стоимость: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,112,0,0"/>
-        <Label Content="Заметки: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,143,0,0"/>
-        <Label Content="Система счисления: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,174,0,0"/>
-        <Label Content="Вид: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,205,0,0"/>
-        <Label Content="Тип: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,236,0,0"/>
-        <Label Content="Страна производитель: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,267,0,0"/>
+    <Grid >
 
-        <Label Content="Фото: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="397,50,0,0"/>
+        <Label Content="Артикул" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,80,0,0"/>
+        <Label Content="Название материала" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,111,0,0"/>
+        <Label x:Name="Header" Content="Материал " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Width="382"/>
+        <Label Content="Стоимость" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,142,0,0"/>
+        <Label Content="Заметки " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,173,0,0"/>
+        <Label Content="Система счисления" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,204,0,0"/>
+        <Label Content="Вид" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,235,0,0"/>
+        <Label Content="Тип" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,266,0,0"/>
+        <Label Content="Страна производитель" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,297,0,0"/>
+
+        <Label Content="Фото " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="397,50,0,0" Height="24"/>
 
 
-        <TextBox x:Name="textBoxVendor_Code" HorizontalAlignment="Left" Height="26" Margin="155,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center"/>
-        <TextBox x:Name="textBoxName_Of_Material" HorizontalAlignment="Left" Height="26" Margin="155,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" TabIndex="2" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxCost_Of_Material" HorizontalAlignment="Left" Height="26" Margin="155,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" TabIndex="3" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="155,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" TabIndex="4" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxVendor_Code" HorizontalAlignment="Left" Height="26" Margin="155,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="textBoxName_Of_Material" HorizontalAlignment="Left" Height="26" Margin="155,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" TabIndex="2" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxCost_Of_Material" HorizontalAlignment="Left" Height="26" Margin="155,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" TabIndex="3" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="155,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" TabIndex="4" VerticalContentAlignment="Center" FontSize="14"/>
+        <Rectangle x:Name="Border" Stroke="Black" StrokeThickness="5" StrokeDashArray="1 1" SnapsToDevicePixels="True" Margin="443,51,31,88"/>
+        <Image x:Name="imagePhoto" Height="273" Margin="443,51,31,0" VerticalAlignment="Top" OpacityMask="Black" Cursor="Hand"/>
 
-        <Image x:Name="imagePhoto" Height="274" Margin="446,50,25,0" VerticalAlignment="Top" OpacityMask="Black" Cursor="Hand" Grid.ColumnSpan="2"/>
-        <Button x:Name="buttonAddPhoto" Content="Добавить фото" HorizontalAlignment="Left" Margin="446,329,0,0" VerticalAlignment="Top" Width="106" Height="25" Click="ButtonAddPhoto_Click" TabIndex="14" Grid.ColumnSpan="2"/>
-        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="263,17,0,0" VerticalAlignment="Top" Width="131" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
-        <ComboBox x:Name="comboBoxUnit" HorizontalAlignment="Left" Margin="155,174,0,0" VerticalAlignment="Top" Width="237" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5"/>
-        <ComboBox x:Name="comboBoxGroup" HorizontalAlignment="Left" Margin="155,205,0,0" VerticalAlignment="Top" Width="237" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="6"/>
-        <ComboBox x:Name="comboBoxType" HorizontalAlignment="Left" Margin="155,236,0,0" VerticalAlignment="Top" Width="237" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7"/>
-        <ComboBox x:Name="comboBoxCountry" HorizontalAlignment="Left" Margin="155,267,0,0" VerticalAlignment="Top" Width="237" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="8"/>
+
+        <Button x:Name="buttonAddPhoto" Content="Добавить фото" HorizontalAlignment="Left" Margin="668,329,0,0" VerticalAlignment="Top" Width="131" Height="34" Click="ButtonAddPhoto_Click" TabIndex="14"/>
+        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="668,10,0,0" VerticalAlignment="Top" Width="131" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
+        <ComboBox x:Name="comboBoxUnit" HorizontalAlignment="Left" Margin="155,204,0,0" VerticalAlignment="Top" Width="237" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5"/>
+        <ComboBox x:Name="comboBoxGroup" HorizontalAlignment="Left" Margin="155,235,0,0" VerticalAlignment="Top" Width="237" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="6"/>
+        <ComboBox x:Name="comboBoxType" HorizontalAlignment="Left" Margin="155,266,0,0" VerticalAlignment="Top" Width="237" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7"/>
+        <ComboBox x:Name="comboBoxCountry" HorizontalAlignment="Left" Margin="155,297,0,0" VerticalAlignment="Top" Width="237" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="8"/>
+        <Label  Content="Обязательные поля помечены (*)" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="0.974,1" Margin="10,51,0,0" FontSize="12" Height="24"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="63,80,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="131,111,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="78,142,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="126,204,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="40,235,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="40,266,0,0" FontSize="12" Height="26"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="140,297,0,0" FontSize="12" Height="26"/>
     </Grid>
 </Window>

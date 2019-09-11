@@ -121,7 +121,10 @@ namespace Clothing_Industry_WPF.Изделия
             {
                 image_path = openFileDialog.FileName;
                 imagePhoto.Source = new BitmapImage(new Uri(image_path));
+                Border.Visibility = Visibility.Hidden;
             }
+
+
         }
 
         private string CheckData()

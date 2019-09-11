@@ -179,6 +179,7 @@ namespace Clothing_Industry_WPF.Сотрудники
             {
                 image_path = openFileDialog.FileName;
                 imagePhoto.Source = new BitmapImage(new Uri(image_path));
+                Border.Visibility = Visibility.Hidden;
             }
         }
 

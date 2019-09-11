@@ -279,15 +279,17 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding id}" ClipboardContentBinding="{x:Null}" Header="Номер документа" IsReadOnly="True" />
                     <DataGridTextColumn Binding="{Binding Name_Of_Document}" ClipboardContentBinding="{x:Null}" Header="Название документа" IsReadOnly="True" />
-                    <DataGridTextColumn Binding="{Binding Default_Folder}" ClipboardContentBinding="{x:Null}" Header="Путь документа" />
                     <DataGridTextColumn Binding="{Binding Date_Of_Cost}" ClipboardContentBinding="{x:Null}" Header="Дата расхода"/>
                     <DataGridTextColumn Binding="{Binding Amount}" ClipboardContentBinding="{x:Null}" Header="Сумма"/>
-                    <DataGridTextColumn Binding="{Binding Notes}" ClipboardContentBinding="{x:Null}" Header="Заметки"/>
+                    
+                    <DataGridTextColumn Binding="{Binding From}" ClipboardContentBinding="{x:Null}" Header="От"/>
+                    <DataGridTextColumn Binding="{Binding To}" ClipboardContentBinding="{x:Null}" Header="Кому"/>
                     <DataGridTextColumn Binding="{Binding Name_Of_Category}" ClipboardContentBinding="{x:Null}" Header="Категория расхода"/>
                     <DataGridTextColumn Binding="{Binding Name_Of_Type}" ClipboardContentBinding="{x:Null}" Header="Тип оплаты"/>
                     <DataGridTextColumn Binding="{Binding Name_Of_Periodicity}" ClipboardContentBinding="{x:Null}" Header="Периодичность"/>
-                    <DataGridTextColumn Binding="{Binding From}" ClipboardContentBinding="{x:Null}" Header="От"/>
-                    <DataGridTextColumn Binding="{Binding To}" ClipboardContentBinding="{x:Null}" Header="Кому"/>
+                    
+                    <DataGridTextColumn Binding="{Binding Default_Folder}" ClipboardContentBinding="{x:Null}" Header="Путь документа" />
+                    <DataGridTextColumn Binding="{Binding Notes}" ClipboardContentBinding="{x:Null}" Header="Заметки"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

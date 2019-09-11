@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Справочник.Типы_транзакций"
         ResizeMode="NoResize"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Типы транзакций" Height="171.688" Width="368.414">
+        Title="Типы транзакций" Height="151.003" Width="470">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -21,7 +21,7 @@
         <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
     StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="DarkGray" Offset="0" />
-            
+
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
 
@@ -138,9 +138,9 @@
             <ColumnDefinition Width="59*"/>
             <ColumnDefinition Width="29*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Наименование: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,102,0,0"/>
-        <Label x:Name="Header" Content="Типы транзакций" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18"/>
-        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" Margin="139,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center"/>
-        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="209,56,0,0" VerticalAlignment="Top" Width="133" Height="25" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
+        <Label Content="Наименование " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,75,0,0"/>
+        <Label x:Name="Header" Content="Типы транзакций" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Width="298"/>
+        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" Margin="111,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="335" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center"/>
+        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="313,10,0,0" VerticalAlignment="Top" Width="133" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
     </Grid>
 </Window>

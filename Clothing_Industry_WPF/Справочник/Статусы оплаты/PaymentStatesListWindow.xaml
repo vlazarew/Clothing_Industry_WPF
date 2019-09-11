@@ -273,7 +273,7 @@
                     </Style>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding id_Payment_States}" ClipboardContentBinding="{x:Null}" Header="Код" IsReadOnly="True"/>
+                
                 <DataGridTextColumn Binding="{Binding Name_Of_State}" ClipboardContentBinding="{x:Null}" Header="Наименование"/>
             </DataGrid.Columns>
         </DataGrid>

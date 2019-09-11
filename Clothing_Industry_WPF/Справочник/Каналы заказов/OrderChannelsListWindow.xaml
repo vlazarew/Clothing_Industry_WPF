@@ -274,7 +274,7 @@
                 </DataGrid.Resources>
 
                 <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding id_Channel}" ClipboardContentBinding="{x:Null}" Header="Код" IsReadOnly="True"/>
+
                     <DataGridTextColumn Binding="{Binding Name_of_channel}" ClipboardContentBinding="{x:Null}" Header="Наименование"/>
                 </DataGrid.Columns>
             </DataGrid>
