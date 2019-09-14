@@ -143,6 +143,6 @@
 
         <Button x:Name="buttonSave" Content="Добавить" HorizontalAlignment="Left" Margin="147,88,0,0" VerticalAlignment="Top" Width="93" Height="34" TabIndex="3" VerticalContentAlignment="Center" Click="ButtonSave_Click" IsDefault="True" RenderTransformOrigin="0.458,1.951"/>
         <Button Content="Отмена" HorizontalAlignment="Left" Margin="255,88,0,0" VerticalAlignment="Top" Width="93" RenderTransformOrigin="-0.694,-0.02" TabIndex="4" VerticalContentAlignment="Center" IsCancel="True" Click="Button_Click" Height="34"/>
-        <ComboBox x:Name="comboBoxName_Of_Material" HorizontalAlignment="Left" Margin="147,49,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="1"/>
+        <ComboBox x:Name="comboBoxName_Of_Material" HorizontalAlignment="Left" Margin="147,49,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="1" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
     </Grid>
 </Window>

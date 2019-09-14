@@ -144,6 +144,6 @@
         <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" Margin="140,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" TextInput="TextBoxCount_PreviewTextInput"/>
         <Button x:Name="buttonSave" Content="Добавить" HorizontalAlignment="Left" Margin="140,117,0,0" VerticalAlignment="Top" Width="94" Height="34" TabIndex="3" VerticalContentAlignment="Center" Click="ButtonSave_Click" IsDefault="True" RenderTransformOrigin="0.521,0"/>
         <Button Content="Отмена" HorizontalAlignment="Left" Margin="249,117,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="-0.694,-0.02" TabIndex="4" VerticalContentAlignment="Center" IsCancel="True" Click="Button_Click" Height="34"/>
-        <ComboBox x:Name="comboBoxName_Of_Material" HorizontalAlignment="Left" Margin="140,49,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="1"/>
+        <ComboBox x:Name="comboBoxName_Of_Material" HorizontalAlignment="Left" Margin="140,49,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="1" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
     </Grid>
 </Window>

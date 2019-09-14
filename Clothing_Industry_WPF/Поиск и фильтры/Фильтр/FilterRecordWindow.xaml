@@ -140,8 +140,8 @@
         <Label Content="Значение" HorizontalAlignment="Left" Margin="40,179,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.496,1.613"/>
         <Button x:Name="buttonOK" Content="Принять" HorizontalAlignment="Left" Margin="40,278,0,0" VerticalAlignment="Top" Width="130" IsDefault="True" FontSize="16" Click="ButtonOK_Click" Height="34"/>
         <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="233,278,0,0" VerticalAlignment="Top" Width="131" FontSize="16" IsCancel="True" Click="ButtonCancel_Click" Height="34"/>
-        <ComboBox x:Name="comboBoxField" HorizontalAlignment="Left" Margin="182,76,0,0" VerticalAlignment="Top" Width="182" FontSize="16" SelectionChanged="ComboBoxField_SelectionChanged"/>
-        <ComboBox x:Name="comboBoxTypeOfFilter" HorizontalAlignment="Left" Margin="182,124,0,0" VerticalAlignment="Top" Width="182" FontSize="16"/>
+        <ComboBox x:Name="comboBoxField" HorizontalAlignment="Left" Margin="182,76,0,0" VerticalAlignment="Top" Width="182" FontSize="16" SelectionChanged="ComboBoxField_SelectionChanged" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+        <ComboBox x:Name="comboBoxTypeOfFilter" HorizontalAlignment="Left" Margin="182,124,0,0" VerticalAlignment="Top" Width="182" FontSize="16" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
         <TextBox x:Name="textBoxValue" HorizontalAlignment="Left" Height="23" Margin="182,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="16" PreviewTextInput="TextBoxValue_PreviewTextInput"/>
         <DatePicker x:Name="datePickerValue" HorizontalAlignment="Left" Margin="182,179,0,0" VerticalAlignment="Top" Width="182" FontSize="16"/>
         <CheckBox x:Name="checkBoxActive" Content="Использовать" HorizontalAlignment="Left" Margin="182,241,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.676,-0.133" Width="139" FontSize="16" VerticalContentAlignment="Center" IsChecked="True"/>

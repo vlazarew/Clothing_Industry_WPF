@@ -146,7 +146,7 @@
         <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="118,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" TabIndex="11" VerticalContentAlignment="Center" FontSize="14"/>
         <DatePicker x:Name="datePickerIn_Fact_Start" HorizontalAlignment="Left" Margin="118,79,0,0" VerticalAlignment="Top" Width="213" TabIndex="12" VerticalContentAlignment="Center" FontSize="14" Height="28"/>
         <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="204,10,0,0" VerticalAlignment="Top" Width="127" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
-        <ComboBox x:Name="comboBoxLogin" HorizontalAlignment="Left" Margin="118,50,0,0" VerticalAlignment="Top" Width="213" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3"/>
+        <ComboBox x:Name="comboBoxLogin" HorizontalAlignment="Left" Margin="118,50,0,0" VerticalAlignment="Top" Width="213" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
         <DatePicker x:Name="datePickerIn_Fact_End" HorizontalAlignment="Left" Margin="118,112,0,0" VerticalAlignment="Top" Width="213" TabIndex="12" VerticalContentAlignment="Center" FontSize="14" Height="28"/>
 
     </Grid>

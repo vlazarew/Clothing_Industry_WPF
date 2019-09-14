@@ -158,10 +158,10 @@
 
         <Button x:Name="buttonAddPhoto" Content="Добавить фото" HorizontalAlignment="Left" Margin="668,329,0,0" VerticalAlignment="Top" Width="131" Height="34" Click="ButtonAddPhoto_Click" TabIndex="14"/>
         <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="668,10,0,0" VerticalAlignment="Top" Width="131" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
-        <ComboBox x:Name="comboBoxUnit" HorizontalAlignment="Left" Margin="155,204,0,0" VerticalAlignment="Top" Width="237" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5"/>
-        <ComboBox x:Name="comboBoxGroup" HorizontalAlignment="Left" Margin="155,235,0,0" VerticalAlignment="Top" Width="237" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="6"/>
-        <ComboBox x:Name="comboBoxType" HorizontalAlignment="Left" Margin="155,266,0,0" VerticalAlignment="Top" Width="237" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7"/>
-        <ComboBox x:Name="comboBoxCountry" HorizontalAlignment="Left" Margin="155,297,0,0" VerticalAlignment="Top" Width="237" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="8"/>
+        <ComboBox x:Name="comboBoxUnit" HorizontalAlignment="Left" Margin="155,204,0,0" VerticalAlignment="Top" Width="237" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+        <ComboBox x:Name="comboBoxGroup" HorizontalAlignment="Left" Margin="155,235,0,0" VerticalAlignment="Top" Width="237" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="6" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+        <ComboBox x:Name="comboBoxType" HorizontalAlignment="Left" Margin="155,266,0,0" VerticalAlignment="Top" Width="237" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+        <ComboBox x:Name="comboBoxCountry" HorizontalAlignment="Left" Margin="155,297,0,0" VerticalAlignment="Top" Width="237" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="8" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
         <Label  Content="Обязательные поля помечены (*)" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="0.974,1" Margin="10,51,0,0" FontSize="12" Height="24"/>
         <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="63,80,0,0" FontSize="12" Height="26"/>
         <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="131,111,0,0" FontSize="12" Height="26"/>

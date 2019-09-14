@@ -37,9 +37,8 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid Width="{TemplateBinding Width}"   
-      Height="{TemplateBinding Height}" ClipToBounds="True">
-
-                            <!-- Outer Rectangle with rounded corners. -->
+                              Height="{TemplateBinding Height}" ClipToBounds="True">
+                                <!-- Outer Rectangle with rounded corners. -->
                             <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch"   
       VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}"   
        StrokeThickness="5" Fill="Transparent" />
@@ -154,7 +153,7 @@
         <TextBox x:Name="textBoxPhone_Number" HorizontalAlignment="Left" Height="26" Margin="188,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="5" VerticalContentAlignment="Center" FontSize="14"/>
         <TextBox x:Name="textBoxSize" HorizontalAlignment="Left" Height="26" Margin="188,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="9" VerticalContentAlignment="Center" FontSize="14"/>
         <TextBox x:Name="textBoxPassportData" HorizontalAlignment="Left" Height="26" Margin="188,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="188,400,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="11" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="188,400,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="11" VerticalContentAlignment="Center" FontSize="14" IsHitTestVisible="False" AllowDrop="True"/>
         <DatePicker x:Name="datePickerBirthday" HorizontalAlignment="Left" Margin="188,275,0,0" VerticalAlignment="Top" Width="206" TabIndex="7" VerticalContentAlignment="Center" FontSize="14"/>
 
         <Image x:Name="imagePhoto" Height="448" Margin="444,51,46,0" VerticalAlignment="Top" OpacityMask="Black" Cursor="Hand" RenderTransformOrigin="0.5,0.5"/>
@@ -162,15 +161,15 @@
 
         <Button x:Name="buttonAddPhoto" Content="Добавить фото" HorizontalAlignment="Left" Margin="723,504,0,0" VerticalAlignment="Top" Width="131" Height="34" Click="ButtonAddPhoto_Click" TabIndex="15"/>
         <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="723,10,0,0" VerticalAlignment="Top" Width="131" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True" TabIndex="16"/>
-        <ComboBox x:Name="comboBoxChannel" HorizontalAlignment="Left" Margin="188,462,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="13" RenderTransformOrigin="0.434,-1.231"/>
-        <ComboBox x:Name="comboBoxEmployee" HorizontalAlignment="Left" Margin="188,493,0,0" VerticalAlignment="Top" Width="206" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="14"/>
+        <ComboBox x:Name="comboBoxChannel" HorizontalAlignment="Left" Margin="188,462,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="13" RenderTransformOrigin="0.434,-1.231" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+        <ComboBox x:Name="comboBoxEmployee" HorizontalAlignment="Left" Margin="188,493,0,0" VerticalAlignment="Top" Width="206" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="14" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
         <Label Content="Адрес" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,182,0,0"/>
         <TextBox x:Name="textBoxAdress" HorizontalAlignment="Left" Height="26" Margin="188,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="4" VerticalContentAlignment="Center" FontSize="14"/>
         <Label Content="Никнейм" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,244,0,0"/>
         <TextBox x:Name="textBoxNickname" HorizontalAlignment="Left" Height="26" Margin="188,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="206" TabIndex="6" VerticalContentAlignment="Center" FontSize="14"/>
         <Label Content="Параметры" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,369,0,0"/>
         <TextBox x:Name="textBoxParameters" HorizontalAlignment="Left" Height="26" Margin="188,369,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="10" VerticalContentAlignment="Center" FontSize="14"/>
-        <ComboBox x:Name="comboBoxStatus" HorizontalAlignment="Left" Margin="188,431,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="12"/>
+        <ComboBox x:Name="comboBoxStatus" HorizontalAlignment="Left" Margin="188,431,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="12" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
         <Label  Content="Обязательные поля помечены (*)" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="0.974,1" Margin="10,50,0,0" FontSize="12" Height="24"/>
         <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="68,89,0,0" FontSize="12" Height="26"/>
         <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="43,120,0,0" FontSize="12" Height="26"/>

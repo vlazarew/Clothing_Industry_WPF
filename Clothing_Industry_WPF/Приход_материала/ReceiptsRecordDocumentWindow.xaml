@@ -148,10 +148,10 @@
         <Label Content="Тип транзакции " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,237,0,0" Height="26" Width="122"/>
         <TextBox x:Name="textBoxName_Of_Document" HorizontalAlignment="Left" Height="26" Margin="140,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
         <DatePicker x:Name="datePickerComing_Date" HorizontalAlignment="Left" Margin="140,81,0,0" VerticalAlignment="Top" Width="203" TabIndex="12" VerticalContentAlignment="Center" FontSize="14"/>
-        <ComboBox x:Name="comboBoxName_Of_Supplier" HorizontalAlignment="Left"  Margin="140,144,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5"/>
+        <ComboBox x:Name="comboBoxName_Of_Supplier" HorizontalAlignment="Left"  Margin="140,144,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
         <TextBox x:Name="textBoxDefault_Folder" HorizontalAlignment="Left" Height="26" Margin="140,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
-        <ComboBox x:Name="comboBoxName_Of_State" HorizontalAlignment="Left" Margin="140,206,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5"/>
-        <ComboBox x:Name="comboBoxName_Of_Type" HorizontalAlignment="Left" Margin="140,237,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5"/>
+        <ComboBox x:Name="comboBoxName_Of_State" HorizontalAlignment="Left" Margin="140,206,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+        <ComboBox x:Name="comboBoxName_Of_Type" HorizontalAlignment="Left" Margin="140,237,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
         <Label Content="Доп. сведения " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,113,0,0" Height="26" Width="130"/>
         <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="140,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
     </Grid>

@@ -168,7 +168,7 @@
 
         <Button x:Name="buttonAddPhoto" Content="Добавить фото" HorizontalAlignment="Left" Margin="668,398,0,0" VerticalAlignment="Top" Width="131" Height="34" Click="ButtonAddPhoto_Click" TabIndex="20" RenderTransformOrigin="0.519,1"/>
         <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="668,10,0,0" VerticalAlignment="Top" Width="131" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True" TabIndex="14"/>
-        <ComboBox x:Name="comboBoxPosition" HorizontalAlignment="Left" Margin="162,147,0,0" VerticalAlignment="Top" Width="215" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3"/>
+        <ComboBox x:Name="comboBoxPosition" HorizontalAlignment="Left" Margin="162,147,0,0" VerticalAlignment="Top" Width="215" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
         <Label  Content="Обязательные поля помечены (*)" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="0.974,1" Margin="10,50,0,0" FontSize="12" Height="24"/>
         <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="54,85,0,0" FontSize="12" Height="26"/>
         <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="61,116,0,0" FontSize="12" Height="26"/>
