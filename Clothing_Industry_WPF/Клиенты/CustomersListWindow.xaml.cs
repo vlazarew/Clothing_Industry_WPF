@@ -50,39 +50,15 @@ namespace Clothing_Industry_WPF.Клиенты
         private void RefreshList()
         {
             MySqlConnection connection = new MySqlConnection(connectionString);
-
-            string query_text = getQueryText();
-            connection.Open();
-
-            DataTable dataTable = new DataTable();
-            MySqlCommand command = new MySqlCommand(query_text, connection);
-            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-            adapter.Fill(dataTable);
+            var dataTable = Customer.getListCustomers(connection);
             customersGrid.ItemsSource = dataTable.DefaultView;
-            connection.Close();
-            List<int> ids = new List<int>();
-            foreach (DataRowView row in customersGrid.SelectedItems)
-            {
-                ids.Add((int)row.Row.ItemArray[0]);
-            }
-            if (ids.Count == 0)
+
+            // Если ничего не выделено, то стиль заблокированной кнопки
+            if (customersGrid.SelectedItems.Count == 0)
             {
                 ButtonEdit.Style = (Style)ButtonEdit.FindResource("NoActive");
                 ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
             }
-        }
-
-        private string getQueryText()
-        {
-            string query_text = "SELECT customers.id_Customer, customers.Name, customers.Lastname, customers.Patronymic, customers.Address, customers.Phone_Number, customers.Nickname, " +
-                "DATE_FORMAT(customers.Birthday, \"%d.%m.%Y\") as Birthday, customers.Passport_data, customers.Size, customers.Parameters, customers.Notes, customer_statuses.Name_Of_Status, " +
-                "order_channels.Name_of_channel, employees.Login " +
-                "FROM customers " +
-                "join main_database.employees on main_database.employees.login = customers.Employees_Login " +
-                "join main_database.customer_statuses on main_database.customer_statuses.id_Status = customers.Customer_Statuses_id_Status " +
-                "join main_database.order_channels on main_database.order_channels.id_Channel = customers.Order_Channels_id_Channel ;";
-
-            return query_text;
         }
 
         private void ButtonCreateNew_Click(object sender, RoutedEventArgs e)
@@ -94,19 +70,7 @@ namespace Clothing_Industry_WPF.Клиенты
 
         private void DataGridCell_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            int row_index = customersGrid.SelectedIndex;
-            int id = -1;
-            int current_row = 0;
-            foreach (DataRowView row in customersGrid.Items)
-            {
-                if (current_row != row_index)
-                {
-                    current_row++;
-                    continue;
-                }
-                id = (int)row.Row.ItemArray[0];
-                break;
-            }
+            int id = (int)((DataRowView)customersGrid.SelectedItem).Row.ItemArray[0];
 
             Window create_window = new CustomersRecordWindow(WaysToOpenForm.WaysToOpen.edit, id);
             create_window.ShowDialog();
@@ -246,7 +210,7 @@ namespace Clothing_Industry_WPF.Клиенты
             }
 
             var field = listOfField.Where(kvp => kvp.application_name == currentFindDescription.field).First().db_name;
-            string query = getQueryText();
+            string query = Customer.getQueryText();
             string edited_query;
 
             if (!currentFindDescription.isDate)
@@ -359,7 +323,7 @@ namespace Clothing_Industry_WPF.Клиенты
 
         private string EditFilterQuery(List<FilterHandler.FilterDescription> filter, List<FindHandler.FieldParameters> listOfField)
         {
-            string result = getQueryText();
+            string result = Customer.getQueryText();
 
             foreach (var filterRecord in filter)
             {

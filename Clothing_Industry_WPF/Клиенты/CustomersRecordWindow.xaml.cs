@@ -49,6 +49,7 @@ namespace Clothing_Industry_WPF.Клиенты
             if (idRecord != -1)
             {
                 customer = new Customer(idRecord, connection);
+                Border.Visibility = (customer.photo != null) ? Visibility.Hidden : Visibility.Visible;
                 FillFields();
             }
         }
@@ -79,10 +80,20 @@ namespace Clothing_Industry_WPF.Клиенты
 
             comboBoxStatus.SelectedValue = customer.statusName;
             comboBoxChannel.SelectedValue = customer.channelName;
-            comboBoxEmployee.SelectedValue = customer.employeeName;
+            comboBoxEmployee.SelectedValue = customer.employeeLogin;
         }
 
         private void ButtonAddPhoto_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonAddPhoto_Click();
+        }
+
+        private void ButtonAddPhoto_Click(object sender, MouseButtonEventArgs e)
+        {
+            ButtonAddPhoto_Click();
+        }
+
+        private void ButtonAddPhoto_Click()
         {
             Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
             openFileDialog.Filter = "Изображения (*.JPG; *.GIF; *.JPEG; *.PNG)|*.JPG; *.GIF; *.JPEG; *.PNG" + "|Все файлы (*.*)|*.* ";
@@ -125,143 +136,10 @@ namespace Clothing_Industry_WPF.Клиенты
         }
 
 
-        private void ButtonSaveAndExit_Click(object sender, RoutedEventArgs e)
-        {
-            string warning = customer.CheckData();
-            if (warning == "")
-            {
-                MySqlConnection connection = new MySqlConnection(connectionString);
 
-                connection.Open();
-                MySqlTransaction transaction = connection.BeginTransaction();
+        #region Обработка изменений данных в полях
 
-                // Создать/изменить запись в таблице Клиенты
-                MySqlCommand command = actionInDBCommand(connection);
-                command.Transaction = transaction;
-
-                try
-                {
-                    command.ExecuteNonQuery();
-                    transaction.Commit();
-                    this.Hide();
-                }
-                catch
-                {
-                    transaction.Rollback();
-                    MessageBox.Show("Ошибка сохранения!", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-
-                if (way == WaysToOpenForm.WaysToOpen.create)
-                {
-                    transaction = connection.BeginTransaction();
-                    string query_max_id = "SELECT max(customers.id_Customer) FROM main_database.customers";
-                    MySqlCommand commandFindId = new MySqlCommand(query_max_id, connection, transaction);
-                    int findId = -1;
-
-                    using (DbDataReader reader = commandFindId.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            findId = reader.GetInt32(0);
-                        }
-                    }
-
-                    string query_balance = "Insert into customers_balance (Customers_id_Customer, Accured, Paid, Debt) values (@id, 0, 0, 0)";
-                    MySqlCommand commandFillBalance = new MySqlCommand(query_balance, connection, transaction);
-                    commandFillBalance.Parameters.AddWithValue("@id", findId);
-
-                    try
-                    {
-                        commandFillBalance.ExecuteNonQuery();
-                        transaction.Commit();
-                        this.Hide();
-                    }
-                    catch
-                    {
-                        transaction.Rollback();
-                        MessageBox.Show("Ошибка сохранения!", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                }
-
-                connection.Close();
-            }
-            else
-            {
-                MessageBox.Show(warning, "Не заполнены обязательные поля", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-        private MySqlCommand actionInDBCommand(MySqlConnection connection)
-        {
-            string query = "";
-            if (way == WaysToOpenForm.WaysToOpen.create)
-            {
-                query = "INSERT INTO customers " +
-                        "(Name, Lastname, Patronymic, Address, Phone_Number, Nickname," +
-                        " Birthday, Passport_Data, Size, Parameters, Notes, Customer_Statuses_id_Status, Order_Channels_id_Channel, Employees_Login, Photo)" +
-                        " VALUES (@name, @lastname, @patronymic, @address, @phone, @nickname, @birthday, @passport, @size, @parameters, @notes," +
-                        "         @status, @channel, @login, @image);";
-            }
-            if (way == WaysToOpenForm.WaysToOpen.edit)
-            {
-                query = "Update customers set Name = @name, Lastname = @lastname, Patronymic = @patronymic, Address = @address, Phone_Number = @phone, Nickname = @nickname, " +
-                        "Birthday = @birthday, Passport_Data = @passport, Size = @size, Parameters = @parameters, Notes = @notes, Customer_Statuses_id_Status = @status, " +
-                        "Order_Channels_id_Channel = @channel, Employees_Login = @login, Photo = @image" +
-                        " where id_Customer = @id;";
-
-            }
-
-            MySqlCommand command = new MySqlCommand(query, connection);
-            command.Parameters.AddWithValue("@name", textBoxName.Text);
-            command.Parameters.AddWithValue("@lastname", textBoxLastname.Text);
-            command.Parameters.AddWithValue("@patronymic", textBoxPatronymic.Text);
-            command.Parameters.AddWithValue("@address", textBoxAddress.Text);
-            command.Parameters.AddWithValue("@phone", textBoxPhone_Number.Text);
-            command.Parameters.AddWithValue("@nickname", textBoxNickname.Text);
-            command.Parameters.AddWithValue("@birthday", datePickerBirthday.SelectedDate.Value);
-            command.Parameters.AddWithValue("@passport", textBoxPassportData.Text);
-            command.Parameters.AddWithValue("@size", textBoxSize.Text);
-            command.Parameters.AddWithValue("@parameters", textBoxParameters.Text);
-            command.Parameters.AddWithValue("@notes", textBoxNotes.Text);
-
-            MySqlCommand commandStatus = new MySqlCommand("select id_Status from customer_statuses where name_of_status = @status", connection);
-            commandStatus.Parameters.AddWithValue("status", comboBoxStatus.SelectedItem.ToString());
-            int id_status = -1;
-            using (DbDataReader reader = commandStatus.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    id_status = reader.GetInt32(0);
-                }
-            }
-
-            MySqlCommand commandChannel = new MySqlCommand("select id_Channel from order_channels where name_of_channel = @channel", connection);
-            commandChannel.Parameters.AddWithValue("channel", comboBoxChannel.SelectedItem.ToString());
-            int id_channel = -1;
-            using (DbDataReader reader = commandChannel.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    id_channel = reader.GetInt32(0);
-                }
-            }
-
-            command.Parameters.AddWithValue("@status", id_status);
-            command.Parameters.AddWithValue("@channel", id_channel);
-            command.Parameters.AddWithValue("@login", comboBoxEmployee.SelectedItem.ToString());
-
-
-            // Обработка фото 
-            command.Parameters.AddWithValue("@image", customer.photo);
-
-            if (way == WaysToOpenForm.WaysToOpen.edit)
-            {
-                command.Parameters.AddWithValue("@id", idRecord);
-            }
-
-            return command;
-        }
-
+        // Обработка всех текстовых полей
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             var textBox = sender as TextBox;
@@ -304,7 +182,19 @@ namespace Clothing_Industry_WPF.Клиенты
             }
         }
 
+        // Обработка календарей по кнопке выбора
         private void DateTimePicker_TextChanged(object sender, RoutedEventArgs e)
+        {
+            DateTimePicker_TextChanged(sender);
+        }
+
+        // Обработка календарей вводом текста
+        private void DateTimePicker_TextChanged(object sender, KeyEventArgs e)
+        {
+            DateTimePicker_TextChanged(sender);
+        }
+
+        private void DateTimePicker_TextChanged(object sender)
         {
             var dateTimePicker = sender as DatePicker;
             var dateTimePickerName = dateTimePicker.Name;
@@ -317,32 +207,65 @@ namespace Clothing_Industry_WPF.Клиенты
             }
         }
 
-        private void DateTimePicker_TextChanged(object sender, KeyEventArgs e)
-        {
-            var dateTimePicker = sender as DatePicker;
-            var dateTimePickerName = dateTimePicker.Name;
-            var value = DateTime.Parse(dateTimePicker.Text);
-            switch (dateTimePickerName)
-            {
-                case "datePickerBirthday":
-                    customer.birthday = value;
-                    break;
-            }
-        }
-
+        // Обработка комбобоксов вводом текста
         private void ComboBox_TextChanged(object sender, KeyEventArgs e)
         {
+            ComboBox_TextChanged(sender);
+        }
+
+        // Обработка комбобоксов выбором позиции
+        private void ComboBox_TextChanged(object sender, EventArgs e)
+        {
+            ComboBox_TextChanged(sender);
+        }
+
+        private void ComboBox_TextChanged(object sender)
+        {
             var comboBox = sender as ComboBox;
-            var comboBoxrName = comboBox.Name;
+            var comboBoxName = comboBox.Name;
             var value = comboBox.Text;
-            switch (comboBoxrName)
+            switch (comboBoxName)
             {
-                case "datePickerBirthday":
-                    // customer.birthday = value;
+                case "comboBoxStatus":
+                    if (comboBoxStatus.Items.IndexOf(value) != -1)
+                    {
+                        customer.statusName = value;
+                    }
+                    break;
+                case "comboBoxChannel":
+                    if (comboBoxChannel.Items.IndexOf(value) != -1)
+                    {
+                        customer.statusName = value;
+                    }
+                    break;
+                case "comboBoxEmployee":
+                    if (comboBoxEmployee.Items.IndexOf(value) != -1)
+                    {
+                        customer.statusName = value;
+                    }
                     break;
             }
         }
 
-        
+
+        #endregion
+
+        private void ButtonSaveAndExit_Click(object sender, RoutedEventArgs e)
+        {
+            customer.Save(connection, way);
+            this.Close();
+        }
+
+        private void ButtonSave_Click(object sender, RoutedEventArgs e)
+        {
+            customer.Save(connection, way);
+        }
+
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+
     }
 }
