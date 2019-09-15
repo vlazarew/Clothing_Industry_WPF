@@ -357,19 +357,5 @@ namespace Clothing_Industry_WPF.Клиенты
             return command;
         }
 
-        private void Grid_Error(object sender, ValidationErrorEventArgs e)
-        {
-            if (e.Action == ValidationErrorEventAction.Added)
-            {
-                MessageBox.Show(e.Error.ErrorContent.ToString());
-            }
-        }
-
-        private void TextBoxLastname_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            var textbox = sender as TextBox;
-            textBoxLastname.BorderBrush = new SolidColorBrush(Colors.Red);
-            textBoxLastname.Foreground = Brushes.Navy;
-        }
     }
 }
