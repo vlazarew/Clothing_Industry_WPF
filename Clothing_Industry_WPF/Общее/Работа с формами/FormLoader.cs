@@ -19,7 +19,7 @@ namespace Clothing_Industry_WPF.Общее.Работа_с_формами
                     Title = "Создание " + Title.ToLower() + "а";
                     break;
                 case WaysToOpenForm.WaysToOpen.edit:
-                    Title += "Изменение " + Title.ToLower() + "а";
+                    Title = "Изменение " + Title.ToLower() + "а";
                     break;
             }
 
@@ -40,9 +40,9 @@ namespace Clothing_Industry_WPF.Общее.Работа_с_формами
             connection.Open();
             foreach (var comboboxAndTable in comboboxesAndTables)
             {
-                string query = "select " + comboboxAndTable.Item1 + " from "+ comboboxAndTable.Item2;
+                string query = "select " + comboboxAndTable.Item1 + " from " + comboboxAndTable.Item2;
                 MySqlCommand command = new MySqlCommand(query, connection);
-                
+
                 var resultComboBox = new KeyValuePair<string, List<string>>(comboboxAndTable.Item3, new List<string>());
                 using (DbDataReader reader = command.ExecuteReader())
                 {

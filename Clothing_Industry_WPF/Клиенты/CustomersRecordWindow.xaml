@@ -140,7 +140,7 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
-    <Grid Validation.Error="Grid_Error">
+    <Grid>
 
         <Label x:Name="Header" Content="Клиент " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Width="293"/>
         <Label Content="Канал заказа" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,462,0,0"/>
@@ -156,9 +156,9 @@
         <Label Content="Дата рождения" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,275,0,0"/>
         <Label Content="Статус клиента" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,431,0,0"/>
 
-        <TextBox x:Name="textBoxLastname" HorizontalAlignment="Left" Height="26" Margin="188,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="1" VerticalContentAlignment="Center" FontSize="14">
+        <TextBox x:Name="textBoxLastname" HorizontalAlignment="Left" Height="26" Margin="188,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="1" VerticalContentAlignment="Center" FontSize="14" TextChanged="TextBox_TextChanged">
             <TextBox.Text>
-                <Binding Source="{StaticResource Customer}" Path="lastname" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="True">
+                <Binding Source="{StaticResource Customer}" Path="lastname" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" >
                     <Binding.ValidationRules  >
                         <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Фамилия должна быть заполнена"/>
                     </Binding.ValidationRules>
@@ -167,7 +167,7 @@
         </TextBox>
         <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" Margin="188,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="2" VerticalContentAlignment="Center" FontSize="14">
             <TextBox.Text>
-                <Binding Source="{StaticResource Customer}" Path="name" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="True">
+                <Binding Source="{StaticResource Customer}" Path="name" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" >
                     <Binding.ValidationRules  >
                         <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Имя должно быть заполнено"/>
                     </Binding.ValidationRules>
@@ -177,7 +177,7 @@
         <TextBox x:Name="textBoxPatronymic" HorizontalAlignment="Left" Height="26" Margin="188,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="3" VerticalContentAlignment="Center" FontSize="14"/>
         <TextBox x:Name="textBoxPhone_Number" HorizontalAlignment="Left" Height="26" Margin="188,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="5" VerticalContentAlignment="Center" FontSize="14">
             <TextBox.Text>
-                <Binding Source="{StaticResource Customer}" Path="phoneNumber" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="True">
+                <Binding Source="{StaticResource Customer}" Path="phoneNumber" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" >
                     <Binding.ValidationRules>
                         <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Телефон должен быть заполнен"/>
                     </Binding.ValidationRules>
@@ -186,7 +186,7 @@
         </TextBox>
         <TextBox x:Name="textBoxSize" HorizontalAlignment="Left" Height="26" Margin="188,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="9" VerticalContentAlignment="Center" FontSize="14">
             <TextBox.Text>
-                <Binding Source="{StaticResource Customer}" Path="size" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" IsAsync="True">
+                <Binding Source="{StaticResource Customer}" Path="size" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" >
                     <Binding.ValidationRules  >
                         <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" MaximumLength="3" MinimumValue="10" MaximumValue="100" ErrorMessage="Размер должен быть заполнен"/>
                     </Binding.ValidationRules>
@@ -195,7 +195,7 @@
         </TextBox>
         <TextBox x:Name="textBoxPassportData" HorizontalAlignment="Left" Height="26" Margin="188,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
         <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="188,400,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="11" VerticalContentAlignment="Center" FontSize="14"/>
-        <DatePicker x:Name="datePickerBirthday" HorizontalAlignment="Left" Margin="188,275,0,0" VerticalAlignment="Top" Width="206" TabIndex="7" VerticalContentAlignment="Center" FontSize="14"/>
+        <DatePicker x:Name="datePickerBirthday" HorizontalAlignment="Left" Margin="188,275,0,0" VerticalAlignment="Top" Width="206" TabIndex="7" VerticalContentAlignment="Center" FontSize="14" CalendarClosed="DateTimePicker_TextChanged" KeyUp="DateTimePicker_TextChanged"/>
 
         <Image x:Name="imagePhoto" Height="448" Margin="444,51,46,0" VerticalAlignment="Top" OpacityMask="Black" Cursor="Hand" RenderTransformOrigin="0.5,0.5"/>
         <Rectangle  x:Name="Border" Stroke="Black" StrokeThickness="5" StrokeDashArray="1 1" SnapsToDevicePixels="True" Margin="444,51,46,62"/>
@@ -204,7 +204,7 @@
         <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="723,10,0,0" VerticalAlignment="Top" Width="131" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True" TabIndex="16"/>
         <ComboBox x:Name="comboBoxChannel" HorizontalAlignment="Left" Margin="188,462,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="13" RenderTransformOrigin="0.434,-1.231" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible">
             <ComboBox.Text>
-                <Binding Source="{StaticResource Customer}" Path="channelName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="True">
+                <Binding Source="{StaticResource Customer}" Path="channelName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="False">
                     <Binding.ValidationRules  >
                         <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Канал связи должен быть заполнен"/>
                     </Binding.ValidationRules>
@@ -213,7 +213,7 @@
         </ComboBox>
         <ComboBox x:Name="comboBoxEmployee" HorizontalAlignment="Left" Margin="188,493,0,0" VerticalAlignment="Top" Width="206" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="14" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible">
             <ComboBox.Text>
-                <Binding Source="{StaticResource Customer}" Path="employeeName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="True">
+                <Binding Source="{StaticResource Customer}" Path="employeeName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="False">
                     <Binding.ValidationRules  >
                         <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Обслуживающий сотрудник должен быть заполнен"/>
                     </Binding.ValidationRules>
@@ -221,9 +221,9 @@
             </ComboBox.Text>
         </ComboBox>
         <Label Content="Адрес" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,182,0,0"/>
-        <TextBox x:Name="textBoxAdress" HorizontalAlignment="Left" Height="26" Margin="188,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="4" VerticalContentAlignment="Center" FontSize="14">
+        <TextBox x:Name="textBoxAddress" HorizontalAlignment="Left" Height="26" Margin="188,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="4" VerticalContentAlignment="Center" FontSize="14">
             <TextBox.Text>
-                <Binding Source="{StaticResource Customer}" Path="address" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="True">
+                <Binding Source="{StaticResource Customer}" Path="address" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" >
                     <Binding.ValidationRules  >
                         <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Адрес должен быть заполнен"/>
                     </Binding.ValidationRules>
@@ -233,7 +233,7 @@
         <Label Content="Никнейм" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,244,0,0"/>
         <TextBox x:Name="textBoxNickname" HorizontalAlignment="Left" Height="26" Margin="188,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="206" TabIndex="6" VerticalContentAlignment="Center" FontSize="14">
             <TextBox.Text>
-                <Binding Source="{StaticResource Customer}" Path="nickname" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="True">
+                <Binding Source="{StaticResource Customer}" Path="nickname" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" >
                     <Binding.ValidationRules  >
                         <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Никнейм должен быть заполнен"/>
                     </Binding.ValidationRules>
@@ -243,16 +243,16 @@
         <Label Content="Параметры" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,369,0,0"/>
         <TextBox x:Name="textBoxParameters" HorizontalAlignment="Left" Height="26" Margin="188,369,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="10" VerticalContentAlignment="Center" FontSize="14">
             <TextBox.Text>
-                <Binding Source="{StaticResource Customer}" Path="parameters" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="True">
+                <Binding Source="{StaticResource Customer}" Path="parameters" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" >
                     <Binding.ValidationRules  >
                         <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Параметры должны быть заполнены"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <ComboBox x:Name="comboBoxStatus" HorizontalAlignment="Left" Margin="188,431,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="12" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible">
+        <ComboBox x:Name="comboBoxStatus" HorizontalAlignment="Left" Margin="188,431,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="12" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" KeyUp="ComboBox_TextChanged">
             <ComboBox.Text>
-                <Binding Source="{StaticResource Customer}" Path="statusName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="True">
+                <Binding Source="{StaticResource Customer}" Path="statusName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="False">
                     <Binding.ValidationRules  >
                         <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Статус должен быть заполнен"/>
                     </Binding.ValidationRules>

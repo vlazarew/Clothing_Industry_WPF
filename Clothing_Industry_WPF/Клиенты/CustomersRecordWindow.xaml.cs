@@ -25,11 +25,10 @@ namespace Clothing_Industry_WPF.Клиенты
     /// </summary>
     public partial class CustomersRecordWindow : Window
     {
+        private Customer customer;
         private WaysToOpenForm.WaysToOpen way;
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private MySqlConnection connection;
-        private string image_path;
-        private byte[] image_bytes;
         private int idRecord;
 
         public CustomersRecordWindow(WaysToOpenForm.WaysToOpen waysToOpen, int id = -1)
@@ -45,99 +44,71 @@ namespace Clothing_Industry_WPF.Клиенты
             datePickerBirthday.Text = DateTime.Now.ToLongDateString();
 
             FillComboBoxes();
+            customer = new Customer();
 
             if (idRecord != -1)
             {
-                FillFields(id);
+                customer = new Customer(idRecord, connection);
+                FillFields();
             }
         }
 
-        private void FillFields(int id)
+        private void FillFields()
         {
-            string query_text = "SELECT customers.id_Customer, customers.Name, customers.Lastname, customers.Patronymic, customers.Address, customers.Phone_Number, customers.Nickname, " +
-                                "DATE_FORMAT(customers.Birthday, \"%d.%m.%Y\") as Birthday, customers.Passport_data, customers.Size, customers.Parameters, customers.Notes, customer_statuses.Name_Of_Status, " +
-                                "order_channels.Name_of_channel, employees.Login, customers.Photo " +
-                                "FROM customers " +
-                                "join main_database.employees on main_database.employees.login = customers.Employees_Login " +
-                                "join main_database.customer_statuses on main_database.customer_statuses.id_Status = customers.Customer_Statuses_id_Status " +
-                                "join main_database.order_channels on main_database.order_channels.id_Channel = customers.Order_Channels_id_Channel " +
-                                "where customers.id_Customer = @id";
-            MySqlCommand command = new MySqlCommand(query_text, connection);
-            command.Parameters.AddWithValue("@id", id);
-            connection.Open();
-            using (DbDataReader reader = command.ExecuteReader())
+            textBoxName.Text = customer.name;
+            textBoxLastname.Text = customer.lastname;
+            textBoxPatronymic.Text = customer.patronymic;
+            textBoxAddress.Text = customer.address;
+            textBoxPhone_Number.Text = customer.phoneNumber;
+            textBoxNickname.Text = customer.nickname;
+            datePickerBirthday.SelectedDate = customer.birthday;
+            textBoxPassportData.Text = customer.passportData;
+            textBoxSize.Text = customer.size.ToString();
+            textBoxParameters.Text = customer.parameters;
+            textBoxNotes.Text = customer.notes;
+
+            if (customer.photo == null)
             {
-                while (reader.Read())
-                {
-                    textBoxName.Text = reader.GetString(1);
-                    textBoxLastname.Text = reader.GetString(2);
-                    textBoxPatronymic.Text = reader.IsDBNull(3) ? "" : reader.GetString(3);
-                    textBoxAdress.Text = reader.GetString(4);
-                    textBoxPhone_Number.Text = reader.GetString(5);
-                    textBoxNickname.Text = reader.GetString(6);
-                    datePickerBirthday.SelectedDate = reader.IsDBNull(7) ? DateTime.Now : DateTime.Parse(reader.GetString(7));
-                    textBoxPassportData.Text = reader.IsDBNull(8) ? "" : reader.GetString(8);
-                    if (reader.GetValue(9).ToString() != "")
-                    {
-                        textBoxSize.Text = reader.GetString(9);
-                    }
-                    if (reader.GetValue(10).ToString() != "")
-                    {
-                        textBoxParameters.Text = reader.GetString(10);
-                    }
-                    if (reader.GetValue(11).ToString() != "")
-                    {
-                        textBoxNotes.Text = reader.GetString(11);
-                    }
-
-                    comboBoxStatus.SelectedValue = reader.GetString(12);
-                    comboBoxChannel.SelectedValue = reader.GetString(13);
-                    comboBoxEmployee.SelectedValue = reader.GetString(14);
-
-                    image_bytes = null;
-                    try
-                    {
-                        image_bytes = (byte[])(reader[15]);
-                    }
-                    catch
-                    {
-
-                    }
-
-                    if (image_bytes == null)
-                    {
-                        imagePhoto.Source = null;
-                    }
-                    else
-                    {
-                        MemoryStream stream = new MemoryStream(image_bytes);
-                        imagePhoto.Source = BitmapFrame.Create(stream, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
-                    }
-                }
+                imagePhoto.Source = null;
             }
-            connection.Close();
+            else
+            {
+                MemoryStream stream = new MemoryStream(customer.photo);
+                imagePhoto.Source = BitmapFrame.Create(stream, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+            }
+
+            comboBoxStatus.SelectedValue = customer.statusName;
+            comboBoxChannel.SelectedValue = customer.channelName;
+            comboBoxEmployee.SelectedValue = customer.employeeName;
         }
 
         private void ButtonAddPhoto_Click(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
-            openFileDialog.Filter = "Картинки (*.JPG; *.GIF; *.JPEG; *.PNG)|*.JPG; *.GIF; *.JPEG; *.PNG" + "|Все файлы (*.*)|*.* ";
+            openFileDialog.Filter = "Изображения (*.JPG; *.GIF; *.JPEG; *.PNG)|*.JPG; *.GIF; *.JPEG; *.PNG" + "|Все файлы (*.*)|*.* ";
             openFileDialog.CheckFileExists = true;
             openFileDialog.Multiselect = false;
 
             if (openFileDialog.ShowDialog() == true)
             {
-                image_path = openFileDialog.FileName;
+                // Отображение на форме
+                string image_path = openFileDialog.FileName;
                 imagePhoto.Source = new BitmapImage(new Uri(image_path));
+                // Запоминаем бинарные данные в объекте 
+                FileStream fileStream = new FileStream(image_path, FileMode.Open, FileAccess.Read);
+                BinaryReader binaryReader = new BinaryReader(fileStream);
+                customer.photo = binaryReader.ReadBytes((int)fileStream.Length);
+                binaryReader.Close();
+                fileStream.Close();
                 Border.Visibility = Visibility.Hidden;
             }
         }
 
         private void FillComboBoxes()
         {
-            var outgoingData         = new List<Tuple<string, string, string>>();
-            var comboboxStatusData   = new Tuple<string, string, string>("name_of_status", "customer_statuses", "comboBoxStatus");
-            var comboboxChannelData  = new Tuple<string, string, string>("name_of_channel", "order_channels", "comboBoxChannel");
+            var outgoingData = new List<Tuple<string, string, string>>();
+            var comboboxStatusData = new Tuple<string, string, string>("name_of_status", "customer_statuses", "comboBoxStatus");
+            var comboboxChannelData = new Tuple<string, string, string>("name_of_channel", "order_channels", "comboBoxChannel");
             var comboboxEmployeeData = new Tuple<string, string, string>("Login", "employees", "comboBoxEmployee");
 
             outgoingData.Add(comboboxChannelData);
@@ -146,64 +117,17 @@ namespace Clothing_Industry_WPF.Клиенты
 
             var receivedData = FormLoader.FillComboBoxes(outgoingData, connection);
 
-            foreach(var data in receivedData)
+            foreach (var data in receivedData)
             {
                 var combobox = (ComboBox)FindName(data.Key);
                 combobox.ItemsSource = data.Value;
             }
         }
 
-        private string CheckData()
-        {
-            string result = "";
-
-            if (textBoxName.Text == "")
-            {
-                result += result == "" ? "Имя" : ", Имя";
-            }
-            if (textBoxLastname.Text == "")
-            {
-                result += result == "" ? "Фамилия" : ", Фамилия";
-            }
-            if (textBoxAdress.Text == "")
-            {
-                result += result == "" ? "Адрес" : ", Адрес";
-            }
-            if (textBoxPhone_Number.Text == "")
-            {
-                result += result == "" ? "Телефонный номер" : ", Телефонный номер";
-            }
-            if (textBoxNickname.Text == "")
-            {
-                result += result == "" ? "Никнейм" : ", Никнейм";
-            }
-            if (textBoxSize.Text == "")
-            {
-                result += result == "" ? "Размер" : ", Размер";
-            }
-            if (textBoxParameters.Text == "")
-            {
-                result += result == "" ? "Параметры" : ", Параметры";
-            }
-            if (comboBoxStatus.SelectedValue == null)
-            {
-                result += result == "" ? "Статус клиента" : ", Статус клиента";
-            }
-            if (comboBoxChannel.SelectedValue == null)
-            {
-                result += result == "" ? " Канал связи" : ",  Канал связи";
-            }
-            if (comboBoxEmployee.SelectedValue == null)
-            {
-                result += result == "" ? "Обслуживающий сотрудник" : ", Обслуживающий сотрудник";
-            }
-
-            return result == "" ? result : "Не заполнены обязательные поля: " + result;
-        }
 
         private void ButtonSaveAndExit_Click(object sender, RoutedEventArgs e)
         {
-            string warning = CheckData();
+            string warning = customer.CheckData();
             if (warning == "")
             {
                 MySqlConnection connection = new MySqlConnection(connectionString);
@@ -291,7 +215,7 @@ namespace Clothing_Industry_WPF.Клиенты
             command.Parameters.AddWithValue("@name", textBoxName.Text);
             command.Parameters.AddWithValue("@lastname", textBoxLastname.Text);
             command.Parameters.AddWithValue("@patronymic", textBoxPatronymic.Text);
-            command.Parameters.AddWithValue("@address", textBoxAdress.Text);
+            command.Parameters.AddWithValue("@address", textBoxAddress.Text);
             command.Parameters.AddWithValue("@phone", textBoxPhone_Number.Text);
             command.Parameters.AddWithValue("@nickname", textBoxNickname.Text);
             command.Parameters.AddWithValue("@birthday", datePickerBirthday.SelectedDate.Value);
@@ -327,27 +251,8 @@ namespace Clothing_Industry_WPF.Клиенты
             command.Parameters.AddWithValue("@login", comboBoxEmployee.SelectedItem.ToString());
 
 
-            // Обработка фото
-            if (image_path != null)
-            {
-                FileStream fileStream = new FileStream(image_path, FileMode.Open, FileAccess.Read);
-                BinaryReader binaryReader = new BinaryReader(fileStream);
-                byte[] imageData = binaryReader.ReadBytes((int)fileStream.Length);
-                binaryReader.Close();
-                fileStream.Close();
-                command.Parameters.AddWithValue("@image", imageData);
-            }
-            else
-            {
-                if (image_bytes != null)
-                {
-                    command.Parameters.AddWithValue("@image", image_bytes);
-                }
-                else
-                {
-                    command.Parameters.AddWithValue("@image", null);
-                }
-            }
+            // Обработка фото 
+            command.Parameters.AddWithValue("@image", customer.photo);
 
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
@@ -357,5 +262,87 @@ namespace Clothing_Industry_WPF.Клиенты
             return command;
         }
 
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textBox = sender as TextBox;
+            var textBoxName = textBox.Name;
+            var value = textBox.Text;
+            switch (textBoxName)
+            {
+                case "textBoxName":
+                    customer.name = value;
+                    break;
+                case "textBoxLastname":
+                    customer.lastname = value;
+                    break;
+                case "textBoxPatronymic":
+                    customer.patronymic = value;
+                    break;
+                case "textBoxAddress":
+                    customer.patronymic = value;
+                    break;
+                case "textBoxPhone_Number":
+                    customer.phoneNumber = value;
+                    break;
+                case "textBoxNickname":
+                    customer.nickname = value;
+                    break;
+                case "textBoxPassportData":
+                    customer.passportData = value;
+                    break;
+                case "textBoxSize":
+                    int newSize;
+                    bool canParse = int.TryParse(value, out newSize);
+                    customer.size = canParse ? newSize : 0;
+                    break;
+                case "textBoxParameters":
+                    customer.parameters = value;
+                    break;
+                case "textBoxNotes":
+                    customer.notes = value;
+                    break;
+            }
+        }
+
+        private void DateTimePicker_TextChanged(object sender, RoutedEventArgs e)
+        {
+            var dateTimePicker = sender as DatePicker;
+            var dateTimePickerName = dateTimePicker.Name;
+            var value = dateTimePicker.SelectedDate.Value;
+            switch (dateTimePickerName)
+            {
+                case "datePickerBirthday":
+                    customer.birthday = value;
+                    break;
+            }
+        }
+
+        private void DateTimePicker_TextChanged(object sender, KeyEventArgs e)
+        {
+            var dateTimePicker = sender as DatePicker;
+            var dateTimePickerName = dateTimePicker.Name;
+            var value = DateTime.Parse(dateTimePicker.Text);
+            switch (dateTimePickerName)
+            {
+                case "datePickerBirthday":
+                    customer.birthday = value;
+                    break;
+            }
+        }
+
+        private void ComboBox_TextChanged(object sender, KeyEventArgs e)
+        {
+            var comboBox = sender as ComboBox;
+            var comboBoxrName = comboBox.Name;
+            var value = comboBox.Text;
+            switch (comboBoxrName)
+            {
+                case "datePickerBirthday":
+                    // customer.birthday = value;
+                    break;
+            }
+        }
+
+        
     }
 }
