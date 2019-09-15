@@ -1,4 +1,6 @@
-﻿using Clothing_Industry_WPF.Перечисления;
+﻿using Clothing_Industry_WPF.Общее.Работа_с_формами;
+using Clothing_Industry_WPF.Перечисления;
+using Clothing_Industry_WPF.Поиск_и_фильтры;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -304,6 +306,76 @@ namespace Clothing_Industry_WPF.Клиенты
             return command;
         }
 
+        // Удаление клиентов
+        public static void DeleteFromDB(List<(int id, string firstname, string lastname)> dataToDelete, MySqlConnection connection)
+        {
+            connection.Open();
+
+            foreach (var data in dataToDelete)
+            {
+
+                if (!IsReadyToDelete(data, connection))
+                {
+                    break;
+                }
+
+                MySqlTransaction transaction = connection.BeginTransaction();
+
+                string queryTable = "delete from customers where id_Customer = @id";
+                MySqlCommand commandTable = new MySqlCommand(queryTable, connection, transaction);
+                commandTable.Parameters.AddWithValue("@id", data.id);
+
+                try
+                {
+                    commandTable.ExecuteNonQuery();
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    System.Windows.MessageBox.Show("Ошибка удаления клиента", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+
+            connection.Close();
+        }
+
+        // Костыль. Надо либо нам расковырять по-нормальному БД, чтоб PK могли быть NULL, либо мириться с такими сообщениями
+        private static bool IsReadyToDelete((int id, string firstname, string lastname) data, MySqlConnection connection)
+        {
+            // Проверка на то, есть ли по данному клиенту сведения о балансе
+            string queryBalance = "select Customers_id_Customer from Customers_Balance where Customers_id_Customer = @id;";
+            MySqlCommand commandBalance = new MySqlCommand(queryBalance, connection);
+            commandBalance.Parameters.AddWithValue("id", data.id);
+
+            using (DbDataReader reader = commandBalance.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    System.Windows.MessageBox.Show("Клиент " + data.firstname + " " + data.lastname + " находится в таблице Баланс Клиентов. Первоначально удалите записи о нем в указанной таблице.",
+                                    "Невозможно удалить клиента", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return false;
+                }
+            }
+
+            // Проверка на то, есть ли по данному клиенту примерки
+            string queryFittings = "select Customers_id_Customer from Fittings where Customers_id_Customer = @id;";
+            MySqlCommand commandFittings = new MySqlCommand(queryFittings, connection);
+            commandFittings.Parameters.AddWithValue("id", data.id);
+
+            using (DbDataReader reader = commandFittings.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    System.Windows.MessageBox.Show("Клиент " + data.firstname + " " + data.lastname + " находится в таблице Примерки. Первоначально удалите записи о нем в указанной таблице.",
+                                    "Невозможно удалить клиента", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
         // Запросец на всех клиентов
         public static string getQueryText()
         {
@@ -321,16 +393,74 @@ namespace Clothing_Industry_WPF.Клиенты
         // Получение данных обо всех клиентах
         public static DataTable getListCustomers(MySqlConnection connection)
         {
-            string query_text = getQueryText();
-            connection.Open();
+            string queryText = getQueryText();
 
-            DataTable dataTable = new DataTable();
-            MySqlCommand command = new MySqlCommand(query_text, connection);
-            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
-            adapter.Fill(dataTable);
+            connection.Open();
+            var dataTable = FormLoader.ExecuteQuery(queryText, connection);
             connection.Close();
 
             return dataTable;
+        }
+
+        // Список полей, по которым мы можем делать поиск
+        public static List<FindHandler.FieldParameters> FillFindFields(MySqlConnection connection)
+        {
+            List<KeyValuePair<string, string>> describe = TakeDescribe(connection);
+            List<FindHandler.FieldParameters> result = new List<FindHandler.FieldParameters>();
+
+            result.Add(new FindHandler.FieldParameters("customers.Lastname", "Фамилия", describe.Where(key => key.Key == "Lastname").First().Value));
+            result.Add(new FindHandler.FieldParameters("customers.Name", "Имя", describe.Where(key => key.Key == "Name").First().Value));
+            result.Add(new FindHandler.FieldParameters("Patronymic", "Отчество", describe.Where(key => key.Key == "Patronymic").First().Value));
+            result.Add(new FindHandler.FieldParameters("Address", "Адрес", describe.Where(key => key.Key == "Address").First().Value));
+            result.Add(new FindHandler.FieldParameters("Phone_Number", "Телефон", describe.Where(key => key.Key == "Phone_Number").First().Value));
+            result.Add(new FindHandler.FieldParameters("Nickname", "Никнейм", describe.Where(key => key.Key == "Nickname").First().Value));
+            result.Add(new FindHandler.FieldParameters("Birthday", "Дата рождения", describe.Where(key => key.Key == "Birthday").First().Value));
+            result.Add(new FindHandler.FieldParameters("Passport_data", "Паспортные данные", describe.Where(key => key.Key == "Passport_data").First().Value));
+            result.Add(new FindHandler.FieldParameters("Size", "Размер", describe.Where(key => key.Key == "Size").First().Value));
+            result.Add(new FindHandler.FieldParameters("Parameters", "Параметры", describe.Where(key => key.Key == "Parameters").First().Value));
+            result.Add(new FindHandler.FieldParameters("Name_of_status", "Статус", describe.Where(key => key.Key == "Name_of_status").First().Value));
+            result.Add(new FindHandler.FieldParameters("Name_of_channel", "Канал связи", describe.Where(key => key.Key == "Name_of_channel").First().Value));
+            result.Add(new FindHandler.FieldParameters("Login", "Логин", describe.Where(key => key.Key == "Login").First().Value));
+
+            return result;
+        }
+
+        // Получить полное описание таблиц, по которым мы можем вести поиск
+        private static List<KeyValuePair<string, string>> TakeDescribe(MySqlConnection connection)
+        {
+            List<KeyValuePair<string, string>> describe = new List<KeyValuePair<string, string>>();
+            connection.Open();
+
+            // Вот тут нужно проходить по всем таблицам, что мы используем в итоговом запросе
+            FindHandler.DescribeHelper("describe customers", connection, describe);
+            FindHandler.DescribeHelper("describe employees", connection, describe);
+            FindHandler.DescribeHelper("describe customer_statuses", connection, describe);
+            FindHandler.DescribeHelper("describe order_channels", connection, describe);
+            // Вот тут конец
+
+            connection.Close();
+
+            return describe;
+        }
+
+        // Поиск
+        public static (DataTable dataTable, FindHandler.FindDescription findDescription) FindListCustomers(FindHandler.FindDescription currentFindDescription, MySqlConnection connection)
+        {
+            List<FindHandler.FieldParameters> listOfField = FillFindFields(connection);
+            var query = getQueryText();
+            (DataTable dataTable, FindHandler.FindDescription findDescription) result = FindHandler.GetDataWithFind(currentFindDescription, connection, listOfField, query);
+            return result;
+        }
+
+        // Фильтр
+        public static (DataTable dataTable, List<FilterHandler.FilterDescription> filterDescription) FilterListCustomers(List<FilterHandler.FilterDescription> currentFilterDescription, MySqlConnection connection)
+        {
+            // Список полей, по которым мы можем делать отбор
+            List<FindHandler.FieldParameters> listOfField = FillFindFields(connection);
+            var query = getQueryText();
+
+            (DataTable dataTable, List<FilterHandler.FilterDescription> filterDescription) result = FilterHandler.GetDataWithFilter(currentFilterDescription, connection, listOfField, query);
+            return result;
         }
 
         // Валидация данных

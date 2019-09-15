@@ -117,10 +117,10 @@ namespace Clothing_Industry_WPF.Клиенты
 
         private void FillComboBoxes()
         {
-            var outgoingData = new List<Tuple<string, string, string>>();
-            var comboboxStatusData = new Tuple<string, string, string>("name_of_status", "customer_statuses", "comboBoxStatus");
-            var comboboxChannelData = new Tuple<string, string, string>("name_of_channel", "order_channels", "comboBoxChannel");
-            var comboboxEmployeeData = new Tuple<string, string, string>("Login", "employees", "comboBoxEmployee");
+            var outgoingData = new List<(string field, string table, string comboBox)>();
+            var comboboxStatusData = (field: "name_of_status", table: "customer_statuses", comboBox: "comboBoxStatus");
+            var comboboxChannelData = (field: "name_of_channel", table: "order_channels", comboBox: "comboBoxChannel");
+            var comboboxEmployeeData = (field: "Login", table: "employees", comboBox: "comboBoxEmployee");
 
             outgoingData.Add(comboboxChannelData);
             outgoingData.Add(comboboxEmployeeData);

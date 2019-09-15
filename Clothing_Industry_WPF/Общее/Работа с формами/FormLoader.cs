@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
@@ -34,16 +35,16 @@ namespace Clothing_Industry_WPF.Общее.Работа_с_формами
         /// <param name="comboboxesAndTables"></param>
         /// <param name="connection"></param>
         /// <returns></returns>
-        public static List<KeyValuePair<string, List<string>>> FillComboBoxes(List<Tuple<string, string, string>> comboboxesAndTables, MySqlConnection connection)
+        public static List<KeyValuePair<string, List<string>>> FillComboBoxes(List<(string field, string table, string comboBox)> comboboxesAndTables, MySqlConnection connection)
         {
             var result = new List<KeyValuePair<string, List<string>>>();
             connection.Open();
             foreach (var comboboxAndTable in comboboxesAndTables)
             {
-                string query = "select " + comboboxAndTable.Item1 + " from " + comboboxAndTable.Item2;
+                string query = "select " + comboboxAndTable.field + " from " + comboboxAndTable.table;
                 MySqlCommand command = new MySqlCommand(query, connection);
 
-                var resultComboBox = new KeyValuePair<string, List<string>>(comboboxAndTable.Item3, new List<string>());
+                var resultComboBox = new KeyValuePair<string, List<string>>(comboboxAndTable.comboBox, new List<string>());
                 using (DbDataReader reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -59,5 +60,14 @@ namespace Clothing_Industry_WPF.Общее.Работа_с_формами
             return result;
         }
 
+        public static DataTable ExecuteQuery(string query, MySqlConnection connection)
+        {
+            DataTable dataTable = new DataTable();
+            MySqlCommand command = new MySqlCommand(query, connection);
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+            adapter.Fill(dataTable);
+
+            return dataTable;
+        }
     }
 }

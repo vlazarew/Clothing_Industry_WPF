@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Клиенты"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-              Title="Клиенты" Loaded="Window_Loaded" Height="529" Width="1067.1" MinWidth="1067.1" MinHeight="529">
+        Title="Клиенты" Loaded="Window_Loaded" Height="529" Width="1067.1" MinWidth="1067.1" MinHeight="529">
     <Window.Resources>
         <Style x:Key="DataGridCentralBoldHeader" TargetType="DataGridColumnHeader">
             <Setter Property="Thumb.HorizontalContentAlignment" Value="Center" />

@@ -1,6 +1,11 @@
-﻿using Clothing_Industry_WPF.Перечисления;
+﻿using Clothing_Industry_WPF.Клиенты;
+using Clothing_Industry_WPF.Общее.Работа_с_формами;
+using Clothing_Industry_WPF.Перечисления;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,6 +52,64 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
                 this.application_name = application_name;
                 this.type = type;
             }
+        }
+
+        public static (string editedQuery, FindDescription findDescription) MakeFindQuery(FindDescription currentFindDescription, List<FieldParameters> listOfField, string query)
+        {
+            var findWindow = new FindWindow(currentFindDescription, listOfField);
+            if (findWindow.ShowDialog().Value)
+            {
+                currentFindDescription = findWindow.Result;
+            }
+            else
+            {
+                return (editedQuery: "", findDescription: new FindDescription());
+            }
+
+            var field = listOfField.Where(kvp => kvp.application_name == currentFindDescription.field).First().db_name;
+            string editedQuery;
+
+            if (!currentFindDescription.isDate)
+            {
+                editedQuery = query.Replace(";", " where " + field + " ");
+                editedQuery += string.Format(currentFindDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence ? "= \"{0}\"" : "like \"{0}%\"", currentFindDescription.value);
+            }
+            else
+            {
+                editedQuery = query.Replace(";", " where DATE_FORMAT(" + field + ", '%d.%m.%Y')  ");
+                editedQuery += string.Format("= \'{0}\'", currentFindDescription.value);
+            }
+
+            return (editedQuery: editedQuery, findDescription: currentFindDescription);
+        }
+
+        public static void DescribeHelper(string query, MySqlConnection connection, List<KeyValuePair<string, string>> pairs)
+        {
+            MySqlCommand command = new MySqlCommand(query, connection);
+
+            using (DbDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    pairs.Add(new KeyValuePair<string, string>(reader.GetString(0), reader.GetString(1)));
+                }
+            }
+        }
+
+        public static (DataTable dataTable, FindDescription findDescription) GetDataWithFind(FindDescription currentFindDescription, MySqlConnection connection, List<FieldParameters> listOfField, string query)
+        {
+            (string editedQuery, FindDescription findDescription) result = MakeFindQuery(currentFindDescription, listOfField, query);
+
+            if (result.editedQuery == "")
+            {
+                return (dataTable: null, findDescription: new FindDescription());
+            }
+
+            connection.Open();
+            var dataTable = FormLoader.ExecuteQuery(result.editedQuery, connection);
+            connection.Close();
+
+            return (dataTable: dataTable, findDescription: result.findDescription);
         }
 
     }
