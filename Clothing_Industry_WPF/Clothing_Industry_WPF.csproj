@@ -146,12 +146,15 @@
     <Compile Include="Изделия\Список материалов и фурнитуры для изделия\MaterialsForProductsRecordWindow.xaml.cs">
       <DependentUpon>MaterialsForProductsRecordWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Клиенты\Customer.cs" />
     <Compile Include="Клиенты\CustomersListWindow.xaml.cs">
       <DependentUpon>CustomersListWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Клиенты\CustomersRecordWindow.xaml.cs">
       <DependentUpon>CustomersRecordWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Общее\Работа с формами\FormLoader.cs" />
+    <Compile Include="Общее\Работа с формами\TextBoxValidator.cs" />
     <Compile Include="Материалы\MaterialsListWindow.xaml.cs">
       <DependentUpon>MaterialsListWindow.xaml</DependentUpon>
     </Compile>

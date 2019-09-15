@@ -1,7 +1,9 @@
-﻿using Clothing_Industry_WPF.Перечисления;
+﻿using Clothing_Industry_WPF.Общее.Работа_с_формами;
+using Clothing_Industry_WPF.Перечисления;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.Common;
 using System.IO;
 using System.Linq;
@@ -35,8 +37,13 @@ namespace Clothing_Industry_WPF.Клиенты
             InitializeComponent();
             way = waysToOpen;
             connection = new MySqlConnection(connectionString);
-            this.idRecord = id;
-            setNewTitle();
+            idRecord = id;
+
+            // Заполнение шапки, полей даты 
+            Title = FormLoader.setNewTitle(way, Title);
+            Header.Content = Title;
+            datePickerBirthday.Text = DateTime.Now.ToLongDateString();
+
             FillComboBoxes();
 
             if (idRecord != -1)
@@ -109,26 +116,6 @@ namespace Clothing_Industry_WPF.Клиенты
                 }
             }
             connection.Close();
-
-        }
-
-        private void setNewTitle()
-        {
-            switch (way)
-            {
-                case WaysToOpenForm.WaysToOpen.create:
-                    this.Title += " (Создание)";
-                    Header.Content += " (Создание)";
-                    datePickerBirthday.Text = DateTime.Now.ToLongDateString();
-                    break;
-                case WaysToOpenForm.WaysToOpen.edit:
-                    this.Title += " (Изменение)";
-                    Header.Content += " (Изменение)";
-                    break;
-                default:
-                    break;
-
-            }
         }
 
         private void ButtonAddPhoto_Click(object sender, RoutedEventArgs e)
@@ -148,41 +135,22 @@ namespace Clothing_Industry_WPF.Клиенты
 
         private void FillComboBoxes()
         {
-            connection.Open();
+            var outgoingData         = new List<Tuple<string, string, string>>();
+            var comboboxStatusData   = new Tuple<string, string, string>("name_of_status", "customer_statuses", "comboBoxStatus");
+            var comboboxChannelData  = new Tuple<string, string, string>("name_of_channel", "order_channels", "comboBoxChannel");
+            var comboboxEmployeeData = new Tuple<string, string, string>("Login", "employees", "comboBoxEmployee");
 
-            string query = "select name_of_status from customer_statuses";
-            MySqlCommand command = new MySqlCommand(query, connection);
+            outgoingData.Add(comboboxChannelData);
+            outgoingData.Add(comboboxEmployeeData);
+            outgoingData.Add(comboboxStatusData);
 
-            using (DbDataReader reader = command.ExecuteReader())
+            var receivedData = FormLoader.FillComboBoxes(outgoingData, connection);
+
+            foreach(var data in receivedData)
             {
-                while (reader.Read())
-                {
-                    comboBoxStatus.Items.Add(reader.GetString(0));
-                }
+                var combobox = (ComboBox)FindName(data.Key);
+                combobox.ItemsSource = data.Value;
             }
-
-            query = "select name_of_channel from order_channels";
-            command = new MySqlCommand(query, connection);
-
-            using (DbDataReader reader = command.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    comboBoxChannel.Items.Add(reader.GetString(0));
-                }
-            }
-
-            query = "select Login from employees";
-            command = new MySqlCommand(query, connection);
-
-            using (DbDataReader reader = command.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    comboBoxEmployee.Items.Add(reader.GetString(0));
-                }
-            }
-            connection.Close();
         }
 
         private string CheckData()
@@ -256,7 +224,7 @@ namespace Clothing_Industry_WPF.Клиенты
                 catch
                 {
                     transaction.Rollback();
-                    MessageBox.Show("Ошибка сохранения!", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error); 
+                    MessageBox.Show("Ошибка сохранения!", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
                 if (way == WaysToOpenForm.WaysToOpen.create)
@@ -387,6 +355,21 @@ namespace Clothing_Industry_WPF.Клиенты
             }
 
             return command;
+        }
+
+        private void Grid_Error(object sender, ValidationErrorEventArgs e)
+        {
+            if (e.Action == ValidationErrorEventAction.Added)
+            {
+                MessageBox.Show(e.Error.ErrorContent.ToString());
+            }
+        }
+
+        private void TextBoxLastname_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var textbox = sender as TextBox;
+            textBoxLastname.BorderBrush = new SolidColorBrush(Colors.Red);
+            textBoxLastname.Foreground = Brushes.Navy;
         }
     }
 }
