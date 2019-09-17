@@ -1,10 +1,12 @@
-﻿using Clothing_Industry_WPF.Перечисления;
+﻿using Clothing_Industry_WPF.Общее.Работа_с_формами;
+using Clothing_Industry_WPF.Перечисления;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Clothing_Industry_WPF.Перечисления.TypeOfFilter;
 
 namespace Clothing_Industry_WPF.Поиск_и_фильтры
 {
@@ -91,10 +93,104 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
                         return ">=";
                     }
                 default:
-                    { return "=";
+                    {
+                        return "=";
                     }
             }
         }
 
+        public static (string editedQuery, List<FilterDescription> filterDescription) MakeFilterQuery(List<FilterDescription> currentFilterDescription, List<FindHandler.FieldParameters> listOfField, string query)
+        {
+            var filterWindow = new FilterWindow(currentFilterDescription, listOfField);
+            if (filterWindow.ShowDialog().Value)
+            {
+                currentFilterDescription = filterWindow.Result;
+            }
+            else
+            {
+                return (editedQuery: "", filterDescription: new List<FilterDescription>());
+            }
+
+            string editedQuery = EditFilterQuery(currentFilterDescription, listOfField, query);
+
+            return (editedQuery: editedQuery, filterDescription: currentFilterDescription);
+        }
+
+        private static string EditFilterQuery(List<FilterDescription> filter, List<FindHandler.FieldParameters> listOfField, string query)
+        {
+            string result = query;
+
+            foreach (var filterRecord in filter)
+            {
+                if (filterRecord.active)
+                {
+                    result = result.Replace(";", " where ");
+                    break;
+                }
+            }
+
+            int index = 0;
+            foreach (var filterRecord in filter)
+            {
+                if (filterRecord.active)
+                {
+                    result += AddСondition(filterRecord, listOfField);
+                    index++;
+                    if (index < filter.Count)
+                    {
+                        result += " and ";
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        private static string AddСondition(FilterDescription filter, List<FindHandler.FieldParameters> listOfField)
+        {
+            string result = "";
+            var field = listOfField.Where(kvp => kvp.application_name == filter.field).First().db_name;
+            var typeFilter = TakeFilter(filter.typeOfFilter);
+            if (filter.typeOfFilter == TypeOfFilter.TypesOfFilter.isFilled)
+            {
+                result += "NOT ";
+            }
+
+            if (!filter.isDate)
+            {
+                result += string.Format(field + " " + typeFilter + "\"{0}\"", filter.value);
+            }
+            else
+            {
+                string day = filter.value.Substring(0, 2);
+                string month = filter.value.Substring(3, 2);
+                string year = filter.value.Substring(6, 4);
+                result += string.Format(field + " " + typeFilter + " \'{0}-{1}-{2}\'", year, month, day);
+                //result += string.Format(" DATE_FORMAT(" + field + ", '%d.%m.%Y') = \'{0}\'", filter.value);
+            }
+
+            /*if (filter.typeOfFilter == TypeOfFilter.TypesOfFilter.contains)
+            {
+                result += ") ";
+            }*/
+
+            return result;
+        }
+
+        public static (DataTable dataTable, List<FilterDescription> filterDescription) GetDataWithFilter(List<FilterDescription> currentFilterDescription, MySqlConnection connection, List<FindHandler.FieldParameters> listOfField, string query)
+        {
+            (string editedQuery, List<FilterDescription> filterDescription) result = MakeFilterQuery(currentFilterDescription, listOfField, query);
+
+            if (result.editedQuery == "")
+            {
+                return (dataTable: null, filterDescription: new List<FilterDescription>());
+            }
+
+            connection.Open();
+            var dataTable = FormLoader.ExecuteQuery(result.editedQuery, connection);
+            connection.Close();
+
+            return (dataTable: dataTable, filterDescription: result.filterDescription);
+        }
     }
 }

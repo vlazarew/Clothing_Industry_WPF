@@ -256,14 +256,14 @@
 
             <StackPanel Orientation="Horizontal">
 
-                <Button Style="{StaticResource Active}" x:Name ="ButtonCreateNew" Content="Создать" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>
-                <Button Style="{StaticResource NoActive}" x:Name ="ButtonDelete" Content="Удалить" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
-                <Button Style="{StaticResource Active}" x:Name ="ButtonRefresh" Content="Обновить" Width="75" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonRefresh_Click"/>
-                <Button Style="{StaticResource NoActive}" x:Name ="ButtonEdit" Content="Изменить выделенное" Width="151" RenderTransformOrigin="1.194,0.333" TabIndex="4" IsTabStop="False" Click="ButtonEdit_Click"/>
-                <Button Style="{StaticResource Active}" x:Name ="ButtonFind" Content="Найти" Width="55" RenderTransformOrigin="1.194,0.333" TabIndex="5" IsTabStop="False" Click="ButtonFind_Click"/>
-                <Button Style="{StaticResource NoActive}" x:Name="buttonCancelFind" Content="Отменить поиск" Width="112" RenderTransformOrigin="1.194,0.333" TabIndex="6" IsTabStop="False" Click="ButtonCancelFind_Click"/>
-                <Button Style="{StaticResource Active}" x:Name ="ButtonFilters" Content="Фильтры" Width="63" RenderTransformOrigin="1.194,0.333" TabIndex="7" IsTabStop="False" Click="ButtonFilters_Click"/>
-                <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Выход" Width="75"  RenderTransformOrigin="1.194,0.333" TabIndex="8" IsTabStop="False" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click"/>
+                <Button Style="{StaticResource Active}" x:Name ="ButtonCreateNew" Content="Создать" Width="75" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click" FontSize="14"/>
+                <Button Style="{StaticResource NoActive}" x:Name ="ButtonDelete" Content="Удалить" Width="75" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click" FontSize="14"/>
+                <Button Style="{StaticResource Active}" x:Name ="ButtonRefresh" Content="Обновить" Width="75" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonRefresh_Click" FontSize="14"/>
+                <Button Style="{StaticResource NoActive}" x:Name ="ButtonEdit" Content="Изменить выделенное" Width="160" RenderTransformOrigin="1.194,0.333" TabIndex="4" IsTabStop="False" Click="ButtonEdit_Click" FontSize="14"/>
+                <Button Style="{StaticResource Active}" x:Name ="ButtonFind" Content="Найти" Width="60" RenderTransformOrigin="1.194,0.333" TabIndex="5" IsTabStop="False" Click="ButtonFind_Click" FontSize="14"/>
+                <Button Style="{StaticResource NoActive}" x:Name="buttonCancelFind" Content="Отменить поиск" Width="120" RenderTransformOrigin="1.194,0.333" TabIndex="6" IsTabStop="False" Click="ButtonCancelFind_Click" FontSize="14"/>
+                <Button Style="{StaticResource Active}" x:Name ="ButtonFilters" Content="Фильтры" Width="70" RenderTransformOrigin="1.194,0.333" TabIndex="7" IsTabStop="False" Click="ButtonFilters_Click" FontSize="14"/>
+                <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Выход" Width="60"  RenderTransformOrigin="1.194,0.333" TabIndex="8" IsTabStop="False" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" FontSize="14"/>
 
             </StackPanel>
 

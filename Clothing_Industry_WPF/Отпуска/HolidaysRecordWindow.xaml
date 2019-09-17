@@ -138,16 +138,16 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Логин: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,50,0,0" Height="26" Width="49"/>
-        <Label x:Name="Header" Content="Отпуск" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Height="34" Width="194"/>
-        <Label Content="Конец отпуска: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,112,0,0" Height="26" Width="103"/>
-        <Label Content="Заметки: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,145,0,0" Height="26" Width="61"/>
-        <Label Content="Начало отпуска:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,81,0,0" Height="26" Width="103"/>
-        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="118,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" TabIndex="11" VerticalContentAlignment="Center" FontSize="14"/>
-        <DatePicker x:Name="datePickerIn_Fact_Start" HorizontalAlignment="Left" Margin="118,79,0,0" VerticalAlignment="Top" Width="213" TabIndex="12" VerticalContentAlignment="Center" FontSize="14" Height="28"/>
+        <Label Content="Логин: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,50,0,0" Height="26" Width="49" FontFamily="Arial"/>
+        <Label x:Name="Header" Content="Отпуск" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Height="34" Width="194" FontFamily="Arial"/>
+        <Label Content="Конец отпуска: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,112,0,0" Height="26" Width="103" FontFamily="Arial"/>
+        <Label Content="Заметки: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,145,0,0" Height="26" Width="61" FontFamily="Arial"/>
+        <Label Content="Начало отпуска:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,81,0,0" Height="26" Width="103" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="118,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213" TabIndex="11" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
+        <DatePicker x:Name="datePickerIn_Fact_Start" HorizontalAlignment="Left" Margin="118,79,0,0" VerticalAlignment="Top" Width="213" TabIndex="12" VerticalContentAlignment="Center" FontSize="14" Height="28" FontFamily="Arial"/>
         <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="204,10,0,0" VerticalAlignment="Top" Width="127" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
-        <ComboBox x:Name="comboBoxLogin" HorizontalAlignment="Left" Margin="118,50,0,0" VerticalAlignment="Top" Width="213" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
-        <DatePicker x:Name="datePickerIn_Fact_End" HorizontalAlignment="Left" Margin="118,112,0,0" VerticalAlignment="Top" Width="213" TabIndex="12" VerticalContentAlignment="Center" FontSize="14" Height="28"/>
+        <ComboBox x:Name="comboBoxLogin" HorizontalAlignment="Left" Margin="118,50,0,0" VerticalAlignment="Top" Width="213" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial"/>
+        <DatePicker x:Name="datePickerIn_Fact_End" HorizontalAlignment="Left" Margin="118,112,0,0" VerticalAlignment="Top" Width="213" TabIndex="12" VerticalContentAlignment="Center" FontSize="14" Height="28" FontFamily="Arial"/>
 
     </Grid>
 </Window>

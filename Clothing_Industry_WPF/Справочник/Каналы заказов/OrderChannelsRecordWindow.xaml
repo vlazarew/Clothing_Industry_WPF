@@ -138,9 +138,9 @@
             <ColumnDefinition Width="59*"/>
             <ColumnDefinition Width="29*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Наименование " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,73,0,0"/>
-        <Label x:Name="Header" Content="Каналы заказов" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Width="302"/>
-        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" Margin="111,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="335" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center"/>
+        <Label Content="Наименование " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,73,0,0" FontFamily="Arial" Height="26"/>
+        <Label x:Name="Header" Content="Каналы заказов" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Width="302" FontFamily="Arial" Height="34"/>
+        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" Margin="111,73,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="335" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center" FontFamily="Arial"/>
         <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="317,10,0,0" VerticalAlignment="Top" Width="129" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
     </Grid>
 </Window>

@@ -8,7 +8,7 @@
         ResizeMode="NoResize"
         Title="Найти" Height="256.207" Width="674.932" Loaded="Window_Loaded">
     <Window.Resources>
-        
+
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
             <GradientStop Color="Transparent" Offset="0.4" />
@@ -22,7 +22,7 @@
         <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
     StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="DarkGray" Offset="0" />
-            
+
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
 
@@ -139,16 +139,16 @@
             <ColumnDefinition Width="365*"/>
             <ColumnDefinition Width="282*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Поле" HorizontalAlignment="Left" Margin="62,34,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="Значение" HorizontalAlignment="Left" Margin="62,74,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <TextBox x:Name="textBoxValue" HorizontalAlignment="Left" Height="31" Margin="170,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="397" FontSize="16" VerticalContentAlignment="Center" Grid.ColumnSpan="2" PreviewTextInput="TextBoxValue_PreviewTextInput"/>
-        <ComboBox x:Name="comboBoxField" HorizontalAlignment="Left" Margin="170,34,0,0" VerticalAlignment="Top" Width="397" RenderTransformOrigin="0.494,0.012" Height="31" VerticalContentAlignment="Center" FontSize="16" SelectionChanged="ComboBoxField_SelectionChanged" Grid.ColumnSpan="2" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
-        <RadioButton x:Name="radioButtonPart" Content="По части строки" HorizontalAlignment="Left" Margin="63,123,0,0" VerticalAlignment="Top" FontSize="16" VerticalContentAlignment="Center" Grid.Column="1"/>
-        <RadioButton x:Name="radioButtonExact" Content="По точному совпадению" HorizontalAlignment="Left" Margin="170,123,0,0" VerticalAlignment="Top" FontSize="16" IsChecked="True" VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
-        <Label Content="Тип поиска" HorizontalAlignment="Left" Margin="62,117,0,0" VerticalAlignment="Top" FontSize="16" Width="103"/>
-        <DatePicker x:Name="datePicker" HorizontalAlignment="Left" Margin="170,74,0,0" VerticalAlignment="Top" Height="31" Width="397" VerticalContentAlignment="Center" FontSize="16" Grid.ColumnSpan="2"/>
-        <Button x:Name="buttonSearch" Content="Найти" HorizontalAlignment="Left" Margin="62,163,0,0" VerticalAlignment="Top" Width="125" Height="34" FontSize="16" IsDefault="True" Click="ButtonSearch_Click"/>
-        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="77,163,0,0" VerticalAlignment="Top" Width="125" Height="34" FontSize="16" IsCancel="True" Click="ButtonCancel_Click" Grid.Column="1"/>
+        <Label Content="Поле" HorizontalAlignment="Left" Margin="62,34,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Arial"/>
+        <Label Content="Значение" HorizontalAlignment="Left" Margin="62,74,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxValue" HorizontalAlignment="Left" Height="31" Margin="170,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="397" FontSize="14" VerticalContentAlignment="Center" Grid.ColumnSpan="2" PreviewTextInput="TextBoxValue_PreviewTextInput" FontFamily="Arial"/>
+        <ComboBox x:Name="comboBoxField" HorizontalAlignment="Left" Margin="170,34,0,0" VerticalAlignment="Top" Width="397" RenderTransformOrigin="0.494,0.012" Height="31" VerticalContentAlignment="Center" FontSize="14" SelectionChanged="ComboBoxField_SelectionChanged" Grid.ColumnSpan="2" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial"/>
+        <RadioButton x:Name="radioButtonPart" Content="По части строки" HorizontalAlignment="Left" Margin="63,123,0,0" VerticalAlignment="Top" FontSize="14" VerticalContentAlignment="Center" Grid.Column="1" FontFamily="Arial"/>
+        <RadioButton x:Name="radioButtonExact" Content="По точному совпадению" HorizontalAlignment="Left" Margin="170,123,0,0" VerticalAlignment="Top" FontSize="14" IsChecked="True" VerticalContentAlignment="Center" Grid.ColumnSpan="2" FontFamily="Arial"/>
+        <Label Content="Тип поиска" HorizontalAlignment="Left" Margin="62,117,0,0" VerticalAlignment="Top" FontSize="14" Width="103" FontFamily="Arial"/>
+        <DatePicker x:Name="datePicker" HorizontalAlignment="Left" Margin="170,74,0,0" VerticalAlignment="Top" Height="31" Width="397" VerticalContentAlignment="Center" FontSize="14" Grid.ColumnSpan="2" FontFamily="Arial"/>
+        <Button x:Name="buttonSearch" Content="Найти" HorizontalAlignment="Left" Margin="62,163,0,0" VerticalAlignment="Top" Width="100" Height="30" FontSize="14" IsDefault="True" Click="ButtonSearch_Click"/>
+        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="101,163,0,0" VerticalAlignment="Top" Width="100" Height="30" FontSize="14" IsCancel="True" Click="ButtonCancel_Click" Grid.Column="1"/>
 
     </Grid>
 </Window>

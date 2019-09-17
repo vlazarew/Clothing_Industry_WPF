@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Поиск_файла"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="Выберите каталог" Height="300" Width="300">
+        Title="Выберите каталог" Height="332" Width="322.667">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -135,10 +135,10 @@
     </Window.Resources>
 
     <Grid>
-        <TextBlock Height="23" HorizontalAlignment="Left" Margin="12,12,0,0" Name="textBlockDirectory" Text="Выбранный каталог" VerticalAlignment="Top" Width="187" />
-        <Button Content="Вверх" Height="23" HorizontalAlignment="Right" Margin="0,10,28,0" Name="buttonUp" VerticalAlignment="Top" Width="61" Click="buttonUp_Click" />
-        <ListBox Height="164" HorizontalAlignment="Left" Margin="12,41,0,0" Name="listBoxDirectories" VerticalAlignment="Top" Width="254" MouseDoubleClick="mouseDoubleClickOnListBox" SelectionChanged="currentSelect" />
-        <Button Content="Отмена" Height="23" HorizontalAlignment="Right" Margin="0,226,28,0" Name="buttonExit" VerticalAlignment="Top" Width="75" Click="buttonExit_Click" />
-        <Button Content="Выбрать" Height="23" HorizontalAlignment="Left" Margin="12,226,0,0" Name="buttonChoose" VerticalAlignment="Top" Width="75" Click="buttonChoose_Click" />
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="20,15,0,0" Name="textBlockDirectory" Text="Выбранный каталог" VerticalAlignment="Top" Width="164" FontSize="14" FontFamily="Arial" />
+        <Button Content="Вверх" Height="30" HorizontalAlignment="Right" Margin="0,10,28,0" Name="buttonUp" VerticalAlignment="Top" Width="100" Click="buttonUp_Click" FontSize="14" />
+        <ListBox Height="213" HorizontalAlignment="Left" Margin="20,45,0,0" Name="listBoxDirectories" VerticalAlignment="Top" Width="269" MouseDoubleClick="mouseDoubleClickOnListBox" SelectionChanged="currentSelect" FontSize="14" FontFamily="Arial" />
+        <Button Content="Отмена" Height="30" HorizontalAlignment="Right" Margin="0,263,28,0" Name="buttonExit" VerticalAlignment="Top" Width="100" Click="buttonExit_Click" FontSize="14" />
+        <Button Content="Выбрать" Height="30" HorizontalAlignment="Left" Margin="20,263,0,0" Name="buttonChoose" VerticalAlignment="Top" Width="100" Click="buttonChoose_Click" FontSize="14" RenderTransformOrigin="0.437,1.6" />
     </Grid>
 </Window>

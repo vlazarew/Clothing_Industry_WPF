@@ -256,10 +256,10 @@
 
             <StackPanel Orientation="Horizontal">
 
-                <Button Style="{StaticResource Active}" Name ="ButtonAddOne" Content="Добавить" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonAddOne_Click"/>
-                <Button Style="{StaticResource NoActive}" x:Name ="ButtonDeleteOne" Content="Удалить" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDeleteOne_Click"/>
-                <Button Style="{StaticResource Active}" x:Name ="ButtonCreateExcel" Content="Сделать в Excel" Width="124" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonCreateExcel_Click"/>
-                <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Выход" Width="75" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" TabIndex="4" IsTabStop="False" RenderTransformOrigin="1.473,0.44"/>
+                <Button Style="{StaticResource Active}" Name ="ButtonAddOne" Content="Добавить" Width="120" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonAddOne_Click" FontSize="14"/>
+                <Button Style="{StaticResource NoActive}" x:Name ="ButtonDeleteOne" Content="Удалить" Width="120" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDeleteOne_Click" FontSize="14"/>
+                <Button Style="{StaticResource Active}" x:Name ="ButtonCreateExcel" Content="Сделать в Excel" Width="120" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonCreateExcel_Click" FontSize="14"/>
+                <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Выход" Width="120" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" TabIndex="4" IsTabStop="False" RenderTransformOrigin="1.473,0.44" FontSize="14"/>
 
             </StackPanel>
         </Grid>

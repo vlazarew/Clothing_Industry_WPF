@@ -257,12 +257,12 @@
             <StackPanel Orientation="Horizontal">
 
 
-                <Button Style="{StaticResource Active}" x:Name ="ButtonRefresh" Content="Обновить" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonRefresh_Click"/>
-                <Button Style="{StaticResource Active}" x:Name ="ButtonFind" Content="Найти" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFind_Click"/>
-                <Button Style="{StaticResource Active}" x:Name ="ButtonPrint" Content="Печать" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonPrint_Click"/>
-                <Button Style="{StaticResource NoActive}" x:Name="buttonCancelFind" Content="Отменить поиск" Width="108" RenderTransformOrigin="1.194,0.333" TabIndex="4" IsTabStop="False" Click="ButtonCancelFind_Click"/>
-                <Button Style="{StaticResource Active}" x:Name ="ButtonFilters" Content="Фильтры" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="5" IsTabStop="False" Click="ButtonFilters_Click"/>
-                <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Выход" Width="75" RenderTransformOrigin="1.194,0.333" TabIndex="6" IsTabStop="False" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click"/>
+                <Button Style="{StaticResource Active}" x:Name ="ButtonRefresh" Content="Обновить" Width="75" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonRefresh_Click" FontSize="14"/>
+                <Button Style="{StaticResource Active}" x:Name ="ButtonFind" Content="Найти" Width="59.8" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonFind_Click" FontSize="14"/>
+                <Button Style="{StaticResource Active}" x:Name ="ButtonPrint" Content="Печать" Width="60" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonPrint_Click" FontSize="14"/>
+                <Button Style="{StaticResource NoActive}" x:Name="buttonCancelFind" Content="Отменить поиск" Width="120" RenderTransformOrigin="1.194,0.333" TabIndex="4" IsTabStop="False" Click="ButtonCancelFind_Click" FontSize="14"/>
+                <Button Style="{StaticResource Active}" x:Name ="ButtonFilters" Content="Фильтры" Width="70" RenderTransformOrigin="1.194,0.333" TabIndex="5" IsTabStop="False" Click="ButtonFilters_Click" FontSize="14"/>
+                <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Выход" Width="60" RenderTransformOrigin="1.194,0.333" TabIndex="6" IsTabStop="False" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" FontSize="14"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">

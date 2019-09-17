@@ -154,15 +154,15 @@
             <Grid  Grid.Row="0" Background="Beige">
                 <Viewbox HorizontalAlignment="Left">
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Height="30" Margin="3,0" HorizontalAlignment="Left" VerticalAlignment="Center">
+                        <TextBlock Height="30" Margin="3,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Arial">
                     <Run Text="Добро пожаловать,"/></TextBlock>
                         <TextBlock Height="30" x:Name="textBlockUserName"  UseLayoutRounding="True" TextWrapping="WrapWithOverflow" Margin="3,0" VerticalAlignment="Center">
                         </TextBlock>
                     </StackPanel>
                 </Viewbox>
-                <Button x:Name="ButtonExit" Width="125" IsCancel="True" TabIndex="0" Click="ButtonExit_Click" HorizontalAlignment="Right" Margin="0,10,10,10">
+                <Button x:Name="ButtonExit" Width="125" IsCancel="True" TabIndex="0" Click="ButtonExit_Click" HorizontalAlignment="Right" Margin="0,10,10,10" FontSize="14">
                     <Viewbox>
-                        <TextBlock Width="120">Выйти</TextBlock>
+                        <TextBlock Width="120" FontSize="14">Выйти</TextBlock>
                     </Viewbox>
                 </Button>
             </Grid>
@@ -183,22 +183,22 @@
                     <Border   BorderBrush="White" BorderThickness="3">
                         <StackPanel >
                             <Viewbox>
-                                <TextBlock x:Name="Clients" Width="135" Margin="5" PreviewMouseLeftButtonUp="Clients_PreviewMouseLeftButtonUp">
+                                <TextBlock x:Name="Clients" Width="135" Margin="5" PreviewMouseLeftButtonUp="Clients_PreviewMouseLeftButtonUp" FontFamily="Arial">
                    <Hyperlink>Клиенты</Hyperlink>
                                 </TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="Orders" Width="135" Margin="5" PreviewMouseLeftButtonUp="Orders_PreviewMouseLeftButtonUp">
+                                <TextBlock x:Name="Orders" Width="135" Margin="5" PreviewMouseLeftButtonUp="Orders_PreviewMouseLeftButtonUp" FontFamily="Arial">
                     <Hyperlink>Заказы</Hyperlink>
                                 </TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="Fittings" Width="135" Margin="5" PreviewMouseLeftButtonUp="Fittings_PreviewMouseLeftButtonUp">
+                                <TextBlock x:Name="Fittings" Width="135" Margin="5" PreviewMouseLeftButtonUp="Fittings_PreviewMouseLeftButtonUp" FontFamily="Arial">
                     <Hyperlink>Примерки</Hyperlink>
                                 </TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="BalanceOfClients" Width="135" Margin="5" PreviewMouseLeftButtonUp="BalanceOfClients_PreviewMouseLeftButtonUp">
+                                <TextBlock x:Name="BalanceOfClients" Width="135" Margin="5" PreviewMouseLeftButtonUp="BalanceOfClients_PreviewMouseLeftButtonUp" FontFamily="Arial">
                     <Hyperlink>Баланс клиентов</Hyperlink>
                                 </TextBlock>
                             </Viewbox>
@@ -210,17 +210,17 @@
                     <Border   BorderBrush="White" BorderThickness="3">
                         <StackPanel>
                             <Viewbox>
-                                <TextBlock x:Name="Matherial_Plus"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Receipt_Materials_PreviewMouseLeftButtonUp">
+                                <TextBlock x:Name="Matherial_Plus"  Width="137" Margin="5" PreviewMouseLeftButtonUp="Receipt_Materials_PreviewMouseLeftButtonUp" FontFamily="Arial">
                     <Hyperlink>Поступление материала</Hyperlink>
                                 </TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="Matherial"  Width="135" Margin="5"  PreviewMouseLeftButtonUp="Materials_PreviewMouseLeftButtonUp" >
+                                <TextBlock x:Name="Matherial"  Width="135" Margin="5"  PreviewMouseLeftButtonUp="Materials_PreviewMouseLeftButtonUp" FontFamily="Arial" >
                     <Hyperlink>Материал/Фурнитура</Hyperlink>
                                 </TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="Things"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Products_PreviewMouseLeftButtonUp">
+                                <TextBlock x:Name="Things"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Products_PreviewMouseLeftButtonUp" FontFamily="Arial">
                     <Hyperlink>Изделия</Hyperlink>
                                 </TextBlock>
                             </Viewbox>
@@ -231,17 +231,17 @@
                     <Border   BorderBrush="White" BorderThickness="3">
                         <StackPanel>
                             <Viewbox>
-                                <TextBlock x:Name="Workers"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Workers_PreviewMouseLeftButtonUp" >
+                                <TextBlock x:Name="Workers"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Workers_PreviewMouseLeftButtonUp" FontFamily="Arial" >
                     <Hyperlink>Сотрудники</Hyperlink>
                                 </TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="MoneyForWorkers"  Width="135" Margin="5" PreviewMouseLeftButtonUp="MoneyForWorkers_PreviewMouseLeftButtonUp" >
+                                <TextBlock x:Name="MoneyForWorkers"  Width="135" Margin="5" PreviewMouseLeftButtonUp="MoneyForWorkers_PreviewMouseLeftButtonUp" FontFamily="Arial" >
                     <Hyperlink>Начисление ЗП</Hyperlink>
                                 </TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="Holidays"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Holidays_PreviewMouseLeftButtonUp">
+                                <TextBlock x:Name="Holidays"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Holidays_PreviewMouseLeftButtonUp" FontFamily="Arial">
                     <Hyperlink>Отпуска</Hyperlink>
                                 </TextBlock>
                             </Viewbox>
@@ -252,7 +252,7 @@
                     <Border   BorderBrush="White" BorderThickness="3">
                         <StackPanel>
                             <Viewbox>
-                                <TextBlock x:Name="Warehouse" Width="135" Margin="5" PreviewMouseLeftButtonUp="Store_PreviewMouseLeftButtonUp" >
+                                <TextBlock x:Name="Warehouse" Width="135" Margin="5" PreviewMouseLeftButtonUp="Store_PreviewMouseLeftButtonUp" FontFamily="Arial" >
                     <Hyperlink>Состояние склада</Hyperlink>
                                 </TextBlock>
                             </Viewbox>
@@ -263,12 +263,12 @@
                     <Border   BorderBrush="White" BorderThickness="3">
                         <StackPanel>
                             <Viewbox>
-                                <TextBlock x:Name="Consumption" Width="135"  Margin="5" PreviewMouseLeftButtonUp="Costs_PreviewMouseLeftButtonUp">
+                                <TextBlock x:Name="Consumption" Width="135"  Margin="5" PreviewMouseLeftButtonUp="Costs_PreviewMouseLeftButtonUp" FontFamily="Arial">
                     <Hyperlink>Расходы</Hyperlink>
                                 </TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="Income"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Income_PreviewMouseLeftButtonUp" >
+                                <TextBlock x:Name="Income"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Income_PreviewMouseLeftButtonUp" FontFamily="Arial" >
                     <Hyperlink>Доходы</Hyperlink>
                                 </TextBlock>
                             </Viewbox>
@@ -293,7 +293,7 @@
                     <Border   BorderBrush="White" BorderThickness="3">
                         <StackPanel>
                             <Viewbox>
-                                <TextBlock x:Name="Employee_positions" Width="135" Margin="5" PreviewMouseLeftButtonUp="Employee_positions_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Должности"/></Hyperlink></TextBlock>
+                                <TextBlock x:Name="Employee_positions" Width="135" Margin="5" PreviewMouseLeftButtonUp="Employee_positions_PreviewMouseLeftButtonUp" FontFamily="Arial" ><Hyperlink><Run Text="Должности"/></Hyperlink></TextBlock>
                             </Viewbox>
                         </StackPanel>
                     </Border>
@@ -302,13 +302,13 @@
                     <Border   BorderBrush="White" BorderThickness="3">
                         <StackPanel>
                             <Viewbox>
-                                <TextBlock x:Name="Countries"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Countries_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Страны"/></Hyperlink></TextBlock>
+                                <TextBlock x:Name="Countries"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Countries_PreviewMouseLeftButtonUp" FontFamily="Arial" ><Hyperlink><Run Text="Страны"/></Hyperlink></TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="Types_of_material"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Types_of_material_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы материалов"/></Hyperlink></TextBlock>
+                                <TextBlock x:Name="Types_of_material"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Types_of_material_PreviewMouseLeftButtonUp" FontFamily="Arial" ><Hyperlink><Run Text="Типы материалов"/></Hyperlink></TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="Payment_states"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Payment_states_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Статусы оплаты"/></Hyperlink></TextBlock>
+                                <TextBlock x:Name="Payment_states"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Payment_states_PreviewMouseLeftButtonUp" FontFamily="Arial" ><Hyperlink><Run Text="Статусы оплаты"/></Hyperlink></TextBlock>
                             </Viewbox>
                         </StackPanel>
                     </Border>
@@ -317,16 +317,16 @@
                     <Border   BorderBrush="White" BorderThickness="3">
                         <StackPanel>
                             <Viewbox>
-                                <TextBlock x:Name="Customer_statuses"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Customer_statuses_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Статусы клиентов"/></Hyperlink></TextBlock>
+                                <TextBlock x:Name="Customer_statuses"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Customer_statuses_PreviewMouseLeftButtonUp" FontFamily="Arial" ><Hyperlink><Run Text="Статусы клиентов"/></Hyperlink></TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="Order_channels"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Order_channels_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Каналы заказов"/></Hyperlink></TextBlock>
+                                <TextBlock x:Name="Order_channels"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Order_channels_PreviewMouseLeftButtonUp" FontFamily="Arial" ><Hyperlink><Run Text="Каналы заказов"/></Hyperlink></TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="Types_of_fitting"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Types_of_fitting_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы примерок"/></Hyperlink></TextBlock>
+                                <TextBlock x:Name="Types_of_fitting"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Types_of_fitting_PreviewMouseLeftButtonUp" FontFamily="Arial" ><Hyperlink><Run Text="Типы примерок"/></Hyperlink></TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="Types_of_order"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Types_of_order_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы заказов"/></Hyperlink></TextBlock>
+                                <TextBlock x:Name="Types_of_order"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Types_of_order_PreviewMouseLeftButtonUp" FontFamily="Arial" ><Hyperlink><Run Text="Типы заказов"/></Hyperlink></TextBlock>
                             </Viewbox>
                         </StackPanel>
                     </Border>
@@ -335,13 +335,13 @@
                     <Border   BorderBrush="White" BorderThickness="3">
                         <StackPanel>
                             <Viewbox>
-                                <TextBlock x:Name="Type_of_transactions"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Type_of_transactions_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы транзакций"/></Hyperlink></TextBlock>
+                                <TextBlock x:Name="Type_of_transactions"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Type_of_transactions_PreviewMouseLeftButtonUp" FontFamily="Arial" ><Hyperlink><Run Text="Типы транзакций"/></Hyperlink></TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="Units"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Units_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Единицы измерения"/></Hyperlink></TextBlock>
+                                <TextBlock x:Name="Units"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Units_PreviewMouseLeftButtonUp" FontFamily="Arial" ><Hyperlink><Run Text="Единицы измерения"/></Hyperlink></TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="Suppliers"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Suppliers_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Поставщики"/></Hyperlink></TextBlock>
+                                <TextBlock x:Name="Suppliers"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Suppliers_PreviewMouseLeftButtonUp" FontFamily="Arial" ><Hyperlink><Run Text="Поставщики"/></Hyperlink></TextBlock>
                             </Viewbox>
                         </StackPanel>
                     </Border>
@@ -350,13 +350,13 @@
                     <Border   BorderBrush="White" BorderThickness="3">
                         <StackPanel>
                             <Viewbox>
-                                <TextBlock x:Name="Consumption_categories"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Consumption_categories_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Категории расходов"/></Hyperlink></TextBlock>
+                                <TextBlock x:Name="Consumption_categories"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Consumption_categories_PreviewMouseLeftButtonUp" FontFamily="Arial" ><Hyperlink><Run Text="Категории расходов"/></Hyperlink></TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="Periodities"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Periodities_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Периодичности"/></Hyperlink></TextBlock>
+                                <TextBlock x:Name="Periodities"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Periodities_PreviewMouseLeftButtonUp" FontFamily="Arial" ><Hyperlink><Run Text="Периодичности"/></Hyperlink></TextBlock>
                             </Viewbox>
                             <Viewbox>
-                                <TextBlock x:Name="Types_of_payment"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Types_of_payment_PreviewMouseLeftButtonUp" ><Hyperlink><Run Text="Типы оплаты"/></Hyperlink></TextBlock>
+                                <TextBlock x:Name="Types_of_payment"  Width="135" Margin="5" PreviewMouseLeftButtonUp="Types_of_payment_PreviewMouseLeftButtonUp" FontFamily="Arial" ><Hyperlink><Run Text="Типы оплаты"/></Hyperlink></TextBlock>
                             </Viewbox>
                         </StackPanel>
                     </Border>

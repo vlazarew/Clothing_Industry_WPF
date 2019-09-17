@@ -134,17 +134,17 @@
 
     </Window.Resources>
     <Grid>
-        <Label x:Name="Header" Content="Фильтр" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="20"/>
-        <Label Content="Поле" HorizontalAlignment="Left" Margin="40,76,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="Вид сравнения" HorizontalAlignment="Left" Margin="40,124,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label Content="Значение" HorizontalAlignment="Left" Margin="40,179,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="0.496,1.613"/>
-        <Button x:Name="buttonOK" Content="Принять" HorizontalAlignment="Left" Margin="40,278,0,0" VerticalAlignment="Top" Width="130" IsDefault="True" FontSize="16" Click="ButtonOK_Click" Height="34"/>
-        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="233,278,0,0" VerticalAlignment="Top" Width="131" FontSize="16" IsCancel="True" Click="ButtonCancel_Click" Height="34"/>
-        <ComboBox x:Name="comboBoxField" HorizontalAlignment="Left" Margin="182,76,0,0" VerticalAlignment="Top" Width="182" FontSize="16" SelectionChanged="ComboBoxField_SelectionChanged" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
-        <ComboBox x:Name="comboBoxTypeOfFilter" HorizontalAlignment="Left" Margin="182,124,0,0" VerticalAlignment="Top" Width="182" FontSize="16" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
-        <TextBox x:Name="textBoxValue" HorizontalAlignment="Left" Height="23" Margin="182,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="16" PreviewTextInput="TextBoxValue_PreviewTextInput"/>
-        <DatePicker x:Name="datePickerValue" HorizontalAlignment="Left" Margin="182,179,0,0" VerticalAlignment="Top" Width="182" FontSize="16"/>
-        <CheckBox x:Name="checkBoxActive" Content="Использовать" HorizontalAlignment="Left" Margin="182,241,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.676,-0.133" Width="139" FontSize="16" VerticalContentAlignment="Center" IsChecked="True"/>
+        <Label x:Name="Header" Content="Фильтр" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Arial"/>
+        <Label Content="Поле" HorizontalAlignment="Left" Margin="40,76,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Arial"/>
+        <Label Content="Вид сравнения" HorizontalAlignment="Left" Margin="40,124,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Arial"/>
+        <Label Content="Значение" HorizontalAlignment="Left" Margin="40,179,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.496,1.613" FontSize="14" FontFamily="Arial"/>
+        <Button x:Name="buttonOK" Content="Принять" HorizontalAlignment="Left" Margin="40,278,0,0" VerticalAlignment="Top" Width="100" IsDefault="True" FontSize="14" Click="ButtonOK_Click" Height="30"/>
+        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="264,278,0,0" VerticalAlignment="Top" Width="100" FontSize="14" IsCancel="True" Click="ButtonCancel_Click" Height="30"/>
+        <ComboBox x:Name="comboBoxField" HorizontalAlignment="Left" Margin="182,76,0,0" VerticalAlignment="Top" Width="182" SelectionChanged="ComboBoxField_SelectionChanged" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="14" FontFamily="Arial"/>
+        <ComboBox x:Name="comboBoxTypeOfFilter" HorizontalAlignment="Left" Margin="182,128,0,0" VerticalAlignment="Top" Width="182" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="14" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxValue" HorizontalAlignment="Left" Height="23" Margin="182,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" PreviewTextInput="TextBoxValue_PreviewTextInput" FontSize="14" FontFamily="Arial"/>
+        <DatePicker x:Name="datePickerValue" HorizontalAlignment="Left" Margin="182,179,0,0" VerticalAlignment="Top" Width="182" FontSize="14" FontFamily="Arial"/>
+        <CheckBox x:Name="checkBoxActive" Content="Использовать" HorizontalAlignment="Left" Margin="182,241,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.676,-0.133" Width="139" VerticalContentAlignment="Center" IsChecked="True" FontSize="14" FontFamily="Arial"/>
 
     </Grid>
 </Window>

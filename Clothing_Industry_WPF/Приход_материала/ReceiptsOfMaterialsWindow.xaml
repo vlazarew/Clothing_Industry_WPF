@@ -255,15 +255,16 @@
 
 
             <StackPanel Orientation="Horizontal">
-                <Button Style="{StaticResource Active}" Name ="ButtonCreateNew" Content="Создать" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>
-                <Button Style="{StaticResource NoActive}" x:Name ="ButtonDelete" Content="Удалить" Width="66" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
-                <Button Style="{StaticResource NoActive}" x:Name ="ButtonOpen" Content="Открыть документ" Width="126" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonOpen_Click"/>
-                <Button Style="{StaticResource Active}" x:Name ="ButtonRefresh" Content="Обновить" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="4" IsTabStop="False" Click="ButtonRefresh_Click"/>
-                <Button Style="{StaticResource NoActive}" x:Name ="ButtonEdit" Content="Изменить" Width="85" RenderTransformOrigin="1.194,0.333" TabIndex="5" IsTabStop="False" Click="ButtonEdit_Click"/>
-                <Button Style="{StaticResource Active}" x:Name ="ButtonFind" Content="Найти" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="6" IsTabStop="False" Click="ButtonFind_Click"/>
-                <Button Style="{StaticResource NoActive}" x:Name="buttonCancelFind" Content="Отменить поиск" Click="ButtonCancelFind_Click" RenderTransformOrigin="0.665,0.498" Width="107" TabIndex="7" IsTabStop="False"/>
-                <Button Style="{StaticResource Active}" x:Name ="ButtonFilters" Content="Фильтры" Width="69" RenderTransformOrigin="1.194,0.333" TabIndex="8" IsTabStop="False" Click="ButtonFilters_Click" Grid.ColumnSpan="2"/>
-                <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Выход" Width="75" IsCancel="True" RenderTransformOrigin="1.194,0.333" TabIndex="9" IsTabStop="False" Visibility="Visible" Click="ButtonExit_Click"/>
+                <Button Style="{StaticResource Active}" Name ="ButtonCreateNew" Content="Создать" Width="75" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click" FontSize="14"/>
+                <Button Style="{StaticResource NoActive}" x:Name ="ButtonDelete" Content="Удалить" Width="75" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click" FontSize="14"/>
+                
+                <Button Style="{StaticResource Active}" x:Name ="ButtonRefresh" Content="Обновить" Width="75" RenderTransformOrigin="1.194,0.333" TabIndex="4" IsTabStop="False" Click="ButtonRefresh_Click" FontSize="14"/>
+                <Button Style="{StaticResource NoActive}" x:Name ="ButtonOpen" Content="Открыть документ" Width="130" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonOpen_Click" FontSize="14"/>
+                <Button Style="{StaticResource NoActive}" x:Name ="ButtonEdit" Content="Изменить" Width="75" RenderTransformOrigin="1.194,0.333" TabIndex="5" IsTabStop="False" Click="ButtonEdit_Click" FontSize="14"/>
+                <Button Style="{StaticResource Active}" x:Name ="ButtonFind" Content="Найти" Width="60" RenderTransformOrigin="1.194,0.333" TabIndex="6" IsTabStop="False" Click="ButtonFind_Click" FontSize="14"/>
+                <Button Style="{StaticResource NoActive}" x:Name="buttonCancelFind" Content="Отменить поиск" Click="ButtonCancelFind_Click" RenderTransformOrigin="0.665,0.498" Width="120" TabIndex="7" IsTabStop="False" FontSize="14"/>
+                <Button Style="{StaticResource Active}" x:Name ="ButtonFilters" Content="Фильтры" Width="70" RenderTransformOrigin="1.194,0.333" TabIndex="8" IsTabStop="False" Click="ButtonFilters_Click" Grid.ColumnSpan="2" FontSize="14"/>
+                <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Выход" Width="60" IsCancel="True" RenderTransformOrigin="1.194,0.333" TabIndex="9" IsTabStop="False" Visibility="Visible" Click="ButtonExit_Click" FontSize="14"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">

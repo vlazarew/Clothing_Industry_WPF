@@ -24,7 +24,7 @@
         <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
     StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="DarkGray" Offset="0" />
-            
+
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
 
@@ -254,13 +254,13 @@
         <Grid Grid.Row="0">
 
             <StackPanel Orientation="Horizontal">
-                <Button Style="{StaticResource Active}" Name ="ButtonCreateNew" Content="Создать" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click"/>
-                <Button Style="{StaticResource NoActive}" x:Name ="ButtonDelete" Content="Удалить" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click"/>
-                <Button Style="{StaticResource Active}" x:Name ="ButtonRefresh" Content="Обновить" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonRefresh_Click"/>
-                <Button Style="{StaticResource NoActive}" x:Name ="ButtonEdit" Content="Изменить выделенное" Width="148" RenderTransformOrigin="1.194,0.333" TabIndex="4" IsTabStop="False" Click="ButtonEdit_Click"/>
-                <Button Style="{StaticResource Active}" x:Name ="ButtonFind" Content="Найти" TabIndex="5" IsTabStop="False" Click="ButtonFind_Click" Width="90"/>
-                <Button Style="{StaticResource NoActive}" x:Name="buttonCancelFind" Content="Отменить поиск" Width="107" TabIndex="6" Click="ButtonCancelFind_Click"/>
-                <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Выход" Width="75" IsCancel="True" TabIndex="7" Visibility="Visible" Click="ButtonExit_Click"/>
+                <Button Style="{StaticResource Active}" Name ="ButtonCreateNew" Content="Создать" Width="75" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonCreateNew_Click" FontSize="14"/>
+                <Button Style="{StaticResource NoActive}" x:Name ="ButtonDelete" Content="Удалить" Width="75" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDelete_Click" FontSize="14"/>
+                <Button Style="{StaticResource Active}" x:Name ="ButtonRefresh" Content="Обновить" Width="75" RenderTransformOrigin="1.194,0.333" TabIndex="3" IsTabStop="False" Click="ButtonRefresh_Click" FontSize="14"/>
+                <Button Style="{StaticResource NoActive}" x:Name ="ButtonEdit" Content="Изменить выделенное" Width="160" RenderTransformOrigin="1.194,0.333" TabIndex="4" IsTabStop="False" Click="ButtonEdit_Click" FontSize="14"/>
+                <Button Style="{StaticResource Active}" x:Name ="ButtonFind" Content="Найти" TabIndex="5" IsTabStop="False" Click="ButtonFind_Click" Width="60" FontSize="14"/>
+                <Button Style="{StaticResource NoActive}" x:Name="buttonCancelFind" Content="Отменить поиск" Width="120" TabIndex="6" Click="ButtonCancelFind_Click" FontSize="14"/>
+                <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Выход" Width="60" IsCancel="True" TabIndex="7" Visibility="Visible" Click="ButtonExit_Click" FontSize="14"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
@@ -273,7 +273,7 @@
                     </Style>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
-                   
+
                     <DataGridTextColumn Binding="{Binding Name_of_supplier}" ClipboardContentBinding="{x:Null}" Header="Наименование"/>
                 </DataGrid.Columns>
             </DataGrid>

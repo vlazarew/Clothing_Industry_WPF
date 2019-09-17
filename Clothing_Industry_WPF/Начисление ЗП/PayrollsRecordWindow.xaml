@@ -21,7 +21,7 @@
         <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
     StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="DarkGray" Offset="0" />
-            
+
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
 
@@ -138,27 +138,27 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Логин " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,90,0,0" Height="26" Width="49"/>
-        <Label x:Name="Header" Content="Начисление ЗП " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,51,0,0" FontSize="18" Height="34" Width="328"/>
-        <Label Content="Зарплата " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,184,0,0" Height="26" Width="67"/>
-        <Label Content="Сдельная зп " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,215,0,0" Height="26" Width="80"/>
-        <Label Content="Общая зп " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,248,0,0" Height="26" Width="68"/>
-        <Label Content="Штраф " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,279,0,0" Height="26" Width="57"/>
-        <Label Content="К выплате " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,310,0,0" Height="26" Width="68"/>
-        <Label Content="Заметки " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,342,0,0" Height="26" Width="57"/>
-        <Label Content="Дата выплаты " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,153,0,0" Height="26" Width="91"/>
-        <TextBox x:Name="textBoxSalary" HorizontalAlignment="Left" Height="26" Margin="106,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxSalary_PreviewTextInput" TextChanged="TextBoxSalary_TextChanged"/>
-        <TextBox x:Name="textBoxTotal_Salary" HorizontalAlignment="Left" Height="26" Margin="106,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TabIndex="8" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True"/>
-        <TextBox x:Name="textBoxPenalty" HorizontalAlignment="Left" Height="26" Margin="106,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TabIndex="9" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxSalary_PreviewTextInput" TextChanged="TextBoxPenalty_TextChanged"/>
-        <TextBox x:Name="textBoxTo_Pay" HorizontalAlignment="Left" Height="26" Margin="106,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TabIndex="10" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True"/>
-        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="106,342,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TabIndex="11" VerticalContentAlignment="Center" FontSize="14"/>
-        <DatePicker x:Name="datePickerPayrollDate" HorizontalAlignment="Left" Margin="106,153,0,0" VerticalAlignment="Top" Width="232" TabIndex="12" VerticalContentAlignment="Center" FontSize="14" Height="27"/>
-        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="205,10,0,0" VerticalAlignment="Top" Width="133" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True" RenderTransformOrigin="0.426,0.52"/>
-        <ComboBox x:Name="comboBoxLogin" HorizontalAlignment="Left" Margin="106,90,0,0" VerticalAlignment="Top" Width="232" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
-        <TextBox x:Name="textBoxPieceWork" HorizontalAlignment="Left" Height="26" Margin="106,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxSalary_PreviewTextInput" TextChanged="TextBoxPieceWork_TextChanged"/>
-        <Label Content="Период " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,121,0,0" Height="26" Width="67"/>
-        <TextBox x:Name="textBoxPeriod" HorizontalAlignment="Left" Height="26" Margin="106,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="232" TabIndex="4" VerticalContentAlignment="Center" FontSize="14"/>
-        <CheckBox x:Name="checkBoxPaid" Content="Выплачено" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="67,381,0,0" Width="271" VerticalContentAlignment="Center" FontSize="16"/>
+        <Label Content="Логин " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,90,0,0" Height="26" Width="49" FontSize="14" FontFamily="Arial"/>
+        <Label x:Name="Header" Content="Начисление ЗП " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,51,0,0" FontSize="18" Height="34" Width="328" FontFamily="Arial"/>
+        <Label Content="Зарплата " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,184,0,0" Height="26" Width="67" FontSize="14" FontFamily="Arial"/>
+        <Label Content="Сдельная зп " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,215,0,0" Height="26" Width="101" FontSize="14" FontFamily="Arial"/>
+        <Label Content="Общая зп " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,248,0,0" Height="26" Width="101" FontSize="14" FontFamily="Arial"/>
+        <Label Content="Штраф " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,279,0,0" Height="26" Width="57" FontSize="14" FontFamily="Arial"/>
+        <Label Content="К выплате " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,310,0,0" Height="26" Width="85" FontSize="14" FontFamily="Arial"/>
+        <Label Content="Заметки " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,342,0,0" Height="26" Width="85" FontSize="14" FontFamily="Arial"/>
+        <Label Content="Дата выплаты " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,153,0,0" Height="26" Width="101" FontSize="14" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxSalary" HorizontalAlignment="Left" Height="26" Margin="128,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxSalary_PreviewTextInput" TextChanged="TextBoxSalary_TextChanged" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxTotal_Salary" HorizontalAlignment="Left" Height="26" Margin="128,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" TabIndex="8" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxPenalty" HorizontalAlignment="Left" Height="26" Margin="128,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" TabIndex="9" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxSalary_PreviewTextInput" TextChanged="TextBoxPenalty_TextChanged" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxTo_Pay" HorizontalAlignment="Left" Height="26" Margin="128,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" TabIndex="10" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="128,342,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" TabIndex="11" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
+        <DatePicker x:Name="datePickerPayrollDate" HorizontalAlignment="Left" Margin="128,153,0,0" VerticalAlignment="Top" Width="210" TabIndex="12" VerticalContentAlignment="Center" FontSize="14" Height="27" FontFamily="Arial"/>
+        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="198,10,0,0" VerticalAlignment="Top" Width="140" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True" RenderTransformOrigin="0.426,0.52" FontSize="14"/>
+        <ComboBox x:Name="comboBoxLogin" HorizontalAlignment="Left" Margin="128,90,0,0" VerticalAlignment="Top" Width="210" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxPieceWork" HorizontalAlignment="Left" Height="26" Margin="128,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxSalary_PreviewTextInput" TextChanged="TextBoxPieceWork_TextChanged" FontFamily="Arial"/>
+        <Label Content="Период " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,121,0,0" Height="26" Width="67" FontSize="14" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxPeriod" HorizontalAlignment="Left" Height="26" Margin="128,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
+        <CheckBox x:Name="checkBoxPaid" Content="Выплачено" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="67,381,0,0" Width="271" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
 
     </Grid>
 </Window>

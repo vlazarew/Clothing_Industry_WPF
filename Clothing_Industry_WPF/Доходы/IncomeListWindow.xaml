@@ -24,7 +24,7 @@
         <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
     StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="DarkGray" Offset="0" />
-            
+
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
 
@@ -149,10 +149,10 @@
             <StackPanel Orientation="Horizontal">
 
 
-                <Button x:Name ="ButtonClearIncome" Content="Чистый доход" Width="120" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonClearIncome_Click"/>
-                <Button x:Name ="ButtonDirtyIncome" Content="Грязный доход" Width="120" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDirtyIncome_Click"/>
-                <Button x:Name ="ButtonPrint" Content="Печать" Width="80" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonPrint_Click"/>
-                <Button x:Name="ButtonExit" Content="Выход" Width="75" RenderTransformOrigin="1.194,0.333" TabIndex="6" IsTabStop="False" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click"/>
+                <Button x:Name ="ButtonClearIncome" Content="Чистый доход" Width="130" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonClearIncome_Click" FontSize="14"/>
+                <Button x:Name ="ButtonDirtyIncome" Content="Грязный доход" Width="130" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonDirtyIncome_Click" FontSize="14"/>
+                <Button x:Name ="ButtonPrint" Content="Печать" Width="130" RenderTransformOrigin="1.194,0.333" TabIndex="2" IsTabStop="False" Click="ButtonPrint_Click" FontSize="14"/>
+                <Button x:Name="ButtonExit" Content="Выход" Width="130" RenderTransformOrigin="1.194,0.333" TabIndex="6" IsTabStop="False" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" FontSize="14"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
@@ -162,7 +162,7 @@
                 <ColumnDefinition Width="207"/>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
-                <Label Content="Прибыль" HorizontalAlignment="Left"  VerticalAlignment="Top" RenderTransformOrigin="-0.193,-0.389"/>
+                <Label Content="Прибыль" HorizontalAlignment="Left"  VerticalAlignment="Top" RenderTransformOrigin="-0.193,-0.389" FontSize="14" FontFamily="Arial"/>
                 <DataGrid x:Name="incomeGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Margin="0,32,0,0" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
 
 
@@ -182,16 +182,16 @@
                     </DataGrid.Columns>
                 </DataGrid>
 
-                <Label  x:Name="LabelCosts" Content="Расходы" HorizontalAlignment="Left"  VerticalAlignment="Top" RenderTransformOrigin="-0.193,-0.389"/>
+                <Label  x:Name="LabelCosts" Content="Расходы" HorizontalAlignment="Left"  VerticalAlignment="Top" RenderTransformOrigin="-0.193,-0.389" FontSize="14" FontFamily="Arial"/>
 
             </Grid>
             <Grid Grid.Column="2">
-                <Label x:Name="LabelPlus" Content="Прибыль" HorizontalAlignment="Left"  VerticalAlignment="Top" RenderTransformOrigin="-0.193,-0.389"/>
-                <Label x:Name="LabelMinus" Content="Расходы" HorizontalAlignment="Left"  VerticalAlignment="Top" RenderTransformOrigin="-0.193,-0.389" Margin="0,31,0,0"/>
-                <TextBox x:Name="textBoxPlus" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap"  VerticalAlignment="Top" VerticalContentAlignment="Center" Width="122" Margin="75,0,0,0"/>
-                <TextBox x:Name="textBoxMinus" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="122" VerticalContentAlignment="Center" RenderTransformOrigin="0.488,1.096" Margin="75,31,0,0"/>
-                <Label x:Name="LabelCount" Content="Итого" HorizontalAlignment="Left" FontWeight="Bold"  VerticalAlignment="Top" VerticalContentAlignment="Center" RenderTransformOrigin="-0.193,-0.389" Margin="0,62,0,0"/>
-                <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap"  VerticalAlignment="Top" VerticalContentAlignment="Center" Width="122" RenderTransformOrigin="0.488,1.096" Margin="75,62,0,0"/>
+                <Label x:Name="LabelPlus" Content="Прибыль" HorizontalAlignment="Left"  VerticalAlignment="Top" RenderTransformOrigin="-0.193,-0.389" FontSize="14" Height="26" FontFamily="Arial"/>
+                <Label x:Name="LabelMinus" Content="Расходы" HorizontalAlignment="Left"  VerticalAlignment="Top" RenderTransformOrigin="-0.193,-0.389" Margin="0,31,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+                <TextBox x:Name="textBoxPlus" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap"  VerticalAlignment="Top" VerticalContentAlignment="Center" Width="122" Margin="75,0,0,0" FontSize="14" FontFamily="Arial"/>
+                <TextBox x:Name="textBoxMinus" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="122" VerticalContentAlignment="Center" RenderTransformOrigin="0.488,1.096" Margin="75,31,0,0" FontSize="14" FontFamily="Arial"/>
+                <Label x:Name="LabelCount" Content="Итого" HorizontalAlignment="Left" FontWeight="Bold"  VerticalAlignment="Top" VerticalContentAlignment="Center" RenderTransformOrigin="-0.193,-0.389" Margin="0,62,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+                <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap"  VerticalAlignment="Top" VerticalContentAlignment="Center" Width="122" RenderTransformOrigin="0.488,1.096" Margin="75,62,0,0" FontSize="14" FontFamily="Arial"/>
             </Grid>
         </Grid>
     </Grid>

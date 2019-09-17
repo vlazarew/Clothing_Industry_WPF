@@ -348,9 +348,9 @@
         </Style>
     </Window.Resources>
     <Grid Margin="0,0,0,1">
-        <Label Content="IP-адрес сервера" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.219,2.079" Margin="10,86,0,0" FontSize="14" FontFamily="Arial"/>
+        <Label Content="IP-адрес сервера" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.219,2.079" Margin="10,86,0,0" FontSize="14" FontFamily="Arial" Height="31"/>
         <TextBox x:Name="textBoxIP" HorizontalAlignment="Left" Height="31" Margin="154,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="282" FontSize="14" VerticalContentAlignment="Center" TabIndex="1" FontFamily="Arial"/>
-        <Button Style="{StaticResource Active}" x:Name="buttonSaveSettings" Content="Сохранить и выйти" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="337,10,0,0" Height="45" TabIndex="2" Click="ButtonSaveSettings_Click" FontSize="14"/>
-        <Button Style="{StaticResource Delete}" x:Name="buttonDelete" Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Margin="436,86,0,0" Height="31" TabIndex="2" Click="ButtonDelete_Click"/>
+        <Button Style="{StaticResource Active}" x:Name="buttonSaveSettings" Content="Сохранить и выйти" HorizontalAlignment="Left" VerticalAlignment="Top" Width="135" Margin="337,10,0,0" Height="30" TabIndex="2" Click="ButtonSaveSettings_Click" FontSize="14"/>
+        <Button Style="{StaticResource Delete}" x:Name="buttonDelete" Content="X" HorizontalAlignment="Left" VerticalAlignment="Top" Width="36" Margin="436,86,0,0" Height="31" TabIndex="2" Click="ButtonDelete_Click" FontSize="14"/>
     </Grid>
 </Window>

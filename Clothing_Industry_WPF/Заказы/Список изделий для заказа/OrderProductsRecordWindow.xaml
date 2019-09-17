@@ -134,12 +134,12 @@
 
     </Window.Resources>
     <Grid>
-        <Label Content="Изделие " HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="14"/>
-        <ComboBox x:Name="comboBoxProducts" HorizontalAlignment="Left" Margin="100,18,0,0" VerticalAlignment="Top" Width="211" FontSize="14" VerticalContentAlignment="Center" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
-        <Label Content="Количество " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,52,0,0" Height="26" Width="90"/>
-        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" Margin="100,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" TabIndex="2" VerticalContentAlignment="Center" FontSize="14"/>
-        <Button x:Name="buttonSave" Content="Добавить" HorizontalAlignment="Left" Margin="100,95,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" FontSize="14" RenderTransformOrigin="0.993,-0.413" Click="ButtonSave_Click"/>
-        <Button Content="Отмена" HorizontalAlignment="Left" Margin="236,95,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.694,-0.02" FontSize="14" IsCancel="True" Click="Button_Click"/>
+        <Label Content="Изделие " HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" Height="29"/>
+        <ComboBox x:Name="comboBoxProducts" HorizontalAlignment="Left" Margin="100,18,0,0" VerticalAlignment="Top" Width="211" FontSize="14" VerticalContentAlignment="Center" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial"/>
+        <Label Content="Количество " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,52,0,0" Height="26" Width="90" FontSize="14" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" Margin="100,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
+        <Button x:Name="buttonSave" Content="Добавить" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="100" IsDefault="True" FontSize="14" RenderTransformOrigin="0.993,-0.413" Click="ButtonSave_Click" Height="30"/>
+        <Button Content="Отмена" HorizontalAlignment="Left" Margin="211,95,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.694,-0.02" FontSize="14" IsCancel="True" Click="Button_Click" Height="30"/>
 
     </Grid>
 </Window>

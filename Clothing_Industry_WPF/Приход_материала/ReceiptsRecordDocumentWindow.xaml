@@ -138,21 +138,21 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="214,10,0,0" VerticalAlignment="Top" Width="129" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
-        <Label Content="Название документа " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,50,0,0" Height="26" Width="130"/>
-        <Label Content="Дата прихода " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,81,0,0" Height="26" Width="130"/>
-        <Label x:Name="Header" Content="Документ " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Height="34" Width="199"/>
-        <Label Content="Папка документа " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,175,0,0" Height="26" Width="122"/>
-        <Label Content="Поставщик " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,144,0,0" Height="26" Width="86"/>
-        <Label Content="Статус " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,206,0,0" Height="26" Width="122"/>
-        <Label Content="Тип транзакции " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,237,0,0" Height="26" Width="122"/>
-        <TextBox x:Name="textBoxName_Of_Document" HorizontalAlignment="Left" Height="26" Margin="140,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
-        <DatePicker x:Name="datePickerComing_Date" HorizontalAlignment="Left" Margin="140,81,0,0" VerticalAlignment="Top" Width="203" TabIndex="12" VerticalContentAlignment="Center" FontSize="14"/>
-        <ComboBox x:Name="comboBoxName_Of_Supplier" HorizontalAlignment="Left"  Margin="140,144,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
-        <TextBox x:Name="textBoxDefault_Folder" HorizontalAlignment="Left" Height="26" Margin="140,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
-        <ComboBox x:Name="comboBoxName_Of_State" HorizontalAlignment="Left" Margin="140,206,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
-        <ComboBox x:Name="comboBoxName_Of_Type" HorizontalAlignment="Left" Margin="140,237,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
-        <Label Content="Доп. сведения " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,113,0,0" Height="26" Width="130"/>
-        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="140,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
+        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="203,10,0,0" VerticalAlignment="Top" Width="140" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True" FontSize="14"/>
+        <Label Content="Название документа " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,50,0,0" Height="31" Width="144" FontSize="14" FontFamily="Arial"/>
+        <Label Content="Дата прихода " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,81,0,0" Height="27" Width="130" FontSize="14" FontFamily="Arial"/>
+        <Label x:Name="Header" Content="Документ " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Height="34" Width="199" FontFamily="Arial"/>
+        <Label Content="Папка документа " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,175,0,0" Height="31" Width="122" FontSize="14" FontFamily="Arial"/>
+        <Label Content="Поставщик " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,144,0,0" Height="26" Width="86" FontSize="14" FontFamily="Arial"/>
+        <Label Content="Статус " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,206,0,0" Height="31" Width="122" FontSize="14" FontFamily="Arial"/>
+        <Label Content="Тип транзакции " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,237,0,0" Height="26" Width="122" FontSize="14" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxName_Of_Document" HorizontalAlignment="Left" Height="26" Margin="159,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" TabIndex="8" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
+        <DatePicker x:Name="datePickerComing_Date" HorizontalAlignment="Left" Margin="159,81,0,0" VerticalAlignment="Top" Width="184" TabIndex="12" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
+        <ComboBox x:Name="comboBoxName_Of_Supplier" HorizontalAlignment="Left"  Margin="159,144,0,0" VerticalAlignment="Top" Width="184" Height="26" VerticalContentAlignment="Center" TabIndex="5" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="14" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxDefault_Folder" HorizontalAlignment="Left" Height="26" Margin="159,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" TabIndex="8" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
+        <ComboBox x:Name="comboBoxName_Of_State" HorizontalAlignment="Left" Margin="159,206,0,0" VerticalAlignment="Top" Width="184" Height="26" VerticalContentAlignment="Center" TabIndex="5" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="14" FontFamily="Arial"/>
+        <ComboBox x:Name="comboBoxName_Of_Type" HorizontalAlignment="Left" Margin="159,237,0,0" VerticalAlignment="Top" Width="184" Height="26" VerticalContentAlignment="Center" TabIndex="5" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="14" FontFamily="Arial"/>
+        <Label Content="Доп. сведения " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,113,0,0" Height="31" Width="130" FontSize="14" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="159,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" TabIndex="8" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
     </Grid>
 </Window>

@@ -138,11 +138,11 @@
             <ColumnDefinition Width="59*"/>
             <ColumnDefinition Width="29*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Наименование " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,64,0,0" TabIndex="1"/>
-        <Label x:Name="Header" Content="Должности" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Width="197"/>
-        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" Margin="111,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center"/>
+        <Label Content="Наименование " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,64,0,0" TabIndex="1" FontFamily="Arial" Height="26"/>
+        <Label x:Name="Header" Content="Должности" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Width="197" FontFamily="Arial" Height="34"/>
+        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" Margin="111,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="231" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center" FontFamily="Arial"/>
         <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="212,10,0,0" VerticalAlignment="Top" Width="130" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True" TabIndex="3"/>
-        <CheckBox x:Name="checkBoxAdministrator" Content="Администратор" HorizontalAlignment="Left" Margin="169,110,0,0" VerticalAlignment="Top" Height="37" Width="173" TabIndex="2" FontSize="14"/>
+        <CheckBox x:Name="checkBoxAdministrator" Content="Администратор" HorizontalAlignment="Left" Margin="169,110,0,0" VerticalAlignment="Top" Height="37" Width="173" TabIndex="2" FontSize="14" FontFamily="Arial"/>
     </Grid>
 </Window>
 

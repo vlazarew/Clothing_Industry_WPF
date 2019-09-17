@@ -39,7 +39,6 @@ namespace Clothing_Industry_WPF
     {
         private string login;
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
-
         #region Загрузка формы
         public MainWindow(string entry_login = "")
         {
@@ -78,93 +77,141 @@ namespace Clothing_Industry_WPF
         }
         #endregion
 
+        private int CountForms()
+        {
+            int count = 0;
+            foreach (Window w in App.Current.Windows)
+                count++;
+            return count;
+
+        }
         // При нажатии на вкладку "Сотрудники"
         private void Workers_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window_workers = new EmployeesListWindow();
-            window_workers.Show();
+            if (CountForms() == 1)
+            {
+                Window window_workers = new EmployeesListWindow();
+                window_workers.Show();
+            }
+
         }
 
         // При нажатии на вкладку "Материалы"
         private void Materials_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window_materials = new MaterialsListWindow();
-            window_materials.Show();
+            if (CountForms() == 1)
+            {
+                Window window_materials = new MaterialsListWindow();
+                window_materials.Show();
+            }
         }
 
         // При нажатии на вкладку "Состояние склада"
         private void Store_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window_store = new StoreListWindow();
-            window_store.Show();
+            if (CountForms() == 1)
+            {
+                Window window_store = new StoreListWindow();
+                window_store.Show();
+            }
         }
 
         // При нажатии на вкладку "Клиенты"
         private void Clients_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window_customers = new CustomersListWindow();
-            window_customers.Show();
+            if (CountForms() == 1)
+            {
+                Window window_customers = new CustomersListWindow();
+                window_customers.Show();
+            }
         }
 
         // При нажатии на вкладку "Баланс клиентов"
         private void BalanceOfClients_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window_balance = new CustomerBalanceListWindow();
-            window_balance.Show();
+            if (CountForms() == 1)
+            {
+                Window window_balance = new CustomerBalanceListWindow();
+                window_balance.Show();
+            }
         }
 
         // При нажатии на вкладку "Заказы"
         private void Orders_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window_orders = new OrdersListWindow();
-            window_orders.Show();
+            if (CountForms() == 1)
+            {
+                Window window_orders = new OrdersListWindow();
+                window_orders.Show();
+            }
         }
 
         // При нажатии на вкладку "Приход материалов"
         private void Receipt_Materials_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window_receipt = new ReceiptsOfMaterialsWindow();
-            window_receipt.Show();
+            if (CountForms() == 1)
+            {
+                Window window_receipt = new ReceiptsOfMaterialsWindow();
+                window_receipt.Show();
+            }
         }
 
         // При нажатии на вкладку "Изделия"
         private void Products_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window_products = new ProductsListWindow();
-            window_products.Show();
+            if (CountForms() == 1)
+            {
+                Window window_products = new ProductsListWindow();
+                window_products.Show();
+            }
         }
 
         // При нажатии на вкладку "Примерки"
         private void Fittings_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window_fittings = new FittingsListWindow();
-            window_fittings.Show();
+            if (CountForms() == 1)
+            {
+                Window window_fittings = new FittingsListWindow();
+                window_fittings.Show();
+            }
         }
 
         // При нажатии на вкладку "Начисление ЗП"
         private void MoneyForWorkers_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window_payrolls = new PayrollsListWindow();
-            window_payrolls.Show();
+            if (CountForms() == 1)
+            {
+                Window window_payrolls = new PayrollsListWindow();
+                window_payrolls.Show();
+            }
         }
 
         //При нажатии на вкладку "Отпуска"
         private void Holidays_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window_holidays = new HolidaysListWindow();
-            window_holidays.Show();
+            if (CountForms() == 1)
+            {
+                Window window_holidays = new HolidaysListWindow();
+                window_holidays.Show();
+            }
         }
         //При нажатии на вкладку "Расходы"
         private void Costs_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window_costs = new CostsListWindow();
-            window_costs.Show();
+            if (CountForms() == 1)
+            {
+                Window window_costs = new CostsListWindow();
+                window_costs.Show();
+            }
         }
         //При нажатии на вкладку "Доходы"
         private void Income_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window_income = new IncomeListWindow();
-            window_income.Show();
+            if (CountForms() == 1)
+            {
+                Window window_income = new IncomeListWindow();
+                window_income.Show();
+            }
         }
         // ОТКЛЮЧЕНИЕ СИСТЕМЫ
         #region Отключение системы
@@ -188,14 +235,20 @@ namespace Clothing_Industry_WPF
         #region Справочники
         private void Employee_positions_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window = new EmployeePositionsListWindow();
-            window.Show();
+            if (CountForms() == 1)
+            {
+                Window window = new EmployeePositionsListWindow();
+                window.Show();
+            }
         }
 
         private void Countries_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window = new CountriesListWindow();
-            window.Show();
+            if (CountForms() == 1)
+            {
+                Window window = new CountriesListWindow();
+                window.Show();
+            }
         }
         /*
         private void Groups_of_material_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -206,38 +259,56 @@ namespace Clothing_Industry_WPF
         */
         private void Payment_states_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window = new PaymentStatesListWindow();
-            window.Show();
+            if (CountForms() == 1)
+            {
+                Window window = new PaymentStatesListWindow();
+                window.Show();
+            }
         }
 
         private void Type_of_transactions_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window = new TypeOfTransactionsListWindow();
-            window.Show();
+            if (CountForms() == 1)
+            {
+                Window window = new TypeOfTransactionsListWindow();
+                window.Show();
+            }
         }
 
         private void Types_of_material_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window = new TypesOfMaterialListWindow();
-            window.Show();
+            if (CountForms() == 1)
+            {
+                Window window = new TypesOfMaterialListWindow();
+                window.Show();
+            }
         }
 
         private void Units_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window = new UnitsListWindow();
-            window.Show();
+            if (CountForms() == 1)
+            {
+                Window window = new UnitsListWindow();
+                window.Show();
+            }
         }
 
         private void Customer_statuses_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window = new CustomerStatusesListWindow();
-            window.Show();
+            if (CountForms() == 1)
+            {
+                Window window = new CustomerStatusesListWindow();
+                window.Show();
+            }
         }
 
         private void Order_channels_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window = new OrderChannelsListWindow();
-            window.Show();
+            if (CountForms() == 1)
+            {
+                Window window = new OrderChannelsListWindow();
+                window.Show();
+            }
         }
 /*
         private void Statuses_of_order_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -248,38 +319,56 @@ namespace Clothing_Industry_WPF
 */
         private void Types_of_fitting_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window = new TypesOfFittingListWindow();
-            window.Show();
+            if (CountForms() == 1)
+            {
+                Window window = new TypesOfFittingListWindow();
+                window.Show();
+            }
         }
 
         private void Types_of_order_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window = new TypesOfOrderListWindow();
-            window.Show();
+            if (CountForms() == 1)
+            {
+                Window window = new TypesOfOrderListWindow();
+                window.Show();
+            }
         }
 
         private void Consumption_categories_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window = new ConsumptionCategoriesListWindow();
-            window.Show();
+            if (CountForms() == 1)
+            {
+                Window window = new ConsumptionCategoriesListWindow();
+                window.Show();
+            }
         }
 
         private void Periodities_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window = new PeriodicitiesListWindow();
-            window.Show();
+            if (CountForms() == 1)
+            {
+                Window window = new PeriodicitiesListWindow();
+                window.Show();
+            }
         }
 
         private void Types_of_payment_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window = new TypesOfPaymentListWindow();
-            window.Show();
+            if (CountForms() == 1)
+            {
+                Window window = new TypesOfPaymentListWindow();
+                window.Show();
+            }
         }
 
         private void Suppliers_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            Window window = new SuppliersListWindow();
-            window.Show();
+            if (CountForms() == 1)
+            {
+                Window window = new SuppliersListWindow();
+                window.Show();
+            }
         }
 
 

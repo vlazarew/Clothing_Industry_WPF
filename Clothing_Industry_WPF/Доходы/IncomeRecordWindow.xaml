@@ -134,10 +134,10 @@
     </Window.Resources>
     <Grid  HorizontalAlignment="Left" Width="680">
 
-        <Label Content="Месяц " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,62,0,0" Height="26" Width="52"/>
-        <Label x:Name="Header" Content="Доходы" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Height="34" Width="182"/>
-        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="209,10,0,0" VerticalAlignment="Top" Width="133" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
-        <ComboBox x:Name="comboBoxMounth" HorizontalAlignment="Left" VerticalAlignment="Top" Width="228" Margin="114,62,0,0" Height="26" RenderTransformOrigin="0.604,0.481" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+        <Label Content="Месяц " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,62,0,0" Height="26" Width="52" FontSize="14" FontFamily="Arial"/>
+        <Label x:Name="Header" Content="Доходы" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Height="34" Width="182" FontFamily="Arial"/>
+        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="207,10,0,0" VerticalAlignment="Top" Width="135" Height="30" Click="ButtonSaveAndExit_Click" IsDefault="True" FontSize="14"/>
+        <ComboBox x:Name="comboBoxMounth" HorizontalAlignment="Left" VerticalAlignment="Top" Width="228" Margin="114,62,0,0" Height="26" RenderTransformOrigin="0.604,0.481" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="14" FontFamily="Arial"/>
 
     </Grid>
 </Window>

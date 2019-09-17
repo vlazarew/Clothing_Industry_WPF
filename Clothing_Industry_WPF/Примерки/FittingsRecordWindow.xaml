@@ -138,20 +138,20 @@
             <ColumnDefinition Width="59*"/>
             <ColumnDefinition Width="29*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Никнейм заказчика " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="15,56,0,0"/>
-        <Label x:Name="Header" Content="Примерки " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Width="221"/>
-        <Label Content="Номер заказа " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="15,87,0,0"/>
-        <Label Content="Дата примерки " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="16,118,0,0"/>
+        <Label Content="Никнейм заказчика " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="15,56,0,0" FontSize="14" FontFamily="Arial"/>
+        <Label x:Name="Header" Content="Примерки " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Width="221" FontFamily="Arial"/>
+        <Label Content="Номер заказа " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="15,87,0,0" FontSize="14" FontFamily="Arial"/>
+        <Label Content="Дата примерки " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="16,118,0,0" FontSize="14" FontFamily="Arial"/>
         <!-- <Label Content="Время: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,143,0,0"/>-->
-        <Label Content="Заметки " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="15,152,0,0"/>
-        <Label Content="Тип примерки " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="15,183,0,0"/>
-        <TextBox x:Name="textBoxCustomer" HorizontalAlignment="Left" Height="26" Margin="144,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center"/>
+        <Label Content="Заметки " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="15,152,0,0" FontSize="14" FontFamily="Arial"/>
+        <Label Content="Тип примерки " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="15,183,0,0" FontSize="14" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxCustomer" HorizontalAlignment="Left" Height="26" Margin="155,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center" FontFamily="Arial"/>
         <!-- <TextBox x:Name="textBoxTime" HorizontalAlignment="Left" Height="26" Margin="72,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="270" TabIndex="4" VerticalContentAlignment="Center" FontSize="14"/> -->
-        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="144,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" TabIndex="5" VerticalContentAlignment="Center" FontSize="14"/>
-        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="259,10,0,0" VerticalAlignment="Top" Width="126" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True"/>
-        <ComboBox x:Name="comboBoxTypeOfFitting" HorizontalAlignment="Left" Margin="144,183,0,0" VerticalAlignment="Top" Width="241" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="6" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
-        <TextBox x:Name="textBoxOrder" HorizontalAlignment="Left" Height="26" Margin="144,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="241" TabIndex="2" VerticalContentAlignment="Center" FontSize="14"/>
-        <DatePicker x:Name="datePickerDate" HorizontalAlignment="Left" Margin="144,118,0,0" VerticalAlignment="Top" Width="241" VerticalContentAlignment="Center" FontSize="14" TabIndex="3"/>
+        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="155,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" TabIndex="5" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
+        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="245,10,0,0" VerticalAlignment="Top" Width="140" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True" FontSize="14"/>
+        <ComboBox x:Name="comboBoxTypeOfFitting" HorizontalAlignment="Left" Margin="155,183,0,0" VerticalAlignment="Top" Width="230" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="6" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxOrder" HorizontalAlignment="Left" Height="26" Margin="155,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
+        <DatePicker x:Name="datePickerDate" HorizontalAlignment="Left" Margin="155,118,0,0" VerticalAlignment="Top" Width="230" VerticalContentAlignment="Center" FontSize="14" TabIndex="3" FontFamily="Arial"/>
 
     </Grid>
 </Window>

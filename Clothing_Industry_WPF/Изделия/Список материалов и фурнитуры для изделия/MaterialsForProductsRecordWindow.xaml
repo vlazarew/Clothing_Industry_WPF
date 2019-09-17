@@ -138,12 +138,12 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Тип" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="17,98,0,0" Height="26" Width="130"/>
-        <Label x:Name="Header" Content="Материал " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,58,0,0" FontSize="18" Height="34" Width="340"/>
-        <Label Content="Количество " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="17,129,0,0" Height="26" Width="97"/>
-        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" Margin="147,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="2" VerticalContentAlignment="Center" FontSize="14"/>
-        <Button x:Name="buttonSave" Content="Добавить" HorizontalAlignment="Left" Margin="147,16,0,0" VerticalAlignment="Top" Width="93" Height="34" TabIndex="3" VerticalContentAlignment="Center" Click="ButtonSave_Click" IsDefault="True"/>
-        <Button Content="Отмена" HorizontalAlignment="Left" Margin="257,16,0,0" VerticalAlignment="Top" Width="93" RenderTransformOrigin="-0.694,-0.02" TabIndex="4" VerticalContentAlignment="Center" IsCancel="True" Click="Button_Click" Height="34"/>
-        <ComboBox x:Name="comboBoxName_Of_Material" HorizontalAlignment="Left" Margin="147,98,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="1" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible"/>
+        <Label Content="Тип" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="17,55,0,0" Height="26" Width="130" FontSize="14" FontFamily="Arial"/>
+        <Label x:Name="Header" Content="Материал " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,15,0,0" FontSize="18" Height="34" Width="340" FontFamily="Arial"/>
+        <Label Content="Количество " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="17,86,0,0" Height="26" Width="97" FontSize="14" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" Margin="147,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
+        <Button x:Name="buttonSave" Content="Добавить" HorizontalAlignment="Left" Margin="147,117,0,0" VerticalAlignment="Top" Width="75" Height="30" TabIndex="3" VerticalContentAlignment="Center" Click="ButtonSave_Click" IsDefault="True"/>
+        <Button Content="Отмена" HorizontalAlignment="Left" Margin="275,117,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.694,-0.02" TabIndex="4" VerticalContentAlignment="Center" IsCancel="True" Click="Button_Click" Height="30"/>
+        <ComboBox x:Name="comboBoxName_Of_Material" HorizontalAlignment="Left" Margin="147,55,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="1" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial"/>
     </Grid>
 </Window>
