@@ -142,21 +142,21 @@
     </Window.Resources>
     <Grid>
 
-        <Label x:Name="Header" Content="Клиент " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Width="293"/>
-        <Label Content="Канал заказа" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,462,0,0"/>
-        <Label Content="Фамилия" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,89,0,0"/>
-        <Label Content="Имя" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,120,0,0"/>
-        <Label Content="Отчество " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,151,0,0"/>
-        <Label Content="Обслуживающий сотрудник" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="11,493,0,0"/>
-        <Label Content="Телефон" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,213,0,0"/>
-        <Label Content="Размер" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,338,0,0"/>
-        <Label Content="Паспортные данные " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,307,0,0"/>
-        <Label Content="Заметки " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,400,0,0"/>
-        <Label Content="Фото " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="398,50,0,0" Height="24"/>
-        <Label Content="Дата рождения" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,275,0,0"/>
-        <Label Content="Статус клиента" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,431,0,0"/>
+        <Label x:Name="Header" Content="Клиент " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Width="293" FontFamily="Arial"/>
+        <Label Content="Канал заказа" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,462,0,0" FontFamily="Arial" FontSize="14"/>
+        <Label Content="Фамилия" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,89,0,0" FontFamily="Arial" FontSize="14"/>
+        <Label Content="Имя" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,120,0,0" FontFamily="Arial" FontSize="14"/>
+        <Label Content="Отчество " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,151,0,0" FontFamily="Arial" FontSize="14"/>
+        <Label Content="Обслуживающий сотрудник" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,493,0,0" FontFamily="Arial" FontSize="14" Width="191"/>
+        <Label Content="Телефон" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,213,0,0" FontFamily="Arial" FontSize="14"/>
+        <Label Content="Размер" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,338,0,0" FontFamily="Arial" FontSize="14"/>
+        <Label Content="Паспортные данные " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,307,0,0" FontFamily="Arial" FontSize="14"/>
+        <Label Content="Заметки " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,400,0,0" FontFamily="Arial" FontSize="14"/>
+        <Label Content="Фото " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="398,51,0,0" Height="35" FontSize="14" FontFamily="Arial"/>
+        <Label Content="Дата рождения" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,275,0,0" FontFamily="Arial" FontSize="14"/>
+        <Label Content="Статус клиента" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,431,0,0" FontFamily="Arial" FontSize="14"/>
 
-        <TextBox x:Name="textBoxLastname" HorizontalAlignment="Left" Height="26" Margin="188,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="1" VerticalContentAlignment="Center" FontSize="14" TextChanged="TextBox_TextChanged">
+        <TextBox x:Name="textBoxLastname" HorizontalAlignment="Left" Height="26" Margin="216,89,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="1" VerticalContentAlignment="Center" FontSize="14" TextChanged="TextBox_TextChanged" FontFamily="Arial">
             <TextBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="lastname" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" >
                     <Binding.ValidationRules  >
@@ -165,7 +165,7 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" Margin="188,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="2" VerticalContentAlignment="Center" FontSize="14">
+        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" Margin="216,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
             <TextBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="name" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" >
                     <Binding.ValidationRules  >
@@ -174,8 +174,8 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="textBoxPatronymic" HorizontalAlignment="Left" Height="26" Margin="188,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="3" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxPhone_Number" HorizontalAlignment="Left" Height="26" Margin="188,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="5" VerticalContentAlignment="Center" FontSize="14">
+        <TextBox x:Name="textBoxPatronymic" HorizontalAlignment="Left" Height="26" Margin="216,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxPhone_Number" HorizontalAlignment="Left" Height="26" Margin="216,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="5" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
             <TextBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="phoneNumber" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" >
                     <Binding.ValidationRules>
@@ -184,7 +184,7 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="textBoxSize" HorizontalAlignment="Left" Height="26" Margin="188,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="9" VerticalContentAlignment="Center" FontSize="14">
+        <TextBox x:Name="textBoxSize" HorizontalAlignment="Left" Height="26" Margin="216,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="9" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
             <TextBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="size" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" >
                     <Binding.ValidationRules  >
@@ -193,9 +193,9 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="textBoxPassportData" HorizontalAlignment="Left" Height="26" Margin="188,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="8" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="188,400,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="11" VerticalContentAlignment="Center" FontSize="14"/>
-        <DatePicker x:Name="datePickerBirthday" HorizontalAlignment="Left" Margin="188,275,0,0" VerticalAlignment="Top" Width="206" TabIndex="7" VerticalContentAlignment="Center" FontSize="14" CalendarClosed="DateTimePicker_TextChanged" KeyUp="DateTimePicker_TextChanged"/>
+        <TextBox x:Name="textBoxPassportData" HorizontalAlignment="Left" Height="26" Margin="216,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="8" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="216,400,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="11" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
+        <DatePicker x:Name="datePickerBirthday" HorizontalAlignment="Left" Margin="216,275,0,0" VerticalAlignment="Top" Width="178" TabIndex="7" VerticalContentAlignment="Center" FontSize="14" CalendarClosed="DateTimePicker_TextChanged" KeyUp="DateTimePicker_TextChanged" FontFamily="Arial"/>
 
         <Image x:Name="imagePhoto" Margin="444,51,46,62" OpacityMask="Black" Cursor="Hand" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center"/>
         <Rectangle  x:Name="Border" Stroke="Black" StrokeThickness="5" StrokeDashArray="1 1" SnapsToDevicePixels="True" Margin="444,51,46,62" MouseLeftButtonDown="ButtonAddPhoto_Click">
@@ -204,9 +204,9 @@
             </Rectangle.InputBindings>
         </Rectangle>
 
-        <Button x:Name="buttonAddPhoto" Content="Добавить фото" HorizontalAlignment="Left" Margin="723,504,0,0" VerticalAlignment="Top" Width="131" Height="34" Click="ButtonAddPhoto_Click" TabIndex="15"/>
-        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="588,10,0,0" VerticalAlignment="Top" Width="131" Height="34" Click="ButtonSaveAndExit_Click" TabIndex="16" IsDefault="True"/>
-        <ComboBox x:Name="comboBoxChannel" HorizontalAlignment="Left" Margin="188,462,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="13" RenderTransformOrigin="0.434,-1.231" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" KeyUp="ComboBox_TextChanged" DropDownClosed="ComboBox_TextChanged">
+        <Button x:Name="buttonAddPhoto" Content="Добавить фото" HorizontalAlignment="Left" Margin="714,504,0,0" VerticalAlignment="Top" Width="140" Height="34" Click="ButtonAddPhoto_Click" TabIndex="15" FontSize="14"/>
+        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="714,12,0,0" VerticalAlignment="Top" Width="140" Height="34" Click="ButtonSaveAndExit_Click" TabIndex="16" IsDefault="True" FontSize="14"/>
+        <ComboBox x:Name="comboBoxChannel" HorizontalAlignment="Left" Margin="216,462,0,0" VerticalAlignment="Top" Width="177" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="13" RenderTransformOrigin="0.434,-1.231" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" KeyUp="ComboBox_TextChanged" DropDownClosed="ComboBox_TextChanged" FontFamily="Arial">
             <ComboBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="channelName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="False">
                     <Binding.ValidationRules  >
@@ -215,7 +215,7 @@
                 </Binding>
             </ComboBox.Text>
         </ComboBox>
-        <ComboBox x:Name="comboBoxEmployee" HorizontalAlignment="Left" Margin="188,493,0,0" VerticalAlignment="Top" Width="206" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="14" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" KeyUp="ComboBox_TextChanged" DropDownClosed="ComboBox_TextChanged">
+        <ComboBox x:Name="comboBoxEmployee" HorizontalAlignment="Left" Margin="216,493,0,0" VerticalAlignment="Top" Width="178" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="14" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" KeyUp="ComboBox_TextChanged" DropDownClosed="ComboBox_TextChanged" FontFamily="Arial">
             <ComboBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="employeeLogin" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="False">
                     <Binding.ValidationRules  >
@@ -224,8 +224,8 @@
                 </Binding>
             </ComboBox.Text>
         </ComboBox>
-        <Label Content="Адрес" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,182,0,0"/>
-        <TextBox x:Name="textBoxAddress" HorizontalAlignment="Left" Height="26" Margin="188,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="4" VerticalContentAlignment="Center" FontSize="14">
+        <Label Content="Адрес" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,182,0,0" FontFamily="Arial" FontSize="14"/>
+        <TextBox x:Name="textBoxAddress" HorizontalAlignment="Left" Height="26" Margin="216,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
             <TextBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="address" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" >
                     <Binding.ValidationRules  >
@@ -234,8 +234,8 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <Label Content="Никнейм" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,244,0,0"/>
-        <TextBox x:Name="textBoxNickname" HorizontalAlignment="Left" Height="26" Margin="188,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="206" TabIndex="6" VerticalContentAlignment="Center" FontSize="14">
+        <Label Content="Никнейм" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,244,0,0" FontFamily="Arial" FontSize="14"/>
+        <TextBox x:Name="textBoxNickname" HorizontalAlignment="Left" Height="26" Margin="216,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" TabIndex="6" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
             <TextBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="nickname" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" >
                     <Binding.ValidationRules  >
@@ -244,8 +244,8 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <Label Content="Параметры" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,369,0,0"/>
-        <TextBox x:Name="textBoxParameters" HorizontalAlignment="Left" Height="26" Margin="188,369,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="10" VerticalContentAlignment="Center" FontSize="14">
+        <Label Content="Параметры" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,369,0,0" FontFamily="Arial" FontSize="14"/>
+        <TextBox x:Name="textBoxParameters" HorizontalAlignment="Left" Height="26" Margin="216,369,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="10" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
             <TextBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="parameters" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" >
                     <Binding.ValidationRules  >
@@ -254,7 +254,7 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <ComboBox x:Name="comboBoxStatus" HorizontalAlignment="Left" Margin="188,431,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="12" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" KeyUp="ComboBox_TextChanged" DropDownClosed="ComboBox_TextChanged">
+        <ComboBox x:Name="comboBoxStatus" HorizontalAlignment="Left" Margin="216,431,0,0" VerticalAlignment="Top" Width="177" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="12" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" KeyUp="ComboBox_TextChanged" DropDownClosed="ComboBox_TextChanged" FontFamily="Arial">
             <ComboBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="statusName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="False">
                     <Binding.ValidationRules  >
@@ -263,19 +263,19 @@
                 </Binding>
             </ComboBox.Text>
         </ComboBox>
-        <Label  Content="Обязательные поля помечены (*)" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="0.974,1" Margin="10,50,0,0" FontSize="12" Height="24"/>
-        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="68,89,0,0" FontSize="12" Height="26"/>
-        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="43,120,0,0" FontSize="12" Height="26"/>
-        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="52,182,0,0" FontSize="12" Height="26"/>
-        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="67,213,0,0" FontSize="12" Height="26"/>
-        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="68,244,0,0" FontSize="12" Height="26"/>
-        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="60,338,0,0" FontSize="12" Height="26"/>
-        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="83,369,0,0" FontSize="12" Height="26"/>
-        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="102,431,0,0" FontSize="12" Height="26"/>
-        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="91,462,0,0" FontSize="12" Height="26"/>
-        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="173,493,0,0" FontSize="12" Height="26"/>
-        <Button x:Name="buttonSave" Content="Сохранить" HorizontalAlignment="Left" Margin="444,10,0,0" VerticalAlignment="Top" Width="131" Height="34" TabIndex="16" Click="ButtonSave_Click"/>
-        <Button x:Name="buttonExit" Content="Выйти" HorizontalAlignment="Left" Margin="731,10,0,0" VerticalAlignment="Top" Width="131" Height="34" TabIndex="16" IsCancel="True" Click="ButtonExit_Click"/>
+        <Label  Content="Обязательные поля помечены (*)" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="0.974,1" Margin="10,50,0,0" FontSize="12" Height="24" FontFamily="Arial"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="79,89,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="47,120,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="17"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="60,182,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="78,213,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="70,244,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="68,338,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="95,369,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="120,431,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="106,462,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="201,493,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+        <Button Visibility="Hidden" x:Name="buttonSave" Content="Сохранить" HorizontalAlignment="Left" Margin="444,10,0,0" VerticalAlignment="Top" Width="131" Height="34" TabIndex="16" Click="ButtonSave_Click" FontSize="14"/>
+        <Button  Visibility="Hidden" x:Name="buttonExit" Content="Выйти" HorizontalAlignment="Left" Margin="731,10,0,0" VerticalAlignment="Top" Width="131" Height="34" TabIndex="16" IsCancel="True" Click="ButtonExit_Click"/>
 
     </Grid>
 </Window>
