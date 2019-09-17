@@ -197,12 +197,16 @@
         <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="188,400,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="11" VerticalContentAlignment="Center" FontSize="14"/>
         <DatePicker x:Name="datePickerBirthday" HorizontalAlignment="Left" Margin="188,275,0,0" VerticalAlignment="Top" Width="206" TabIndex="7" VerticalContentAlignment="Center" FontSize="14" CalendarClosed="DateTimePicker_TextChanged" KeyUp="DateTimePicker_TextChanged"/>
 
-        <Image x:Name="imagePhoto" Height="448" Margin="444,51,46,0" VerticalAlignment="Top" OpacityMask="Black" Cursor="Hand" RenderTransformOrigin="0.5,0.5"/>
-        <Rectangle  x:Name="Border" Stroke="Black" StrokeThickness="5" StrokeDashArray="1 1" SnapsToDevicePixels="True" Margin="444,51,46,62"/>
+        <Image x:Name="imagePhoto" Margin="444,51,46,62" OpacityMask="Black" Cursor="Hand" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center"/>
+        <Rectangle  x:Name="Border" Stroke="Black" StrokeThickness="5" StrokeDashArray="1 1" SnapsToDevicePixels="True" Margin="444,51,46,62" MouseLeftButtonDown="ButtonAddPhoto_Click">
+            <Rectangle.InputBindings>
+                <MouseBinding Gesture="LeftClick" Command="{Binding FooCommand}"/>
+            </Rectangle.InputBindings>
+        </Rectangle>
 
         <Button x:Name="buttonAddPhoto" Content="Добавить фото" HorizontalAlignment="Left" Margin="723,504,0,0" VerticalAlignment="Top" Width="131" Height="34" Click="ButtonAddPhoto_Click" TabIndex="15"/>
-        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="723,10,0,0" VerticalAlignment="Top" Width="131" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True" TabIndex="16"/>
-        <ComboBox x:Name="comboBoxChannel" HorizontalAlignment="Left" Margin="188,462,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="13" RenderTransformOrigin="0.434,-1.231" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible">
+        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="588,10,0,0" VerticalAlignment="Top" Width="131" Height="34" Click="ButtonSaveAndExit_Click" TabIndex="16" IsDefault="True"/>
+        <ComboBox x:Name="comboBoxChannel" HorizontalAlignment="Left" Margin="188,462,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="13" RenderTransformOrigin="0.434,-1.231" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" KeyUp="ComboBox_TextChanged" DropDownClosed="ComboBox_TextChanged">
             <ComboBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="channelName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="False">
                     <Binding.ValidationRules  >
@@ -211,9 +215,9 @@
                 </Binding>
             </ComboBox.Text>
         </ComboBox>
-        <ComboBox x:Name="comboBoxEmployee" HorizontalAlignment="Left" Margin="188,493,0,0" VerticalAlignment="Top" Width="206" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="14" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible">
+        <ComboBox x:Name="comboBoxEmployee" HorizontalAlignment="Left" Margin="188,493,0,0" VerticalAlignment="Top" Width="206" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="14" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" KeyUp="ComboBox_TextChanged" DropDownClosed="ComboBox_TextChanged">
             <ComboBox.Text>
-                <Binding Source="{StaticResource Customer}" Path="employeeName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="False">
+                <Binding Source="{StaticResource Customer}" Path="employeeLogin" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="False">
                     <Binding.ValidationRules  >
                         <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Обслуживающий сотрудник должен быть заполнен"/>
                     </Binding.ValidationRules>
@@ -250,7 +254,7 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <ComboBox x:Name="comboBoxStatus" HorizontalAlignment="Left" Margin="188,431,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="12" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" KeyUp="ComboBox_TextChanged">
+        <ComboBox x:Name="comboBoxStatus" HorizontalAlignment="Left" Margin="188,431,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="12" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" KeyUp="ComboBox_TextChanged" DropDownClosed="ComboBox_TextChanged">
             <ComboBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="statusName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="False">
                     <Binding.ValidationRules  >
@@ -270,6 +274,8 @@
         <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="102,431,0,0" FontSize="12" Height="26"/>
         <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="91,462,0,0" FontSize="12" Height="26"/>
         <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="173,493,0,0" FontSize="12" Height="26"/>
+        <Button x:Name="buttonSave" Content="Сохранить" HorizontalAlignment="Left" Margin="444,10,0,0" VerticalAlignment="Top" Width="131" Height="34" TabIndex="16" Click="ButtonSave_Click"/>
+        <Button x:Name="buttonExit" Content="Выйти" HorizontalAlignment="Left" Margin="731,10,0,0" VerticalAlignment="Top" Width="131" Height="34" TabIndex="16" IsCancel="True" Click="ButtonExit_Click"/>
 
     </Grid>
 </Window>
