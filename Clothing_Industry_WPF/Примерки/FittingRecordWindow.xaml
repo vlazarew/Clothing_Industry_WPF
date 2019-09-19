@@ -169,15 +169,15 @@
                 </Binding>
             </ComboBox.Text>
         </ComboBox>
-        <TextBox x:Name="textBoxOrder" HorizontalAlignment="Left" Height="26" Margin="155,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="230" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
-            <TextBox.Text>
+        <ComboBox x:Name="comboBoxOrder" HorizontalAlignment="Left" Height="26" Margin="155,59,0,0" VerticalAlignment="Top" Width="230" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" IsEditable="True">
+            <ComboBox.Text>
                 <Binding Source="{StaticResource Fitting}" Path="orderId" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
                         <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" MinimumValue="1" ErrorMessage="Номер заказа должен быть заполнен"/>
                     </Binding.ValidationRules>
                 </Binding>
-            </TextBox.Text>
-        </TextBox>
+            </ComboBox.Text>
+        </ComboBox>
         <DatePicker x:Name="datePickerDate" HorizontalAlignment="Left" Margin="155,90,0,0" VerticalAlignment="Top" Width="230" VerticalContentAlignment="Center" FontSize="14" TabIndex="3" FontFamily="Arial">
             <DatePicker.SelectedDate>
                 <Binding Source="{StaticResource Fitting}" Path="date" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">

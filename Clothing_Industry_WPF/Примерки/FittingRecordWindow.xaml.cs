@@ -64,7 +64,7 @@ namespace Clothing_Industry_WPF.Примерки
                 while (reader.Read())
                 {
                     //textBoxCustomer.Text = reader.GetString(0);
-                    textBoxOrder.Text = reader.GetString(1);
+                    comboBoxOrder.SelectedValue = reader.GetString(1);
                     comboBoxTypeOfFitting.SelectedValue = reader.GetString(2);
                     datePickerDate.SelectedDate = DateTime.Parse(reader.GetString(3));
                     //textBoxTime.Text = reader.GetString(4);
@@ -109,6 +109,17 @@ namespace Clothing_Industry_WPF.Примерки
                 while (reader.Read())
                 {
                     comboBoxTypeOfFitting.Items.Add(reader.GetString(0));
+                }
+            }
+
+            string queryIdOrder = "select id_Order from orders";
+            MySqlCommand commandIdOrder = new MySqlCommand(queryIdOrder, connection);
+
+            using (DbDataReader reader = commandIdOrder.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    comboBoxOrder.Items.Add(reader.GetInt32(0));
                 }
             }
 
@@ -173,13 +184,13 @@ namespace Clothing_Industry_WPF.Примерки
             if (way == WaysToOpenForm.WaysToOpen.create)
             {
                 query = "INSERT INTO fittings " +
-                        "(Customers_id_Customer, Orders_id_Order, Date," +
+                        "(Orders_id_Order, Date," +
                         " Time, Notes, Types_Of_Fitting_id_Type_Of_Fitting) " +
-                        " VALUES (@customer, @orderId, @date, @time, @notes, @type_of_Fitting) ; ";
+                        " VALUES (@orderId, @date, @time, @notes, @type_of_Fitting) ; ";
             }
             if (way == WaysToOpenForm.WaysToOpen.edit)
             {
-                query = "Update fittings set Customers_id_Customer = @customer, Orders_id_Order = @orderId, Date = @date, " +
+                query = "Update fittings set Orders_id_Order = @orderId, Date = @date, " +
                         "Time = @time, Notes = @notes, Types_Of_Fitting_id_Type_Of_Fitting = @type_of_Fitting " +
                         " where Orders_id_Order = @orderId and Customers_id_Customer = @customer ;";
             }
@@ -202,10 +213,10 @@ namespace Clothing_Industry_WPF.Примерки
             }
 
             command.Parameters.AddWithValue("@type_of_Fitting", id_type);
-            command.Parameters.AddWithValue("@orderId", int.Parse(textBoxOrder.Text));
+            command.Parameters.AddWithValue("@orderId", int.Parse(comboBoxOrder.SelectedValue.ToString()));
 
-            MySqlCommand commandCustomer = new MySqlCommand("select id_Customer from customers where nickname = @nickname", connection);
-            //commandCustomer.Parameters.AddWithValue("@nickname", textBoxCustomer.Text);
+            /*MySqlCommand commandCustomer = new MySqlCommand("select id_Customer from customers where nickname = @nickname", connection);
+            commandCustomer.Parameters.AddWithValue("@nickname", textBoxCustomer.Text);
             int id_customer = -1;
             using (DbDataReader reader = commandCustomer.ExecuteReader())
             {
@@ -215,7 +226,7 @@ namespace Clothing_Industry_WPF.Примерки
                 }
             }
 
-            command.Parameters.AddWithValue("@customer", id_customer);
+            command.Parameters.AddWithValue("@customer", id_customer);*/
 
             return command;
         }
