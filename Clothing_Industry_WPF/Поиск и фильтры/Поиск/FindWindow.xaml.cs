@@ -90,6 +90,7 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
                 comboBoxField.Items.Add(pair.application_name);
             }
             comboBoxField.SelectedIndex = 0;
+            textBoxValue.Focus();
         }
 
         private void ComboBoxField_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -109,6 +110,7 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
                 radioButtonExact.IsEnabled = false;
                 radioButtonExact.IsChecked = true;
                 radioButtonPart.IsEnabled = false;
+                datePicker.Focus();
             }
             else
             {
@@ -135,6 +137,7 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
                     radioButtonExact.IsEnabled = true;
                     radioButtonPart.IsEnabled = true;
                 }
+                textBoxValue.Focus();
             }
         }
 

@@ -418,14 +418,14 @@ namespace Clothing_Industry_WPF.Клиенты
 
             result.Add(new FindHandler.FieldParameters("customers.Lastname", "Фамилия", describe.Where(key => key.Key == "Lastname").First().Value));
             result.Add(new FindHandler.FieldParameters("customers.Name", "Имя", describe.Where(key => key.Key == "Name").First().Value));
-            result.Add(new FindHandler.FieldParameters("Patronymic", "Отчество", describe.Where(key => key.Key == "Patronymic").First().Value));
-            result.Add(new FindHandler.FieldParameters("Address", "Адрес", describe.Where(key => key.Key == "Address").First().Value));
-            result.Add(new FindHandler.FieldParameters("Phone_Number", "Телефон", describe.Where(key => key.Key == "Phone_Number").First().Value));
-            result.Add(new FindHandler.FieldParameters("Nickname", "Никнейм", describe.Where(key => key.Key == "Nickname").First().Value));
-            result.Add(new FindHandler.FieldParameters("Birthday", "Дата рождения", describe.Where(key => key.Key == "Birthday").First().Value));
-            result.Add(new FindHandler.FieldParameters("Passport_data", "Паспортные данные", describe.Where(key => key.Key == "Passport_data").First().Value));
-            result.Add(new FindHandler.FieldParameters("Size", "Размер", describe.Where(key => key.Key == "Size").First().Value));
-            result.Add(new FindHandler.FieldParameters("Parameters", "Параметры", describe.Where(key => key.Key == "Parameters").First().Value));
+            result.Add(new FindHandler.FieldParameters("customer.Patronymic", "Отчество", describe.Where(key => key.Key == "Patronymic").First().Value));
+            result.Add(new FindHandler.FieldParameters("customers.Address", "Адрес", describe.Where(key => key.Key == "Address").First().Value));
+            result.Add(new FindHandler.FieldParameters("customers.Phone_Number", "Телефон", describe.Where(key => key.Key == "Phone_Number").First().Value));
+            result.Add(new FindHandler.FieldParameters("customers.Nickname", "Никнейм", describe.Where(key => key.Key == "Nickname").First().Value));
+            result.Add(new FindHandler.FieldParameters("customers.Birthday", "Дата рождения", describe.Where(key => key.Key == "Birthday").First().Value));
+            result.Add(new FindHandler.FieldParameters("customers.Passport_data", "Паспортные данные", describe.Where(key => key.Key == "Passport_data").First().Value));
+            result.Add(new FindHandler.FieldParameters("customers.Size", "Размер", describe.Where(key => key.Key == "Size").First().Value));
+            result.Add(new FindHandler.FieldParameters("customers.Parameters", "Параметры", describe.Where(key => key.Key == "Parameters").First().Value));
             result.Add(new FindHandler.FieldParameters("Name_of_status", "Статус", describe.Where(key => key.Key == "Name_of_status").First().Value));
             result.Add(new FindHandler.FieldParameters("Name_of_channel", "Канал связи", describe.Where(key => key.Key == "Name_of_channel").First().Value));
             result.Add(new FindHandler.FieldParameters("Login", "Логин", describe.Where(key => key.Key == "Login").First().Value));

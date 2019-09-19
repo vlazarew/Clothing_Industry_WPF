@@ -105,9 +105,8 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры.Фильтр
             }
 
             comboBoxTypeOfFilter.SelectedIndex = 0;
+            textBoxValue.Focus();
         }
-
-
 
         private void setNewTitle()
         {
@@ -157,6 +156,7 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры.Фильтр
                 textBoxValue.Visibility = Visibility.Hidden;
                 isDate = true;
                 isNumber = false;
+                datePickerValue.Focus();
             }
             else
             {
@@ -176,6 +176,7 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры.Фильтр
                     isDate = false;
                     isNumber = false;
                 }
+                textBoxValue.Focus();
             }
         }
 

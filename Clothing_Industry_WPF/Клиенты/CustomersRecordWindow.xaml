@@ -255,7 +255,7 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <ComboBox x:Name="comboBoxStatus" HorizontalAlignment="Left" Margin="216,431,0,0" VerticalAlignment="Top" Width="177" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="12" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" KeyUp="ComboBox_TextChanged" DropDownClosed="ComboBox_TextChanged" FontFamily="Arial">
+        <ComboBox x:Name="comboBoxStatus" HorizontalAlignment="Left" Margin="216,431,0,0" VerticalAlignment="Top" Width="177" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="12" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" KeyUp="ComboBox_TextChanged" FontFamily="Arial">
             <ComboBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="statusName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" IsAsync="False">
                     <Binding.ValidationRules  >

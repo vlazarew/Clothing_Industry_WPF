@@ -9,6 +9,7 @@ using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Clothing_Industry_WPF.Поиск_и_фильтры
 {
@@ -108,6 +109,11 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
             connection.Open();
             var dataTable = FormLoader.ExecuteQuery(result.editedQuery, connection);
             connection.Close();
+
+            if (dataTable.Rows.Count == 0)
+            {
+                MessageBox.Show("По отобранному значению ничего не найдено", "Нет строк", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
 
             return (dataTable: dataTable, findDescription: result.findDescription);
         }
