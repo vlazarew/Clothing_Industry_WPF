@@ -22,7 +22,6 @@ namespace Clothing_Industry_WPF.Изделия
     /// </summary>
     public partial class MaterialsForProductRecordWindow : Window
     {
-        private static readonly Regex _regex = new Regex("[^0-9]");
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private int productId;
 
@@ -58,17 +57,7 @@ namespace Clothing_Industry_WPF.Изделия
             this.Close();
         }
 
-        private void TextBoxCount_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-
-            e.Handled = !IsTextAllowed(e.Text);
-
-        }
-
-        private static bool IsTextAllowed(string text)
-        {
-            return true;
-        }
+       
 
         private string CheckData()
         {
@@ -89,15 +78,9 @@ namespace Clothing_Industry_WPF.Изделия
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             string warning = CheckData();
-            try
-            {
-                float count = float.Parse(textBoxCount.Text);
-            }
-            catch
-            {
-                warning = "Ошибка! Неправильный формат.";
-            }
-            if (warning == "")
+            float count;
+
+            if ((warning == "")&&((float.TryParse(textBoxCount.Text, out count))))
             {
                 MySqlConnection connection = new MySqlConnection(connectionString);
                 connection.Open();
@@ -106,7 +89,7 @@ namespace Clothing_Industry_WPF.Изделия
                 string query = "insert into materials_for_product (Products_id_Product, Groups_Of_Material_id_Group_Of_Material, Count) values (@productId, @name, @count) ";
                 MySqlCommand command = new MySqlCommand(query, connection, transaction);
                 command.Parameters.AddWithValue("@productId", productId);
-                command.Parameters.AddWithValue("@count", float.Parse(textBoxCount.Text));
+                command.Parameters.AddWithValue("@count", count);
                 command.Parameters.AddWithValue("@name", comboBoxName_Of_Material.SelectedIndex + 1);
 
                 try
