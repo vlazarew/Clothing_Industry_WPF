@@ -67,7 +67,7 @@ namespace Clothing_Industry_WPF.Изделия
 
         private static bool IsTextAllowed(string text)
         {
-            return !_regex.IsMatch(text);
+            return true;
         }
 
         private string CheckData()
@@ -89,6 +89,14 @@ namespace Clothing_Industry_WPF.Изделия
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
             string warning = CheckData();
+            try
+            {
+                float count = float.Parse(textBoxCount.Text);
+            }
+            catch
+            {
+                warning = "Ошибка! Неправильный формат.";
+            }
             if (warning == "")
             {
                 MySqlConnection connection = new MySqlConnection(connectionString);
@@ -99,7 +107,7 @@ namespace Clothing_Industry_WPF.Изделия
                 MySqlCommand command = new MySqlCommand(query, connection, transaction);
                 command.Parameters.AddWithValue("@productId", productId);
                 command.Parameters.AddWithValue("@count", float.Parse(textBoxCount.Text));
-                command.Parameters.AddWithValue("@name", comboBoxName_Of_Material.SelectedIndex+1);
+                command.Parameters.AddWithValue("@name", comboBoxName_Of_Material.SelectedIndex + 1);
 
                 try
                 {
