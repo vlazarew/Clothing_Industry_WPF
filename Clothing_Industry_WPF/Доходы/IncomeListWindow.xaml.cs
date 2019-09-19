@@ -85,7 +85,7 @@ namespace Clothing_Industry_WPF.Доходы
             Window create_window = new IncomeRecordWindow(WaysToOpenForm.WaysToOpen.create);
             create_window.ShowDialog();
             string mounth = (csMounth.MounthOfIncome + 1).ToString();
-            string query_text = "select orders.id_Order as id,orders.Total_Price as Count  from orders " +
+            string query_text = "select orders.id_Order as id, orders.Total_Price as Count from orders " +
                                 "where month(orders.Date_Of_Delievery) = " + mounth + " and (orders.Statuses_Of_Order_id_Status_Of_Order = 2 or " +
                                 "orders.Statuses_Of_Order_id_Status_Of_Order = 3 or " +
                                 "orders.Statuses_Of_Order_id_Status_Of_Order = 4) and year(orders.Date_Of_Delievery) = year(curdate()); ";
@@ -93,7 +93,7 @@ namespace Clothing_Industry_WPF.Доходы
             float count = 0;
             foreach (DataRowView row in incomeGrid.Items)
             {
-                count = count + (float)row.Row.ItemArray[1];
+                count += (float)row.Row.ItemArray[1];
             }
             textBoxPlus.Text = count.ToString();
             textBoxCount.Text = count.ToString();

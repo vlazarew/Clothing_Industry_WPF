@@ -111,14 +111,14 @@ insert into orders (Date_Of_Order,Discount_Per_Cent,Total_Price,Paid,Debt,Date_O
 
 -- Примерки
 
-insert into fittings(Customers_id_Customer, Orders_id_Order, Date, Time, Notes, Types_Of_Fitting_id_Type_Of_Fitting)
-	values (1, 1, '2019-06-05', '14:00:00', '', 1);
+insert into fittings(Orders_id_Order, Date, Time, Notes, Types_Of_Fitting_id_Type_Of_Fitting)
+	values (1, '2019-06-05', '14:00:00', '', 1);
     
-insert into fittings(Customers_id_Customer, Orders_id_Order, Date, Time, Notes, Types_Of_Fitting_id_Type_Of_Fitting)
-	values (2, 3, '2019-05-20', '18:00:00', '', 2);
+insert into fittings(Orders_id_Order, Date, Time, Notes, Types_Of_Fitting_id_Type_Of_Fitting)
+	values (3, '2019-05-20', '18:00:00', '', 2);
     
-insert into fittings(Customers_id_Customer, Orders_id_Order, Date, Time, Notes, Types_Of_Fitting_id_Type_Of_Fitting)
-	values (3, 3, '2019-06-05', '12:30:00', '', 3);
+insert into fittings(Orders_id_Order, Date, Time, Notes, Types_Of_Fitting_id_Type_Of_Fitting)
+	values (3, '2019-06-05', '12:30:00', '', 3);
 
 -- Документ прихода
 

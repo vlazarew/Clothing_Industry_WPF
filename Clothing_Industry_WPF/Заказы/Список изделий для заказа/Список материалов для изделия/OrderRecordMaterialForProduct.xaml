@@ -4,9 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Заказы.Список_изделий_для_заказа"
+        xmlns:validators="clr-namespace:Clothing_Industry_WPF.Общее.Работа_с_формами"
+        xmlns:validators1="clr-namespace:Clothing_Industry_WPF.Заказы.Список_изделий_для_заказа.Список_материалов_для_изделия"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
      Title="Материал" Height="173.256" Width="368.182">
     <Window.Resources>
+        <validators1:OrderMaterialForProduct x:Key="OrderMaterialForProduct"/>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
             <GradientStop Color="Transparent" Offset="0.4" />
@@ -143,6 +146,15 @@
 
         <Button x:Name="buttonSave" Content="Добавить" HorizontalAlignment="Left" Margin="147,88,0,0" VerticalAlignment="Top" Width="93" Height="30" TabIndex="3" VerticalContentAlignment="Center" Click="ButtonSave_Click" IsDefault="True" RenderTransformOrigin="0.458,1.951" FontSize="14"/>
         <Button Content="Отмена" HorizontalAlignment="Left" Margin="255,88,0,0" VerticalAlignment="Top" Width="93" RenderTransformOrigin="-0.694,-0.02" TabIndex="4" VerticalContentAlignment="Center" IsCancel="True" Click="Button_Click" Height="30" FontSize="14"/>
-        <ComboBox x:Name="comboBoxName_Of_Material" HorizontalAlignment="Left" Margin="147,49,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="1" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial"/>
+        <ComboBox x:Name="comboBoxName_Of_Material" HorizontalAlignment="Left" Margin="147,49,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="1" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial">
+            <ComboBox.Text>
+                <Binding Source="{StaticResource OrderMaterialForProduct}" Path="NameOfMaterial" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                    <Binding.ValidationRules  >
+                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Название материала должно быть заполнено"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </ComboBox.Text>
+
+        </ComboBox>
     </Grid>
 </Window>

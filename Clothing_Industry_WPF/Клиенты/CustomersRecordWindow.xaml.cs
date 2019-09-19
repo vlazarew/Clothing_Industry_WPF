@@ -33,6 +33,7 @@ namespace Clothing_Industry_WPF.Клиенты
 
         public CustomersRecordWindow(WaysToOpenForm.WaysToOpen waysToOpen, int id = -1)
         {
+            customer = new Customer();
             InitializeComponent();
             way = waysToOpen;
             connection = new MySqlConnection(connectionString);
@@ -44,7 +45,6 @@ namespace Clothing_Industry_WPF.Клиенты
             datePickerBirthday.Text = DateTime.Now.ToLongDateString();
 
             FillComboBoxes();
-            customer = new Customer();
 
             if (idRecord != -1)
             {
@@ -157,7 +157,7 @@ namespace Clothing_Industry_WPF.Клиенты
                     customer.patronymic = value;
                     break;
                 case "textBoxAddress":
-                    customer.patronymic = value;
+                    customer.address = value;
                     break;
                 case "textBoxPhone_Number":
                     customer.phoneNumber = value;
@@ -235,25 +235,27 @@ namespace Clothing_Industry_WPF.Клиенты
                 case "comboBoxChannel":
                     if (comboBoxChannel.Items.IndexOf(value) != -1)
                     {
-                        customer.statusName = value;
+                        customer.channelName = value;
                     }
                     break;
                 case "comboBoxEmployee":
                     if (comboBoxEmployee.Items.IndexOf(value) != -1)
                     {
-                        customer.statusName = value;
+                        customer.employeeLogin = value;
                     }
                     break;
             }
         }
 
-
         #endregion
 
         private void ButtonSaveAndExit_Click(object sender, RoutedEventArgs e)
         {
-            customer.Save(connection, way);
-            this.Close();
+            // Истина - сохранение прошло успешно, ложь - если проблемы
+            if (customer.Save(connection, way))
+            {
+                this.Close();
+            }
         }
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
@@ -265,7 +267,5 @@ namespace Clothing_Industry_WPF.Клиенты
         {
             this.Close();
         }
-
-
     }
 }

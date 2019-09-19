@@ -4,9 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Доходы"
+        xmlns:validators="clr-namespace:Clothing_Industry_WPF.Доходы"
+        xmlns:validators1="clr-namespace:Clothing_Industry_WPF.Общее.Работа_с_формами"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
          Title="Доходы" Height="148.765" Width="368.414">
     <Window.Resources>
+        <validators:Income x:Key="Income" month=""/>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
             <GradientStop Color="Transparent" Offset="0.4" />
@@ -131,13 +134,30 @@
             </Setter>
         </Style>
 
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                    <Setter Property="Foreground" Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
     </Window.Resources>
     <Grid  HorizontalAlignment="Left" Width="680">
 
         <Label Content="Месяц " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,62,0,0" Height="26" Width="52" FontSize="14" FontFamily="Arial"/>
         <Label x:Name="Header" Content="Доходы" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Height="34" Width="182" FontFamily="Arial"/>
         <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="207,10,0,0" VerticalAlignment="Top" Width="135" Height="30" Click="ButtonSaveAndExit_Click" IsDefault="True" FontSize="14"/>
-        <ComboBox x:Name="comboBoxMounth" HorizontalAlignment="Left" VerticalAlignment="Top" Width="228" Margin="114,62,0,0" Height="26" RenderTransformOrigin="0.604,0.481" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="14" FontFamily="Arial"/>
+        <ComboBox x:Name="comboBoxMounth" HorizontalAlignment="Left" VerticalAlignment="Top" Width="228" Margin="114,62,0,0" Height="26" RenderTransformOrigin="0.604,0.481" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center">
+            <ComboBox.Text>
+                <Binding Source="{StaticResource Income}" Path="month" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                    <Binding.ValidationRules  >
+                        <validators1:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Месяц должен быть заполнен"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </ComboBox.Text>
+        </ComboBox>
 
     </Grid>
 </Window>

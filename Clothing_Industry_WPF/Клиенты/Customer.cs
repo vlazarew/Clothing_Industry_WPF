@@ -63,6 +63,7 @@ namespace Clothing_Industry_WPF.Клиенты
         // Конструктор по айди (запрос в базу)
         public Customer(int id, MySqlConnection connection)
         {
+            this.id = id;
             string query_text = "SELECT customers.id_Customer, customers.Name, customers.Lastname, customers.Patronymic, customers.Address, customers.Phone_Number, customers.Nickname, " +
                                 "DATE_FORMAT(customers.Birthday, \"%d.%m.%Y\") as Birthday, customers.Passport_data, customers.Size, customers.Parameters, customers.Notes, customer_statuses.Name_Of_Status, " +
                                 "order_channels.Name_of_channel, employees.Login, customers.Photo, customer_statuses.id_Status, order_channels.id_Channel " +
@@ -170,7 +171,7 @@ namespace Clothing_Industry_WPF.Клиенты
         }
 
         // Вызов сохранения и прогон по всей логике
-        public void Save(MySqlConnection connection, WaysToOpenForm.WaysToOpen way)
+        public bool Save(MySqlConnection connection, WaysToOpenForm.WaysToOpen way)
         {
             string warning = CheckData();
             if (warning == "")
@@ -185,18 +186,16 @@ namespace Clothing_Industry_WPF.Клиенты
                 try
                 {
                     command.ExecuteNonQuery();
-                    transaction.Commit();
                 }
                 catch
                 {
                     transaction.Rollback();
-                    System.Windows.MessageBox.Show("Ошибка сохранения!", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
+                    System.Windows.MessageBox.Show("Ошибка сохранения клиента в базе!", "Ошибка сохранения", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
 
                 if (way == WaysToOpenForm.WaysToOpen.create)
                 {
                     // Если создаем клиента, то добавляем его в таблицу Балансы клиентов 
-                    transaction = connection.BeginTransaction();
                     string query_max_id = "SELECT max(customers.id_Customer) FROM main_database.customers";
                     MySqlCommand commandFindId = new MySqlCommand(query_max_id, connection, transaction);
                     int findId = -1;
@@ -209,9 +208,11 @@ namespace Clothing_Industry_WPF.Клиенты
                         }
                     }
 
+                    // Мы сначала создали клиента, берем его id, и с таким же id добавляем в эту таблицу.
+                    // Написал настолько непонятно, что аж сам запутался
                     string query_balance = "Insert into customers_balance (Customers_id_Customer, Accured, Paid, Debt) values (@id, 0, 0, 0)";
                     MySqlCommand commandFillBalance = new MySqlCommand(query_balance, connection, transaction);
-                    commandFillBalance.Parameters.AddWithValue("@id", findId + 1);
+                    commandFillBalance.Parameters.AddWithValue("@id", findId);
                     // Конец блока, дальше само выполнение sql комманд
 
                     try
@@ -222,16 +223,23 @@ namespace Clothing_Industry_WPF.Клиенты
                     catch
                     {
                         transaction.Rollback();
-                        System.Windows.MessageBox.Show("Ошибка сохранения!", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
+                        System.Windows.MessageBox.Show("Ошибка сохранения баланса клиента в базе", "Ошибка сохранения!", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
+                }
+                else
+                {
+                    transaction.Commit();
                 }
 
                 connection.Close();
+                return true;
             }
             else
             {
                 System.Windows.MessageBox.Show(warning, "Не заполнены обязательные поля", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+            return false;
         }
 
         // Генерация команды сохранения в БД

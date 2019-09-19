@@ -31,9 +31,9 @@ namespace Clothing_Industry_WPF.Заказы
     }
 
     /// <summary>
-    /// Логика взаимодействия для OrderProductsListWindow.xaml
+    /// Логика взаимодействия для OrderProductListWindow.xaml
     /// </summary>
-    public partial class OrderProductsListWindow : Window
+    public partial class OrderProductListWindow : Window
     {
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private ObservableCollection<HelpStruct> collection;
@@ -41,7 +41,7 @@ namespace Clothing_Industry_WPF.Заказы
 
         public bool Result { get; set; }
 
-        public OrderProductsListWindow(int orderId)
+        public OrderProductListWindow(int orderId)
         {
             InitializeComponent();
             collection = new ObservableCollection<HelpStruct>();

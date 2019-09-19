@@ -7,7 +7,7 @@ using Clothing_Industry_WPF.Материал;
 using Clothing_Industry_WPF.Начисление_ЗП;
 using Clothing_Industry_WPF.Отпуска;
 using Clothing_Industry_WPF.Примерки;
-using Clothing_Industry_WPF.Приход_материала;
+using Clothing_Industry_WPF.Приход_материалов;
 using Clothing_Industry_WPF.Расходы;
 using Clothing_Industry_WPF.Состояние_склада;
 using Clothing_Industry_WPF.Сотрудники;
@@ -90,7 +90,7 @@ namespace Clothing_Industry_WPF
         {
             if (CountForms() == 1)
             {
-                Window window_workers = new EmployeesListWindow();
+                Window window_workers = new EmployeeListWindow();
                 window_workers.Show();
             }
 
@@ -101,7 +101,7 @@ namespace Clothing_Industry_WPF
         {
             if (CountForms() == 1)
             {
-                Window window_materials = new MaterialsListWindow();
+                Window window_materials = new MaterialListWindow();
                 window_materials.Show();
             }
         }
@@ -141,7 +141,7 @@ namespace Clothing_Industry_WPF
         {
             if (CountForms() == 1)
             {
-                Window window_orders = new OrdersListWindow();
+                Window window_orders = new OrderListWindow();
                 window_orders.Show();
             }
         }
@@ -151,7 +151,7 @@ namespace Clothing_Industry_WPF
         {
             if (CountForms() == 1)
             {
-                Window window_receipt = new ReceiptsOfMaterialsWindow();
+                Window window_receipt = new ReceiptOfMaterialsListWindow();
                 window_receipt.Show();
             }
         }
@@ -161,7 +161,7 @@ namespace Clothing_Industry_WPF
         {
             if (CountForms() == 1)
             {
-                Window window_products = new ProductsListWindow();
+                Window window_products = new ProductListWindow();
                 window_products.Show();
             }
         }
@@ -171,7 +171,7 @@ namespace Clothing_Industry_WPF
         {
             if (CountForms() == 1)
             {
-                Window window_fittings = new FittingsListWindow();
+                Window window_fittings = new FittingListWindow();
                 window_fittings.Show();
             }
         }
@@ -181,7 +181,7 @@ namespace Clothing_Industry_WPF
         {
             if (CountForms() == 1)
             {
-                Window window_payrolls = new PayrollsListWindow();
+                Window window_payrolls = new PayrollListWindow();
                 window_payrolls.Show();
             }
         }

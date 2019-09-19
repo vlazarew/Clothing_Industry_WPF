@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace Clothing_Industry_WPF.Клиенты
+namespace Clothing_Industry_WPF.Общее.Работа_с_формами
 {
     public class TextBoxValidator : ValidationRule
     {

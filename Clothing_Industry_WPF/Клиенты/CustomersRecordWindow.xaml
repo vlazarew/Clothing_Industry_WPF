@@ -3,12 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:validators="clr-namespace:Clothing_Industry_WPF.Клиенты"
+        xmlns:validators="clr-namespace:Clothing_Industry_WPF.Общее.Работа_с_формами"
+        xmlns:validators1="clr-namespace:Clothing_Industry_WPF.Клиенты"
         ResizeMode="NoResize"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="Клиент" Height="589.757" Width="914.5">
     <Window.Resources>
-        <validators:Customer x:Key="Customer" lastname="" name="" address="" phoneNumber="" nickname="" size="0"/>
+        <validators1:Customer x:Key="Customer"/>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
             <GradientStop Color="Transparent" Offset="0.4" />
@@ -165,7 +166,7 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" Margin="216,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Height="26" Margin="216,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" TextChanged="TextBox_TextChanged">
             <TextBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="name" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" >
                     <Binding.ValidationRules  >
@@ -174,8 +175,8 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="textBoxPatronymic" HorizontalAlignment="Left" Height="26" Margin="216,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
-        <TextBox x:Name="textBoxPhone_Number" HorizontalAlignment="Left" Height="26" Margin="216,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="5" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+        <TextBox x:Name="textBoxPatronymic" HorizontalAlignment="Left" Height="26" Margin="216,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="textBoxPhone_Number" HorizontalAlignment="Left" Height="26" Margin="216,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="5" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" TextChanged="TextBox_TextChanged">
             <TextBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="phoneNumber" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" >
                     <Binding.ValidationRules>
@@ -184,7 +185,7 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="textBoxSize" HorizontalAlignment="Left" Height="26" Margin="216,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="9" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+        <TextBox x:Name="textBoxSize" HorizontalAlignment="Left" Height="26" Margin="216,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="9" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" TextChanged="TextBox_TextChanged">
             <TextBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="size" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" >
                     <Binding.ValidationRules  >
@@ -193,8 +194,8 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="textBoxPassportData" HorizontalAlignment="Left" Height="26" Margin="216,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="8" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
-        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="216,400,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="11" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxPassportData" HorizontalAlignment="Left" Height="26" Margin="216,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="8" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="216,400,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="11" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" TextChanged="TextBox_TextChanged"/>
         <DatePicker x:Name="datePickerBirthday" HorizontalAlignment="Left" Margin="216,275,0,0" VerticalAlignment="Top" Width="178" TabIndex="7" VerticalContentAlignment="Center" FontSize="14" CalendarClosed="DateTimePicker_TextChanged" KeyUp="DateTimePicker_TextChanged" FontFamily="Arial"/>
 
         <Image x:Name="imagePhoto" Margin="444,51,46,62" OpacityMask="Black" Cursor="Hand" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Center"/>
@@ -225,7 +226,7 @@
             </ComboBox.Text>
         </ComboBox>
         <Label Content="Адрес" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,182,0,0" FontFamily="Arial" FontSize="14"/>
-        <TextBox x:Name="textBoxAddress" HorizontalAlignment="Left" Height="26" Margin="216,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+        <TextBox x:Name="textBoxAddress" HorizontalAlignment="Left" Height="26" Margin="216,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" TextChanged="TextBox_TextChanged">
             <TextBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="address" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" >
                     <Binding.ValidationRules  >
@@ -235,7 +236,7 @@
             </TextBox.Text>
         </TextBox>
         <Label Content="Никнейм" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,244,0,0" FontFamily="Arial" FontSize="14"/>
-        <TextBox x:Name="textBoxNickname" HorizontalAlignment="Left" Height="26" Margin="216,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" TabIndex="6" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+        <TextBox x:Name="textBoxNickname" HorizontalAlignment="Left" Height="26" Margin="216,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="178" TabIndex="6" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" TextChanged="TextBox_TextChanged">
             <TextBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="nickname" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" >
                     <Binding.ValidationRules  >
@@ -245,7 +246,7 @@
             </TextBox.Text>
         </TextBox>
         <Label Content="Параметры" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,369,0,0" FontFamily="Arial" FontSize="14"/>
-        <TextBox x:Name="textBoxParameters" HorizontalAlignment="Left" Height="26" Margin="216,369,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="10" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+        <TextBox x:Name="textBoxParameters" HorizontalAlignment="Left" Height="26" Margin="216,369,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" TabIndex="10" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" TextChanged="TextBox_TextChanged">
             <TextBox.Text>
                 <Binding Source="{StaticResource Customer}" Path="parameters" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true" >
                     <Binding.ValidationRules  >

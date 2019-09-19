@@ -77,7 +77,7 @@ namespace Clothing_Industry_WPF.MainForms
         {
             if (CountForms() == 1)
             {
-                Window window_materials = new MaterialsListWindow();
+                Window window_materials = new MaterialListWindow();
                 window_materials.Show();
             }
         }
@@ -117,7 +117,7 @@ namespace Clothing_Industry_WPF.MainForms
         {
             if (CountForms() == 1)
             {
-                Window window_orders = new OrdersListWindow();
+                Window window_orders = new OrderListWindow();
                 window_orders.Show();
             }
         }
@@ -127,7 +127,7 @@ namespace Clothing_Industry_WPF.MainForms
         {
             if (CountForms() == 1)
             {
-                Window window_products = new ProductsListWindow();
+                Window window_products = new ProductListWindow();
                 window_products.Show();
             }
         }
@@ -137,7 +137,7 @@ namespace Clothing_Industry_WPF.MainForms
         {
             if (CountForms() == 1)
             {
-                Window window_fittings = new FittingsListWindow();
+                Window window_fittings = new FittingListWindow();
                 window_fittings.Show();
             }
         }

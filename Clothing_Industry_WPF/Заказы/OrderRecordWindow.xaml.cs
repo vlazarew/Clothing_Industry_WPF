@@ -24,6 +24,7 @@ namespace Clothing_Industry_WPF.Заказы
     /// </summary>
     public partial class OrderRecordWindow : Window
     {
+        private Order order;
         private WaysToOpenForm.WaysToOpen way;
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private MySqlConnection connection;
@@ -36,6 +37,7 @@ namespace Clothing_Industry_WPF.Заказы
 
         public OrderRecordWindow(WaysToOpenForm.WaysToOpen waysToOpen, int idOrder = -1)
         {
+            order = new Order();
             InitializeComponent();
             way = waysToOpen;
             connection = new MySqlConnection(connectionString);
@@ -212,7 +214,7 @@ namespace Clothing_Industry_WPF.Заказы
         private void ButtonListProducts_Click(object sender, RoutedEventArgs e)
         {
 
-            var windowListProducts = new OrderProductsListWindow(idOrder);
+            var windowListProducts = new OrderProductListWindow(idOrder);
             windowListProducts.ShowDialog();
             {
                 var Result = windowListProducts.Result;

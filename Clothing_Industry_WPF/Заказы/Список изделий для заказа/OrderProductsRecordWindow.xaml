@@ -4,10 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Заказы.Список_изделий_для_заказа"
+        xmlns:validators="clr-namespace:Clothing_Industry_WPF.Общее.Работа_с_формами"
+        xmlns:validators1="clr-namespace:Clothing_Industry_WPF.Заказы.Список_изделий_для_заказа"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         Title="Добавление изделия в заказ" Height="170.748" Width="338.731">
     <Window.Resources>
+        <validators1:OrderProducts x:Key="OrderProducts"/>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
             <GradientStop Color="Transparent" Offset="0.4" />
@@ -17,14 +20,13 @@
             <GradientStop Color="Transparent" Offset="1" />
         </GradientStopCollection>
         <LinearGradientBrush x:Key="MyGlassBrushResource" StartPoint="0,0" EndPoint="1,1" Opacity="0.75"
-    GradientStops="{StaticResource MyGlassGradientStopsResource}" />
+        GradientStops="{StaticResource MyGlassGradientStopsResource}" />
         <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
     StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="DarkGray" Offset="0" />
 
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
-
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="{StaticResource ResourceKey=GrayBlueGradientBrush}" />
             <Setter Property="Width" Value="80" />
@@ -132,12 +134,36 @@
             </Setter>
         </Style>
 
+        <Style TargetType="TextBox">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}" />
+                    <Setter Property="Foreground" Value="Red" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     <Grid>
         <Label Content="Изделие " HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" Height="29"/>
-        <ComboBox x:Name="comboBoxProducts" HorizontalAlignment="Left" Margin="100,18,0,0" VerticalAlignment="Top" Width="211" FontSize="14" VerticalContentAlignment="Center" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial"/>
-        <Label Content="Количество " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,52,0,0" Height="26" Width="90" FontSize="14" FontFamily="Arial"/>
-        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" Margin="100,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
+        <ComboBox x:Name="comboBoxProducts" HorizontalAlignment="Left" Margin="100,18,0,0" VerticalAlignment="Top" Width="211" FontSize="14" VerticalContentAlignment="Center" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial">
+            <ComboBox.Text>
+                <Binding Source="{StaticResource OrderProducts}" Path="product" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                    <Binding.ValidationRules  >
+                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Изделие должно быть заполнено"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </ComboBox.Text>
+        </ComboBox>
+            <Label Content="Количество " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,52,0,0" Height="26" Width="90" FontSize="14" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" Margin="100,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+            <TextBox.Text>
+                <Binding Source="{StaticResource OrderProducts}" Path="count" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                    <Binding.ValidationRules  >
+                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" MinimumValue="1" ErrorMessage="Количество должно быть заполнено"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <Button x:Name="buttonSave" Content="Добавить" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="100" IsDefault="True" FontSize="14" RenderTransformOrigin="0.993,-0.413" Click="ButtonSave_Click" Height="30"/>
         <Button Content="Отмена" HorizontalAlignment="Left" Margin="211,95,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.694,-0.02" FontSize="14" IsCancel="True" Click="Button_Click" Height="30"/>
 

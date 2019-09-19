@@ -279,15 +279,10 @@ namespace Clothing_Industry_WPF
         private void Button_Parameters_Click(object sender, RoutedEventArgs e)
         {
             var windowSettings = new ConnectionSettingsWindow();
-            string newIp = "";
             if (windowSettings.ShowDialog().Value)
             {
-                newIp = windowSettings.Result;
-                if (newIp != IP)
-                {
-                    IP = newIp;
-                    CheckApplication();
-                }
+                IP = windowSettings.Result;
+                CheckApplication();
             }
             else
             {
@@ -361,12 +356,12 @@ namespace Clothing_Industry_WPF
 
         private void TextboxLogin_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            e.Handled = e.Key == Key.Space;
+            e.Handled = (e.Key == Key.Space);
         }
 
         private void Grid_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            e.Handled = e.Key == Key.Space;
+            e.Handled = (e.Key == Key.Space);
         }
     }
 }
