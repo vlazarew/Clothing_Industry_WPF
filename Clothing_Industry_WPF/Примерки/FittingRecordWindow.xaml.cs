@@ -161,7 +161,7 @@ namespace Clothing_Industry_WPF.Примерки
                 {
                     command.ExecuteNonQuery();
                     transaction.Commit();
-                    this.Hide();
+                    this.Close();
                 }
                 catch
                 {
@@ -170,7 +170,7 @@ namespace Clothing_Industry_WPF.Примерки
                 }
 
                 connection.Close();
-                this.Hide();
+                this.Close();
             }
             else
             {

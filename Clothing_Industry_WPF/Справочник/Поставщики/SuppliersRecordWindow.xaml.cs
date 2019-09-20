@@ -109,7 +109,7 @@ namespace Clothing_Industry_WPF.Справочник.Поставщики
                 {
                     command.ExecuteNonQuery();
                     transaction.Commit();
-                    this.Hide();
+                    this.Close();
                 }
                 catch
                 {

@@ -166,7 +166,7 @@ namespace Clothing_Industry_WPF.Изделия
                 {
                     command.ExecuteNonQuery();
                     transaction.Commit();
-                    this.Hide();
+                    this.Close();
                 }
                 catch
                 {
@@ -176,7 +176,7 @@ namespace Clothing_Industry_WPF.Изделия
 
 
                 connection.Close();
-                //this.Hide();
+                //this.Close();
             }
             else
             {

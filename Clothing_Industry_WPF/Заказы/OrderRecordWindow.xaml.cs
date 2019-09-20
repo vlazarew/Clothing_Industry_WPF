@@ -298,7 +298,7 @@ namespace Clothing_Industry_WPF.Заказы
                         commandSetSalary.ExecuteNonQuery();
                     }
                     transaction.Commit();
-                    this.Hide();
+                    this.Close();
                 }
                 catch
                 {
@@ -307,7 +307,7 @@ namespace Clothing_Industry_WPF.Заказы
                 }
 
                 connection.Close();
-                //this.Hide();
+                //this.Close();
             }
             else
             {

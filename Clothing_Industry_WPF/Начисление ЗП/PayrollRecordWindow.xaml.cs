@@ -198,7 +198,7 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
                         commandLastSalary.ExecuteNonQuery();
                     }
                     transaction.Commit();
-                    this.Hide();
+                    this.Close();
                 }
                 catch
                 {
@@ -207,7 +207,7 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
                 }
 
                 connection.Close();
-                //this.Hide();
+                //this.Close();
             }
             else
             {

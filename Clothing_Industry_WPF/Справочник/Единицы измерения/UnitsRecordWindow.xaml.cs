@@ -113,7 +113,7 @@ namespace Clothing_Industry_WPF.Справочник.Единицы_измере
                 {
                     command.ExecuteNonQuery();
                     transaction.Commit();
-                    this.Hide();
+                    this.Close();
                 }
                 catch
                 {

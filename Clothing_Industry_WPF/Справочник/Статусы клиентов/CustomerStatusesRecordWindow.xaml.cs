@@ -113,7 +113,7 @@ namespace Clothing_Industry_WPF.Справочник.Статусы_клиент
                 {
                     command.ExecuteNonQuery();
                     transaction.Commit();
-                    this.Hide();
+                    this.Close();
                 }
                 catch
                 {

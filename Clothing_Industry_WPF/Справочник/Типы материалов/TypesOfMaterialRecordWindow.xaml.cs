@@ -112,7 +112,7 @@ namespace Clothing_Industry_WPF.Справочник.Типы_материало
                 {
                     command.ExecuteNonQuery();
                     transaction.Commit();
-                    this.Hide();
+                    this.Close();
                 }
                 catch
                 {

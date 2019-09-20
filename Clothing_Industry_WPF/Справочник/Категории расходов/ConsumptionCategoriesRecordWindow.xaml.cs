@@ -111,7 +111,7 @@ namespace Clothing_Industry_WPF.Справочник.Категории_расх
                 {
                     command.ExecuteNonQuery();
                     transaction.Commit();
-                    this.Hide();
+                    this.Close();
                 }
                 catch
                 {

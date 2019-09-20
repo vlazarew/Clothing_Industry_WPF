@@ -191,7 +191,7 @@ namespace Clothing_Industry_WPF.Приход_материалов
                 {
                     command.ExecuteNonQuery();
                     transaction.Commit();
-                    this.Hide();
+                    this.Close();
                 }
                 catch
                 {
