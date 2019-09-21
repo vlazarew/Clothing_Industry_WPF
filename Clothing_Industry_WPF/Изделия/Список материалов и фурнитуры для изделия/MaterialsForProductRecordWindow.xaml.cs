@@ -57,8 +57,6 @@ namespace Clothing_Industry_WPF.Изделия
             this.Close();
         }
 
-       
-
         private string CheckData()
         {
             string result = "";
@@ -80,7 +78,7 @@ namespace Clothing_Industry_WPF.Изделия
             string warning = CheckData();
             float count;
 
-            if ((warning == "")&&((float.TryParse(textBoxCount.Text, out count))))
+            if ((warning == "") && ((float.TryParse(textBoxCount.Text, out count))))
             {
                 MySqlConnection connection = new MySqlConnection(connectionString);
                 connection.Open();

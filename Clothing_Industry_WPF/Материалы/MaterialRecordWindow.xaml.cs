@@ -7,6 +7,7 @@ using System.Data.Common;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,6 +32,9 @@ namespace Clothing_Industry_WPF.Материал
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private MySqlConnection connection;
         private string old_vendor_code = "";
+
+        // Ввод только букв в численные поля 
+        private static readonly Regex _regex = new Regex("[^0-9,]");
 
         public MaterialRecordWindow(WaysToOpenForm.WaysToOpen waysToOpen, string vendor_code = "")
         {
@@ -278,9 +282,14 @@ namespace Clothing_Industry_WPF.Материал
             }
 
             MySqlCommand command = new MySqlCommand(query, connection);
-            command.Parameters.AddWithValue("@vendor_code", textBoxVendor_Code.Text);
+
+            int.TryParse(textBoxVendor_Code.Text, out int vendorCode);
+            command.Parameters.AddWithValue("@vendor_code", vendorCode);
+
             command.Parameters.AddWithValue("@name_of_material", textBoxName_Of_Material.Text);
-            command.Parameters.AddWithValue("@cost_of_material", textBoxCost_Of_Material.Text);
+
+            float.TryParse(textBoxCost_Of_Material.Text, out float costOfMaterial);
+            command.Parameters.AddWithValue("@cost_of_material", costOfMaterial);
             command.Parameters.AddWithValue("@notes", textBoxNotes.Text);
 
             MySqlCommand commandUnit = new MySqlCommand("select id_Unit from units where Name_Of_Unit = @unit", connection);
@@ -388,6 +397,16 @@ namespace Clothing_Industry_WPF.Материал
             }
 
             return command;
+        }
+
+        private void TextBoxCost_Of_Material_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !IsTextAllowed(e.Text);
+        }
+
+        private static bool IsTextAllowed(string text)
+        {
+            return !_regex.IsMatch(text);
         }
     }
 }

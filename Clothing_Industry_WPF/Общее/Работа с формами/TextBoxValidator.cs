@@ -51,14 +51,10 @@ namespace Clothing_Industry_WPF.Общее.Работа_с_формами
             ValidationResult result = new ValidationResult(true, null);
             string inputString = value == null ? "" : value.ToString();
 
-            float minValue;
-            float.TryParse(inputString, out minValue);
-
-            float maxValue;
-            float.TryParse(inputString, out maxValue);
+            float.TryParse(inputString, out float numericValue);
 
             if ((inputString.Length < MinimumLength && MinimumLength != 0) || (inputString.Length > MaximumLength && MaximumLength != 0)
-                    || (minValue < MinimumValue && MinimumValue != 0) || (maxValue > MaximumValue && MaximumValue != 0))
+                    || (numericValue < MinimumValue && MinimumValue != 0) || (numericValue > MaximumValue && MaximumValue != 0))
             {
                 result = new ValidationResult(false, ErrorMessage);
             }

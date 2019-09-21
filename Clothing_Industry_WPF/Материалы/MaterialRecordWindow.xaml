@@ -177,11 +177,11 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="textBoxCost_Of_Material" HorizontalAlignment="Left" Height="26" Margin="187,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+        <TextBox x:Name="textBoxCost_Of_Material" HorizontalAlignment="Left" Height="26" Margin="187,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" PreviewTextInput="TextBoxCost_Of_Material_PreviewTextInput">
             <TextBox.Text>
-                <Binding Source="{StaticResource Material}" Path="cost" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                <Binding Source="{StaticResource Material}" StringFormat="{}{0:F2}}" Path="cost" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
-                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" MinimumValue="1" ErrorMessage="Стоимость должна быть заполнена"/>
+                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" MinimumValue="0.1" ErrorMessage="Стоимость должна быть заполнена"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
