@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Баланс_клиентов"
         MinHeight="529"
         MinWidth="1050"
+        WindowState="Maximized"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="Баланс клиентов"  Height="529" Width="812.1" Loaded="Window_Loaded">
     <Window.Resources>

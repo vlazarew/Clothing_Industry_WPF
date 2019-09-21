@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Заказы.Список_изделий_для_заказа"
+        WindowState="Maximized"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="Список материалов для изделия" Height="529" Width="773" MinWidth="773" MinHeight="529">
     <Window.Resources>

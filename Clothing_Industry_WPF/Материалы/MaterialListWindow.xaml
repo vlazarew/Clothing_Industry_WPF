@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Материал"
         x:Class="Clothing_Industry_WPF.Материал.MaterialListWindow"
+    WindowState="Maximized"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="Материалы/Фурнитура" Loaded="Window_Loaded" Height="529" Width="1067.1" MinWidth="1067.1" MinHeight="529">
     <Window.Resources>

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Примерки"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
          Title="Примерки" Loaded="Window_Loaded" Height="529" Width="1067.1" MinWidth="1067.1" MinHeight="529">
     <Window.Resources>
         <Style x:Key="DataGridCentralBoldHeader" TargetType="DataGridColumnHeader">

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Изделия"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
        Title="Список материалов/фурнитуры необходимый на пошив изделия" Height="529" Width="773" MinWidth="773" MinHeight="529">
     <Window.Resources>
         <Style x:Key="DataGridCentralBoldHeader" TargetType="DataGridColumnHeader">

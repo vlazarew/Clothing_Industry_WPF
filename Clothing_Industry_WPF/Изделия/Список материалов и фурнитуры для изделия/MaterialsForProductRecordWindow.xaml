@@ -155,7 +155,7 @@
         <Label Content="Количество " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="17,86,0,0" Height="26" Width="97" FontSize="14" FontFamily="Arial"/>
         <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" Margin="147,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
             <TextBox.Text>
-                <Binding Source="{StaticResource MaterialsForProduct}" Path="count" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                <Binding Source="{StaticResource MaterialsForProduct}" Path="count" Mode="TwoWay"  UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
                         <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" MinimumValue="1" ErrorMessage="Количество должно быть заполнено"/>
                     </Binding.ValidationRules>

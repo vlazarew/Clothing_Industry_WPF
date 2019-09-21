@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Заказы"
+        WindowState="Maximized"
         MinHeight="529"
         MinWidth="714.6"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
