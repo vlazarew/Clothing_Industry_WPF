@@ -19,16 +19,10 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
         public float toPay { get; set; }
         public string notes { get; set; }
         public bool PaidOff { get; set; }
-        
 
-        public string this[string columnName]
-        {
-            get
-            {
-                return "";
-            }
-        }
 
-        public string Error => throw new NotImplementedException();
+        public string this[string columnName] => "";
+
+        public string Error => "";
     }
 }

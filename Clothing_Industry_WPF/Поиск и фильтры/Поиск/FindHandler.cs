@@ -55,7 +55,8 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
             }
         }
 
-        public static (string editedQuery, FindDescription findDescription) MakeFindQuery(FindDescription currentFindDescription, List<FieldParameters> listOfField, string query)
+        public static (string editedQuery, FindDescription findDescription) MakeFindQuery(FindDescription currentFindDescription, List<FieldParameters> listOfField, string query,
+                                                                                            string notNullQuery = "", string nullQuery = "", string groupBy = "", string nullQueryAlex = "")
         {
             var findWindow = new FindWindow(currentFindDescription, listOfField);
             if (findWindow.ShowDialog().Value)
@@ -70,15 +71,57 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
             var field = listOfField.Where(kvp => kvp.application_name == currentFindDescription.field).First().db_name;
             string editedQuery;
 
-            if (!currentFindDescription.isDate)
+            // Разбор огромного поиска заказов
+            if (notNullQuery != "")
             {
-                editedQuery = query.Replace(";", " where " + field + " ");
-                editedQuery += string.Format(currentFindDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence ? "= \"{0}\"" : "like \"{0}%\"", currentFindDescription.value);
+                if (currentFindDescription.value != "")
+                {
+                    if (!currentFindDescription.isDate)
+                    {
+                        editedQuery = notNullQuery.Replace(";", " and " + field + " ");
+                        editedQuery += string.Format(currentFindDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence ? "= \"{0}\"" : "like \"{0}%\"", currentFindDescription.value);
+                    }
+                    else
+                    {
+                        editedQuery = notNullQuery.Replace(";", " and DATE_FORMAT(" + field + ", '%d.%m.%Y')  ");
+                        editedQuery += string.Format("= \'{0}\'", currentFindDescription.value);
+                    }
+                    editedQuery = editedQuery.Replace(";", groupBy);
+                    editedQuery = editedQuery.Replace(";", " union ");
+                    editedQuery += nullQuery;
+
+                    if (!currentFindDescription.isDate)
+                    {
+                        editedQuery = notNullQuery.Replace(";", " and " + field + " ");
+                        editedQuery += string.Format(currentFindDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence ? "= \"{0}\"" : "like \"{0}%\"", currentFindDescription.value);
+                    }
+                    else
+                    {
+                        editedQuery = notNullQuery.Replace(";", " and DATE_FORMAT(" + field + ", '%d.%m.%Y')  ");
+                        editedQuery += string.Format("= \'{0}\'", currentFindDescription.value);
+                    }
+
+                    editedQuery = editedQuery.Replace(";", groupBy);
+                }
+                else
+                {
+                    editedQuery = nullQueryAlex;
+                }
             }
+            // Остальные формы
             else
             {
-                editedQuery = query.Replace(";", " where DATE_FORMAT(" + field + ", '%d.%m.%Y')  ");
-                editedQuery += string.Format("= \'{0}\'", currentFindDescription.value);
+
+                if (!currentFindDescription.isDate)
+                {
+                    editedQuery = query.Replace(";", " where " + field + " ");
+                    editedQuery += string.Format(currentFindDescription.typeOfFind == TypeOfFind.TypesOfFind.byExactCoincidence ? "= \"{0}\"" : "like \"{0}%\"", currentFindDescription.value);
+                }
+                else
+                {
+                    editedQuery = query.Replace(";", " where DATE_FORMAT(" + field + ", '%d.%m.%Y')  ");
+                    editedQuery += string.Format("= \'{0}\'", currentFindDescription.value);
+                }
             }
 
             return (editedQuery: editedQuery, findDescription: currentFindDescription);
@@ -97,9 +140,10 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
             }
         }
 
-        public static (DataTable dataTable, FindDescription findDescription) GetDataWithFind(FindDescription currentFindDescription, MySqlConnection connection, List<FieldParameters> listOfField, string query)
+        public static (DataTable dataTable, FindDescription findDescription) GetDataWithFind(FindDescription currentFindDescription, MySqlConnection connection, List<FieldParameters> listOfField, string query,
+                                                                                            string notNullQuery = "", string nullQuery = "", string groupBy = "", string nullQueryAlex = "")
         {
-            (string editedQuery, FindDescription findDescription) result = MakeFindQuery(currentFindDescription, listOfField, query);
+            (string editedQuery, FindDescription findDescription) result = MakeFindQuery(currentFindDescription, listOfField, query, notNullQuery, nullQuery, groupBy, nullQueryAlex);
 
             if (result.editedQuery == "")
             {

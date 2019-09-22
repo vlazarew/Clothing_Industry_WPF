@@ -14,14 +14,9 @@ namespace Clothing_Industry_WPF.Примерки
         public string notes { get; set; }
         public string typeOfFitting { get; set; }
 
-        public string this[string columnName]
-        {
-            get
-            {
-                return "";
-            }
-        }
+        public string this[string columnName] => "";
 
-        public string Error => throw new NotImplementedException();
+        public string Error => "";
     }
 }
+

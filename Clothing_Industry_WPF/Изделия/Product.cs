@@ -16,14 +16,8 @@ namespace Clothing_Industry_WPF.Изделия
         public string description { get; set; }
         public byte[] photo { get; set; }
 
-        public string this[string columnName]
-        {
-            get
-            {
-                return "";
-            }
-        }
+        public string this[string columnName] => "";
 
-        public string Error => throw new NotImplementedException();
+        public string Error => "";
     }
 }

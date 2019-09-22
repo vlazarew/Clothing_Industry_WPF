@@ -22,14 +22,9 @@ namespace Clothing_Industry_WPF.Расходы
         public string periodicityName{ get; set; }
 
 
-        public string this[string columnName]
-        {
-            get
-            {
-                return "";
-            }
-        }
+        public string this[string columnName] => "";
 
-        public string Error => throw new NotImplementedException();
+        public string Error => "";
     }
 }
+

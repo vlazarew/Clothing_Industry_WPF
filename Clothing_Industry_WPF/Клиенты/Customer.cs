@@ -105,7 +105,7 @@ namespace Clothing_Industry_WPF.Клиенты
         }
 
         // Проверка на заполненность полей
-        public string CheckData()
+        private string CheckData()
         {
             string result = "";
 
@@ -153,32 +153,6 @@ namespace Clothing_Industry_WPF.Клиенты
             return result == "" ? result : "Не заполнены обязательные поля: " + result;
         }
 
-        // Запросец на всех клиентов
-        public static string getQueryText()
-        {
-            string query_text = "SELECT customers.id_Customer, customers.Name, customers.Lastname, customers.Patronymic, customers.Address, customers.Phone_Number, customers.Nickname, " +
-                "DATE_FORMAT(customers.Birthday, \"%d.%m.%Y\") as Birthday, customers.Passport_data, customers.Size, customers.Parameters, customers.Notes, customer_statuses.Name_Of_Status, " +
-                "order_channels.Name_of_channel, employees.Login " +
-                "FROM customers " +
-                "join main_database.employees on main_database.employees.login = customers.Employees_Login " +
-                "join main_database.customer_statuses on main_database.customer_statuses.id_Status = customers.Customer_Statuses_id_Status " +
-                "join main_database.order_channels on main_database.order_channels.id_Channel = customers.Order_Channels_id_Channel ;";
-
-            return query_text;
-        }
-
-        // Получение данных обо всех клиентах
-        public static DataTable getListCustomers(MySqlConnection connection)
-        {
-            string queryText = getQueryText();
-
-            connection.Open();
-            var dataTable = FormLoader.ExecuteQuery(queryText, connection);
-            connection.Close();
-
-            return dataTable;
-        }
-
         // Вызов сохранения и прогон по всей логике
         public bool Save(MySqlConnection connection, WaysToOpenForm.WaysToOpen way)
         {
@@ -189,8 +163,7 @@ namespace Clothing_Industry_WPF.Клиенты
                 MySqlTransaction transaction = connection.BeginTransaction();
 
                 // Создать/изменить запись в таблице Клиенты
-                MySqlCommand command = SaveInDB(connection, way);
-                command.Transaction = transaction;
+                MySqlCommand command = SaveInDB(connection, transaction, way);
 
                 try
                 {
@@ -200,13 +173,14 @@ namespace Clothing_Industry_WPF.Клиенты
                 {
                     transaction.Rollback();
                     System.Windows.MessageBox.Show("Ошибка сохранения клиента в базе!", "Ошибка сохранения", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return false;
                 }
 
                 if (way == WaysToOpenForm.WaysToOpen.create)
                 {
                     // Если создаем клиента, то добавляем его в таблицу Балансы клиентов 
-                    string query_max_id = "SELECT max(customers.id_Customer) FROM main_database.customers";
-                    MySqlCommand commandFindId = new MySqlCommand(query_max_id, connection, transaction);
+                    string queryMaxId = "SELECT max(customers.id_Customer) FROM main_database.customers";
+                    MySqlCommand commandFindId = new MySqlCommand(queryMaxId, connection, transaction);
                     int findId = -1;
 
                     using (DbDataReader reader = commandFindId.ExecuteReader())
@@ -228,6 +202,7 @@ namespace Clothing_Industry_WPF.Клиенты
                     {
                         commandFillBalance.ExecuteNonQuery();
                         transaction.Commit();
+                        return true;
                     }
                     catch
                     {
@@ -238,10 +213,10 @@ namespace Clothing_Industry_WPF.Клиенты
                 else
                 {
                     transaction.Commit();
+                    return true;
                 }
 
                 connection.Close();
-                return true;
             }
             else
             {
@@ -252,7 +227,7 @@ namespace Clothing_Industry_WPF.Клиенты
         }
 
         // Генерация команды сохранения в БД
-        private MySqlCommand SaveInDB(MySqlConnection connection, WaysToOpenForm.WaysToOpen way)
+        private MySqlCommand SaveInDB(MySqlConnection connection, MySqlTransaction transaction, WaysToOpenForm.WaysToOpen way)
         {
             string query = "";
             if (way == WaysToOpenForm.WaysToOpen.create)
@@ -272,7 +247,7 @@ namespace Clothing_Industry_WPF.Клиенты
 
             }
 
-            MySqlCommand command = new MySqlCommand(query, connection);
+            MySqlCommand command = new MySqlCommand(query, connection, transaction);
             command.Parameters.AddWithValue("@name", name);
             command.Parameters.AddWithValue("@lastname", lastname);
             command.Parameters.AddWithValue("@patronymic", patronymic);
@@ -285,6 +260,7 @@ namespace Clothing_Industry_WPF.Клиенты
             command.Parameters.AddWithValue("@parameters", parameters);
             command.Parameters.AddWithValue("@notes", notes);
 
+            // ГОВНОКОД НАЧАЛО
             MySqlCommand commandStatus = new MySqlCommand("select id_Status from customer_statuses where name_of_status = @status", connection);
             commandStatus.Parameters.AddWithValue("status", statusName);
             int id_status = -1;
@@ -310,7 +286,7 @@ namespace Clothing_Industry_WPF.Клиенты
             command.Parameters.AddWithValue("@status", id_status);
             command.Parameters.AddWithValue("@channel", id_channel);
             command.Parameters.AddWithValue("@login", employeeLogin);
-
+            // ГОВНОКОД КОНЕЦ
 
             // Обработка фото 
             command.Parameters.AddWithValue("@image", photo);
@@ -321,6 +297,32 @@ namespace Clothing_Industry_WPF.Клиенты
             }
 
             return command;
+        }
+
+        // Запросец на всех клиентов
+        public static string getQueryText()
+        {
+            string query_text = "SELECT customers.id_Customer, customers.Name, customers.Lastname, customers.Patronymic, customers.Address, customers.Phone_Number, customers.Nickname, " +
+                "DATE_FORMAT(customers.Birthday, \"%d.%m.%Y\") as Birthday, customers.Passport_data, customers.Size, customers.Parameters, customers.Notes, customer_statuses.Name_Of_Status, " +
+                "order_channels.Name_of_channel, employees.Login " +
+                "FROM customers " +
+                "join main_database.employees on main_database.employees.login = customers.Employees_Login " +
+                "join main_database.customer_statuses on main_database.customer_statuses.id_Status = customers.Customer_Statuses_id_Status " +
+                "join main_database.order_channels on main_database.order_channels.id_Channel = customers.Order_Channels_id_Channel ;";
+
+            return query_text;
+        }
+
+        // Получение данных обо всех клиентах
+        public static DataTable getListCustomers(MySqlConnection connection)
+        {
+            string queryText = getQueryText();
+
+            connection.Open();
+            var dataTable = FormLoader.ExecuteQuery(queryText, connection);
+            connection.Close();
+
+            return dataTable;
         }
 
         // Удаление клиентов
@@ -455,84 +457,9 @@ namespace Clothing_Industry_WPF.Клиенты
         }
 
         // Валидация данных
-        public string this[string columnName]
-        {
-            get
-            {
-                string error = "";
-                /*switch (columnName)
-                {
-                    case "name":
-                        if (name == "")
-                        {
-                            error = "Имя должно быть заполнено";
-                        }
-                        break;
-                    case "lastname":
-                        if (lastname == "")
-                        {
-                            error = "Фамилия должна быть заполнена";
-                        }
-                        break;
-                    case "address":
-                        if (address == "")
-                        {
-                            error = "Адрес должен быть заполнен";
-                        }
-                        break;
-                    case "phoneNumber":
-                        if (phoneNumber == "")
-                        {
-                            error = "Телефон должен быть заполнен";
-                        }
-                        break;
-                    case "nickname":
-                        if (nickname == "")
-                        {
-                            error = "Никнейм должен быть заполнен";
-                        }
-                        break;
-                    case "size":
-                        if (size == 0)
-                        {
-                            error = "Размер должен быть заполнен";
-                        }
-                        break;
-                    case "parameters":
-                        if (parameters == "")
-                        {
-                            error = "Параметры должны быть заполнены";
-                        }
-                        break;
-                    case "statusId":
-                        if (statusId == 0)
-                        {
-                            error = "Статус должен быть заполнен";
-                        }
-                        break;
-                    case "channelId":
-                        if (channelId == 0)
-                        {
-                            error = "Канал связи должен быть заполнен";
-                        }
-                        break;
-                    case "employeeId":
-                        if (employeeId == 0)
-                        {
-                            error = "Обслуживающий сотрудник должен быть заполнен";
-                        }
-                        break;
-                }*/
-                return error;
-            }
-        }
+        public string this[string columnName] => "";
 
-        public string Error
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public string Error => "";
     }
 }
+

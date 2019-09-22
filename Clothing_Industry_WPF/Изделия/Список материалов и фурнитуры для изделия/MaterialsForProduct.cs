@@ -12,14 +12,8 @@ namespace Clothing_Industry_WPF.Изделия.Список_материалов
         public string typeOfMaterial { get; set; }
         public int count { get; set; }
 
-        public string this[string columnName]
-        {
-            get
-            {
-                return "";
-            }
-        }
+        public string this[string columnName] => "";
 
-        public string Error => throw new NotImplementedException();
+        public string Error => "";
     }
 }

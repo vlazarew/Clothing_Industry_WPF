@@ -169,8 +169,8 @@ namespace Clothing_Industry_WPF.Клиенты
                     customer.passportData = value;
                     break;
                 case "textBoxSize":
-                    bool canParse = int.TryParse(value, out int newSize);
-                    customer.size = canParse ? newSize : 0;
+                    int.TryParse(value, out int newSize);
+                    customer.size = newSize;
                     break;
                 case "textBoxParameters":
                     customer.parameters = value;

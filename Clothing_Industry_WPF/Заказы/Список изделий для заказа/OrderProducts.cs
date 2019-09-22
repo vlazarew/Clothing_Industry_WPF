@@ -12,8 +12,8 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
         public string product { get; set; }
         public int count { get; set; }
 
-        public string this[string columnName] => throw new NotImplementedException();
+        public string this[string columnName] => "";
 
-        public string Error => throw new NotImplementedException();
+        public string Error => "";
     }
 }

@@ -274,7 +274,7 @@
         <Grid Grid.Row="1">
 
 
-            <DataGrid x:Name="customersGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
+            <DataGrid x:Name="customerBalanceGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
                     <DataGrid.Columns>
                         
                     <DataGridTextColumn Binding="{Binding Lastname}" ClipboardContentBinding="{x:Null}" Header="Фамилия"/>

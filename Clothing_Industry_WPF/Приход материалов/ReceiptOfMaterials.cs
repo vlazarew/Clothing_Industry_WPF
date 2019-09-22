@@ -19,14 +19,9 @@ namespace Clothing_Industry_WPF.Приход_материалов
         public string typeOfTransactionName{ get; set; }
         public string supplierName{ get; set; }
 
-        public string this[string columnName]
-        {
-            get
-            {
-                return "";
-            }
-        }
+        public string this[string columnName] => "";
 
-        public string Error => throw new NotImplementedException();
+        public string Error => "";
     }
 }
+

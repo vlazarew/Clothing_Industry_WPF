@@ -149,10 +149,8 @@ namespace Clothing_Industry_WPF.Материалы
                 transaction = connection.BeginTransaction();
 
                 //Создать/изменить запись в таблице Материалы
-                MySqlCommand command = SaveInDB(connection, way, vendorCodeRecord);
-                command.Transaction = transaction;
-                MySqlCommand commandStrore = SaveInStore(connection, way, vendorCodeRecord);
-                commandStrore.Transaction = transaction;
+                MySqlCommand command = SaveInDB(connection, transaction, way, vendorCodeRecord);
+                MySqlCommand commandStrore = SaveInStore(connection, transaction, way, vendorCodeRecord);
 
                 try
                 {
@@ -177,7 +175,7 @@ namespace Clothing_Industry_WPF.Материалы
         }
 
         // Генерация команды сохранения в БД
-        private MySqlCommand SaveInDB(MySqlConnection connection, WaysToOpenForm.WaysToOpen way, string vendorCodeRecord)
+        private MySqlCommand SaveInDB(MySqlConnection connection, MySqlTransaction transaction, WaysToOpenForm.WaysToOpen way, string vendorCodeRecord)
         {
             string query = "";
 
@@ -196,7 +194,7 @@ namespace Clothing_Industry_WPF.Материалы
                         " where Vendor_Code = @oldvendor_code;";
             }
 
-            MySqlCommand command = new MySqlCommand(query, connection);
+            MySqlCommand command = new MySqlCommand(query, connection, transaction);
             command.Parameters.AddWithValue("@vendor_code", vendorCode);
             command.Parameters.AddWithValue("@name_of_material", name);
             command.Parameters.AddWithValue("@cost_of_material", cost);
@@ -265,7 +263,7 @@ namespace Clothing_Industry_WPF.Материалы
         }
 
         // Обновление данных на складе
-        private MySqlCommand SaveInStore(MySqlConnection connection, WaysToOpenForm.WaysToOpen way, string vendorCodeRecord)
+        private MySqlCommand SaveInStore(MySqlConnection connection, MySqlTransaction transaction, WaysToOpenForm.WaysToOpen way, string vendorCodeRecord)
         {
             string queryStore = "";
             if (way == WaysToOpenForm.WaysToOpen.create)
@@ -279,7 +277,7 @@ namespace Clothing_Industry_WPF.Материалы
                              " where Materials_Vendor_Code = @oldvendor_code;";
             }
 
-            MySqlCommand command = new MySqlCommand(queryStore, connection);
+            MySqlCommand command = new MySqlCommand(queryStore, connection, transaction);
             command.Parameters.AddWithValue("@vendor_code", vendorCode);
 
             if (way == WaysToOpenForm.WaysToOpen.edit)
@@ -381,14 +379,9 @@ namespace Clothing_Industry_WPF.Материалы
             return result;
         }
 
-        public string this[string columnName]
-        {
-            get
-            {
-                return "";
-            }
-        }
+        public string this[string columnName] => "";
 
-        public string Error => throw new NotImplementedException();
+        public string Error => "";
     }
 }
+

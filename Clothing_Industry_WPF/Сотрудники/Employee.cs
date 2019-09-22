@@ -23,14 +23,9 @@ namespace Clothing_Industry_WPF.Сотрудники
         public float lastSalary { get; set; }
         public string positionName { get; set; }
 
-        public string this[string columnName]
-        {
-            get
-            {
-                return "";
-            }
-        }
+        public string this[string columnName] => "";
 
-        public string Error => throw new NotImplementedException();
+        public string Error => "";
     }
 }
+

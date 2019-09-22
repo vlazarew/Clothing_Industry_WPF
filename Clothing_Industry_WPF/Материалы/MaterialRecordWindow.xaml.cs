@@ -155,8 +155,8 @@ namespace Clothing_Industry_WPF.Материал
                     material.name = value;
                     break;
                 case "textBoxCost_Of_Material":
-                    bool canParse = float.TryParse(value, out float newCost);
-                    material.cost = canParse ? newCost : 0;
+                    float.TryParse(value, out float newCost);
+                    material.cost = newCost;
                     break;
                 case "textBoxNotes":
                     material.notes = value;

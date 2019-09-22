@@ -100,7 +100,8 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
             }
         }
 
-        public static (string editedQuery, List<FilterDescription> filterDescription) MakeFilterQuery(List<FilterDescription> currentFilterDescription, List<FindHandler.FieldParameters> listOfField, string query)
+        public static (string editedQuery, List<FilterDescription> filterDescription) MakeFilterQuery(List<FilterDescription> currentFilterDescription, List<FindHandler.FieldParameters> listOfField,
+                                                                                                      string query, string notNullQuery = "", string nullQuery = "", string groupBy = "")
         {
             var filterWindow = new FilterWindow(currentFilterDescription, listOfField);
             if (filterWindow.ShowDialog().Value)
@@ -112,38 +113,101 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
                 return (editedQuery: "", filterDescription: new List<FilterDescription>());
             }
 
-            string editedQuery = EditFilterQuery(currentFilterDescription, listOfField, query);
+            string editedQuery = EditFilterQuery(currentFilterDescription, listOfField, query, notNullQuery, nullQuery, groupBy);
 
             return (editedQuery: editedQuery, filterDescription: currentFilterDescription);
         }
 
-        private static string EditFilterQuery(List<FilterDescription> filter, List<FindHandler.FieldParameters> listOfField, string query)
+        private static string EditFilterQuery(List<FilterDescription> filter, List<FindHandler.FieldParameters> listOfField, string query, string notNullQuery = "", string nullQuery = "",
+                                                                                                                                    string groupBy = "")
         {
-            string result = query;
-
-            foreach (var filterRecord in filter)
+            string result;
+            // Обработка большого запроса в заказах
+            if (notNullQuery != "")
             {
-                if (filterRecord.active)
-                {
-                    result = result.Replace(";", " where ");
-                    break;
-                }
-            }
+                result = notNullQuery;
 
-            int index = 0;
-            foreach (var filterRecord in filter)
-            {
-                if (filterRecord.active)
+                foreach (var filterRecord in filter)
                 {
-                    result += AddСondition(filterRecord, listOfField);
-                    index++;
-                    if (index < filter.Count)
+                    if (filterRecord.active)
                     {
-                        result += " and ";
+                        result = result.Replace(";", " and ");
+                        break;
+                    }
+                }
+
+                int index = 0;
+                foreach (var filterRecord in filter)
+                {
+                    if (filterRecord.active)
+                    {
+                        result += AddСondition(filterRecord, listOfField);
+                        index++;
+                        if (index < filter.Count)
+                        {
+                            result += " and ";
+                        }
+                    }
+                }
+
+                result += " ; ";
+                result = result.Replace(";", groupBy);
+                result = result.Replace(";", " union ");
+                result += nullQuery;
+
+                foreach (var filterRecord in filter)
+                {
+                    if (filterRecord.active)
+                    {
+                        result = result.Replace(";", " and ");
+                        break;
+                    }
+                }
+
+                index = 0;
+                foreach (var filterRecord in filter)
+                {
+                    if (filterRecord.active)
+                    {
+                        result += AddСondition(filterRecord, listOfField);
+                        index++;
+                        if (index < filter.Count)
+                        {
+                            result += " and ";
+                        }
+                    }
+                }
+
+                result = result.Replace(";", groupBy);
+            }
+            // Все остальные формы
+            else
+            {
+                result = query;
+
+                foreach (var filterRecord in filter)
+                {
+                    if (filterRecord.active)
+                    {
+                        result = result.Replace(";", " where ");
+                        break;
+                    }
+                }
+
+                int index = 0;
+                foreach (var filterRecord in filter)
+                {
+                    if (filterRecord.active)
+                    {
+                        result += AddСondition(filterRecord, listOfField);
+                        index++;
+                        if (index < filter.Count)
+                        {
+                            result += " and ";
+                        }
                     }
                 }
             }
-
             return result;
         }
 
@@ -178,9 +242,11 @@ namespace Clothing_Industry_WPF.Поиск_и_фильтры
             return result;
         }
 
-        public static (DataTable dataTable, List<FilterDescription> filterDescription) GetDataWithFilter(List<FilterDescription> currentFilterDescription, MySqlConnection connection, List<FindHandler.FieldParameters> listOfField, string query)
+        public static (DataTable dataTable, List<FilterDescription> filterDescription) GetDataWithFilter(List<FilterDescription> currentFilterDescription, MySqlConnection connection,
+                                                                                                         List<FindHandler.FieldParameters> listOfField, string query, string notNullQuery = "",
+                                                                                                         string nullQuery = "", string groupBy = "")
         {
-            (string editedQuery, List<FilterDescription> filterDescription) result = MakeFilterQuery(currentFilterDescription, listOfField, query);
+            (string editedQuery, List<FilterDescription> filterDescription) result = MakeFilterQuery(currentFilterDescription, listOfField, query, notNullQuery, nullQuery, groupBy);
 
             if (result.editedQuery == "")
             {

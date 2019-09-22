@@ -103,20 +103,20 @@ namespace Clothing_Industry_WPF.Клиенты
 
             if (idsToEdit.Count > 0)
             {
-                Window edit_window;
+                Window editWindow;
 
                 //Первые окна мы открываем немодально, последнее модально, чтоб потом сразу обновились данные на форме
                 if (idsToEdit.Count > 1)
                 {
                     for (int i = 0; i < idsToEdit.Count - 1; i++)
                     {
-                        edit_window = new CustomersRecordWindow(WaysToOpenForm.WaysToOpen.edit, idsToEdit[i]);
-                        edit_window.Show();
+                        editWindow = new CustomersRecordWindow(WaysToOpenForm.WaysToOpen.edit, idsToEdit[i]);
+                        editWindow.Show();
                     }
                 }
                 //Заключительная форма
-                edit_window = new CustomersRecordWindow(WaysToOpenForm.WaysToOpen.edit, idsToEdit[idsToEdit.Count - 1]);
-                edit_window.ShowDialog();
+                editWindow = new CustomersRecordWindow(WaysToOpenForm.WaysToOpen.edit, idsToEdit[idsToEdit.Count - 1]);
+                editWindow.ShowDialog();
 
                 //Обновление списка
                 RefreshList();
