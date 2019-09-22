@@ -54,8 +54,8 @@ insert into countries (Name_Of_Country) values ('Украина');
 
 -- Материалы
 
-insert into materials values (100001,'Синий бархат',120,'',null,3,1,1,2);
-insert into materials values (100002,'Узкое кружево',50,'',null,3,1,2,1);
+insert into materials values ('100001','Синий бархат',120,'',null,3,1,1,2);
+insert into materials values ('100002','Узкое кружево',50,'',null,3,1,2,1);
 
 -- Статус оплаты
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
@@ -46,6 +47,11 @@ namespace Clothing_Industry_WPF.Общее.Работа_с_формами
             set { errorMessage = value; }
         }
 
+        // Ввод только букв в int численные поля 
+        private static readonly Regex intRegex = new Regex("[^0-9]");
+        // Ввод только букв и запятой во float численные поля 
+        private static readonly Regex floatRegex = new Regex("[^0-9,]");
+
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             ValidationResult result = new ValidationResult(true, null);
@@ -59,6 +65,16 @@ namespace Clothing_Industry_WPF.Общее.Работа_с_формами
                 result = new ValidationResult(false, ErrorMessage);
             }
             return result;
+        }
+
+        public static bool IsIntTextAllowed(string text)
+        {
+            return !intRegex.IsMatch(text);
+        }
+
+        public static bool IsFloatTextAllowed(string text)
+        {
+            return !floatRegex.IsMatch(text);
         }
     }
 }

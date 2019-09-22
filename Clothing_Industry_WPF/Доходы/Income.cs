@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Clothing_Industry_WPF.Общее.Работа_с_формами;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -10,9 +11,12 @@ namespace Clothing_Industry_WPF.Доходы
     public class Income : IDataErrorInfo
     {
         public string month { get; set; }
+       
+        // Наглые заглушки
+        public string this[string columnName] => "";
 
-        public string this[string columnName] => throw new NotImplementedException();
+        public string Error => "";
+        // Конец
 
-        public string Error => throw new NotImplementedException();
     }
 }

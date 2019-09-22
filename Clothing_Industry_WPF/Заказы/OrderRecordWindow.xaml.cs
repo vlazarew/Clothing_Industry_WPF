@@ -1,4 +1,5 @@
-﻿using Clothing_Industry_WPF.Перечисления;
+﻿using Clothing_Industry_WPF.Общее.Работа_с_формами;
+using Clothing_Industry_WPF.Перечисления;
 using Clothing_Industry_WPF.Поиск_и_фильтры;
 using MySql.Data.MySqlClient;
 using System;
@@ -32,9 +33,6 @@ namespace Clothing_Industry_WPF.Заказы
         private string previousStatus;
         private float salaryToExecutor;
 
-        // Ввод только букв в численные поля 
-        private static readonly Regex _regex = new Regex("[^0-9]");
-
         public OrderRecordWindow(WaysToOpenForm.WaysToOpen waysToOpen, int idOrder = -1)
         {
             order = new Order();
@@ -55,7 +53,6 @@ namespace Clothing_Industry_WPF.Заказы
             {
                 FillFields(idOrder);
             }
-           // UpdateTotalPrice();
         }
 
         private void FillFields(int idOrder)
@@ -280,7 +277,6 @@ namespace Clothing_Industry_WPF.Заказы
 
                 //Создать/изменить запись в таблице Заказы
                 MySqlCommand command = actionInDBCommand(connection, transaction);
-                //КАПСОМ КРУТО ПИСАТЬ ДА????
                 // !!! ИЗМЕНЕНИЕ БАЛАНСА КЛИЕНТА !!!
                 MySqlCommand commandSetBalance = EditCustomerBalance(connection, transaction);
                 // !!! КОНЕЦ ИЗМЕНЕНИЯ БАЛАНСА КЛИЕНТА !!!
@@ -315,19 +311,6 @@ namespace Clothing_Industry_WPF.Заказы
             }
         }
 
-        private void TextBoxPaid_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !IsTextAllowed(e.Text);
-            try
-            {
-                textBoxDebt.Text = (float.Parse(textBoxTotal_Price.Text) - float.Parse(textBoxPaid.Text)).ToString();
-            }
-            catch
-            {
-
-            }
-        }
-
         private void FillEmptyTextBoxes()
         {
             if (textBoxDebt.Text == "")
@@ -342,16 +325,6 @@ namespace Clothing_Industry_WPF.Заказы
             {
                 textBoxTotal_Price.Text = "0";
             }
-        }
-
-        private static bool IsTextAllowed(string text)
-        {
-            return !_regex.IsMatch(text);
-        }
-
-        private void TextBoxDiscount_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !IsTextAllowed(e.Text);
         }
 
         private MySqlCommand EditCustomerBalance(MySqlConnection connection, MySqlTransaction transaction)
@@ -626,24 +599,21 @@ namespace Clothing_Industry_WPF.Заказы
             RefreshDebt();
         }
 
+        private void RefreshDebt()
+        {
+            float.TryParse(textBoxTotal_Price.Text, out float totalPrice);
+            float.TryParse(textBoxPaid.Text, out float paid);
+            textBoxDebt.Text = (totalPrice - paid).ToString();
+        }
+
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !TextBoxValidator.IsFloatTextAllowed(e.Text);
+        }
+
         private void TextBoxPaid_TextChanged(object sender, TextChangedEventArgs e)
         {
             RefreshDebt();
-        }
-
-        private void RefreshDebt()
-        {
-            float totalPrice = textBoxTotal_Price.Text == "" ? 0 : float.Parse(textBoxTotal_Price.Text);
-            float paid = textBoxPaid.Text == "" ? 0 : float.Parse(textBoxPaid.Text);
-
-            float debt = totalPrice - paid;
-
-            textBoxDebt.Text = debt.ToString();
-        }
-
-        private void TextBoxSalaryToExecutor_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = !IsTextAllowed(e.Text);
         }
     }
 }

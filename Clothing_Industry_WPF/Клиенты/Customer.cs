@@ -64,7 +64,7 @@ namespace Clothing_Industry_WPF.Клиенты
         public Customer(int id, MySqlConnection connection)
         {
             this.id = id;
-            string query_text = "SELECT customers.id_Customer, customers.Name, customers.Lastname, customers.Patronymic, customers.Address, customers.Phone_Number, customers.Nickname, " +
+            string queryText = "SELECT customers.id_Customer, customers.Name, customers.Lastname, customers.Patronymic, customers.Address, customers.Phone_Number, customers.Nickname, " +
                                 "DATE_FORMAT(customers.Birthday, \"%d.%m.%Y\") as Birthday, customers.Passport_data, customers.Size, customers.Parameters, customers.Notes, customer_statuses.Name_Of_Status, " +
                                 "order_channels.Name_of_channel, employees.Login, customers.Photo, customer_statuses.id_Status, order_channels.id_Channel " +
                                 "FROM customers " +
@@ -72,7 +72,7 @@ namespace Clothing_Industry_WPF.Клиенты
                                 "join main_database.customer_statuses on main_database.customer_statuses.id_Status = customers.Customer_Statuses_id_Status " +
                                 "join main_database.order_channels on main_database.order_channels.id_Channel = customers.Order_Channels_id_Channel " +
                                 "where customers.id_Customer = @id";
-            MySqlCommand command = new MySqlCommand(query_text, connection);
+            MySqlCommand command = new MySqlCommand(queryText, connection);
             command.Parameters.AddWithValue("@id", id);
             connection.Open();
             using (DbDataReader reader = command.ExecuteReader())
@@ -87,18 +87,9 @@ namespace Clothing_Industry_WPF.Клиенты
                     nickname = reader.GetString(6);
                     birthday = reader.IsDBNull(7) ? DateTime.Now : DateTime.Parse(reader.GetString(7));
                     passportData = reader.IsDBNull(8) ? "" : reader.GetString(8);
-                    if (reader.GetValue(9).ToString() != "")
-                    {
-                        size = reader.GetInt32(9);
-                    }
-                    if (reader.GetValue(10).ToString() != "")
-                    {
-                        parameters = reader.GetString(10);
-                    }
-                    if (reader.GetValue(11).ToString() != "")
-                    {
-                        notes = reader.GetString(11);
-                    }
+                    size = reader.IsDBNull(9) ? 0 : reader.GetInt32(9);
+                    parameters = reader.IsDBNull(10) ? "" : reader.GetString(10);
+                    notes = reader.IsDBNull(11) ? "" : reader.GetString(11);
 
                     statusName = reader.GetString(12);
                     channelName = reader.GetString(13);
@@ -107,15 +98,7 @@ namespace Clothing_Industry_WPF.Клиенты
                     statusId = reader.GetInt32(16);
                     channelId = reader.GetInt32(17);
 
-                    photo = null;
-                    try
-                    {
-                        photo = (byte[])(reader[15]);
-                    }
-                    catch
-                    {
-
-                    }
+                    photo = reader.IsDBNull(15) ? null : (byte[])(reader[15]);
                 }
             }
             connection.Close();
@@ -168,6 +151,32 @@ namespace Clothing_Industry_WPF.Клиенты
             }
 
             return result == "" ? result : "Не заполнены обязательные поля: " + result;
+        }
+
+        // Запросец на всех клиентов
+        public static string getQueryText()
+        {
+            string query_text = "SELECT customers.id_Customer, customers.Name, customers.Lastname, customers.Patronymic, customers.Address, customers.Phone_Number, customers.Nickname, " +
+                "DATE_FORMAT(customers.Birthday, \"%d.%m.%Y\") as Birthday, customers.Passport_data, customers.Size, customers.Parameters, customers.Notes, customer_statuses.Name_Of_Status, " +
+                "order_channels.Name_of_channel, employees.Login " +
+                "FROM customers " +
+                "join main_database.employees on main_database.employees.login = customers.Employees_Login " +
+                "join main_database.customer_statuses on main_database.customer_statuses.id_Status = customers.Customer_Statuses_id_Status " +
+                "join main_database.order_channels on main_database.order_channels.id_Channel = customers.Order_Channels_id_Channel ;";
+
+            return query_text;
+        }
+
+        // Получение данных обо всех клиентах
+        public static DataTable getListCustomers(MySqlConnection connection)
+        {
+            string queryText = getQueryText();
+
+            connection.Open();
+            var dataTable = FormLoader.ExecuteQuery(queryText, connection);
+            connection.Close();
+
+            return dataTable;
         }
 
         // Вызов сохранения и прогон по всей логике
@@ -382,33 +391,7 @@ namespace Clothing_Industry_WPF.Клиенты
             }
 
             return true;
-        }
-
-        // Запросец на всех клиентов
-        public static string getQueryText()
-        {
-            string query_text = "SELECT customers.id_Customer, customers.Name, customers.Lastname, customers.Patronymic, customers.Address, customers.Phone_Number, customers.Nickname, " +
-                "DATE_FORMAT(customers.Birthday, \"%d.%m.%Y\") as Birthday, customers.Passport_data, customers.Size, customers.Parameters, customers.Notes, customer_statuses.Name_Of_Status, " +
-                "order_channels.Name_of_channel, employees.Login " +
-                "FROM customers " +
-                "join main_database.employees on main_database.employees.login = customers.Employees_Login " +
-                "join main_database.customer_statuses on main_database.customer_statuses.id_Status = customers.Customer_Statuses_id_Status " +
-                "join main_database.order_channels on main_database.order_channels.id_Channel = customers.Order_Channels_id_Channel ;";
-
-            return query_text;
-        }
-
-        // Получение данных обо всех клиентах
-        public static DataTable getListCustomers(MySqlConnection connection)
-        {
-            string queryText = getQueryText();
-
-            connection.Open();
-            var dataTable = FormLoader.ExecuteQuery(queryText, connection);
-            connection.Close();
-
-            return dataTable;
-        }
+        }       
 
         // Список полей, по которым мы можем делать поиск
         public static List<FindHandler.FieldParameters> FillFindFields(MySqlConnection connection)

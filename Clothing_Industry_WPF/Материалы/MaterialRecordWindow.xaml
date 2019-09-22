@@ -145,7 +145,7 @@
         </Style>
 
     </Window.Resources>
-    <Grid >
+    <Grid>
         <Label Content="Артикул" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,80,0,0" FontSize="14" Height="31" FontFamily="Arial"/>
         <Label Content="Название материала" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,111,0,0" FontSize="14" FontFamily="Arial"/>
         <Label x:Name="Header" Content="Материал " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,10,0,0" FontSize="18" Width="382" FontFamily="Arial"/>
@@ -154,12 +154,12 @@
         <Label Content="Система счисления" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,204,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
         <Label Content="Вид" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,235,0,0" FontSize="14" Height="31" FontFamily="Arial"/>
         <Label Content="Тип" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,266,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
-        <Label Content="Страна производитель" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,297,0,0" FontSize="14" Width="156" Height="37" FontFamily="Arial"/>
+        <Label Content="Страна производитель" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,297,0,0" FontSize="14" Width="160" Height="37" FontFamily="Arial"/>
 
         <Label Content="Фото " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="397,50,0,0" Height="25" FontSize="14" FontFamily="Arial"/>
 
 
-        <TextBox x:Name="textBoxVendor_Code" HorizontalAlignment="Left" Height="26" Margin="187,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center" FontFamily="Arial">
+        <TextBox x:Name="textBoxVendor_Code" HorizontalAlignment="Left" Height="26" Margin="187,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center" FontFamily="Arial" TextChanged="TextBox_TextChanged">
             <TextBox.Text>
                 <Binding Source="{StaticResource Material}" Path="vendorCode" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
@@ -168,7 +168,7 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="textBoxName_Of_Material" HorizontalAlignment="Left" Height="26" Margin="187,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+        <TextBox x:Name="textBoxName_Of_Material" HorizontalAlignment="Left" Height="26" Margin="187,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" TextChanged="TextBox_TextChanged">
             <TextBox.Text>
                 <Binding Source="{StaticResource Material}" Path="name" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
@@ -177,7 +177,7 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="textBoxCost_Of_Material" HorizontalAlignment="Left" Height="26" Margin="187,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" PreviewTextInput="TextBoxCost_Of_Material_PreviewTextInput">
+        <TextBox x:Name="textBoxCost_Of_Material" HorizontalAlignment="Left" Height="26" Margin="187,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" PreviewTextInput="TextBoxCost_Of_Material_PreviewTextInput" TextChanged="TextBox_TextChanged">
             <TextBox.Text>
                 <Binding Source="{StaticResource Material}" StringFormat="{}{0:F2}}" Path="cost" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
@@ -186,14 +186,14 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="187,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="187,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" TextChanged="TextBox_TextChanged"/>
         <Rectangle x:Name="Border" Stroke="Black" StrokeThickness="5" StrokeDashArray="1 1" SnapsToDevicePixels="True" Margin="443,51,31,88"/>
         <Image x:Name="imagePhoto" Height="273" Margin="443,51,31,0" VerticalAlignment="Top" OpacityMask="Black" Cursor="Hand"/>
 
 
         <Button x:Name="buttonAddPhoto" Content="Добавить фото" HorizontalAlignment="Left" Margin="659,329,0,0" VerticalAlignment="Top" Width="140" Height="34" Click="ButtonAddPhoto_Click" TabIndex="14" FontSize="14"/>
         <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="659,10,0,0" VerticalAlignment="Top" Width="140" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True" FontSize="14"/>
-        <ComboBox x:Name="comboBoxUnit" HorizontalAlignment="Left" Margin="187,204,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial">
+        <ComboBox x:Name="comboBoxUnit" HorizontalAlignment="Left" Margin="187,204,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="5" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" DropDownClosed="ComboBox_TextChanged" KeyUp="ComboBox_TextChanged">
             <ComboBox.Text>
                 <Binding Source="{StaticResource Material}" Path="unitName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
@@ -202,7 +202,7 @@
                 </Binding>
             </ComboBox.Text>
         </ComboBox>
-        <ComboBox x:Name="comboBoxGroup" HorizontalAlignment="Left" Margin="187,235,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="6" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial">
+        <ComboBox x:Name="comboBoxGroup" HorizontalAlignment="Left" Margin="187,235,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="6" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" DropDownClosed="ComboBox_TextChanged" KeyUp="ComboBox_TextChanged">
             <ComboBox.Text>
                 <Binding Source="{StaticResource Material}" Path="groupOfMaterialName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
@@ -211,7 +211,7 @@
                 </Binding>
             </ComboBox.Text>
         </ComboBox>
-        <ComboBox x:Name="comboBoxType" HorizontalAlignment="Left" Margin="187,266,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial">
+        <ComboBox x:Name="comboBoxType" HorizontalAlignment="Left" Margin="187,266,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" DropDownClosed="ComboBox_TextChanged" KeyUp="ComboBox_TextChanged">
             <ComboBox.Text>
                 <Binding Source="{StaticResource Material}" Path="typeOfMaterialName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
@@ -220,7 +220,7 @@
                 </Binding>
             </ComboBox.Text>
         </ComboBox>
-        <ComboBox x:Name="comboBoxCountry" HorizontalAlignment="Left" Margin="187,297,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="8" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial">
+        <ComboBox x:Name="comboBoxCountry" HorizontalAlignment="Left" Margin="187,297,0,0" VerticalAlignment="Top" Width="205" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="8" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" DropDownClosed="ComboBox_TextChanged" KeyUp="ComboBox_TextChanged">
             <ComboBox.Text>
                 <Binding Source="{StaticResource Material}" Path="countryName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >

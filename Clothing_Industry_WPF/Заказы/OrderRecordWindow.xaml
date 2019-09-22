@@ -156,12 +156,28 @@
         <Label Content="Оплачено " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="11,172,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
         <Label Content="Дата доставки" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="11,234,0,0" FontSize="14" Height="27" FontFamily="Arial"/>
         <Label Content="Заметки " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="11,265,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
-        <TextBox x:Name="textBoxDiscount" HorizontalAlignment="Left" Height="26" Margin="230,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxDiscount_PreviewTextInput" Grid.ColumnSpan="2" FontFamily="Arial"/>
-        <TextBox x:Name="textBoxPaid" HorizontalAlignment="Left" Height="26" Margin="230,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxPaid_PreviewTextInput" TextChanged="TextBoxPaid_TextChanged" Grid.ColumnSpan="2" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxDiscount" HorizontalAlignment="Left" Height="26" Margin="230,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBox_PreviewTextInput" Grid.ColumnSpan="2" FontFamily="Arial">
+            <TextBox.Text>
+                <Binding Source="{StaticResource Order}" Path="discountPerCent" StringFormat="{}{0:F2}}" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                    <Binding.ValidationRules  >
+                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumValue="0" MaximumValue="100" ErrorMessage="Скидка должна быть корректно заполнена"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+        <TextBox x:Name="textBoxPaid" HorizontalAlignment="Left" Height="26" Margin="230,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBox_PreviewTextInput" Grid.ColumnSpan="2" FontFamily="Arial" TextChanged="TextBoxPaid_TextChanged">
+            <TextBox.Text>
+                <Binding Source="{StaticResource Order}" Path="paid" StringFormat="{}{0:F2}}" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                    <Binding.ValidationRules  >
+                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumValue="0" MaximumValue="999999" ErrorMessage="Оплачено должна быть корректно заполнена"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
         <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="230,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369" TabIndex="7" VerticalContentAlignment="Center" FontSize="14" Grid.ColumnSpan="2" FontFamily="Arial"/>
         <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="429,10,0,0" VerticalAlignment="Top" Width="170" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True" TabIndex="14" FontSize="14" Grid.ColumnSpan="2"/>
         <Label Content="Долг " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="11,203,0,0" FontSize="14" Height="31" FontFamily="Arial"/>
-        <TextBox x:Name="textBoxDebt" HorizontalAlignment="Left" Height="26" Margin="230,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369" TabIndex="5" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True" Grid.ColumnSpan="2" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxDebt" HorizontalAlignment="Left" Height="26" Margin="230,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369" TabIndex="5" VerticalContentAlignment="Center" FontSize="14" Grid.ColumnSpan="2" FontFamily="Arial" IsReadOnly="True"/>
         <Label Content="Тип заказа" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="11,327,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
         <Label Content="Статус заказа" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,359,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
         <Label Content="Заказчик" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,390,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
@@ -234,7 +250,7 @@
         <TextBox x:Name="textBoxTotal_Price" HorizontalAlignment="Left" Height="26" Margin="230,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True" TextChanged="TextBoxTotal_Price_TextChanged" Grid.ColumnSpan="2" FontFamily="Arial"/>
         <Button x:Name="buttonListProducts" Content="Открыть список изделий" HorizontalAlignment="Left" Margin="230,10,0,0" VerticalAlignment="Top" Width="170" Height="34" IsDefault="True" TabIndex="13" Click="ButtonListProducts_Click" FontSize="14"/>
         <Label Content="Выплата за доп сложность " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="11,296,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
-        <TextBox x:Name="textBoxAddedPrice" HorizontalAlignment="Left" Height="26" Margin="230,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369" TabIndex="7" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBoxSalaryToExecutor_PreviewTextInput" Grid.ColumnSpan="2" FontFamily="Arial"/>
+        <TextBox x:Name="textBoxAddedPrice" HorizontalAlignment="Left" Height="26" Margin="230,296,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369" TabIndex="7" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBox_PreviewTextInput" Grid.ColumnSpan="2" FontFamily="Arial"/>
         <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="117,234,0,0" FontSize="14" Height="27" FontFamily="Arial"/>
         <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="94,327,0,0" FontSize="14" Height="25" FontFamily="Arial"/>
         <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="110,359,0,0" FontSize="14" Height="26" FontFamily="Arial"/>

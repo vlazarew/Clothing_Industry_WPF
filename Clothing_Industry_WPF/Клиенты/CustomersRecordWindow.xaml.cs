@@ -103,10 +103,10 @@ namespace Clothing_Industry_WPF.Клиенты
             if (openFileDialog.ShowDialog() == true)
             {
                 // Отображение на форме
-                string image_path = openFileDialog.FileName;
-                imagePhoto.Source = new BitmapImage(new Uri(image_path));
+                string imagePath = openFileDialog.FileName;
+                imagePhoto.Source = new BitmapImage(new Uri(imagePath));
                 // Запоминаем бинарные данные в объекте 
-                FileStream fileStream = new FileStream(image_path, FileMode.Open, FileAccess.Read);
+                FileStream fileStream = new FileStream(imagePath, FileMode.Open, FileAccess.Read);
                 BinaryReader binaryReader = new BinaryReader(fileStream);
                 customer.photo = binaryReader.ReadBytes((int)fileStream.Length);
                 binaryReader.Close();
@@ -169,8 +169,7 @@ namespace Clothing_Industry_WPF.Клиенты
                     customer.passportData = value;
                     break;
                 case "textBoxSize":
-                    int newSize;
-                    bool canParse = int.TryParse(value, out newSize);
+                    bool canParse = int.TryParse(value, out int newSize);
                     customer.size = canParse ? newSize : 0;
                     break;
                 case "textBoxParameters":
