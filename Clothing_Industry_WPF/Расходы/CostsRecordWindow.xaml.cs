@@ -287,10 +287,17 @@ namespace Clothing_Industry_WPF.Расходы
 
         private void ButtonFileSearch_Click(object sender, RoutedEventArgs e)
         {
-            Window create_filesearch = new FileWindow();
-            create_filesearch.ShowDialog();
-            textBoxFileFolder.Text = csPathToFolder.PathOfSelectedFolder;
-            textBoxFileName.Text = System.IO.Path.GetFileNameWithoutExtension(csPathToFolder.PathOfSelectedFolder);
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+            openFileDialog.Filter = "Документы (*.DOC; *.DOCX; *.TXT; *.XLS)|*.DOC; *.DOCX; *.TXT; *.XLS" + "|Все файлы (*.*)|*.* ";
+            openFileDialog.CheckFileExists = true;
+            openFileDialog.Multiselect = false;
+            if (openFileDialog.ShowDialog() == true)
+            {
+                textBoxFileFolder.Text = openFileDialog.FileName;
+                textBoxFileName.Text = System.IO.Path.GetFileNameWithoutExtension(openFileDialog.FileName);
+
+            }
+
         }
     }
 }

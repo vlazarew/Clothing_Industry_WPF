@@ -280,6 +280,17 @@ namespace Clothing_Industry_WPF.Приход_материалов
             }
 
             return command;
-        }      
+        }
+
+        private void ButtonSearchWay_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Forms.FolderBrowserDialog FBD = new System.Windows.Forms.FolderBrowserDialog();
+
+            if (FBD.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                textBoxDefault_Folder.Text = FBD.SelectedPath;
+
+            }
+        }
     }
 }
