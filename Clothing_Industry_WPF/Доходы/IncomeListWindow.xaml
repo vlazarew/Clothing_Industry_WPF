@@ -28,7 +28,15 @@
 
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
-
+        <Style TargetType="TextBox" x:Key="NoActive">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+        </Style>
         <Style TargetType="{x:Type Button}">
             <Setter Property="Background" Value="{StaticResource ResourceKey=GrayBlueGradientBrush}" />
             <Setter Property="Width" Value="80" />
@@ -189,10 +197,10 @@
             <Grid Grid.Column="2">
                 <Label x:Name="LabelPlus" Content="Прибыль" HorizontalAlignment="Left"  VerticalAlignment="Top" RenderTransformOrigin="-0.193,-0.389" FontSize="14" Height="26" FontFamily="Arial"/>
                 <Label x:Name="LabelMinus" Content="Расходы" HorizontalAlignment="Left"  VerticalAlignment="Top" RenderTransformOrigin="-0.193,-0.389" Margin="0,31,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
-                <TextBox x:Name="textBoxPlus" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap"  VerticalAlignment="Top" VerticalContentAlignment="Center" Width="122" Margin="75,0,0,0" FontSize="14" FontFamily="Arial"/>
-                <TextBox x:Name="textBoxMinus" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="122" VerticalContentAlignment="Center" RenderTransformOrigin="0.488,1.096" Margin="75,31,0,0" FontSize="14" FontFamily="Arial"/>
+                <TextBox Style="{StaticResource NoActive}" x:Name="textBoxPlus" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap"  VerticalAlignment="Top" VerticalContentAlignment="Center" Width="122" Margin="75,0,0,0" FontSize="14" FontFamily="Arial"/>
+                <TextBox Style="{StaticResource NoActive}" x:Name="textBoxMinus" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap"  VerticalAlignment="Top" Width="122" VerticalContentAlignment="Center" RenderTransformOrigin="0.488,1.096" Margin="75,31,0,0" FontSize="14" FontFamily="Arial"/>
                 <Label x:Name="LabelCount" Content="Итого" HorizontalAlignment="Left" FontWeight="Bold"  VerticalAlignment="Top" VerticalContentAlignment="Center" RenderTransformOrigin="-0.193,-0.389" Margin="0,62,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
-                <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap"  VerticalAlignment="Top" VerticalContentAlignment="Center" Width="122" RenderTransformOrigin="0.488,1.096" Margin="75,62,0,0" FontSize="14" FontFamily="Arial"/>
+                <TextBox Style="{StaticResource NoActive}" x:Name="textBoxCount" HorizontalAlignment="Left" Height="26"  TextWrapping="Wrap"  VerticalAlignment="Top" VerticalContentAlignment="Center" Width="122" RenderTransformOrigin="0.488,1.096" Margin="75,62,0,0" FontSize="14" FontFamily="Arial"/>
             </Grid>
         </Grid>
     </Grid>

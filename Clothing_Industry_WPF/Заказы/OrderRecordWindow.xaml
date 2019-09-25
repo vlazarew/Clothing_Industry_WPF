@@ -134,6 +134,16 @@
             </Setter>
         </Style>
         
+        <Style TargetType="TextBox" x:Key="NoActive">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+        </Style>
+        
         <Style TargetType="TextBox">
             <Style.Triggers>
                 <Trigger Property="Validation.HasError" Value="True">
@@ -142,6 +152,7 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+        
     </Window.Resources>
     <Grid Margin="0,0,-16,5" HorizontalAlignment="Left" Width="694">
         <Grid.ColumnDefinitions>
@@ -165,7 +176,7 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="textBoxPaid" HorizontalAlignment="Left" Height="26" Margin="230,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBox_PreviewTextInput" Grid.ColumnSpan="2" FontFamily="Arial" TextChanged="TextBox_TextChanged">
+        <TextBox Style="{StaticResource NoActive}" x:Name="textBoxPaid" HorizontalAlignment="Left" Height="26" Margin="230,172,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBox_PreviewTextInput" Grid.ColumnSpan="2" FontFamily="Arial" TextChanged="TextBox_TextChanged">
             <TextBox.Text>
                 <Binding Source="{StaticResource Order}" Path="paid" StringFormat="{}{0:F2}}" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
@@ -177,7 +188,7 @@
         <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="230,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369" TabIndex="7" VerticalContentAlignment="Center" FontSize="14" Grid.ColumnSpan="2" FontFamily="Arial" TextChanged="TextBox_TextChanged"/>
         <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="429,10,0,0" VerticalAlignment="Top" Width="170" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True" TabIndex="14" FontSize="14" Grid.ColumnSpan="2"/>
         <Label Content="Долг " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="11,203,0,0" FontSize="14" Height="31" FontFamily="Arial"/>
-        <TextBox x:Name="textBoxDebt" HorizontalAlignment="Left" Height="26" Margin="230,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369" TabIndex="5" VerticalContentAlignment="Center" FontSize="14" Grid.ColumnSpan="2" FontFamily="Arial" IsReadOnly="True" TextChanged="TextBox_TextChanged"/>
+        <TextBox Style="{StaticResource NoActive}" x:Name="textBoxDebt" HorizontalAlignment="Left" Height="26" Margin="230,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369" TabIndex="5" VerticalContentAlignment="Center" FontSize="14" Grid.ColumnSpan="2" FontFamily="Arial" IsReadOnly="True" TextChanged="TextBox_TextChanged"/>
         <Label Content="Тип заказа" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="11,327,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
         <Label Content="Статус заказа" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,359,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
         <Label Content="Заказчик" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,390,0,0" FontSize="14" Height="26" FontFamily="Arial"/>

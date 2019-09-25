@@ -134,7 +134,17 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
+        
+        <Style TargetType="TextBox" x:Key="NoActive">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+        </Style> 
+        
         <Style TargetType="TextBox">
             <Style.Triggers>
                 <Trigger Property="Validation.HasError" Value="True">
@@ -199,7 +209,7 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="textBoxFileName" HorizontalAlignment="Left" Height="26" IsReadOnly="True" Margin="157,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" TabIndex="13" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+        <TextBox Style="{StaticResource NoActive}" x:Name="textBoxFileName" HorizontalAlignment="Left" Height="26" IsReadOnly="True" Margin="157,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" TabIndex="13" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
             <TextBox.Text>
                 <Binding Source="{StaticResource Costs}" Path="nameOfDocument" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
@@ -236,7 +246,7 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="textBoxFileFolder" HorizontalAlignment="Left" Height="26" Margin="157,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" TabIndex="13" VerticalContentAlignment="Center" IsReadOnly="True" FontSize="14" FontFamily="Arial">
+        <TextBox Style="{StaticResource NoActive}" x:Name="textBoxFileFolder" HorizontalAlignment="Left" Height="26" Margin="157,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" TabIndex="13" VerticalContentAlignment="Center" IsReadOnly="True" FontSize="14" FontFamily="Arial">
             <TextBox.Text>
                 <Binding Source="{StaticResource Costs}" Path="defaultFolder" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
