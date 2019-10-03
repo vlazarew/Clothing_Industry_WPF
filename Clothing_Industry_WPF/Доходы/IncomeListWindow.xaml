@@ -172,7 +172,7 @@
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Label Content="Прибыль" HorizontalAlignment="Left"  VerticalAlignment="Top" RenderTransformOrigin="-0.193,-0.389" FontSize="14" FontFamily="Arial"/>
-                <DataGrid x:Name="incomeGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Margin="0,32,0,0" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
+                <DataGrid x:Name="incomeGrid" FontSize="14"  MinRowHeight="24" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Margin="0,32,0,0" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
 
 
                     <DataGrid.Columns>
@@ -182,7 +182,7 @@
                 </DataGrid>
             </Grid>
             <Grid Grid.Column="1">
-                <DataGrid x:Name="clearincomeGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Margin="0,32,0,0" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
+                <DataGrid x:Name="clearincomeGrid" FontSize="14"  MinRowHeight="24" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" Margin="0,32,0,0" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
 
 
                     <DataGrid.Columns>

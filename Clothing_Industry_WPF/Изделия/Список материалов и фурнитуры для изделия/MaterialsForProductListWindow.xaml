@@ -260,7 +260,7 @@
         </Grid>
         
         <Grid Grid.Row="1">
-            <DataGrid x:Name="productslistGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
+            <DataGrid x:Name="productslistGrid"   FontSize="14"  MinRowHeight="24" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}" >
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridCell}">
                         <EventSetter Event="GotFocus" Handler="DataGridCell_GotFocus" />

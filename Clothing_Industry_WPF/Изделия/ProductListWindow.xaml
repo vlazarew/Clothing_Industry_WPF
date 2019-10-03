@@ -263,7 +263,7 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
-            <DataGrid x:Name="productsGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
+            <DataGrid x:Name="productsGrid"   MinRowHeight="24" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}" FontSize="14">
             <DataGrid.Resources>
                 <Style TargetType="{x:Type DataGridCell}">
                     <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>

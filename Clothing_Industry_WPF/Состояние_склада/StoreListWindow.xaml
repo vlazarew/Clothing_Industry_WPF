@@ -267,7 +267,7 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
-            <DataGrid x:Name="storeGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
+            <DataGrid x:Name="storeGrid" FontSize="14"  MinRowHeight="24" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
 
 
                 <DataGrid.Columns>

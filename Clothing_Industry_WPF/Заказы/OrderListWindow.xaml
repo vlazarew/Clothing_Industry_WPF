@@ -272,7 +272,7 @@
 
         <Grid Grid.Row="1">
 
-            <DataGrid x:Name="ordersGrid"  AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" LoadingRow="OrdersGrid_LoadingRow" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
+            <DataGrid x:Name="ordersGrid"  MinRowHeight="24" FontSize="14"   AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" LoadingRow="OrdersGrid_LoadingRow" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridCell}">
                         <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>

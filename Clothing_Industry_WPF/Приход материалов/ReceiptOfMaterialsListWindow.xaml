@@ -269,7 +269,7 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
-            <DataGrid x:Name="receiptsGrid" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
+            <DataGrid x:Name="receiptsGrid" FontSize="14"  MinRowHeight="24" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}">
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridCell}">
                         <EventSetter Event="GotFocus" Handler="DataGridCell_GotFocus" />
