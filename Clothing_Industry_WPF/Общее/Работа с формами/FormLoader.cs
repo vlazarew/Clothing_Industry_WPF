@@ -60,10 +60,19 @@ namespace Clothing_Industry_WPF.Общее.Работа_с_формами
             return result;
         }
 
-        public static DataTable ExecuteQuery(string query, MySqlConnection connection)
+        public static DataTable ExecuteQuery(string query, MySqlConnection connection, Dictionary<string, string> parameters = null)
         {
             DataTable dataTable = new DataTable();
             MySqlCommand command = new MySqlCommand(query, connection);
+
+            if (parameters != null)
+            {
+                foreach (var keyValuePair in parameters)
+                {
+                    command.Parameters.AddWithValue(keyValuePair.Key, keyValuePair.Value);
+                }
+            }
+
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
             adapter.Fill(dataTable);
 

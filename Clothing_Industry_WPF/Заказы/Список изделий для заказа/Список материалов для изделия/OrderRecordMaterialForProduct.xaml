@@ -148,7 +148,7 @@
         <Button Content="Отмена" HorizontalAlignment="Left" Margin="255,88,0,0" VerticalAlignment="Top" Width="93" RenderTransformOrigin="-0.694,-0.02" TabIndex="4" VerticalContentAlignment="Center" IsCancel="True" Click="Button_Click" Height="30" FontSize="14"/>
         <ComboBox x:Name="comboBoxName_Of_Material" HorizontalAlignment="Left" Margin="147,49,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="1" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial">
             <ComboBox.Text>
-                <Binding Source="{StaticResource OrderMaterialForProduct}" Path="NameOfMaterial" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                <Binding Source="{StaticResource OrderMaterialForProduct}" Path="nameOfMaterial" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
                         <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Название материала должно быть заполнено"/>
                     </Binding.ValidationRules>

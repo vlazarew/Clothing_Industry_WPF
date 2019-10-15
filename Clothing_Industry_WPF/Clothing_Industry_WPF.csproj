@@ -107,6 +107,7 @@
     <Compile Include="MainForms\ConnectionSettingsWindow.xaml.cs">
       <DependentUpon>ConnectionSettingsWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Баланс клиентов\CustomerBalance.cs" />
     <Compile Include="Баланс клиентов\CustomerBalanceListWindow.xaml.cs">
       <DependentUpon>CustomerBalanceListWindow.xaml</DependentUpon>
     </Compile>

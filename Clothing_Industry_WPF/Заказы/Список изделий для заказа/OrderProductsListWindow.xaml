@@ -27,7 +27,7 @@
         <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
     StartPoint="0,0" EndPoint="1,1">
             <GradientStop Color="DarkGray" Offset="0" />
-            
+
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
 
@@ -252,7 +252,7 @@
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
+
         <Grid Grid.Row="0">
             <StackPanel Orientation="Horizontal">
                 <Button Style="{StaticResource Active}" x:Name ="ButtonAddProduct" Content="Добавить изделие"   Width="135" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonAddProduct_Click" FontSize="14"/>
@@ -261,7 +261,11 @@
             </StackPanel>
         </Grid>
         <Grid Grid.Row="1">
-            <DataGrid x:Name="listOfProductsGrid"   FontSize="14"  MinRowHeight="24" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="89*"/>
+                <ColumnDefinition Width="618*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid x:Name="listOfProductsGrid"   FontSize="14"  MinRowHeight="24" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}" Grid.ColumnSpan="2" GotFocus="DataGridCell_GotFocus" LostFocus="DataGridCell_LostFocus" >
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridCell}">
                         <EventSetter Event="GotFocus" Handler="DataGridCell_GotFocus" />

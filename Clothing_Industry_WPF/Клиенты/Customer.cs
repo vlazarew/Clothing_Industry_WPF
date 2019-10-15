@@ -193,8 +193,8 @@ namespace Clothing_Industry_WPF.Клиенты
 
                     // Мы сначала создали клиента, берем его id, и с таким же id добавляем в эту таблицу.
                     // Написал настолько непонятно, что аж сам запутался
-                    string query_balance = "Insert into customers_balance (Customers_id_Customer, Accured, Paid, Debt) values (@id, 0, 0, 0)";
-                    MySqlCommand commandFillBalance = new MySqlCommand(query_balance, connection, transaction);
+                    string queryBalance = "Insert into customers_balance (Customers_id_Customer, Accured, Paid, Debt) values (@id, 0, 0, 0)";
+                    MySqlCommand commandFillBalance = new MySqlCommand(queryBalance, connection, transaction);
                     commandFillBalance.Parameters.AddWithValue("@id", findId);
                     // Конец блока, дальше само выполнение sql комманд
 
@@ -302,7 +302,7 @@ namespace Clothing_Industry_WPF.Клиенты
         // Запросец на всех клиентов
         public static string getQueryText()
         {
-            string query_text = "SELECT customers.id_Customer, customers.Name, customers.Lastname, customers.Patronymic, customers.Address, customers.Phone_Number, customers.Nickname, " +
+            string queryText = "SELECT customers.id_Customer, customers.Name, customers.Lastname, customers.Patronymic, customers.Address, customers.Phone_Number, customers.Nickname, " +
                 "DATE_FORMAT(customers.Birthday, \"%d.%m.%Y\") as Birthday, customers.Passport_data, customers.Size, customers.Parameters, customers.Notes, customer_statuses.Name_Of_Status, " +
                 "order_channels.Name_of_channel, employees.Login " +
                 "FROM customers " +
@@ -310,7 +310,7 @@ namespace Clothing_Industry_WPF.Клиенты
                 "join main_database.customer_statuses on main_database.customer_statuses.id_Status = customers.Customer_Statuses_id_Status " +
                 "join main_database.order_channels on main_database.order_channels.id_Channel = customers.Order_Channels_id_Channel ;";
 
-            return query_text;
+            return queryText;
         }
 
         // Получение данных обо всех клиентах

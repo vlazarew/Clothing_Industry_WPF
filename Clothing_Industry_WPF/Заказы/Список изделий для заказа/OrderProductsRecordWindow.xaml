@@ -145,7 +145,7 @@
     </Window.Resources>
     <Grid>
         <Label Content="Изделие " HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" Height="29"/>
-        <ComboBox x:Name="comboBoxProducts" HorizontalAlignment="Left" Margin="100,18,0,0" VerticalAlignment="Top" Width="211" FontSize="14" VerticalContentAlignment="Center" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial">
+        <ComboBox x:Name="comboBoxProducts" HorizontalAlignment="Left" Margin="100,18,0,0" VerticalAlignment="Top" Width="211" FontSize="14" VerticalContentAlignment="Center" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" KeyUp="ComboBox_TextChanged" DropDownClosed="ComboBox_TextChanged">
             <ComboBox.Text>
                 <Binding Source="{StaticResource OrderProducts}" Path="product" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
@@ -155,9 +155,9 @@
             </ComboBox.Text>
         </ComboBox>
             <Label Content="Количество " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,52,0,0" Height="26" Width="90" FontSize="14" FontFamily="Arial"/>
-        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" Margin="100,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" Margin="100,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" TextChanged="TextBox_TextChanged" PreviewTextInput="TextBoxCount_PreviewTextInput">
             <TextBox.Text>
-                <Binding Source="{StaticResource OrderProducts}" Path="count" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                <Binding Source="{StaticResource OrderProducts}" StringFormat="{}{0:F0}}" Path="count" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
                         <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" MinimumValue="1" ErrorMessage="Количество должно быть заполнено"/>
                     </Binding.ValidationRules>
@@ -165,7 +165,7 @@
             </TextBox.Text>
         </TextBox>
         <Button x:Name="buttonSave" Content="Добавить" HorizontalAlignment="Left" Margin="10,95,0,0" VerticalAlignment="Top" Width="100" IsDefault="True" FontSize="14" RenderTransformOrigin="0.993,-0.413" Click="ButtonSave_Click" Height="30"/>
-        <Button Content="Отмена" HorizontalAlignment="Left" Margin="211,95,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.694,-0.02" FontSize="14" IsCancel="True" Click="Button_Click" Height="30"/>
+        <Button Content="Отмена" HorizontalAlignment="Left" Margin="211,95,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.694,-0.02" FontSize="14" IsCancel="True" Click="ButtonExit_Click" Height="30"/>
 
     </Grid>
 </Window>

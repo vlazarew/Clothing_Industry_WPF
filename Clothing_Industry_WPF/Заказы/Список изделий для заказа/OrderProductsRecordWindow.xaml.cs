@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Clothing_Industry_WPF.Общее.Работа_с_формами;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -22,118 +23,96 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
     /// </summary>
     public partial class OrderProductsRecordWindow : Window
     {
-        // Ввод только букв в численные поля 
-        private static readonly Regex _regex = new Regex("[^0-9]");
+        OrderProducts orderProducts;
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private int orderId;
+        private MySqlConnection connection;
 
         public OrderProductsRecordWindow(int orderId)
         {
+            orderProducts = new OrderProducts(orderId);
             InitializeComponent();
+            connection = new MySqlConnection(connectionString);
             this.orderId = orderId;
             FillComboBoxes();
         }
 
         private void FillComboBoxes()
         {
-            MySqlConnection connection = new MySqlConnection(connectionString);
-            string query = "select Name_Of_Product from products ;";
-            MySqlCommand command = new MySqlCommand(query, connection);
+            // Заполнение только тех изделий, которых еще нет в заказе
+            var result = orderProducts.TakeFreeProducts(connection);
 
-            connection.Open();
-
-            using (DbDataReader reader = command.ExecuteReader())
+            foreach (var data in result)
             {
-                while (reader.Read())
-                {
-                    comboBoxProducts.Items.Add(reader.GetString(0));
-                }
+                comboBoxProducts.Items.Add(data);
             }
-
-            connection.Close();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
 
         private void TextBoxCount_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            e.Handled = !IsTextAllowed(e.Text);
+            e.Handled = !TextBoxValidator.IsIntTextAllowed(e.Text);
         }
 
-        private static bool IsTextAllowed(string text)
+        #region Обработка изменений данных в полях
+
+        // Обработка всех текстовых полей
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            return !_regex.IsMatch(text);
+            var textBox = sender as TextBox;
+            var textBoxName = textBox.Name;
+            var value = textBox.Text;
+            switch (textBoxName)
+            {
+                case "textBoxCount":
+                    int.TryParse(value, out int newCount);
+                    orderProducts.count = newCount;
+                    break;
+               
+            }
         }
 
-        private string CheckData()
+        // Обработка комбобоксов вводом текста
+        private void ComboBox_TextChanged(object sender, KeyEventArgs e)
         {
-            string result = "";
-
-            if (comboBoxProducts.SelectedValue == null)
-            {
-                result += result == "" ? " Изделие" : ",  Изделие";
-            }
-            if (textBoxCount.Text == "")
-            {
-                result += result == "" ? " Количество" : ", Количество";
-            }
-
-            return result == "" ? result : "Не заполнены обязательные поля: " + result;
+            ComboBox_TextChanged(sender);
         }
+
+        // Обработка комбобоксов выбором позиции
+        private void ComboBox_TextChanged(object sender, EventArgs e)
+        {
+            ComboBox_TextChanged(sender);
+        }
+
+        private void ComboBox_TextChanged(object sender)
+        {
+            var comboBox = sender as ComboBox;
+            var comboBoxName = comboBox.Name;
+            var value = comboBox.Text;
+            switch (comboBoxName)
+            {
+                case "comboBoxProducts":
+                    if (comboBoxProducts.Items.IndexOf(value) != -1)
+                    {
+                        orderProducts.product = value;
+                    }
+                    break;
+            }
+        }
+
+        #endregion
 
         private void ButtonSave_Click(object sender, RoutedEventArgs e)
         {
-            string warning = CheckData();
-            if (warning == "")
+            // Истина - сохранение прошло успешно, ложь - если проблемы
+            if (orderProducts.Save(connection))
             {
-                MySqlConnection connection = new MySqlConnection(connectionString);
-                connection.Open();
-                MySqlTransaction transaction = connection.BeginTransaction();
-
-                string query = "insert into list_products_to_order (Orders_id_Order, Products_id_Product, Count) values (@orderId, @productId, @count); ";
-                MySqlCommand command = new MySqlCommand(query, connection, transaction);
-                command.Parameters.AddWithValue("@orderId", orderId);
-                command.Parameters.AddWithValue("@count", textBoxCount.Text);
-
-                string query_product = "select id_product from products where  Name_Of_Product = @name; ";
-                MySqlCommand command_product = new MySqlCommand(query_product, connection);
-                command_product.Parameters.AddWithValue("@name", comboBoxProducts.SelectedItem.ToString());
-
-                int product_id = -1;
-                using (DbDataReader reader = command_product.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        product_id = (int)reader.GetValue(0);
-                    }
-                }
-
-                command.Parameters.AddWithValue("@productId", product_id);
-
-                try
-                {
-                    command.ExecuteNonQuery();
-                    transaction.Commit();
-                    this.Close();
-                }
-                catch
-                {
-                    transaction.Rollback();
-                    MessageBox.Show("Ошибка добавления", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-
-                /////////////////////
-                connection.Close();
-                Window listMaterials = new OrderListOfMaterialsForProduct(product_id);
-                listMaterials.ShowDialog();
+                Close();
             }
-            else
-            {
-                MessageBox.Show(warning, "Не заполнены обязательные поля", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+        }
+
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
