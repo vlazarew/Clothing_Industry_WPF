@@ -14,6 +14,22 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationVersion>1.0.9.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,9 +50,31 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Картинки\Швейная машинка.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>3F6901F72E240FF28D1CD3F32E04A8637ABEA1FA</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Clothing_Industry_WPF_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -51,22 +89,521 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="Старт приложения и конфиг\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="MainForms\AuthentificationForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainForms\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="App.xaml.cs">
+    <Compile Include="MainForms\MainWindowForUser.xaml.cs">
+      <DependentUpon>MainWindowForUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\ConnectionSettingsWindow.xaml.cs">
+      <DependentUpon>ConnectionSettingsWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Баланс клиентов\CustomerBalance.cs" />
+    <Compile Include="Баланс клиентов\CustomerBalanceListWindow.xaml.cs">
+      <DependentUpon>CustomerBalanceListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Доходы\Income.cs" />
+    <Compile Include="Доходы\IncomeListWindow.xaml.cs">
+      <DependentUpon>IncomeListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Доходы\IncomeRecordWindow.xaml.cs">
+      <DependentUpon>IncomeRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Заказы\Order.cs" />
+    <Compile Include="Заказы\OrderRecordWindow.xaml.cs">
+      <DependentUpon>OrderRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Заказы\Список изделий для заказа\OrderProducts.cs" />
+    <Compile Include="Заказы\Список изделий для заказа\Список материалов для изделия\OrderListOfMaterialsForProduct.xaml.cs">
+      <DependentUpon>OrderListOfMaterialsForProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Заказы\Список изделий для заказа\OrderProductsListWindow.xaml.cs">
+      <DependentUpon>OrderProductsListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Заказы\OrderListWindow.xaml.cs">
+      <DependentUpon>OrderListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Заказы\Список изделий для заказа\OrderProductsRecordWindow.xaml.cs">
+      <DependentUpon>OrderProductsRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Заказы\Список изделий для заказа\Список материалов для изделия\OrderMaterialForProduct.cs" />
+    <Compile Include="Заказы\Список изделий для заказа\Список материалов для изделия\OrderRecordMaterialForProduct.xaml.cs">
+      <DependentUpon>OrderRecordMaterialForProduct.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Изделия\Product.cs" />
+    <Compile Include="Изделия\ProductListWindow.xaml.cs">
+      <DependentUpon>ProductListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Изделия\ProductRecordWindow.xaml.cs">
+      <DependentUpon>ProductRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Изделия\Список материалов и фурнитуры для изделия\MaterialsForProduct.cs" />
+    <Compile Include="Изделия\Список материалов и фурнитуры для изделия\MaterialsForProductListWindow.xaml.cs">
+      <DependentUpon>MaterialsForProductListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Изделия\Список материалов и фурнитуры для изделия\MaterialsForProductRecordWindow.xaml.cs">
+      <DependentUpon>MaterialsForProductRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Клиенты\Customer.cs" />
+    <Compile Include="Клиенты\CustomersListWindow.xaml.cs">
+      <DependentUpon>CustomersListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Клиенты\CustomersRecordWindow.xaml.cs">
+      <DependentUpon>CustomersRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Материалы\Material.cs" />
+    <Compile Include="Начисление ЗП\Payroll.cs" />
+    <Compile Include="Общее\Работа с формами\FormLoader.cs" />
+    <Compile Include="Общее\Работа с формами\TextBoxValidator.cs" />
+    <Compile Include="Материалы\MaterialListWindow.xaml.cs">
+      <DependentUpon>MaterialListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Материалы\MaterialRecordWindow.xaml.cs">
+      <DependentUpon>MaterialRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Начисление ЗП\PayrollListWindow.xaml.cs">
+      <DependentUpon>PayrollListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Начисление ЗП\PayrollRecordWindow.xaml.cs">
+      <DependentUpon>PayrollRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Отпуска\Holidays.cs" />
+    <Compile Include="Отпуска\HolidaysListWindow.xaml.cs">
+      <DependentUpon>HolidaysListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Отпуска\HolidaysRecordWindow.xaml.cs">
+      <DependentUpon>HolidaysRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Перечисления\TypeOfFilter.cs" />
+    <Compile Include="Перечисления\TypeOfFind.cs" />
+    <Compile Include="Перечисления\WaysToOpenForm.cs" />
+    <Compile Include="Поиск и фильтры\Поиск файла\DialogSelectFolder.xaml.cs">
+      <DependentUpon>DialogSelectFolder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Поиск и фильтры\Поиск файла\FileWindow.xaml.cs">
+      <DependentUpon>FileWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Поиск и фильтры\Фильтр\FilterHandler.cs" />
+    <Compile Include="Поиск и фильтры\Фильтр\FilterListWindow.xaml.cs">
+      <DependentUpon>FilterListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Поиск и фильтры\Поиск\FindHandler.cs" />
+    <Compile Include="Поиск и фильтры\Поиск\FindWindow.xaml.cs">
+      <DependentUpon>FindWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Поиск и фильтры\Фильтр\FilterRecordWindow.xaml.cs">
+      <DependentUpon>FilterRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Примерки\Fitting.cs" />
+    <Compile Include="Примерки\FittingListWindow.xaml.cs">
+      <DependentUpon>FittingListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Примерки\FittingRecordWindow.xaml.cs">
+      <DependentUpon>FittingRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Приход материалов\ReceiptOfMaterials.cs" />
+    <Compile Include="Приход материалов\Содержание документа прихода\ContentOfReceiptOfMaterials.cs" />
+    <Compile Include="Приход материалов\Содержание документа прихода\ContentOfReceiptOfMaterialsRecordWindow.xaml.cs">
+      <DependentUpon>ContentOfReceiptOfMaterialsRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Приход материалов\ReceiptOfMaterialsListWindow.xaml.cs">
+      <DependentUpon>ReceiptOfMaterialsListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Приход материалов\ReceiptOfMaterialsRecordWindow.xaml.cs">
+      <DependentUpon>ReceiptOfMaterialsRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Приход материалов\Содержание документа прихода\ContentOfReceiptOfMaterialsListWindow.xaml.cs">
+      <DependentUpon>ContentOfReceiptOfMaterialsListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Расходы\Costs.cs" />
+    <Compile Include="Расходы\CostsListWindow.xaml.cs">
+      <DependentUpon>CostsListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Расходы\CostsRecordWindow.xaml.cs">
+      <DependentUpon>CostsRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Состояние_склада\StoreListWindow.xaml.cs">
+      <DependentUpon>StoreListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Сотрудники\Employee.cs" />
+    <Compile Include="Сотрудники\EmployeeListWindow.xaml.cs">
+      <DependentUpon>EmployeeListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Сотрудники\EmployeeRecordWindow.xaml.cs">
+      <DependentUpon>EmployeeRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Должности\EmployeePositionsListWindow.xaml.cs">
+      <DependentUpon>EmployeePositionsListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Должности\EmployeePositionsRecordWindow.xaml.cs">
+      <DependentUpon>EmployeePositionsRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Единицы измерения\UnitsListWindow.xaml.cs">
+      <DependentUpon>UnitsListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Единицы измерения\UnitsRecordWindow.xaml.cs">
+      <DependentUpon>UnitsRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Каналы заказов\OrderChannelsListWindow.xaml.cs">
+      <DependentUpon>OrderChannelsListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Каналы заказов\OrderChannelsRecordWindow.xaml.cs">
+      <DependentUpon>OrderChannelsRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Категории расходов\ConsumptionCategoriesListWindow.xaml.cs">
+      <DependentUpon>ConsumptionCategoriesListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Категории расходов\ConsumptionCategoriesRecordWindow.xaml.cs">
+      <DependentUpon>ConsumptionCategoriesRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Периодичности\PeriodicitiesListWindow.xaml.cs">
+      <DependentUpon>PeriodicitiesListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Периодичности\PeriodicitiesRecordWindow.xaml.cs">
+      <DependentUpon>PeriodicitiesRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Поставщики\SuppliersListWindow.xaml.cs">
+      <DependentUpon>SuppliersListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Поставщики\SuppliersRecordWindow.xaml.cs">
+      <DependentUpon>SuppliersRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Статусы клиентов\CustomerStatusesListWindow.xaml.cs">
+      <DependentUpon>CustomerStatusesListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Статусы клиентов\CustomerStatusesRecordWindow.xaml.cs">
+      <DependentUpon>CustomerStatusesRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Статусы оплаты\PaymentStatesListWindow.xaml.cs">
+      <DependentUpon>PaymentStatesListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Статусы оплаты\PaymentStatesRecordWindow.xaml.cs">
+      <DependentUpon>PaymentStatesRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Страны\CountriesListWindow.xaml.cs">
+      <DependentUpon>CountriesListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Страны\CountriesRecordWindow.xaml.cs">
+      <DependentUpon>CountriesRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Типы заказов\TypesOfOrderListWindow.xaml.cs">
+      <DependentUpon>TypesOfOrderListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Типы заказов\TypesOfOrderRecordWindow.xaml.cs">
+      <DependentUpon>TypesOfOrderRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Типы материалов\TypesOfMaterialListWindow.xaml.cs">
+      <DependentUpon>TypesOfMaterialListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Типы материалов\TypesOfMaterialRecordWindow.xaml.cs">
+      <DependentUpon>TypesOfMaterialRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Типы оплаты\TypesOfPaymentListWindow.xaml.cs">
+      <DependentUpon>TypesOfPaymentListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Типы оплаты\TypesOfPaymentRecordWindow.xaml.cs">
+      <DependentUpon>TypesOfPaymentRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Типы примерок\TypesOfFittingListWindow.xaml.cs">
+      <DependentUpon>TypesOfFittingListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Типы примерок\TypesOfFittingRecordWindow.xaml.cs">
+      <DependentUpon>TypesOfFittingRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Типы транзакций\TypeOfTransactionsListWindow.xaml.cs">
+      <DependentUpon>TypeOfTransactionsListWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Справочник\Типы транзакций\TypeOfTransactionsRecordWindow.xaml.cs">
+      <DependentUpon>TypeOfTransactionsRecordWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Старт приложения и конфиг\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="MainForms\AuthentificationForm.xaml.cs">
+      <DependentUpon>AuthentificationForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainForms\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MainForms\MainWindowForUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainForms\ConnectionSettingsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Баланс клиентов\CustomerBalanceListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Доходы\IncomeListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Доходы\IncomeRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Заказы\OrderRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Заказы\Список изделий для заказа\Список материалов для изделия\OrderListOfMaterialsForProduct.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Заказы\Список изделий для заказа\OrderProductsListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Заказы\OrderListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Заказы\Список изделий для заказа\OrderProductsRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Заказы\Список изделий для заказа\Список материалов для изделия\OrderRecordMaterialForProduct.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Изделия\ProductListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Изделия\ProductRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Изделия\Список материалов и фурнитуры для изделия\MaterialsForProductListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Изделия\Список материалов и фурнитуры для изделия\MaterialsForProductRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Клиенты\CustomersListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Клиенты\CustomersRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Материалы\MaterialListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Материалы\MaterialRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Начисление ЗП\PayrollListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Начисление ЗП\PayrollRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Отпуска\HolidaysListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Отпуска\HolidaysRecordWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Поиск и фильтры\Поиск файла\DialogSelectFolder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Поиск и фильтры\Поиск файла\FileWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Поиск и фильтры\Фильтр\FilterListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Поиск и фильтры\Поиск\FindWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Поиск и фильтры\Фильтр\FilterRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Примерки\FittingListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Примерки\FittingRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Приход материалов\Содержание документа прихода\ContentOfReceiptOfMaterialsRecordWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Приход материалов\ReceiptOfMaterialsListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Приход материалов\ReceiptOfMaterialsRecordWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Приход материалов\Содержание документа прихода\ContentOfReceiptOfMaterialsListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Расходы\CostsListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Расходы\CostsRecordWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Состояние_склада\StoreListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Сотрудники\EmployeeListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Сотрудники\EmployeeRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Должности\EmployeePositionsListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Должности\EmployeePositionsRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Единицы измерения\UnitsListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Единицы измерения\UnitsRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Каналы заказов\OrderChannelsListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Каналы заказов\OrderChannelsRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Категории расходов\ConsumptionCategoriesListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Категории расходов\ConsumptionCategoriesRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Периодичности\PeriodicitiesListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Периодичности\PeriodicitiesRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Поставщики\SuppliersListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Поставщики\SuppliersRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Статусы клиентов\CustomerStatusesListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Статусы клиентов\CustomerStatusesRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Статусы оплаты\PaymentStatesListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Статусы оплаты\PaymentStatesRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Страны\CountriesListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Страны\CountriesRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Типы заказов\TypesOfOrderListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Типы заказов\TypesOfOrderRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Типы материалов\TypesOfMaterialListWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Справочник\Типы материалов\TypesOfMaterialRecordWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Справочник\Типы оплаты\TypesOfPaymentListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Типы оплаты\TypesOfPaymentRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Типы примерок\TypesOfFittingListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Типы примерок\TypesOfFittingRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Типы транзакций\TypeOfTransactionsListWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Справочник\Типы транзакций\TypeOfTransactionsRecordWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -86,13 +623,62 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Clothing_Industry_WPF_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="Старт приложения и конфиг\App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Картинки\Швейная машинка.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Excel">
+      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>9</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
