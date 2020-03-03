@@ -1,4 +1,5 @@
-﻿using Clothing_Industry_WPF.Перечисления;
+﻿using Clothing_Industry_WPF.Общее.Работа_с_формами;
+using Clothing_Industry_WPF.Перечисления;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -162,17 +163,17 @@ namespace Clothing_Industry_WPF.Изделия
                 MySqlCommand command = actionInDBCommand(connection);
                 command.Transaction = transaction;
 
-                try
-                {
+                //try
+               // {
                     command.ExecuteNonQuery();
                     transaction.Commit();
                     this.Close();
-                }
-                catch
-                {
-                    transaction.Rollback();
-                    System.Windows.MessageBox.Show("Ошибка сохранения!", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+               // }
+               // catch
+               // {
+                //    transaction.Rollback();
+                //    System.Windows.MessageBox.Show("Ошибка сохранения!", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
+               // }
 
 
                 connection.Close();
@@ -235,6 +236,16 @@ namespace Clothing_Industry_WPF.Изделия
             }
 
             return command;
+        }
+
+        private void TextBoxFixedPrice_Of_Material_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !TextBoxValidator.IsFloatTextAllowed(e.Text);
+        }
+
+        private void TextBoxMoneyToEmployee_Of_Material_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !TextBoxValidator.IsFloatTextAllowed(e.Text);
         }
     }
 }

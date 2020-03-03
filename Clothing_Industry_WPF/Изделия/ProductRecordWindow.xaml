@@ -157,7 +157,7 @@
         <Label Content="Фото " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="350,50,0,0" Height="34" FontSize="14" FontFamily="Arial"/>
 
 
-        <TextBox x:Name="textBoxName_Of_Product" HorizontalAlignment="Left" Height="26" Margin="182,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center" FontFamily="Arial">
+        <TextBox x:Name="textBoxName_Of_Product"  HorizontalAlignment="Left" Height="26" Margin="182,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center" FontFamily="Arial">
             <TextBox.Text>
                 <Binding Source="{StaticResource Product}" Path="name" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
@@ -166,20 +166,20 @@
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="textBoxFixed_Price" HorizontalAlignment="Left" Height="26" Margin="182,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+        <TextBox x:Name="textBoxFixed_Price" HorizontalAlignment="Left" PreviewTextInput="TextBoxFixedPrice_Of_Material_PreviewTextInput" Height="26" Margin="182,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
             <TextBox.Text>
-                <Binding Source="{StaticResource Product}" Path="fixedPrice" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                <Binding Source="{StaticResource Product}" Path="fixedPrice" StringFormat="{}{0:F2}}" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
-                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" MinimumValue="1" ErrorMessage="Фиксированная цена должна быть заполнена"/>
+                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" MinimumValue="0.1" ErrorMessage="Фиксированная цена должна быть заполнена"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
         </TextBox>
-        <TextBox x:Name="textBoxMoneyToEmployee" HorizontalAlignment="Left" Height="26" Margin="182,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+        <TextBox x:Name="textBoxMoneyToEmployee" HorizontalAlignment="Left"  PreviewTextInput="TextBoxMoneyToEmployee_Of_Material_PreviewTextInput" Height="26" Margin="182,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
             <TextBox.Text>
-                <Binding Source="{StaticResource Product}" Path="moneyToEmployee" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                <Binding Source="{StaticResource Product}" Path="moneyToEmployee" StringFormat="{}{0:F2}}" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
-                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Выплата сотруднику должна быть заполнена"/>
+                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" MinimumValue="0.1" ErrorMessage="Выплата сотруднику должна быть заполнена"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>

@@ -32,6 +32,7 @@ namespace Clothing_Industry_WPF
         private string connectionString = "database=main_database;characterset=utf8;port=" + 3306 + ";";
         private static bool isLocalHost = false;
         private static bool isServer = false;
+        private static bool checkFormConnection = false;
         // АйПишник из xml
         private string IP;
         // Имя xml файла
@@ -65,35 +66,35 @@ namespace Clothing_Industry_WPF
             while (count < maxCount)
             {
                 await Task.Delay(1000).ConfigureAwait(true);
-                count++;
-                textBlockStatus.Text = "Идет проверка доступности сервера (" + count.ToString() + " сек.)";
+                count = count + 3;
+                textBlockStatus.Content = "Идет проверка доступности.";
+                await Task.Delay(1000).ConfigureAwait(true);
+                textBlockStatus.Content = "Идет проверка доступности..";
+                await Task.Delay(1000).ConfigureAwait(true);
+                textBlockStatus.Content = "Идет проверка доступности...";
                 if ((isServer || isLocalHost))
                 {
                     maxCount = count;
                     canConnect = true;
                     textBlockStatus.Foreground = Brushes.LimeGreen;
-                    textBlockStatus.Text = "Сервер доступен";
+                    textBlockStatus.Content = "Сервер доступен";
+                    Button_LogIn.Visibility = Visibility.Visible;
+                    Button_Parameters.Visibility = Visibility.Collapsed;
                     Button_LogIn.Style = (Style)Button_LogIn.FindResource("Active");
-                    if (isLocalHost)
-                    {
-                        textBlockCurrentIP.Text = "Текущий IP сервера: localhost";
-                    }
-                    else
-                    {
-                        if (isServer)
-                        {
-                            textBlockCurrentIP.Text = "Текущий IP сервера: " + IP;
-                        }
-                    }
+
                 }
             }
             // Если уже поставленное время прошло и мы не меняли время вылета, значит все плохо, отрубаем приложение
             if (!canConnect)
             {
                 textBlockStatus.Foreground = Brushes.Crimson;
-                textBlockStatus.Text = "Соединение с сервером не установлено. Укажите верный ip в параметрах и перезапустите приложение.";
-                Button_Parameters.Focus();
-                Button_Parameters_Click(this, null);
+                textBlockStatus.Content = "Соединение не установлено";
+                if (checkFormConnection == false)
+                {
+                    Button_Parameters.Focus();
+                    Button_Parameters_Click(this, null);
+                }
+
             }
             textboxLogin.IsEnabled = canConnect;
             PasswordBoxPassword.IsEnabled = canConnect;
@@ -120,7 +121,7 @@ namespace Clothing_Industry_WPF
         private void CheckApplication()
         {
             textBlockStatus.Foreground = Brushes.RoyalBlue;
-            textBlockStatus.Text = "Идет проверка доступности сервера";
+            textBlockStatus.Content = "Идет проверка доступности";
             // Вызываем асинхронный методы, в которых будут одновременно проверятся доступность БД на сервере и на локальной машине
             CheckServerDB();
             CheckLocalHostDB();
@@ -278,16 +279,24 @@ namespace Clothing_Industry_WPF
 
         private void Button_Parameters_Click(object sender, RoutedEventArgs e)
         {
-            var windowSettings = new ConnectionSettingsWindow();
-            if (windowSettings.ShowDialog().Value)
+            if (checkFormConnection == false)
             {
-                IP = windowSettings.Result;
-                CheckApplication();
-            }
-            else
-            {
-                return;
-            }
+                checkFormConnection = true;
+                var windowSettings = new ConnectionSettingsWindow();
+
+                if (windowSettings.ShowDialog().Value)
+                {
+                    IP = windowSettings.Result;
+                    CheckApplication();
+                    checkFormConnection = false;
+                }
+                else
+                {
+                    checkFormConnection = false;
+                    return;
+                }
+                
+            }            
         }
 
         private void LoadXMLSettings()
@@ -302,7 +311,7 @@ namespace Clothing_Industry_WPF
                 if (listIPs.Count == 1)
                 {
                     IP = listIPs[0].LastAttribute.Value.ToString();
-                    textBlockCurrentIP.Text = "Текущий IP сервера: " + IP;
+
                 }
 
                 var listUsers = xmlDocument.Descendants("lastUser").ToList();

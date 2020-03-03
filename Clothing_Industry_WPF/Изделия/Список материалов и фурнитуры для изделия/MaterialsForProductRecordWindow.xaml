@@ -153,11 +153,11 @@
         <Label Content="Тип" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="17,55,0,0" Height="26" Width="130" FontSize="14" FontFamily="Arial"/>
         <Label x:Name="Header" Content="Материал " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,15,0,0" FontSize="18" Height="34" Width="340" FontFamily="Arial"/>
         <Label Content="Количество " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="17,86,0,0" Height="26" Width="97" FontSize="14" FontFamily="Arial"/>
-        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" Margin="147,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" PreviewTextInput="TextBoxCount_PreviewTextInput" Margin="147,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
             <TextBox.Text>
-                <Binding Source="{StaticResource MaterialsForProduct}" Path="count" Mode="TwoWay"  UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                <Binding Source="{StaticResource MaterialsForProduct}" Path="count" Mode="TwoWay" StringFormat="{}{0:F2}}" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules  >
-                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" MinimumValue="1" ErrorMessage="Количество должно быть заполнено"/>
+                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" MinimumValue="0.1" ErrorMessage="Количество должно быть заполнено"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox.Text>
