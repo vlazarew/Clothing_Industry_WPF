@@ -9,7 +9,17 @@
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         Title="Параметры подключения" Height="208" Width="495">
     <Window.Resources>
+        <!--Валидация IP-->
         <validators11:Login x:Key="Login"/>
+        <ControlTemplate x:Key="validationFailed">
+            <StackPanel Orientation="Horizontal">
+                <Border BorderBrush="Red" BorderThickness="1" CornerRadius="6" Panel.ZIndex="0">
+                    <AdornedElementPlaceholder />
+                </Border>
+            </StackPanel>
+        </ControlTemplate>
+
+        <!--Кнопка-->
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
             <GradientStop Color="Transparent" Offset="0.4" />
@@ -35,6 +45,7 @@
             <Setter Property="FontSize" Value="13" />
             <Setter Property="TextBlock.TextAlignment" Value="Center" />
             <Setter Property="IsEnabled" Value="True" />
+            <Setter Property="Panel.ZIndex" Value="1" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -123,8 +134,6 @@
                             </Trigger>
 
                             <!--Наведение мышкой -->
-
-
 
                             <!--Нажатие кнопки-->
 
@@ -144,9 +153,11 @@
             <Setter Property="FontSize" Value="13" />
             <Setter Property="TextBlock.TextAlignment" Value="Center" />
             <Setter Property="IsEnabled" Value="True" />
+            <Setter Property="Panel.ZIndex" Value="1" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
+
                         <Grid Width="{TemplateBinding Width}"   
       Height="{TemplateBinding Height}" ClipToBounds="True">
 
@@ -231,17 +242,12 @@
                                 </Setter>
                             </Trigger>
 
-                            <!--Наведение мышкой -->
-
-
-
-                            <!--Нажатие кнопки-->
-
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
+
         <Style TargetType="Button" x:Key="Active">
             <Setter Property="Background" Value="{StaticResource ResourceKey=GrayBlueGradientBrush}" />
             <Setter Property="Width" Value="80" />
@@ -339,8 +345,6 @@
 
                             <!--Наведение мышкой -->
 
-
-
                             <!--Нажатие кнопки-->
 
                         </ControlTemplate.Triggers>
@@ -348,32 +352,79 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Panel.ZIndex" Value="2"/>
+
+            <Setter  Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Border x:Name="border"  CornerRadius="6"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="3" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
+
+
     <Grid  Margin="0,0,0,-29" Height="208" VerticalAlignment="Top">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="78"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#F0F0F0">
-            <Label Content="IP-адрес сервера:" HorizontalAlignment="Left" RenderTransformOrigin="1.219,2.079" Margin="10,35,0,35" FontSize="14" FontFamily="Arial" Width="144"/>
-            <TextBox x:Name="textBoxIP" HorizontalAlignment="Left" Margin="154,35,0,35" TextWrapping="Wrap" Width="269" FontSize="14" VerticalContentAlignment="Center" TabIndex="2" FontFamily="Arial" MouseDoubleClick="TextBoxIP_TextChanged">
-                <TextBox.Text>
-                    <Binding Source="{StaticResource Login}" Path="ip" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
-                        <Binding.ValidationRules>
-                            <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="ip должно быть заполнен"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
+            <TextBox x:Name="textBoxIP" Validation.ErrorTemplate="{StaticResource validationFailed}" HorizontalAlignment="Left" Margin="154,35,0,35" TextWrapping="Wrap" Width="269" FontSize="14" VerticalContentAlignment="Center" TabIndex="2" FontFamily="Arial" MouseDoubleClick="TextBoxIP_TextChanged" Style="{DynamicResource TextBoxStyle}">
+                <Binding Source="{StaticResource Login}" Path="ip" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                    <Binding.ValidationRules>
+                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="ip должно быть заполнен"/>
+                    </Binding.ValidationRules>
+                </Binding>
             </TextBox>
-            <Button Style="{StaticResource Delete}" x:Name="buttonDelete" Content="X" HorizontalAlignment="Left" Width="36" Margin="423,35,0,35" TabIndex="3" Click="ButtonDelete_Click" FontSize="14" RenderTransformOrigin="0.009,0.505"/>
-
+            <Label Content="IP-адрес сервера:" HorizontalAlignment="Left" RenderTransformOrigin="1.219,2.079" Margin="10,35,0,35" FontSize="14" FontFamily="Arial" Width="144"/>
+            <Button Style="{StaticResource Delete}" x:Name="buttonDelete"  Content="X" Width="36" Margin="415,35,0,35" TabIndex="3" Click="ButtonDelete_Click" FontSize="14" RenderTransformOrigin="0.009,0.505" HorizontalAlignment="Left"/>
         </Grid>
+
         <Grid Grid.Row="1" Background="Silver" Margin="0,0,0,-36">
             <Border BorderBrush="Black" BorderThickness="1" Margin="-19,0,-11,-30" RenderTransformOrigin="0.503,-0.238">
                 <StackPanel>
                 </StackPanel>
             </Border>
         </Grid>
-        <Button Style="{StaticResource Active}" x:Name="buttonSaveSettings" Content="Сохранить и выйти" Width="142" Margin="317,24,0,24" TabIndex="1" Click="ButtonSaveSettings_Click" FontSize="14" HorizontalAlignment="Left" Grid.Row="1"/>
+        <Button Style="{StaticResource Active}" x:Name="buttonSaveSettings" Content="Сохранить и выйти" Width="142" Margin="309,24,0,24" TabIndex="1" Click="ButtonSaveSettings_Click" FontSize="14" Grid.Row="1" HorizontalAlignment="Left"/>
     </Grid>
 </Window>
