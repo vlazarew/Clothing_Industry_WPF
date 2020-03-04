@@ -19,5 +19,6 @@ namespace Clothing_Industry_WPF.Изделия
         public string this[string columnName] => "";
 
         public string Error => "";
+       
     }
 }

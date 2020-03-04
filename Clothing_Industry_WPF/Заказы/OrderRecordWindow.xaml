@@ -197,7 +197,7 @@
         <ComboBox x:Name="comboBoxTypeOfOrder" HorizontalAlignment="Left" Margin="230,327,0,0" VerticalAlignment="Top" Width="369" Height="26" FontSize="14" VerticalContentAlignment="Center" TabIndex="8" Grid.ColumnSpan="2" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" DropDownClosed="ComboBox_TextChanged" KeyUp="ComboBox_TextChanged">
             <ComboBox.Text>
                 <Binding Source="{StaticResource Order}" Path="typeOfOrderName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
-                    <Binding.ValidationRules  >
+                    <Binding.ValidationRules>
                         <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Тип заказа должен быть заполнен"/>
                     </Binding.ValidationRules>
                 </Binding>

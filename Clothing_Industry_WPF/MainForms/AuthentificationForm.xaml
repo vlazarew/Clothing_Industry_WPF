@@ -3,12 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:my="clr-namespace:System.ComponentModel;assembly=System"
+        xmlns:validators="clr-namespace:Clothing_Industry_WPF.Общее.Работа_с_формами"
+        xmlns:local="clr-namespace:Clothing_Industry_WPF.MainForms"
+        xmlns:validators11="clr-namespace:Clothing_Industry_WPF.MainForms"
         ResizeMode="NoResize"      
         mc:Ignorable="d" WindowStartupLocation="CenterScreen" WindowStyle="ThreeDBorderWindow"
         Title="Авторизация" Height="275" Width="470"  Visibility="Visible">
 
     <Window.Resources>
+        <validators11:Login x:Key="Login"/>
+        <local:PasswordBoxAssistant x:Key="PasswordBoxAssistant"/>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
             <GradientStop Color="Transparent" Offset="0.4" />
@@ -247,16 +251,33 @@
             <RowDefinition Height="150"/>
             <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
-        <Grid  Grid.Row="0">
+        <Grid Background="#F0F0F0" Grid.Row="0" Margin="0,0,6,0">
 
             <Label Content="Логин:" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="19,45,0,0" VerticalAlignment="Top"  Height="28" Width="69" RenderTransformOrigin="0.531,1.036"/>
             <Label Content="Пароль:" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="19,96,0,0" VerticalAlignment="Top" Height="28" Width="69"/>
-            <TextBox x:Name="textboxLogin" HorizontalAlignment="Left" Height="28" Margin="157,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" TabIndex="1" VerticalContentAlignment="Center" FontSize="14" PreviewKeyDown="TextboxLogin_PreviewKeyDown" FontFamily="Arial"/>
-            <PasswordBox x:Name="PasswordBoxPassword" HorizontalAlignment="Left" Margin="157,96,0,0" VerticalAlignment="Top" Width="248" Height="28" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
-
+            <TextBox x:Name="textboxLogin" HorizontalAlignment="Left" Height="28" Margin="157,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" TabIndex="1" VerticalContentAlignment="Center" FontSize="14" PreviewKeyDown="TextboxLogin_PreviewKeyDown" FontFamily="Arial">
+                <TextBox.Text>
+                    <Binding Source="{StaticResource Login}" Path="login" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                        <Binding.ValidationRules>
+                            <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Логин должен быть заполнен"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <PasswordBox x:Name="PasswordBoxPassword" local:PasswordBoxAssistant.BindPassword="True"  HorizontalAlignment="Left" Margin="157,96,0,0" VerticalAlignment="Top" Width="248" Height="28" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+                <local:PasswordBoxAssistant.BoundPassword>
+                    <Binding Source="{StaticResource Login}" Mode="TwoWay" Path="password" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                        <Binding.ValidationRules>
+                            <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Пароль должен быть заполнен"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </local:PasswordBoxAssistant.BoundPassword>
+                
+            </PasswordBox>
+              
         </Grid>
         <Grid Background="Silver" Margin="0,1,6,-18" Grid.Row="1">
-            <Border BorderBrush="Black" BorderThickness="2" Margin="-28,0,-23,-24">
+            <Border BorderBrush="Black" BorderThickness="1" Margin="-28,0,-23,-24">
                 <StackPanel>
                 </StackPanel>
             </Border>
@@ -265,7 +286,7 @@
             <Button Style="{StaticResource NoActive}" x:Name="Button_LogIn" Visibility="Collapsed" Content="Войти"  Margin="25,30,339,0" VerticalAlignment="Top" Width="101" Height="30" Click="Button_LogIn_Click" TabIndex="3" IsDefault="True" BorderBrush="#FF707070" FontSize="14" RenderTransformOrigin="-2.3,0.767"  />
         </Grid>
 
-        <TextBox x:Name="textBlockStatusOfServer" HorizontalAlignment="Center" Margin="21,10,323,0" Width="126" Height="24" VerticalAlignment="Top"  TextOptions.TextFormattingMode="Display"  Cursor="None" Foreground="#FF0223B6" FontSize="14" TextWrapping="Wrap" TextAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Disabled"  Text="Статус сервера:" IsReadOnly="True" BorderThickness="0" FontFamily="Arial"/>
+        <TextBox x:Name="textBlockStatusOfServer" Background="#F0F0F0" HorizontalAlignment="Center" Margin="21,10,323,0" Width="126" Height="24" VerticalAlignment="Top"  TextOptions.TextFormattingMode="Display"  Cursor="None" Foreground="#FF0223B6" FontSize="14" TextWrapping="Wrap" TextAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Disabled"  Text="Статус сервера:" IsReadOnly="True" BorderThickness="0" FontFamily="Arial"/>
         <Label x:Name="textBlockStatus" Content="" FlowDirection="LeftToRight" HorizontalContentAlignment="Left" HorizontalAlignment="Center" FontFamily="Arial" FontSize="14"  Margin="152,5,66,0" VerticalAlignment="Top" Height="35" Width="252" RenderTransformOrigin="0.318,-0.357"/>
 
     </Grid>

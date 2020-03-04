@@ -314,20 +314,7 @@ namespace Clothing_Industry_WPF
 
                 }
 
-                var listUsers = xmlDocument.Descendants("lastUser").ToList();
-                if (listUsers.Count == 1)
-                {
-                    string user = listUsers[0].LastAttribute.Value.ToString();
-                    if (user != "")
-                    {
-                        textboxLogin.Text = user;
-                        PasswordBoxPassword.Focus();
-                    }
-                    else
-                    {
-                        textboxLogin.Focus();
-                    }
-                }
+                textboxLogin.Focus();
 
             }
             // Если такого не обнаружилось, то делаем уличную магию
