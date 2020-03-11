@@ -4,20 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Xml.Linq;
 
 namespace Clothing_Industry_WPF
@@ -154,33 +144,37 @@ namespace Clothing_Industry_WPF
             {
                 connection.Open();
                 Properties.Settings.Default.main_databaseConnectionString = connString;
+                UpdateSalaryTable(connection);
+                SaveSettingsXML();
+
+                bool isAdministrator = CheckAdministrator(connection, username);
+                Window mainWindow;
+                // Тернарный оператор тут бессилен, разные типы говорит
+                if (isAdministrator)
+                {
+                    mainWindow = new MainWindow(username);
+                }
+                else
+                {
+                    mainWindow = new MainWindowForUser(username);
+                }
+
+                Close();
+                mainWindow.Show();
+                connection.Close();
             }
             catch
             {
                 MessageBox.Show("Неверные логин или пароль!", "Ошибка авторизации", MessageBoxButton.OK, MessageBoxImage.Error);
                 PasswordBoxPassword.Clear();
+          
+                
                 return;
             }
 
-            UpdateSalaryTable(connection);
+           
 
-            SaveSettingsXML();
 
-            bool isAdministrator = CheckAdministrator(connection, username);
-            Window mainWindow;
-            // Тернарный оператор тут бессилен, разные типы говорит
-            if (isAdministrator)
-            {
-                mainWindow = new MainWindow(username);
-            }
-            else
-            {
-                mainWindow = new MainWindowForUser(username);
-            }
-
-            Close();
-            mainWindow.Show();
-            connection.Close();
         }
 
         // Обновляем(добавляем) строчки в Начислениях ЗП
