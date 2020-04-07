@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
   
- Title="Учёт швейного производства 'Моя пижама'" Height="768" Width="1366" Closing="Window_Closing" MinWidth="1200" MinHeight="800" WindowState="Maximized">
+ Title="Учёт швейного производства 'Моя пижама' ver 1.6. Кудрин Иван Юрьевич" Height="768" Width="1366" Closing="Window_Closing" MinWidth="1200" MinHeight="800" WindowState="Maximized">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />

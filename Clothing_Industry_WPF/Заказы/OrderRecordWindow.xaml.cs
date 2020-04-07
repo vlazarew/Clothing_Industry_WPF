@@ -44,7 +44,6 @@ namespace Clothing_Industry_WPF.Заказы
 
             // Заполнение шапки, полей даты 
             Title = FormLoader.setNewTitle(way, Title);
-            Header.Content = Title;
             datePickerDateOfDelievery.Text = DateTime.Now.ToLongDateString();
             datePickerDateOfOrder.Text = DateTime.Now.ToLongDateString();
 

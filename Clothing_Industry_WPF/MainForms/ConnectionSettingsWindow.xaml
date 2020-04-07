@@ -20,333 +20,53 @@
         </ControlTemplate>
 
         <!--Кнопка-->
-        <GradientStopCollection x:Key="MyGlassGradientStopsResource">
-            <GradientStop Color="WhiteSmoke" Offset="0.2" />
-            <GradientStop Color="Transparent" Offset="0.4" />
-            <GradientStop Color="WhiteSmoke" Offset="0.5" />
-            <GradientStop Color="Transparent" Offset="0.75" />
-            <GradientStop Color="WhiteSmoke" Offset="0.9" />
-            <GradientStop Color="Transparent" Offset="1" />
-        </GradientStopCollection>
-        <LinearGradientBrush x:Key="MyGlassBrushResource" StartPoint="0,0" EndPoint="1,1" Opacity="0.75"
-    GradientStops="{StaticResource MyGlassGradientStopsResource}" />
-        <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
-    StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="DarkGray" Offset="0" />
 
-            <GradientStop Color="DarkGray" Offset="1" />
+        <LinearGradientBrush x:Key="Buttongradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FF4B4A4A" Offset="1" />
+            <GradientStop Color="#FFE8E8E8" Offset="0" />
         </LinearGradientBrush>
 
         <Style TargetType="Button">
-            <Setter Property="Background" Value="{StaticResource ResourceKey=GrayBlueGradientBrush}" />
-            <Setter Property="Width" Value="80" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="FontFamily" Value="Arial" />
-            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Background" Value="{DynamicResource Buttongradient}"/>
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextBlock.TextAlignment" Value="Center" />
             <Setter Property="IsEnabled" Value="True" />
-            <Setter Property="Panel.ZIndex" Value="1" />
+
+
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid Width="{TemplateBinding Width}"   
-      Height="{TemplateBinding Height}" ClipToBounds="True">
+                        <Border x:Name="MainBorder" CornerRadius="6" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding Background}" BorderThickness="2.5">
 
-                            <!-- Outer Rectangle with rounded corners. -->
-                            <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch"   
-      VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}"   
-       StrokeThickness="5" Fill="Transparent" />
 
-                            <!-- Inner Rectangle with rounded corners. -->
-                            <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"   
-        VerticalAlignment="Stretch" Stroke="Transparent"   
-        StrokeThickness="5"   
-        Fill="{TemplateBinding Background}" 
-      />
+                            <Grid Margin="0,0,0,-1">
 
-                            <!-- Glass Rectangle -->
-                            <Rectangle x:Name="glassCube" HorizontalAlignment="Stretch"  
-        VerticalAlignment="Stretch"  
-        StrokeThickness="2" RadiusX="10" RadiusY="10" Opacity="0"  
-        Fill="{StaticResource MyGlassBrushResource}"  
-        RenderTransformOrigin="0.5,0.5">
-                                <Rectangle.Stroke>
-                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <LinearGradientBrush.GradientStops>
-                                            <GradientStop Offset="0.0" Color="LightBlue" />
-                                            <GradientStop Offset="1.0" Color="Gray" />
-                                        </LinearGradientBrush.GradientStops>
-                                    </LinearGradientBrush>
-                                </Rectangle.Stroke>
 
-                                <!-- These transforms have no effect as they   
-             are declared here.   
-             The reason the transforms are included is to be targets   
-             for animation (see later). -->
-                                <Rectangle.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform />
-                                        <RotateTransform />
-                                    </TransformGroup>
-                                </Rectangle.RenderTransform>
 
-                                <!-- A BevelBitmapEffect is applied to give the button a   
-               "Beveled" look. -->
-                                <Rectangle.BitmapEffect>
-                                    <BevelBitmapEffect />
-                                </Rectangle.BitmapEffect>
-                            </Rectangle>
-
-                            <!-- Present Text of the button. -->
-                            <DockPanel Name="myContentPresenterDockPanel">
-                                <ContentPresenter x:Name="myContentPresenter" VerticalAlignment="Center" Margin="5"   
+                                <DockPanel Name="myContentPresenterDockPanel">
+                                    <ContentPresenter x:Name="myContentPresenter" VerticalAlignment="Center" Margin="5"   
           Content="{TemplateBinding  Content}" TextBlock.Foreground="Black" />
-                            </DockPanel>
-                        </Grid>
-
+                                </DockPanel>
+                            </Grid>
+                        </Border>
                         <ControlTemplate.Triggers>
 
-                            <!-- Set properties when mouse pointer is over the button. -->
                             <Trigger Property="IsMouseOver" Value="True">
-                                <!-- Below are three property settings that occur when the   
-         condition is met (user mouses over button).  -->
-                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
-                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property ="BorderBrush" TargetName="MainBorder"  Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+
+
+
+
                             </Trigger>
+
                             <Trigger Property="IsPressed" Value="True">
+                                <Setter Property ="BorderBrush" TargetName="MainBorder" Value="YellowGreen" />
 
-                                <!-- Below are three property settings that occur when the   
-         condition is met (user mouses over button).  -->
-                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="YellowGreen" />
-                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
-                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
+
+
                             </Trigger>
-
-                            <!--Наведение мышкой -->
-
-                            <!--Нажатие кнопки-->
-
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-
-
-        <Style TargetType="Button" x:Key="Delete">
-            <Setter Property="Background" Value="{StaticResource ResourceKey=GrayBlueGradientBrush}" />
-            <Setter Property="Width" Value="80" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="FontFamily" Value="Arial" />
-            <Setter Property="FontSize" Value="13" />
-            <Setter Property="TextBlock.TextAlignment" Value="Center" />
-            <Setter Property="IsEnabled" Value="True" />
-            <Setter Property="Panel.ZIndex" Value="1" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-
-                        <Grid Width="{TemplateBinding Width}"   
-      Height="{TemplateBinding Height}" ClipToBounds="True">
-
-                            <!-- Outer Rectangle with rounded corners. -->
-                            <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch"   
-      VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}"   
-       StrokeThickness="5" Fill="Transparent" />
-
-                            <!-- Inner Rectangle with rounded corners. -->
-                            <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"   
-        VerticalAlignment="Stretch" Stroke="Transparent"   
-        StrokeThickness="5"   
-        Fill="{TemplateBinding Background}" 
-      />
-
-                            <!-- Glass Rectangle -->
-                            <Rectangle x:Name="glassCube" HorizontalAlignment="Stretch"  
-        VerticalAlignment="Stretch"  
-        StrokeThickness="2" RadiusX="10" RadiusY="10" Opacity="0"  
-        Fill="{StaticResource MyGlassBrushResource}"  
-        RenderTransformOrigin="0.5,0.5">
-                                <Rectangle.Stroke>
-                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <LinearGradientBrush.GradientStops>
-                                            <GradientStop Offset="0.0" Color="LightBlue" />
-                                            <GradientStop Offset="1.0" Color="Gray" />
-                                        </LinearGradientBrush.GradientStops>
-                                    </LinearGradientBrush>
-                                </Rectangle.Stroke>
-
-                                <!-- These transforms have no effect as they   
-             are declared here.   
-             The reason the transforms are included is to be targets   
-             for animation (see later). -->
-                                <Rectangle.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform />
-                                        <RotateTransform />
-                                    </TransformGroup>
-                                </Rectangle.RenderTransform>
-
-                                <!-- A BevelBitmapEffect is applied to give the button a   
-               "Beveled" look. -->
-                                <Rectangle.BitmapEffect>
-                                    <BevelBitmapEffect />
-                                </Rectangle.BitmapEffect>
-                            </Rectangle>
-
-                            <!-- Present Text of the button. -->
-                            <DockPanel Name="myContentPresenterDockPanel">
-                                <ContentPresenter x:Name="myContentPresenter" VerticalAlignment="Center" Margin="5"   
-          Content="{TemplateBinding  Content}" TextBlock.Foreground="Black" />
-                            </DockPanel>
-                        </Grid>
-
-                        <ControlTemplate.Triggers>
-
-                            <!-- Set properties when mouse pointer is over the button. -->
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <!-- Below are three property settings that occur when the   
-         condition is met (user mouses over button).  -->
-                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
-                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-
-                                <!-- Below are three property settings that occur when the   
-         condition is met (user mouses over button).  -->
-                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="YellowGreen" />
-                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
-                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <Style TargetType="Button" x:Key="Active">
-            <Setter Property="Background" Value="{StaticResource ResourceKey=GrayBlueGradientBrush}" />
-            <Setter Property="Width" Value="80" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="FontFamily" Value="Arial" />
-            <Setter Property="FontSize" Value="13" />
-            <Setter Property="TextBlock.TextAlignment" Value="Center" />
-            <Setter Property="IsEnabled" Value="True" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid Width="{TemplateBinding Width}"   
-      Height="{TemplateBinding Height}" ClipToBounds="True">
-
-                            <!-- Outer Rectangle with rounded corners. -->
-                            <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch"   
-      VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}"   
-       StrokeThickness="5" Fill="Transparent" />
-
-                            <!-- Inner Rectangle with rounded corners. -->
-                            <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"   
-        VerticalAlignment="Stretch" Stroke="Transparent"   
-        StrokeThickness="5"   
-        Fill="{TemplateBinding Background}" 
-      />
-
-                            <!-- Glass Rectangle -->
-                            <Rectangle x:Name="glassCube" HorizontalAlignment="Stretch"  
-        VerticalAlignment="Stretch"  
-        StrokeThickness="2" RadiusX="10" RadiusY="10" Opacity="0"  
-        Fill="{StaticResource MyGlassBrushResource}"  
-        RenderTransformOrigin="0.5,0.5">
-                                <Rectangle.Stroke>
-                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <LinearGradientBrush.GradientStops>
-                                            <GradientStop Offset="0.0" Color="LightBlue" />
-                                            <GradientStop Offset="1.0" Color="Gray" />
-                                        </LinearGradientBrush.GradientStops>
-                                    </LinearGradientBrush>
-                                </Rectangle.Stroke>
-
-                                <!-- These transforms have no effect as they   
-             are declared here.   
-             The reason the transforms are included is to be targets   
-             for animation (see later). -->
-                                <Rectangle.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform />
-                                        <RotateTransform />
-                                    </TransformGroup>
-                                </Rectangle.RenderTransform>
-
-                                <!-- A BevelBitmapEffect is applied to give the button a   
-               "Beveled" look. -->
-                                <Rectangle.BitmapEffect>
-                                    <BevelBitmapEffect />
-                                </Rectangle.BitmapEffect>
-                            </Rectangle>
-
-                            <!-- Present Text of the button. -->
-                            <DockPanel Name="myContentPresenterDockPanel">
-                                <ContentPresenter x:Name="myContentPresenter" VerticalAlignment="Center" Margin="5"   
-          Content="{TemplateBinding  Content}" TextBlock.Foreground="Black" />
-                            </DockPanel>
-                        </Grid>
-
-                        <ControlTemplate.Triggers>
-
-                            <!-- Set properties when mouse pointer is over the button. -->
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <!-- Below are three property settings that occur when the   
-         condition is met (user mouses over button).  -->
-                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
-                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-
-                                <!-- Below are three property settings that occur when the   
-         condition is met (user mouses over button).  -->
-                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="YellowGreen" />
-                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
-                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-
-                            <!--Наведение мышкой -->
-
-                            <!--Нажатие кнопки-->
-
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -355,7 +75,7 @@
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
         <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
         <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
-        <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
+        <Style  x:Key="TextBoxStyle"  TargetType="{x:Type TextBox}">
             <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
             <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
@@ -366,13 +86,14 @@
             <Setter Property="AllowDrop" Value="true"/>
             <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
             <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
-            <Setter Property="Panel.ZIndex" Value="2"/>
-
-            <Setter  Property="Template">
+            <Setter Property="Template">
                 <Setter.Value>
-                    <ControlTemplate>
-                        <Border x:Name="border"  CornerRadius="6"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="3" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" CornerRadius="6" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="3" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                             <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="3" BlurRadius="10"></DropShadowEffect>
+                            </Border.Effect>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsEnabled" Value="false">
@@ -388,7 +109,6 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-
             <Style.Triggers>
                 <MultiTrigger>
                     <MultiTrigger.Conditions>
@@ -399,6 +119,11 @@
                 </MultiTrigger>
             </Style.Triggers>
         </Style>
+
+
+        
+
+
     </Window.Resources>
 
 
@@ -408,23 +133,23 @@
             <RowDefinition Height="78"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#F0F0F0">
-            <TextBox x:Name="textBoxIP" Validation.ErrorTemplate="{StaticResource validationFailed}" HorizontalAlignment="Left" Margin="154,35,0,35" TextWrapping="Wrap" Width="269" FontSize="14" VerticalContentAlignment="Center" TabIndex="2" FontFamily="Arial" MouseDoubleClick="TextBoxIP_TextChanged" Style="{DynamicResource TextBoxStyle}">
+            <TextBox x:Name="textBoxIP" Validation.ErrorTemplate="{StaticResource validationFailed}" HorizontalAlignment="Left" Margin="154,35,0,35" TextWrapping="Wrap" Width="257" FontSize="14" VerticalContentAlignment="Center" TabIndex="2" FontFamily="Arial" MouseDoubleClick="TextBoxIP_TextChanged" Style="{DynamicResource TextBoxStyle}">
                 <Binding Source="{StaticResource Login}" Path="ip" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules>
-                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="ip должно быть заполнен"/>
+                        <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" ErrorMessage="ip должно быть заполнен"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox>
             <Label Content="IP-адрес сервера:" HorizontalAlignment="Left" RenderTransformOrigin="1.219,2.079" Margin="10,35,0,35" FontSize="14" FontFamily="Arial" Width="144"/>
-            <Button Style="{StaticResource Delete}" x:Name="buttonDelete"  Content="X" Width="36" Margin="415,35,0,35" TabIndex="3" Click="ButtonDelete_Click" FontSize="14" RenderTransformOrigin="0.009,0.505" HorizontalAlignment="Left"/>
+            <Button  x:Name="buttonDelete"  Content="X" FontFamily="Arial" Margin="416,35,0,0" TabIndex="3" Click="ButtonDelete_Click" FontSize="14" RenderTransformOrigin="0.009,0.505" Width="35" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top"/>
+            <Border BorderBrush="Black" BorderThickness="1" Margin="-19,0,-11,0" RenderTransformOrigin="0.503,-0.238">
+
+            </Border>
         </Grid>
 
         <Grid Grid.Row="1" Background="Silver" Margin="0,0,0,-36">
-            <Border BorderBrush="Black" BorderThickness="1" Margin="-19,0,-11,-30" RenderTransformOrigin="0.503,-0.238">
-                <StackPanel>
-                </StackPanel>
-            </Border>
+
         </Grid>
-        <Button Style="{StaticResource Active}" x:Name="buttonSaveSettings" Content="Сохранить и выйти" Width="142" Margin="309,24,0,24" TabIndex="1" Click="ButtonSaveSettings_Click" FontSize="14" Grid.Row="1" HorizontalAlignment="Left"/>
+        <Button  x:Name="buttonSaveSettings" Content="Сохранить и выйти" Margin="309,24,0,24" TabIndex="1" Click="ButtonSaveSettings_Click" FontFamily="Arial" VerticalAlignment="Top" FontSize="14" Grid.Row="1" HorizontalAlignment="Left" Width="142"/>
     </Grid>
 </Window>

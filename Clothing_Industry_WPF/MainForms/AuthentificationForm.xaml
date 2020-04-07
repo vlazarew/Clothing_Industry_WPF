@@ -32,34 +32,21 @@
 
         <Style TargetType="Button" x:Key="Active">
             <Setter Property="Background" Value="{DynamicResource Buttongradient}"/>
-            <Setter Property="Foreground" Value="Black" />
             <Setter Property="FontSize" Value="15" />
             <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextBlock.TextAlignment" Value="Center" />
             <Setter Property="IsEnabled" Value="True" />
 
+               
+  
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border CornerRadius="4" Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0.5">
-                            <Border.Effect>
-                                <DropShadowEffect ShadowDepth="1" BlurRadius="3"></DropShadowEffect>
-                            </Border.Effect>
+                        <Border x:Name="MainBorder" CornerRadius="6" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding Background}" BorderThickness="2.5">
+
 
                             <Grid Margin="0,0,0,-1">
-                                <Border x:Name="outerBorder" BorderThickness="1" CornerRadius="100" Opacity="0" Margin="-2,-2,-2,-3">
-                                    <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch"   
-      VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}"  
-       StrokeThickness="4" Fill="Transparent" Margin="0,0,-1,1" />
-                                </Border>
-                                <Border BorderThickness="2" CornerRadius="5">
-                                    <!-- Inner Rectangle with rounded corners. -->
-                                    <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"   
-        VerticalAlignment="Stretch" Stroke="Transparent"   
-        StrokeThickness="5"   
-        Fill="{TemplateBinding Background}" Margin="-2,0" 
-      />
-                                </Border>
+
 
 
                                 <DockPanel Name="myContentPresenterDockPanel">
@@ -71,23 +58,18 @@
                         <ControlTemplate.Triggers>
 
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle"  Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                                <Setter Property="Opacity" Value="100" TargetName="outerBorder" />
-                                <Setter Property="ContentPresenter.BitmapEffect"  TargetName="myContentPresenter">
+                                <Setter Property ="BorderBrush" TargetName="MainBorder"  Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+                               
 
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
+
+
                             </Trigger>
 
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="YellowGreen" />
-                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property ="BorderBrush" TargetName="MainBorder" Value="YellowGreen" />
+
+
+
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -108,25 +90,11 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Border CornerRadius="4" Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0.5">
-                            <Border.Effect>
-                                <DropShadowEffect ShadowDepth="1" BlurRadius="3"></DropShadowEffect>
-                            </Border.Effect>
+                        <Border x:Name="MainBorder" CornerRadius="6" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding Background}" BorderThickness="2.5">
+
 
                             <Grid Margin="0,0,0,-1">
-                                <Border x:Name="outerBorder" BorderThickness="1" CornerRadius="100" Opacity="0" Margin="-2,-2,-2,-3">
-                                    <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch"   
-      VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}"  
-       StrokeThickness="4" Fill="Transparent" Margin="0,0,-1,1" />
-                                </Border>
-                                <Border BorderThickness="2" CornerRadius="5">
-                                    <!-- Inner Rectangle with rounded corners. -->
-                                    <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"   
-        VerticalAlignment="Stretch" Stroke="Transparent"   
-        StrokeThickness="5"   
-        Fill="{TemplateBinding Background}" Margin="-2,0" 
-      />
-                                </Border>
+
 
 
                                 <DockPanel Name="myContentPresenterDockPanel">
@@ -135,28 +103,7 @@
                                 </DockPanel>
                             </Grid>
                         </Border>
-                        <ControlTemplate.Triggers>
 
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle"  Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                                <Setter Property="Opacity" Value="100" TargetName="outerBorder" />
-                                <Setter Property="ContentPresenter.BitmapEffect"  TargetName="myContentPresenter">
-
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-
-                            <Trigger Property="IsPressed" Value="True">
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="YellowGreen" />
-                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -292,7 +239,7 @@
             </Border>
             <Button Style="{StaticResource Active}"  x:Name="Button_Parameters"  Content="Параметры" HorizontalAlignment="Left" Margin="25,30,0,0" VerticalAlignment="Top" Width="100" Height="30" TabIndex="5" BorderBrush="#FF707070" Click="Button_Parameters_Click" FontSize="14" RenderTransformOrigin="0.26,0.489" FontFamily="Arial"/>
             <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Выйти"  HorizontalAlignment="Left" Margin="305,30,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="ButtonExit_Click" TabIndex="4" IsCancel="True" FontSize="14" RenderTransformOrigin="0.48,1.167" FontFamily="Arial"/>
-            <Button Style="{StaticResource NoActive}" x:Name="Button_LogIn" Visibility="Collapsed" Content="Войти"  Margin="25,30,334,0" VerticalAlignment="Top" Height="30" Click="Button_LogIn_Click" TabIndex="3" IsDefault="True" BorderBrush="#FF707070" FontSize="14" RenderTransformOrigin="-2.3,0.767"  />
+            <Button Style="{StaticResource NoActive}" x:Name="Button_LogIn" Visibility="Collapsed" Content="Войти"  Margin="25,30,334,0" VerticalAlignment="Top" Height="30" Click="Button_LogIn_Click" TabIndex="3" IsDefault="True" BorderBrush="#FF707070" FontSize="14" FontFamily="Arial" RenderTransformOrigin="-2.3,0.767"  />
         </Grid>
 
         <TextBox x:Name="textBlockStatusOfServer"  Background="#F0F0F0" HorizontalAlignment="Center" Margin="21,10,323,0" Width="126" Height="24" VerticalAlignment="Top"  TextOptions.TextFormattingMode="Display"  Cursor="None" Foreground="#FF0223B6" FontSize="14" TextWrapping="Wrap" TextAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Disabled"  Text="Статус сервера:" IsReadOnly="True" BorderThickness="0" FontFamily="Arial"/>
