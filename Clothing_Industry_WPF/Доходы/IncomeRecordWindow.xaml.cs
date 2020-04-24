@@ -102,5 +102,10 @@ namespace Clothing_Industry_WPF.Доходы
                 System.Windows.MessageBox.Show(warning, "Не заполнены обязательные поля", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        {
+              Close();
+        }
     }
 }

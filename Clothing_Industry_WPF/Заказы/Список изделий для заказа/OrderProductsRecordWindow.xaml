@@ -8,7 +8,7 @@
         xmlns:validators1="clr-namespace:Clothing_Industry_WPF.Заказы.Список_изделий_для_заказа"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="Добавление изделия в заказ" Height="200" Width="339">
+        Title="Добавление изделия в заказ" Height="208" Width="400">
     <Window.Resources>
         <validators1:OrderProducts x:Key="OrderProducts"/>
         <LinearGradientBrush x:Key="Buttongradient" StartPoint="0,0" EndPoint="0,1">            <GradientStop Color="#FF4B4A4A" Offset="1" />            <GradientStop Color="#FFE8E8E8" Offset="0" />        </LinearGradientBrush>
@@ -25,10 +25,10 @@
         </Style>
     </Window.Resources>
     <Grid  VerticalAlignment="Top">
-        <Grid.RowDefinitions>            <RowDefinition Height="100"/>            <RowDefinition Height="70"/>        </Grid.RowDefinitions>
+        <Grid.RowDefinitions>            <RowDefinition Height="100"/>            <RowDefinition Height="78"/>        </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#F0F0F0">
-            <Label Content="Изделие " HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" Height="29"/>
-            <ComboBox x:Name="comboBoxProducts" HorizontalAlignment="Left" Margin="100,18,0,0" VerticalAlignment="Top" Width="211" FontSize="14" VerticalContentAlignment="Center" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" KeyUp="ComboBox_TextChanged" DropDownClosed="ComboBox_TextChanged" Height="26">
+            <Label Content="Изделие:" HorizontalAlignment="Left" Margin="39,20,0,0" VerticalAlignment="Top" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" Height="26" Width="72"/>
+            <ComboBox x:Name="comboBoxProducts" Margin="134,20,0,0" VerticalAlignment="Top" FontSize="14" VerticalContentAlignment="Center" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" KeyUp="ComboBox_TextChanged" DropDownClosed="ComboBox_TextChanged" Height="26" HorizontalAlignment="Left" Width="201">
                 <ComboBox.Text>
                     <Binding Source="{StaticResource OrderProducts}" Path="product" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                         <Binding.ValidationRules>
@@ -37,8 +37,8 @@
                     </Binding>
                 </ComboBox.Text>
             </ComboBox>
-            <Label Content="Количество " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,52,0,0" Height="26" Width="90" FontSize="14" FontFamily="Arial"/>
-            <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" Margin="100,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="211" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" TextChanged="TextBox_TextChanged" PreviewTextInput="TextBoxCount_PreviewTextInput">
+            <Label Content="Количество:" HorizontalAlignment="Left" RenderTransformOrigin="0.974,1" Margin="39,54,0,0" Width="90" FontSize="14" FontFamily="Arial" Height="26" VerticalAlignment="Top"/>
+            <TextBox x:Name="textBoxCount" Margin="134,54,0,0" TextWrapping="Wrap" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" TextChanged="TextBox_TextChanged" PreviewTextInput="TextBoxCount_PreviewTextInput" HorizontalAlignment="Left" Width="201" Height="26" VerticalAlignment="Top">
                 <TextBox.Text>
                     <Binding Source="{StaticResource OrderProducts}" StringFormat="{}{0:F0}}" Path="count" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                         <Binding.ValidationRules>
@@ -51,8 +51,8 @@
 
         </Grid>
         <Grid Grid.Row="1" Background="Silver">
-            <Button x:Name="buttonSave" Content="Добавить" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" Width="100" IsDefault="True" FontSize="14" RenderTransformOrigin="0.993,-0.413" Click="ButtonSave_Click" Height="30"/>
-            <Button Content="Отмена" HorizontalAlignment="Left" Margin="210,18,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="-0.694,-0.02" FontSize="14" IsCancel="True" Click="ButtonExit_Click" Height="30"/>
+            <Button x:Name="buttonSave" Content="Добавить" HorizontalAlignment="Left" Margin="39,24,0,0" VerticalAlignment="Top" Width="100" IsDefault="True" FontSize="14" RenderTransformOrigin="0.993,-0.413" Click="ButtonSave_Click" Height="30" FontFamily="Arial"/>
+            <Button Content="Отмена" Margin="235,24,0,24" RenderTransformOrigin="-0.694,-0.02" FontSize="14" IsCancel="True" Click="ButtonExit_Click" FontFamily="Arial" HorizontalAlignment="Left" Width="100"/>
 
         </Grid>
     </Grid>

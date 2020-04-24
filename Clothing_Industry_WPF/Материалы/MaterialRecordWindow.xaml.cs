@@ -44,7 +44,6 @@ namespace Clothing_Industry_WPF.Материал
 
             // Заполнение шапки, полей
             Title = FormLoader.setNewTitle(way, Title);
-            Header.Content = Title;
 
             FillComboBoxes();
 

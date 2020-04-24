@@ -7,7 +7,7 @@
         xmlns:validators11="clr-namespace:Clothing_Industry_WPF.MainForms"
         ResizeMode="NoResize"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Параметры подключения" Height="208" Width="495">
+        Title="Параметры подключения" Height="208" Width="470">
     <Window.Resources>
         <!--Валидация IP-->
         <validators11:Login x:Key="Login"/>
@@ -121,7 +121,7 @@
         </Style>
 
 
-        
+
 
 
     </Window.Resources>
@@ -133,23 +133,24 @@
             <RowDefinition Height="78"/>
         </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#F0F0F0">
-            <TextBox x:Name="textBoxIP" Validation.ErrorTemplate="{StaticResource validationFailed}" HorizontalAlignment="Left" Margin="154,35,0,35" TextWrapping="Wrap" Width="257" FontSize="14" VerticalContentAlignment="Center" TabIndex="2" FontFamily="Arial" MouseDoubleClick="TextBoxIP_TextChanged" Style="{DynamicResource TextBoxStyle}">
+            <TextBox x:Name="textBoxIP" Validation.ErrorTemplate="{StaticResource validationFailed}" HorizontalAlignment="Left" Margin="177,35,0,35" TextWrapping="Wrap" Width="188" FontSize="14" VerticalContentAlignment="Center" TabIndex="2" FontFamily="Arial" MouseDoubleClick="TextBoxIP_TextChanged" Style="{DynamicResource TextBoxStyle}">
                 <Binding Source="{StaticResource Login}" Path="ip" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                     <Binding.ValidationRules>
                         <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" ErrorMessage="ip должно быть заполнен"/>
                     </Binding.ValidationRules>
                 </Binding>
             </TextBox>
-            <Label Content="IP-адрес сервера:" HorizontalAlignment="Left" RenderTransformOrigin="1.219,2.079" Margin="10,35,0,35" FontSize="14" FontFamily="Arial" Width="144"/>
-            <Button  x:Name="buttonDelete"  Content="X" FontFamily="Arial" Margin="416,35,0,0" TabIndex="3" Click="ButtonDelete_Click" FontSize="14" RenderTransformOrigin="0.009,0.505" Width="35" HorizontalAlignment="Left" Height="31" VerticalAlignment="Top"/>
+            <Label Content="IP-адрес сервера:" RenderTransformOrigin="1.219,2.079" Margin="39,35,0,0" FontSize="14" FontFamily="Arial" HorizontalAlignment="Left" Width="138" Height="31" VerticalAlignment="Top"/>
+            <Button  x:Name="buttonDelete"  Content="X" FontFamily="Arial" Margin="370,35,0,0" TabIndex="3" Click="ButtonDelete_Click" FontSize="14" RenderTransformOrigin="0.009,0.505" Height="31" VerticalAlignment="Top" HorizontalAlignment="Left" Width="35"/>
             <Border BorderBrush="Black" BorderThickness="1" Margin="-19,0,-11,0" RenderTransformOrigin="0.503,-0.238">
 
             </Border>
         </Grid>
 
-        <Grid Grid.Row="1" Background="Silver" Margin="0,0,0,-36">
+        <Grid Grid.Row="1" Background="Silver" >
 
         </Grid>
-        <Button  x:Name="buttonSaveSettings" Content="Сохранить и выйти" Margin="309,24,0,24" TabIndex="1" Click="ButtonSaveSettings_Click" FontFamily="Arial" VerticalAlignment="Top" FontSize="14" Grid.Row="1" HorizontalAlignment="Left" Width="142"/>
+        <Button  x:Name="buttonSaveSettingsandexit" Content="Сохранить и выйти" Margin="265,24,0,0" TabIndex="1" Click="ButtonSaveSettings_Click" FontFamily="Arial" VerticalAlignment="Top" FontSize="14" Grid.Row="1" Height="30" HorizontalAlignment="Left" Width="140"/>
+
     </Grid>
 </Window>

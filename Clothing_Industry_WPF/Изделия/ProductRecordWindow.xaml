@@ -8,7 +8,7 @@
         xmlns:validators1="clr-namespace:Clothing_Industry_WPF.Изделия"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="Изделие" Height="490" Width="391">
+        Title="Изделие" Height="420" Width="800">
     <Window.Resources>
         <validators1:Product x:Key="Product"/>
         <LinearGradientBrush x:Key="Buttongradient" StartPoint="0,0" EndPoint="0,1">            <GradientStop Color="#FF4B4A4A" Offset="1" />            <GradientStop Color="#FFE8E8E8" Offset="0" />        </LinearGradientBrush>
@@ -25,58 +25,57 @@
 
     </Window.Resources>
     <Grid  VerticalAlignment="Top">
-        <Grid.RowDefinitions>            <RowDefinition Height="390"/>            <RowDefinition Height="70"/>        </Grid.RowDefinitions>
+        <Grid.RowDefinitions>            <RowDefinition Height="320"/>            <RowDefinition Height="70"/>        </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#F0F0F0">
 
-            <Label Content="Название" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="11,51,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
-            <Label Content="Цена" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="11,82,0,0" FontSize="14" Width="53" Height="26" FontFamily="Arial"/>
-            <Label Content="Выплата сотруднику" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="11,113,0,0" FontSize="14" Width="142" Height="31" FontFamily="Arial"/>
-            <Label Content="Описание " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="11,144,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+            <Image HorizontalAlignment="Left" Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\fotik.png" Height="230" VerticalAlignment="Top" Width="241" Margin="499,56,0,0"/>
+
+            <Border BorderBrush="Black" BorderThickness="1" Margin="-36,0,-141,0" RenderTransformOrigin="0.503,-0.238"/>
+
+            <Border BorderBrush="Black" BorderThickness="1" Margin="400,0,-145,0" RenderTransformOrigin="0.503,-0.238"/>
+
+            <Label Content="Название:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,51,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="183"/>
+            <Label Content="Цена:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,82,0,0" FontSize="14" Width="183" Height="26" FontFamily="Arial"/>
+            <Label Content="Выплата сотруднику:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,113,0,0" FontSize="14" Width="183" Height="31" FontFamily="Arial"/>
+            <Label Content="Описание:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,144,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="157"/>
+            <Label Content="Фото:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="406,51,0,0" Height="26" FontSize="14" FontFamily="Arial" Width="44"/>
 
 
-            <Label Content="Фото " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="11,175,0,0" Height="26" FontSize="14" FontFamily="Arial"/>
-
-
-            <TextBox x:Name="textBoxName_Of_Product"  HorizontalAlignment="Left" Height="26" Margin="183,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center" FontFamily="Arial">
-                <TextBox.Text>
-                    <Binding Source="{StaticResource Product}" Path="name" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
-                        <Binding.ValidationRules>
-                            <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" ErrorMessage="Имя должно быть заполнено"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
+            <TextBox x:Name="textBoxName_Of_Product" Height="26" Margin="197,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="1" FontSize="14" MaxLines="1" IsUndoEnabled="False" VerticalContentAlignment="Center" FontFamily="Arial" HorizontalAlignment="Left" Width="164">
+                <Binding Source="{StaticResource Product}" Path="name" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                    <Binding.ValidationRules>
+                        <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" ErrorMessage="Имя должно быть заполнено"/>
+                    </Binding.ValidationRules>
+                </Binding>
             </TextBox>
-            <TextBox x:Name="textBoxFixed_Price" HorizontalAlignment="Left" PreviewTextInput="TextBoxFixedPrice_Of_Material_PreviewTextInput" Height="26" Margin="183,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
-                <TextBox.Text>
-                    <Binding Source="{StaticResource Product}" Path="fixedPrice" StringFormat="{}{0:F2}}" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
-                        <Binding.ValidationRules  >
-                            <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" MinimumValue="0.1" ErrorMessage="Фиксированная цена должна быть заполнена"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
+            <TextBox x:Name="textBoxFixed_Price" HorizontalAlignment="Left" PreviewTextInput="TextBoxFixedPrice_Of_Material_PreviewTextInput" Height="26" Margin="197,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+                <Binding Source="{StaticResource Product}" Path="fixedPrice" StringFormat="{}{0:F2}}" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                    <Binding.ValidationRules  >
+                        <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" MinimumValue="0.1" ErrorMessage="Фиксированная цена должна быть заполнена"/>
+                    </Binding.ValidationRules>
+                </Binding>
             </TextBox>
-            <TextBox x:Name="textBoxMoneyToEmployee" HorizontalAlignment="Left"  PreviewTextInput="TextBoxMoneyToEmployee_Of_Material_PreviewTextInput" Height="26" Margin="183,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
-                <TextBox.Text>
-                    <Binding Source="{StaticResource Product}" Path="moneyToEmployee" StringFormat="{}{0:F2}}" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
-                        <Binding.ValidationRules  >
-                            <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" MinimumValue="0.1" ErrorMessage="Выплата сотруднику должна быть заполнена"/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
+            <TextBox x:Name="textBoxMoneyToEmployee" HorizontalAlignment="Left"  PreviewTextInput="TextBoxMoneyToEmployee_Of_Material_PreviewTextInput" Height="26" Margin="197,113,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+                <Binding Source="{StaticResource Product}" Path="moneyToEmployee" StringFormat="{}{0:F2}}" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                    <Binding.ValidationRules  >
+                        <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" MinimumValue="0.1" ErrorMessage="Выплата сотруднику должна быть заполнена"/>
+                    </Binding.ValidationRules>
+                </Binding>
             </TextBox>
-            <TextBox x:Name="textBoxDescription" HorizontalAlignment="Left" Height="26" Margin="183,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" TabIndex="5" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
-            <Rectangle  x:Name="Border" Stroke="Black" StrokeThickness="5" StrokeDashArray="1 1" SnapsToDevicePixels="True" Margin="183,175,0,0" HorizontalAlignment="Left" Width="161" Height="161" VerticalAlignment="Top"/>
-            <Image x:Name="imagePhoto"  Height="161" Margin="183,175,0,0" VerticalAlignment="Top" OpacityMask="Black" Cursor="Hand" HorizontalAlignment="Left" Width="161"/>
-            <Label  Content="Обязательные поля помечены (*)" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="0.974,1" Margin="11,15,0,0" FontSize="12" Height="24" FontFamily="Arial"/>
-            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="87,51,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
-            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="69,82,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
-            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="158,113,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
-            <Border BorderBrush="Black" BorderThickness="1" Margin="-41,1,-136,0" RenderTransformOrigin="0.503,-0.238"/>
+            <TextBox x:Name="textBoxDescription" Height="26" Margin="197,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="5" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" HorizontalAlignment="Left" Width="164"/>
+            <Rectangle  x:Name="Border" Stroke="Black" StrokeThickness="5" StrokeDashArray="1 1" SnapsToDevicePixels="True" Margin="494,51,0,0" Height="241" VerticalAlignment="Top" HorizontalAlignment="Left" Width="241"/>
+
+            <Image x:Name="imagePhoto"  Height="241" Margin="494,51,0,0" VerticalAlignment="Top" OpacityMask="Black" Cursor="Hand" HorizontalAlignment="Left" Width="241"/>
+
+            <Label  Content="Обязательные поля помечены (*)" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="0.974,1" FontSize="12" Height="24" FontFamily="Arial"/>
+            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="114,51,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="20"/>
+            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="84,82,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="19"/>
+            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="182,113,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="23"/>
+            <Button x:Name="buttonAddPhoto" Content="+" HorizontalAlignment="Left" Margin="450,49,0,0" Width="26" Click="ButtonAddPhoto_Click" TabIndex="6" FontSize="14" RenderTransformOrigin="0.615,0.462" FontFamily="Arial" Height="26" VerticalAlignment="Top"/>
 
         </Grid>
         <Grid Grid.Row="1" Background="Silver">
-            <Button x:Name="buttonAddPhoto" Content="Добавить фото" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" Width="140" Height="34" Click="ButtonAddPhoto_Click" TabIndex="6" FontSize="14" RenderTransformOrigin="0.493,0.088"/>
-            <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="202,18,0,0" Width="140" Click="ButtonSaveAndExit_Click" TabIndex="7" IsDefault="True" FontSize="14" RenderTransformOrigin="-0.136,-0.353" Height="34" VerticalAlignment="Top"/>
+            <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" Margin="595,20,0,0" Click="ButtonSaveAndExit_Click" TabIndex="7" IsDefault="True" FontSize="14" RenderTransformOrigin="-0.136,-0.353" FontFamily="Arial" HorizontalAlignment="Left" Width="140" Height="30" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </Window>

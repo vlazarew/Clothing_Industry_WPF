@@ -92,12 +92,12 @@ namespace Clothing_Industry_WPF.Расходы
             {
                 case WaysToOpenForm.WaysToOpen.create:
                     this.Title += " (Создание)";
-                    Header.Content += " (Создание)";
+
                     datePickerDate_Of_Cost.Text = DateTime.Now.ToLongDateString();
                     break;
                 case WaysToOpenForm.WaysToOpen.edit:
                     this.Title += " (Изменение)";
-                    Header.Content += " (Изменение)";
+
                     break;
                 default:
                     break;

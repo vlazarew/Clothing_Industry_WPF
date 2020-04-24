@@ -8,133 +8,12 @@
         xmlns:validators1="clr-namespace:Clothing_Industry_WPF.Изделия.Список_материалов_и_фурнитуры_для_изделия"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="Материал" Height="203.99" Width="368.182">
+        Title="Материал" Height="208" Width="400">
     <Window.Resources>
         <validators1:MaterialsForProduct x:Key="MaterialsForProduct"/>
-        <GradientStopCollection x:Key="MyGlassGradientStopsResource">
-            <GradientStop Color="WhiteSmoke" Offset="0.2" />
-            <GradientStop Color="Transparent" Offset="0.4" />
-            <GradientStop Color="WhiteSmoke" Offset="0.5" />
-            <GradientStop Color="Transparent" Offset="0.75" />
-            <GradientStop Color="WhiteSmoke" Offset="0.9" />
-            <GradientStop Color="Transparent" Offset="1" />
-        </GradientStopCollection>
-        <LinearGradientBrush x:Key="MyGlassBrushResource" StartPoint="0,0" EndPoint="1,1" Opacity="0.75"
-    GradientStops="{StaticResource MyGlassGradientStopsResource}" />
-        <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
-    StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="DarkGray" Offset="0" />
+        <LinearGradientBrush x:Key="Buttongradient" StartPoint="0,0" EndPoint="0,1">            <GradientStop Color="#FF4B4A4A" Offset="1" />            <GradientStop Color="#FFE8E8E8" Offset="0" />        </LinearGradientBrush>
+        <Style TargetType="Button">            <Setter Property="Background" Value="{DynamicResource Buttongradient}"/>            <Setter Property="FontSize" Value="15" />            <Setter Property="SnapsToDevicePixels" Value="True" />            <Setter Property="TextBlock.TextAlignment" Value="Center" />            <Setter Property="IsEnabled" Value="True" />            <Setter Property="Template">                <Setter.Value>                    <ControlTemplate TargetType="{x:Type Button}">                        <Border x:Name="MainBorder" CornerRadius="6" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding Background}" BorderThickness="2.5">                            <Grid Margin="0,0,0,-1">                                <DockPanel Name="myContentPresenterDockPanel">                                    <ContentPresenter x:Name="myContentPresenter" VerticalAlignment="Center" Margin="5"             Content="{TemplateBinding  Content}" TextBlock.Foreground="Black" />                                </DockPanel>                            </Grid>                        </Border>                        <ControlTemplate.Triggers>                            <Trigger Property="IsMouseOver" Value="True">                                <Setter Property ="BorderBrush" TargetName="MainBorder"  Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />                            </Trigger>                            <Trigger Property="IsPressed" Value="True">                                <Setter Property ="BorderBrush" TargetName="MainBorder" Value="YellowGreen" />                            </Trigger>                        </ControlTemplate.Triggers>                    </ControlTemplate>                </Setter.Value>            </Setter>        </Style>
 
-            <GradientStop Color="DarkGray" Offset="1" />
-        </LinearGradientBrush>
-
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="{StaticResource ResourceKey=GrayBlueGradientBrush}" />
-            <Setter Property="Width" Value="80" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="FontFamily" Value="Arial" />
-            <Setter Property="FontSize" Value="13" />
-            <Setter Property="TextBlock.TextAlignment" Value="Center" />
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid Width="{TemplateBinding Width}"   
-      Height="{TemplateBinding Height}" ClipToBounds="True">
-
-                            <!-- Outer Rectangle with rounded corners. -->
-                            <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch"   
-      VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}"   
-       StrokeThickness="5" Fill="Transparent" />
-
-                            <!-- Inner Rectangle with rounded corners. -->
-                            <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"   
-        VerticalAlignment="Stretch" Stroke="Transparent"   
-        StrokeThickness="5"   
-        Fill="{TemplateBinding Background}" 
-      />
-
-                            <!-- Glass Rectangle -->
-                            <Rectangle x:Name="glassCube" HorizontalAlignment="Stretch"  
-        VerticalAlignment="Stretch"  
-        StrokeThickness="2" RadiusX="10" RadiusY="10" Opacity="0"  
-        Fill="{StaticResource MyGlassBrushResource}"  
-        RenderTransformOrigin="0.5,0.5">
-                                <Rectangle.Stroke>
-                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <LinearGradientBrush.GradientStops>
-                                            <GradientStop Offset="0.0" Color="LightBlue" />
-                                            <GradientStop Offset="1.0" Color="Gray" />
-                                        </LinearGradientBrush.GradientStops>
-                                    </LinearGradientBrush>
-                                </Rectangle.Stroke>
-
-                                <!-- These transforms have no effect as they   
-             are declared here.   
-             The reason the transforms are included is to be targets   
-             for animation (see later). -->
-                                <Rectangle.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform />
-                                        <RotateTransform />
-                                    </TransformGroup>
-                                </Rectangle.RenderTransform>
-
-                                <!-- A BevelBitmapEffect is applied to give the button a   
-               "Beveled" look. -->
-                                <Rectangle.BitmapEffect>
-                                    <BevelBitmapEffect />
-                                </Rectangle.BitmapEffect>
-                            </Rectangle>
-
-                            <!-- Present Text of the button. -->
-                            <DockPanel Name="myContentPresenterDockPanel">
-                                <ContentPresenter x:Name="myContentPresenter" VerticalAlignment="Center" Margin="5"   
-          Content="{TemplateBinding  Content}" TextBlock.Foreground="Black" />
-                            </DockPanel>
-                        </Grid>
-
-                        <ControlTemplate.Triggers>
-
-                            <!-- Set properties when mouse pointer is over the button. -->
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <!-- Below are three property settings that occur when the   
-         condition is met (user mouses over button).  -->
-                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
-                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-
-                                <!-- Below are three property settings that occur when the   
-         condition is met (user mouses over button).  -->
-                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="YellowGreen" />
-                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
-                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-
-                            <!--Наведение мышкой -->
-
-
-
-                            <!--Нажатие кнопки-->
-
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        
         <Style TargetType="TextBox">
             <Style.Triggers>
                 <Trigger Property="Validation.HasError" Value="True">
@@ -145,33 +24,35 @@
         </Style>
 
     </Window.Resources>
-    <Grid Margin="0,0,2,5">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="0*"/>
-        </Grid.ColumnDefinitions>
-        <Label Content="Тип" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="17,55,0,0" Height="26" Width="130" FontSize="14" FontFamily="Arial"/>
-        <Label x:Name="Header" Content="Материал " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,15,0,0" FontSize="18" Height="34" Width="340" FontFamily="Arial"/>
-        <Label Content="Количество " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="17,86,0,0" Height="26" Width="97" FontSize="14" FontFamily="Arial"/>
-        <TextBox x:Name="textBoxCount" HorizontalAlignment="Left" Height="26" PreviewTextInput="TextBoxCount_PreviewTextInput" Margin="147,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
-            <TextBox.Text>
-                <Binding Source="{StaticResource MaterialsForProduct}" Path="count" Mode="TwoWay" StringFormat="{}{0:F2}}" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
-                    <Binding.ValidationRules  >
-                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" MinimumValue="0.1" ErrorMessage="Количество должно быть заполнено"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-        <Button x:Name="buttonSave" Content="Добавить" HorizontalAlignment="Left" Margin="147,117,0,0" VerticalAlignment="Top" Width="75" Height="30" TabIndex="3" VerticalContentAlignment="Center" Click="ButtonSave_Click" IsDefault="True"/>
-        <Button Content="Отмена" HorizontalAlignment="Left" Margin="275,117,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.694,-0.02" TabIndex="4" VerticalContentAlignment="Center" IsCancel="True" Click="Button_Click" Height="30"/>
-        <ComboBox x:Name="comboBoxName_Of_Material" HorizontalAlignment="Left" Margin="147,55,0,0" VerticalAlignment="Top" Width="203" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="1" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial">
-            <ComboBox.Text>
-                <Binding Source="{StaticResource MaterialsForProduct}" Path="typeOfMaterial" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
-                    <Binding.ValidationRules  >
-                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Тип должен быть заполнен"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </ComboBox.Text>
-        </ComboBox>
+    <Grid  VerticalAlignment="Top">
+        <Grid.RowDefinitions>            <RowDefinition Height="100"/>            <RowDefinition Height="78"/>        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#F0F0F0">
+            <Label Content="Тип:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,23,0,0" Height="26" Width="108" FontSize="14" FontFamily="Arial"/>
+            <Label Content="Количество:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,54,0,0" Height="26" Width="91" FontSize="14" FontFamily="Arial"/>
+            <TextBox x:Name="textBoxCount" PreviewTextInput="TextBoxCount_PreviewTextInput" Margin="152,54,0,0" TextWrapping="Wrap" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" HorizontalAlignment="Left" Width="183" Height="26" VerticalAlignment="Top">
+                <TextBox.Text>
+                    <Binding Source="{StaticResource MaterialsForProduct}" Path="count" Mode="TwoWay" StringFormat="{}{0:F2}}" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                        <Binding.ValidationRules  >
+                            <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" MinimumValue="0.1" ErrorMessage="Количество должно быть заполнено"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <ComboBox x:Name="comboBoxName_Of_Material" Margin="152,20,0,0" VerticalAlignment="Top" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="1" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" HorizontalAlignment="Left" Width="183">
+                <ComboBox.Text>
+                    <Binding Source="{StaticResource MaterialsForProduct}" Path="typeOfMaterial" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                        <Binding.ValidationRules  >
+                            <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" ErrorMessage="Тип должен быть заполнен"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.Text>
+            </ComboBox>
+            <Border BorderBrush="Black" BorderThickness="1" Margin="-41,1,-136,0" RenderTransformOrigin="0.503,-0.238"/>
+
+        </Grid>
+        <Grid Grid.Row="1" Background="Silver" >
+            <Button x:Name="buttonSave" Content="Добавить" HorizontalAlignment="Left" Margin="39,24,0,0" VerticalAlignment="Top" Width="100" Height="30" TabIndex="3" VerticalContentAlignment="Center" Click="ButtonSave_Click" IsDefault="True" FontFamily="Arial" FontSize="14"/>
+            <Button Content="Отмена" Margin="235,24,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.694,-0.02" TabIndex="4" VerticalContentAlignment="Center" IsCancel="True" Click="Button_Click" Height="30" HorizontalAlignment="Left" Width="100" FontSize="14" FontFamily="Arial"/>
+        </Grid>
     </Grid>
 </Window>

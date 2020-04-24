@@ -7,7 +7,7 @@
         xmlns:validators="clr-namespace:Clothing_Industry_WPF.Доходы"
         xmlns:validators1="clr-namespace:Clothing_Industry_WPF.Общее.Работа_с_формами"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-         Title="Доходы" Height="208" Width="380">
+         Title="Доходы" Height="208" Width="400">
     <Window.Resources>
         <validators:Income x:Key="Income" month=""/>
 
@@ -17,9 +17,9 @@
     <Grid  VerticalAlignment="Top">
         <Grid.RowDefinitions>            <RowDefinition Height="100"/>            <RowDefinition Height="78"/>        </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#F0F0F0">
-            <Label Content="Месяц: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,38,0,0" Height="26" Width="59" FontSize="14" FontFamily="Arial"/>
+            <Label Content="Месяц: " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,37,0,0" Height="26" Width="70" FontSize="14" FontFamily="Arial"/>
 
-            <ComboBox x:Name="comboBoxMounth" HorizontalAlignment="Left" Width="228" Margin="114,38,0,0" RenderTransformOrigin="0.604,0.481" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center" Height="26" VerticalAlignment="Top" >
+            <ComboBox x:Name="comboBoxMounth" Margin="114,37,0,0" RenderTransformOrigin="0.604,0.481" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="219" Height="26" VerticalAlignment="Top" >
                 <ComboBox.Text>
                     <Binding Source="{StaticResource Income}" Path="month" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                         <Binding.ValidationRules  >
@@ -30,7 +30,8 @@
             </ComboBox>
 
             <Border BorderBrush="Black" BorderThickness="1" Margin="-19,0,-11,0" RenderTransformOrigin="0.503,-0.238">            </Border>        </Grid>
-        <Grid Grid.Row="1" Background="Silver" Margin="0,0,0,-36">        </Grid>        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="201,20,0,0" VerticalAlignment="Top" Width="141" Height="30" Click="ButtonSaveAndExit_Click" IsDefault="True" FontSize="14" FontFamily="Arial" Grid.Row="1"/>
-
+        <Grid Grid.Row="1" Background="Silver" Margin="0,0,0,-36">            <Button x:Name="buttonSave" Content="Сохранить" HorizontalAlignment="Left" Margin="39,24,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="ButtonSaveAndExit_Click" IsDefault="True" FontSize="14" FontFamily="Arial"/>
+            <Button  x:Name="buttonExit" Content="Выйти" Margin="233,24,0,0" TabIndex="2" Click="ButtonExit_Click" FontFamily="Arial" VerticalAlignment="Top" FontSize="14"  Height="30" HorizontalAlignment="Left" Width="100"/>
+        </Grid>
     </Grid>
 </Window>

@@ -101,13 +101,11 @@ namespace Clothing_Industry_WPF.Начисление_ЗП
             {
                 case WaysToOpenForm.WaysToOpen.create:
                     this.Title += " (Создание)";
-                    Header.Content += " (Создание)";
                     datePickerPayrollDate.Text = DateTime.Now.ToLongDateString();
                     textBoxPeriod.Text = DateTime.Now.Month + "." + DateTime.Now.Year;
                     break;
                 case WaysToOpenForm.WaysToOpen.edit:
                     this.Title += " (Изменение)";
-                    Header.Content += " (Изменение)";
                     break;
                 default:
                     break;

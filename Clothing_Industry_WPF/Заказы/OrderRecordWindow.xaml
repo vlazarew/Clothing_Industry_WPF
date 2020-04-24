@@ -38,14 +38,14 @@
     <Grid  VerticalAlignment="Top">
         <Grid.RowDefinitions>            <RowDefinition Height="445"/>            <RowDefinition Height="70"/>        </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#F0F0F0">
-            <Label  Content="Обязательные поля помечены (*)" Foreground="Red" VerticalAlignment="Top"  RenderTransformOrigin="0.974,1" Margin="3,1,218,0" FontSize="12" Height="24" FontFamily="Arial"/>
-            <Label Content="Дата заказа" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="4,30,0,0" FontSize="14" Height="27" FontFamily="Arial" Width="88"/>
-            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="94,30,0,0" FontSize="14" Height="27" FontFamily="Arial" Width="15"/>
-            <Label Content="Скидка в процентах " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="4,62,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="144"/>
-            <Label Content="Оплачено " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="4,124,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="79"/>
-            <Label Content="Дата доставки" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="4,186,0,0" FontSize="14" Height="27" FontFamily="Arial" Width="104"/>
-            <Label Content="Заметки " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="4,217,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="67"/>
-            <TextBox x:Name="textBoxDiscount" HorizontalAlignment="Left" Height="26" Margin="224,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBox_PreviewTextInput" FontFamily="Arial" TextChanged="TextBox_TextChanged">
+            <Label  Content="Обязательные поля помечены (*)" Foreground="Red" VerticalAlignment="Top"  RenderTransformOrigin="0.974,1" Margin="0,0,221,0" FontSize="12" Height="24" FontFamily="Arial"/>
+            <Label Content="Дата заказа:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,30,0,0" FontSize="14" Height="27" FontFamily="Arial" Width="185"/>
+            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="126,30,0,0" FontSize="14" Height="27" FontFamily="Arial" Width="16"/>
+            <Label Content="Скидка в процентах:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,62,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="185"/>
+            <Label Content="Оплачено:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,124,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="185"/>
+            <Label Content="Дата доставки:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,186,0,0" FontSize="14" Height="27" FontFamily="Arial" Width="185"/>
+            <Label Content="Заметки:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,217,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="185"/>
+            <TextBox x:Name="textBoxDiscount" HorizontalAlignment="Left" Height="26" Margin="224,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBox_PreviewTextInput" FontFamily="Arial" TextChanged="TextBox_TextChanged">
                 <TextBox.Text>
                     <Binding Source="{StaticResource Order}" Path="discountPerCent" StringFormat="{}{0:F2}}" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                         <Binding.ValidationRules  >
@@ -54,7 +54,7 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <TextBox Style="{StaticResource NoActive}" x:Name="textBoxPaid" HorizontalAlignment="Left" Height="26" Margin="224,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBox_PreviewTextInput" FontFamily="Arial" TextChanged="TextBox_TextChanged">
+            <TextBox Style="{StaticResource NoActive}" x:Name="textBoxPaid" HorizontalAlignment="Left" Height="26" Margin="224,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" TabIndex="4" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBox_PreviewTextInput" FontFamily="Arial" TextChanged="TextBox_TextChanged">
                 <TextBox.Text>
                     <Binding Source="{StaticResource Order}" Path="paid" StringFormat="{}{0:F2}}" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                         <Binding.ValidationRules  >
@@ -63,15 +63,15 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="224,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" TabIndex="7" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" TextChanged="TextBox_TextChanged"/>
-            <Label Content="Долг " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="4,155,0,0" FontSize="14" Height="31" FontFamily="Arial" Width="44"/>
-            <TextBox Style="{StaticResource NoActive}" x:Name="textBoxDebt" HorizontalAlignment="Left" Height="26" Margin="224,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" TabIndex="5" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" IsReadOnly="True" TextChanged="TextBox_TextChanged"/>
-            <Label Content="Тип заказа" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="4,279,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="80"/>
-            <Label Content="Статус заказа" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="3,311,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="102"/>
-            <Label Content="Заказчик" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="3,342,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="68"/>
-            <Label Content="Ответственный" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="3,373,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="111"/>
-            <Label Content="Исполнитель" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="4,404,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="96"/>
-            <ComboBox x:Name="comboBoxTypeOfOrder" HorizontalAlignment="Left" Margin="224,279,0,0" VerticalAlignment="Top" Width="201" Height="26" FontSize="14" VerticalContentAlignment="Center" TabIndex="8" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" DropDownClosed="ComboBox_TextChanged" KeyUp="ComboBox_TextChanged">
+            <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="224,217,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" TabIndex="7" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" TextChanged="TextBox_TextChanged"/>
+            <Label Content="Долг:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,155,0,0" FontSize="14" Height="31" FontFamily="Arial" Width="185"/>
+            <TextBox Style="{StaticResource NoActive}" x:Name="textBoxDebt" HorizontalAlignment="Left" Height="26" Margin="224,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" TabIndex="5" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" IsReadOnly="True" TextChanged="TextBox_TextChanged"/>
+            <Label Content="Тип заказа:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,279,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="185"/>
+            <Label Content="Статус заказа:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,311,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="185"/>
+            <Label Content="Заказчик:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,342,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="185"/>
+            <Label Content="Ответственный:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,373,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="185"/>
+            <Label Content="Исполнитель:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,404,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="180"/>
+            <ComboBox x:Name="comboBoxTypeOfOrder" HorizontalAlignment="Left" Margin="224,279,0,0" VerticalAlignment="Top" Width="164" Height="26" FontSize="14" VerticalContentAlignment="Center" TabIndex="8" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" DropDownClosed="ComboBox_TextChanged" KeyUp="ComboBox_TextChanged">
                 <ComboBox.Text>
                     <Binding Source="{StaticResource Order}" Path="typeOfOrderName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                         <Binding.ValidationRules>
@@ -80,7 +80,7 @@
                     </Binding>
                 </ComboBox.Text>
             </ComboBox>
-            <ComboBox x:Name="comboBoxStatusOfOrder" HorizontalAlignment="Left" Margin="224,311,0,0" VerticalAlignment="Top" Width="201" Height="26" FontSize="14" VerticalContentAlignment="Center" TabIndex="9" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" DropDownClosed="ComboBox_TextChanged" KeyUp="ComboBox_TextChanged">
+            <ComboBox x:Name="comboBoxStatusOfOrder" HorizontalAlignment="Left" Margin="224,311,0,0" VerticalAlignment="Top" Width="164" Height="26" FontSize="14" VerticalContentAlignment="Center" TabIndex="9" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" DropDownClosed="ComboBox_TextChanged" KeyUp="ComboBox_TextChanged">
                 <ComboBox.Text>
                     <Binding Source="{StaticResource Order}" Path="statusName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                         <Binding.ValidationRules  >
@@ -89,7 +89,7 @@
                     </Binding>
                 </ComboBox.Text>
             </ComboBox>
-            <ComboBox x:Name="comboBoxCustomer" HorizontalAlignment="Left" Margin="224,342,0,0" VerticalAlignment="Top" Width="201" Height="26" FontSize="14" VerticalContentAlignment="Center" TabIndex="10" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" DropDownClosed="ComboBox_TextChanged" KeyUp="ComboBox_TextChanged">
+            <ComboBox x:Name="comboBoxCustomer" HorizontalAlignment="Left" Margin="224,342,0,0" VerticalAlignment="Top" Width="164" Height="26" FontSize="14" VerticalContentAlignment="Center" TabIndex="10" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" DropDownClosed="ComboBox_TextChanged" KeyUp="ComboBox_TextChanged">
                 <ComboBox.Text>
                     <Binding Source="{StaticResource Order}" Path="customerLogin" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                         <Binding.ValidationRules  >
@@ -98,7 +98,7 @@
                     </Binding>
                 </ComboBox.Text>
             </ComboBox>
-            <ComboBox x:Name="comboBoxResponsible" HorizontalAlignment="Left" Margin="224,373,0,0" VerticalAlignment="Top" Width="201" Height="26" FontSize="14" VerticalContentAlignment="Center" TabIndex="11" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" DropDownClosed="ComboBox_TextChanged" KeyUp="ComboBox_TextChanged">
+            <ComboBox x:Name="comboBoxResponsible" HorizontalAlignment="Left" Margin="224,373,0,0" VerticalAlignment="Top" Width="164" Height="26" FontSize="14" VerticalContentAlignment="Center" TabIndex="11" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" DropDownClosed="ComboBox_TextChanged" KeyUp="ComboBox_TextChanged">
                 <ComboBox.Text>
                     <Binding Source="{StaticResource Order}" Path="responsible" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                         <Binding.ValidationRules  >
@@ -107,7 +107,7 @@
                     </Binding>
                 </ComboBox.Text>
             </ComboBox>
-            <ComboBox x:Name="comboBoxExecutor" HorizontalAlignment="Left" Margin="224,404,0,0" VerticalAlignment="Top" Width="201" Height="26" FontSize="14" VerticalContentAlignment="Center" TabIndex="12" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" DropDownClosed="ComboBox_TextChanged" KeyUp="ComboBox_TextChanged">
+            <ComboBox x:Name="comboBoxExecutor" HorizontalAlignment="Left" Margin="224,404,0,0" VerticalAlignment="Top" Width="164" Height="26" FontSize="14" VerticalContentAlignment="Center" TabIndex="12" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" DropDownClosed="ComboBox_TextChanged" KeyUp="ComboBox_TextChanged">
                 <ComboBox.Text>
                     <Binding Source="{StaticResource Order}" Path="executor" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                         <Binding.ValidationRules  >
@@ -116,7 +116,7 @@
                     </Binding>
                 </ComboBox.Text>
             </ComboBox>
-            <DatePicker x:Name="datePickerDateOfOrder" HorizontalAlignment="Left" Margin="224,30,0,0" VerticalAlignment="Top" FontSize="14" VerticalContentAlignment="Center" Width="201" TabIndex="1" FontFamily="Arial" KeyUp="DateTimePicker_TextChanged" CalendarClosed="DateTimePicker_TextChanged">
+            <DatePicker x:Name="datePickerDateOfOrder" Margin="224,30,0,0" VerticalAlignment="Top" FontSize="14" VerticalContentAlignment="Center" TabIndex="1" FontFamily="Arial" KeyUp="DateTimePicker_TextChanged" CalendarClosed="DateTimePicker_TextChanged" HorizontalAlignment="Left" Width="164">
                 <DatePicker.SelectedDate>
                     <Binding Source="{StaticResource Order}" Path="dateOfOrder" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                         <Binding.ValidationRules>
@@ -125,7 +125,7 @@
                     </Binding>
                 </DatePicker.SelectedDate>
             </DatePicker>
-            <DatePicker x:Name="datePickerDateOfDelievery" HorizontalAlignment="Left" Margin="224,186,0,0" VerticalAlignment="Top" FontSize="14" VerticalContentAlignment="Center" Width="201" TabIndex="6" FontFamily="Arial" KeyUp="DateTimePicker_TextChanged" CalendarClosed="DateTimePicker_TextChanged">
+            <DatePicker x:Name="datePickerDateOfDelievery" HorizontalAlignment="Left" Margin="224,186,0,0" VerticalAlignment="Top" FontSize="14" VerticalContentAlignment="Center" Width="164" TabIndex="6" FontFamily="Arial" KeyUp="DateTimePicker_TextChanged" CalendarClosed="DateTimePicker_TextChanged">
                 <DatePicker.SelectedDate>
                     <Binding Source="{StaticResource Order}" Path="dateOfDelievery" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                         <Binding.ValidationRules>
@@ -134,21 +134,21 @@
                     </Binding>
                 </DatePicker.SelectedDate>
             </DatePicker>
-            <Label Content="Итоговая стоимость " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="4,92,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="145"/>
-            <TextBox x:Name="textBoxTotal_Price" HorizontalAlignment="Left" Height="26" Margin="224,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True" TextChanged="TextBox_TextChanged" FontFamily="Arial" PreviewTextInput="TextBox_PreviewTextInput"/>
-            <Label Content="Выплата за доп сложность " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="4,248,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="190"/>
-            <TextBox x:Name="textBoxAddedPrice" HorizontalAlignment="Left" Height="26" Margin="224,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" TabIndex="7" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBox_PreviewTextInput" FontFamily="Arial" TextChanged="TextBox_TextChanged"/>
-            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="111,186,0,0" FontSize="14" Height="27" FontFamily="Arial" Width="15"/>
-            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="87,279,0,0" FontSize="14" Height="25" FontFamily="Arial" Width="16"/>
-            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="104,311,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="15"/>
-            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="76,342,0,0" FontSize="14" Height="27" FontFamily="Arial" Width="16"/>
-            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="117,373,0,0" FontSize="14" Height="27" FontFamily="Arial" Width="15"/>
-            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="104,403,0,0" FontSize="14" Height="27" FontFamily="Arial" Width="15"/>
-            <Border BorderBrush="Black" BorderThickness="1" Margin="-41,1,-136,0" RenderTransformOrigin="0.503,-0.238"/>
+            <Label Content="Итоговая стоимость:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,92,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="185"/>
+            <TextBox x:Name="textBoxTotal_Price" HorizontalAlignment="Left" Height="26" Margin="224,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" TabIndex="3" VerticalContentAlignment="Center" FontSize="14" IsReadOnly="True" TextChanged="TextBox_TextChanged" FontFamily="Arial" PreviewTextInput="TextBox_PreviewTextInput"/>
+            <Label Content="Дополнительная выплата:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,248,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="185"/>
+            <TextBox x:Name="textBoxAddedPrice" HorizontalAlignment="Left" Height="26" Margin="224,248,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" TabIndex="7" VerticalContentAlignment="Center" FontSize="14" PreviewTextInput="TextBox_PreviewTextInput" FontFamily="Arial" TextChanged="TextBox_TextChanged"/>
+            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="142,186,0,0" FontSize="14" Height="27" FontFamily="Arial" Width="21"/>
+            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="117,279,0,0" FontSize="14" Height="25" FontFamily="Arial" Width="15"/>
+            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="142,311,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="21"/>
+            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="109,342,0,0" FontSize="14" Height="27" FontFamily="Arial" Width="15"/>
+            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="149,373,0,0" FontSize="14" Height="27" FontFamily="Arial" Width="21"/>
+            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="133,403,0,0" FontSize="14" Height="27" FontFamily="Arial" Width="17"/>
+            <Border BorderBrush="Black" BorderThickness="1" Margin="-41,0,-136,0" RenderTransformOrigin="0.503,-0.238"/>
         </Grid>
         <Grid Grid.Row="1" Background="Silver">
-            <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" Margin="283,18,0,0" Width="141" Click="ButtonSaveAndExit_Click" IsDefault="True" TabIndex="14" FontSize="14" FontFamily="Arial" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top"/>
-            <Button x:Name="buttonListProducts" Content="Cписок изделий" Margin="10,18,296,18" Width="Auto" IsDefault="True" TabIndex="13" Click="ButtonListProducts_Click" FontSize="14" RenderTransformOrigin="0.5,0.5" FontFamily="Arial"/>
+            <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" Margin="248,18,0,0" Click="ButtonSaveAndExit_Click" IsDefault="True" TabIndex="14" FontSize="14" FontFamily="Arial" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="140"/>
+            <Button x:Name="buttonListProducts" Content="Cписок изделий" Margin="39,20,0,0" Width="140" IsDefault="True" TabIndex="13" Click="ButtonListProducts_Click" FontSize="14" RenderTransformOrigin="0.5,0.5" FontFamily="Arial" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
         </Grid>
 
