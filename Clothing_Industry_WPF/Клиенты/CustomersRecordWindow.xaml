@@ -145,7 +145,7 @@
             <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="153,392,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
             <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="139,423,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
             <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="232,454,0,0" FontSize="14" Height="26" FontFamily="Arial" Width="18"/>
-            <Button x:Name="buttonAddPhoto" Content="+" HorizontalAlignment="Left" Margin="525,49,0,0" Width="26" Click="ButtonAddPhoto_Click" TabIndex="15" FontSize="14" FontFamily="Arial" Height="26" VerticalAlignment="Top"/>
+            <Button x:Name="buttonAddPhoto" Content="+" HorizontalAlignment="Left" Margin="525,49,0,0" Width="26" Click="ButtonAddPhoto_Click" TabIndex="15" FontSize="14" FontFamily="Arial" Height="26" VerticalAlignment="Top" />
         </Grid>
         <Grid Grid.Row="1" Background="Silver">
             <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" Margin="678,20,0,20" Click="ButtonSaveAndExit_Click" TabIndex="16" IsDefault="True" FontSize="14" FontFamily="Arial" HorizontalAlignment="Left" Width="140"/>
