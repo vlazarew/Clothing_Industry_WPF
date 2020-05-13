@@ -152,7 +152,7 @@ namespace Clothing_Industry_WPF
                 // Тернарный оператор тут бессилен, разные типы говорит
                 if (isAdministrator)
                 {
-                    mainWindow = new MainWindow(username);
+                    mainWindow = new WindowExperimental(username);
                 }
                 else
                 {
