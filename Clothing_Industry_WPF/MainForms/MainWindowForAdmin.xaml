@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.MainForms"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-         Title="Учёт швейного производства 'Моя пижама' ver 1.6. Кудрин Иван Юрьевич"  Height="768" Width="1366" MinWidth="1200" MinHeight="800" WindowState="Maximized">
+         Title="Учёт швейного производства 'Моя пижама' ver 1.6. Кудрин Иван Юрьевич"  Height="768" Width="1366" MinWidth="1200" MinHeight="800" WindowState="Maximized" >
 
     <Window.Resources>
         <Style x:Key="DataGridCentralBoldHeader" TargetType="DataGridColumnHeader">
@@ -26,7 +26,33 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="70"/>
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
+
+        <RoutedUICommand x:Key="MyCommandAdd" Text=""/>
+        <RoutedUICommand x:Key="MyCommandEdit" Text="" />
+        <RoutedUICommand x:Key="MyCommandDelete" Text="" />
+        <RoutedUICommand x:Key="MyCommandRefresh" Text="" />
+        <RoutedUICommand x:Key="MyCommandSearch" Text="" />
+        <RoutedUICommand x:Key="MyCommandFilter" Text="" />
+        <RoutedUICommand x:Key="MyCommandPrint" Text="" />
+
     </Window.Resources>
+    <Window.CommandBindings>
+        <CommandBinding Command="{StaticResource MyCommandAdd}" 
+                    Executed="AddItem_Click" />
+        <CommandBinding Command="{StaticResource MyCommandEdit}" 
+                    Executed="EditItem_Click" />
+        <CommandBinding Command="{StaticResource MyCommandDelete}" 
+                    Executed="DeleteItem_Click" />
+        <CommandBinding Command="{StaticResource MyCommandRefresh}" 
+                    Executed="RefreshTable_Click" />
+        <CommandBinding Command="{StaticResource MyCommandSearch}" 
+                    Executed="SearchItem_Click" />
+        <CommandBinding Command="{StaticResource MyCommandFilter}" 
+                    Executed="UseFilter_Click" />
+        <CommandBinding Command="{StaticResource MyCommandPrint}" 
+                    Executed="Print_Click" />
+
+    </Window.CommandBindings>
     <Window.Triggers>
         <EventTrigger x:Name="OpenBar" RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
             <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
@@ -35,50 +61,56 @@
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
     </Window.Triggers>
+    
+    <Window.InputBindings>
+        <KeyBinding  Gesture="Ctrl+A" Command="{StaticResource MyCommandAdd}" />
+        <KeyBinding  Gesture="Ctrl+E" Command="{StaticResource MyCommandEdit}" />
+        <KeyBinding  Gesture="Ctrl+D" Command="{StaticResource MyCommandDelete}" />
+        <KeyBinding  Gesture="Ctrl+R" Command="{StaticResource MyCommandRefresh}" />
+        <KeyBinding  Gesture="Ctrl+S" Command="{StaticResource MyCommandSearch}" />
+        <KeyBinding  Gesture="Ctrl+F" Command="{StaticResource MyCommandFilter}" />
+        <KeyBinding  Gesture="Ctrl+P" Command="{StaticResource MyCommandPrint}" />
+
+    </Window.InputBindings>
     <Grid>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition  Width="70"/>
                 <ColumnDefinition  Width="1296*"/>
             </Grid.ColumnDefinitions>
-
             <Grid Background="#F0F0F0" Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="728*"/>
-
                 </Grid.RowDefinitions>
                 <Grid Background="#F0F0F0" Grid.Row="0">
-
-
-
-                    <Menu  VerticalAlignment="Center"  Margin="0,0,52,0" Height="40">
-                        <MenuItem Height="40" Width="40">
+                    <Menu VerticalAlignment="Center"  Margin="0,0,52,0" Height="40">
+                        <MenuItem Height="40" Width="40" x:Name="AddItem"  Command="{StaticResource MyCommandAdd}" >
                             <MenuItem.ToolTip>
                                 <ToolTip FontFamily="Arial">
-                                    Добавить запись
+                                    Добавить запись (Ctrl+A)
                                 </ToolTip>
                             </MenuItem.ToolTip>
                             <MenuItem.Icon>
-                                <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Клиенты\MenuButtons\file-plus.png" Margin="-3,-3,-18,-3" Width="20" Height="20"/>
+                                <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\file-plus.png" Margin="-3,-3,-18,-3" Width="20" Height="20"/>
                             </MenuItem.Icon>
                         </MenuItem>
 
-                        <MenuItem Height="40" Width="40">
+                        <MenuItem Height="40" Width="40"  x:Name="EditItem"  Command="{StaticResource MyCommandEdit}">
                             <MenuItem.ToolTip>
                                 <ToolTip FontFamily="Arial">
-                                    Изменить запись
+                                    Изменить запись (Ctrl+E)
                                 </ToolTip>
                             </MenuItem.ToolTip>
                             <MenuItem.Icon>
-                                <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Клиенты\MenuButtons\pencil-outline.png" Margin="-3,-3,-18,-3" Height="20" Width="20"/>
+                                <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\pencil-outline.png" Margin="-3,-3,-18,-3" Height="20" Width="20"/>
                             </MenuItem.Icon>
                         </MenuItem>
 
-                        <MenuItem Height="40"  Width="40">
+                        <MenuItem Height="40"  Width="40" x:Name="DeleteItem" Command="{StaticResource MyCommandDelete}">
                             <MenuItem.ToolTip>
                                 <ToolTip FontFamily="Arial">
-                                    Удалить запись
+                                    Удалить запись (Ctrl+D)
                                 </ToolTip>
                             </MenuItem.ToolTip>
                             <MenuItem.Icon>
@@ -86,10 +118,10 @@
                             </MenuItem.Icon>
                         </MenuItem>
 
-                        <MenuItem Height="40" Width="40">
+                        <MenuItem Height="40" Width="40" x:Name="RefreshTable" Command="{StaticResource MyCommandRefresh}">
                             <MenuItem.ToolTip>
                                 <ToolTip FontFamily="Arial">
-                                    Обновить таблицу
+                                    Обновить таблицу (Ctrl+R)
                                 </ToolTip>
                             </MenuItem.ToolTip>
                             <MenuItem.Icon>
@@ -97,28 +129,86 @@
                             </MenuItem.Icon>
                         </MenuItem>
 
-                        <MenuItem Height="40" Width="40">
+                        <MenuItem Height="40" Width="40" x:Name="SearchItem" Command="{StaticResource MyCommandSearch}">
                             <MenuItem.ToolTip>
                                 <ToolTip FontFamily="Arial">
-                                    Поиск записи
+                                    Поиск записи (Ctrl+S)
                                 </ToolTip>
                             </MenuItem.ToolTip>
                             <MenuItem.Icon>
                                 <materialDesign:PackIcon Kind="Magnify" Height="20" Width="20"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-3,-3,-18,-3"/>
                             </MenuItem.Icon>
                         </MenuItem>
-
-                        <MenuItem Height="40" Width="40">
+                        <MenuItem Height="40" Width="40" x:Name="StopSearchItem" Command="{StaticResource MyCommandRefresh}">
                             <MenuItem.ToolTip>
                                 <ToolTip FontFamily="Arial">
-                                    Печать таблицы
+                                    Отменить поиск (Ctrl+R)
+                                </ToolTip>
+                            </MenuItem.ToolTip>
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="MagnifyMinus" Height="20" Width="20"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-3,-3,-18,-3"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Height="40" Width="40" x:Name="UseFilter" Command="{StaticResource MyCommandFilter}">
+                            <MenuItem.ToolTip>
+                                <ToolTip FontFamily="Arial">
+                                    Использовать фильтры (Ctrl+F)
+                                </ToolTip>
+                            </MenuItem.ToolTip>
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="Filter" Height="20" Width="20"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-3,-3,-18,-3"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Height="40" Width="40" x:Name="Print" Command="{StaticResource MyCommandPrint}">
+                            <MenuItem.ToolTip>
+                                <ToolTip FontFamily="Arial">
+                                    Печать таблицы (Ctrl+P)
                                 </ToolTip>
                             </MenuItem.ToolTip>
                             <MenuItem.Icon>
                                 <materialDesign:PackIcon Kind="Printer" Height="20" Width="20"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-3,-3,-18,-3"/>
                             </MenuItem.Icon>
                         </MenuItem>
-
+                        <MenuItem Height="40" Width="40" x:Name="MakeExcel" Click="MakeExcel_Click">
+                            <MenuItem.ToolTip>
+                                <ToolTip FontFamily="Arial">
+                                    Составить документ 
+                                </ToolTip>
+                            </MenuItem.ToolTip>
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="FileExcel" Height="20" Width="20"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-3,-3,-18,-3"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Height="40" Width="40" x:Name="OpenList" Click="OpenList_Click" Visibility="Collapsed">
+                            <MenuItem.ToolTip>
+                                <ToolTip FontFamily="Arial">
+                                    Открыть список
+                                </ToolTip>
+                            </MenuItem.ToolTip>
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="FormatListBulleted" Height="20" Width="20"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-3,-3,-18,-3"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Height="40" Width="40" Visibility="Collapsed" Click="ClearIncome_Click">
+                            <MenuItem.ToolTip>
+                                <ToolTip FontFamily="Arial">
+                                    Чистый доход
+                                </ToolTip>
+                            </MenuItem.ToolTip>
+                            <MenuItem.Icon>
+                                <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\alpha-c-circle.png" Margin="-3,-3,-18,-3" Height="20" Width="20"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Height="40" Width="40" Visibility="Collapsed" Click="DirtyIncome_Click">
+                            <MenuItem.ToolTip>
+                                <ToolTip FontFamily="Arial">
+                                    Грязный доход
+                                </ToolTip>
+                            </MenuItem.ToolTip>
+                            <MenuItem.Icon>
+                                <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\alpha-d-circle.png" Margin="-3,-3,-18,-3" Height="20" Width="20"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
                     </Menu>
                     <Grid HorizontalAlignment="Right">
                         <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Width="40">
@@ -157,8 +247,6 @@
                 <RowDefinition Height="70"/>
                 <RowDefinition Height="600*"/>
                 <RowDefinition Height="130"/>
-
-
             </Grid.RowDefinitions>
             <Grid Height="70" Grid.Row="0" Background="Gray" RenderTransformOrigin="0.5,0.5">
                 <Grid.RenderTransform>
@@ -206,14 +294,14 @@
 
                             <ListViewItem Height="60">
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Клиенты\MenuButtons\account-cash.png"   Height="30" Width="35" Margin="10"/>
+                                    <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\account-cash.png"   Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Баланс клиентов" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
 
                             <ListViewItem Height="60">
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Клиенты\MenuButtons\garage-variant.png"   Height="30" Width="35" Margin="10"/>
+                                    <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\garage-variant.png"   Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Склад" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
@@ -227,7 +315,7 @@
 
                             <ListViewItem Height="60">
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Клиенты\MenuButtons\cloth.png"   Height="30" Width="35" Margin="10"/>
+                                    <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\cloth.png"   Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Материалы"  FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
@@ -248,7 +336,7 @@
 
                             <ListViewItem Height="60">
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Клиенты\MenuButtons\wallet-plus.png"   Height="30" Width="35" Margin="10"/>
+                                    <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\wallet-plus.png"   Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Начисление ЗП" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
@@ -269,7 +357,7 @@
 
                             <ListViewItem Height="60">
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Клиенты\MenuButtons\credit-card-minus.png"   Height="30" Width="35" Margin="10"/>
+                                    <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\credit-card-minus.png"   Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Расходы" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
@@ -398,7 +486,7 @@
                     </ListViewItem>
                     <ListViewItem x:Name="ItemExitFromDicitionary" Visibility="Collapsed" Height="60">
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Клиенты\MenuButtons\door-open.png"   Height="30" Width="35" Margin="10"/>
+                            <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\door-open.png"   Height="30" Width="35" Margin="10"/>
                             <TextBlock Text="Выйти из справочника"  FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>

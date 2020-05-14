@@ -199,21 +199,28 @@
 
             <Label Content="Горячие клавиши:" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"  Height="28" Width="130" RenderTransformOrigin="0.531,1.036"/>
             <Label Content="Ctrl+A — добавить в таблицу;" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="32,38,0,0" VerticalAlignment="Top" Height="28" Width="220"/>
-            <Label Content="Ctrl+F — использовать фильтры;" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="32,66,0,0" VerticalAlignment="Top" Height="28" Width="222"/>
-            <Label Content="Ctrl+R — обновить таблицу;" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="32,94,0,0" VerticalAlignment="Top" Height="28" Width="231"/>
+            <Label Content="Ctrl+E — изменить запись;" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="32,66,0,0" VerticalAlignment="Top" Height="28" Width="222"/>
+            <Label Content="Ctrl+D — удалить запись;" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="32,94,0,0" VerticalAlignment="Top" Height="28" Width="324"/>
             <Label Content="Ctrl+S — искать в таблице;" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="32,122,0,0" VerticalAlignment="Top" Height="28" Width="231"/>
-            <Label Content="Ctrl+P — распечатать таблицу." FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="32,150,0,0" VerticalAlignment="Top" Height="28" Width="231"/>
+            <Label Content="Ctrl+P — распечатать таблицу;" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="32,150,0,0" VerticalAlignment="Top" Height="28" Width="231"/>
+            <Label Content="Ctrl+F — использовать фильтры;" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="32,178,0,0" VerticalAlignment="Top" Height="28" Width="231"/>
+            <Label Content="Ctrl+R — обновить таблицу/отменить поиск." FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="32,206,0,0" VerticalAlignment="Top" Height="28" Width="308"/>
+            
             <Ellipse Fill="Black" Stroke="Black" Margin="16,50,0,0" Width="5" Height="5" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             <Ellipse Fill="Black" Stroke="Black" Margin="16,77,0,0" Width="5" Height="5" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             <Ellipse Fill="Black" Stroke="Black" Margin="16,105,0,0" Width="5" Height="5" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <Ellipse Fill="Black" Stroke="Black" Margin="16,132,0,0" Width="5" Height="5" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             <Ellipse Fill="Black" Stroke="Black" Margin="16,161,0,0" Width="5" Height="5" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-            <Label Content="Если возникают проблемы, обращаться по почте:" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="10,315,0,0" VerticalAlignment="Top"  Height="28" Width="454" RenderTransformOrigin="0.531,1.036"/>
+            
+            <Label Content="Если возникнут проблемы, обращаться по почте:" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="10,315,0,0" VerticalAlignment="Top"  Height="28" Width="454" RenderTransformOrigin="0.531,1.036"/>
             <Label Content="lexus.voronezh@gmail.com" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="10,343,0,0" VerticalAlignment="Top"  Height="28" Width="454" RenderTransformOrigin="0.531,1.036" FontWeight="Bold"/>
 
             <Border BorderBrush="Black" BorderThickness="1" Margin="-28,0,-23,-24">
 
             </Border>
+            <Ellipse Fill="Black" Stroke="Black" Margin="16,189,0,0" Width="5" Height="5" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <Ellipse Fill="Black" Stroke="Black" Margin="16,217,0,0" Width="5" Height="5" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            
         </Grid>
         <Grid Background="Silver" Margin="0,1,6,-18" Grid.Row="1">
             <Border BorderBrush="Black" BorderThickness="1" Margin="-28,0,-23,-24">

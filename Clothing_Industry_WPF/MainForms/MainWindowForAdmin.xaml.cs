@@ -26,9 +26,12 @@ using Clothing_Industry_WPF.Справочник.Типы_оплаты;
 using Clothing_Industry_WPF.Справочник.Типы_примерок;
 using Clothing_Industry_WPF.Справочник.Типы_транзакций;
 using MySql.Data.MySqlClient;
+using System;
+using System.Collections.Generic;
 using System.Data.Common;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Animation;
 
 namespace Clothing_Industry_WPF.MainForms
@@ -40,12 +43,16 @@ namespace Clothing_Industry_WPF.MainForms
     {
         private string login;
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
+        public static RoutedCommand RoutedCommands = new RoutedCommand();
+
         public WindowExperimental(string entry_login = "")
         {
             InitializeComponent();
             login = entry_login;
             FillUsername();
+
         }
+
         // Заполнить ФИО в формочек
         private void FillUsername()
         {
@@ -140,6 +147,65 @@ namespace Clothing_Industry_WPF.MainForms
         {
             Window windowinfo = new WindowInfo();
             windowinfo.ShowDialog();
+        }
+
+ 
+
+
+
+        private void AddItem_Click(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Добавление");
+        }
+
+        private void EditItem_Click(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Изменение");
+        }
+
+        private void DeleteItem_Click(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Удаление");
+        }
+
+        private void RefreshTable_Click(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Обновление таблы");
+        }
+
+        private void SearchItem_Click(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Поиск элемента");
+        }
+
+        private void UseFilter_Click(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Фильтры");
+        }
+
+        private void Print_Click(object sender, ExecutedRoutedEventArgs e)
+        {
+            MessageBox.Show("Печать");
+        }
+
+        private void MakeExcel_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Excel");
+        }
+
+        private void OpenList_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Лист");
+        }
+
+        private void ClearIncome_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DirtyIncome_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -110,7 +110,7 @@
             </TextBlock>
             <TextBlock TextWrapping="Wrap" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="10,71,0,0" Width="391">
                 <TextBlock.Text>
-                    Было создано студентами 9 группы ПММ МОиАИС Копытином Алексеем и Владимиром Лазаревым.
+                    Было создано студентами 9 группы ПММ МОиАИС Копытиным Алексеем и Лазаревым Владимиром.
                 </TextBlock.Text>
             </TextBlock>
 
