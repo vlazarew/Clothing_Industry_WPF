@@ -150,13 +150,13 @@ namespace Clothing_Industry_WPF
                 bool isAdministrator = CheckAdministrator(connection, username);
                 Window mainWindow;
                 // Тернарный оператор тут бессилен, разные типы говорит
-                if (isAdministrator)
+                if (isAdministrator) //Админ
                 {
                     mainWindow = new WindowExperimental(username);
                 }
-                else
+                else //Обычный смертный
                 {
-                    mainWindow = new MainWindowForUser(username);
+                    mainWindow = new WindowExperimental(username);
                 }
 
                 Close();

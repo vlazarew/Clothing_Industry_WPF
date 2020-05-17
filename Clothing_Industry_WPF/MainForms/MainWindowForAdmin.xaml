@@ -84,8 +84,8 @@
                     <RowDefinition Height="728*"/>
                 </Grid.RowDefinitions>
                 <Grid Background="#F0F0F0" Grid.Row="0">
-                    <Menu VerticalAlignment="Center"  Margin="0,0,52,0" Height="40">
-                        <MenuItem Height="40" Width="40" x:Name="AddItem"  Command="{StaticResource MyCommandAdd}" >
+                    <Menu VerticalAlignment="Center" x:Name="Menu" Margin="0,0,52,0" Height="40">
+                        <MenuItem Height="40" Width="40" x:Name="AddItem" Visibility="Collapsed" Command="{StaticResource MyCommandAdd}" >
                             <MenuItem.ToolTip>
                                 <ToolTip FontFamily="Arial">
                                     Добавить запись (Ctrl+A)
@@ -96,7 +96,7 @@
                             </MenuItem.Icon>
                         </MenuItem>
 
-                        <MenuItem Height="40" Width="40"  x:Name="EditItem"  Command="{StaticResource MyCommandEdit}">
+                        <MenuItem Height="40" Width="40"  x:Name="EditItem" Visibility="Collapsed"  Command="{StaticResource MyCommandEdit}">
                             <MenuItem.ToolTip>
                                 <ToolTip FontFamily="Arial">
                                     Изменить запись (Ctrl+E)
@@ -107,7 +107,7 @@
                             </MenuItem.Icon>
                         </MenuItem>
 
-                        <MenuItem Height="40"  Width="40" x:Name="DeleteItem" Command="{StaticResource MyCommandDelete}">
+                        <MenuItem Height="40"  Width="40" x:Name="DeleteItem" Visibility="Collapsed" Command="{StaticResource MyCommandDelete}">
                             <MenuItem.ToolTip>
                                 <ToolTip FontFamily="Arial">
                                     Удалить запись (Ctrl+D)
@@ -118,7 +118,7 @@
                             </MenuItem.Icon>
                         </MenuItem>
 
-                        <MenuItem Height="40" Width="40" x:Name="RefreshTable" Command="{StaticResource MyCommandRefresh}">
+                        <MenuItem Height="40" Width="40" x:Name="RefreshTable" Visibility="Collapsed" Command="{StaticResource MyCommandRefresh}">
                             <MenuItem.ToolTip>
                                 <ToolTip FontFamily="Arial">
                                     Обновить таблицу (Ctrl+R)
@@ -129,7 +129,7 @@
                             </MenuItem.Icon>
                         </MenuItem>
 
-                        <MenuItem Height="40" Width="40" x:Name="SearchItem" Command="{StaticResource MyCommandSearch}">
+                        <MenuItem Height="40" Width="40" x:Name="SearchItem" Visibility="Collapsed" Command="{StaticResource MyCommandSearch}">
                             <MenuItem.ToolTip>
                                 <ToolTip FontFamily="Arial">
                                     Поиск записи (Ctrl+S)
@@ -139,7 +139,7 @@
                                 <materialDesign:PackIcon Kind="Magnify" Height="20" Width="20"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-3,-3,-18,-3"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Height="40" Width="40" x:Name="StopSearchItem" Command="{StaticResource MyCommandRefresh}">
+                        <MenuItem Height="40" Width="40" x:Name="StopSearchItem" Click="StopSearchItem_Click" Visibility="Collapsed" Command="{StaticResource MyCommandRefresh}">
                             <MenuItem.ToolTip>
                                 <ToolTip FontFamily="Arial">
                                     Отменить поиск (Ctrl+R)
@@ -149,7 +149,7 @@
                                 <materialDesign:PackIcon Kind="MagnifyMinus" Height="20" Width="20"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-3,-3,-18,-3"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Height="40" Width="40" x:Name="UseFilter" Command="{StaticResource MyCommandFilter}">
+                        <MenuItem Height="40" Width="40" x:Name="UseFilter" Visibility="Collapsed" Command="{StaticResource MyCommandFilter}">
                             <MenuItem.ToolTip>
                                 <ToolTip FontFamily="Arial">
                                     Использовать фильтры (Ctrl+F)
@@ -159,20 +159,11 @@
                                 <materialDesign:PackIcon Kind="Filter" Height="20" Width="20"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-3,-3,-18,-3"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Height="40" Width="40" x:Name="Print" Command="{StaticResource MyCommandPrint}">
+
+                        <MenuItem Height="40" Width="40" Visibility="Collapsed" x:Name="MakeExcel" Click="MakeExcel_Click">
                             <MenuItem.ToolTip>
                                 <ToolTip FontFamily="Arial">
-                                    Печать таблицы (Ctrl+P)
-                                </ToolTip>
-                            </MenuItem.ToolTip>
-                            <MenuItem.Icon>
-                                <materialDesign:PackIcon Kind="Printer" Height="20" Width="20"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-3,-3,-18,-3"/>
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Height="40" Width="40" x:Name="MakeExcel" Click="MakeExcel_Click">
-                            <MenuItem.ToolTip>
-                                <ToolTip FontFamily="Arial">
-                                    Составить документ 
+                                    Составить документ
                                 </ToolTip>
                             </MenuItem.ToolTip>
                             <MenuItem.Icon>
@@ -189,7 +180,7 @@
                                 <materialDesign:PackIcon Kind="FormatListBulleted" Height="20" Width="20"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-3,-3,-18,-3"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Height="40" Width="40" Visibility="Collapsed" Click="ClearIncome_Click">
+                        <MenuItem x:Name="ClearIncome" Height="40" Width="40" Visibility="Collapsed" Click="ClearIncome_Click">
                             <MenuItem.ToolTip>
                                 <ToolTip FontFamily="Arial">
                                     Чистый доход
@@ -199,7 +190,7 @@
                                 <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\alpha-c-circle.png" Margin="-3,-3,-18,-3" Height="20" Width="20"/>
                             </MenuItem.Icon>
                         </MenuItem>
-                        <MenuItem Height="40" Width="40" Visibility="Collapsed" Click="DirtyIncome_Click">
+                        <MenuItem x:Name="DirtyIncome" Height="40" Width="40" Visibility="Collapsed" Click="DirtyIncome_Click">
                             <MenuItem.ToolTip>
                                 <ToolTip FontFamily="Arial">
                                     Грязный доход
@@ -207,6 +198,16 @@
                             </MenuItem.ToolTip>
                             <MenuItem.Icon>
                                 <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\alpha-d-circle.png" Margin="-3,-3,-18,-3" Height="20" Width="20"/>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Height="40" Width="40" x:Name="Print" Visibility="Collapsed" Command="{StaticResource MyCommandPrint}">
+                            <MenuItem.ToolTip>
+                                <ToolTip FontFamily="Arial">
+                                    Печать таблицы (Ctrl+P)
+                                </ToolTip>
+                            </MenuItem.ToolTip>
+                            <MenuItem.Icon>
+                                <materialDesign:PackIcon Kind="Printer" Height="20" Width="20"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-3,-3,-18,-3"/>
                             </MenuItem.Icon>
                         </MenuItem>
                     </Menu>
@@ -220,22 +221,25 @@
                     </Grid>
 
                 </Grid>
-                <Grid Background="#F0F0F0" Grid.Row="1">
-                    <DataGrid x:Name="DataGrid"  FontSize="14"  MinRowHeight="24" AutoGenerateColumns="True" IsReadOnly="True" ItemsSource="{Binding dataTable}"  ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}" >
-                        <DataGrid.Columns>
-
-                            <DataGridTextColumn Binding="{Binding Lastname}" ClipboardContentBinding="{x:Null}" Header="Фамилия"/>
-                            <DataGridTextColumn Binding="{Binding Name}" ClipboardContentBinding="{x:Null}" Header="Имя"/>
-                            <DataGridTextColumn Binding="{Binding Accured}" ClipboardContentBinding="{x:Null}" Header="Начислено на сумму"/>
-                            <DataGridTextColumn Binding="{Binding Paid}" ClipboardContentBinding="{x:Null}" Header="Оплачено заказчиком"/>
-                            <DataGridTextColumn Binding="{Binding Debt}" ClipboardContentBinding="{x:Null}" Header="Долг заказчика"/>
-                            <DataGridTextColumn Binding="{Binding Phone_Number}" ClipboardContentBinding="{x:Null}" Header="Телефонный номер"/>
-                            <DataGridTextColumn Binding="{Binding Passport_data}" ClipboardContentBinding="{x:Null}" Header="Паспорт"/>
-                            <DataGridTextColumn Binding="{Binding Nickname}" ClipboardContentBinding="{x:Null}" Header="Никнейм"/>
-                            <DataGridTextColumn Binding="{Binding Address}" ClipboardContentBinding="{x:Null}" Header="Адрес"/>
-
-                        </DataGrid.Columns>
+                <Grid x:Name="OneGrid" Background="#F0F0F0" Grid.Row="1" Visibility="Visible">
+                    <DataGrid x:Name="DataGrid"  FontSize="14"  MinRowHeight="24" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}"  ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}" >
+                        
                     </DataGrid>
+                </Grid>
+                <Grid x:Name="TwoGrids" Background="#F0F0F0" Grid.Row="1" Visibility="Collapsed">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition  Width="648*"/>
+                        <ColumnDefinition  Width="648*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0" Background="#F0F0F0">
+
+                        <DataGrid x:Name="DataGrid1" FontSize="14"  MinRowHeight="24" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}"/>
+
+                    </Grid>
+                    <Grid Grid.Column="1" Background="#F0F0F0">
+                        <DataGrid x:Name="DataGrid2"  FontSize="14"  MinRowHeight="24" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}" ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}"/>
+
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>
@@ -269,7 +273,7 @@
                 <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <StackPanel>
 
-                        <ListView x:Name="ListViewMenu"  Foreground="Black"    ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+                        <ListView x:Name="ListViewMenu"  Foreground="Black"    ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged">
 
                             <ListViewItem Height="60">
                                 <StackPanel Orientation="Horizontal">
@@ -292,7 +296,7 @@
                                 </StackPanel>
                             </ListViewItem>
 
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="ItemBalance" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\account-cash.png"   Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Баланс клиентов" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
@@ -348,7 +352,7 @@
                                 </StackPanel>
                             </ListViewItem>
 
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="ItemIncome"  Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="CashUsd" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Доходы" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
@@ -396,7 +400,7 @@
                                     <TextBlock Text="Типы заказов" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
-                            
+
                             <Separator/>
 
                             <ListViewItem Height="60">
@@ -417,9 +421,9 @@
                                     <TextBlock Text="Статусы оплаты" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
-                            
+
                             <Separator/>
-                            
+
                             <ListViewItem Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Record"  Height="30" Width="35" Margin="10"/>
@@ -447,7 +451,7 @@
                                     <TextBlock Text="Поставщики" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
-                            
+
                             <Separator/>
 
                             <ListViewItem Height="60">
@@ -468,10 +472,6 @@
                                     <TextBlock Text="Типы оплаты" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
-
-
-                            
-
                         </ListView>
                     </StackPanel>
                 </ScrollViewer>

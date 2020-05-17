@@ -25,7 +25,6 @@ namespace Clothing_Industry_WPF.Доходы
     /// </summary>
     public partial class IncomeRecordWindow : Window
     {
-        private Income income;
         private WaysToOpenForm.WaysToOpen way;
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private MySqlConnection connection;
