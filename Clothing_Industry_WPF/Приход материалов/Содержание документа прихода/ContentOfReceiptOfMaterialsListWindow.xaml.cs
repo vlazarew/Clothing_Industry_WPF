@@ -242,12 +242,12 @@ namespace Clothing_Industry_WPF.Приход_материалов
 
         private void DataGridCell_GotFocus(object sender, RoutedEventArgs e)
         {
-            ButtonDeleteOne.Style = (System.Windows.Style)ButtonDeleteOne.FindResource("Active");
+            DeleteItem.Visibility = Visibility.Visible;
         }
 
         private void DataGridCell_LostFocus(object sender, RoutedEventArgs e)
         {
-            ButtonDeleteOne.Style = (System.Windows.Style)ButtonDeleteOne.FindResource("NoActive");
+            DeleteItem.Visibility = Visibility.Collapsed;
         }
     }
 }

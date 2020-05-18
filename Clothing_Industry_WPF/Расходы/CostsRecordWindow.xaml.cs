@@ -1,5 +1,5 @@
 ﻿using Clothing_Industry_WPF.Перечисления;
-using Clothing_Industry_WPF.Поиск_файла;
+
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;

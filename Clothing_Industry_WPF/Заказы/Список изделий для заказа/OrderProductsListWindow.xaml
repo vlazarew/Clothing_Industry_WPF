@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Заказы"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         WindowState="Maximized"
         MinHeight="529"
         MinWidth="714.6"
@@ -253,12 +254,38 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0">
-            <StackPanel Orientation="Horizontal">
-                <Button Style="{StaticResource Active}" x:Name ="ButtonAddProduct" Content="Добавить изделие"   Width="135" RenderTransformOrigin="1.194,0.333" TabIndex="1" IsTabStop="False" Click="ButtonAddProduct_Click" FontSize="14"/>
-                <Button Style="{StaticResource NoActive}" x:Name ="ButtonDelete" Content="Удалить"  Width="135" RenderTransformOrigin="1.194,0.333" TabIndex="3"  Click="ButtonDelete_Click" FontSize="14"/>
-                <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Выход"  Width="135" IsCancel="True" Visibility="Visible" Click="ButtonExit_Click" FontSize="14" />
-            </StackPanel>
+        <Grid Grid.Row="0" Background="#F0F0F0">
+            <Menu VerticalAlignment="Center" x:Name="Menu" Margin="0,10" Height="40">
+                <MenuItem Height="40" Width="40" Visibility="Visible" x:Name="AddItem"  Click="ButtonAddProduct_Click" >
+                    <MenuItem.ToolTip>
+                        <ToolTip FontFamily="Arial">
+                            Добавить запись (Ctrl+A)
+                        </ToolTip>
+                    </MenuItem.ToolTip>
+                    <MenuItem.Icon>
+                        <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\file-plus.png" Margin="-3,-3,-18,-3" Width="20" Height="20"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+
+
+                <MenuItem Height="40"  Width="40" x:Name="DeleteItem" Visibility="Collapsed" Click="ButtonDelete_Click">
+                    <MenuItem.ToolTip>
+                        <ToolTip FontFamily="Arial">
+                            Удалить запись (Ctrl+D)
+                        </ToolTip>
+                    </MenuItem.ToolTip>
+                    <MenuItem.Icon>
+                        <materialDesign:PackIcon Kind="Delete"   Height="20" Width="20"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="-3,-3,-18,-3"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+
+
+
+
+            </Menu>
+
+
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.Поиск_и_фильтры.Фильтр"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
-        Title="Фильтр" Height="362" Width="405" MinWidth="400" MinHeight="300">
+        Title="Фильтр" Height="370" Width="405">
     <Window.Resources>
         <GradientStopCollection x:Key="MyGlassGradientStopsResource">
             <GradientStop Color="WhiteSmoke" Offset="0.2" />
@@ -24,127 +24,78 @@
 
             <GradientStop Color="DarkGray" Offset="1" />
         </LinearGradientBrush>
+        <LinearGradientBrush x:Key="Buttongradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FF4B4A4A" Offset="1" />
+            <GradientStop Color="#FFE8E8E8" Offset="0" />
+        </LinearGradientBrush>
 
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="{StaticResource ResourceKey=GrayBlueGradientBrush}" />
-            <Setter Property="Width" Value="80" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="FontFamily" Value="Arial" />
-            <Setter Property="FontSize" Value="13" />
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{DynamicResource Buttongradient}"/>
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="IsEnabled" Value="True" />
+
+
 
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid Width="{TemplateBinding Width}"   
-      Height="{TemplateBinding Height}" ClipToBounds="True">
+                        <Border x:Name="MainBorder" CornerRadius="6" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding Background}" BorderThickness="2.5">
 
-                            <!-- Outer Rectangle with rounded corners. -->
-                            <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch"   
-      VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}"   
-       StrokeThickness="5" Fill="Transparent" />
 
-                            <!-- Inner Rectangle with rounded corners. -->
-                            <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"   
-        VerticalAlignment="Stretch" Stroke="Transparent"   
-        StrokeThickness="5"   
-        Fill="{TemplateBinding Background}" 
-      />
+                            <Grid Margin="0,0,0,-1">
 
-                            <!-- Glass Rectangle -->
-                            <Rectangle x:Name="glassCube" HorizontalAlignment="Stretch"  
-        VerticalAlignment="Stretch"  
-        StrokeThickness="2" RadiusX="10" RadiusY="10" Opacity="0"  
-        Fill="{StaticResource MyGlassBrushResource}"  
-        RenderTransformOrigin="0.5,0.5">
-                                <Rectangle.Stroke>
-                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <LinearGradientBrush.GradientStops>
-                                            <GradientStop Offset="0.0" Color="LightBlue" />
-                                            <GradientStop Offset="1.0" Color="Gray" />
-                                        </LinearGradientBrush.GradientStops>
-                                    </LinearGradientBrush>
-                                </Rectangle.Stroke>
 
-                                <!-- These transforms have no effect as they   
-             are declared here.   
-             The reason the transforms are included is to be targets   
-             for animation (see later). -->
-                                <Rectangle.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform />
-                                        <RotateTransform />
-                                    </TransformGroup>
-                                </Rectangle.RenderTransform>
 
-                                <!-- A BevelBitmapEffect is applied to give the button a   
-               "Beveled" look. -->
-                                <Rectangle.BitmapEffect>
-                                    <BevelBitmapEffect />
-                                </Rectangle.BitmapEffect>
-                            </Rectangle>
-
-                            <!-- Present Text of the button. -->
-                            <DockPanel Name="myContentPresenterDockPanel">
-                                <ContentPresenter x:Name="myContentPresenter" VerticalAlignment="Center" Margin="5"   
+                                <DockPanel Name="myContentPresenterDockPanel">
+                                    <ContentPresenter x:Name="myContentPresenter" VerticalAlignment="Center" Margin="5"   
           Content="{TemplateBinding  Content}" TextBlock.Foreground="Black" />
-                            </DockPanel>
-                        </Grid>
-
+                                </DockPanel>
+                            </Grid>
+                        </Border>
                         <ControlTemplate.Triggers>
 
-                            <!-- Set properties when mouse pointer is over the button. -->
                             <Trigger Property="IsMouseOver" Value="True">
-                                <!-- Below are three property settings that occur when the   
-         condition is met (user mouses over button).  -->
-                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
-                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property ="BorderBrush" TargetName="MainBorder"  Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+
+
+
+
                             </Trigger>
+
                             <Trigger Property="IsPressed" Value="True">
+                                <Setter Property ="BorderBrush" TargetName="MainBorder" Value="YellowGreen" />
 
-                                <!-- Below are three property settings that occur when the   
-         condition is met (user mouses over button).  -->
-                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="YellowGreen" />
-                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
-                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
+
+
                             </Trigger>
-
-                            <!--Наведение мышкой -->
-
-
-
-                            <!--Нажатие кнопки-->
-
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
 
-    </Window.Resources>
-    <Grid>
-        <Label x:Name="Header" Content="Фильтр" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Arial"/>
-        <Label Content="Поле" HorizontalAlignment="Left" Margin="40,76,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Arial"/>
-        <Label Content="Вид сравнения" HorizontalAlignment="Left" Margin="40,124,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Arial"/>
-        <Label Content="Значение" HorizontalAlignment="Left" Margin="40,179,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.496,1.613" FontSize="14" FontFamily="Arial"/>
-        <Button x:Name="buttonOK" Content="Принять" HorizontalAlignment="Left" Margin="40,278,0,0" VerticalAlignment="Top" Width="100" IsDefault="True" FontSize="14" Click="ButtonOK_Click" Height="30"/>
-        <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="264,278,0,0" VerticalAlignment="Top" Width="100" FontSize="14" IsCancel="True" Click="ButtonCancel_Click" Height="30"/>
-        <ComboBox x:Name="comboBoxField" HorizontalAlignment="Left" Margin="182,76,0,0" VerticalAlignment="Top" Width="182" SelectionChanged="ComboBoxField_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center"/>
-        <ComboBox x:Name="comboBoxTypeOfFilter" HorizontalAlignment="Left" Margin="182,128,0,0" VerticalAlignment="Top" Width="182" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center" SelectionChanged="ComboBoxField_SelectionChanged"/>
-        <TextBox x:Name="textBoxValue" HorizontalAlignment="Left" Height="23" Margin="182,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" PreviewTextInput="TextBoxValue_PreviewTextInput" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center"/>
-        <DatePicker x:Name="datePickerValue" HorizontalAlignment="Left" Margin="182,179,0,0" VerticalAlignment="Top" Width="182" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center"/>
-        <CheckBox x:Name="checkBoxActive" Content="Использовать" HorizontalAlignment="Left" Margin="182,241,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.676,-0.133" Width="139" VerticalContentAlignment="Center" IsChecked="True" FontSize="14" FontFamily="Arial"/>
 
+
+    </Window.Resources>
+    <Grid  VerticalAlignment="Top">
+        <Grid.RowDefinitions>            <RowDefinition Height="270"/>            <RowDefinition Height="70"/>        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#F0F0F0">
+            <Label Content="Поле:" HorizontalAlignment="Left" Margin="40,76,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Arial"/>
+            <Label Content="Вид сравнения:" HorizontalAlignment="Left" Margin="40,124,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Arial"/>
+            <Label Content="Значение:" HorizontalAlignment="Left" Margin="40,179,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.496,1.613" FontSize="14" FontFamily="Arial"/>
+            <ComboBox x:Name="comboBoxField" HorizontalAlignment="Left" Margin="182,76,0,0" VerticalAlignment="Top" Width="165" SelectionChanged="ComboBoxField_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center"/>
+            <ComboBox x:Name="comboBoxTypeOfFilter" HorizontalAlignment="Left" Margin="182,128,0,0" VerticalAlignment="Top" Width="165" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center" SelectionChanged="ComboBoxField_SelectionChanged"/>
+            <TextBox x:Name="textBoxValue" HorizontalAlignment="Left" Height="23" Margin="182,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" PreviewTextInput="TextBoxValue_PreviewTextInput" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center"/>
+            <DatePicker x:Name="datePickerValue" HorizontalAlignment="Left" Margin="182,179,0,0" VerticalAlignment="Top" Width="165" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center"/>
+            <CheckBox x:Name="checkBoxActive" Content="Использовать" HorizontalAlignment="Left" Margin="231,232,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.676,-0.133" Width="116" VerticalContentAlignment="Center" IsChecked="True" FontSize="14" FontFamily="Arial"/>
+        </Grid>
+        <Grid Grid.Row="1" Background="Silver">
+            <Border BorderBrush="Black" BorderThickness="1" Margin="-65,0,-136,-20" RenderTransformOrigin="0.503,-0.238">
+            </Border>
+            <Button x:Name="buttonOK" Content="Принять" HorizontalAlignment="Left" Margin="44,19,0,0" Width="100" IsDefault="True" FontSize="14" Click="ButtonOK_Click" Height="32" VerticalAlignment="Top"/>
+            <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="246,19,0,0" Width="100" FontSize="14" IsCancel="True" Click="ButtonCancel_Click" Height="32" VerticalAlignment="Top"/>
+        </Grid>
     </Grid>
 </Window>
