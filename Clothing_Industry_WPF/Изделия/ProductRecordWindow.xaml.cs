@@ -64,15 +64,15 @@ namespace Clothing_Industry_WPF.Изделия
                     textBoxFixed_Price.Text = reader.GetString(1);
                     textBoxMoneyToEmployee.Text = reader.GetString(2);
                    
-                    if (reader.GetValue(4).ToString() != "")
+                    if (reader.GetValue(3).ToString() != "")
                     {
-                        textBoxDescription.Text = reader.GetString(4);
+                        textBoxDescription.Text = reader.GetString(3);
                     }
 
                     image_bytes = null;
                     try
                     {
-                        image_bytes = (byte[])(reader[5]);
+                        image_bytes = (byte[])(reader[4]);
                     }
                     catch
                     {

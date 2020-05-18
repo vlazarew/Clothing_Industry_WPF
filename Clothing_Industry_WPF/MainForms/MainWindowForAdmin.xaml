@@ -222,8 +222,13 @@
 
                 </Grid>
                 <Grid x:Name="OneGrid" Background="#F0F0F0" Grid.Row="1" Visibility="Visible">
-                    <DataGrid x:Name="DataGrid"  FontSize="14"  MinRowHeight="24" AutoGenerateColumns="False" IsReadOnly="True" ItemsSource="{Binding dataTable}"  ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}" >
-                        
+                    <DataGrid x:Name="DataGrid"  FontSize="14"  MinRowHeight="24" AutoGenerateColumns="False" IsEnabled="True" IsReadOnly="True" ItemsSource="{Binding dataTable}"  ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}" >
+                        <DataGrid.Resources>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>
+                                <EventSetter Event="GotFocus" Handler="DataGridCell_GotFocus" />
+                            </Style>
+                        </DataGrid.Resources>
                     </DataGrid>
                 </Grid>
                 <Grid x:Name="TwoGrids" Background="#F0F0F0" Grid.Row="1" Visibility="Collapsed">
@@ -275,21 +280,21 @@
 
                         <ListView x:Name="ListViewMenu"  Foreground="Black"    ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged">
 
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="ItemOrders" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Cart" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Заказы" FontFamily="Arial" FontSize="14" VerticalAlignment="Center" Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
 
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="ItemClients" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="HumanHandsdown" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Клиенты" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
 
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="ItemFittings" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Hanger" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Примерки" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
@@ -303,49 +308,49 @@
                                 </StackPanel>
                             </ListViewItem>
 
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="ItemStore" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\garage-variant.png"   Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Склад" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
 
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="ItemReceipt" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="TruckDelivery" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Приход материала" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
 
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="ItemMaterials" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\cloth.png"   Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Материалы"  FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
 
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="ItemProducts" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="TshirtCrew" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Изделия" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
 
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="ItemWorker" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Worker" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Сотрудники" FontFamily="Arial" FontSize="14" VerticalAlignment="Center" Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
 
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="ItemPayrolls" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\wallet-plus.png"   Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Начисление ЗП" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
 
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="ItemHolidays" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Beach" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Отпуска"  FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
@@ -359,7 +364,7 @@
                                 </StackPanel>
                             </ListViewItem>
 
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="ItemCosts" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\credit-card-minus.png"   Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Расходы" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
@@ -374,27 +379,27 @@
                 <ScrollViewer ScrollViewer.VerticalScrollBarVisibility="Auto">
                     <StackPanel>
 
-                        <ListView x:Name="ListViewMenuDictionary"  Foreground="Black"    ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
+                        <ListView x:Name="ListViewMenuDictionary"  Foreground="Black"    ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenuDictionary_SelectionChanged">
 
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="Customer_statuses" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Record"  Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Статусы клиентов"  FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="Order_channels" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Record"  Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Каналы заказов" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="Types_of_fitting" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Record" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Типы примерок" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="Types_of_order" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Record" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Типы заказов" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
@@ -403,19 +408,19 @@
 
                             <Separator/>
 
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="Countries" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Record" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Страны" FontFamily="Arial" FontSize="14" VerticalAlignment="Center" Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="Types_of_material" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Record" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Типы материалов"  FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="Payment_states" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Record" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Статусы оплаты" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
@@ -424,7 +429,7 @@
 
                             <Separator/>
 
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="EmployeePositions"  Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Record"  Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Должности" FontFamily="Arial" FontSize="14" VerticalAlignment="Center" Margin="20 10"/>
@@ -433,19 +438,19 @@
 
                             <Separator/>
 
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="Types_of_transactions" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Record" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Типы транзакций" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="Units" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Record"  Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Единицы измерения" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="Suppliers" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Record"  Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Поставщики" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
@@ -454,19 +459,19 @@
 
                             <Separator/>
 
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="Consumption_categories" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Record"  Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Категории расходов" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="Periodicities" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Record"  Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Периодичности" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
                             </ListViewItem>
-                            <ListViewItem Height="60">
+                            <ListViewItem x:Name="Types_of_payment" Height="60">
                                 <StackPanel Orientation="Horizontal">
                                     <materialDesign:PackIcon Kind="Record" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Типы оплаты" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
