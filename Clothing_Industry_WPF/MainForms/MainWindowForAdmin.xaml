@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Clothing_Industry_WPF.MainForms"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-         Title="Учёт швейного производства 'Моя пижама' ver 1.6. Кудрин Иван Юрьевич"  Height="768" Width="1366" MinWidth="1200" MinHeight="800" WindowState="Maximized" >
+        Loaded="Window_Loaded"
+         Title="Учёт швейного производства 'Моя пижама' ver 1.6. "  Height="768" Width="1366" MinWidth="1200" MinHeight="800" WindowState="Maximized" >
 
     <Window.Resources>
         <Style x:Key="DataGridCentralBoldHeader" TargetType="DataGridColumnHeader">
@@ -222,7 +223,7 @@
 
                 </Grid>
                 <Grid x:Name="OneGrid" Background="#F0F0F0" Grid.Row="1" Visibility="Visible">
-                    <DataGrid x:Name="DataGrid"  FontSize="14"  MinRowHeight="24" AutoGenerateColumns="False" IsEnabled="True" IsReadOnly="True" ItemsSource="{Binding dataTable}"  ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}" >
+                    <DataGrid x:Name="DataGrid" LoadingRow="OrdersGrid_LoadingRow" FontSize="14"  MinRowHeight="24" AutoGenerateColumns="False" IsEnabled="True" IsReadOnly="True" ItemsSource="{Binding dataTable}"  ColumnHeaderStyle="{StaticResource DataGridCentralBoldHeader}" >
                         <DataGrid.Resources>
                             <Style TargetType="{x:Type DataGridCell}">
                                 <EventSetter Event="MouseDoubleClick" Handler="DataGridCell_MouseDoubleClick"/>

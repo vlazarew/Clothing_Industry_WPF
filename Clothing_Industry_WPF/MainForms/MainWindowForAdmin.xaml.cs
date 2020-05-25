@@ -46,7 +46,7 @@ namespace Clothing_Industry_WPF.MainForms
         private FindHandler.FindDescription currentFindDescription;
         private List<FilterHandler.FilterDescription> currentFilterDescription;
         private MySqlConnection connection;
-        private string textmenu;
+        private string textmenu = "ItemOrders";
         private string Id;
         private string name;
 
@@ -58,7 +58,6 @@ namespace Clothing_Industry_WPF.MainForms
             currentFindDescription = new FindHandler.FindDescription();
             connection = new MySqlConnection(connectionString);
             currentFilterDescription = new List<FilterHandler.FilterDescription>();
-
         }
 
         // Заполнить ФИО в формочек
@@ -132,34 +131,35 @@ namespace Clothing_Industry_WPF.MainForms
             DataGrid2.Columns.Clear();
             TwoGrids.Visibility = Visibility.Collapsed;
         }
-
         //ЗАКРАСКА СТРОКИ ЗАКАЗОВ
-        /*
         private void OrdersGrid_LoadingRow(object sender, DataGridRowEventArgs e)
         {
-            string status = ((DataRowView)e.Row.DataContext).Row.ItemArray[9].ToString();
-            switch (status)
+            if (textmenu == "ItemOrders")
             {
-                case "Принят":
-                    e.Row.Background = Brushes.White;
-                    break;
-                case "Сдан":
-                    e.Row.Background = Brushes.Green;
-                    break;
-                case "Отправлен":
-                    e.Row.Background = Brushes.Orange;
-                    break;
-                case "Готов":
-                    e.Row.Background = Brushes.Aqua;
-                    break;
-                case "Отменён":
-                    e.Row.Background = Brushes.Red;
-                    break;
-                default:
-                    break;
+                string status = ((DataRowView)e.Row.DataContext).Row.ItemArray[9].ToString();
+                switch (status)
+                {
+                    case "Принят":
+                        e.Row.Background = Brushes.White;
+                        break;
+                    case "Сдан":
+                        e.Row.Background = Brushes.Green;
+                        break;
+                    case "Отправлен":
+                        e.Row.Background = Brushes.Orange;
+                        break;
+                    case "Готов":
+                        e.Row.Background = Brushes.Aqua;
+                        break;
+                    case "Отменён":
+                        e.Row.Background = Brushes.Red;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
-        */
+        //ОПРЕДЕЛЕНИЕ ФОКУСА
         private void DataGridCell_GotFocus(object sender, RoutedEventArgs e)
         {
             DeleteItem.Visibility = Visibility.Visible;
@@ -169,6 +169,7 @@ namespace Clothing_Industry_WPF.MainForms
             if (textmenu == "ItemCosts")
                 MakeExcel.Visibility = Visibility.Visible;
         }
+        //ПОТЕРЯ ФОКУСА
         private void FocusLost()
         {
             if (DataGrid.SelectedItems.Count == 0)
@@ -179,7 +180,6 @@ namespace Clothing_Industry_WPF.MainForms
                 MakeExcel.Visibility = Visibility.Collapsed;
             }
         }
-
         //ОБНОВЛЕНИЕ ТАБЛИЦЫ ПО ЗАПРОСУ
         private void RefreshList(string query_text, DataGrid d)
         {
@@ -195,13 +195,46 @@ namespace Clothing_Industry_WPF.MainForms
             FocusLost();
             // d.SelectedIndex = 0;
         }
+        //ЗАКАЗЫ ИНИЦИАЛИЗАЦИЯ
+        private void Ordersload()
+        {
+            
+            AddItem.Visibility = Visibility.Visible;
 
-        //  ПАНЕЛЬ РАЗДЕЛОВ     
+            RefreshTable.Visibility = Visibility.Visible;
+            SearchItem.Visibility = Visibility.Visible;
+            UseFilter.Visibility = Visibility.Visible;
+            Print.Visibility = Visibility.Visible;
+            OpenList.Visibility = Visibility.Visible;
+            OneGrid.Visibility = Visibility.Visible;
+
+            AddColumnDataGrid(DataGrid, "Номер заказа", "id_Order");
+            AddColumnDataGrid(DataGrid, "Дата заказа", "Date_Of_Order");
+            AddColumnDataGrid(DataGrid, "Изделия", "Products");
+            AddColumnDataGrid(DataGrid, "% скидки", "Discount_Per_Cent");
+            AddColumnDataGrid(DataGrid, "Полная стоимость", "Total_Price");
+            AddColumnDataGrid(DataGrid, "Оплачено", "Paid");
+            AddColumnDataGrid(DataGrid, "Долг", "Debt");
+            AddColumnDataGrid(DataGrid, "Дата доставки", "Date_Of_Delievery");
+            AddColumnDataGrid(DataGrid, "Тип заказа", "Name_Of_type");
+            AddColumnDataGrid(DataGrid, "Статус заказа", "Name_Of_Status");
+            AddColumnDataGrid(DataGrid, "Заказчик", "Nickname");
+            AddColumnDataGrid(DataGrid, "Ответственный", "Responsible");
+            AddColumnDataGrid(DataGrid, "Исполнитель", "Executor");
+            AddColumnDataGrid(DataGrid, "Выплата за доп сложность", "Added_Price_For_Complexity");
+            AddColumnDataGrid(DataGrid, "Заметки", "Notes");
+            queryrefresh = Order.getQueryText();
+            RefreshList(queryrefresh, DataGrid);
+            string status = "";
+            
+
+        }
+        // ПАНЕЛЬ РАЗДЕЛОВ     
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ClearForm();
             textmenu = ((ListViewItem)((ListView)sender).SelectedItem).Name;
-            switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
+            switch (textmenu)
             {
 
                 case "ItemIncome":
@@ -242,32 +275,7 @@ namespace Clothing_Industry_WPF.MainForms
 
                 case "ItemOrders":
 
-                    AddItem.Visibility = Visibility.Visible;
-
-                    RefreshTable.Visibility = Visibility.Visible;
-                    SearchItem.Visibility = Visibility.Visible;
-                    UseFilter.Visibility = Visibility.Visible;
-                    Print.Visibility = Visibility.Visible;
-                    OpenList.Visibility = Visibility.Visible;
-                    OneGrid.Visibility = Visibility.Visible;
-
-                    AddColumnDataGrid(DataGrid, "Номер заказа", "id_Order");
-                    AddColumnDataGrid(DataGrid, "Дата заказа", "Date_Of_Order");
-                    AddColumnDataGrid(DataGrid, "Изделия", "Products");
-                    AddColumnDataGrid(DataGrid, "% скидки", "Discount_Per_Cent");
-                    AddColumnDataGrid(DataGrid, "Полная стоимость", "Total_Price");
-                    AddColumnDataGrid(DataGrid, "Оплачено", "Paid");
-                    AddColumnDataGrid(DataGrid, "Долг", "Debt");
-                    AddColumnDataGrid(DataGrid, "Дата доставки", "Date_Of_Delievery");
-                    AddColumnDataGrid(DataGrid, "Тип заказа", "Name_Of_type");
-                    AddColumnDataGrid(DataGrid, "Статус заказа", "Name_Of_Status");
-                    AddColumnDataGrid(DataGrid, "Заказчик", "Nickname");
-                    AddColumnDataGrid(DataGrid, "Ответственный", "Responsible");
-                    AddColumnDataGrid(DataGrid, "Исполнитель", "Executor");
-                    AddColumnDataGrid(DataGrid, "Выплата за доп сложность", "Added_Price_For_Complexity");
-                    AddColumnDataGrid(DataGrid, "Заметки", "Notes");
-                    queryrefresh = Order.getQueryText();
-                    RefreshList(queryrefresh, DataGrid);
+                    Ordersload();
 
                     break;
 
@@ -489,7 +497,7 @@ namespace Clothing_Industry_WPF.MainForms
                     break;
             }
         }
-        //  ПАНЕЛЬ РАЗДЕЛОВ(СПРАВОЧНИКА)   
+        //ПАНЕЛЬ РАЗДЕЛОВ(СПРАВОЧНИКА)   
         private void ListViewMenuDictionary_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ClearForm();
@@ -595,6 +603,7 @@ namespace Clothing_Industry_WPF.MainForms
 
                     RefreshList(queryrefresh, DataGrid);
         }
+        //ИЗМЕНЕНИЕ ПО ДВОЙНОМУ КЛИКУ
         private void DataGridCell_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
 
@@ -666,8 +675,6 @@ namespace Clothing_Industry_WPF.MainForms
             }
             RefreshList(queryrefresh, DataGrid);
         }
-
-
         //  ПАНЕЛЬ РАЗДЕЛОВ(СПРАВОЧНИК+ВЫХОД)  
         private void ListViewMenu2_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -705,35 +712,31 @@ namespace Clothing_Industry_WPF.MainForms
                     break;
             }
         }
-        ////////////////////////////
+        //ПОЛЕЗНАЯ ИНФОРМАЦИЯ
         private void ButtonHelp_Click(object sender, RoutedEventArgs e)
         {
             Window windowhelp = new WindowHelp();
             windowhelp.ShowDialog();
         }
-
+        //ИНФО О ПРОЕКТЕ
         private void ButtonInfo_Click(object sender, RoutedEventArgs e)
         {
             Window windowinfo = new WindowInfo();
             windowinfo.ShowDialog();
         }
-        ////////////////////////////
+        //ОТКРЫТЬ МЕНЮ РАЗДЕЛОВ
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonCloseMenu.Visibility = Visibility.Visible;
             ButtonOpenMenu.Visibility = Visibility.Collapsed;
         }
-
+        //ЗАКРЫТЬ МЕНЮ РАЗДЕЛОВ
         private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
         {
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
             ButtonOpenMenu.Visibility = Visibility.Visible;
         }
-        ////////////////////////////
-
-
-
-
+        //ДОБАВЛЕНИЕ ЗАПИСИ
         private void AddItem_Click(object sender, ExecutedRoutedEventArgs e)
         {
             Window create_window;
@@ -1280,7 +1283,6 @@ namespace Clothing_Industry_WPF.MainForms
             }
 
         }
-
         //ПЕЧАТЬ
         private void Print_Click(object sender, ExecutedRoutedEventArgs e)
         {
@@ -1302,7 +1304,7 @@ namespace Clothing_Industry_WPF.MainForms
 
 
         }
-
+        //СОСТАВЛЕНИЕ ДОКУМЕНТА
         private void MakeExcel_Click(object sender, RoutedEventArgs e)
         {
 
@@ -1316,7 +1318,7 @@ namespace Clothing_Industry_WPF.MainForms
                 System.Windows.Forms.MessageBox.Show("Файл не найден", "Выплаты", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
-
+        //ОТКРЫТЬ СПИСОК
         private void OpenList_Click(object sender, RoutedEventArgs e)
         {
             int id;
@@ -1402,7 +1404,11 @@ namespace Clothing_Industry_WPF.MainForms
                 System.Windows.MessageBox.Show("Доходы: " + count.ToString() + "\n" + "\n" + "Итого: " + count.ToString(), "Грязный доход", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
-
+        //ЗАГРУЗКА ЗАКАЗОВ
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Ordersload();
+        }
 
     }
 }

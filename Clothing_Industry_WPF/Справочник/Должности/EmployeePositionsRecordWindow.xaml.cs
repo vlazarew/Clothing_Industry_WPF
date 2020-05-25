@@ -68,11 +68,11 @@ namespace Clothing_Industry_WPF.Справочник.Должности
             {
                 case WaysToOpenForm.WaysToOpen.create:
                     this.Title += " (Создание)";
-                    Header.Content += " (Создание)";
+                    
                     break;
                 case WaysToOpenForm.WaysToOpen.edit:
                     this.Title += " (Изменение)";
-                    Header.Content += " (Изменение)";
+                    
                     break;
                 default:
                     break;

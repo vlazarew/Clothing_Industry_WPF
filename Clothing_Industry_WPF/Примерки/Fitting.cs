@@ -40,7 +40,9 @@ namespace Clothing_Industry_WPF.Примерки
             connection.Open();
 
             // Вот тут нужно проходить по всем таблицам, что мы используем в итоговом запросе
-            FindHandler.DescribeHelper("describe payrolls", connection, describe);
+            FindHandler.DescribeHelper("describe fittings", connection, describe);
+            FindHandler.DescribeHelper("describe customers", connection, describe);
+            FindHandler.DescribeHelper("describe types_of_fitting", connection, describe);
             // Вот тут конец
 
             connection.Close();
