@@ -31,7 +31,7 @@
 
             <Border BorderBrush="Black" BorderThickness="1" Margin="-19,0,-11,0" RenderTransformOrigin="0.503,-0.238"/>        </Grid>
         <Grid Grid.Row="1" Background="Silver" Margin="0,0,0,-36">            <Button x:Name="buttonSave" Content="Сохранить" HorizontalAlignment="Left" Margin="39,24,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="ButtonSaveAndExit_Click" IsDefault="True" FontSize="14" FontFamily="Arial"/>
-            <Button  x:Name="buttonExit" Content="Выйти" Margin="233,24,0,0" TabIndex="2" Click="ButtonExit_Click" FontFamily="Arial" VerticalAlignment="Top" FontSize="14"  Height="30" HorizontalAlignment="Left" Width="100"/>
+            <Button  x:Name="buttonExit" Content="Отмена" Margin="233,24,0,0" TabIndex="2" Click="ButtonExit_Click" FontFamily="Arial" VerticalAlignment="Top" FontSize="14"  Height="30" HorizontalAlignment="Left" Width="100"/>
         </Grid>
     </Grid>
 </Window>

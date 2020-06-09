@@ -225,7 +225,6 @@ namespace Clothing_Industry_WPF.MainForms
             AddColumnDataGrid(DataGrid, "Заметки", "Notes");
             queryrefresh = Order.getQueryText();
             RefreshList(queryrefresh, DataGrid);
-            string status = "";
             
 
         }

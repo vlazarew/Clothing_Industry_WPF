@@ -214,9 +214,9 @@
                     </Menu>
                     <Grid HorizontalAlignment="Right">
                         <materialDesign:PopupBox PlacementMode="BottomAndAlignRightEdges" StaysOpen="False" Width="40">
-                            <StackPanel Width="150">
-                                <Button Click="ButtonHelp_Click" Content="Помощь"/>
-                                <Button Click="ButtonInfo_Click" Content="О проекте"/>
+                            <StackPanel Width="150" Background="Silver">
+                                <Button Click="ButtonHelp_Click" Content="Помощь" Background="Silver"/>
+                                <Button Click="ButtonInfo_Click" Content="О проекте" Background="Silver"/>
                             </StackPanel>
                         </materialDesign:PopupBox>
                     </Grid>
@@ -283,6 +283,11 @@
 
                             <ListViewItem x:Name="ItemOrders" Height="60">
                                 <StackPanel Orientation="Horizontal">
+                                    <StackPanel.ToolTip>
+                                        <ToolTip FontFamily="Arial">
+                                            Заказы
+                                        </ToolTip>
+                                    </StackPanel.ToolTip>
                                     <materialDesign:PackIcon Kind="Cart" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Заказы" FontFamily="Arial" FontSize="14" VerticalAlignment="Center" Margin="20 10"/>
                                 </StackPanel>
@@ -290,6 +295,11 @@
 
                             <ListViewItem x:Name="ItemClients" Height="60">
                                 <StackPanel Orientation="Horizontal">
+                                    <StackPanel.ToolTip>
+                                        <ToolTip FontFamily="Arial">
+                                            Клиенты
+                                        </ToolTip>
+                                    </StackPanel.ToolTip>
                                     <materialDesign:PackIcon Kind="HumanHandsdown" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Клиенты" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
@@ -297,6 +307,11 @@
 
                             <ListViewItem x:Name="ItemFittings" Height="60">
                                 <StackPanel Orientation="Horizontal">
+                                    <StackPanel.ToolTip>
+                                        <ToolTip FontFamily="Arial">
+                                            Примерки
+                                        </ToolTip>
+                                    </StackPanel.ToolTip>
                                     <materialDesign:PackIcon Kind="Hanger" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Примерки" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
@@ -304,6 +319,11 @@
 
                             <ListViewItem x:Name="ItemBalance" Height="60">
                                 <StackPanel Orientation="Horizontal">
+                                    <StackPanel.ToolTip>
+                                        <ToolTip FontFamily="Arial">
+                                            Баланс клиентов
+                                        </ToolTip>
+                                    </StackPanel.ToolTip>
                                     <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\account-cash.png"   Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Баланс клиентов" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
@@ -311,6 +331,11 @@
 
                             <ListViewItem x:Name="ItemStore" Height="60">
                                 <StackPanel Orientation="Horizontal">
+                                    <StackPanel.ToolTip>
+                                        <ToolTip FontFamily="Arial">
+                                            Склад
+                                        </ToolTip>
+                                    </StackPanel.ToolTip>
                                     <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\garage-variant.png"   Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Склад" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
@@ -318,6 +343,11 @@
 
                             <ListViewItem x:Name="ItemReceipt" Height="60">
                                 <StackPanel Orientation="Horizontal">
+                                    <StackPanel.ToolTip>
+                                        <ToolTip FontFamily="Arial">
+                                            Приход материала
+                                        </ToolTip>
+                                    </StackPanel.ToolTip>
                                     <materialDesign:PackIcon Kind="TruckDelivery" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Приход материала" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
@@ -325,6 +355,11 @@
 
                             <ListViewItem x:Name="ItemMaterials" Height="60">
                                 <StackPanel Orientation="Horizontal">
+                                    <StackPanel.ToolTip>
+                                        <ToolTip FontFamily="Arial">
+                                            Материалы
+                                        </ToolTip>
+                                    </StackPanel.ToolTip>
                                     <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\cloth.png"   Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Материалы"  FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
@@ -332,6 +367,11 @@
 
                             <ListViewItem x:Name="ItemProducts" Height="60">
                                 <StackPanel Orientation="Horizontal">
+                                    <StackPanel.ToolTip>
+                                        <ToolTip FontFamily="Arial">
+                                            Изделия
+                                        </ToolTip>
+                                    </StackPanel.ToolTip>
                                     <materialDesign:PackIcon Kind="TshirtCrew" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Изделия" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
@@ -339,6 +379,11 @@
 
                             <ListViewItem x:Name="ItemWorker" Height="60">
                                 <StackPanel Orientation="Horizontal">
+                                    <StackPanel.ToolTip>
+                                        <ToolTip FontFamily="Arial">
+                                            Сотрудники
+                                        </ToolTip>
+                                    </StackPanel.ToolTip>
                                     <materialDesign:PackIcon Kind="Worker" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Сотрудники" FontFamily="Arial" FontSize="14" VerticalAlignment="Center" Margin="20 10"/>
                                 </StackPanel>
@@ -346,6 +391,11 @@
 
                             <ListViewItem x:Name="ItemPayrolls" Height="60">
                                 <StackPanel Orientation="Horizontal">
+                                    <StackPanel.ToolTip>
+                                        <ToolTip FontFamily="Arial">
+                                            Начисление ЗП
+                                        </ToolTip>
+                                    </StackPanel.ToolTip>
                                     <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\wallet-plus.png"   Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Начисление ЗП" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
@@ -353,6 +403,11 @@
 
                             <ListViewItem x:Name="ItemHolidays" Height="60">
                                 <StackPanel Orientation="Horizontal">
+                                    <StackPanel.ToolTip>
+                                        <ToolTip FontFamily="Arial">
+                                            Отпуска
+                                        </ToolTip>
+                                    </StackPanel.ToolTip>
                                     <materialDesign:PackIcon Kind="Beach" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Отпуска"  FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
@@ -360,6 +415,11 @@
 
                             <ListViewItem x:Name="ItemIncome"  Height="60">
                                 <StackPanel Orientation="Horizontal">
+                                    <StackPanel.ToolTip>
+                                        <ToolTip FontFamily="Arial">
+                                            Доходы
+                                        </ToolTip>
+                                    </StackPanel.ToolTip>
                                     <materialDesign:PackIcon Kind="CashUsd" Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Доходы" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>
@@ -367,6 +427,11 @@
 
                             <ListViewItem x:Name="ItemCosts" Height="60">
                                 <StackPanel Orientation="Horizontal">
+                                    <StackPanel.ToolTip>
+                                        <ToolTip FontFamily="Arial">
+                                            Расходы
+                                        </ToolTip>
+                                    </StackPanel.ToolTip>
                                     <Image Source="D:\Git\Clothing_Industry_WPF\Clothing_Industry_WPF\Картинки\MenuButtons\credit-card-minus.png"   Height="30" Width="35" Margin="10"/>
                                     <TextBlock Text="Расходы" FontFamily="Arial" FontSize="14" VerticalAlignment="Center"  Margin="20 10"/>
                                 </StackPanel>

@@ -39,7 +39,7 @@
                     </Binding>
                 </DatePicker.SelectedDate>
             </DatePicker>
-            <ComboBox x:Name="comboBoxLogin" Margin="171,20,59,0" VerticalAlignment="Top" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial">
+            <ComboBox x:Name="comboBoxLogin" Margin="171,20,0,0" VerticalAlignment="Top" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="3" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial" HorizontalAlignment="Left" Width="164">
                 <ComboBox.Text>
                     <Binding Source="{StaticResource Holidays}" Path="employeeLogin" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
                         <Binding.ValidationRules  >

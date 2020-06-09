@@ -91,6 +91,8 @@
             <RadioButton x:Name="radioButtonExact" Content="По точному совпадению" HorizontalAlignment="Left" Margin="147,116,0,0" VerticalAlignment="Top" FontSize="14" IsChecked="True" VerticalContentAlignment="Center" FontFamily="Arial" Height="27" Width="193"/>
             <Label Content="Тип поиска:" HorizontalAlignment="Left" Margin="50,116,0,0" VerticalAlignment="Top" FontSize="14" Width="92" FontFamily="Arial" Height="27"/>
             <DatePicker x:Name="datePicker" HorizontalAlignment="Left" Margin="147,74,0,0" VerticalAlignment="Top" Height="31" Width="283" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
+            <Border BorderBrush="Black" BorderThickness="1" Margin="-65,0,-136,-22" RenderTransformOrigin="0.503,-0.238">
+            </Border>
         </Grid>
         <Grid Grid.Row="1" Background="Silver">
             <Border BorderBrush="Black" BorderThickness="1" Margin="-65,0,-136,-20" RenderTransformOrigin="0.503,-0.238">
