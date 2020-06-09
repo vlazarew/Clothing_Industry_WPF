@@ -108,13 +108,11 @@
                     Приложение для швеиного ателье "Твоя пижама" находилось в разработке на протяжении 2019-2020.
                 </TextBlock.Text>
             </TextBlock>
-            <TextBlock TextWrapping="Wrap" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="10,45,0,26" Width="391">
+            <TextBlock TextWrapping="Wrap" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="10,71,0,0" Width="391">
                 <TextBlock.Text>
                     Было создано студентами 9 группы ПММ МОиАИС Копытиным Алексеем и Лазаревым Владимиром.
                 </TextBlock.Text>
             </TextBlock>
-            <Label Content="Если возникнут проблемы, обращаться по почте:" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="10,97,0,0" VerticalAlignment="Top"  Height="28" Width="454" RenderTransformOrigin="0.531,1.036"/>
-            <Label Content="lexus.voronezh@gmail.com" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top"  Height="28" Width="454" RenderTransformOrigin="0.531,1.036" FontWeight="Bold"/>
 
             <Border BorderBrush="Black" BorderThickness="1" Margin="-28,0,-23,-24">
             </Border>

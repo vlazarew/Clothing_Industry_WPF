@@ -7,7 +7,7 @@
         ResizeMode="NoResize"      
         mc:Ignorable="d" WindowStartupLocation="CenterScreen" 
          WindowStyle="ThreeDBorderWindow"
-        Title="Помощь" Height="450" Width="470"  Visibility="Visible">
+        Title="Помощь" Height="500" Width="470"  Visibility="Visible">
 
     <Window.Resources>
 
@@ -189,10 +189,10 @@
             </Style.Triggers>
         </Style>
     </Window.Resources>
-    <Grid  Width="470" Margin="0,0,-6,0" Height="450" VerticalAlignment="Top">
+    <Grid  Width="470" Margin="0,0,-6,0" Height="500" VerticalAlignment="Top">
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="330"/>
+            <RowDefinition Height="380"/>
             <RowDefinition Height="90"/>
         </Grid.RowDefinitions>
         <Grid Background="#F0F0F0" Grid.Row="0" Margin="0,0,6,0">
@@ -212,7 +212,9 @@
             <Ellipse Fill="Black" Stroke="Black" Margin="16,132,0,0" Width="5" Height="5" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             <Ellipse Fill="Black" Stroke="Black" Margin="16,161,0,0" Width="5" Height="5" VerticalAlignment="Top" HorizontalAlignment="Left"/>
             
-         
+            <Label Content="Если возникнут проблемы, обращаться по почте:" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="10,315,0,0" VerticalAlignment="Top"  Height="28" Width="454" RenderTransformOrigin="0.531,1.036"/>
+            <Label Content="lexus.voronezh@gmail.com" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="10,343,0,0" VerticalAlignment="Top"  Height="28" Width="454" RenderTransformOrigin="0.531,1.036" FontWeight="Bold"/>
+
             <Border BorderBrush="Black" BorderThickness="1" Margin="-28,0,-23,-24">
 
             </Border>
