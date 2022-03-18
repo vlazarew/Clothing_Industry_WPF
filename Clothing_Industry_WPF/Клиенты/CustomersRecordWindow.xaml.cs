@@ -41,7 +41,6 @@ namespace Clothing_Industry_WPF.Клиенты
 
             // Заполнение шапки, полей даты 
             Title = FormLoader.setNewTitle(way, Title);
-            Header.Content = Title;
             datePickerBirthday.Text = DateTime.Now.ToLongDateString();
 
             FillComboBoxes();

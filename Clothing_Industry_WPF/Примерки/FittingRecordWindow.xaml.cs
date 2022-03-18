@@ -84,12 +84,10 @@ namespace Clothing_Industry_WPF.Примерки
             {
                 case WaysToOpenForm.WaysToOpen.create:
                     this.Title += " (Создание)";
-                    Header.Content += " (Создание)";
                     datePickerDate.Text = DateTime.Now.ToLongDateString();
                     break;
                 case WaysToOpenForm.WaysToOpen.edit:
                     this.Title += " (Изменение)";
-                    Header.Content += " (Изменение)";
                     break;
                 default:
                     break;

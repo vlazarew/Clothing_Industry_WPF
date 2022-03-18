@@ -264,6 +264,7 @@ namespace Clothing_Industry_WPF.Заказы.Список_изделий_для_
             {
                 while (reader.Read())
                 {
+                    
                     // Количество материала на изделие умножаем на кол-во изделий в заказе
                     var countMaterial = reader.GetFloat(1) * productsInOrder.Where(k => k.Key == reader.GetInt32(2)).First().Value;
                     // Есть ли данный ключ (артикул) в итоговом перечне

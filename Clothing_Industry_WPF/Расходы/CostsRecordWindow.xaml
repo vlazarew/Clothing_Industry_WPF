@@ -8,133 +8,11 @@
         xmlns:validators1="clr-namespace:Clothing_Industry_WPF.Расходы"
         ResizeMode="NoResize"
         mc:Ignorable="d" WindowStartupLocation="CenterScreen"
-        Title="Расходы" Height="473" Width="481" MinWidth="375" MinHeight="440">
+        Title="Расходы" Height="470" Width="450">
     <Window.Resources>
         <validators1:Costs x:Key="Costs"/>
-        <GradientStopCollection x:Key="MyGlassGradientStopsResource">
-            <GradientStop Color="WhiteSmoke" Offset="0.2" />
-            <GradientStop Color="Transparent" Offset="0.4" />
-            <GradientStop Color="WhiteSmoke" Offset="0.5" />
-            <GradientStop Color="Transparent" Offset="0.75" />
-            <GradientStop Color="WhiteSmoke" Offset="0.9" />
-            <GradientStop Color="Transparent" Offset="1" />
-        </GradientStopCollection>
-        <LinearGradientBrush x:Key="MyGlassBrushResource" StartPoint="0,0" EndPoint="1,1" Opacity="0.75"
-    GradientStops="{StaticResource MyGlassGradientStopsResource}" />
-        <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
-    StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="DarkGray" Offset="0" />
-
-            <GradientStop Color="DarkGray" Offset="1" />
-        </LinearGradientBrush>
-
-        <Style TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="{StaticResource ResourceKey=GrayBlueGradientBrush}" />
-            <Setter Property="Width" Value="80" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="FontFamily" Value="Arial" />
-            <Setter Property="FontSize" Value="13" />
-            <Setter Property="TextBlock.TextAlignment" Value="Center" />
-
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid Width="{TemplateBinding Width}"   
-      Height="{TemplateBinding Height}" ClipToBounds="True">
-
-                            <!-- Outer Rectangle with rounded corners. -->
-                            <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch"   
-      VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}"   
-       StrokeThickness="5" Fill="Transparent" />
-
-                            <!-- Inner Rectangle with rounded corners. -->
-                            <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"   
-        VerticalAlignment="Stretch" Stroke="Transparent"   
-        StrokeThickness="5"   
-        Fill="{TemplateBinding Background}" 
-      />
-
-                            <!-- Glass Rectangle -->
-                            <Rectangle x:Name="glassCube" HorizontalAlignment="Stretch"  
-        VerticalAlignment="Stretch"  
-        StrokeThickness="2" RadiusX="10" RadiusY="10" Opacity="0"  
-        Fill="{StaticResource MyGlassBrushResource}"  
-        RenderTransformOrigin="0.5,0.5">
-                                <Rectangle.Stroke>
-                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <LinearGradientBrush.GradientStops>
-                                            <GradientStop Offset="0.0" Color="LightBlue" />
-                                            <GradientStop Offset="1.0" Color="Gray" />
-                                        </LinearGradientBrush.GradientStops>
-                                    </LinearGradientBrush>
-                                </Rectangle.Stroke>
-
-                                <!-- These transforms have no effect as they   
-             are declared here.   
-             The reason the transforms are included is to be targets   
-             for animation (see later). -->
-                                <Rectangle.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform />
-                                        <RotateTransform />
-                                    </TransformGroup>
-                                </Rectangle.RenderTransform>
-
-                                <!-- A BevelBitmapEffect is applied to give the button a   
-               "Beveled" look. -->
-                                <Rectangle.BitmapEffect>
-                                    <BevelBitmapEffect />
-                                </Rectangle.BitmapEffect>
-                            </Rectangle>
-
-                            <!-- Present Text of the button. -->
-                            <DockPanel Name="myContentPresenterDockPanel">
-                                <ContentPresenter x:Name="myContentPresenter" VerticalAlignment="Center" Margin="5"   
-          Content="{TemplateBinding  Content}" TextBlock.Foreground="Black" />
-                            </DockPanel>
-                        </Grid>
-
-                        <ControlTemplate.Triggers>
-
-                            <!-- Set properties when mouse pointer is over the button. -->
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <!-- Below are three property settings that occur when the   
-         condition is met (user mouses over button).  -->
-                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
-                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-
-                                <!-- Below are three property settings that occur when the   
-         condition is met (user mouses over button).  -->
-                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="YellowGreen" />
-                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
-                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-
-                            <!--Наведение мышкой -->
-
-
-
-                            <!--Нажатие кнопки-->
-
-                        </ControlTemplate.Triggers>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        
+        <LinearGradientBrush x:Key="Buttongradient" StartPoint="0,0" EndPoint="0,1">            <GradientStop Color="#FF4B4A4A" Offset="1" />            <GradientStop Color="#FFE8E8E8" Offset="0" />        </LinearGradientBrush>
+        <Style TargetType="Button">            <Setter Property="Background" Value="{DynamicResource Buttongradient}"/>            <Setter Property="FontSize" Value="15" />            <Setter Property="SnapsToDevicePixels" Value="True" />            <Setter Property="TextBlock.TextAlignment" Value="Center" />            <Setter Property="IsEnabled" Value="True" />            <Setter Property="Template">                <Setter.Value>                    <ControlTemplate TargetType="{x:Type Button}">                        <Border x:Name="MainBorder" CornerRadius="6" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding Background}" BorderThickness="2.5">                            <Grid Margin="0,0,0,-1">                                <DockPanel Name="myContentPresenterDockPanel">                                    <ContentPresenter x:Name="myContentPresenter" VerticalAlignment="Center" Margin="5"             Content="{TemplateBinding  Content}" TextBlock.Foreground="Black" />                                </DockPanel>                            </Grid>                        </Border>                        <ControlTemplate.Triggers>                            <Trigger Property="IsMouseOver" Value="True">                                <Setter Property ="BorderBrush" TargetName="MainBorder"  Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />                            </Trigger>                            <Trigger Property="IsPressed" Value="True">                                <Setter Property ="BorderBrush" TargetName="MainBorder" Value="YellowGreen" />                            </Trigger>                        </ControlTemplate.Triggers>                    </ControlTemplate>                </Setter.Value>            </Setter>        </Style>
         <Style TargetType="TextBox" x:Key="NoActive">
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="TextWrapping" Value="Wrap"/>
@@ -142,9 +20,9 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="IsReadOnly" Value="True"/>
             <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Background" Value="LightGray" />
             <Setter Property="FontFamily" Value="Arial"/>
-        </Style> 
-        
+        </Style>
         <Style TargetType="TextBox">
             <Style.Triggers>
                 <Trigger Property="Validation.HasError" Value="True">
@@ -155,116 +33,120 @@
         </Style>
 
     </Window.Resources>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="0*"/>
-        </Grid.ColumnDefinitions>
-        <Label Content="Дата расхода " HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,169,0,0" Height="32" Width="99" FontSize="14" FontFamily="Arial"/>
-        <Label Content="Путь документа" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,107,0,0" Height="31" Width="114" FontSize="14" FontFamily="Arial"/>
-        <Label x:Name="Header" Content="Расходы" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,46,0,0" FontSize="18" Height="34" Width="203" FontFamily="Arial"/>
+    <Grid  VerticalAlignment="Top">
+        <Grid.RowDefinitions>            <RowDefinition Height="370"/>            <RowDefinition Height="70"/>        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#F0F0F0">
+            <Label Content="Дата расхода:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,105,0,0" Height="26" Width="100" FontSize="14" FontFamily="Arial"/>
+            <Label Content="Путь документа:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,43,0,0" Height="26" Width="118" FontSize="14" FontFamily="Arial"/>
 
-        <Label Content="Сумма" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,201,0,0" Height="31" Width="56" FontSize="14" FontFamily="Arial"/>
-        <Label Content="Заметки" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,232,0,0" Height="31" Width="85" FontSize="14" FontFamily="Arial"/>
-        <Label Content="Категория расхода" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,263,0,0" Height="31" Width="134" FontSize="14" FontFamily="Arial"/>
-        <Label Content="Тип оплаты" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,294,0,0" Height="26" Width="85" FontSize="14" FontFamily="Arial"/>
-        <Label Content="Периодичности" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="12,325,0,0" Height="31" Width="112" FontSize="14" FontFamily="Arial"/>
-        <Label Content="От" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,356,0,0" Height="26" Width="27" FontSize="14" FontFamily="Arial"/>
-        <Label Content="Кому" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,387,0,0" Height="35" Width="42" FontSize="14" FontFamily="Arial"/>
+            <Label Content="Сумма:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,136,0,0" Height="26" Width="56" FontSize="14" FontFamily="Arial"/>
+            <Label Content="Заметки:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,167,0,0" Height="26" Width="68" FontSize="14" FontFamily="Arial"/>
+            <Label Content="Категория расхода:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="38,199,0,0" Height="26" Width="135" FontSize="14" FontFamily="Arial"/>
+            <Label Content="Тип оплаты:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,230,0,0" Height="26" Width="92" FontSize="14" FontFamily="Arial"/>
+            <Label Content="Периодичности:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,261,0,0" Height="26" Width="118" FontSize="14" FontFamily="Arial"/>
+            <Label Content="От:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,292,0,0" Height="26" Width="34" FontSize="14" FontFamily="Arial"/>
+            <Label Content="Кому:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,323,0,0" Height="26" Width="49" FontSize="14" FontFamily="Arial"/>
 
-        <DatePicker x:Name="datePickerDate_Of_Cost" HorizontalAlignment="Left" Margin="157,169,0,0" VerticalAlignment="Top" Width="298" TabIndex="12" VerticalContentAlignment="Center" FontSize="14" RenderTransformOrigin="0.451,-0.985" Height="26" FontFamily="Arial">
-            <DatePicker.SelectedDate>
-                <Binding Source="{StaticResource Costs}" Path="dateOfCost" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
-                    <Binding.ValidationRules>
-                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Дата расхода должна быть заполнена"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </DatePicker.SelectedDate>
-        </DatePicker>
-        <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" HorizontalAlignment="Left" Margin="315,10,0,0" VerticalAlignment="Top" Width="140" Height="34" Click="ButtonSaveAndExit_Click" IsDefault="True" RenderTransformOrigin="0.5,1.92" FontSize="14"/>
-        <ComboBox x:Name="comboBoxName_Of_Category" HorizontalAlignment="Left" Margin="157,294,0,0" VerticalAlignment="Top" Width="298" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial">
-            <ComboBox.Text>
-                <Binding Source="{StaticResource Costs}" Path="typeOfPaymentName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
-                    <Binding.ValidationRules  >
-                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Тип оплаты должен быть заполнен"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </ComboBox.Text>
-        </ComboBox>
-        <ComboBox x:Name="comboBoxName_Of_Type" HorizontalAlignment="Left" Margin="157,263,0,0" VerticalAlignment="Top" Width="298" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial">
-            <ComboBox.Text>
-                <Binding Source="{StaticResource Costs}" Path="consumptionCategoriesName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
-                    <Binding.ValidationRules  >
-                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Категория должна быть заполнена"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </ComboBox.Text>
-        </ComboBox>
-        <TextBox x:Name="textBoxAmount" HorizontalAlignment="Left" Height="26" Margin="157,201,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" TabIndex="13" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
-            <TextBox.Text>
-                <Binding Source="{StaticResource Costs}" Path="amount" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
-                    <Binding.ValidationRules  >
-                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" MinimumValue="1" ErrorMessage="Сумма должна быть заполнена"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-        <TextBox Style="{StaticResource NoActive}" x:Name="textBoxFileName" HorizontalAlignment="Left" Height="26" IsReadOnly="True" Margin="157,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" TabIndex="13" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
-            <TextBox.Text>
-                <Binding Source="{StaticResource Costs}" Path="nameOfDocument" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
-                    <Binding.ValidationRules  >
-                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Имя документа должно быть заполнено"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-        <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="157,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" TabIndex="13" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
-        <ComboBox x:Name="comboBoxName_Of_Periodicity" HorizontalAlignment="Left" Margin="157,325,0,0" VerticalAlignment="Top" Width="298" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial">
-            <ComboBox.Text>
-                <Binding Source="{StaticResource Costs}" Path="periodicityName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
-                    <Binding.ValidationRules  >
-                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Периодичность должен быть заполнен"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </ComboBox.Text>
-        </ComboBox>
-        <TextBox x:Name="textBoxFrom" HorizontalAlignment="Left" Height="26" Margin="157,356,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" TabIndex="13" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
-            <TextBox.Text>
-                <Binding Source="{StaticResource Costs}" Path="from" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
-                    <Binding.ValidationRules  >
-                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Должно быть заполнено"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-        <TextBox x:Name="textBoxTo" HorizontalAlignment="Left" Height="26" Margin="157,387,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" TabIndex="13" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
-            <TextBox.Text>
-                <Binding Source="{StaticResource Costs}" Path="to" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
-                    <Binding.ValidationRules  >
-                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Должно быть заполнено"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-        <TextBox Style="{StaticResource NoActive}" x:Name="textBoxFileFolder" HorizontalAlignment="Left" Height="26" Margin="157,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" TabIndex="13" VerticalContentAlignment="Center" IsReadOnly="True" FontSize="14" FontFamily="Arial">
-            <TextBox.Text>
-                <Binding Source="{StaticResource Costs}" Path="defaultFolder" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
-                    <Binding.ValidationRules  >
-                        <validators:TextBoxValidator ValidatesOnTargetUpdated="True" MinimumLength="1" ErrorMessage="Путь должен быть заполнен"/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
-        <Button x:Name="buttonFileSearch" Content="Найти файл" HorizontalAlignment="Left" Margin="157,10,0,0" VerticalAlignment="Top" Width="140" Height="34" Click="ButtonFileSearch_Click" IsDefault="True" FontSize="14"/>
-        <Label Content="Имя документа" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="10,138,0,0" Height="31" Width="109" FontSize="14" FontFamily="Arial"/>
-        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="124,107,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
-        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="119,138,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
-        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="66,201,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
-        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="142,263,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
-        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="95,294,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
-        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="124,325,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
-        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="37,356,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
-        <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="52,387,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+            <DatePicker x:Name="datePickerDate_Of_Cost" HorizontalAlignment="Left" Margin="221,105,0,0" VerticalAlignment="Top" Width="164" TabIndex="12" VerticalContentAlignment="Center" FontSize="14" RenderTransformOrigin="0.451,-0.985" Height="26" FontFamily="Arial">
+                <DatePicker.SelectedDate>
+                    <Binding Source="{StaticResource Costs}" Path="dateOfCost" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                        <Binding.ValidationRules>
+                            <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" ErrorMessage="Дата расхода должна быть заполнена"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </DatePicker.SelectedDate>
+            </DatePicker>
+            <ComboBox x:Name="comboBoxName_Of_Category" HorizontalAlignment="Left" Margin="221,230,0,0" VerticalAlignment="Top" Width="164" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial">
+                <ComboBox.Text>
+                    <Binding Source="{StaticResource Costs}" Path="typeOfPaymentName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                        <Binding.ValidationRules  >
+                            <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" ErrorMessage="Тип оплаты должен быть заполнен"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.Text>
+            </ComboBox>
+            <ComboBox x:Name="comboBoxName_Of_Type" HorizontalAlignment="Left" Margin="221,199,0,0" VerticalAlignment="Top" Width="164" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial">
+                <ComboBox.Text>
+                    <Binding Source="{StaticResource Costs}" Path="consumptionCategoriesName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                        <Binding.ValidationRules  >
+                            <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" ErrorMessage="Категория должна быть заполнена"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.Text>
+            </ComboBox>
+            <TextBox x:Name="textBoxAmount" HorizontalAlignment="Left" Height="26" Margin="221,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" TabIndex="13" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+                <TextBox.Text>
+                    <Binding Source="{StaticResource Costs}" Path="amount" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                        <Binding.ValidationRules  >
+                            <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" MinimumValue="1" ErrorMessage="Сумма должна быть заполнена"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox Style="{StaticResource NoActive}" x:Name="textBoxFileName" HorizontalAlignment="Left" Height="26" IsReadOnly="True" Margin="221,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="13" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" Width="164">
+                <TextBox.Text>
+                    <Binding Source="{StaticResource Costs}" Path="nameOfDocument" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                        <Binding.ValidationRules  >
+                            <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" ErrorMessage="Имя документа должно быть заполнено"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox x:Name="textBoxNotes" HorizontalAlignment="Left" Height="26" Margin="221,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" TabIndex="13" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
+            <ComboBox x:Name="comboBoxName_Of_Periodicity" HorizontalAlignment="Left" Margin="221,261,0,0" VerticalAlignment="Top" Width="164" Height="26" VerticalContentAlignment="Center" FontSize="14" TabIndex="7" IsEditable="True" ScrollViewer.VerticalScrollBarVisibility="Visible" FontFamily="Arial">
+                <ComboBox.Text>
+                    <Binding Source="{StaticResource Costs}" Path="periodicityName" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                        <Binding.ValidationRules  >
+                            <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" ErrorMessage="Периодичность должен быть заполнен"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </ComboBox.Text>
+            </ComboBox>
+            <TextBox x:Name="textBoxFrom" HorizontalAlignment="Left" Height="26" Margin="221,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" TabIndex="13" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+                <TextBox.Text>
+                    <Binding Source="{StaticResource Costs}" Path="from" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                        <Binding.ValidationRules  >
+                            <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" ErrorMessage="Должно быть заполнено"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox x:Name="textBoxTo" HorizontalAlignment="Left" Height="26" Margin="221,323,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="164" TabIndex="13" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial">
+                <TextBox.Text>
+                    <Binding Source="{StaticResource Costs}" Path="to" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                        <Binding.ValidationRules  >
+                            <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" ErrorMessage="Должно быть заполнено"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox Style="{StaticResource NoActive}" x:Name="textBoxFileFolder" HorizontalAlignment="Left" Height="26" Margin="221,43,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TabIndex="13" VerticalContentAlignment="Center" IsReadOnly="True" FontSize="14" FontFamily="Arial" Width="164">
+                <TextBox.Text>
+                    <Binding Source="{StaticResource Costs}" Path="defaultFolder" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                        <Binding.ValidationRules  >
+                            <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" ErrorMessage="Путь должен быть заполнен"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <Label Content="Имя документа:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.974,1" Margin="39,74,0,0" Height="26" Width="113" FontSize="14" FontFamily="Arial"/>
+            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="157,43,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="152,74,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="95,136,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="173,199,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="124,230,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="152,261,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="73,292,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+            <Label  Content="*" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="2.667,1.75" Margin="88,323,0,0" FontSize="14" Height="26" FontFamily="Arial"/>
+            <Label  Content="Обязательные поля помечены (*)" Foreground="Red" HorizontalAlignment="Left" VerticalAlignment="Top"  RenderTransformOrigin="0.974,1" FontSize="12" Height="24" FontFamily="Arial"/>
+        </Grid>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="-41,0,-136,0" RenderTransformOrigin="0.503,-0.238">
+        </Border>
+        <Grid Grid.Row="1" Background="Silver">
+            <Button x:Name="buttonFileSearch" Content="Найти файл" HorizontalAlignment="Left" Margin="39,20,0,0" Width="140" Click="ButtonFileSearch_Click" IsDefault="True" FontSize="14" Height="30" VerticalAlignment="Top" FontFamily="Arial"/>
+            <Button x:Name="buttonSaveAndExit" Content="Сохранить и выйти" Margin="245,20,0,0" VerticalAlignment="Top" Width="140" Height="30" Click="ButtonSaveAndExit_Click" IsDefault="True" RenderTransformOrigin="0.5,1.92" FontSize="14" HorizontalAlignment="Left" FontFamily="Arial"/>
 
+        </Grid>
     </Grid>
+
 </Window>

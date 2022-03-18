@@ -49,7 +49,7 @@ namespace Clothing_Industry_WPF.Заказы
             // Если ничего не выделено, то стиль заблокированной кнопки
             if (listOfProductsGrid.SelectedItems.Count == 0)
             {
-                ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+                DeleteItem.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -86,7 +86,7 @@ namespace Clothing_Industry_WPF.Заказы
 
         private void DataGridCell_GotFocus(object sender, RoutedEventArgs e)
         {
-            ButtonDelete.Style = (Style)ButtonDelete.FindResource("Active");
+            DeleteItem.Visibility = Visibility.Visible;
         }
 
         private void DataGridCell_LostFocus(object sender, RoutedEventArgs e)
@@ -94,7 +94,7 @@ namespace Clothing_Industry_WPF.Заказы
             // Если ничего не выделено, то стиль заблокированной кнопки
             if (listOfProductsGrid.SelectedItems.Count == 0)
             {
-                ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+                DeleteItem.Visibility = Visibility.Collapsed;
             }
         }
 

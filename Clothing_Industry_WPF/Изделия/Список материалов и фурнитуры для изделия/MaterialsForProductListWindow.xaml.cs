@@ -108,7 +108,7 @@ namespace Clothing_Industry_WPF.Изделия
                 {
                     commandTable.ExecuteNonQuery();
                     transaction.Commit();
-                    ButtonDelete.Style = (Style)ButtonDelete.FindResource("NoActive");
+                    DeleteItem.Visibility = Visibility.Collapsed;
                 }
                 catch
                 {
@@ -135,7 +135,7 @@ namespace Clothing_Industry_WPF.Изделия
 
         private void DataGridCell_GotFocus(object sender, RoutedEventArgs e)
         {
-            ButtonDelete.Style = (Style)ButtonDelete.FindResource("Active");
+            DeleteItem.Visibility = Visibility.Visible;
         }
     }
 }

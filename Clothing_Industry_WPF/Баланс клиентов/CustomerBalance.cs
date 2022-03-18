@@ -21,8 +21,8 @@ namespace Clothing_Industry_WPF.Баланс_клиентов
         // Запросец на все балансы клиентов
         public static string getQueryText()
         {
-            string query_text = "select customers_balance.Customers_id_Customer, customers_balance.Accured, customers_balance.Paid, customers_balance.Debt, customers.Name, " +
-                                "customers.Lastname, customers.Address, customers.Phone_Number, customers.Nickname, customers.Passport_Data " +
+            string query_text = "select customers.Lastname as Lastname, customers.Name as Name, customers_balance.Accured as Accured, customers_balance.Paid as Paid, customers_balance.Debt as Debt, " +
+                                "customers.Phone_Number as Phone_Number, customers.Passport_Data as Passport_data, customers.Nickname as Nickname, customers.Address as Address " +
                                 "from customers " +
                                 "left join customers_balance on customers.id_Customer = customers_balance.Customers_id_Customer ; ";
 

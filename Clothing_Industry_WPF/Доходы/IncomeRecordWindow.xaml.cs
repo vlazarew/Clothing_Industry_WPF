@@ -25,7 +25,6 @@ namespace Clothing_Industry_WPF.Доходы
     /// </summary>
     public partial class IncomeRecordWindow : Window
     {
-        private Income income;
         private WaysToOpenForm.WaysToOpen way;
         private string connectionString = Properties.Settings.Default.main_databaseConnectionString;
         private MySqlConnection connection;
@@ -45,11 +44,9 @@ namespace Clothing_Industry_WPF.Доходы
             {
                 case WaysToOpenForm.WaysToOpen.create:
                     this.Title += " (Создание)";
-                    Header.Content += " (Создание)";
                     break;
                 case WaysToOpenForm.WaysToOpen.edit:
                     this.Title += " (Изменение)";
-                    Header.Content += " (Изменение)";
                     break;
                 default:
                     break;
@@ -103,6 +100,11 @@ namespace Clothing_Industry_WPF.Доходы
             {
                 System.Windows.MessageBox.Show(warning, "Не заполнены обязательные поля", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        {
+              Close();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Clothing_Industry_WPF.Перечисления;
+﻿using Clothing_Industry_WPF.Общее.Работа_с_формами;
+using Clothing_Industry_WPF.Перечисления;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -63,15 +64,15 @@ namespace Clothing_Industry_WPF.Изделия
                     textBoxFixed_Price.Text = reader.GetString(1);
                     textBoxMoneyToEmployee.Text = reader.GetString(2);
                    
-                    if (reader.GetValue(4).ToString() != "")
+                    if (reader.GetValue(3).ToString() != "")
                     {
-                        textBoxDescription.Text = reader.GetString(4);
+                        textBoxDescription.Text = reader.GetString(3);
                     }
 
                     image_bytes = null;
                     try
                     {
-                        image_bytes = (byte[])(reader[5]);
+                        image_bytes = (byte[])(reader[4]);
                     }
                     catch
                     {
@@ -98,11 +99,11 @@ namespace Clothing_Industry_WPF.Изделия
             {
                 case WaysToOpenForm.WaysToOpen.create:
                     this.Title += " (Создание)";
-                    Header.Content += " (Создание)";
+
                     break;
                 case WaysToOpenForm.WaysToOpen.edit:
                     this.Title += " (Изменение)";
-                    Header.Content += " (Изменение)";
+
                     break;
                 default:
                     break;
@@ -162,17 +163,17 @@ namespace Clothing_Industry_WPF.Изделия
                 MySqlCommand command = actionInDBCommand(connection);
                 command.Transaction = transaction;
 
-                try
-                {
+                //try
+               // {
                     command.ExecuteNonQuery();
                     transaction.Commit();
                     this.Close();
-                }
-                catch
-                {
-                    transaction.Rollback();
-                    System.Windows.MessageBox.Show("Ошибка сохранения!", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+               // }
+               // catch
+               // {
+                //    transaction.Rollback();
+                //    System.Windows.MessageBox.Show("Ошибка сохранения!", "Ошибка внутри транзакции", MessageBoxButton.OK, MessageBoxImage.Error);
+               // }
 
 
                 connection.Close();
@@ -235,6 +236,16 @@ namespace Clothing_Industry_WPF.Изделия
             }
 
             return command;
+        }
+
+        private void TextBoxFixedPrice_Of_Material_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !TextBoxValidator.IsFloatTextAllowed(e.Text);
+        }
+
+        private void TextBoxMoneyToEmployee_Of_Material_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !TextBoxValidator.IsFloatTextAllowed(e.Text);
         }
     }
 }

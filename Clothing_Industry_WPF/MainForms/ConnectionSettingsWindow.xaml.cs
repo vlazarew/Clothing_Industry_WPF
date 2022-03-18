@@ -25,10 +25,12 @@ namespace Clothing_Industry_WPF.MainForms
 
         public string Result { get; set; }
 
+        public bool txSearch = false;
+
         public ConnectionSettingsWindow()
         {
             InitializeComponent();
-            textBoxIP.Focus();
+
             LoadFromXML();
         }
 
@@ -36,7 +38,9 @@ namespace Clothing_Industry_WPF.MainForms
         {
             XDocument xmlDocument = XDocument.Load(xmlFileName);
             var ip = xmlDocument.Element("settings").Element("IpAddress").FirstAttribute;
+            textBoxIP.Foreground = Brushes.Silver;
             textBoxIP.Text = ip.Value;
+
         }
 
         private void ButtonSaveSettings_Click(object sender, RoutedEventArgs e)
@@ -56,6 +60,21 @@ namespace Clothing_Industry_WPF.MainForms
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             textBoxIP.Clear();
+        }
+
+
+
+        private void TextBoxIP_TextChanged(object sender, MouseEventArgs e)
+        {
+            XDocument xmlDocument = XDocument.Load(xmlFileName);
+            var ip = xmlDocument.Element("settings").Element("IpAddress").FirstAttribute;
+            if ((textBoxIP.Text == ip.Value) && (textBoxIP.Foreground == Brushes.Silver))
+            {
+                textBoxIP.Text = "";
+                textBoxIP.Foreground = Brushes.Black;
+            }
+            else
+                LoadFromXML();
         }
     }
 }

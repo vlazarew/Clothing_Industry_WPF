@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Clothing_Industry_WPF.Общее.Работа_с_формами;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -108,6 +109,11 @@ namespace Clothing_Industry_WPF.Изделия
             {
                 System.Windows.MessageBox.Show(warning, "Не заполнены обязательные поля", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+        }
+
+        private void TextBoxCount_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !TextBoxValidator.IsFloatTextAllowed(e.Text);
         }
     }
 }

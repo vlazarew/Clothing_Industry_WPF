@@ -321,6 +321,7 @@ namespace Clothing_Industry_WPF.Изделия
             connection.Close();
 
             productsGrid.SelectedIndex = 0;
+            //Код алёши еблоши
             List<int> ids = new List<int>();
             foreach (DataRowView row in productsGrid.SelectedItems)
             {

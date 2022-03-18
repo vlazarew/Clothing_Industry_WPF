@@ -53,6 +53,7 @@ namespace Clothing_Industry_WPF.Общее.Работа_с_формами
         private static readonly Regex floatRegex = new Regex("[^0-9,]");
 
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
+
         {
             ValidationResult result = new ValidationResult(true, null);
             string inputString = value == null ? "" : value.ToString();

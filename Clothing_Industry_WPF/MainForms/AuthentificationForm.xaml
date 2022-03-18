@@ -3,130 +3,74 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:my="clr-namespace:System.ComponentModel;assembly=System"
+        xmlns:validators="clr-namespace:Clothing_Industry_WPF.Общее.Работа_с_формами"
+        xmlns:local="clr-namespace:Clothing_Industry_WPF.MainForms"
+        xmlns:validators11="clr-namespace:Clothing_Industry_WPF.MainForms"
         ResizeMode="NoResize"      
         mc:Ignorable="d" WindowStartupLocation="CenterScreen" 
-        Title="Авторизация" Height="306.01" Width="604" WindowStyle="ThreeDBorderWindow" Visibility="Visible">
+         WindowStyle="ThreeDBorderWindow"
+        Title="Авторизация" Height="275" Width="470"  Visibility="Visible">
 
     <Window.Resources>
-        <GradientStopCollection x:Key="MyGlassGradientStopsResource">
-            <GradientStop Color="WhiteSmoke" Offset="0.2" />
-            <GradientStop Color="Transparent" Offset="0.4" />
-            <GradientStop Color="WhiteSmoke" Offset="0.5" />
-            <GradientStop Color="Transparent" Offset="0.75" />
-            <GradientStop Color="WhiteSmoke" Offset="0.9" />
-            <GradientStop Color="Transparent" Offset="1" />
-        </GradientStopCollection>
-        <LinearGradientBrush x:Key="MyGlassBrushResource" StartPoint="0,0" EndPoint="1,1" Opacity="0.75"
-    GradientStops="{StaticResource MyGlassGradientStopsResource}" />
-        <LinearGradientBrush x:Key="GrayBlueGradientBrush"   
-    StartPoint="0,0" EndPoint="1,1">
-            <GradientStop Color="DarkGray" Offset="0" />
 
-            <GradientStop Color="DarkGray" Offset="1" />
+        <validators11:Login x:Key="Login"/>
+        <ControlTemplate x:Key="validationFailed">
+            <StackPanel Orientation="Horizontal">
+                <Border BorderBrush="Red" BorderThickness="1" CornerRadius="6">
+                    <AdornedElementPlaceholder />
+                </Border>
+            </StackPanel>
+        </ControlTemplate>
+        <local:PasswordBoxAssistant x:Key="PasswordBoxAssistant"/>
+
+
+        <LinearGradientBrush x:Key="Buttongradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FF4B4A4A" Offset="1" />
+            <GradientStop Color="#FFE8E8E8" Offset="0" />
         </LinearGradientBrush>
 
+
         <Style TargetType="Button" x:Key="Active">
-            <Setter Property="Background" Value="{StaticResource ResourceKey=GrayBlueGradientBrush}" />
-            <Setter Property="Width" Value="80" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="FontFamily" Value="Arial" />
-            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Background" Value="{DynamicResource Buttongradient}"/>
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextBlock.TextAlignment" Value="Center" />
             <Setter Property="IsEnabled" Value="True" />
+
+
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid Width="{TemplateBinding Width}"   
-      Height="{TemplateBinding Height}" ClipToBounds="True">
+                        <Border x:Name="MainBorder" CornerRadius="6" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding Background}" BorderThickness="2.5">
 
-                            <!-- Outer Rectangle with rounded corners. -->
-                            <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch"   
-      VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}"   
-       StrokeThickness="5" Fill="Transparent" />
 
-                            <!-- Inner Rectangle with rounded corners. -->
-                            <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"   
-        VerticalAlignment="Stretch" Stroke="Transparent"   
-        StrokeThickness="5"   
-        Fill="{TemplateBinding Background}" 
-      />
+                            <Grid Margin="0,0,0,-1">
 
-                            <!-- Glass Rectangle -->
-                            <Rectangle x:Name="glassCube" HorizontalAlignment="Stretch"  
-        VerticalAlignment="Stretch"  
-        StrokeThickness="2" RadiusX="10" RadiusY="10" Opacity="0"  
-        Fill="{StaticResource MyGlassBrushResource}"  
-        RenderTransformOrigin="0.5,0.5">
-                                <Rectangle.Stroke>
-                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <LinearGradientBrush.GradientStops>
-                                            <GradientStop Offset="0.0" Color="LightBlue" />
-                                            <GradientStop Offset="1.0" Color="Gray" />
-                                        </LinearGradientBrush.GradientStops>
-                                    </LinearGradientBrush>
-                                </Rectangle.Stroke>
 
-                                <!-- These transforms have no effect as they   
-             are declared here.   
-             The reason the transforms are included is to be targets   
-             for animation (see later). -->
-                                <Rectangle.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform />
-                                        <RotateTransform />
-                                    </TransformGroup>
-                                </Rectangle.RenderTransform>
 
-                                <!-- A BevelBitmapEffect is applied to give the button a   
-               "Beveled" look. -->
-                                <Rectangle.BitmapEffect>
-                                    <BevelBitmapEffect />
-                                </Rectangle.BitmapEffect>
-                            </Rectangle>
-
-                            <!-- Present Text of the button. -->
-                            <DockPanel Name="myContentPresenterDockPanel">
-                                <ContentPresenter x:Name="myContentPresenter" VerticalAlignment="Center" Margin="5"   
+                                <DockPanel Name="myContentPresenterDockPanel">
+                                    <ContentPresenter x:Name="myContentPresenter" VerticalAlignment="Center" Margin="5"   
           Content="{TemplateBinding  Content}" TextBlock.Foreground="Black" />
-                            </DockPanel>
-                        </Grid>
-
+                                </DockPanel>
+                            </Grid>
+                        </Border>
                         <ControlTemplate.Triggers>
 
-                            <!-- Set properties when mouse pointer is over the button. -->
                             <Trigger Property="IsMouseOver" Value="True">
-                                <!-- Below are three property settings that occur when the   
-         condition is met (user mouses over button).  -->
-                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
-                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
+                                <Setter Property ="BorderBrush" TargetName="MainBorder"  Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+
+
+
+
                             </Trigger>
+
                             <Trigger Property="IsPressed" Value="True">
+                                <Setter Property ="BorderBrush" TargetName="MainBorder" Value="YellowGreen" />
 
-                                <!-- Below are three property settings that occur when the   
-         condition is met (user mouses over button).  -->
-                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="YellowGreen" />
-                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
-                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
+
+
                             </Trigger>
-
-                            <!--Наведение мышкой -->
-
-
-
-                            <!--Нажатие кнопки-->
-
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -134,128 +78,172 @@
         </Style>
 
         <Style TargetType="Button" x:Key="NoActive">
-            <Setter Property="Background" Value="{StaticResource ResourceKey=GrayBlueGradientBrush}" />
-            <Setter Property="Width" Value="80" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="FontFamily" Value="Arial" />
-            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Background" Value="{DynamicResource Buttongradient}"/>
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
             <Setter Property="TextBlock.TextAlignment" Value="Center" />
-            <Setter Property="IsEnabled" Value="False" />
             <Setter Property="Opacity" Value="0.5" />
+            <Setter Property="IsEnabled" Value="False" />
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid Width="{TemplateBinding Width}"   
-      Height="{TemplateBinding Height}" ClipToBounds="True">
+                        <Border x:Name="MainBorder" CornerRadius="6" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding Background}" BorderThickness="2.5">
 
-                            <!-- Outer Rectangle with rounded corners. -->
-                            <Rectangle x:Name="outerRectangle" HorizontalAlignment="Stretch"   
-      VerticalAlignment="Stretch" Stroke="{TemplateBinding Background}"   
-       StrokeThickness="5" Fill="Transparent" />
 
-                            <!-- Inner Rectangle with rounded corners. -->
-                            <Rectangle x:Name="innerRectangle" HorizontalAlignment="Stretch"   
-        VerticalAlignment="Stretch" Stroke="Transparent"   
-        StrokeThickness="5"   
-        Fill="{TemplateBinding Background}" 
-      />
+                            <Grid Margin="0,0,0,-1">
 
-                            <!-- Glass Rectangle -->
-                            <Rectangle x:Name="glassCube" HorizontalAlignment="Stretch"  
-        VerticalAlignment="Stretch"  
-        StrokeThickness="2" RadiusX="10" RadiusY="10" Opacity="0"  
-        Fill="{StaticResource MyGlassBrushResource}"  
-        RenderTransformOrigin="0.5,0.5">
-                                <Rectangle.Stroke>
-                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
-                                        <LinearGradientBrush.GradientStops>
-                                            <GradientStop Offset="0.0" Color="LightBlue" />
-                                            <GradientStop Offset="1.0" Color="Gray" />
-                                        </LinearGradientBrush.GradientStops>
-                                    </LinearGradientBrush>
-                                </Rectangle.Stroke>
 
-                                <!-- These transforms have no effect as they   
-             are declared here.   
-             The reason the transforms are included is to be targets   
-             for animation (see later). -->
-                                <Rectangle.RenderTransform>
-                                    <TransformGroup>
-                                        <ScaleTransform />
-                                        <RotateTransform />
-                                    </TransformGroup>
-                                </Rectangle.RenderTransform>
 
-                                <!-- A BevelBitmapEffect is applied to give the button a   
-               "Beveled" look. -->
-                                <Rectangle.BitmapEffect>
-                                    <BevelBitmapEffect />
-                                </Rectangle.BitmapEffect>
-                            </Rectangle>
-
-                            <!-- Present Text of the button. -->
-                            <DockPanel Name="myContentPresenterDockPanel">
-                                <ContentPresenter x:Name="myContentPresenter" VerticalAlignment="Center" Margin="5"   
+                                <DockPanel Name="myContentPresenterDockPanel">
+                                    <ContentPresenter x:Name="myContentPresenter" VerticalAlignment="Center" Margin="5"   
           Content="{TemplateBinding  Content}" TextBlock.Foreground="Black" />
-                            </DockPanel>
-                        </Grid>
+                                </DockPanel>
+                            </Grid>
+                        </Border>
 
-                        <ControlTemplate.Triggers>
-
-                            <!-- Set properties when mouse pointer is over the button. -->
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <!-- Below are three property settings that occur when the   
-         condition is met (user mouses over button).  -->
-                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
-                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
-                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                            <Trigger Property="IsPressed" Value="True">
-
-                                <!-- Below are three property settings that occur when the   
-         condition is met (user mouses over button).  -->
-                                <!-- Change the color of the outer rectangle when user          mouses over it. -->
-                                <Setter Property ="Rectangle.Stroke" TargetName="outerRectangle" Value="YellowGreen" />
-                                <!-- Makes the text slightly blurry as though you were          looking at it through blurry glass. -->
-                                <Setter Property="ContentPresenter.BitmapEffect"       TargetName="myContentPresenter">
-                                    <Setter.Value>
-                                        <BlurBitmapEffect Radius="1" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-
-                            <!--Наведение мышкой -->
-
-
-
-                            <!--Нажатие кнопки-->
-
-                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
         </Style>
-    </Window.Resources>
-    <Grid PreviewKeyDown="Grid_PreviewKeyDown">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="159*"/>
 
-            <ColumnDefinition Width="140*"/>
-        </Grid.ColumnDefinitions>
-        <Button Style="{StaticResource Active}"  x:Name="Button_Parameters"  Content="Параметры" HorizontalAlignment="Left" Margin="21,202,0,0" VerticalAlignment="Top" Width="100" Height="30" TabIndex="5" BorderBrush="#FF707070" Click="Button_Parameters_Click" FontSize="14" Grid.Column="1" RenderTransformOrigin="0.26,0.489"/>
-        <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Выйти" HorizontalAlignment="Left" Margin="162,202,0,0" VerticalAlignment="Top" Width="100" Height="30" Click="ButtonExit_Click" TabIndex="4" IsCancel="True" Grid.Column="1"/>
-        <TextBox x:Name="textboxLogin" HorizontalAlignment="Left" Height="22" Margin="43,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="240" TabIndex="1" VerticalContentAlignment="Center" FontSize="14" PreviewKeyDown="TextboxLogin_PreviewKeyDown" FontFamily="Arial"/>
-        <Label Content="Логин" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="40,31,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.741,-0.293" Height="28" Width="53"/>
-        <Label Content="Пароль" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="40,108,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.405,0.475" Height="28" Width="66"/>
-        <PasswordBox x:Name="PasswordBoxPassword" HorizontalAlignment="Left" Margin="43,141,0,0" VerticalAlignment="Top" Width="240" Height="22" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial"/>
-        <Button Style="{StaticResource NoActive}" x:Name="Button_LogIn"  Content="Вход" Margin="43,202,175,0" VerticalAlignment="Top" Width="Auto" Height="30" Click="Button_LogIn_Click" TabIndex="3" IsDefault="True" BorderBrush="#FF707070" FontSize="14"  />
-        <TextBox x:Name="textBlockStatus" Grid.Column="1" HorizontalAlignment="Center" Margin="21,18,18,0" Width="241" Height="79" VerticalAlignment="Top"  TextOptions.TextFormattingMode="Display" TextOptions.TextHintingMode="Fixed" Cursor="None" Foreground="#FF0223B6" FontSize="14" TextWrapping="Wrap" TextAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled"  Text="Статус сервера" IsReadOnly="True" BorderThickness="0" FontFamily="Arial"/>
-        <TextBox x:Name="textBlockCurrentIP" Grid.Column="1" HorizontalAlignment="Center" Margin="21,102,18,0" Width="241" Height="72" VerticalAlignment="Top"  TextOptions.TextFormattingMode="Display" TextOptions.TextHintingMode="Fixed" Cursor="None" Foreground="#FF0223B6" FontSize="14" TextWrapping="Wrap" TextAlignment="Center" ScrollViewer.VerticalScrollBarVisibility="Disabled"  Text="Текущий IP сервера:" IsReadOnly="True" BorderThickness="0" FontFamily="Arial"/>
+        <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
+        <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="#FF7EB4EA"/>
+        <SolidColorBrush x:Key="TextBox.Focus.Border" Color="#FF569DE5"/>
+        <Style  x:Key="TextBoxStyle"  TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border x:Name="border" CornerRadius="6" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="3" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="3" BlurRadius="10"></DropShadowEffect>
+                            </Border.Effect>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="PasswordBoxStyle" TargetType="{x:Type PasswordBox}">
+            <Setter Property="PasswordChar" Value="●"/>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource TextBox.Static.Border}"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="AllowDrop" Value="true"/>
+            <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+            <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type PasswordBox}">
+                        <Border x:Name="border" CornerRadius="6"  BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="3" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                            <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                            <Border.Effect>
+                                <DropShadowEffect ShadowDepth="3" BlurRadius="10"></DropShadowEffect>
+                            </Border.Effect>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.MouseOver.Border}"/>
+                            </Trigger>
+                            <Trigger Property="IsKeyboardFocused" Value="true">
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBox.Focus.Border}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsInactiveSelectionHighlightEnabled" Value="true"/>
+                        <Condition Property="IsSelectionActive" Value="false"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="SelectionBrush" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    <Grid PreviewKeyDown="Grid_PreviewKeyDown" Width="470" Margin="0,0,-6,0" Height="270" VerticalAlignment="Top">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="90"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#F0F0F0" Grid.Row="0" Margin="0,0,6,0">
+
+            <Label Content="Логин:" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="19,45,0,0" VerticalAlignment="Top"  Height="28" Width="69" RenderTransformOrigin="0.531,1.036"/>
+            <Label Content="Пароль:" FontFamily="Arial" FontSize="14" HorizontalAlignment="Left" Margin="19,96,0,0" VerticalAlignment="Top" Height="28" Width="69"/>
+            <TextBox x:Name="textboxLogin" HorizontalAlignment="Left"  Validation.ErrorTemplate="{StaticResource validationFailed}" Height="28" Margin="157,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" TabIndex="1" VerticalContentAlignment="Center" FontSize="14" PreviewKeyDown="TextboxLogin_PreviewKeyDown" FontFamily="Arial" Style="{DynamicResource TextBoxStyle}">
+                <TextBox.Text>
+                    <Binding Source="{StaticResource Login}" Path="login" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                        <Binding.ValidationRules>
+                            <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" ErrorMessage="Логин должен быть заполнен"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <PasswordBox x:Name="PasswordBoxPassword" local:PasswordBoxAssistant.BindPassword="True"  Validation.ErrorTemplate="{StaticResource validationFailed}"  HorizontalAlignment="Left" Margin="157,96,0,0" VerticalAlignment="Top" Width="248" Height="28" TabIndex="2" VerticalContentAlignment="Center" FontSize="14" FontFamily="Arial" Style="{DynamicResource PasswordBoxStyle}">
+                <local:PasswordBoxAssistant.BoundPassword>
+                    <Binding Source="{StaticResource Login}" Mode="TwoWay" Path="password" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="true">
+                        <Binding.ValidationRules>
+                            <validators:TextBoxValidator ValidatesOnTargetUpdated="False" MinimumLength="1" ErrorMessage="Пароль должен быть заполнен"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </local:PasswordBoxAssistant.BoundPassword>
+
+            </PasswordBox>
+            <Border BorderBrush="Black" BorderThickness="1" Margin="-28,0,-23,-24">
+            </Border>
+        </Grid>
+        <Grid Background="Silver" Margin="0,1,6,-18" Grid.Row="1">
+            <Border BorderBrush="Black" BorderThickness="1" Margin="-28,0,-23,-24">
+            </Border>
+            <Button Style="{StaticResource Active}"  x:Name="Button_Parameters"  Content="Параметры" HorizontalAlignment="Left" Margin="25,30,0,0" VerticalAlignment="Top" Width="100" Height="30" TabIndex="5" BorderBrush="#FF707070" Click="Button_Parameters_Click" FontSize="14" RenderTransformOrigin="0.26,0.489" FontFamily="Arial"/>
+            <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Выйти" Margin="305,30,59,0" Click="ButtonExit_Click" TabIndex="4" IsCancel="True" FontSize="14" RenderTransformOrigin="0.48,1.167" FontFamily="Arial" Height="30" VerticalAlignment="Top"/>
+            <Button Style="{StaticResource NoActive}" x:Name="Button_LogIn" Visibility="Collapsed" Content="Войти"  Margin="25,30,334,0" VerticalAlignment="Top" Height="30" Click="Button_LogIn_Click" TabIndex="3" IsDefault="True" BorderBrush="#FF707070" FontSize="14" FontFamily="Arial" RenderTransformOrigin="-2.3,0.767"  />
+        </Grid>
+
+        <TextBox x:Name="textBlockStatusOfServer"  Background="#F0F0F0" HorizontalAlignment="Center" Margin="21,10,323,0" Width="126" Height="24" VerticalAlignment="Top"  TextOptions.TextFormattingMode="Display"  Cursor="None" Foreground="#FF0223B6" FontSize="14" TextWrapping="Wrap" TextAlignment="Left" ScrollViewer.VerticalScrollBarVisibility="Disabled"  Text="Статус сервера:" IsReadOnly="True" BorderThickness="0" FontFamily="Arial"/>
+        <Label x:Name="textBlockStatus" Content="" FlowDirection="LeftToRight" HorizontalContentAlignment="Left" HorizontalAlignment="Center" FontFamily="Arial" FontSize="14"  Margin="152,5,66,0" VerticalAlignment="Top" Height="35" Width="252" RenderTransformOrigin="0.318,-0.357"/>
 
     </Grid>
 </Window>

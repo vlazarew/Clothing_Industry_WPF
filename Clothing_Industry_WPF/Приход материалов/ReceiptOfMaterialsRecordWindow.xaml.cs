@@ -87,12 +87,12 @@ namespace Clothing_Industry_WPF.Приход_материалов
             {
                 case WaysToOpenForm.WaysToOpen.create:
                     this.Title += " (Создание)";
-                    Header.Content += " (Создание)";
+
                     datePickerComing_Date.Text = DateTime.Now.ToLongDateString();
                     break;
                 case WaysToOpenForm.WaysToOpen.edit:
                     this.Title += " (Изменение)";
-                    Header.Content += " (Изменение)";
+
                     break;
                 default:
                     break;
