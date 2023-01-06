@@ -82,18 +82,22 @@
     <Grid  VerticalAlignment="Top">
         <Grid.RowDefinitions>            <RowDefinition Height="270"/>            <RowDefinition Height="70"/>        </Grid.RowDefinitions>
         <Grid Grid.Row="0" Background="#F0F0F0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="73*"/>
+                <ColumnDefinition Width="60*"/>
+            </Grid.ColumnDefinitions>
             <Label Content="Поле:" HorizontalAlignment="Left" Margin="40,76,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Arial"/>
             <Label Content="Вид сравнения:" HorizontalAlignment="Left" Margin="40,124,0,0" VerticalAlignment="Top" FontSize="14" FontFamily="Arial"/>
             <Label Content="Значение:" HorizontalAlignment="Left" Margin="40,179,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.496,1.613" FontSize="14" FontFamily="Arial"/>
-            <ComboBox x:Name="comboBoxField" HorizontalAlignment="Left" Margin="182,76,0,0" VerticalAlignment="Top" Width="165" SelectionChanged="ComboBoxField_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center"/>
-            <ComboBox x:Name="comboBoxTypeOfFilter" HorizontalAlignment="Left" Margin="182,128,0,0" VerticalAlignment="Top" Width="165" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center" SelectionChanged="ComboBoxField_SelectionChanged"/>
-            <TextBox x:Name="textBoxValue" HorizontalAlignment="Left" Height="23" Margin="182,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" PreviewTextInput="TextBoxValue_PreviewTextInput" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center"/>
-            <DatePicker x:Name="datePickerValue" HorizontalAlignment="Left" Margin="182,179,0,0" VerticalAlignment="Top" Width="165" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center"/>
-            <CheckBox x:Name="checkBoxActive" Content="Использовать" HorizontalAlignment="Left" Margin="231,232,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.676,-0.133" Width="116" VerticalContentAlignment="Center" IsChecked="True" FontSize="14" FontFamily="Arial"/>
+            <ComboBox x:Name="comboBoxField" HorizontalAlignment="Left" Margin="182,76,0,0" VerticalAlignment="Top" Width="165" SelectionChanged="ComboBoxField_SelectionChanged" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
+            <ComboBox x:Name="comboBoxTypeOfFilter" HorizontalAlignment="Left" Margin="182,128,0,0" VerticalAlignment="Top" Width="165" ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center" SelectionChanged="ComboBoxField_SelectionChanged" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="textBoxValue" HorizontalAlignment="Left" Height="23" Margin="182,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="165" PreviewTextInput="TextBoxValue_PreviewTextInput" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
+            <DatePicker x:Name="datePickerValue" HorizontalAlignment="Left" Margin="182,179,0,0" VerticalAlignment="Top" Width="165" FontSize="14" FontFamily="Arial" VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
+            <CheckBox x:Name="checkBoxActive" Content="Использовать" HorizontalAlignment="Left" Margin="12.25,232,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.676,-0.133" Width="116" VerticalContentAlignment="Center" IsChecked="True" FontSize="14" FontFamily="Arial" Grid.Column="1"/>
+            <Border BorderBrush="Black" BorderThickness="1" Margin="-97,0,-136,0" RenderTransformOrigin="0.503,-0.238" Grid.ColumnSpan="2"/>
         </Grid>
         <Grid Grid.Row="1" Background="Silver">
-            <Border BorderBrush="Black" BorderThickness="1" Margin="-65,0,-136,-20" RenderTransformOrigin="0.503,-0.238">
-            </Border>
+
             <Button x:Name="buttonOK" Content="Принять" HorizontalAlignment="Left" Margin="44,19,0,0" Width="100" IsDefault="True" FontSize="14" Click="ButtonOK_Click" Height="32" VerticalAlignment="Top"/>
             <Button x:Name="buttonCancel" Content="Отмена" HorizontalAlignment="Left" Margin="246,19,0,0" Width="100" FontSize="14" IsCancel="True" Click="ButtonCancel_Click" Height="32" VerticalAlignment="Top"/>
         </Grid>

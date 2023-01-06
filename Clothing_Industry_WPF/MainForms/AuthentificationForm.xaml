@@ -238,7 +238,7 @@
             <Border BorderBrush="Black" BorderThickness="1" Margin="-28,0,-23,-24">
             </Border>
             <Button Style="{StaticResource Active}"  x:Name="Button_Parameters"  Content="Параметры" HorizontalAlignment="Left" Margin="25,30,0,0" VerticalAlignment="Top" Width="100" Height="30" TabIndex="5" BorderBrush="#FF707070" Click="Button_Parameters_Click" FontSize="14" RenderTransformOrigin="0.26,0.489" FontFamily="Arial"/>
-            <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Выйти" Margin="305,30,59,0" Click="ButtonExit_Click" TabIndex="4" IsCancel="True" FontSize="14" RenderTransformOrigin="0.48,1.167" FontFamily="Arial" Height="30" VerticalAlignment="Top"/>
+            <Button Style="{StaticResource Active}" x:Name="ButtonExit" Content="Отмена" Margin="305,30,59,0" Click="ButtonExit_Click" TabIndex="4" IsCancel="True" FontSize="14" RenderTransformOrigin="0.48,1.167" FontFamily="Arial" Height="30" VerticalAlignment="Top"/>
             <Button Style="{StaticResource NoActive}" x:Name="Button_LogIn" Visibility="Collapsed" Content="Войти"  Margin="25,30,334,0" VerticalAlignment="Top" Height="30" Click="Button_LogIn_Click" TabIndex="3" IsDefault="True" BorderBrush="#FF707070" FontSize="14" FontFamily="Arial" RenderTransformOrigin="-2.3,0.767"  />
         </Grid>
 
